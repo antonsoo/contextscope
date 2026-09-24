@@ -1,4 +1,4 @@
-import type { DuplicateGroup, Finding, ParsedRequest, PrefixMatch, Provider, Segment } from "./types.js";
+import type { CacheSimulation, DuplicateGroup, Finding, ParsedRequest, PrefixMatch, Provider, Segment } from "./types.js";
 import { canonicalJson, keyOrderFingerprint } from "./json-utils.js";
 import { ANTHROPIC_LOOKBACK_POSITIONS, findAnthropicModel } from "./pricing.js";
 import { containsVolatilePattern } from "./volatile.js";
@@ -11,12 +11,23 @@ function toolSegments(request: ParsedRequest): Segment[] {
   return request.segments.filter((s) => s.category === "tools");
 }
 
+// A gap between actual and optimized cost below this fraction isn't worth a finding of its own -
+// matches the ">10%" bar findings.test.ts and the CLI/web "potential savings" framing both use,
+// so "no findings" and "no material savings shown" always agree (see missing_tail_breakpoint below).
+const MATERIAL_SAVINGS_RATIO = 0.1;
+
+// Finding kinds that already explain *why* a request's cache isn't paying off - if one of these
+// already fired for a request, missing_tail_breakpoint would just be restating the same gap in
+// different words, so it's skipped there.
+const EXPLAINS_CACHE_GAP: ReadonlySet<Finding["kind"]> = new Set(["volatile_prefix", "breakpoint_before_change", "no_cache_control", "below_minimum_cacheable"]);
+
 export function computeFindings(
   provider: Provider,
   requests: ParsedRequest[],
   prefixMatches: PrefixMatch[],
   model: string | undefined,
   duplicates: DuplicateGroup[],
+  cacheSimulation: CacheSimulation,
 ): Finding[] {
   const findings: Finding[] = [];
   const modelInfo = provider === "anthropic" ? findAnthropicModel(model) : undefined;
@@ -132,11 +143,18 @@ export function computeFindings(
       }
     }
 
-    // breakpoint_before_change: a cache_control marker whose covered content is itself in the diverged region.
+    // breakpoint_before_change: a cache_control marker whose covered content is itself in the
+    // diverged region *and* existed (at that same position) in the previous request - i.e. it's
+    // genuinely unstable content (a timestamp, a UUID), not simply new content this turn. A
+    // rolling breakpoint deliberately placed on the newest tail segment always fails the first
+    // check (idx >= matchedSegments, since brand-new content is never part of the matched prefix)
+    // but is the *correct* pattern, not a bug - the second check (idx < prev.segments.length)
+    // excludes it: a genuinely new position has no corresponding segment in the previous request
+    // to have "changed" from.
     if (provider === "anthropic") {
       for (const bp of request.segments.filter((s) => s.cacheControl)) {
         const idx = request.segments.indexOf(bp);
-        if (idx >= match.matchedSegments) {
+        if (idx >= match.matchedSegments && idx < prev.segments.length) {
           push(findings, {
             kind: "breakpoint_before_change",
             severity: "warning",
@@ -192,6 +210,67 @@ export function computeFindings(
       detail: `"${first.label}" and ${group.members.length - 1} other segment${group.members.length > 2 ? "s" : ""} are near-duplicates (similarity ${(group.similarity * 100).toFixed(0)}%), wasting an estimated ≈${group.estimatedWastedTokens.toLocaleString()} tokens. Consider caching or referencing this content once instead of repeating it inline.`,
       segmentIds: group.members.map((m) => m.segmentId),
     });
+  }
+
+  // missing_tail_breakpoint: the single most valuable fix for a real agent loop and the one the
+  // other checks above don't cover - a cache_control breakpoint exists somewhere (so
+  // no_cache_control didn't fire) and isn't sitting on volatile content (so
+  // breakpoint_before_change didn't fire either), but it also never advances to cover the
+  // conversation's growing tail, so every turn re-sends prior history uncached. Derived directly
+  // from the cache simulation's own actual-vs-optimized gap (not a separately-reasoned estimate),
+  // so this finding and the "potential savings" figure shown alongside it can never disagree: if
+  // the saving is material, this (or one of the finding kinds above) is why.
+  if (provider === "anthropic") {
+    requests.forEach((request, i) => {
+      const actualStep = cacheSimulation.actual[i];
+      const optimizedStep = cacheSimulation.optimized[i];
+      if (!actualStep || !optimizedStep) return;
+      if (actualStep.costUsd === undefined || optimizedStep.costUsd === undefined || actualStep.costUsd <= 0) return;
+      const gapUsd = actualStep.costUsd - optimizedStep.costUsd;
+      const ratio = gapUsd / actualStep.costUsd;
+      if (ratio < MATERIAL_SAVINGS_RATIO) return;
+      if (findings.some((f) => f.requestIndex === i && EXPLAINS_CACHE_GAP.has(f.kind))) return;
+
+      push(findings, {
+        kind: "missing_tail_breakpoint",
+        severity: "warning",
+        requestIndex: i,
+        title: "No cache breakpoint on the conversation tail",
+        detail: `This request resends ≈${actualStep.uncachedTokens.toLocaleString()} tokens of prior conversation history uncached - nothing after the last cache_control breakpoint (or there is none) covers the turns already in this conversation. A rolling breakpoint on the latest turn (Anthropic allows up to 4 per request, and each one needs to land within the 20-position lookback of the one it reads from) would let most of that history read from cache instead of resending it in full - estimated ≈$${gapUsd.toFixed(4)} (${Math.round(ratio * 100)}%) cheaper on this request alone.`,
+        segmentIds: [],
+      });
+    });
+
+    // Safety net for the invariant itself: the per-request loop above catches the common case
+    // (the gap is concentrated in individual requests, each clearing the 10% bar on its own), but
+    // a gap spread thinly across many requests could in principle stay under 10% on every single
+    // one while still summing to a material total. Check the aggregate the cost line itself shows
+    // and, if nothing above already explains it, point at the single request with the largest
+    // absolute gap - "no findings" must never coexist with a materially non-zero savings figure.
+    const { totalActualCostUsd, totalOptimizedCostUsd } = cacheSimulation;
+    if (totalActualCostUsd !== undefined && totalOptimizedCostUsd !== undefined && totalActualCostUsd > 0) {
+      const aggregateRatio = (totalActualCostUsd - totalOptimizedCostUsd) / totalActualCostUsd;
+      const alreadyExplained = findings.some((f) => EXPLAINS_CACHE_GAP.has(f.kind) || f.kind === "missing_tail_breakpoint");
+      if (aggregateRatio >= MATERIAL_SAVINGS_RATIO && !alreadyExplained) {
+        let worst = { index: -1, gap: -Infinity };
+        cacheSimulation.actual.forEach((step, i) => {
+          const optimizedCost = cacheSimulation.optimized[i]?.costUsd;
+          if (step.costUsd === undefined || optimizedCost === undefined) return;
+          const gap = step.costUsd - optimizedCost;
+          if (gap > worst.gap) worst = { index: i, gap };
+        });
+        if (worst.index >= 0) {
+          push(findings, {
+            kind: "missing_tail_breakpoint",
+            severity: "warning",
+            requestIndex: worst.index,
+            title: "No cache breakpoint on the conversation tail",
+            detail: `Across this sequence, caching the growing conversation tail (in addition to whatever's cached today) would cost ≈$${totalOptimizedCostUsd.toFixed(4)} instead of ≈$${totalActualCostUsd.toFixed(4)} - about ${Math.round(aggregateRatio * 100)}% lower, spread across requests rather than concentrated in any single one. A rolling cache_control breakpoint on the latest turn each request is the fix.`,
+            segmentIds: [],
+          });
+        }
+      }
+    }
   }
 
   return findings;

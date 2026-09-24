@@ -114,7 +114,8 @@ export type FindingKind =
   | "below_minimum_cacheable"
   | "duplicate_content"
   | "lookback_window_exceeded"
-  | "ttl_ordering";
+  | "ttl_ordering"
+  | "missing_tail_breakpoint";
 
 export interface Finding {
   kind: FindingKind;

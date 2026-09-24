@@ -43,7 +43,7 @@ export function analyze(input: string, options: AnalysisOptions = {}): AnalysisR
   }
 
   const duplicates = findDuplicates(requests);
-  const findings = computeFindings(format, requests, prefixMatches, options.model, duplicates);
+  const findings = computeFindings(format, requests, prefixMatches, options.model, duplicates, cacheSimulation);
 
   return { parse, reports, prefixMatches, cacheSimulation, findings, duplicates };
 }
