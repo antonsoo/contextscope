@@ -42,7 +42,7 @@ node dist/cli/index.js analyze examples/anthropic-agent-cache-bust.jsonl
 ```
 
 `npm install` runs the package's `prepare` script, which compiles the CLI and
-core library with `tsc` — no separate build step. Once the repo is public, the
+core library with `tsc` — no separate build step. The
 same CLI runs directly against your own file with no local checkout:
 
 ```sh
