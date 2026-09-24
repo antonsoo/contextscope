@@ -8,6 +8,7 @@
 // "ledger-core" repository and BillingClient rate-limiting task throughout.
 
 import { writeFileSync } from "node:fs";
+import { gzipSync } from "node:zlib";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { buildSystemPrompt } from "./lib/system-prompt.mjs";
@@ -17,6 +18,24 @@ import * as repo from "./lib/repo-content.mjs";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUT_DIR = join(__dirname, "..", "examples");
 const MODEL = "claude-sonnet-5";
+
+// The flagship pair is realistic-scale (tens of MB of repeated JSON structure) and compresses
+// ~12x with gzip, so it's committed gzipped - both to stay under the repo's per-file size gate
+// and because that's also exactly the shape a real captured session log would ship in. The CLI
+// and the web app both decompress transparently (node:zlib / DecompressionStream) - see
+// src/cli/read-input.ts and web/src/lib/gunzip.ts. Small examples stay plain JSONL: there's no
+// size problem to solve there, and an uncompressed file is one fewer step to read while debugging.
+// `web/public/examples` is a committed symlink to this directory (not a generated copy), so the
+// web app's Vite build picks these files up as static assets with nothing else to keep in sync.
+function writeGzipped(filename, content) {
+  const gz = gzipSync(Buffer.from(content, "utf8"));
+  writeFileSync(join(OUT_DIR, `${filename}.gz`), gz);
+  return { rawBytes: Buffer.byteLength(content, "utf8"), gzBytes: gz.length };
+}
+
+function writePlain(filename, content) {
+  writeFileSync(join(OUT_DIR, filename), content);
+}
 
 const STATIC_SYSTEM_PROMPT = buildSystemPrompt();
 
@@ -368,13 +387,19 @@ function bustTimestamp(turnIndex) {
   return new Date(bustBase + (bustOffsetsSeconds[turnIndex] ?? turnIndex * 60) * 1000).toISOString();
 }
 const bustRequests = buildTranscript((turnIndex) => systemBlock(`Current time: ${bustTimestamp(turnIndex)}\n\n${STATIC_SYSTEM_PROMPT}`));
-writeFileSync(join(OUT_DIR, "anthropic-agent-cache-bust.jsonl"), bustRequests.map((r) => JSON.stringify(r)).join("\n") + "\n");
+const bustStats = writeGzipped("anthropic-agent-cache-bust.jsonl", bustRequests.map((r) => JSON.stringify(r)).join("\n") + "\n");
 
 // --- Flagship example 2: same session, timestamp removed - the fix ---
 const fixedRequests = buildTranscript(() => systemBlock(STATIC_SYSTEM_PROMPT));
-writeFileSync(join(OUT_DIR, "anthropic-agent-cache-fixed.jsonl"), fixedRequests.map((r) => JSON.stringify(r)).join("\n") + "\n");
+const fixedStats = writeGzipped("anthropic-agent-cache-fixed.jsonl", fixedRequests.map((r) => JSON.stringify(r)).join("\n") + "\n");
 
 console.log(`Flagship pair: ${bustRequests.length} requests each.`);
+console.log(
+  `  bust:  ${(bustStats.rawBytes / 1e6).toFixed(2)} MB -> ${(bustStats.gzBytes / 1e6).toFixed(2)} MB gzipped (${(bustStats.rawBytes / bustStats.gzBytes).toFixed(1)}x)`,
+);
+console.log(
+  `  fixed: ${(fixedStats.rawBytes / 1e6).toFixed(2)} MB -> ${(fixedStats.gzBytes / 1e6).toFixed(2)} MB gzipped (${(fixedStats.rawBytes / fixedStats.gzBytes).toFixed(1)}x)`,
+);
 
 // --- Example 3: the same file re-read three times in one conversation (duplicate content) ---
 function buildDuplicateReadExample() {
@@ -405,7 +430,7 @@ function buildDuplicateReadExample() {
   return requests;
 }
 const duplicateRequests = buildDuplicateReadExample();
-writeFileSync(join(OUT_DIR, "anthropic-duplicate-tool-results.jsonl"), duplicateRequests.map((r) => JSON.stringify(r)).join("\n") + "\n");
+writePlain("anthropic-duplicate-tool-results.jsonl", duplicateRequests.map((r) => JSON.stringify(r)).join("\n") + "\n");
 
 // --- Example 4: OpenAI Chat Completions, tools reordered mid-session ---
 function buildOpenAiToolsReorderedExample() {
@@ -435,7 +460,7 @@ function buildOpenAiToolsReorderedExample() {
   return requests;
 }
 const openAiRequests = buildOpenAiToolsReorderedExample();
-writeFileSync(join(OUT_DIR, "openai-agent-tools-reordered.jsonl"), openAiRequests.map((r) => JSON.stringify(r)).join("\n") + "\n");
+writePlain("openai-agent-tools-reordered.jsonl", openAiRequests.map((r) => JSON.stringify(r)).join("\n") + "\n");
 
 console.log(`Duplicate-read example: ${duplicateRequests.length} requests. OpenAI reordered-tools example: ${openAiRequests.length} requests.`);
 console.log(`Wrote examples to ${OUT_DIR}`);
