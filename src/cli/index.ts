@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-import { readFileSync } from "node:fs";
 import { writeFileSync } from "node:fs";
 import { analyze } from "../core/index.js";
 import { renderTerminalReport } from "./terminal-report.js";
 import { renderHtmlReport } from "./html-report.js";
+import { readInputFile } from "./read-input.js";
 import { bold, red } from "./ansi.js";
 
 const HELP = `contextscope — see what's in your LLM context window
@@ -82,7 +82,7 @@ function main(): void {
 
   let input: string;
   try {
-    input = readFileSync(opts.file, "utf8");
+    input = readInputFile(opts.file);
   } catch (err) {
     process.stderr.write(red(`Could not read "${opts.file}": ${(err as Error).message}\n`));
     process.exit(1);
