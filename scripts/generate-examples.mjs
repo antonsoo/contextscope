@@ -231,18 +231,35 @@ function buildMoneyTestSuite() {
 }
 const MONEY_TEST_SUITE = buildMoneyTestSuite();
 
-function buildTranscript(systemFor) {
+// Marks the last content block of the last message with a cache_control breakpoint - the
+// "automatic caching on the growing tail" pattern (one breakpoint on the static system prefix,
+// one rolling breakpoint on the latest turn) that Anthropic's own docs recommend for agent loops.
+// Converts a plain-string message to a single text block first, since cache_control can only
+// attach to a content block, not a bare string.
+function withRollingTailBreakpoint(messages) {
+  const last = messages[messages.length - 1];
+  if (typeof last.content === "string") {
+    last.content = [{ type: "text", text: last.content }];
+  }
+  const lastBlock = last.content[last.content.length - 1];
+  lastBlock.cache_control = { type: "ephemeral" };
+  return messages;
+}
+
+function buildTranscript(systemFor, { rollingTailBreakpoint = false } = {}) {
   const messages = [];
   const requests = [];
   let turnIndex = 0;
 
   const push = (msg) => messages.push(msg);
   const snapshot = () => {
+    let snapshotMessages = JSON.parse(JSON.stringify(messages));
+    if (rollingTailBreakpoint) snapshotMessages = withRollingTailBreakpoint(snapshotMessages);
     requests.push({
       model: MODEL,
       system: systemFor(turnIndex),
       tools: TOOLS,
-      messages: JSON.parse(JSON.stringify(messages)),
+      messages: snapshotMessages,
     });
     turnIndex++;
   };
@@ -389,8 +406,11 @@ function bustTimestamp(turnIndex) {
 const bustRequests = buildTranscript((turnIndex) => systemBlock(`Current time: ${bustTimestamp(turnIndex)}\n\n${STATIC_SYSTEM_PROMPT}`));
 const bustStats = writeGzipped("anthropic-agent-cache-bust.jsonl", bustRequests.map((r) => JSON.stringify(r)).join("\n") + "\n");
 
-// --- Flagship example 2: same session, timestamp removed - the fix ---
-const fixedRequests = buildTranscript(() => systemBlock(STATIC_SYSTEM_PROMPT));
+// --- Flagship example 2: same session, timestamp removed AND a rolling breakpoint on the
+// growing tail added - the actual fix. Without the rolling breakpoint, removing just the
+// timestamp still leaves every turn re-sending tens of thousands of uncached history tokens
+// (the single most valuable fix for a real agent loop, per the missing_tail_breakpoint finding).
+const fixedRequests = buildTranscript(() => systemBlock(STATIC_SYSTEM_PROMPT), { rollingTailBreakpoint: true });
 const fixedStats = writeGzipped("anthropic-agent-cache-fixed.jsonl", fixedRequests.map((r) => JSON.stringify(r)).join("\n") + "\n");
 
 console.log(`Flagship pair: ${bustRequests.length} requests each.`);
