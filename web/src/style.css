@@ -328,6 +328,9 @@ input:focus-visible,
   border-color: var(--cat-system);
   color: var(--cat-system);
 }
+.chip-size {
+  color: var(--text-faint);
+}
 
 /* ---------- main dashboard ---------- */
 .dashboard {
@@ -359,13 +362,19 @@ input:focus-visible,
   color: var(--text-muted);
   white-space: nowrap;
 }
+.request-tab:hover {
+  color: var(--text);
+  border-color: var(--border);
+}
 .request-tab.active {
   color: var(--text);
   background: var(--bg);
   border-color: var(--border);
+  font-weight: 600;
 }
 .request-tab .pct {
-  color: var(--text-faint);
+  color: inherit;
+  opacity: 0.85;
   margin-left: 6px;
 }
 

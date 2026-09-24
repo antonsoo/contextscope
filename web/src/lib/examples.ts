@@ -1,27 +1,32 @@
 // The single source of truth for these files is /examples at the repo root (also shipped with
-// the CLI); `?raw` imports the text at build time so the web app needs no runtime fetch.
-import cacheBust from "../../../examples/anthropic-agent-cache-bust.jsonl?raw";
-import cacheFixed from "../../../examples/anthropic-agent-cache-fixed.jsonl?raw";
-import duplicateToolResults from "../../../examples/anthropic-duplicate-tool-results.jsonl?raw";
-import openAiToolsReordered from "../../../examples/openai-agent-tools-reordered.jsonl?raw";
-
+// the CLI). The flagship pair is a realistic ~5.5 MB session, so each is loaded via a dynamic
+// `import()` - its own chunk, fetched only if the user actually picks that example - rather than
+// a static `?raw` import, which would inline all four files (11+ MB) into the app's main bundle
+// and make even the drop-zone screen slow to load.
 export interface BuiltInExample {
   id: string;
   label: string;
   description: string;
   format: "anthropic" | "openai";
   model: string;
-  content: string;
+  approxSizeMb: number;
+  load: () => Promise<string>;
+}
+
+async function loadRaw(importer: () => Promise<{ default: string }>): Promise<string> {
+  return (await importer()).default;
 }
 
 export const BUILT_IN_EXAMPLES: BuiltInExample[] = [
   {
     id: "cache-bust",
     label: "Cache bust: timestamp in system prompt",
-    description: "Synthetic 6-turn coding-agent session. A timestamp inside the system prompt busts the cache on every single turn.",
+    description:
+      "Synthetic 24-turn coding-agent session, ~79K tokens by the last request. A timestamp inside the system prompt busts the cache on every single turn.",
     format: "anthropic",
     model: "claude-sonnet-5",
-    content: cacheBust,
+    approxSizeMb: 5.7,
+    load: () => loadRaw(() => import("../../../examples/anthropic-agent-cache-bust.jsonl?raw")),
   },
   {
     id: "cache-fixed",
@@ -29,7 +34,8 @@ export const BUILT_IN_EXAMPLES: BuiltInExample[] = [
     description: "The same synthetic session with the timestamp removed from the cached prefix - the cache hits from turn 2 onward.",
     format: "anthropic",
     model: "claude-sonnet-5",
-    content: cacheFixed,
+    approxSizeMb: 5.7,
+    load: () => loadRaw(() => import("../../../examples/anthropic-agent-cache-fixed.jsonl?raw")),
   },
   {
     id: "duplicate-tool-results",
@@ -37,7 +43,8 @@ export const BUILT_IN_EXAMPLES: BuiltInExample[] = [
     description: "Synthetic session where an agent re-reads an unchanged file three times in one conversation.",
     format: "anthropic",
     model: "claude-sonnet-5",
-    content: duplicateToolResults,
+    approxSizeMb: 0.13,
+    load: () => loadRaw(() => import("../../../examples/anthropic-duplicate-tool-results.jsonl?raw")),
   },
   {
     id: "openai-tools-reordered",
@@ -45,6 +52,7 @@ export const BUILT_IN_EXAMPLES: BuiltInExample[] = [
     description: "Synthetic OpenAI Chat Completions session where the tool list order flips between two requests.",
     format: "openai",
     model: "gpt-6-sol",
-    content: openAiToolsReordered,
+    approxSizeMb: 0.13,
+    load: () => loadRaw(() => import("../../../examples/openai-agent-tools-reordered.jsonl?raw")),
   },
 ];

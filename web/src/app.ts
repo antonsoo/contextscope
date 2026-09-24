@@ -1,7 +1,7 @@
 import type { AnalysisResult, Provider, RequestTokenReport, Segment } from "@core/types.js";
 import { squarify } from "./lib/treemap.js";
 import { BUILT_IN_EXAMPLES } from "./lib/examples.js";
-import { CATEGORY_LABEL, CATEGORY_ORDER, categoryVar, fmtInt, fmtPct, fmtUsd, truncate } from "./lib/format.js";
+import { CATEGORY_LABEL, CATEGORY_ORDER, categoryVar, fmtInt, fmtPct, fmtUsd, fmtUsdRounded, truncate } from "./lib/format.js";
 import { $, $all, esc } from "./lib/dom.js";
 
 // The core library (and the ~1MB o200k_base tokenizer data it pulls in) is loaded on demand, not
@@ -142,16 +142,19 @@ function wireIntake(): void {
   });
 
   const chipRow = $("#example-chips");
-  chipRow.innerHTML = BUILT_IN_EXAMPLES.map((ex) => `<button class="example-chip" type="button" data-example="${ex.id}" title="${esc(ex.description)}">${esc(ex.label)}</button>`).join("");
+  chipRow.innerHTML = BUILT_IN_EXAMPLES.map(
+    (ex) =>
+      `<button class="example-chip" type="button" data-example="${ex.id}" title="${esc(ex.description)}">${esc(ex.label)}${ex.approxSizeMb >= 1 ? ` <span class="chip-size">(${ex.approxSizeMb.toFixed(1)} MB)</span>` : ""}</button>`,
+  ).join("");
   chipRow.addEventListener("click", (e) => {
     const target = (e.target as HTMLElement).closest<HTMLElement>("[data-example]");
     if (!target) return;
     const example = BUILT_IN_EXAMPLES.find((ex) => ex.id === target.dataset["example"]);
-    if (example) {
-      state.format = example.format;
-      state.model = example.model;
-      runAnalysis(example.content);
-    }
+    if (!example) return;
+    state.format = example.format;
+    state.model = example.model;
+    target.textContent = "loading…";
+    void example.load().then((content) => runAnalysis(content));
   });
 }
 
@@ -219,8 +222,10 @@ async function runAnalysisAsync(input: string): Promise<void> {
       model: state.model,
     });
     state.analysis = result;
-    state.selectedRequest = 0;
-    state.selectedPair = 0;
+    // Default to the LAST request: that's where the context is biggest and most interesting
+    // (a growing agent-loop transcript), not the smallest, near-empty first turn.
+    state.selectedRequest = result.reports.length - 1;
+    state.selectedPair = Math.max(0, result.prefixMatches.length - 1);
     if (state.model === undefined) state.model = result.cacheSimulation.model ?? defaultModelFor(result.parse.format);
     showDashboard(core);
   } catch (err) {
@@ -264,6 +269,8 @@ function showDashboard(core: CoreModule): void {
   renderContent();
 }
 
+let requestTabsWired = false;
+
 function renderRequestTabs(): void {
   const result = state.analysis!;
   const tabs = $("#request-tabs");
@@ -273,17 +280,24 @@ function renderRequestTabs(): void {
         `<button class="request-tab ${i === state.selectedRequest ? "active" : ""}" data-req="${i}" type="button">req ${i + 1}<span class="pct">${fmtPct(r.percentOfContextWindow, 2)}</span></button>`,
     )
     .join("");
-  tabs.addEventListener(
-    "click",
-    (e) => {
+
+  // Bring the active tab into view - important now that the default is the LAST request, which
+  // is usually scrolled off the right edge of this horizontally-scrolling strip.
+  tabs.querySelector(".request-tab.active")?.scrollIntoView({ block: "nearest", inline: "nearest" });
+
+  // Wired once against the container (a fixture of the static shell), not per render - `tabs`
+  // itself is never replaced, only its innerHTML, so re-adding a listener here on every render
+  // would stack N duplicate handlers after N tab switches.
+  if (!requestTabsWired) {
+    requestTabsWired = true;
+    tabs.addEventListener("click", (e) => {
       const btn = (e.target as HTMLElement).closest<HTMLElement>("[data-req]");
       if (!btn) return;
       state.selectedRequest = Number(btn.dataset["req"]);
       renderRequestTabs();
       renderContent();
-    },
-    { once: false },
-  );
+    });
+  }
 }
 
 function renderContent(): void {
@@ -500,7 +514,7 @@ function cachePanel(result: AnalysisResult): string {
         <div class="stat-tile"><div class="label">total actual cost</div><div class="value">${fmtUsd(sim.totalActualCostUsd)}</div></div>
         <div class="stat-tile"><div class="label">total optimized cost</div><div class="value">${fmtUsd(sim.totalOptimizedCostUsd)}</div></div>
       </div>
-      ${savings !== undefined && savings > 1e-9 ? `<div class="savings-banner">Fixing the findings below${sim.provider === "anthropic" ? ", plus an automatic breakpoint on every request's tail," : ""} would save ${fmtUsd(savings)} (${((savings / sim.totalActualCostUsd!) * 100).toFixed(0)}%) on this sequence.</div>` : ""}
+      ${savings !== undefined && savings > 1e-9 ? `<div class="savings-banner">Fixing the findings below${sim.provider === "anthropic" ? ", plus an automatic breakpoint on every request's tail," : ""} would save ${fmtUsd(savings)} (${((savings / sim.totalActualCostUsd!) * 100).toFixed(0)}%) on this sequence — ≈${fmtUsdRounded(savings * 1000)} per 1,000 sessions shaped like this one.</div>` : ""}
     </section>
   `;
 }
