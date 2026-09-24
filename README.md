@@ -96,7 +96,10 @@ drop a request file, or click a built-in example.
   changes every request (request 2) ... looks like a timestamp/UUID/epoch
   value"*, *"Tools reordered between requests 2 and 3"*, *"tool schema key
   order differs"*, *"no cache_control breakpoint set"*, *"prefix below minimum
-  cacheable length"*.
+  cacheable length"*, *"No cache breakpoint on the conversation tail - this
+  request resends ≈12,000 tokens of prior history uncached"* (often the
+  single highest-value fix for a real agent loop: a breakpoint exists and
+  isn't broken, it just never advances past the first turn or two).
 - **Duplicate content detection** (5-word shingling + Jaccard similarity) —
   catches the same file or tool output fetched more than once in one
   conversation.
@@ -136,15 +139,21 @@ system prompt busts the cache on every single turn):
   <img src="docs/assets/cli-cache-bust.png" alt="Terminal output of contextscope analyze, showing zero cache reads across 24 requests, a total cost of $2.8460 vs. an optimized $0.4570 (84% lower, ≈$2,389 per 1,000 sessions), and the finding that pinpoints the timestamp" width="880">
 </p>
 
-The paired example, `examples/anthropic-agent-cache-fixed.jsonl.gz`, is the exact
-same session with the timestamp removed from the cached prefix. Run it
-yourself: fixing just that one bug (nothing else) already drops the cost from
-$2.8460 to $2.4668 - about 13%, from a single stable breakpoint finally
-reading instead of missing every time. The remaining gap to the $0.4570
-"optimized" figure comes from also caching the conversation's growing tail
-(an automatic breakpoint on every request), which neither example does on its
-own - see "How it works" below for what the optimized scenario actually
-models.
+The paired example, `examples/anthropic-agent-cache-fixed.jsonl.gz`, is the
+exact same session with two changes: the timestamp is gone from the system
+prompt, and a second `cache_control` breakpoint rolls forward onto the latest
+turn on every request (in addition to the first breakpoint on the static
+system prompt) - the "one breakpoint on the stable prefix, one rolling on the
+growing tail" pattern Anthropic's own docs recommend for agent loops. Fixing
+only the timestamp and stopping there is a real, common half-fix: it makes
+the system-prompt breakpoint finally readable, but every turn still resends
+the entire conversation history that has accumulated since, uncached, because
+nothing marks where that history ends. contextscope has a finding for exactly
+that gap (`missing_tail_breakpoint` - see below), so it never reports "no
+findings" while still showing a large potential saving. Run the fixed example
+yourself: actual cost lands at $0.4570, identical to the optimized figure,
+with zero findings - the before/after story is $2.8460 → $0.4570, a full 84%,
+not just the ~13% the timestamp fix alone would have bought.
 
 ### Web app
 
@@ -253,7 +262,17 @@ once in one conversation.
 
 **Findings.** A fixed set of rule-based checks over the parsed sequence, the
 prefix diffs, and the duplicate groups (`src/core/findings.ts`) — not an LLM
-judgment call, so the same input always produces the same findings.
+judgment call, so the same input always produces the same findings. Most
+findings are structural (a reordered tool, a changed schema); one,
+`missing_tail_breakpoint`, is derived directly from the Anthropic cache
+simulation's own actual-vs-optimized cost gap rather than a separate
+heuristic, specifically so the findings list and the "potential savings"
+figure shown next to it can never contradict each other - whenever fixing the
+findings would materially (≥10%) lower the cost, at least one finding says
+so, and an aggregate check catches the case where a real gap is spread thin
+across many requests rather than concentrated in one. "No findings" is a
+factual claim, not an optimistic one: it means the simulated optimized cost
+is (within rounding) the actual cost already.
 
 **Categorical palette.** The eight segment categories use a colorblind-safe
 palette (worst-case simulated CVD ΔE ≥ 8.4 OKLab, worst-case normal-vision ΔE
@@ -351,9 +370,9 @@ node scripts/generate-examples.mjs
 Writes the small examples as plain `examples/*.jsonl`, and the flagship pair
 as gzipped `examples/*.jsonl.gz` (~5.7 MB each, uncompressed, compressed to
 ~0.48 MB - committing them plain would blow past the repo's file-size limit).
-The script also copies those two `.gz` files into `web/public/examples/` so
-the web app can serve them as static assets; re-run it after changing
-anything under `scripts/lib/` to regenerate both copies in sync.
+`web/public/examples` is a committed symlink to `../../examples` (not a
+generated copy), so the web app picks up whatever the generator writes with
+nothing else to keep in sync.
 
 The flagship pair is built from `scripts/lib/` - a long, internally-consistent
 "enterprise coding agent" system prompt, a 16-tool surface, and a library of
@@ -362,8 +381,13 @@ fictional `ledger-core` billing repository - assembled into a 24-turn
 transcript. Nothing in it is copied from a real project; it exists to make
 the treemap and the dollar figures reflect a session at real agentic-loop
 scale (tens of thousands of tokens, not a few hundred) instead of a toy-sized
-one. Re-run the script after editing anything under `scripts/lib/` to
-regenerate all four example files from the same source.
+one. The fixed example additionally rolls a second `cache_control` breakpoint
+onto the latest turn on every request - not just a timestamp removed, an
+actually-optimal cache setup, so `contextscope` has nothing left to flag on
+it (see the `missing_tail_breakpoint` finding above for what it flags when
+that second breakpoint is missing). Re-run the script after editing anything
+under `scripts/lib/` to regenerate all four example files from the same
+source.
 
 Project layout:
 
