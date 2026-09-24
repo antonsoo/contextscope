@@ -3,6 +3,7 @@ import { squarify } from "./lib/treemap.js";
 import { BUILT_IN_EXAMPLES } from "./lib/examples.js";
 import { CATEGORY_LABEL, CATEGORY_ORDER, categoryVar, fmtInt, fmtPct, fmtUsd, fmtUsdRounded, truncate } from "./lib/format.js";
 import { $, $all, esc } from "./lib/dom.js";
+import { readPossiblyGzippedFile } from "./lib/gunzip.js";
 
 // The core library (and the ~1MB o200k_base tokenizer data it pulls in) is loaded on demand, not
 // on page load - the drop-zone screen should be instant. Everything that touches it is async.
@@ -66,11 +67,11 @@ function shellHtml(): string {
     <main id="intake" class="intake">
       <div class="dropzone" id="dropzone">
         <h1>drop a request, or paste one</h1>
-        <p class="lead">A single Anthropic Messages or OpenAI Chat Completions request, a JSON array, or JSONL - one API request per line, the shape an agent loop actually sends.</p>
+        <p class="lead">A single Anthropic Messages or OpenAI Chat Completions request, a JSON array, or JSONL - one API request per line, the shape an agent loop actually sends. A gzipped <code>.jsonl.gz</code> works too, decompressed right here.</p>
         <div class="intake-actions">
           <button class="btn primary" id="pick-file-btn" type="button">choose file…</button>
           <button class="btn" id="paste-btn" type="button">paste JSON…</button>
-          <input type="file" id="file-input" accept=".json,.jsonl,application/json" class="visually-hidden" />
+          <input type="file" id="file-input" accept=".json,.jsonl,.gz,application/json,application/gzip" class="visually-hidden" />
         </div>
         <textarea id="paste-area" placeholder="paste a request, a JSON array of requests, or JSONL here" spellcheck="false"></textarea>
         <div class="intake-actions" id="paste-run-row" hidden>
@@ -117,7 +118,7 @@ function wireIntake(): void {
   $("#pick-file-btn").addEventListener("click", () => fileInput.click());
   fileInput.addEventListener("change", () => {
     const file = fileInput.files?.[0];
-    if (file) void file.text().then((text) => runAnalysis(text));
+    if (file) void readPossiblyGzippedFile(file).then((text) => runAnalysis(text));
   });
 
   $("#paste-btn").addEventListener("click", () => {
@@ -138,13 +139,13 @@ function wireIntake(): void {
     e.preventDefault();
     dropzone.classList.remove("drag");
     const file = e.dataTransfer?.files?.[0];
-    if (file) void file.text().then((text) => runAnalysis(text));
+    if (file) void readPossiblyGzippedFile(file).then((text) => runAnalysis(text));
   });
 
   const chipRow = $("#example-chips");
   chipRow.innerHTML = BUILT_IN_EXAMPLES.map(
     (ex) =>
-      `<button class="example-chip" type="button" data-example="${ex.id}" title="${esc(ex.description)}">${esc(ex.label)}${ex.approxSizeMb >= 1 ? ` <span class="chip-size">(${ex.approxSizeMb.toFixed(1)} MB)</span>` : ""}</button>`,
+      `<button class="example-chip" type="button" data-example="${ex.id}" title="${esc(ex.description)}">${esc(ex.label)}${ex.approxSizeMb >= 0.2 ? ` <span class="chip-size">(${ex.approxSizeMb.toFixed(2)} MB gz)</span>` : ""}</button>`,
   ).join("");
   chipRow.addEventListener("click", (e) => {
     const target = (e.target as HTMLElement).closest<HTMLElement>("[data-example]");

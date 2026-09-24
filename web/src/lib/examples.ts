@@ -1,8 +1,15 @@
-// The single source of truth for these files is /examples at the repo root (also shipped with
-// the CLI). The flagship pair is a realistic ~5.5 MB session, so each is loaded via a dynamic
-// `import()` - its own chunk, fetched only if the user actually picks that example - rather than
-// a static `?raw` import, which would inline all four files (11+ MB) into the app's main bundle
-// and make even the drop-zone screen slow to load.
+import { bytesToText } from "./gunzip.js";
+
+// The canonical source for every example is /examples at the repo root (also shipped with the
+// CLI). The flagship pair is a realistic ~5.7 MB session, gzipped down to ~0.48 MB - small enough
+// to commit, still too large to bundle. `scripts/generate-examples.mjs` copies the two .gz files
+// into web/public/examples/ so Vite ships them as static assets (fetched only if the user picks
+// that example, never bundled into app JS). `bytesToText` decompresses them with the browser's
+// native DecompressionStream if the bytes are still gzip-compressed on arrival - some static
+// servers (vite preview's included) transparently gzip-decode a `.gz` response via
+// Content-Encoding, which `fetch()` then undoes before JS ever sees it, so the fetched bytes
+// aren't reliably compressed by the time they get here. The two small examples are plain JSONL
+// and stay as lazy `?raw` imports - there's no size problem there to solve.
 export interface BuiltInExample {
   id: string;
   label: string;
@@ -17,6 +24,13 @@ async function loadRaw(importer: () => Promise<{ default: string }>): Promise<st
   return (await importer()).default;
 }
 
+async function loadGzippedAsset(filename: string): Promise<string> {
+  const url = `${import.meta.env.BASE_URL}examples/${filename}`;
+  const response = await fetch(url);
+  if (!response.ok) throw new Error(`Could not fetch example "${filename}" (${response.status})`);
+  return bytesToText(new Uint8Array(await response.arrayBuffer()));
+}
+
 export const BUILT_IN_EXAMPLES: BuiltInExample[] = [
   {
     id: "cache-bust",
@@ -25,8 +39,8 @@ export const BUILT_IN_EXAMPLES: BuiltInExample[] = [
       "Synthetic 24-turn coding-agent session, ~79K tokens by the last request. A timestamp inside the system prompt busts the cache on every single turn.",
     format: "anthropic",
     model: "claude-sonnet-5",
-    approxSizeMb: 5.7,
-    load: () => loadRaw(() => import("../../../examples/anthropic-agent-cache-bust.jsonl?raw")),
+    approxSizeMb: 0.48,
+    load: () => loadGzippedAsset("anthropic-agent-cache-bust.jsonl.gz"),
   },
   {
     id: "cache-fixed",
@@ -34,8 +48,8 @@ export const BUILT_IN_EXAMPLES: BuiltInExample[] = [
     description: "The same synthetic session with the timestamp removed from the cached prefix - the cache hits from turn 2 onward.",
     format: "anthropic",
     model: "claude-sonnet-5",
-    approxSizeMb: 5.7,
-    load: () => loadRaw(() => import("../../../examples/anthropic-agent-cache-fixed.jsonl?raw")),
+    approxSizeMb: 0.48,
+    load: () => loadGzippedAsset("anthropic-agent-cache-fixed.jsonl.gz"),
   },
   {
     id: "duplicate-tool-results",
