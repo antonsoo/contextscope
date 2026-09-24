@@ -11,8 +11,8 @@ export const CATEGORY_LABEL: Record<SegmentCategory, string> = {
   thinking: "thinking",
 };
 
-// Matches the --cat-* custom properties in style.css (dataviz's validated 8-slot categorical
-// theme, in the theme's fixed order - see docs/architecture.md).
+// Matches the --cat-* custom properties in style.css (a colorblind-validated 8-slot categorical
+// palette, in its fixed hue order - see the README's "How it works" section).
 export const CATEGORY_ORDER: SegmentCategory[] = ["system", "tools", "user", "assistant", "tool_call", "tool_result", "image", "thinking"];
 
 export function categoryVar(category: SegmentCategory): string {

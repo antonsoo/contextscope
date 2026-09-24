@@ -1,9 +1,10 @@
 /** Minimal ANSI helpers - no chalk dependency; contextscope has almost no runtime deps by design. */
 
-const isTTY = process.stdout.isTTY === true && process.env["NO_COLOR"] === undefined;
+const colorEnabled =
+  process.env["NO_COLOR"] === undefined && (process.stdout.isTTY === true || process.env["FORCE_COLOR"] !== undefined);
 
 function wrap(code: string): (s: string) => string {
-  return (s: string) => (isTTY ? `\u001b[${code}m${s}\u001b[0m` : s);
+  return (s: string) => (colorEnabled ? `\u001b[${code}m${s}\u001b[0m` : s);
 }
 
 export const bold = wrap("1");
