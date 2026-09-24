@@ -130,6 +130,11 @@ table row to inspect the raw segment; click a request tab in the "prompt-cache
 prefix match" panel to see the line-level diff between two consecutive
 requests.
 
+<p align="center">
+  <img src="docs/assets/web-inspector.png" alt="Segment inspector drawer open, showing the raw JSON schema of a tool definition" width="420">
+  <img src="docs/assets/web-openai-light.png" alt="Same app in light mode, analyzing an OpenAI Chat Completions session" width="420">
+</p>
+
 ### As a library
 
 ```ts
