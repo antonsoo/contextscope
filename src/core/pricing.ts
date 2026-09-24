@@ -4,7 +4,11 @@
  *
  * Anthropic figures are from the bundled `claude-api` skill's reference
  * tables (model pricing table and shared/prompt-caching.md's "API reference"
- * and "Economics" sections, both dated 2026-06-24 in that skill's cache).
+ * and "Economics" sections, both dated 2026-06-24 in that skill's cache) plus
+ * shared/model-migration.md's "Migrating to Claude Opus 5.5" section for
+ * that model specifically ($4/$20 per MTok, cache reads "60% lower" than
+ * Claude Opus 5's $0.50/MTok read price = $0.20/MTok, and "the 512-token
+ * minimum cacheable prompt" carried over unchanged from Claude Opus 5).
  *
  * OpenAI figures were fetched live via WebFetch on 2026-09-24 from
  * https://developers.openai.com/api/docs/pricing (model pricing) and
@@ -43,6 +47,7 @@ export const ANTHROPIC_MAX_BREAKPOINTS = 4;
 export const ANTHROPIC_LOOKBACK_POSITIONS = 20;
 
 export const ANTHROPIC_MODELS: readonly AnthropicModelInfo[] = [
+  { id: "claude-opus-5-5", displayName: "Claude Opus 5.5", contextWindow: 1_000_000, inputPricePerMTok: 4, outputPricePerMTok: 20, cacheReadMultiplier: 0.05, minCacheableTokens: 512 },
   { id: "claude-opus-5", displayName: "Claude Opus 5", contextWindow: 1_000_000, inputPricePerMTok: 5, outputPricePerMTok: 25, cacheReadMultiplier: 0.1, minCacheableTokens: 512 },
   { id: "claude-sonnet-5", displayName: "Claude Sonnet 5", contextWindow: 1_000_000, inputPricePerMTok: 2, outputPricePerMTok: 10, cacheReadMultiplier: 0.1, minCacheableTokens: 1024 },
   { id: "claude-haiku-4-5", displayName: "Claude Haiku 4.5", contextWindow: 200_000, inputPricePerMTok: 1, outputPricePerMTok: 5, cacheReadMultiplier: 0.1, minCacheableTokens: 4096 },

@@ -28,6 +28,12 @@ export function fmtUsd(n: number | undefined): string {
   return `$${n.toFixed(n < 1 ? 4 : 2)}`;
 }
 
+/** Whole-dollar, thousands-separated - for the "per 1,000 sessions" projection, where `fmtUsd`'s
+ * fixed 2-4 decimal places is the wrong shape once the number is in the hundreds or thousands. */
+export function fmtUsdRounded(n: number): string {
+  return `$${n.toLocaleString("en-US", { maximumFractionDigits: 0 })}`;
+}
+
 export function fmtPct(n: number | undefined, digits = 1): string {
   if (n === undefined) return "n/a";
   return `${(n * 100).toFixed(digits)}%`;

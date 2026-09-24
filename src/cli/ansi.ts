@@ -36,7 +36,42 @@ export function fmtUsd(n: number | undefined): string {
   return `$${n.toFixed(4)}`;
 }
 
+/** Whole-dollar formatting with thousands separators, for the "per 1,000 sessions" projection -
+ * `fmtUsd`'s 4-decimal-place precision is the wrong shape once the number is in the hundreds/thousands. */
+export function fmtUsdRounded(n: number): string {
+  return `$${n.toLocaleString("en-US", { maximumFractionDigits: 0 })}`;
+}
+
 export function fmtPct(n: number | undefined): string {
   if (n === undefined) return "n/a";
   return `${(n * 100).toFixed(1)}%`;
+}
+
+export function terminalWidth(): number {
+  return process.stdout.columns || 100;
+}
+
+/**
+ * Word-wraps `text` to `width` columns with a hanging indent: the first line is prefixed with
+ * `indent` spaces same as every following line, so a long finding description lines up under its
+ * own text instead of resetting to column 0 mid-sentence (the terminal's own soft-wrap would do
+ * the latter, since it has no notion of our indent).
+ */
+export function wrapIndented(text: string, indent: number, width = terminalWidth()): string[] {
+  const usable = Math.max(20, width - indent);
+  const prefix = " ".repeat(indent);
+  const words = text.split(/\s+/);
+  const lines: string[] = [];
+  let current = "";
+  for (const word of words) {
+    const candidate = current.length === 0 ? word : `${current} ${word}`;
+    if (candidate.length > usable && current.length > 0) {
+      lines.push(prefix + current);
+      current = word;
+    } else {
+      current = candidate;
+    }
+  }
+  if (current.length > 0) lines.push(prefix + current);
+  return lines;
 }

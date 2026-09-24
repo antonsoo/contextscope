@@ -91,7 +91,7 @@ export function renderHtmlReport(result: AnalysisResult): string {
     <h3>Cache simulation (${esc(cacheSimulation.provider)})</h3>
     <table><thead><tr><th>request</th><th>read</th><th>write (5m)</th><th>write (1h)</th><th>uncached</th><th>cost</th></tr></thead><tbody>${cacheRows}</tbody></table>
     <p class="muted">total actual: ${cacheSimulation.totalActualCostUsd !== undefined ? `$${cacheSimulation.totalActualCostUsd.toFixed(4)}` : "n/a"} · total optimized: ${cacheSimulation.totalOptimizedCostUsd !== undefined ? `$${cacheSimulation.totalOptimizedCostUsd.toFixed(4)}` : "n/a"}</p>
-    ${savings !== undefined && savings > 1e-9 ? `<p class="savings">Applying the fixes below, plus an automatic breakpoint on every request's tail, would save $${savings.toFixed(4)} on this sequence.</p>` : ""}
+    ${savings !== undefined && savings > 1e-9 ? `<p class="savings">Applying the fixes below, plus an automatic breakpoint on every request's tail, would save $${savings.toFixed(4)} on this sequence — ≈$${Math.round(savings * 1000).toLocaleString("en-US")} per 1,000 sessions shaped like this one.</p>` : ""}
   </section>
 
   <section class="card">

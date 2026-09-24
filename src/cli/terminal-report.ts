@@ -1,5 +1,5 @@
 import type { AnalysisResult, SegmentCategory } from "../core/index.js";
-import { bar, blue, bold, cyan, dim, fmtPct, fmtTokens, fmtUsd, green, magenta, red, severityColor, yellow } from "./ansi.js";
+import { bar, blue, bold, cyan, dim, fmtPct, fmtTokens, fmtUsd, fmtUsdRounded, green, magenta, red, severityColor, wrapIndented, yellow } from "./ansi.js";
 
 const CATEGORY_LABEL: Record<SegmentCategory, string> = {
   system: "system",
@@ -69,6 +69,7 @@ export function renderTerminalReport(result: AnalysisResult): string {
     const savings = cacheSimulation.totalActualCostUsd - cacheSimulation.totalOptimizedCostUsd;
     if (savings > 1e-9) {
       lines.push(green(`  → applying the fixes below (plus that trailing breakpoint) would save ${fmtUsd(savings)} (${((savings / cacheSimulation.totalActualCostUsd) * 100).toFixed(0)}%) on this sequence`));
+      lines.push(dim(`    ≈ ${fmtUsdRounded(savings * 1000)} per 1,000 sessions shaped like this one`));
     }
   }
   lines.push("");
@@ -78,7 +79,7 @@ export function renderTerminalReport(result: AnalysisResult): string {
     for (const finding of findings) {
       const color = severityColor(finding.severity);
       lines.push(`  ${color(`[${finding.severity}]`)} ${bold(finding.title)} ${dim(`(request ${finding.requestIndex + 1})`)}`);
-      lines.push(`      ${finding.detail}`);
+      lines.push(...wrapIndented(finding.detail, 6));
     }
     lines.push("");
   } else {
