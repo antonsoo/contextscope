@@ -6,7 +6,7 @@ See what's actually in your LLM context window, and why your prompt cache keeps 
 [![Live demo](https://img.shields.io/badge/live%20demo-antonsoo.github.io%2Fcontextscope-1baf7a)](https://antonsoo.github.io/contextscope/)
 
 <p align="center">
-  <img src="docs/assets/web-dashboard-dark.png" alt="contextscope web app showing a token-usage treemap, segment table, and findings for a 6-turn coding-agent session" width="880">
+  <img src="docs/assets/web-dashboard-dark.png" alt="contextscope web app showing a token-usage treemap, prefix diff, and cache simulation for a realistic 24-turn coding-agent session that reaches 78,715 tokens" width="880">
 </p>
 
 Agentic apps send huge, fast-growing prompts, and it's genuinely hard to see which
@@ -68,8 +68,10 @@ drop a request file, or click a built-in example.
   simulates cache reads/writes/misses under that provider's real rules —
   Anthropic's `cache_control` breakpoints, per-model minimum cacheable length,
   20-position lookback window, and 5-minute/1-hour TTL pricing; OpenAI's
-  automatic prefix caching. It reports actual cost vs. an optimized scenario
-  and the dollar difference.
+  automatic prefix caching. It reports actual cost vs. an optimized scenario,
+  the dollar difference, and a projection to ≈$ per 1,000 sessions shaped
+  like the one you gave it (a straight multiplication of that session's own
+  computed savings, not a separate estimate).
 - **Findings with concrete fixes**, e.g. *"system prompt contains a value that
   changes every request (request 2) ... looks like a timestamp/UUID/epoch
   value"*, *"Tools reordered between requests 2 and 3"*, *"tool schema key
@@ -102,18 +104,23 @@ Options:
   --json <out.json>             Also write the raw analysis result as JSON
 ```
 
-Real output (`examples/anthropic-agent-cache-bust.jsonl`, a synthetic 6-turn
-coding-agent session where a timestamp inside the system prompt busts the
-cache on every single turn):
+Real output (`examples/anthropic-agent-cache-bust.jsonl`, a synthetic
+24-turn, ~79,000-token coding-agent session where a timestamp inside the
+system prompt busts the cache on every single turn):
 
 <p align="center">
-  <img src="docs/assets/cli-cache-bust.png" alt="Terminal output of contextscope analyze, showing zero cache reads across 6 requests, a total cost of $0.0323 vs. an optimized $0.0100, and the finding that pinpoints the timestamp" width="880">
+  <img src="docs/assets/cli-cache-bust.png" alt="Terminal output of contextscope analyze, showing zero cache reads across 24 requests, a total cost of $2.8460 vs. an optimized $0.4570 (84% lower, ≈$2,389 per 1,000 sessions), and the finding that pinpoints the timestamp" width="880">
 </p>
 
 The paired example, `examples/anthropic-agent-cache-fixed.jsonl`, is the exact
-same session with the timestamp removed from the cached prefix — run it
-yourself to see the cache start hitting from turn 2 onward and the cost drop
-by more than 40%.
+same session with the timestamp removed from the cached prefix. Run it
+yourself: fixing just that one bug (nothing else) already drops the cost from
+$2.8460 to $2.4668 - about 13%, from a single stable breakpoint finally
+reading instead of missing every time. The remaining gap to the $0.4570
+"optimized" figure comes from also caching the conversation's growing tail
+(an automatic breakpoint on every request), which neither example does on its
+own - see "How it works" below for what the optimized scenario actually
+models.
 
 ### Web app
 
@@ -123,12 +130,15 @@ npm run preview:web    # serve the built app locally
 ```
 
 Drop a file, paste JSON/JSONL, or pick one of four built-in synthetic
-examples (all labelled synthetic in the UI): a cache-busting session, its
-fixed counterpart, a session with a file re-read three times, and an OpenAI
-session with tools reordered mid-conversation. Click any treemap block or
-table row to inspect the raw segment; click a request tab in the "prompt-cache
-prefix match" panel to see the line-level diff between two consecutive
-requests.
+examples (all labelled synthetic in the UI, sized in the picker since the
+flagship pair is a real ~5.7 MB download, fetched only when you pick it): the
+24-turn cache-busting session above, its fixed counterpart, a session with a
+file re-read three times, and an OpenAI session with tools reordered
+mid-conversation. The view opens on the *last* request by default - the
+biggest, most interesting point in a growing conversation - not the nearly
+empty first turn. Click any treemap block or table row to inspect the raw
+segment; click a request tab in the "prompt-cache prefix match" panel to see
+the line-level diff between two consecutive requests.
 
 <p align="center">
   <img src="docs/assets/web-inspector.png" alt="Segment inspector drawer open, showing the raw JSON schema of a tool definition" width="420">
@@ -254,16 +264,18 @@ dependency, since it's one layout call.
 - **Duplicate detection is scoped to the last request only** (see "How it
   works" above) — it will not flag near-duplicates across two *unrelated,
   independent* requests in a batch that isn't a growing conversation.
-- **The web app's exact-tokenizer chunk is large.** `gpt-tokenizer`'s
-  o200k_base vocabulary is ~1 MB gzipped; it's code-split and loaded on first
-  analysis (not on page load — the drop-zone screen ships in <20 KB gzipped),
-  but the first "Analyze" click on a slow connection will wait on that
-  download. Cached by the browser after that.
-- **Performance**: analyzing a synthetic 300-request / 2.9 MB JSONL session
-  (4,000 segments, full tokenization + prefix diff + cache simulation +
-  findings) takes ≈890 ms in Node on this box (14 vCPU WSL2 Linux, 48 GB RAM).
-  The CLI's own end-to-end time on a 6-request example, including Node
-  startup, is ≈0.55 s.
+- **The web app's exact-tokenizer chunk is large, and so is the flagship
+  example.** `gpt-tokenizer`'s o200k_base vocabulary is ~1 MB gzipped; both
+  it and each built-in example are code-split and fetched only when actually
+  used (not on page load — the drop-zone screen ships in <20 KB gzipped), but
+  picking the 24-turn flagship example downloads a real ~5.7 MB JSONL file
+  (labelled with its size in the picker). Both are cached by the browser
+  after the first load.
+- **Performance**: analyzing that same flagship session (24 requests, 5.7 MB,
+  growing to 78,715 tokens by the last request) takes ≈0.59 s end-to-end in
+  the CLI, including Node startup, on this box (14 vCPU WSL2 Linux, 48 GB
+  RAM). A synthetic 300-request / 2.9 MB stress case (4,000 segments) runs
+  the core `analyze()` call itself in ≈890 ms.
 - Synthetic example data is clearly labelled synthetic, in both the CLI
   filenames and the web app's example picker.
 
@@ -288,6 +300,22 @@ cd /tmp/contextscope-check && npm install   # runs `prepare`, builds dist/
 node dist/cli/index.js analyze examples/anthropic-agent-cache-fixed.jsonl
 ```
 
+Regenerating the example sessions (`examples/*.jsonl`):
+
+```sh
+node scripts/generate-examples.mjs
+```
+
+The flagship pair is built from `scripts/lib/` - a long, internally-consistent
+"enterprise coding agent" system prompt, a 16-tool surface, and a library of
+realistic (synthetic) file contents, diffs, and test/lint/CI output for a
+fictional `ledger-core` billing repository - assembled into a 24-turn
+transcript. Nothing in it is copied from a real project; it exists to make
+the treemap and the dollar figures reflect a session at real agentic-loop
+scale (tens of thousands of tokens, not a few hundred) instead of a toy-sized
+one. Re-run the script after editing anything under `scripts/lib/` to
+regenerate all four example files from the same source.
+
 Project layout:
 
 ```
@@ -296,6 +324,7 @@ src/core/     shared library: parsers, tokenizers, prefix/diff, cache
 src/cli/      Node CLI: terminal + HTML report renderers
 web/          Vite + TypeScript web app (imports src/core directly, no framework)
 tests/        vitest suite for src/core
+scripts/      generates examples/*.jsonl (not part of the shipped library/CLI)
 examples/     synthetic example sessions, shared by the CLI and the web app
 docs/assets/  README screenshots
 ```

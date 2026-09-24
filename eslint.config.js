@@ -19,4 +19,11 @@ export default tseslint.config(
       "no-console": "off",
     },
   },
+  {
+    // Build-time content generators (not part of the shipped library or CLI) - plain Node scripts.
+    files: ["scripts/**/*.mjs"],
+    languageOptions: {
+      globals: { console: "readonly", process: "readonly" },
+    },
+  },
 );
