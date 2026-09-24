@@ -1,0 +1,39 @@
+import type { SegmentCategory } from "@core/types.js";
+
+export const CATEGORY_LABEL: Record<SegmentCategory, string> = {
+  system: "system",
+  tools: "tool definitions",
+  user: "user text",
+  assistant: "assistant text",
+  tool_call: "tool calls",
+  tool_result: "tool results",
+  image: "images",
+  thinking: "thinking",
+};
+
+// Matches the --cat-* custom properties in style.css (dataviz's validated 8-slot categorical
+// theme, in the theme's fixed order - see docs/architecture.md).
+export const CATEGORY_ORDER: SegmentCategory[] = ["system", "tools", "user", "assistant", "tool_call", "tool_result", "image", "thinking"];
+
+export function categoryVar(category: SegmentCategory): string {
+  return `var(--cat-${category})`;
+}
+
+export function fmtInt(n: number): string {
+  return n.toLocaleString("en-US");
+}
+
+export function fmtUsd(n: number | undefined): string {
+  if (n === undefined) return "n/a";
+  return `$${n.toFixed(n < 1 ? 4 : 2)}`;
+}
+
+export function fmtPct(n: number | undefined, digits = 1): string {
+  if (n === undefined) return "n/a";
+  return `${(n * 100).toFixed(digits)}%`;
+}
+
+export function truncate(text: string, max: number): string {
+  const collapsed = text.replace(/\s+/g, " ").trim();
+  return collapsed.length > max ? `${collapsed.slice(0, max)}…` : collapsed;
+}
