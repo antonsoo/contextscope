@@ -49,9 +49,29 @@ same CLI runs directly against your own file with no local checkout:
 npx github:antonsoo/contextscope analyze your-requests.jsonl
 ```
 
-(Verified locally by installing from a clean export of this repository's git
-tree, which is what `npx github:...` does under the hood — see
-[Development](#development) for the exact commands.)
+**npm 12 disables git-hosted packages by default** (`allow-git=none`), so a
+bare `npx github:...` fails with `EALLOWGIT` unless you opt in:
+
+```sh
+npx --allow-git=root github:antonsoo/contextscope analyze your-requests.jsonl
+```
+
+npm 12 also ships a separate, newer policy (`allowScripts`) that can skip a
+just-fetched package's `prepare` script with a warning rather than an error,
+which - for a source-only, install-from-git CLI like this one - means the
+`dist/` this bin needs to run may silently never get built. If the command
+above prints an `install-scripts ... blocked because they are not covered by
+allowScripts` warning and then fails to find `dist/cli/index.js`, add
+`--dangerously-allow-all-scripts` (verified locally; despite the name, it
+just permits this package's own `tsc` build to run - there is no third-party
+code involved). The `git clone && npm install` quickstart above is unaffected
+by either policy - it's a plain local project install, not a global/npx-style
+one - and is the more reliable path if you hit friction here.
+
+(The `npx github:...` behavior above was verified by exercising the same
+install machinery locally, since there's no public remote to test against
+yet - see [Development](#development) for the exact commands and what each
+one confirmed.)
 
 Or skip the CLI and open **[antonsoo.github.io/contextscope](https://antonsoo.github.io/contextscope/)**,
 drop a request file, or click a built-in example.
@@ -291,14 +311,30 @@ npm run dev:web       # Vite dev server for the web app
 ```
 
 To verify the "install from GitHub" flow without a public remote yet, export
-a clean copy of the tracked git tree and install into it — this is what
-`npx github:antonsoo/contextscope` does under the hood:
+a clean copy of the tracked git tree and install into it:
 
 ```sh
 git archive HEAD | tar -x -C /tmp/contextscope-check
 cd /tmp/contextscope-check && npm install   # runs `prepare`, builds dist/
 node dist/cli/index.js analyze examples/anthropic-agent-cache-fixed.jsonl
 ```
+
+That covers the plain `git clone && npm install` quickstart exactly (a local
+project install always runs its own `prepare`). The `npx github:...` /
+`npm install -g github:...` one-liner goes through different, stricter npm 12
+install machinery, so it was verified separately: packing the project
+(`npm pack`) and installing the tarball globally into a scratch prefix
+(`npm i -g ./contextscope-*.tgz --prefix /tmp/scratch/prefix`) reproduces the
+same `allowScripts` warning documented above, confirms
+`--dangerously-allow-all-scripts` clears it and lets `dist/` build, and
+confirms the resulting `bin/contextscope` symlink - the same mechanism `npx`
+and `npm install -g` always launch a CLI through - runs correctly and returns
+the right exit codes (`0` on success, `1` on a missing input file or bad
+arguments) once `dist/` exists. `src/cli/index.ts` has no
+`import.meta.url`-vs-`argv[1]` "am I the main module" check to begin with (it
+just calls `main()` unconditionally), so the symlink-breaks-that-check
+failure mode some CLIs hit doesn't apply here - confirmed by that same
+through-the-symlink run, not just by reading the source.
 
 Regenerating the example sessions (`examples/*.jsonl`):
 
