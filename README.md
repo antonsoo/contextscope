@@ -38,7 +38,7 @@ Everything runs in your browser or on your machine. Nothing is uploaded.
 ```sh
 git clone https://github.com/antonsoo/contextscope && cd contextscope
 npm install
-node dist/cli/index.js analyze examples/anthropic-agent-cache-bust.jsonl
+node dist/cli/index.js analyze examples/anthropic-agent-cache-bust.jsonl.gz
 ```
 
 `npm install` runs the package's `prepare` script, which compiles the CLI and
@@ -124,7 +124,11 @@ Options:
   --json <out.json>             Also write the raw analysis result as JSON
 ```
 
-Real output (`examples/anthropic-agent-cache-bust.jsonl`, a synthetic
+`<file>` can be gzipped (`.jsonl.gz`, detected by extension or, failing that,
+by gzip magic bytes - so a renamed or extension-less gzip file still works)
+and is transparently decompressed before parsing.
+
+Real output (`examples/anthropic-agent-cache-bust.jsonl.gz`, a synthetic
 24-turn, ~79,000-token coding-agent session where a timestamp inside the
 system prompt busts the cache on every single turn):
 
@@ -132,7 +136,7 @@ system prompt busts the cache on every single turn):
   <img src="docs/assets/cli-cache-bust.png" alt="Terminal output of contextscope analyze, showing zero cache reads across 24 requests, a total cost of $2.8460 vs. an optimized $0.4570 (84% lower, ≈$2,389 per 1,000 sessions), and the finding that pinpoints the timestamp" width="880">
 </p>
 
-The paired example, `examples/anthropic-agent-cache-fixed.jsonl`, is the exact
+The paired example, `examples/anthropic-agent-cache-fixed.jsonl.gz`, is the exact
 same session with the timestamp removed from the cached prefix. Run it
 yourself: fixing just that one bug (nothing else) already drops the cost from
 $2.8460 to $2.4668 - about 13%, from a single stable breakpoint finally
@@ -149,11 +153,12 @@ npm run build:web      # outputs web/dist/
 npm run preview:web    # serve the built app locally
 ```
 
-Drop a file, paste JSON/JSONL, or pick one of four built-in synthetic
-examples (all labelled synthetic in the UI, sized in the picker since the
-flagship pair is a real ~5.7 MB download, fetched only when you pick it): the
-24-turn cache-busting session above, its fixed counterpart, a session with a
-file re-read three times, and an OpenAI session with tools reordered
+Drop a file (plain or gzipped - `.jsonl.gz` decompresses right in the
+browser), paste JSON/JSONL, or pick one of four built-in synthetic examples
+(all labelled synthetic in the UI, sized in the picker): the 24-turn
+cache-busting session above (a real ~5.7 MB session, shipped gzipped at
+~0.48 MB and fetched only when you pick it), its fixed counterpart, a session
+with a file re-read three times, and an OpenAI session with tools reordered
 mid-conversation. The view opens on the *last* request by default - the
 biggest, most interesting point in a growing conversation - not the nearly
 empty first turn. Click any treemap block or table row to inspect the raw
@@ -284,13 +289,14 @@ dependency, since it's one layout call.
 - **Duplicate detection is scoped to the last request only** (see "How it
   works" above) — it will not flag near-duplicates across two *unrelated,
   independent* requests in a batch that isn't a growing conversation.
-- **The web app's exact-tokenizer chunk is large, and so is the flagship
-  example.** `gpt-tokenizer`'s o200k_base vocabulary is ~1 MB gzipped; both
-  it and each built-in example are code-split and fetched only when actually
-  used (not on page load — the drop-zone screen ships in <20 KB gzipped), but
-  picking the 24-turn flagship example downloads a real ~5.7 MB JSONL file
-  (labelled with its size in the picker). Both are cached by the browser
-  after the first load.
+- **The web app's exact-tokenizer chunk is large.** `gpt-tokenizer`'s
+  o200k_base vocabulary is ~1 MB gzipped; it's code-split and fetched only on
+  first analysis, not on page load (the drop-zone screen ships in <20 KB
+  gzipped). The flagship example is a separate, much smaller download by
+  comparison: it's committed gzipped (~0.48 MB, a real ~5.7 MB session
+  compressed about 12x) and served as a static asset, decompressed in the
+  browser with `DecompressionStream`. Both are cached by the browser after
+  the first load.
 - **Performance**: analyzing that same flagship session (24 requests, 5.7 MB,
   growing to 78,715 tokens by the last request) takes ≈0.59 s end-to-end in
   the CLI, including Node startup, on this box (14 vCPU WSL2 Linux, 48 GB
@@ -316,7 +322,7 @@ a clean copy of the tracked git tree and install into it:
 ```sh
 git archive HEAD | tar -x -C /tmp/contextscope-check
 cd /tmp/contextscope-check && npm install   # runs `prepare`, builds dist/
-node dist/cli/index.js analyze examples/anthropic-agent-cache-fixed.jsonl
+node dist/cli/index.js analyze examples/anthropic-agent-cache-fixed.jsonl.gz
 ```
 
 That covers the plain `git clone && npm install` quickstart exactly (a local
@@ -336,11 +342,18 @@ just calls `main()` unconditionally), so the symlink-breaks-that-check
 failure mode some CLIs hit doesn't apply here - confirmed by that same
 through-the-symlink run, not just by reading the source.
 
-Regenerating the example sessions (`examples/*.jsonl`):
+Regenerating the example sessions:
 
 ```sh
 node scripts/generate-examples.mjs
 ```
+
+Writes the small examples as plain `examples/*.jsonl`, and the flagship pair
+as gzipped `examples/*.jsonl.gz` (~5.7 MB each, uncompressed, compressed to
+~0.48 MB - committing them plain would blow past the repo's file-size limit).
+The script also copies those two `.gz` files into `web/public/examples/` so
+the web app can serve them as static assets; re-run it after changing
+anything under `scripts/lib/` to regenerate both copies in sync.
 
 The flagship pair is built from `scripts/lib/` - a long, internally-consistent
 "enterprise coding agent" system prompt, a 16-tool surface, and a library of

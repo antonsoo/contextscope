@@ -24,3 +24,9 @@ Initial release.
   a realistic 24-turn, ~79K-token Anthropic cache-busting session and its
   fixed counterpart, a duplicate-content session, and an OpenAI
   tools-reordered session.
+- Transparent gzip support: the CLI (`node:zlib`) and the web app (native
+  `DecompressionStream`) both accept `.jsonl.gz` input, detected by extension
+  or gzip magic bytes. The two large flagship examples are committed gzipped
+  (~5.7 MB each, compressed to ~0.48 MB) to stay under the repo's per-file
+  size limit; the web app serves them as static assets via a committed
+  symlink (`web/public/examples` -> `../../examples`), not bundled into JS.
