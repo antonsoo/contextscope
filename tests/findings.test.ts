@@ -66,4 +66,53 @@ describe("findings (via analyze())", () => {
     const result = analyze(JSON.stringify(requests));
     expect(result.findings.filter((f) => f.severity === "error")).toHaveLength(0);
   });
+
+  // --- missing_tail_breakpoint: a breakpoint exists (system prompt) and isn't volatile, but
+  // never advances to cover the growing conversation - every turn re-sends prior turns uncached.
+  // This is the exact "fixed but not actually fixed" shape a bug report caught: no other finding
+  // explained a large, real gap between actual and optimized cost.
+
+  function growingToolResultRequests(n: number, { rollingBreakpoint }: { rollingBreakpoint: boolean }) {
+    const longSystem = [{ type: "text", text: "You are a careful, deterministic assistant. ".repeat(200), cache_control: { type: "ephemeral" } }];
+    const bigChunk = "some tool output content that is reasonably long. ".repeat(20); // ~250 tokens
+    const messages: Record<string, unknown>[] = [];
+    const requests = [];
+    for (let i = 0; i < n; i++) {
+      messages.push({ role: "assistant", content: [{ type: "tool_use", id: `t${i}`, name: "read_file", input: {} }] });
+      const toolResultBlock: Record<string, unknown> = { type: "tool_result", tool_use_id: `t${i}`, content: `${bigChunk}${i}` };
+      messages.push({ role: "user", content: [toolResultBlock] });
+      if (rollingBreakpoint) toolResultBlock["cache_control"] = { type: "ephemeral" };
+      requests.push({ model: "claude-sonnet-5", system: longSystem, messages: JSON.parse(JSON.stringify(messages)) });
+    }
+    return requests;
+  }
+
+  it("flags a missing rolling breakpoint on the conversation tail when history keeps resending uncached", () => {
+    const result = analyze(JSON.stringify(growingToolResultRequests(6, { rollingBreakpoint: false })));
+    expect(kinds(result)).toContain("missing_tail_breakpoint");
+    const finding = result.findings.find((f) => f.kind === "missing_tail_breakpoint")!;
+    expect(finding.detail).toMatch(/uncached/);
+  });
+
+  it("does not flag missing_tail_breakpoint once a rolling breakpoint covers the tail", () => {
+    const result = analyze(JSON.stringify(growingToolResultRequests(6, { rollingBreakpoint: true })));
+    expect(kinds(result)).not.toContain("missing_tail_breakpoint");
+  });
+
+  it("keeps the cost line and findings in agreement: material savings always come with a finding", () => {
+    const result = analyze(JSON.stringify(growingToolResultRequests(6, { rollingBreakpoint: false })));
+    const { totalActualCostUsd, totalOptimizedCostUsd } = result.cacheSimulation;
+    expect(totalActualCostUsd).toBeDefined();
+    expect(totalOptimizedCostUsd).toBeDefined();
+    const ratio = (totalActualCostUsd! - totalOptimizedCostUsd!) / totalActualCostUsd!;
+    expect(ratio).toBeGreaterThan(0.1); // this fixture is deliberately not optimal
+    expect(result.findings.length).toBeGreaterThan(0);
+  });
+
+  it("shows no material savings once the rolling breakpoint is added, matching the empty findings list", () => {
+    const result = analyze(JSON.stringify(growingToolResultRequests(6, { rollingBreakpoint: true })));
+    const { totalActualCostUsd, totalOptimizedCostUsd } = result.cacheSimulation;
+    expect(totalActualCostUsd).toBeCloseTo(totalOptimizedCostUsd!, 6);
+    expect(result.findings).toHaveLength(0);
+  });
 });
