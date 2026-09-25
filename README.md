@@ -330,7 +330,7 @@ dependency, since it's one layout call.
 npm install        # installs deps and builds dist/ via the `prepare` script
 npm run lint        # eslint
 npm run typecheck   # tsc --noEmit, core+cli and the web app
-npm test             # vitest — 59 tests
+npm test             # vitest — 66 tests
 npm run build        # core + cli (dist/) and the web app (web/dist/)
 npm run dev:web       # Vite dev server for the web app
 ```
