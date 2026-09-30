@@ -54,6 +54,8 @@ All notable changes to this project are documented in this file.
   and model (an OpenAI paste after an Anthropic example was parsed as
   Anthropic); example buttons stayed on "loading…"; errors used `alert()`.
 - Server-side and MCP tool blocks were counted as user or assistant text.
+- A timestamp in a mid-conversation `system` message was reported as being in
+  "the system prompt"; the finding now names the message.
 
 ### Performance
 

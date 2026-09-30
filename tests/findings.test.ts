@@ -16,6 +16,29 @@ describe("findings (via analyze())", () => {
     expect(kinds(result)).toContain("volatile_prefix");
   });
 
+  it("titles a volatile value by where it sits: the system prompt, or a later system message", () => {
+    const title = (requests: unknown[]) => analyze(JSON.stringify(requests)).findings.find((f) => f.kind === "volatile_prefix")?.title;
+    const stamp = (n: number) => `Current time: 2026-09-24T10:0${n}:00Z.`;
+    // Anthropic top-level system prompt.
+    expect(title([0, 1].map((n) => ({ model: "claude-sonnet-5", system: stamp(n), messages: [{ role: "user", content: "hi" }] })))).toBe(
+      "System prompt contains a value that changes every request",
+    );
+    // A mid-conversation system message is operator text, but not the system prompt.
+    const mid = (n: number) => ({
+      model: "claude-sonnet-5-5",
+      messages: [
+        { role: "user", content: "hi" },
+        { role: "assistant", content: "hello" },
+        { role: "system", content: stamp(n) },
+        { role: "user", content: "and now?" },
+      ],
+    });
+    expect(title([mid(0), mid(1)])).toBe("message 3 (system) text contains a value that changes every request");
+    // An OpenAI leading system message is the system prompt.
+    const oa = (n: number) => ({ model: "gpt-6-sol", messages: [{ role: "system", content: stamp(n) }, { role: "user", content: "hi" }] });
+    expect(title([oa(0), oa(1)])).toBe("System prompt contains a value that changes every request");
+  });
+
   it("flags reordered tools between two requests", () => {
     const tool = (name: string) => ({ name, description: "d", input_schema: { type: "object" } });
     const requests = [

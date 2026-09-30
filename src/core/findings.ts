@@ -32,6 +32,13 @@ export function describeReorder(before: string[], after: string[]): string {
   return `${span}: [${before.slice(first, last + 1).join(", ")}] → [${after.slice(first, last + 1).join(", ")}]`;
 }
 
+/** A system segment counts as the system prompt only if no conversation turn comes before it
+ * (a mid-conversation system message is operator text too, but not "the system prompt"). */
+function isSystemPrompt(segments: readonly Segment[], index: number): boolean {
+  if (segments[index]?.category !== "system") return false;
+  return segments.slice(0, index).every((seg) => seg.category === "tools" || seg.category === "system");
+}
+
 function volatileFix(provider: Provider, modelInfo: ReturnType<typeof findAnthropicModel> | undefined): string {
   if (provider === "anthropic" && modelInfo?.midConversationSystem) {
     return `Move it out of the cached region: ${modelInfo.displayName} accepts a mid-conversation {"role": "system"} message after the cached history, or put it at the end of the latest user turn.`;
@@ -126,7 +133,7 @@ export function computeFindings(
           kind: "volatile_prefix",
           severity: "error",
           requestIndex: i,
-          title: `${b.category === "system" ? "System prompt" : b.label} contains a value that changes every request`,
+          title: `${isSystemPrompt(request.segments, s) ? "System prompt" : b.label} contains a value that changes every request`,
           detail: `"${b.label}" differs between requests ${i} and ${i + 1}, and looks like a timestamp/UUID/epoch value. Every byte after this point falls out of the cached prefix on every request. ${volatileFix(provider, modelInfo)}`,
           segmentIds: [a.id, b.id],
         });
