@@ -22,12 +22,21 @@
 const PROSE_CHARS_PER_TOKEN = 4.0;
 const DENSE_CHARS_PER_TOKEN = 2.9;
 
+const LETTER_OR_NUMBER = /[\p{L}\p{N}]/u;
+
 /** Fraction of characters that are not a letter, digit, or plain space. */
 function symbolDensity(text: string): number {
   if (text.length === 0) return 0;
   let symbolCount = 0;
   for (const ch of text) {
-    if (!/[\p{L}\p{N} ]/u.test(ch)) symbolCount++;
+    const code = ch.charCodeAt(0);
+    // ASCII fast path; the Unicode property test only runs for non-ASCII characters.
+    if (code < 128) {
+      const isAlnumOrSpace = (code >= 48 && code <= 57) || (code >= 65 && code <= 90) || (code >= 97 && code <= 122) || code === 32;
+      if (!isAlnumOrSpace) symbolCount++;
+    } else if (!LETTER_OR_NUMBER.test(ch)) {
+      symbolCount++;
+    }
   }
   return symbolCount / text.length;
 }

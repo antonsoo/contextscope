@@ -42,18 +42,17 @@
     "node": ">=20"
   },
   "scripts": {
-    "prepare": "npm run build:core && npm run build:cli",
+    "prepare": "npm run build:core",
     "build:core": "tsc -p tsconfig.json",
-    "build:cli": "tsc -p tsconfig.json",
     "build:web": "vite build",
     "build": "npm run build:core && npm run build:web",
+    "bench": "npm run build:core && node scripts/bench.mjs",
     "dev:web": "vite",
     "preview:web": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
     "lint": "eslint .",
-    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p web/tsconfig.json --noEmit",
-    "cli": "node --experimental-strip-types src/cli/index.ts"
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p web/tsconfig.json --noEmit"
   },
   "dependencies": {
     "gpt-tokenizer": "^4.0.0"

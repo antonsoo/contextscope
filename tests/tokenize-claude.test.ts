@@ -31,3 +31,27 @@ describe("estimateClaudeTokens (heuristic estimate)", () => {
     expect(estimateClaudeTokens(padded)).toBeGreaterThanOrEqual(estimateClaudeTokens(prose));
   });
 });
+
+describe("estimateClaudeTokens ASCII fast path", () => {
+  // The pre-optimization implementation, kept as an oracle: one Unicode-property regex test per character.
+  function reference(text: string): number {
+    if (text.length === 0) return 0;
+    let symbols = 0;
+    for (const ch of text) if (!/[\p{L}\p{N} ]/u.test(ch)) symbols++;
+    const density = symbols / text.length;
+    const t = Math.min(1, Math.max(0, (density - 0.15) / (0.45 - 0.15)));
+    return Math.max(1, Math.round(text.length / (4.0 + t * (2.9 - 4.0))));
+  }
+
+  it.each([
+    "plain English prose, with a comma.",
+    '{"type":"object","properties":{"path":{"type":"string"}}}',
+    "Ünïcödé naïve café — ½ ⅓ ٣ 三 ok",
+    "tabs\tand\nnewlines\u00a0nbsp",
+    "emoji 🙂🙃 and ZWJ 👩‍💻 sequences",
+    "Ελληνικά και русский текст 12345",
+    "    ",
+  ])("matches the reference on %j", (text) => {
+    expect(estimateClaudeTokens(text)).toBe(reference(text));
+  });
+});

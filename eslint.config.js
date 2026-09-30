@@ -20,10 +20,10 @@ export default tseslint.config(
     },
   },
   {
-    // Build-time content generators (not part of the shipped library or CLI) - plain Node scripts.
+    // Example generator and benchmark (not part of the shipped library or CLI) - plain Node scripts.
     files: ["scripts/**/*.mjs"],
     languageOptions: {
-      globals: { console: "readonly", process: "readonly", Buffer: "readonly" },
+      globals: { console: "readonly", process: "readonly", Buffer: "readonly", performance: "readonly", URL: "readonly" },
     },
   },
 );
