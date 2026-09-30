@@ -22,6 +22,16 @@ const MATERIAL_SAVINGS_RATIO = 0.1;
 // different words, so it's skipped there.
 const EXPLAINS_CACHE_GAP: ReadonlySet<Finding["kind"]> = new Set(["volatile_prefix", "breakpoint_before_change", "no_cache_control", "below_minimum_cacheable", "model_switch"]);
 
+/** Only the window of positions that moved: "positions 2-3: [read_file, grep_search] → [grep_search, read_file]". */
+export function describeReorder(before: string[], after: string[]): string {
+  let first = 0;
+  while (first < before.length && before[first] === after[first]) first++;
+  let last = before.length - 1;
+  while (last > first && before[last] === after[last]) last--;
+  const span = first === last ? `position ${first + 1}` : `positions ${first + 1}–${last + 1}`;
+  return `${span}: [${before.slice(first, last + 1).join(", ")}] → [${after.slice(first, last + 1).join(", ")}]`;
+}
+
 function volatileFix(provider: Provider, modelInfo: ReturnType<typeof findAnthropicModel> | undefined): string {
   if (provider === "anthropic" && modelInfo?.midConversationSystem) {
     return `Move it out of the cached region: ${modelInfo.displayName} accepts a mid-conversation {"role": "system"} message after the cached history, or put it at the end of the latest user turn.`;
@@ -137,7 +147,7 @@ export function computeFindings(
           severity: "error",
           requestIndex: i,
           title: `Tools reordered between requests ${i} and ${i + 1}`,
-          detail: `Same ${currNames.length} tools, different order: [${prevNames.join(", ")}] → [${currNames.join(", ")}]. Tools render at position 0 of the prefix, so any reorder invalidates the entire cache. Sort tools deterministically (e.g. by name) before sending.`,
+          detail: `Same ${currNames.length} tools, different order: ${describeReorder(prevNames.map(String), currNames.map(String))}. Tools render at position 0 of the prefix, so any reorder invalidates the entire cache. Sort tools deterministically (e.g. by name) before sending.`,
           segmentIds: currTools.map((t) => t.id),
         });
       }

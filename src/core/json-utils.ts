@@ -1,10 +1,32 @@
 /** Small deterministic-serialization helpers shared by the parsers and findings. */
 
 /** JSON.stringify with recursively sorted object keys, so semantically identical objects with
- * different key order serialize identically. Used for token counting and content hashing -
- * NOT for the "tool schema key order differs" finding, which deliberately compares raw order. */
+ * different key order serialize identically. Used by the optimized cache scenario ("what if the
+ * schema were serialized deterministically") and by the key-order finding. */
 export function canonicalJson(value: unknown): string {
   return JSON.stringify(sortKeysDeep(value));
+}
+
+function withoutCacheControl(value: unknown): unknown {
+  if (value === null || typeof value !== "object" || Array.isArray(value) || !("cache_control" in value)) return value;
+  const rest: Record<string, unknown> = { ...(value as Record<string, unknown>) };
+  delete rest["cache_control"];
+  return rest;
+}
+
+/**
+ * A content block or tool definition as the API receives it - key order preserved, because the
+ * prompt is rendered in that order and a reordered key breaks the cached prefix - minus its
+ * `cache_control` marker. A rolling breakpoint moves every turn; the marker isn't part of the
+ * cached content, so it must not make two otherwise identical blocks differ.
+ */
+export function blockJson(value: unknown): string {
+  return JSON.stringify(withoutCacheControl(value));
+}
+
+/** blockJson with sorted keys: the same block if it were serialized deterministically. */
+export function canonicalBlockJson(value: unknown): string {
+  return canonicalJson(withoutCacheControl(value));
 }
 
 function sortKeysDeep(value: unknown): unknown {

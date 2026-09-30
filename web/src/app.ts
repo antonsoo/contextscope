@@ -354,7 +354,7 @@ function renderContent(): void {
     ${statTilesPanel(report, result)}
     ${parseNotesPanel(result)}
     ${findingsPanel(result)}
-    ${treemapPanel(report)}
+    ${treemapPanel(report, result.parse.format)}
     ${segmentsTablePanel(report)}
     ${result.parse.requests.length > 1 ? sequencePanel(result) : ""}
     ${cachePanel(result)}
@@ -362,7 +362,7 @@ function renderContent(): void {
     ${calibratePanel(result)}
   `;
 
-  wireTreemap(report);
+  wireTreemap(report, result.parse.format);
   wireSegmentsTable(report);
   if (result.parse.requests.length > 1) wireSequencePanel(result);
   wireFindings(result);
@@ -412,10 +412,15 @@ function statTilesPanel(report: RequestTokenReport, result: AnalysisResult): str
 // treemap
 // ---------------------------------------------------------------------------
 
-function treemapPanel(report: RequestTokenReport): string {
+// Blocks are sized in the analyzed provider's own tokens: exact o200k_base counts for OpenAI, the ≈ estimate for Claude.
+function blockTokens(segment: Segment, format: Provider): number {
+  return format === "openai" ? segment.openaiTokens : segment.claudeTokensEstimate;
+}
+
+function treemapPanel(report: RequestTokenReport, format: Provider): string {
   return `
     <section class="panel">
-      <h2>Token usage — treemap <span class="count">colored by category, sized by ≈ Claude tokens</span></h2>
+      <h2>Token usage — treemap <span class="count">colored by category, sized by ${format === "openai" ? "OpenAI tokens (exact)" : "≈ Claude tokens"}</span></h2>
       <div class="treemap" id="treemap" role="img" aria-label="Treemap of token usage by segment"></div>
       <div class="legend">
         ${CATEGORY_ORDER.filter((c) => report.byCategory.some((b) => b.category === c))
@@ -426,22 +431,25 @@ function treemapPanel(report: RequestTokenReport): string {
   `;
 }
 
-function wireTreemap(report: RequestTokenReport): void {
+function wireTreemap(report: RequestTokenReport, format: Provider): void {
   const container = $("#treemap");
   const rect = container.getBoundingClientRect();
   const w = rect.width || 800;
   const h = rect.height || 340;
+  const approx = format === "openai" ? "" : "≈";
   const items = report.segments
-    .filter((s) => s.claudeTokensEstimate > 0)
-    .map((s) => ({ value: s.claudeTokensEstimate, item: s }));
+    .filter((s) => blockTokens(s, format) > 0)
+    .map((s) => ({ value: blockTokens(s, format), item: s }));
   const laid = squarify(items, { x: 0, y: 0, w, h });
 
   container.innerHTML = laid
     .map(({ rect: r, item: s }) => {
-      const showLabel = r.w > 46 && r.h > 24;
-      return `<div class="tm-block" tabindex="0" role="button" data-segment="${esc(s.id)}" style="left:${r.x}px;top:${r.y}px;width:${r.w}px;height:${r.h}px;background:${categoryVar(s.category)}" title="${esc(s.label)} — ≈${s.claudeTokensEstimate} tokens">${
-        showLabel ? `<div class="tm-label">${esc(truncate(s.label, 40))}<span class="tm-tok">≈${fmtInt(s.claudeTokensEstimate)} tok</span></div>` : ""
-      }</div>`;
+      // Two label lines need ~34px of height, one needs ~20px; narrower or shorter blocks rely on the tooltip.
+      const lines = r.w <= 46 ? 0 : r.h >= 34 ? 2 : r.h >= 20 ? 1 : 0;
+      const tokens = `${approx}${fmtInt(blockTokens(s, format))} tok`;
+      const label =
+        lines === 0 ? "" : `<div class="tm-label"><span class="tm-name">${esc(truncate(s.label, 40))}</span>${lines === 2 ? `<span class="tm-tok">${tokens}</span>` : ""}</div>`;
+      return `<div class="tm-block" tabindex="0" role="button" data-segment="${esc(s.id)}" style="left:${r.x}px;top:${r.y}px;width:${r.w}px;height:${r.h}px;background:${categoryVar(s.category)}" title="${esc(s.label)} — ${tokens}" aria-label="${esc(s.label)}, ${tokens}">${label}</div>`;
     })
     .join("");
 

@@ -116,3 +116,11 @@ describe("findings (via analyze())", () => {
     expect(result.findings).toHaveLength(0);
   });
 });
+
+describe("describeReorder", () => {
+  it("shows only the window of tools that moved", async () => {
+    const { describeReorder } = await import("../src/core/findings.js");
+    expect(describeReorder(["a", "b", "c", "d", "e"], ["a", "c", "b", "d", "e"])).toBe("positions 2–3: [b, c] → [c, b]");
+    expect(describeReorder(["a", "b", "c"], ["c", "b", "a"])).toBe("positions 1–3: [a, b, c] → [c, b, a]");
+  });
+});

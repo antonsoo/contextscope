@@ -480,8 +480,14 @@ input:focus-visible,
   pointer-events: none;
   line-height: 1.3;
 }
+.tm-label .tm-name,
 .tm-label .tm-tok {
   display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tm-label .tm-tok {
   opacity: 0.85;
 }
 

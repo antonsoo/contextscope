@@ -83,8 +83,8 @@ export function renderTerminalReport(result: AnalysisResult, options: TerminalRe
   lines.push(dim(`  total actual cost:    ${fmtUsd(cacheSimulation.totalActualCostUsd)}`));
   const optimizedNote =
     cacheSimulation.provider === "anthropic"
-      ? "with volatile content normalized out + an automatic breakpoint on every request's tail"
-      : "with volatile content normalized out of the auto-cached prefix";
+      ? "findings fixed, plus a breakpoint on each request's tail"
+      : "findings fixed";
   lines.push(dim(`  total optimized cost: ${fmtUsd(cacheSimulation.totalOptimizedCostUsd)}  (${optimizedNote})`));
   if (cacheSimulation.totalActualCostUsd !== undefined && cacheSimulation.totalOptimizedCostUsd !== undefined) {
     const savings = cacheSimulation.totalActualCostUsd - cacheSimulation.totalOptimizedCostUsd;

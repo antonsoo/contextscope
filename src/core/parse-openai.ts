@@ -1,5 +1,5 @@
 import type { ParsedRequest, Segment, SegmentCategory } from "./types.js";
-import { canonicalJson } from "./json-utils.js";
+import { blockJson } from "./json-utils.js";
 import { countTokens, type TokenCounter } from "./token-counter.js";
 
 interface OpenAiContentPart {
@@ -44,7 +44,7 @@ export function parseOpenAiRequest(raw: unknown, index: number, counter: TokenCo
         category: "tools",
         label: `tool: ${name}`,
         path: `tools[${i}]`,
-        text: canonicalJson(tool),
+        text: blockJson(tool),
         raw: tool,
       }),
     );
@@ -84,11 +84,11 @@ export function parseOpenAiRequest(raw: unknown, index: number, counter: TokenCo
           );
         } else if (part.type === "image_url") {
           segments.push(
-            seg({ id: path, category: "image", label: `message ${mi + 1} image`, path, text: canonicalJson(part.image_url), raw: part }),
+            seg({ id: path, category: "image", label: `message ${mi + 1} image`, path, text: blockJson(part.image_url), raw: part }),
           );
         } else {
           segments.push(
-            seg({ id: path, category, label: `message ${mi + 1} (${role}) ${part.type ?? "content"}`, path, text: canonicalJson(part), raw: part }),
+            seg({ id: path, category, label: `message ${mi + 1} (${role}) ${part.type ?? "content"}`, path, text: blockJson(part), raw: part }),
           );
         }
       });
@@ -105,7 +105,7 @@ export function parseOpenAiRequest(raw: unknown, index: number, counter: TokenCo
           category: "tool_call",
           label: `message ${mi + 1} tool_call: ${String(fn["name"] ?? "?")}`,
           path,
-          text: canonicalJson(call),
+          text: blockJson(call),
           raw: call,
         }),
       );
@@ -120,7 +120,7 @@ export function parseOpenAiRequest(raw: unknown, index: number, counter: TokenCo
           category: "tool_call",
           label: `message ${mi + 1} function_call`,
           path,
-          text: canonicalJson(message["function_call"]),
+          text: blockJson(message["function_call"]),
           raw: message["function_call"],
         }),
       );
@@ -167,24 +167,24 @@ function parseResponsesBody(obj: Record<string, unknown>, seg: (params: SegmentP
             if ((partType === "input_text" || partType === "output_text" || partType === "text") && typeof part.text === "string") {
               segments.push(seg({ id: partPath, category, label: `item ${ii + 1} (${role}) text`, path: partPath, text: part.text, raw: part }));
             } else if (partType === "input_image") {
-              segments.push(seg({ id: partPath, category: "image", label: `item ${ii + 1} image`, path: partPath, text: canonicalJson(part), raw: part }));
+              segments.push(seg({ id: partPath, category: "image", label: `item ${ii + 1} image`, path: partPath, text: blockJson(part), raw: part }));
             } else {
-              segments.push(seg({ id: partPath, category, label: `item ${ii + 1} (${role}) ${partType}`, path: partPath, text: canonicalJson(part), raw: part }));
+              segments.push(seg({ id: partPath, category, label: `item ${ii + 1} (${role}) ${partType}`, path: partPath, text: blockJson(part), raw: part }));
             }
           });
         }
         break;
       }
       case "function_call":
-        segments.push(seg({ id: path, category: "tool_call", label: `item ${ii + 1} function_call: ${String(item["name"] ?? "?")}`, path, text: canonicalJson(item), raw: item }));
+        segments.push(seg({ id: path, category: "tool_call", label: `item ${ii + 1} function_call: ${String(item["name"] ?? "?")}`, path, text: blockJson(item), raw: item }));
         break;
       case "function_call_output": {
         const output = item["output"];
-        segments.push(seg({ id: path, category: "tool_result", label: `item ${ii + 1} function_call_output`, path, text: typeof output === "string" ? output : canonicalJson(output), raw: item }));
+        segments.push(seg({ id: path, category: "tool_result", label: `item ${ii + 1} function_call_output`, path, text: typeof output === "string" ? output : blockJson(output), raw: item }));
         break;
       }
       case "reasoning":
-        segments.push(seg({ id: path, category: "thinking", label: `item ${ii + 1} reasoning`, path, text: canonicalJson(item), raw: item }));
+        segments.push(seg({ id: path, category: "thinking", label: `item ${ii + 1} reasoning`, path, text: blockJson(item), raw: item }));
         break;
       default:
         // Built-in tool calls (web_search_call, file_search_call, computer_call, ...) and their outputs.
@@ -194,7 +194,7 @@ function parseResponsesBody(obj: Record<string, unknown>, seg: (params: SegmentP
             category: type.endsWith("_output") ? "tool_result" : type.endsWith("_call") ? "tool_call" : "user",
             label: `item ${ii + 1} ${type}`,
             path,
-            text: canonicalJson(item),
+            text: blockJson(item),
             raw: item,
           }),
         );

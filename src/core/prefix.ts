@@ -1,17 +1,20 @@
 import type { DiffLine, ParsedRequest, PrefixMatch, Segment } from "./types.js";
 import { stripVolatilePatterns } from "./volatile.js";
+import { canonicalBlockJson } from "./json-utils.js";
 
-// Redacting timestamps/UUIDs runs four regexes over the whole text, and in a growing conversation
-// every segment is compared against its counterpart in both neighbouring requests. Segments are
-// immutable once parsed, so the redacted text is computed once per segment object.
+// The optimized scenario compares each segment as if it were fixed: timestamps/UUIDs redacted and
+// JSON keys sorted. That runs four regexes and a deep key sort per segment, and in a growing
+// conversation every segment is compared against its counterpart in both neighbouring requests.
+// Segments are immutable once parsed, so the normalized form is computed once per segment object.
 const normalizedText = new WeakMap<Segment, string>();
 
-/** category + text (optionally with timestamps/UUIDs redacted), used as the equality key for the prefix scan and the LCS diff. */
+/** category + text, or - normalized - category + deterministic, volatile-free content. */
 function segmentKey(segment: Segment, normalizeVolatile: boolean): string {
   if (!normalizeVolatile) return `${segment.category}::${segment.text}`;
   let text = normalizedText.get(segment);
   if (text === undefined) {
-    text = stripVolatilePatterns(segment.text);
+    const content = segment.raw !== null && typeof segment.raw === "object" ? canonicalBlockJson(segment.raw) : segment.text;
+    text = stripVolatilePatterns(content);
     normalizedText.set(segment, text);
   }
   return `${segment.category}::${text}`;
@@ -19,15 +22,30 @@ function segmentKey(segment: Segment, normalizeVolatile: boolean): string {
 
 function sameSegment(a: Segment, b: Segment, normalizeVolatile: boolean): boolean {
   if (a.category !== b.category) return false;
-  if (a.text === b.text) return true;
-  return normalizeVolatile && segmentKey(a, true) === segmentKey(b, true);
+  if (!normalizeVolatile) return a.text === b.text;
+  return segmentKey(a, true) === segmentKey(b, true);
+}
+
+/** Normalized mode also sorts the leading tool definitions, as a deterministic tool list would be. */
+function inCanonicalOrder(segments: Segment[]): Segment[] {
+  let toolCount = 0;
+  while (toolCount < segments.length && segments[toolCount]!.category === "tools") toolCount++;
+  if (toolCount < 2) return segments;
+  const tools = segments.slice(0, toolCount).sort((x, y) => {
+    const kx = segmentKey(x, true);
+    const ky = segmentKey(y, true);
+    return kx < ky ? -1 : kx > ky ? 1 : 0;
+  });
+  return [...tools, ...segments.slice(toolCount)];
 }
 
 /** Length of the longest run of leading segments that are identical (by category + text) in both requests. */
 function commonPrefixLength(a: Segment[], b: Segment[], normalizeVolatile: boolean): number {
-  const n = Math.min(a.length, b.length);
+  const left = normalizeVolatile ? inCanonicalOrder(a) : a;
+  const right = normalizeVolatile ? inCanonicalOrder(b) : b;
+  const n = Math.min(left.length, right.length);
   let i = 0;
-  while (i < n && sameSegment(a[i]!, b[i]!, normalizeVolatile)) i++;
+  while (i < n && sameSegment(left[i]!, right[i]!, normalizeVolatile)) i++;
   return i;
 }
 

@@ -182,9 +182,10 @@ export interface CacheSimulation {
   /** Canonical id of the model the simulation was priced with (see AnalysisResult.model for its source). */
   model: string;
   actual: CacheSimStep[];
-  /** What the simulation would look like with volatile (timestamp/UUID/epoch) content normalized out
-   * of the prefix comparison, and - Anthropic only - an additional trailing cache_control breakpoint
-   * on every request (the "automatic caching on the growing tail" pattern). */
+  /** The same sequence with the findings fixed: volatile values (timestamps, UUIDs, epochs)
+   * normalized out of the prefix comparison, JSON keys and the tool list in a deterministic order,
+   * and - Anthropic only - an additional trailing cache_control breakpoint on every request (the
+   * "automatic caching on the growing tail" pattern). */
   optimized: CacheSimStep[];
   totalActualCostUsd: number | undefined;
   totalOptimizedCostUsd: number | undefined;

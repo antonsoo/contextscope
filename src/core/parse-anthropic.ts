@@ -1,5 +1,5 @@
 import type { CacheControl, CacheTtl, ParsedRequest, Segment, SegmentCategory } from "./types.js";
-import { canonicalJson } from "./json-utils.js";
+import { blockJson } from "./json-utils.js";
 import { countTokens, type TokenCounter } from "./token-counter.js";
 
 interface AnthropicBlock {
@@ -66,7 +66,7 @@ export function parseAnthropicRequest(raw: unknown, index: number, counter: Toke
         category: "tools",
         label: `tool: ${name}`,
         path: `tools[${i}]`,
-        text: canonicalJson(tool),
+        text: blockJson(tool),
         raw: tool,
         cacheControl: readCacheControl(tool),
       }),
@@ -93,7 +93,7 @@ export function parseAnthropicRequest(raw: unknown, index: number, counter: Toke
           category: "system",
           label: `system block ${i + 1}`,
           path: `system[${i}]`,
-          text: typeof block.text === "string" ? block.text : canonicalJson(block),
+          text: typeof block.text === "string" ? block.text : blockJson(block),
           raw: block,
           cacheControl: readCacheControl(block),
         }),
@@ -146,7 +146,7 @@ export function parseAnthropicRequest(raw: unknown, index: number, counter: Toke
               category: "tool_call",
               label: `message ${mi + 1} tool_use: ${String(block["name"] ?? "?")}`,
               path,
-              text: canonicalJson(block),
+              text: blockJson(block),
               raw: block,
               cacheControl: readCacheControl(block),
             }),
@@ -159,9 +159,9 @@ export function parseAnthropicRequest(raw: unknown, index: number, counter: Toke
               ? resultContent
               : Array.isArray(resultContent)
                 ? resultContent
-                    .map((c) => (c !== null && typeof c === "object" && typeof (c as AnthropicBlock).text === "string" ? (c as AnthropicBlock).text : canonicalJson(c)))
+                    .map((c) => (c !== null && typeof c === "object" && typeof (c as AnthropicBlock).text === "string" ? (c as AnthropicBlock).text : blockJson(c)))
                     .join("\n")
-                : canonicalJson(resultContent);
+                : blockJson(resultContent);
           segments.push(
             seg({
               id,
@@ -182,7 +182,7 @@ export function parseAnthropicRequest(raw: unknown, index: number, counter: Toke
               category: "image",
               label: `message ${mi + 1} image`,
               path,
-              text: canonicalJson(block["source"] ?? block),
+              text: blockJson(block["source"] ?? block),
               raw: block,
               cacheControl: readCacheControl(block),
             }),
@@ -195,7 +195,7 @@ export function parseAnthropicRequest(raw: unknown, index: number, counter: Toke
               category: roleCategory(role),
               label: `message ${mi + 1} document`,
               path,
-              text: canonicalJson(block["source"] ?? block),
+              text: blockJson(block["source"] ?? block),
               raw: block,
               cacheControl: readCacheControl(block),
             }),
@@ -208,7 +208,7 @@ export function parseAnthropicRequest(raw: unknown, index: number, counter: Toke
               category: otherBlockCategory(block.type, role),
               label: `message ${mi + 1} (${role}) ${block.type ?? "content"}`,
               path,
-              text: canonicalJson(block),
+              text: blockJson(block),
               raw: block,
             }),
           );
