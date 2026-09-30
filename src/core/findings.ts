@@ -2,6 +2,7 @@ import type { CacheSimulation, DuplicateGroup, Finding, ParsedRequest, PrefixMat
 import { canonicalJson, keyOrderFingerprint } from "./json-utils.js";
 import { ANTHROPIC_LOOKBACK_POSITIONS, findAnthropicModel } from "./pricing.js";
 import { containsVolatilePattern } from "./volatile.js";
+import { sameModel } from "./model-id.js";
 
 function push(list: Finding[], f: Finding): void {
   list.push(f);
@@ -19,7 +20,14 @@ const MATERIAL_SAVINGS_RATIO = 0.1;
 // Finding kinds that already explain *why* a request's cache isn't paying off - if one of these
 // already fired for a request, missing_tail_breakpoint would just be restating the same gap in
 // different words, so it's skipped there.
-const EXPLAINS_CACHE_GAP: ReadonlySet<Finding["kind"]> = new Set(["volatile_prefix", "breakpoint_before_change", "no_cache_control", "below_minimum_cacheable"]);
+const EXPLAINS_CACHE_GAP: ReadonlySet<Finding["kind"]> = new Set(["volatile_prefix", "breakpoint_before_change", "no_cache_control", "below_minimum_cacheable", "model_switch"]);
+
+function volatileFix(provider: Provider, modelInfo: ReturnType<typeof findAnthropicModel> | undefined): string {
+  if (provider === "anthropic" && modelInfo?.midConversationSystem) {
+    return `Move it out of the cached region: ${modelInfo.displayName} accepts a mid-conversation {"role": "system"} message after the cached history, or put it at the end of the latest user turn.`;
+  }
+  return "Move it out of the cached region, e.g. to the end of the latest user turn.";
+}
 
 export function computeFindings(
   provider: Provider,
@@ -82,6 +90,20 @@ export function computeFindings(
     const match = prefixMatches[i - 1]!;
     const prev = requests[i - 1]!;
 
+    // model_switch: caches are per model, so alternating models inside one conversation rewrites
+    // the whole prefix on every switch - even when every byte of it matches.
+    if (!sameModel(prev.model, request.model)) {
+      const prefixTokens = request.segments.reduce((sum, s) => sum + (provider === "anthropic" ? s.claudeTokensEstimate : s.openaiTokens), 0);
+      push(findings, {
+        kind: "model_switch",
+        severity: "warning",
+        requestIndex: i,
+        title: `Model changed between requests ${i} and ${i + 1}`,
+        detail: `Request ${i} ran on ${String(prev.model)} and request ${i + 1} on ${String(request.model)}. Prompt caches belong to one model, so request ${i + 1} can't read anything request ${i} cached and re-sends its whole ≈${prefixTokens.toLocaleString()}-token prompt at full price. If the switch routes a sub-task to a cheaper model, give that sub-task its own conversation instead of alternating models inside one.`,
+        segmentIds: [],
+      });
+    }
+
     // volatile_prefix: a timestamp/UUID/epoch inside the stable-looking prefix busts the match every time.
     const boundary = Math.min(prev.segments.length, request.segments.length);
     for (let s = 0; s < boundary; s++) {
@@ -95,7 +117,7 @@ export function computeFindings(
           severity: "error",
           requestIndex: i,
           title: `${b.category === "system" ? "System prompt" : b.label} contains a value that changes every request`,
-          detail: `"${b.label}" differs between requests ${i} and ${i + 1}, and looks like a timestamp/UUID/epoch value. Every byte after this point falls out of the cached prefix on every request. Move it out of the cached region (e.g. into a mid-conversation "system" message, or the end of the user turn).`,
+          detail: `"${b.label}" differs between requests ${i} and ${i + 1}, and looks like a timestamp/UUID/epoch value. Every byte after this point falls out of the cached prefix on every request. ${volatileFix(provider, modelInfo)}`,
           segmentIds: [a.id, b.id],
         });
       }

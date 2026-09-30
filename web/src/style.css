@@ -686,7 +686,6 @@ table.cache td {
   border-left: 3px solid var(--text-faint);
   border-radius: 6px;
   padding: 10px 12px;
-  cursor: pointer;
 }
 .finding:hover {
   border-color: var(--border-strong);
@@ -702,10 +701,54 @@ table.cache td {
 }
 .finding .fhead {
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
-  gap: 8px;
+  gap: 0 8px;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
   font-size: 12.5px;
   font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+.finding .fhead:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--text-faint);
+}
+.finding .fhead:focus-visible,
+.finding .occ:focus-visible {
+  outline: 2px solid var(--cat-system);
+  outline-offset: 2px;
+}
+.finding .foccur {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 8px;
+}
+.finding .occ {
+  padding: 1px 7px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: none;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  cursor: pointer;
+}
+.finding .occ:hover,
+.finding .occ.active {
+  border-color: var(--cat-system);
+  color: var(--text);
+}
+.finding .occ-more {
+  align-self: center;
+  color: var(--text-faint);
+  font-size: 10.5px;
 }
 .finding .fsev {
   font-family: var(--font-mono);
@@ -770,6 +813,47 @@ table.cache td {
 .calibrate-status {
   font-size: 11.5px;
   color: var(--text-faint);
+}
+.panel-note {
+  margin: 0 0 10px;
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+.calibrate-result {
+  margin: 10px 0 0;
+  padding: 8px 10px;
+  border-left: 3px solid var(--status-good);
+  background: var(--bg-inset);
+  font-size: 12px;
+  line-height: 1.5;
+}
+.btn.link {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--cat-system);
+  text-decoration: underline;
+  font-size: inherit;
+}
+.muted {
+  color: var(--text-faint);
+}
+.intake-error {
+  margin: 12px 0 0;
+  padding: 8px 12px;
+  border-left: 3px solid var(--status-critical);
+  background: var(--bg-inset);
+  color: var(--text);
+  font-size: 12.5px;
+  text-align: left;
+}
+.intake-error[hidden] {
+  display: none;
+}
+.example-chip:disabled {
+  opacity: 0.6;
+  cursor: progress;
 }
 
 /* inspector drawer */
@@ -890,4 +974,17 @@ footer.app-footer a {
   .topbar {
     padding: 12px 14px;
   }
+}
+
+.notes-panel {
+  border-left: 3px solid var(--status-warning);
+}
+.notes-panel p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+.notes-panel p + p {
+  margin-top: 4px;
 }

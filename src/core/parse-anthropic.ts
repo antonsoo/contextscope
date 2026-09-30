@@ -1,7 +1,6 @@
 import type { CacheControl, CacheTtl, ParsedRequest, Segment, SegmentCategory } from "./types.js";
 import { canonicalJson } from "./json-utils.js";
-import { countOpenaiTokens } from "./tokenize-openai.js";
-import { estimateClaudeTokens } from "./tokenize-claude.js";
+import { countTokens, type TokenCounter } from "./token-counter.js";
 
 interface AnthropicBlock {
   type?: string;
@@ -25,19 +24,33 @@ function makeSegment(params: {
   text: string;
   raw: unknown;
   cacheControl?: CacheControl | undefined;
-}): Segment {
+}, counter: TokenCounter): Segment {
   const { cacheControl, ...rest } = params;
+  const counts = counter(params.text);
   return {
     ...rest,
     charLength: params.text.length,
-    openaiTokens: countOpenaiTokens(params.text),
-    claudeTokensEstimate: estimateClaudeTokens(params.text),
+    openaiTokens: counts.openai,
+    claudeTokensEstimate: counts.claude,
     ...(cacheControl ? { cacheControl } : {}),
   };
 }
 
+/** Mid-conversation `system` messages (supported on current Claude models) are operator text, not user text. */
+function roleCategory(role: string): SegmentCategory {
+  return role === "assistant" ? "assistant" : role === "system" ? "system" : "user";
+}
+
+/** Server-side and MCP tool blocks (`server_tool_use`, `web_search_tool_result`, `mcp_tool_use`...) are tool traffic too. */
+function otherBlockCategory(type: string | undefined, role: string): SegmentCategory {
+  if (type === "server_tool_use" || type === "mcp_tool_use") return "tool_call";
+  if (type !== undefined && type.endsWith("_tool_result")) return "tool_result";
+  return roleCategory(role);
+}
+
 /** Parses one Anthropic Messages API request body into provider-order segments: tools -> system -> messages. */
-export function parseAnthropicRequest(raw: unknown, index: number): ParsedRequest {
+export function parseAnthropicRequest(raw: unknown, index: number, counter: TokenCounter = countTokens): ParsedRequest {
+  const seg = (params: Parameters<typeof makeSegment>[0]): Segment => makeSegment(params, counter);
   const obj = (raw !== null && typeof raw === "object" ? (raw as Record<string, unknown>) : {}) as Record<
     string,
     unknown
@@ -48,7 +61,7 @@ export function parseAnthropicRequest(raw: unknown, index: number): ParsedReques
   tools.forEach((tool, i) => {
     const name = typeof tool["name"] === "string" ? (tool["name"] as string) : `tool_${i}`;
     segments.push(
-      makeSegment({
+      seg({
         id: `tools[${i}]`,
         category: "tools",
         label: `tool: ${name}`,
@@ -63,7 +76,7 @@ export function parseAnthropicRequest(raw: unknown, index: number): ParsedReques
   const system = obj["system"];
   if (typeof system === "string") {
     segments.push(
-      makeSegment({
+      seg({
         id: "system[0]",
         category: "system",
         label: "system prompt",
@@ -75,7 +88,7 @@ export function parseAnthropicRequest(raw: unknown, index: number): ParsedReques
   } else if (Array.isArray(system)) {
     (system as AnthropicBlock[]).forEach((block, i) => {
       segments.push(
-        makeSegment({
+        seg({
           id: `system[${i}]`,
           category: "system",
           label: `system block ${i + 1}`,
@@ -101,9 +114,9 @@ export function parseAnthropicRequest(raw: unknown, index: number): ParsedReques
       switch (block.type) {
         case "text":
           segments.push(
-            makeSegment({
+            seg({
               id,
-              category: role === "assistant" ? "assistant" : "user",
+              category: roleCategory(role),
               label: `message ${mi + 1} (${role}) text`,
               path,
               text: block.text ?? "",
@@ -115,7 +128,7 @@ export function parseAnthropicRequest(raw: unknown, index: number): ParsedReques
         case "thinking":
         case "redacted_thinking":
           segments.push(
-            makeSegment({
+            seg({
               id,
               category: "thinking",
               label: `message ${mi + 1} thinking`,
@@ -128,7 +141,7 @@ export function parseAnthropicRequest(raw: unknown, index: number): ParsedReques
           break;
         case "tool_use":
           segments.push(
-            makeSegment({
+            seg({
               id,
               category: "tool_call",
               label: `message ${mi + 1} tool_use: ${String(block["name"] ?? "?")}`,
@@ -150,7 +163,7 @@ export function parseAnthropicRequest(raw: unknown, index: number): ParsedReques
                     .join("\n")
                 : canonicalJson(resultContent);
           segments.push(
-            makeSegment({
+            seg({
               id,
               category: "tool_result",
               label: `message ${mi + 1} tool_result`,
@@ -164,7 +177,7 @@ export function parseAnthropicRequest(raw: unknown, index: number): ParsedReques
         }
         case "image":
           segments.push(
-            makeSegment({
+            seg({
               id,
               category: "image",
               label: `message ${mi + 1} image`,
@@ -177,9 +190,9 @@ export function parseAnthropicRequest(raw: unknown, index: number): ParsedReques
           break;
         case "document":
           segments.push(
-            makeSegment({
+            seg({
               id,
-              category: role === "assistant" ? "assistant" : "user",
+              category: roleCategory(role),
               label: `message ${mi + 1} document`,
               path,
               text: canonicalJson(block["source"] ?? block),
@@ -190,9 +203,9 @@ export function parseAnthropicRequest(raw: unknown, index: number): ParsedReques
           break;
         default:
           segments.push(
-            makeSegment({
+            seg({
               id,
-              category: role === "assistant" ? "assistant" : "user",
+              category: otherBlockCategory(block.type, role),
               label: `message ${mi + 1} (${role}) ${block.type ?? "content"}`,
               path,
               text: canonicalJson(block),

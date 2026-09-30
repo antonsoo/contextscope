@@ -14,8 +14,6 @@ export interface BuiltInExample {
   id: string;
   label: string;
   description: string;
-  format: "anthropic" | "openai";
-  model: string;
   approxSizeMb: number;
   load: () => Promise<string>;
 }
@@ -37,8 +35,6 @@ export const BUILT_IN_EXAMPLES: BuiltInExample[] = [
     label: "Cache bust: timestamp in system prompt",
     description:
       "Synthetic 24-turn coding-agent session, ~79K tokens by the last request. A timestamp inside the system prompt busts the cache on every single turn.",
-    format: "anthropic",
-    model: "claude-sonnet-5",
     approxSizeMb: 0.48,
     load: () => loadGzippedAsset("anthropic-agent-cache-bust.jsonl.gz"),
   },
@@ -46,8 +42,6 @@ export const BUILT_IN_EXAMPLES: BuiltInExample[] = [
     id: "cache-fixed",
     label: "Cache fixed: same session, timestamp removed",
     description: "The same synthetic session with the timestamp removed from the cached prefix - the cache hits from turn 2 onward.",
-    format: "anthropic",
-    model: "claude-sonnet-5",
     approxSizeMb: 0.48,
     load: () => loadGzippedAsset("anthropic-agent-cache-fixed.jsonl.gz"),
   },
@@ -55,8 +49,6 @@ export const BUILT_IN_EXAMPLES: BuiltInExample[] = [
     id: "duplicate-tool-results",
     label: "Duplicate content: same file read 3 times",
     description: "Synthetic session where an agent re-reads an unchanged file three times in one conversation.",
-    format: "anthropic",
-    model: "claude-sonnet-5",
     approxSizeMb: 0.13,
     load: () => loadRaw(() => import("../../../examples/anthropic-duplicate-tool-results.jsonl?raw")),
   },
@@ -64,8 +56,6 @@ export const BUILT_IN_EXAMPLES: BuiltInExample[] = [
     id: "openai-tools-reordered",
     label: "OpenAI: tools reordered mid-session",
     description: "Synthetic OpenAI Chat Completions session where the tool list order flips between two requests.",
-    format: "openai",
-    model: "gpt-6-sol",
     approxSizeMb: 0.13,
     load: () => loadRaw(() => import("../../../examples/openai-agent-tools-reordered.jsonl?raw")),
   },

@@ -50,10 +50,8 @@ export interface Segment {
   raw: unknown;
   /** Exact token count under OpenAI's o200k_base encoding. */
   openaiTokens: number;
-  /** Estimated token count for Claude models - see tokenize/claude-estimate.ts. Always "≈". */
+  /** Estimated token count for Claude models - see tokenize-claude.ts. Always "≈", even when scaled by calibration. */
   claudeTokensEstimate: number;
-  /** Calibrated Claude token count from the count_tokens endpoint, if the user supplied a key. */
-  claudeTokensCalibrated?: number;
   cacheControl?: CacheControl;
   charLength: number;
 }
@@ -78,6 +76,12 @@ export interface ParseResult {
   format: Provider;
   /** True when the format was inferred rather than explicitly specified. */
   autoDetected: boolean;
+  /**
+   * Set when the request bodies were unwrapped from a record field: `params`
+   * (Anthropic Message Batches), `body` (OpenAI Batch API), or `request` /
+   * `request_body` (common proxy and gateway log shapes).
+   */
+  envelope?: string | undefined;
   requests: ParsedRequest[];
   warnings: ParseWarning[];
 }
@@ -85,7 +89,6 @@ export interface ParseResult {
 export interface TokenTotals {
   openaiTokens: number;
   claudeTokensEstimate: number;
-  claudeTokensCalibrated?: number;
 }
 
 export interface CategoryBreakdown extends TokenTotals {
@@ -115,7 +118,8 @@ export type FindingKind =
   | "duplicate_content"
   | "lookback_window_exceeded"
   | "ttl_ordering"
-  | "missing_tail_breakpoint";
+  | "missing_tail_breakpoint"
+  | "model_switch";
 
 export interface Finding {
   kind: FindingKind;
@@ -161,9 +165,22 @@ export interface CacheSimStep {
   costUsd: number | undefined;
 }
 
+/** Where the model used for pricing came from. */
+export type ModelSource = "option" | "request" | "default";
+
+export interface ResolvedModel {
+  /** Canonical id of the pricing entry actually used. */
+  id: string;
+  displayName: string;
+  source: ModelSource;
+  /** The id as given (by option or request) when it had no pricing entry and the default was used instead. */
+  unrecognized?: string;
+}
+
 export interface CacheSimulation {
   provider: Provider;
-  model: string | undefined;
+  /** Canonical id of the model the simulation was priced with (see AnalysisResult.model for its source). */
+  model: string;
   actual: CacheSimStep[];
   /** What the simulation would look like with volatile (timestamp/UUID/epoch) content normalized out
    * of the prefix comparison, and - Anthropic only - an additional trailing cache_control breakpoint
@@ -185,14 +202,22 @@ export interface DuplicateGroup {
 export interface AnalysisOptions {
   /** Explicit format override; omit or pass undefined to auto-detect. */
   format?: Provider | undefined;
-  /** Model id to use for context-window and pricing lookups when a request doesn't specify one. */
+  /** Model id for context-window and pricing lookups. Overrides the model named in the requests. */
   model?: string | undefined;
-  /** Calibrated Claude token counts, keyed by segment id "reqIndex:segmentId", if the user supplied an API key. */
-  calibration?: Map<string, number> | undefined;
+  /**
+   * Multiplier applied to every Claude token estimate before analysis - the
+   * ratio of an exact `count_tokens` result to the heuristic estimate for the
+   * same request (see calibrate.ts). Omit (or pass 1) for raw estimates.
+   */
+  claudeTokenScale?: number | undefined;
 }
 
 export interface AnalysisResult {
   parse: ParseResult;
+  /** The model the whole sequence was priced with, and where that choice came from. */
+  model: ResolvedModel;
+  /** The claudeTokenScale actually applied (1 when uncalibrated). */
+  claudeTokenScale: number;
   reports: RequestTokenReport[];
   prefixMatches: PrefixMatch[];
   cacheSimulation: CacheSimulation;

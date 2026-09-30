@@ -1,4 +1,4 @@
-import type { AnalysisOptions, AnalysisResult, CacheSimulation } from "./types.js";
+import type { AnalysisOptions, AnalysisResult, CacheSimulation, ParsedRequest } from "./types.js";
 import { parseInput } from "./parse.js";
 import { computeAllPrefixMatches } from "./prefix.js";
 import { buildRequestReport } from "./report.js";
@@ -6,35 +6,41 @@ import { simulateAnthropicCacheSequence } from "./cache-anthropic.js";
 import { simulateOpenAiCacheSequence } from "./cache-openai.js";
 import { findDuplicates } from "./duplicates.js";
 import { computeFindings } from "./findings.js";
+import { resolveModel } from "./pricing.js";
 
 /** Runs the full contextscope pipeline: parse -> per-request token report -> prefix diffs
  * (actual and volatile-normalized) -> cache simulation (actual and optimized) -> duplicates -> findings. */
 export function analyze(input: string, options: AnalysisOptions = {}): AnalysisResult {
   const parse = parseInput(input, options.format);
-  const { requests, format } = parse;
+  const { format } = parse;
+  const scale = validScale(options.claudeTokenScale);
+  if (scale !== 1) parse.requests = parse.requests.map((r) => scaleClaudeEstimates(r, scale));
+  const { requests } = parse;
 
-  const reports = requests.map((r) => buildRequestReport(r, format, options.model));
+  const model = resolveModel(format, options.model, requests.map((r) => r.model));
+
+  const reports = requests.map((r) => buildRequestReport(r, format, model.id));
   const prefixMatches = computeAllPrefixMatches(requests, false);
-  const optimizedPrefixMatches = computeAllPrefixMatches(requests, true);
+  const optimizedPrefixMatches = computeAllPrefixMatches(requests, true, false);
 
   let cacheSimulation: CacheSimulation;
   if (format === "anthropic") {
-    const actual = simulateAnthropicCacheSequence(requests, prefixMatches, options.model, false);
-    const optimized = simulateAnthropicCacheSequence(requests, optimizedPrefixMatches, options.model, true);
+    const actual = simulateAnthropicCacheSequence(requests, prefixMatches, model.id, false);
+    const optimized = simulateAnthropicCacheSequence(requests, optimizedPrefixMatches, model.id, true);
     cacheSimulation = {
       provider: "anthropic",
-      model: options.model,
+      model: model.id,
       actual,
       optimized,
       totalActualCostUsd: sumCost(actual),
       totalOptimizedCostUsd: sumCost(optimized),
     };
   } else {
-    const actual = simulateOpenAiCacheSequence(requests, prefixMatches, options.model);
-    const optimized = simulateOpenAiCacheSequence(requests, optimizedPrefixMatches, options.model);
+    const actual = simulateOpenAiCacheSequence(requests, prefixMatches, model.id);
+    const optimized = simulateOpenAiCacheSequence(requests, optimizedPrefixMatches, model.id);
     cacheSimulation = {
       provider: "openai",
-      model: options.model,
+      model: model.id,
       actual,
       optimized,
       totalActualCostUsd: sumCost(actual),
@@ -43,9 +49,21 @@ export function analyze(input: string, options: AnalysisOptions = {}): AnalysisR
   }
 
   const duplicates = findDuplicates(requests);
-  const findings = computeFindings(format, requests, prefixMatches, options.model, duplicates, cacheSimulation);
+  const findings = computeFindings(format, requests, prefixMatches, model.id, duplicates, cacheSimulation);
 
-  return { parse, reports, prefixMatches, cacheSimulation, findings, duplicates };
+  return { parse, model, claudeTokenScale: scale, reports, prefixMatches, cacheSimulation, findings, duplicates };
+}
+
+function validScale(scale: number | undefined): number {
+  if (scale === undefined || !Number.isFinite(scale) || scale <= 0) return 1;
+  return scale;
+}
+
+function scaleClaudeEstimates(request: ParsedRequest, scale: number): ParsedRequest {
+  return {
+    ...request,
+    segments: request.segments.map((s) => ({ ...s, claudeTokensEstimate: Math.max(s.claudeTokensEstimate > 0 ? 1 : 0, Math.round(s.claudeTokensEstimate * scale)) })),
+  };
 }
 
 function sumCost(steps: { costUsd: number | undefined }[]): number | undefined {
@@ -56,5 +74,15 @@ function sumCost(steps: { costUsd: number | undefined }[]): number | undefined {
 export { parseInput } from "./parse.js";
 export { computeAllPrefixMatches, computePrefixMatch } from "./prefix.js";
 export * from "./types.js";
-export { ANTHROPIC_MODELS, OPENAI_MODELS, findAnthropicModel, findOpenAiModel } from "./pricing.js";
-export { calibrateSegments, type CalibrationRequest, type CalibrationResult } from "./calibrate.js";
+export {
+  ANTHROPIC_MODELS,
+  OPENAI_MODELS,
+  DEFAULT_ANTHROPIC_MODEL,
+  DEFAULT_OPENAI_MODEL,
+  findAnthropicModel,
+  findOpenAiModel,
+  normalizeModelId,
+  resolveModel,
+} from "./pricing.js";
+export { groupFindings, describeRequestIndices, type FindingGroup } from "./group-findings.js";
+export { calibrationScale, countRequestTokens, countTokensBody, CalibrationError, type CalibrationResult } from "./calibrate.js";

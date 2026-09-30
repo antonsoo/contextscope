@@ -1,5 +1,6 @@
 import type { CacheSimStep, CacheTtl, ParsedRequest, PrefixMatch, Segment } from "./types.js";
 import { ANTHROPIC_CACHE_WRITE_MULTIPLIER_1H, ANTHROPIC_CACHE_WRITE_MULTIPLIER_5M, ANTHROPIC_LOOKBACK_POSITIONS, findAnthropicModel } from "./pricing.js";
+import { sameModel } from "./model-id.js";
 
 /**
  * Simulates Anthropic prompt caching across a sequence of requests.
@@ -19,6 +20,8 @@ import { ANTHROPIC_CACHE_WRITE_MULTIPLIER_1H, ANTHROPIC_CACHE_WRITE_MULTIPLIER_5
  * (5-minute / 1-hour wall-clock windows) since request JSON carries no
  * timestamps - it assumes consecutive requests in a session arrive inside
  * the TTL, which is the steady-agent-loop case the tool is built to catch.
+ * Caches are model-scoped, so a request on a different model than the one
+ * before it reads nothing, however much of the prefix matches.
  */
 
 interface BreakpointState {
@@ -106,7 +109,8 @@ export function simulateAnthropicCacheSequence(
 
     const positions = positionIndexBySegment(segments);
     // No prior request (i === 0) means nothing can possibly be in cache yet: every breakpoint is a cold write.
-    const match = i > 0 ? prefixMatches[i - 1] : undefined;
+    // Neither does a model switch: the previous request's entries belong to the other model.
+    const match = i > 0 && sameModel(requests[i - 1]!.model, request.model) ? prefixMatches[i - 1] : undefined;
     const matchedBoundarySegmentIndex = match ? match.matchedSegments - 1 : -1;
 
     let readTokens = 0;

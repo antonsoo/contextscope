@@ -1,4 +1,5 @@
 import type { AnalysisResult, Provider, RequestTokenReport, Segment } from "@core/types.js";
+import type { CalibrationResult, FindingGroup } from "@core/index.js";
 import { squarify } from "./lib/treemap.js";
 import { BUILT_IN_EXAMPLES } from "./lib/examples.js";
 import { CATEGORY_LABEL, CATEGORY_ORDER, categoryVar, fmtInt, fmtPct, fmtUsd, fmtUsdRounded, truncate } from "./lib/format.js";
@@ -9,18 +10,20 @@ import { readPossiblyGzippedFile } from "./lib/gunzip.js";
 // on page load - the drop-zone screen should be instant. Everything that touches it is async.
 type CoreModule = typeof import("@core/index.js");
 let corePromise: Promise<CoreModule> | undefined;
+let loadedCore: CoreModule | undefined;
 function loadCore(): Promise<CoreModule> {
   corePromise ??= import("@core/index.js");
   return corePromise;
 }
 
 interface State {
+  /** Overrides chosen in the top bar for the current input; reset whenever a new input arrives. */
   format: Provider | "auto";
   model: string | undefined;
   analysis: AnalysisResult | undefined;
   selectedRequest: number;
   selectedPair: number;
-  calibration: Map<string, number>;
+  calibration: CalibrationResult | undefined;
 }
 
 const state: State = {
@@ -29,7 +32,7 @@ const state: State = {
   analysis: undefined,
   selectedRequest: 0,
   selectedPair: 0,
-  calibration: new Map(),
+  calibration: undefined,
 };
 
 export function initApp(root: HTMLElement): void {
@@ -67,7 +70,7 @@ function shellHtml(): string {
     <main id="intake" class="intake">
       <div class="dropzone" id="dropzone">
         <h1>drop a request, or paste one</h1>
-        <p class="lead">A single Anthropic Messages or OpenAI Chat Completions request, a JSON array, or JSONL - one API request per line, the shape an agent loop actually sends. A gzipped <code>.jsonl.gz</code> works too, decompressed right here.</p>
+        <p class="lead">A single Anthropic Messages or OpenAI (Chat Completions or Responses) request, a JSON array, or JSONL - one API request per line, the shape an agent loop actually sends. Batch-API files and gateway logs are unwrapped, and a gzipped <code>.jsonl.gz</code> works too, decompressed right here.</p>
         <div class="intake-actions">
           <button class="btn primary" id="pick-file-btn" type="button">choose file…</button>
           <button class="btn" id="paste-btn" type="button">paste JSON…</button>
@@ -77,6 +80,7 @@ function shellHtml(): string {
         <div class="intake-actions" id="paste-run-row" hidden>
           <button class="btn primary" id="run-paste-btn" type="button">analyze</button>
         </div>
+        <p class="intake-error" id="intake-error" role="alert" hidden></p>
         <p class="hint">Nothing leaves your browser. Parsing and token counting run locally.</p>
         <div class="examples-row">
           <p>or load a built-in example (synthetic data, labelled below)</p>
@@ -118,7 +122,8 @@ function wireIntake(): void {
   $("#pick-file-btn").addEventListener("click", () => fileInput.click());
   fileInput.addEventListener("change", () => {
     const file = fileInput.files?.[0];
-    if (file) void readPossiblyGzippedFile(file).then((text) => runAnalysis(text));
+    fileInput.value = ""; // choosing the same file again should still fire "change"
+    if (file) void loadFile(file);
   });
 
   $("#paste-btn").addEventListener("click", () => {
@@ -127,7 +132,8 @@ function wireIntake(): void {
     pasteArea.focus();
   });
   $("#run-paste-btn").addEventListener("click", () => {
-    if (pasteArea.value.trim().length > 0) runAnalysis(pasteArea.value);
+    if (pasteArea.value.trim().length > 0) startNewInput(pasteArea.value);
+    else showIntakeError("Paste a request (or JSONL of requests) first.");
   });
 
   dropzone.addEventListener("dragover", (e) => {
@@ -139,7 +145,7 @@ function wireIntake(): void {
     e.preventDefault();
     dropzone.classList.remove("drag");
     const file = e.dataTransfer?.files?.[0];
-    if (file) void readPossiblyGzippedFile(file).then((text) => runAnalysis(text));
+    if (file) void loadFile(file);
   });
 
   const chipRow = $("#example-chips");
@@ -148,20 +154,51 @@ function wireIntake(): void {
       `<button class="example-chip" type="button" data-example="${ex.id}" title="${esc(ex.description)}">${esc(ex.label)}${ex.approxSizeMb >= 0.2 ? ` <span class="chip-size">(${ex.approxSizeMb.toFixed(2)} MB gz)</span>` : ""}</button>`,
   ).join("");
   chipRow.addEventListener("click", (e) => {
-    const target = (e.target as HTMLElement).closest<HTMLElement>("[data-example]");
-    if (!target) return;
+    const target = (e.target as HTMLElement).closest<HTMLButtonElement>("[data-example]");
+    if (!target || target.disabled) return;
     const example = BUILT_IN_EXAMPLES.find((ex) => ex.id === target.dataset["example"]);
     if (!example) return;
-    state.format = example.format;
-    state.model = example.model;
+    const label = target.innerHTML;
+    target.disabled = true;
     target.textContent = "loading…";
-    void example.load().then((content) => runAnalysis(content));
+    example
+      .load()
+      .then((content) => startNewInput(content))
+      .catch((err: unknown) => showIntakeError(`Could not load the example: ${(err as Error).message}`))
+      .finally(() => {
+        target.disabled = false;
+        target.innerHTML = label;
+      });
   });
+}
+
+async function loadFile(file: File): Promise<void> {
+  try {
+    startNewInput(await readPossiblyGzippedFile(file));
+  } catch (err) {
+    showIntakeError(`Could not read ${file.name}: ${(err as Error).message}`);
+  }
+}
+
+/** A new input starts from auto-detection: overrides picked for the previous input don't carry over. */
+function startNewInput(text: string): void {
+  state.format = "auto";
+  state.model = undefined;
+  state.calibration = undefined;
+  runAnalysis(text, true);
+}
+
+function showIntakeError(message: string | undefined): void {
+  const el = $("#intake-error");
+  el.textContent = message ?? "";
+  el.hidden = message === undefined;
 }
 
 function wireTopbar(): void {
   $("#new-analysis-btn").addEventListener("click", () => {
     state.analysis = undefined;
+    state.calibration = undefined;
+    showIntakeError(undefined);
     $("#dashboard").classList.remove("shown");
     $("#topbar-controls").hidden = true;
     $("#intake").style.display = "grid";
@@ -170,13 +207,18 @@ function wireTopbar(): void {
   const formatSelect = $("#format-select") as HTMLSelectElement;
   formatSelect.addEventListener("change", () => {
     state.format = formatSelect.value as Provider | "auto";
-    if (lastRawInput !== undefined) runAnalysis(lastRawInput);
+    // A model from the other provider's list means nothing after a format switch.
+    state.model = undefined;
+    state.calibration = undefined;
+    if (lastRawInput !== undefined) runAnalysis(lastRawInput, false);
   });
 
   const modelSelect = $("#model-select") as HTMLSelectElement;
   modelSelect.addEventListener("change", () => {
     state.model = modelSelect.value;
-    if (lastRawInput !== undefined) runAnalysis(lastRawInput);
+    // count_tokens results are model-specific.
+    state.calibration = undefined;
+    if (lastRawInput !== undefined) runAnalysis(lastRawInput, false);
   });
 
   $("#theme-toggle").addEventListener("click", () => {
@@ -208,29 +250,33 @@ function applyStoredTheme(): void {
 
 let lastRawInput: string | undefined;
 
-function runAnalysis(input: string): void {
-  void runAnalysisAsync(input);
+/** `fresh` = a new input: jump to its last request. Otherwise (an override or calibration changed)
+ * keep the request and pair the user was looking at. */
+function runAnalysis(input: string, fresh: boolean): void {
+  void runAnalysisAsync(input, fresh);
 }
 
-async function runAnalysisAsync(input: string): Promise<void> {
+async function runAnalysisAsync(input: string, fresh: boolean): Promise<void> {
   lastRawInput = input;
-  state.calibration = new Map();
   setLoading(true);
   try {
     const core = await loadCore();
     const result = core.analyze(input, {
       format: state.format === "auto" ? undefined : state.format,
       model: state.model,
+      claudeTokenScale: state.calibration?.scale,
     });
     state.analysis = result;
+    showIntakeError(undefined);
     // Default to the LAST request: that's where the context is biggest and most interesting
     // (a growing agent-loop transcript), not the smallest, near-empty first turn.
-    state.selectedRequest = result.reports.length - 1;
-    state.selectedPair = Math.max(0, result.prefixMatches.length - 1);
-    if (state.model === undefined) state.model = result.cacheSimulation.model ?? defaultModelFor(result.parse.format);
+    if (fresh || state.selectedRequest >= result.reports.length) state.selectedRequest = result.reports.length - 1;
+    if (fresh || state.selectedPair >= result.prefixMatches.length) state.selectedPair = Math.max(0, result.prefixMatches.length - 1);
     showDashboard(core);
   } catch (err) {
-    alert(`Could not analyze this input: ${(err as Error).message}`);
+    const message = `Could not analyze this input: ${(err as Error).message}`;
+    if (state.analysis) window.alert(message);
+    else showIntakeError(message);
   } finally {
     setLoading(false);
   }
@@ -242,10 +288,6 @@ function setLoading(loading: boolean): void {
   document.getElementById("dropzone")?.setAttribute("aria-busy", String(loading));
 }
 
-function defaultModelFor(format: Provider): string {
-  return format === "anthropic" ? "claude-sonnet-5" : "gpt-6-sol";
-}
-
 // ---------------------------------------------------------------------------
 // dashboard
 // ---------------------------------------------------------------------------
@@ -253,6 +295,7 @@ function defaultModelFor(format: Provider): string {
 function showDashboard(core: CoreModule): void {
   const result = state.analysis;
   if (!result) return;
+  loadedCore = core;
 
   ($("#intake") as HTMLElement).style.display = "none";
   $("#dashboard").classList.add("shown");
@@ -264,7 +307,7 @@ function showDashboard(core: CoreModule): void {
   const modelSelect = $("#model-select") as HTMLSelectElement;
   const models = result.parse.format === "anthropic" ? core.ANTHROPIC_MODELS : core.OPENAI_MODELS;
   modelSelect.innerHTML = models.map((m) => `<option value="${m.id}">${esc(m.displayName)}</option>`).join("");
-  modelSelect.value = state.model ?? models[0]!.id;
+  modelSelect.value = result.model.id;
 
   renderRequestTabs();
   renderContent();
@@ -306,13 +349,15 @@ function renderContent(): void {
   const content = $("#content");
   const report = result.reports[state.selectedRequest]!;
 
+  // The answer (findings) comes right after the headline numbers; the evidence follows.
   content.innerHTML = `
     ${statTilesPanel(report, result)}
+    ${parseNotesPanel(result)}
+    ${findingsPanel(result)}
     ${treemapPanel(report)}
     ${segmentsTablePanel(report)}
     ${result.parse.requests.length > 1 ? sequencePanel(result) : ""}
     ${cachePanel(result)}
-    ${findingsPanel(result)}
     ${result.duplicates.length > 0 ? duplicatesPanel(result) : ""}
     ${calibratePanel(result)}
   `;
@@ -324,13 +369,27 @@ function renderContent(): void {
   wireCalibrate(result);
 }
 
+/** Unwrapped envelopes and parse warnings (skipped lines, non-request records, stored-response
+ * continuations) - things the user should know before trusting the numbers below. */
+function parseNotesPanel(result: AnalysisResult): string {
+  const notes: string[] = [];
+  if (result.parse.envelope) notes.push(`Request bodies were read from each record's <code>${esc(result.parse.envelope)}</code> field.`);
+  if (result.model.unrecognized) notes.push(`The requests name <code>${esc(result.model.unrecognized)}</code>, which isn't in the pricing table, so costs use ${esc(result.model.displayName)}. Pick the right model above.`);
+  const warnings = result.parse.warnings;
+  for (const w of warnings.slice(0, 5)) notes.push(esc(w.message));
+  if (warnings.length > 5) notes.push(`…and ${warnings.length - 5} more parse warnings.`);
+  if (notes.length === 0) return "";
+  return `<section class="panel notes-panel" role="note">${notes.map((n) => `<p>${n}</p>`).join("")}</section>`;
+}
+
 // ---------------------------------------------------------------------------
 // stat tiles
 // ---------------------------------------------------------------------------
 
 function statTilesPanel(report: RequestTokenReport, result: AnalysisResult): string {
-  const errorCount = result.findings.filter((f) => f.severity === "error").length;
-  const warnCount = result.findings.filter((f) => f.severity === "warning").length;
+  const groups = currentGroups(result);
+  const errorCount = groups.filter((g) => g.severity === "error").length;
+  const warnCount = groups.filter((g) => g.severity === "warning").length;
   const savings =
     result.cacheSimulation.totalActualCostUsd !== undefined && result.cacheSimulation.totalOptimizedCostUsd !== undefined
       ? result.cacheSimulation.totalActualCostUsd - result.cacheSimulation.totalOptimizedCostUsd
@@ -339,10 +398,10 @@ function statTilesPanel(report: RequestTokenReport, result: AnalysisResult): str
     <section class="panel">
       <h2>Request ${state.selectedRequest + 1} of ${result.reports.length}</h2>
       <div class="stat-row">
-        <div class="stat-tile"><div class="label">≈ Claude tokens</div><div class="value">${fmtInt(report.totals.claudeTokensEstimate)}</div></div>
+        <div class="stat-tile"><div class="label">≈ Claude tokens${result.claudeTokenScale !== 1 ? " (calibrated)" : ""}</div><div class="value">${fmtInt(report.totals.claudeTokensEstimate)}</div></div>
         <div class="stat-tile"><div class="label">OpenAI tokens (exact)</div><div class="value">${fmtInt(report.totals.openaiTokens)}</div></div>
         <div class="stat-tile"><div class="label">of context window</div><div class="value">${fmtPct(report.percentOfContextWindow, 2)}</div></div>
-        <div class="stat-tile"><div class="label">findings</div><div class="value">${errorCount > 0 ? errorCount + " err" : warnCount > 0 ? warnCount + " warn" : "0"}</div></div>
+        <div class="stat-tile"><div class="label">issues</div><div class="value">${errorCount > 0 ? errorCount + " err" : warnCount > 0 ? warnCount + " warn" : groups.length}</div></div>
         ${savings !== undefined && savings > 1e-9 ? `<div class="stat-tile"><div class="label">potential savings</div><div class="value good">${fmtUsd(savings)}</div></div>` : ""}
       </div>
     </section>
@@ -497,7 +556,7 @@ function cachePanel(result: AnalysisResult): string {
   const savings = sim.totalActualCostUsd !== undefined && sim.totalOptimizedCostUsd !== undefined ? sim.totalActualCostUsd - sim.totalOptimizedCostUsd : undefined;
   return `
     <section class="panel">
-      <h2>Cache simulation <span class="count">${sim.provider}${state.model ? ` · ${state.model}` : ""}</span></h2>
+      <h2>Cache simulation <span class="count">${sim.provider} · ${esc(result.model.displayName)} · ${modelSourceNote(result)}</span></h2>
       <div class="table-scroll">
         <table class="cache">
           <thead><tr><th>request</th><th>read</th><th>write 5m</th><th>write 1h</th><th>uncached</th><th>cost</th></tr></thead>
@@ -524,21 +583,51 @@ function cachePanel(result: AnalysisResult): string {
 // findings panel
 // ---------------------------------------------------------------------------
 
+let groupsCache: { result: AnalysisResult; groups: FindingGroup[] } | undefined;
+
+/** groupFindings is loaded with the core module; memoized per analysis since several panels need it. */
+function currentGroups(result: AnalysisResult): FindingGroup[] {
+  if (groupsCache?.result !== result) groupsCache = { result, groups: loadedCore!.groupFindings(result.findings) };
+  return groupsCache.groups;
+}
+
+function modelSourceNote(result: AnalysisResult): string {
+  const { model } = result;
+  if (model.source === "option") return "chosen above";
+  if (model.source === "request") return "from the requests";
+  if (model.unrecognized) return `"${esc(model.unrecognized)}" isn't in the pricing table`;
+  return "default, no model in the requests";
+}
+
+// Occurrence buttons shown per group before collapsing the rest into a count.
+const MAX_OCCURRENCE_LINKS = 12;
+
 function findingsPanel(result: AnalysisResult): string {
-  if (result.findings.length === 0) {
+  const groups = currentGroups(result);
+  if (groups.length === 0) {
     return `<section class="panel"><h2>Findings</h2><p class="empty-state">✓ No findings — this sequence caches cleanly.</p></section>`;
   }
+  const recurring = result.findings.length > groups.length ? ` from ${result.findings.length} findings` : "";
   return `
     <section class="panel">
-      <h2>Findings <span class="count">${result.findings.length}</span></h2>
+      <h2>Findings <span class="count">${groups.length} issue${groups.length === 1 ? "" : "s"}${recurring}</span></h2>
       <div class="finding-list">
-        ${result.findings
-          .map(
-            (f, i) => `<div class="finding ${f.severity}" data-finding="${i}">
-              <div class="fhead"><span class="fsev">${f.severity}</span> ${esc(f.title)} <span class="freq">(request ${f.requestIndex + 1})</span></div>
-              <div class="fdetail">${esc(f.detail)}</div>
-            </div>`,
-          )
+        ${groups
+          .map((g, gi) => {
+            const where = loadedCore!.describeRequestIndices(g.requestIndices);
+            const occurrences =
+              g.requestIndices.length > 1
+                ? `<div class="foccur">${g.requestIndices
+                    .slice(0, MAX_OCCURRENCE_LINKS)
+                    .map((r) => `<button type="button" class="occ ${r === state.selectedRequest ? "active" : ""}" data-group="${gi}" data-req="${r}">req ${r + 1}</button>`)
+                    .join("")}${g.requestIndices.length > MAX_OCCURRENCE_LINKS ? `<span class="occ-more">+${g.requestIndices.length - MAX_OCCURRENCE_LINKS} more</span>` : ""}</div>`
+                : "";
+            return `<div class="finding ${g.severity}">
+              <button type="button" class="fhead" data-group="${gi}" data-req="${g.requestIndices[0]}"><span class="fsev">${g.severity}</span> ${esc(g.title)} <span class="freq">(${where}${g.requestIndices.length > 1 ? `, ${g.requestIndices.length}×` : ""})</span></button>
+              <div class="fdetail">${esc(g.detail)}</div>
+              ${occurrences}
+            </div>`;
+          })
           .join("")}
       </div>
     </section>
@@ -546,21 +635,21 @@ function findingsPanel(result: AnalysisResult): string {
 }
 
 function wireFindings(result: AnalysisResult): void {
-  const panel = $all(".finding");
-  panel.forEach((el) => {
+  const groups = currentGroups(result);
+  $all("[data-group]").forEach((el) => {
     el.addEventListener("click", () => {
-      const idx = Number(el.dataset["finding"]);
-      const finding = result.findings[idx];
-      if (!finding) return;
+      const group = groups[Number(el.dataset["group"])];
+      const requestIndex = Number(el.dataset["req"]);
+      if (!group) return;
+      const finding = group.findings.find((f) => f.requestIndex === requestIndex) ?? group.findings[0]!;
       if (finding.requestIndex !== state.selectedRequest) {
         state.selectedRequest = finding.requestIndex;
         renderRequestTabs();
         renderContent();
       }
-      const segId = finding.segmentIds[0];
+      const segId = finding.segmentIds[finding.segmentIds.length - 1];
       if (segId) {
-        const report = result.reports[finding.requestIndex];
-        const seg = report?.segments.find((s) => s.id === segId);
+        const seg = result.reports[finding.requestIndex]?.segments.find((s) => s.id === segId);
         if (seg) openInspector(seg);
       }
     });
@@ -593,27 +682,39 @@ function duplicatesPanel(result: AnalysisResult): string {
 
 function calibratePanel(result: AnalysisResult): string {
   if (result.parse.format !== "anthropic") return "";
+  const c = state.calibration;
+  const summary = c
+    ? `<p class="calibrate-result">Request ${c.requestIndex + 1} is <strong>${fmtInt(c.exactTokens)}</strong> tokens by <code>count_tokens</code> on ${esc(c.model)}; the heuristic said ≈${fmtInt(c.estimatedTokens)} (${fmtSignedPct((c.estimatedTokens - c.exactTokens) / c.exactTokens)}). Every ≈ figure on this page is now scaled ×${c.scale.toFixed(3)}. <button class="btn link" id="calibrate-reset" type="button">undo</button></p>`
+    : "";
   return `
     <section class="panel">
       <h2>Calibrate Claude estimates <span class="count">optional</span></h2>
-      <p style="color:var(--text-muted); font-size:12px; margin:0 0 10px">
-        Paste an Anthropic API key to replace the ≈ estimates for the selected request with exact counts from
-        <code>count_tokens</code>. The key stays in this tab's memory only - never stored, never sent anywhere but api.anthropic.com.
+      <p class="panel-note">
+        Claude's tokenizer isn't public, so ≈ counts are a heuristic. Paste an Anthropic API key to count request
+        ${state.selectedRequest + 1} exactly with the free <code>count_tokens</code> endpoint and rescale every estimate to match.
+        One call; the key stays in this tab's memory and is sent only to api.anthropic.com.
       </p>
       <div class="calibrate-row">
-        <input type="password" id="calibrate-key" placeholder="sk-ant-…" autocomplete="off" />
-        <button class="btn primary" id="calibrate-btn" type="button">calibrate this request</button>
-        <span class="calibrate-status" id="calibrate-status"></span>
+        <input type="password" id="calibrate-key" placeholder="sk-ant-…" autocomplete="off" aria-label="Anthropic API key" />
+        <button class="btn primary" id="calibrate-btn" type="button">count request ${state.selectedRequest + 1}</button>
+        <span class="calibrate-status" id="calibrate-status" role="status"></span>
       </div>
+      ${summary}
     </section>
   `;
 }
 
+function fmtSignedPct(fraction: number): string {
+  return `${fraction >= 0 ? "+" : "−"}${Math.abs(fraction * 100).toFixed(1)}%`;
+}
+
 function wireCalibrate(result: AnalysisResult): void {
-  const btn = document.getElementById("calibrate-btn");
-  if (!btn) return;
-  btn.addEventListener("click", () => {
+  document.getElementById("calibrate-btn")?.addEventListener("click", () => {
     void runCalibration(result);
+  });
+  document.getElementById("calibrate-reset")?.addEventListener("click", () => {
+    state.calibration = undefined;
+    if (lastRawInput !== undefined) runAnalysis(lastRawInput, false);
   });
 }
 
@@ -625,21 +726,21 @@ async function runCalibration(result: AnalysisResult): Promise<void> {
     status.textContent = "enter an API key first";
     return;
   }
-  const report = result.reports[state.selectedRequest]!;
-  const model = state.model ?? "claude-sonnet-5";
-  status.textContent = `calibrating ${report.segments.length} segments…`;
+  const btn = $("#calibrate-btn") as HTMLButtonElement;
+  btn.disabled = true;
+  status.textContent = "counting…";
   try {
     const core = await loadCore();
-    const results = await core.calibrateSegments(
-      key,
-      model,
-      report.segments.map((s) => ({ segmentKey: s.id, text: s.text })),
-    );
-    for (const r of results) state.calibration.set(r.segmentKey, r.tokens);
-    status.textContent = `done — ${results.length} segments calibrated`;
-    renderContent();
+    // Count against unscaled estimates: re-parse so an earlier calibration doesn't compound.
+    const parsed = core.parseInput(lastRawInput!, result.parse.format);
+    const request = parsed.requests[state.selectedRequest]!;
+    state.calibration = await core.countRequestTokens(key, result.model.id, request);
+    keyInput.value = "";
+    runAnalysis(lastRawInput!, false);
   } catch (err) {
     status.textContent = `calibration failed: ${(err as Error).message}`;
+  } finally {
+    btn.disabled = false;
   }
 }
 
@@ -649,14 +750,13 @@ async function runCalibration(result: AnalysisResult): Promise<void> {
 
 function openInspector(segment: Segment): void {
   $("#drawer-title").textContent = segment.label;
-  const calibrated = state.calibration.get(segment.id);
   const rawPretty = typeof segment.raw === "string" ? segment.raw : JSON.stringify(segment.raw, null, 2);
   $("#drawer-body").innerHTML = `
     <dl>
       <dt>category</dt><dd>${CATEGORY_LABEL[segment.category]}</dd>
       <dt>path</dt><dd>${esc(segment.path)}</dd>
       <dt>chars</dt><dd>${fmtInt(segment.charLength)}</dd>
-      <dt>≈ Claude tokens</dt><dd>${fmtInt(segment.claudeTokensEstimate)}${calibrated !== undefined ? ` <span style="color:var(--status-good)">→ ${fmtInt(calibrated)} (calibrated)</span>` : ""}</dd>
+      <dt>≈ Claude tokens</dt><dd>${fmtInt(segment.claudeTokensEstimate)}${state.calibration ? ` <span class="muted">(scaled ×${state.calibration.scale.toFixed(3)})</span>` : ""}</dd>
       <dt>OpenAI tokens</dt><dd>${fmtInt(segment.openaiTokens)}</dd>
       <dt>cache_control</dt><dd>${segment.cacheControl ? `ephemeral, ${segment.cacheControl.ttl}` : "none"}</dd>
     </dl>

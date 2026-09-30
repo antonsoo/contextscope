@@ -1,4 +1,5 @@
 import type { AnalysisResult } from "../core/index.js";
+import { describeRequestIndices, groupFindings } from "../core/index.js";
 
 function esc(s: string): string {
   return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -19,7 +20,7 @@ const CATEGORY_COLOR: Record<string, string> = {
  * meant to be opened locally or attached to a PR/ticket. The interactive web app is the place
  * for exploration; this is the "send this to a teammate" artifact. */
 export function renderHtmlReport(result: AnalysisResult): string {
-  const { parse, reports, cacheSimulation, findings, duplicates } = result;
+  const { parse, reports, cacheSimulation, findings, duplicates, model } = result;
 
   const requestSections = reports
     .map((report) => {
@@ -43,10 +44,11 @@ export function renderHtmlReport(result: AnalysisResult): string {
     )
     .join("");
 
-  const findingRows = findings
+  const groups = groupFindings(findings);
+  const findingRows = groups
     .map(
-      (f) =>
-        `<li class="finding ${esc(f.severity)}"><span class="pill">${esc(f.severity)}</span> <strong>${esc(f.title)}</strong> <span class="muted">(request ${f.requestIndex + 1})</span><p>${esc(f.detail)}</p></li>`,
+      (g) =>
+        `<li class="finding ${esc(g.severity)}"><span class="pill">${esc(g.severity)}</span> <strong>${esc(g.title)}</strong> <span class="muted">(${describeRequestIndices(g.requestIndices)}${g.requestIndices.length > 1 ? `, ${g.requestIndices.length}×` : ""})</span><p>${esc(g.detail)}</p></li>`,
     )
     .join("");
 
@@ -83,7 +85,7 @@ export function renderHtmlReport(result: AnalysisResult): string {
 </style></head>
 <body>
   <h1>contextscope report</h1>
-  <p class="muted">${esc(parse.format)} · ${parse.requests.length} request(s)${parse.autoDetected ? " · format auto-detected" : ""} · generated ${new Date().toISOString()}</p>
+  <p class="muted">${esc(parse.format)} · ${parse.requests.length} request(s)${parse.autoDetected ? " · format auto-detected" : ""} · priced as ${esc(model.displayName)}${model.unrecognized ? ` ("${esc(model.unrecognized)}" is not in the pricing table)` : ""}${result.claudeTokenScale !== 1 ? ` · Claude estimates calibrated ×${result.claudeTokenScale.toFixed(3)}` : ""} · generated ${new Date().toISOString()}</p>
 
   ${requestSections}
 
@@ -91,11 +93,11 @@ export function renderHtmlReport(result: AnalysisResult): string {
     <h3>Cache simulation (${esc(cacheSimulation.provider)})</h3>
     <table><thead><tr><th>request</th><th>read</th><th>write (5m)</th><th>write (1h)</th><th>uncached</th><th>cost</th></tr></thead><tbody>${cacheRows}</tbody></table>
     <p class="muted">total actual: ${cacheSimulation.totalActualCostUsd !== undefined ? `$${cacheSimulation.totalActualCostUsd.toFixed(4)}` : "n/a"} · total optimized: ${cacheSimulation.totalOptimizedCostUsd !== undefined ? `$${cacheSimulation.totalOptimizedCostUsd.toFixed(4)}` : "n/a"}</p>
-    ${savings !== undefined && savings > 1e-9 ? `<p class="savings">Applying the fixes below, plus an automatic breakpoint on every request's tail, would save $${savings.toFixed(4)} on this sequence — ≈$${Math.round(savings * 1000).toLocaleString("en-US")} per 1,000 sessions shaped like this one.</p>` : ""}
+    ${savings !== undefined && savings > 1e-9 ? `<p class="savings">Applying the fixes below${cacheSimulation.provider === "anthropic" ? ", plus an automatic breakpoint on every request's tail," : ""} would save $${savings.toFixed(4)} on this sequence — ≈$${Math.round(savings * 1000).toLocaleString("en-US")} per 1,000 sessions shaped like this one.</p>` : ""}
   </section>
 
   <section class="card">
-    <h3>Findings (${findings.length})</h3>
+    <h3>Findings (${groups.length} issue${groups.length === 1 ? "" : "s"}${findings.length > groups.length ? ` from ${findings.length} findings` : ""})</h3>
     <ul class="findings">${findingRows || '<li class="muted">None — this sequence caches cleanly.</li>'}</ul>
   </section>
 

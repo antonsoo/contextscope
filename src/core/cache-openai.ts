@@ -1,5 +1,6 @@
 import type { CacheSimStep, ParsedRequest, PrefixMatch } from "./types.js";
 import { findOpenAiModel } from "./pricing.js";
+import { sameModel } from "./model-id.js";
 
 /**
  * Simulates OpenAI's automatic (implicit) prompt caching: no `cache_control`
@@ -22,7 +23,7 @@ export function simulateOpenAiCacheSequence(requests: ParsedRequest[], prefixMat
 
   requests.forEach((request, i) => {
     const total = request.segments.reduce((sum, s) => sum + s.openaiTokens, 0);
-    const match = i > 0 ? prefixMatches[i - 1] : undefined;
+    const match = i > 0 && sameModel(requests[i - 1]!.model, request.model) ? prefixMatches[i - 1] : undefined;
     const rawCacheable = match ? match.matchedOpenaiTokens : 0;
     const cachedTokens = rawCacheable >= MIN_CACHEABLE_TOKENS ? Math.floor(rawCacheable / CACHE_GRANULARITY) * CACHE_GRANULARITY : 0;
     const uncachedTokens = Math.max(0, total - cachedTokens);
