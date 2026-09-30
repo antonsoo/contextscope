@@ -2,6 +2,68 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.2.0] - 2026-09-30
+
+### Added
+
+- The model named in the requests picks the pricing and cache rules; `--model`
+  overrides it, and an unrecognized id is reported instead of silently priced
+  as the default. Dated snapshot, Bedrock and Vertex ids resolve to their alias.
+- All eleven current Claude models, with each one's minimum cacheable prefix
+  and cache-read price (0.05× on Claude Opus 5.5, 0.025× on Claude Fable 5.1).
+  Claude Sonnet 5.5 is the default.
+- A `model_switch` finding, and model switches count as cache misses.
+- OpenAI Responses API bodies; Anthropic Message Batches and OpenAI Batch API
+  files; gateway logs that wrap each body in `request` / `request_body`.
+- Warnings for records that aren't request bodies and for Responses requests
+  that continue a stored response (`previous_response_id`).
+- CLI: `--fail-on <error|warning|info>` (exit 2) for CI gates, `--calibrate`
+  (reads `ANTHROPIC_API_KEY`), `-v/--verbose`; unknown options and bad values
+  are rejected with a message.
+- `npm run bench` times `analyze()` on the flagship example and a generated
+  300-request session.
+
+### Changed
+
+- Findings that recur on every request are grouped ("requests 2–24, 23×") in
+  the CLI, the HTML report and the web app. The CLI shows the largest
+  request's breakdown and abbreviates cache tables over 30 rows unless
+  `--verbose`; the HTML report and the web app lead with findings.
+- Calibration counts one whole request with `count_tokens` and scales every
+  Claude estimate to it, instead of one call per segment whose results only
+  appeared in the inspector.
+- The optimized scenario fixes everything the findings flag: JSON keys and the
+  tool list are put in a deterministic order, in addition to removing volatile
+  values. The OpenAI tools-reordered example now shows the saving its finding
+  implies.
+- "Tools reordered" names only the positions that moved. The timestamp fix
+  suggests a mid-conversation `system` message only for models that accept one.
+- Web: OpenAI sessions are sized by exact OpenAI tokens in the treemap, and
+  treemap labels no longer overflow small blocks.
+
+### Fixed
+
+- A tool schema whose key order drifted still counted as a cache hit, which
+  contradicted the key-order finding. Blocks are now compared exactly as sent.
+- A `cache_control` marker was part of a block's content, so a rolling
+  breakpoint on a `tool_use` block broke the prefix when it moved on.
+- The canonical minimal Anthropic request (`{model, max_tokens, messages}` with
+  string content) was detected as OpenAI, and so was any Anthropic request
+  with a mid-conversation `system` message.
+- Web: after an example, a new file or paste inherited that example's format
+  and model (an OpenAI paste after an Anthropic example was parsed as
+  Anthropic); example buttons stayed on "loading…"; errors used `alert()`.
+- Server-side and MCP tool blocks were counted as user or assistant text.
+
+### Performance
+
+- The segment diff uses Myers' O((N+M)·D) algorithm instead of a full LCS
+  table, each distinct segment text is tokenized once per analysis, and the
+  optimized comparison normalizes each segment once. Measured back to back on a
+  14-vCPU WSL2 machine, `analyze()` went from 902 ms to 138 ms on the flagship
+  session and from 2,770 ms to 361 ms on the 300-request session (medians of
+  five).
+
 ## [0.1.0] - 2026-09-24
 
 Initial release.
