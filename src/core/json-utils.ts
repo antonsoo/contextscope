@@ -4,7 +4,19 @@
  * different key order serialize identically. Used by the optimized cache scenario ("what if the
  * schema were serialized deterministically") and by the key-order finding. */
 export function canonicalJson(value: unknown): string {
-  return JSON.stringify(sortKeysDeep(value));
+  return JSON.stringify(sortKeysDeep(value)) ?? "null";
+}
+
+/** A JSON object: not null, not an array. Request logs are untrusted input, so the parsers
+ * check before reading a field rather than assume the documented shape. */
+export function isRecord(value: unknown): value is Record<string, unknown> {
+  return value !== null && typeof value === "object" && !Array.isArray(value);
+}
+
+/** The text of a segment: the string itself, or the JSON of whatever sits where a string
+ * should be, so a malformed block is still counted and compared instead of crashing the parse. */
+export function asText(value: unknown): string {
+  return typeof value === "string" ? value : blockJson(value);
 }
 
 function withoutCacheControl(value: unknown): unknown {
@@ -21,7 +33,8 @@ function withoutCacheControl(value: unknown): unknown {
  * cached content, so it must not make two otherwise identical blocks differ.
  */
 export function blockJson(value: unknown): string {
-  return JSON.stringify(withoutCacheControl(value));
+  // JSON.stringify(undefined) is undefined, not a string.
+  return JSON.stringify(withoutCacheControl(value)) ?? "null";
 }
 
 /** blockJson with sorted keys: the same block if it were serialized deterministically. */

@@ -1,5 +1,5 @@
 import type { ParsedRequest, Segment, SegmentCategory } from "./types.js";
-import { blockJson } from "./json-utils.js";
+import { asText, blockJson, isRecord } from "./json-utils.js";
 import { countTokens, type TokenCounter } from "./token-counter.js";
 
 interface OpenAiContentPart {
@@ -12,10 +12,13 @@ interface OpenAiContentPart {
 type SegmentParams = { id: string; category: SegmentCategory; label: string; path: string; text: string; raw: unknown };
 
 function makeSegment(params: SegmentParams, counter: TokenCounter): Segment {
-  const counts = counter(params.text);
+  // `text` is whatever the log had in that position: a number or an object is kept as its JSON.
+  const text = asText(params.text);
+  const counts = counter(text);
   return {
     ...params,
-    charLength: params.text.length,
+    text,
+    charLength: text.length,
     openaiTokens: counts.openai,
     claudeTokensEstimate: counts.claude,
   };
@@ -33,19 +36,20 @@ export function parseOpenAiRequest(raw: unknown, index: number, counter: TokenCo
   const obj = (raw !== null && typeof raw === "object" ? (raw as Record<string, unknown>) : {}) as Record<string, unknown>;
   const segments: Segment[] = [];
 
-  const tools = Array.isArray(obj["tools"]) ? (obj["tools"] as Record<string, unknown>[]) : [];
-  tools.forEach((tool, i) => {
+  const tools: unknown[] = Array.isArray(obj["tools"]) ? obj["tools"] : [];
+  tools.forEach((entry, i) => {
+    const tool = isRecord(entry) ? entry : {};
     // Chat Completions nests the definition under `function`; the Responses API flattens it.
-    const fn = (tool["function"] as Record<string, unknown> | undefined) ?? tool;
-    const name = typeof fn["name"] === "string" ? (fn["name"] as string) : typeof tool["type"] === "string" ? (tool["type"] as string) : `tool_${i}`;
+    const fn = isRecord(tool["function"]) ? tool["function"] : tool;
+    const name = typeof fn["name"] === "string" ? fn["name"] : typeof tool["type"] === "string" ? tool["type"] : `tool_${i}`;
     segments.push(
       seg({
         id: `tools[${i}]`,
         category: "tools",
         label: `tool: ${name}`,
         path: `tools[${i}]`,
-        text: blockJson(tool),
-        raw: tool,
+        text: blockJson(entry),
+        raw: entry,
       }),
     );
   });
@@ -56,8 +60,14 @@ export function parseOpenAiRequest(raw: unknown, index: number, counter: TokenCo
     return { provider: "openai", index, model, raw, segments };
   }
 
-  const messages = Array.isArray(obj["messages"]) ? (obj["messages"] as Record<string, unknown>[]) : [];
+  const messages: unknown[] = Array.isArray(obj["messages"]) ? obj["messages"] : [];
   messages.forEach((message, mi) => {
+    if (!isRecord(message)) {
+      // Not a message object at all (null, a bare string): kept whole, so later positions don't shift.
+      const path = `messages[${mi}]`;
+      segments.push(seg({ id: path, category: "user", label: `message ${mi + 1} (malformed)`, path, text: blockJson(message), raw: message }));
+      return;
+    }
     const role = typeof message["role"] === "string" ? message["role"] : "user";
     const category = roleCategory(role);
     const content = message["content"];
@@ -76,11 +86,16 @@ export function parseOpenAiRequest(raw: unknown, index: number, counter: TokenCo
         );
       }
     } else if (Array.isArray(content)) {
-      (content as OpenAiContentPart[]).forEach((part, pi) => {
+      (content as unknown[]).forEach((entry, pi) => {
         const path = `messages[${mi}].content[${pi}]`;
+        if (!isRecord(entry)) {
+          segments.push(seg({ id: path, category, label: `message ${mi + 1} (${role}) malformed part`, path, text: blockJson(entry), raw: entry }));
+          return;
+        }
+        const part: OpenAiContentPart = entry;
         if (part.type === "text") {
           segments.push(
-            seg({ id: path, category, label: `message ${mi + 1} (${role}) text`, path, text: part.text ?? "", raw: part }),
+            seg({ id: path, category, label: `message ${mi + 1} (${role}) text`, path, text: asText(part.text ?? ""), raw: part }),
           );
         } else if (part.type === "image_url") {
           segments.push(
@@ -88,16 +103,20 @@ export function parseOpenAiRequest(raw: unknown, index: number, counter: TokenCo
           );
         } else {
           segments.push(
-            seg({ id: path, category, label: `message ${mi + 1} (${role}) ${part.type ?? "content"}`, path, text: blockJson(part), raw: part }),
+            seg({ id: path, category, label: `message ${mi + 1} (${role}) ${typeof part.type === "string" ? part.type : "content"}`, path, text: blockJson(part), raw: part }),
           );
         }
       });
+    } else {
+      // A number or an object where the content should be: still part of what was sent.
+      const path = `messages[${mi}].content`;
+      segments.push(seg({ id: path, category, label: `message ${mi + 1} (${role}) malformed content`, path, text: blockJson(content), raw: message }));
     }
 
     // assistant tool calls
-    const toolCalls = Array.isArray(message["tool_calls"]) ? (message["tool_calls"] as Record<string, unknown>[]) : [];
+    const toolCalls: unknown[] = Array.isArray(message["tool_calls"]) ? message["tool_calls"] : [];
     toolCalls.forEach((call, ci) => {
-      const fn = (call["function"] as Record<string, unknown> | undefined) ?? {};
+      const fn = isRecord(call) && isRecord(call["function"]) ? call["function"] : {};
       const path = `messages[${mi}].tool_calls[${ci}]`;
       segments.push(
         seg({
@@ -149,9 +168,13 @@ function parseResponsesBody(obj: Record<string, unknown>, seg: (params: SegmentP
   }
   if (!Array.isArray(input)) return segments;
 
-  (input as Record<string, unknown>[]).forEach((item, ii) => {
-    if (item === null || typeof item !== "object") return;
+  (input as unknown[]).forEach((item, ii) => {
     const path = `input[${ii}]`;
+    if (!isRecord(item)) {
+      // Not an item object (null, a bare string): kept whole, so later positions don't shift.
+      segments.push(seg({ id: path, category: "user", label: `item ${ii + 1} (malformed)`, path, text: blockJson(item), raw: item }));
+      return;
+    }
     const type = typeof item["type"] === "string" ? (item["type"] as string) : "message";
     switch (type) {
       case "message": {
@@ -161,9 +184,14 @@ function parseResponsesBody(obj: Record<string, unknown>, seg: (params: SegmentP
         if (typeof content === "string") {
           if (content.length > 0) segments.push(seg({ id: path, category, label: `item ${ii + 1} (${role}) text`, path: `${path}.content`, text: content, raw: item }));
         } else if (Array.isArray(content)) {
-          (content as OpenAiContentPart[]).forEach((part, pi) => {
+          (content as unknown[]).forEach((entry, pi) => {
             const partPath = `${path}.content[${pi}]`;
-            const partType = part.type ?? "content";
+            if (!isRecord(entry)) {
+              segments.push(seg({ id: partPath, category, label: `item ${ii + 1} (${role}) malformed part`, path: partPath, text: blockJson(entry), raw: entry }));
+              return;
+            }
+            const part: OpenAiContentPart = entry;
+            const partType = typeof part.type === "string" ? part.type : "content";
             if ((partType === "input_text" || partType === "output_text" || partType === "text") && typeof part.text === "string") {
               segments.push(seg({ id: partPath, category, label: `item ${ii + 1} (${role}) text`, path: partPath, text: part.text, raw: part }));
             } else if (partType === "input_image") {

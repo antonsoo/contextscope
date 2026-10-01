@@ -1,5 +1,5 @@
 import type { CacheControl, CacheTtl, ParsedRequest, Segment, SegmentCategory } from "./types.js";
-import { blockJson } from "./json-utils.js";
+import { asText, blockJson, isRecord } from "./json-utils.js";
 import { countTokens, type TokenCounter } from "./token-counter.js";
 
 interface AnthropicBlock {
@@ -9,9 +9,9 @@ interface AnthropicBlock {
   [key: string]: unknown;
 }
 
-function readCacheControl(block: { cache_control?: { type?: string; ttl?: string } }): CacheControl | undefined {
-  const cc = block.cache_control;
-  if (!cc || cc.type !== "ephemeral") return undefined;
+function readCacheControl(block: unknown): CacheControl | undefined {
+  const cc = isRecord(block) ? block["cache_control"] : undefined;
+  if (!isRecord(cc) || cc["type"] !== "ephemeral") return undefined;
   const ttl: CacheTtl = cc.ttl === "1h" ? "1h" : "5m";
   return { type: "ephemeral", ttl };
 }
@@ -26,10 +26,13 @@ function makeSegment(params: {
   cacheControl?: CacheControl | undefined;
 }, counter: TokenCounter): Segment {
   const { cacheControl, ...rest } = params;
-  const counts = counter(params.text);
+  // `text` is whatever the log had in that position: a number or an object is kept as its JSON.
+  const text = asText(params.text);
+  const counts = counter(text);
   return {
     ...rest,
-    charLength: params.text.length,
+    text,
+    charLength: text.length,
     openaiTokens: counts.openai,
     claudeTokensEstimate: counts.claude,
     ...(cacheControl ? { cacheControl } : {}),
@@ -42,9 +45,9 @@ function roleCategory(role: string): SegmentCategory {
 }
 
 /** Server-side and MCP tool blocks (`server_tool_use`, `web_search_tool_result`, `mcp_tool_use`...) are tool traffic too. */
-function otherBlockCategory(type: string | undefined, role: string): SegmentCategory {
+function otherBlockCategory(type: unknown, role: string): SegmentCategory {
   if (type === "server_tool_use" || type === "mcp_tool_use") return "tool_call";
-  if (type !== undefined && type.endsWith("_tool_result")) return "tool_result";
+  if (typeof type === "string" && type.endsWith("_tool_result")) return "tool_result";
   return roleCategory(role);
 }
 
@@ -57,9 +60,9 @@ export function parseAnthropicRequest(raw: unknown, index: number, counter: Toke
   >;
   const segments: Segment[] = [];
 
-  const tools = Array.isArray(obj["tools"]) ? (obj["tools"] as AnthropicBlock[]) : [];
+  const tools: unknown[] = Array.isArray(obj["tools"]) ? obj["tools"] : [];
   tools.forEach((tool, i) => {
-    const name = typeof tool["name"] === "string" ? (tool["name"] as string) : `tool_${i}`;
+    const name = isRecord(tool) && typeof tool["name"] === "string" ? tool["name"] : `tool_${i}`;
     segments.push(
       seg({
         id: `tools[${i}]`,
@@ -86,14 +89,14 @@ export function parseAnthropicRequest(raw: unknown, index: number, counter: Toke
       }),
     );
   } else if (Array.isArray(system)) {
-    (system as AnthropicBlock[]).forEach((block, i) => {
+    (system as unknown[]).forEach((block, i) => {
       segments.push(
         seg({
           id: `system[${i}]`,
           category: "system",
           label: `system block ${i + 1}`,
           path: `system[${i}]`,
-          text: typeof block.text === "string" ? block.text : blockJson(block),
+          text: isRecord(block) && typeof block["text"] === "string" ? block["text"] : blockJson(block),
           raw: block,
           cacheControl: readCacheControl(block),
         }),
@@ -101,16 +104,26 @@ export function parseAnthropicRequest(raw: unknown, index: number, counter: Toke
     });
   }
 
-  const messages = Array.isArray(obj["messages"]) ? (obj["messages"] as Record<string, unknown>[]) : [];
+  const messages: unknown[] = Array.isArray(obj["messages"]) ? obj["messages"] : [];
   messages.forEach((message, mi) => {
+    if (!isRecord(message)) {
+      // Not a message object at all (null, a bare string): kept whole, so later positions don't shift.
+      const path = `messages[${mi}]`;
+      segments.push(seg({ id: path, category: "user", label: `message ${mi + 1} (malformed)`, path, text: blockJson(message), raw: message }));
+      return;
+    }
     const role = typeof message["role"] === "string" ? message["role"] : "user";
     const content = message["content"];
-    const blocks: AnthropicBlock[] =
-      typeof content === "string" ? [{ type: "text", text: content }] : Array.isArray(content) ? (content as AnthropicBlock[]) : [];
+    const blocks: unknown[] = typeof content === "string" ? [{ type: "text", text: content }] : Array.isArray(content) ? content : [];
 
-    blocks.forEach((block, bi) => {
+    blocks.forEach((entry, bi) => {
       const path = `messages[${mi}].content[${bi}]`;
       const id = path;
+      if (!isRecord(entry)) {
+        segments.push(seg({ id, category: roleCategory(role), label: `message ${mi + 1} (${role}) malformed block`, path, text: blockJson(entry), raw: entry }));
+        return;
+      }
+      const block: AnthropicBlock = entry;
       switch (block.type) {
         case "text":
           segments.push(
@@ -119,7 +132,7 @@ export function parseAnthropicRequest(raw: unknown, index: number, counter: Toke
               category: roleCategory(role),
               label: `message ${mi + 1} (${role}) text`,
               path,
-              text: block.text ?? "",
+              text: asText(block.text ?? ""),
               raw: block,
               cacheControl: readCacheControl(block),
             }),
@@ -159,7 +172,7 @@ export function parseAnthropicRequest(raw: unknown, index: number, counter: Toke
               ? resultContent
               : Array.isArray(resultContent)
                 ? resultContent
-                    .map((c) => (c !== null && typeof c === "object" && typeof (c as AnthropicBlock).text === "string" ? (c as AnthropicBlock).text : blockJson(c)))
+                    .map((c) => (isRecord(c) && typeof c["text"] === "string" ? c["text"] : blockJson(c)))
                     .join("\n")
                 : blockJson(resultContent);
           segments.push(
@@ -168,7 +181,7 @@ export function parseAnthropicRequest(raw: unknown, index: number, counter: Toke
               category: "tool_result",
               label: `message ${mi + 1} tool_result`,
               path,
-              text: text ?? "",
+              text,
               raw: block,
               cacheControl: readCacheControl(block),
             }),
@@ -206,7 +219,7 @@ export function parseAnthropicRequest(raw: unknown, index: number, counter: Toke
             seg({
               id,
               category: otherBlockCategory(block.type, role),
-              label: `message ${mi + 1} (${role}) ${block.type ?? "content"}`,
+              label: `message ${mi + 1} (${role}) ${typeof block.type === "string" ? block.type : "content"}`,
               path,
               text: blockJson(block),
               raw: block,

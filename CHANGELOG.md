@@ -10,6 +10,17 @@ All notable changes to this project are documented in this file.
   `npx @antonsoloviev/contextscope analyze your-requests.jsonl`. The package
   carries the CLI and the library; the example sessions stay in the repository.
 - `contextscope --version` (`-V`).
+- `ContextScopeParseError` is exported from the library, so callers can tell a
+  rejected input from a bug.
+
+### Fixed
+
+- A malformed entry in a request log crashed the analysis with a `TypeError`
+  ("lineToEncode.match is not a function" in the web app): a `null` message,
+  content block, tool or tool call, a number or object where text should be,
+  or a non-string block `type`. Such an entry is now kept, in position, as a
+  segment holding its own JSON, so the rest of the log is still analyzed and
+  the cache-prefix comparison still lines up. A structural fuzz test covers it.
 
 ## [0.2.0] - 2026-09-30
 

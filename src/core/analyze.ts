@@ -71,7 +71,7 @@ function sumCost(steps: { costUsd: number | undefined }[]): number | undefined {
   return steps.reduce((sum, s) => sum + (s.costUsd ?? 0), 0);
 }
 
-export { parseInput } from "./parse.js";
+export { ContextScopeParseError, parseInput } from "./parse.js";
 export { computeAllPrefixMatches, computePrefixMatch } from "./prefix.js";
 export * from "./types.js";
 export {

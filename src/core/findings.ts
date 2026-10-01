@@ -1,5 +1,5 @@
 import type { CacheSimulation, DuplicateGroup, Finding, ParsedRequest, PrefixMatch, Provider, Segment } from "./types.js";
-import { canonicalJson, keyOrderFingerprint } from "./json-utils.js";
+import { canonicalJson, isRecord, keyOrderFingerprint } from "./json-utils.js";
 import { ANTHROPIC_LOOKBACK_POSITIONS, findAnthropicModel } from "./pricing.js";
 import { containsVolatilePattern } from "./volatile.js";
 import { sameModel } from "./model-id.js";
@@ -30,6 +30,14 @@ export function describeReorder(before: string[], after: string[]): string {
   while (last > first && before[last] === after[last]) last--;
   const span = first === last ? `position ${first + 1}` : `positions ${first + 1}–${last + 1}`;
   return `${span}: [${before.slice(first, last + 1).join(", ")}] → [${after.slice(first, last + 1).join(", ")}]`;
+}
+
+/** A tool definition's name, wherever the provider puts it: top level, or under `function` in
+ * Chat Completions. Undefined for an entry that isn't a tool object at all. */
+function toolName(raw: unknown): unknown {
+  if (!isRecord(raw)) return undefined;
+  const fn = raw["function"];
+  return raw["name"] ?? (isRecord(fn) ? fn["name"] : undefined);
 }
 
 /** A system segment counts as the system prompt only if no conversation turn comes before it
@@ -145,8 +153,8 @@ export function computeFindings(
     const prevTools = toolSegments(prev);
     const currTools = toolSegments(request);
     if (prevTools.length > 0 && currTools.length > 0) {
-      const prevNames = prevTools.map((t) => (t.raw as Record<string, unknown>)["name"] ?? (t.raw as { function?: { name?: string } })["function"]?.name);
-      const currNames = currTools.map((t) => (t.raw as Record<string, unknown>)["name"] ?? (t.raw as { function?: { name?: string } })["function"]?.name);
+      const prevNames = prevTools.map((t) => toolName(t.raw));
+      const currNames = currTools.map((t) => toolName(t.raw));
       const sameSet = prevNames.length === currNames.length && [...prevNames].sort().join("|") === [...currNames].sort().join("|");
       if (sameSet && prevNames.join("|") !== currNames.join("|")) {
         push(findings, {
@@ -160,8 +168,8 @@ export function computeFindings(
       }
 
       for (const currTool of currTools) {
-        const name = (currTool.raw as Record<string, unknown>)["name"] ?? (currTool.raw as { function?: { name?: string } })["function"]?.name;
-        const prevTool = prevTools.find((t) => ((t.raw as Record<string, unknown>)["name"] ?? (t.raw as { function?: { name?: string } })["function"]?.name) === name);
+        const name = toolName(currTool.raw);
+        const prevTool = prevTools.find((t) => toolName(t.raw) === name);
         if (!prevTool) continue;
         if (canonicalJson(prevTool.raw) === canonicalJson(currTool.raw)) {
           // Sorted-key form is identical (same tool, same content) - any difference in the raw
