@@ -38,12 +38,11 @@ Everything runs in your browser or on your machine. Nothing is uploaded.
 Run it against your own request log:
 
 ```sh
-npx @antonsoloviev/contextscope analyze your-requests.jsonl
+npx --allow-git=root github:antonsoo/contextscope analyze your-requests.jsonl
 ```
 
-That runs the published package
-([`@antonsoloviev/contextscope`](https://www.npmjs.com/package/@antonsoloviev/contextscope)
-on npm; the command it installs is `contextscope`). To try the bundled
+That installs straight from GitHub: the npm package, `@antonsoloviev/contextscope`,
+isn't published yet (npm 12 needs `--allow-git=root` for a git-hosted package). To try the bundled
 examples, clone the repository:
 
 ```sh

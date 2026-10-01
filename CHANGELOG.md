@@ -6,9 +6,9 @@ All notable changes to this project are documented in this file.
 
 ### Added
 
-- Published to npm as `@antonsoloviev/contextscope`:
-  `npx @antonsoloviev/contextscope analyze your-requests.jsonl`. The package
+- The package is named `@antonsoloviev/contextscope`, ready for npm, and
   carries the CLI and the library; the example sessions stay in the repository.
+  It isn't published yet; until it is, install from GitHub as before.
 - `contextscope --version` (`-V`).
 - `ContextScopeParseError` is exported from the library, so callers can tell a
   rejected input from a bug.
