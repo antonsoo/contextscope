@@ -11,6 +11,7 @@ export interface CliArgs {
   calibrate: boolean;
   verbose: boolean;
   help: boolean;
+  version: boolean;
 }
 
 export class UsageError extends Error {}
@@ -30,6 +31,7 @@ export function parseArgs(argv: string[]): CliArgs {
     calibrate: false,
     verbose: false,
     help: false,
+    version: false,
   };
   const value = (flag: string): string => {
     const v = args.shift();
@@ -70,6 +72,10 @@ export function parseArgs(argv: string[]): CliArgs {
       case "-h":
       case "--help":
         out.help = true;
+        break;
+      case "-V":
+      case "--version":
+        out.version = true;
         break;
       default:
         if (arg.startsWith("-") && arg !== "-") throw new UsageError(`Unknown option "${arg}".`);

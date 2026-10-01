@@ -2,6 +2,7 @@
 import { writeFileSync } from "node:fs";
 import { analyze, countRequestTokens, parseInput, resolveModel, type AnalysisResult, type CalibrationResult, type FindingSeverity } from "../core/index.js";
 import { parseArgs, type CliArgs } from "./args.js";
+import { VERSION } from "./version.js";
 import { renderTerminalReport } from "./terminal-report.js";
 import { renderHtmlReport } from "./html-report.js";
 import { readInputFile } from "./read-input.js";
@@ -28,6 +29,7 @@ Options:
   --json <out.json>               Also write the raw analysis result as JSON
   -v, --verbose                   Show every request's breakdown and every prefix/cache row
   -h, --help                      Show this help
+  -V, --version                   Show the version
 
 Exit status: 0 on success, 1 on bad arguments or unreadable input,
 2 when --fail-on is set and a finding meets it.
@@ -63,6 +65,10 @@ async function main(): Promise<void> {
     fail((err as Error).message, true);
   }
 
+  if (opts.version) {
+    process.stdout.write(`contextscope ${VERSION}\n`);
+    return;
+  }
   if (opts.help) {
     process.stdout.write(HELP);
     return;

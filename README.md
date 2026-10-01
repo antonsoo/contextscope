@@ -35,6 +35,17 @@ Everything runs in your browser or on your machine. Nothing is uploaded.
 
 ## Quickstart
 
+Run it against your own request log:
+
+```sh
+npx @antonsoloviev/contextscope analyze your-requests.jsonl
+```
+
+That runs the published package
+([`@antonsoloviev/contextscope`](https://www.npmjs.com/package/@antonsoloviev/contextscope)
+on npm; the command it installs is `contextscope`). To try the bundled
+examples, clone the repository:
+
 ```sh
 git clone https://github.com/antonsoo/contextscope && cd contextscope
 npm install
@@ -42,18 +53,7 @@ node dist/cli/index.js analyze examples/anthropic-agent-cache-bust.jsonl.gz
 ```
 
 `npm install` runs the package's `prepare` script, which compiles the CLI and
-library with `tsc`. To run it against your own file without a checkout:
-
-```sh
-npx --allow-git=root github:antonsoo/contextscope analyze your-requests.jsonl
-```
-
-npm 12 refuses git-hosted packages unless you opt in (`--allow-git=root`;
-without it the command fails with `EALLOWGIT`). If npm also warns that the
-package's install scripts are `blocked because they are not covered by
-allowScripts` and then can't find `dist/cli/index.js`, add
-`--dangerously-allow-all-scripts`: the only script is this package's own `tsc`
-build. The clone-and-install route above avoids both policies.
+library with `tsc`.
 
 Or skip the CLI and open **[antonsoo.github.io/contextscope](https://antonsoo.github.io/contextscope/)**:
 drop a request file, paste one, or click a built-in example.
@@ -172,7 +172,7 @@ current input only.
 ### As a library
 
 ```ts
-import { analyze, groupFindings } from "contextscope";
+import { analyze, groupFindings } from "@antonsoloviev/contextscope";
 
 const result = analyze(rawRequestJsonOrJsonl); // or { model: "claude-opus-5-5" } to override
 // result.model            — the model priced with, and whether it came from the requests
@@ -340,7 +340,7 @@ fixed hue order, so a color always means the same category.
 npm install          # installs deps and builds dist/ via the `prepare` script
 npm run lint         # eslint
 npm run typecheck    # tsc --noEmit, core + cli and the web app
-npm test             # vitest, 142 tests
+npm test             # vitest, 143 tests
 npm run build        # core + cli (dist/) and the web app (web/dist/)
 npm run bench        # analyze() timings on the flagship and a 300-request session
 npm run dev:web      # Vite dev server for the web app

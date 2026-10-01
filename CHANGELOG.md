@@ -2,6 +2,15 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.2.1] - 2026-10-01
+
+### Added
+
+- Published to npm as `@antonsoloviev/contextscope`:
+  `npx @antonsoloviev/contextscope analyze your-requests.jsonl`. The package
+  carries the CLI and the library; the example sessions stay in the repository.
+- `contextscope --version` (`-V`).
+
 ## [0.2.0] - 2026-09-30
 
 ### Added

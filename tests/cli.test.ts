@@ -65,3 +65,14 @@ describe("renderTerminalReport", () => {
     expect(renderTerminalReport(unknown)).toContain('priced as Claude Sonnet 5.5 ("claude-opus-9" is not in the pricing table)');
   });
 });
+
+describe("--version", () => {
+  it("is parsed with or without a command, and VERSION matches package.json", async () => {
+    expect(parseArgs(["--version"])).toMatchObject({ command: undefined, version: true });
+    expect(parseArgs(["analyze", "-V"])).toMatchObject({ command: "analyze", version: true });
+    const { VERSION } = await import("../src/cli/version.js");
+    const { readFileSync } = await import("node:fs");
+    const pkg = JSON.parse(readFileSync(new URL("../package.json", import.meta.url), "utf8")) as { version: string };
+    expect(VERSION).toBe(pkg.version);
+  });
+});
