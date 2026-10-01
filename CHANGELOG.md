@@ -2,6 +2,24 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.2.2] - 2026-10-01
+
+### Changed
+
+- `--json` writes the analysis and not the requests it came from. The file
+  used to be the in-memory result serialized whole, which holds each request
+  body, each segment's text and each segment's original block: a 46 MB
+  session log produced a 252 MB JSON file and needed 1.3 GB of memory to
+  build it, and a log a few times larger could not be written at all. Segments
+  now carry their id, label, path, character length and token counts; the
+  same log gives a 17 MB file in 430 MB. The top-level shape is unchanged.
+
+### Fixed
+
+- A log over about 512 MB failed with Node's "Cannot create a string longer
+  than 0x1fffffe8 characters". The limit is real (the log is loaded as one
+  string), and the message now says so and suggests one session per file.
+
 ## [0.2.1] - 2026-10-01
 
 ### Added

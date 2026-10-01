@@ -115,7 +115,8 @@ Options:
                                   every Claude estimate to match
   --fail-on <error|warning|info>  Exit with status 2 if any finding is at least this severe
   --html <out.html>               Also write a self-contained HTML report
-  --json <out.json>               Also write the raw analysis result as JSON
+  --json <out.json>               Also write the analysis as JSON: counts, findings and cache
+                                  steps for every request and segment, without the request text
   -v, --verbose                   Show every request's breakdown and every prefix/cache row
 ```
 

@@ -76,3 +76,51 @@ describe("--version", () => {
     expect(VERSION).toBe(pkg.version);
   });
 });
+
+describe("--json", () => {
+  const toolResult = "x".repeat(20_000);
+  const session = Array.from({ length: 6 }, (_, i) => ({
+    model: "claude-opus-5",
+    system: "You are a careful assistant.",
+    messages: Array.from({ length: i + 1 }, (_, t) => ({ role: "user", content: `turn ${t}: ${toolResult}` })),
+  }));
+  const input = JSON.stringify(session);
+  const result = analyze(input);
+
+  it("writes the analysis without the request content", async () => {
+    const { toJsonReport } = await import("../src/cli/json-report.js");
+    const text = toJsonReport(result);
+    // Serializing the result whole wrote every request body, segment text and original block.
+    expect(JSON.stringify(result).length).toBeGreaterThan(input.length * 2);
+    expect(text.length).toBeLessThan(input.length / 5);
+    expect(text).not.toContain(toolResult);
+
+    const report = JSON.parse(text) as { parse: { requests: { segments: Record<string, unknown>[] }[] }; reports: { segments: Record<string, unknown>[]; totals: { openaiTokens: number } }[]; findings: unknown[] };
+    expect(report.parse.requests).toHaveLength(6);
+    expect(report.parse.requests[5]).not.toHaveProperty("raw");
+    const segment = report.reports[5]!.segments.at(-1)!;
+    expect(Object.keys(segment).sort()).toEqual(["category", "charLength", "claudeTokensEstimate", "id", "label", "openaiTokens", "path"]);
+    expect(segment["path"]).toBe("messages[5].content[0]"); // a string body counts as its first block
+    expect(segment["charLength"]).toBe(`turn 5: ${toolResult}`.length);
+    expect(report.reports[5]!.totals.openaiTokens).toBe(result.reports[5]!.totals.openaiTokens);
+    expect(report.findings).toHaveLength(result.findings.length);
+  });
+});
+
+describe("readInputFile", () => {
+  it("says what to do about a log too large to load", async () => {
+    const { readInputFile } = await import("../src/cli/read-input.js");
+    const { mkdtempSync, writeFileSync } = await import("node:fs");
+    const { tmpdir } = await import("node:os");
+    const { join } = await import("node:path");
+    const { gzipSync } = await import("node:zlib");
+    const dir = mkdtempSync(join(tmpdir(), "contextscope-"));
+    writeFileSync(join(dir, "big.jsonl"), "x".repeat(4096));
+    writeFileSync(join(dir, "big.jsonl.gz"), gzipSync("x".repeat(4096)));
+    expect(readInputFile(join(dir, "big.jsonl"), 4096)).toHaveLength(4096);
+    expect(() => readInputFile(join(dir, "big.jsonl"), 1024)).toThrow(/the most this tool can load at once is 0\.001 MB; split it/);
+    // The limit is on what the file unpacks to, not on its size on disk.
+    expect(() => readInputFile(join(dir, "big.jsonl.gz"), 1024)).toThrow(/it holds 0\.004 MB of JSON/);
+  });
+});
+

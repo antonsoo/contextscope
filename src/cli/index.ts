@@ -6,6 +6,7 @@ import { VERSION } from "./version.js";
 import { renderTerminalReport } from "./terminal-report.js";
 import { renderHtmlReport } from "./html-report.js";
 import { readInputFile } from "./read-input.js";
+import { toJsonReport } from "./json-report.js";
 import { bold, red } from "./ansi.js";
 
 const HELP = `contextscope — see what's in your LLM context window
@@ -26,7 +27,8 @@ Options:
                                   every Claude estimate to match
   --fail-on <error|warning|info>  Exit with status 2 if any finding is at least this severe
   --html <out.html>               Also write a self-contained HTML report
-  --json <out.json>               Also write the raw analysis result as JSON
+  --json <out.json>               Also write the analysis as JSON: counts, findings and cache
+                                  steps for every request and segment, without the request text
   -v, --verbose                   Show every request's breakdown and every prefix/cache row
   -h, --help                      Show this help
   -V, --version                   Show the version
@@ -107,7 +109,7 @@ async function main(): Promise<void> {
     process.stdout.write(bold(`\nHTML report written to ${opts.html}\n`));
   }
   if (opts.json) {
-    writeFileSync(opts.json, JSON.stringify(result, null, 2));
+    writeFileSync(opts.json, toJsonReport(result));
     process.stdout.write(bold(`JSON result written to ${opts.json}\n`));
   }
 
