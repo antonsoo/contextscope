@@ -86,7 +86,7 @@ export function computeFindings(
           severity: "warning",
           requestIndex: i,
           title: "No cache_control breakpoint set",
-          detail: `Request ${i + 1} carries ≈${totalTokens.toLocaleString()} Claude tokens but no cache_control marker, so nothing is ever cached even though this is part of a ${requests.length}-request sequence. One line turns it on: a top-level "cache_control": {"type": "ephemeral"} beside "model" puts a breakpoint on the last block of every request.`,
+          detail: `Request ${i + 1} carries ≈${totalTokens.toLocaleString("en-US")} Claude tokens but no cache_control marker, so nothing is ever cached even though this is part of a ${requests.length}-request sequence. One line turns it on: a top-level "cache_control": {"type": "ephemeral"} beside "model" puts a breakpoint on the last block of every request.`,
           segmentIds: [],
         });
       }
@@ -98,7 +98,7 @@ export function computeFindings(
             severity: "warning",
             requestIndex: i,
             title: "Prefix below minimum cacheable length",
-            detail: `The ${bp.cacheControl?.automatic ? "automatic breakpoint (top-level cache_control), which lands on" : "cache_control breakpoint at"} "${bp.label}"${bp.cacheControl?.automatic ? "," : ""} covers only ≈${cum.toLocaleString()} tokens, below ${modelInfo.displayName}'s ${modelInfo.minCacheableTokens.toLocaleString()}-token minimum - it silently never caches.`,
+            detail: `The ${bp.cacheControl?.automatic ? "automatic breakpoint (top-level cache_control), which lands on" : "cache_control breakpoint at"} "${bp.label}"${bp.cacheControl?.automatic ? "," : ""} covers only ≈${cum.toLocaleString("en-US")} tokens, below ${modelInfo.displayName}'s ${modelInfo.minCacheableTokens.toLocaleString("en-US")}-token minimum - it silently never caches.`,
             segmentIds: [bp.id],
           });
         }
@@ -138,7 +138,7 @@ export function computeFindings(
         severity: "warning",
         requestIndex: i,
         title: `Model changed between requests ${from + 1} and ${i + 1}`,
-        detail: `Request ${from + 1} ran on ${String(prev.model)} and request ${i + 1} on ${String(request.model)}. Prompt caches belong to one model, so request ${i + 1} can't read anything request ${from + 1} cached and re-sends its whole ≈${prefixTokens.toLocaleString()}-token prompt at full price. ${startsConversation ? "Conversations that share a prompt share its cache only when they run on the same model." : "If the switch routes a sub-task to a cheaper model, give that sub-task its own conversation instead of alternating models inside one."}`,
+        detail: `Request ${from + 1} ran on ${String(prev.model)} and request ${i + 1} on ${String(request.model)}. Prompt caches belong to one model, so request ${i + 1} can't read anything request ${from + 1} cached and re-sends its whole ≈${prefixTokens.toLocaleString("en-US")}-token prompt at full price. ${startsConversation ? "Conversations that share a prompt share its cache only when they run on the same model." : "If the switch routes a sub-task to a cheaper model, give that sub-task its own conversation instead of alternating models inside one."}`,
         segmentIds: [],
       });
     }
@@ -270,7 +270,7 @@ export function computeFindings(
       severity: "info",
       requestIndex: first.requestIndex,
       title: `The same ~${Math.round(first.tokens / 100) / 10}k-token content appears ${group.members.length} times`,
-      detail: `"${first.label}" and ${group.members.length - 1} other segment${group.members.length > 2 ? "s" : ""} are near-duplicates (similarity ${(group.similarity * 100).toFixed(0)}%), wasting an estimated ≈${group.estimatedWastedTokens.toLocaleString()} tokens. Consider caching or referencing this content once instead of repeating it inline.`,
+      detail: `"${first.label}" and ${group.members.length - 1} other segment${group.members.length > 2 ? "s" : ""} are near-duplicates (similarity ${(group.similarity * 100).toFixed(0)}%), wasting an estimated ≈${group.estimatedWastedTokens.toLocaleString("en-US")} tokens. Consider caching or referencing this content once instead of repeating it inline.`,
       segmentIds: group.members.map((m) => m.segmentId),
     });
   }
@@ -299,7 +299,7 @@ export function computeFindings(
         severity: "warning",
         requestIndex: i,
         title: "No cache breakpoint on the conversation tail",
-        detail: `This request resends ≈${actualStep.uncachedTokens.toLocaleString()} tokens of prior conversation history uncached - nothing after the last cache_control breakpoint (or there is none) covers the turns already in this conversation. A rolling breakpoint on the latest turn (Anthropic allows up to 4 per request, and each one needs to land within the 20-position lookback of the one it reads from) would let most of that history read from cache instead of resending it in full - estimated ≈$${gapUsd.toFixed(4)} (${Math.round(ratio * 100)}%) cheaper on this request alone.`,
+        detail: `This request resends ≈${actualStep.uncachedTokens.toLocaleString("en-US")} tokens of prior conversation history uncached - nothing after the last cache_control breakpoint (or there is none) covers the turns already in this conversation. A rolling breakpoint on the latest turn (Anthropic allows up to 4 per request, and each one needs to land within the 20-position lookback of the one it reads from) would let most of that history read from cache instead of resending it in full - estimated ≈$${gapUsd.toFixed(4)} (${Math.round(ratio * 100)}%) cheaper on this request alone.`,
         segmentIds: [],
       });
     });

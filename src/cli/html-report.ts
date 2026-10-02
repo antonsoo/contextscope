@@ -27,11 +27,11 @@ export function renderHtmlReport(result: AnalysisResult): string {
       const rows = report.byCategory
         .map(
           (c) =>
-            `<tr><td><span class="swatch" style="background:${CATEGORY_COLOR[c.category]}"></span>${esc(c.category)}</td><td>${c.segmentCount}</td><td>${c.claudeTokensEstimate.toLocaleString()}</td><td>${c.openaiTokens.toLocaleString()}</td></tr>`,
+            `<tr><td><span class="swatch" style="background:${CATEGORY_COLOR[c.category]}"></span>${esc(c.category)}</td><td>${c.segmentCount}</td><td>${c.claudeTokensEstimate.toLocaleString("en-US")}</td><td>${c.openaiTokens.toLocaleString("en-US")}</td></tr>`,
         )
         .join("");
       return `<section class="card"><h3>Request ${report.requestIndex + 1}</h3>
-        <p class="muted">≈${report.totals.claudeTokensEstimate.toLocaleString()} Claude tokens · ${report.totals.openaiTokens.toLocaleString()} OpenAI tokens${report.percentOfContextWindow !== undefined ? ` · ${(report.percentOfContextWindow * 100).toFixed(1)}% of context window` : ""}</p>
+        <p class="muted">≈${report.totals.claudeTokensEstimate.toLocaleString("en-US")} Claude tokens · ${report.totals.openaiTokens.toLocaleString("en-US")} OpenAI tokens${report.percentOfContextWindow !== undefined ? ` · ${(report.percentOfContextWindow * 100).toFixed(1)}% of context window` : ""}</p>
         <table><thead><tr><th>category</th><th>segments</th><th>≈Claude tok</th><th>OpenAI tok</th></tr></thead><tbody>${rows}</tbody></table>
       </section>`;
     })
@@ -40,7 +40,7 @@ export function renderHtmlReport(result: AnalysisResult): string {
   const cacheRows = cacheSimulation.actual
     .map(
       (step, i) =>
-        `<tr><td>req ${i + 1}</td><td>${step.readTokens.toLocaleString()}</td><td>${step.writeTokens5m.toLocaleString()}</td><td>${step.writeTokens1h.toLocaleString()}</td><td>${step.uncachedTokens.toLocaleString()}</td><td>${step.costUsd !== undefined ? `$${step.costUsd.toFixed(4)}` : "n/a"}</td></tr>`,
+        `<tr><td>req ${i + 1}</td><td>${step.readTokens.toLocaleString("en-US")}</td><td>${step.writeTokens5m.toLocaleString("en-US")}</td><td>${step.writeTokens1h.toLocaleString("en-US")}</td><td>${step.uncachedTokens.toLocaleString("en-US")}</td><td>${step.costUsd !== undefined ? `$${step.costUsd.toFixed(4)}` : "n/a"}</td></tr>`,
     )
     .join("");
 
@@ -53,7 +53,7 @@ export function renderHtmlReport(result: AnalysisResult): string {
     .join("");
 
   const duplicateRows = duplicates
-    .map((g) => `<li>${g.members.length}× "${esc(g.members[0]!.label)}" — ≈${g.estimatedWastedTokens.toLocaleString()} wasted tokens (similarity ${(g.similarity * 100).toFixed(0)}%)</li>`)
+    .map((g) => `<li>${g.members.length}× "${esc(g.members[0]!.label)}" — ≈${g.estimatedWastedTokens.toLocaleString("en-US")} wasted tokens (similarity ${(g.similarity * 100).toFixed(0)}%)</li>`)
     .join("");
 
   const savings =

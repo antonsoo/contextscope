@@ -6,6 +6,12 @@ All notable changes to this project are documented in this file.
 
 ### Fixed
 
+- Numbers no longer follow the reader's locale. Findings and the HTML report
+  formatted token counts with the system's locale, so on a German system a
+  finding read "below Claude Opus 4.6's 4.096-token minimum" (in the terminal
+  and in `--json`), beside dollar amounts written with a decimal point. Counts
+  are written `4,096` everywhere. CI now runs the tests a second time in a
+  comma-decimal locale.
 - A log saved by a Windows shell. `... > requests.jsonl` in Windows PowerShell
   writes UTF-16 with a byte-order mark; read as UTF-8 it held no JSON ("No
   valid JSON objects found"), in the CLI and in the web app. The mark decides
