@@ -18,6 +18,15 @@ All notable changes to this project are documented in this file.
   the encoding now, for plain and gzipped files, and the analysis is the same
   as for the UTF-8 file.
 
+### Changed
+
+- The page's fonts are served by the page itself. They came from Google Fonts,
+  the one request the page made to another origin; the same font files (every
+  subset, as Google serves them to a current browser) are now in
+  `web/src/fonts/`, with their SIL Open Font License texts. Nothing looks
+  different: screenshots before and after match. The page now loads with
+  every other host blocked.
+
 ## [0.3.1] - 2026-10-02
 
 Checked against request bodies written by the real anthropic and openai
