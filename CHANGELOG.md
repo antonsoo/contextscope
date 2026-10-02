@@ -29,6 +29,9 @@ All notable changes to this project are documented in this file.
 
 ### Security
 
+- The `--html` report carries a Content-Security-Policy too: it is one file
+  with no script, and the policy has the browser refuse to run or fetch
+  anything, whatever a tool or a message in the log is called.
 - The built page carries a Content-Security-Policy. Scripts, styles, fonts and
   workers load from the page's own origin only, and `connect-src 'self'` has
   the browser refuse to send what you give the page to any other host, even

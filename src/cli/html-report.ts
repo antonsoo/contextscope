@@ -19,6 +19,13 @@ const CATEGORY_COLOR: Record<string, string> = {
 /** A single self-contained HTML file: no external requests, no JS framework - a static report
  * meant to be opened locally or attached to a PR/ticket. The interactive web app is the place
  * for exploration; this is the "send this to a teammate" artifact. */
+/**
+ * The report is one file with no script in it, and this has the browser hold it to that:
+ * nothing in it may run or be fetched, whatever a tool or a message in the log is called.
+ * Text from the log is escaped; the policy is for the day some is not.
+ */
+const REPORT_CSP = "default-src 'none'; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'";
+
 export function renderHtmlReport(result: AnalysisResult): string {
   const { parse, reports, cacheSimulation, findings, duplicates, model } = result;
 
@@ -62,7 +69,7 @@ export function renderHtmlReport(result: AnalysisResult): string {
       : undefined;
 
   return `<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="${REPORT_CSP}"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>contextscope report — ${esc(parse.format)}</title>
 <style>
   :root { color-scheme: light dark; }
