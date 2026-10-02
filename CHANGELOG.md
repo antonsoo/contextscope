@@ -6,6 +6,11 @@ All notable changes to this project are documented in this file.
 
 ### Fixed
 
+- The inspector panel's Close button stayed in the tab order while the panel
+  was closed and off-screen: a keyboard stop on a control nobody could see.
+  The closed panel is `inert`; opening it moves focus to its Close button, and
+  closing it (the button, Escape or the backdrop) returns focus to the segment
+  that opened it. Checked in Chromium, Firefox and WebKit.
 - Numbers no longer follow the reader's locale. Findings and the HTML report
   formatted token counts with the system's locale, so on a German system a
   finding read "below Claude Opus 4.6's 4.096-token minimum" (in the terminal

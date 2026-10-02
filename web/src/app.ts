@@ -99,7 +99,7 @@ function shellHtml(): string {
     </div>
 
     <div class="drawer-backdrop" id="drawer-backdrop"></div>
-    <aside class="drawer" id="drawer" aria-hidden="true">
+    <aside class="drawer" id="drawer" aria-hidden="true" inert>
       <div class="drawer-head">
         <h3 id="drawer-title">segment</h3>
         <button class="icon-btn" id="drawer-close" type="button" aria-label="Close">✕</button>
@@ -792,13 +792,25 @@ function openInspector(segment: Segment): void {
     </dl>
     <pre>${esc(rawPretty)}</pre>
   `;
+  // Closed, the drawer is off-screen and inert: its Close button used to stay in the tab
+  // order, a stop on a control nobody could see. Open, focus moves into it and comes back
+  // to what opened it when it closes.
+  if (!$("#drawer").classList.contains("open")) drawerOpener = document.activeElement;
   $("#drawer").classList.add("open");
   $("#drawer").setAttribute("aria-hidden", "false");
+  $("#drawer").removeAttribute("inert");
   $("#drawer-backdrop").classList.add("open");
+  ($("#drawer-close") as HTMLElement).focus();
 }
 
+let drawerOpener: Element | null = null;
+
 function closeDrawer(): void {
+  if (!$("#drawer").classList.contains("open")) return;
   $("#drawer").classList.remove("open");
   $("#drawer").setAttribute("aria-hidden", "true");
+  $("#drawer").setAttribute("inert", "");
   $("#drawer-backdrop").classList.remove("open");
+  if (drawerOpener instanceof HTMLElement && drawerOpener.isConnected) drawerOpener.focus();
+  drawerOpener = null;
 }
