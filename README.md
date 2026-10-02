@@ -396,7 +396,7 @@ fixed hue order, so a color always means the same category.
 npm install          # installs deps and builds dist/ via the `prepare` script
 npm run lint         # eslint
 npm run typecheck    # tsc --noEmit, core + cli and the web app
-npm test             # vitest, 174 tests
+npm test             # vitest
 npm run build        # core + cli (dist/) and the web app (web/dist/)
 npm run bench        # analyze() timings on the flagship and a 300-request session
 npm run dev:web      # Vite dev server for the web app
