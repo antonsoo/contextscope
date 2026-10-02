@@ -20,7 +20,9 @@ the raw JSON requests these agents actually send: it shows where the tokens go,
 simulates each provider's cache rules turn by turn, and points at the specific
 block that broke the cache.
 
-Everything runs in your browser or on your machine. Nothing is uploaded.
+Everything runs in your browser or on your machine. Nothing is uploaded, and the web app's
+Content-Security-Policy (`connect-src 'self'`) has the browser enforce that: the page cannot
+send what you paste to any other host.
 
 ## Contents
 

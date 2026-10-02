@@ -1,4 +1,5 @@
 import { defineConfig } from "vite";
+import { contentSecurityPolicy } from "./vite.csp";
 import { fileURLToPath } from "node:url";
 
 // Vite's project root is `web/` (index.html lives there); this file stays at the repo root so
@@ -8,6 +9,7 @@ import { fileURLToPath } from "node:url";
 export default defineConfig({
   root: fileURLToPath(new URL("./web", import.meta.url)),
   base: "/contextscope/",
+  plugins: [contentSecurityPolicy()],
   resolve: {
     alias: {
       "@core": fileURLToPath(new URL("./src/core", import.meta.url)),
