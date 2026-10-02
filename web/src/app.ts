@@ -49,7 +49,7 @@ export function initApp(root: HTMLElement): void {
 function shellHtml(): string {
   return `
     <header class="topbar">
-      <div class="wordmark"><span class="addr">0x00&nbsp;</span>contextscope<span class="dot">.</span></div>
+      <h1 class="wordmark"><span class="addr" aria-hidden="true">0x00&nbsp;</span>contextscope<span class="dot" aria-hidden="true">.</span></h1>
       <span class="tagline">what's actually in your context window, and why your cache keeps missing</span>
       <div class="topbar-controls" id="topbar-controls" hidden>
         <label class="field">format
@@ -69,12 +69,12 @@ function shellHtml(): string {
 
     <main id="intake" class="intake">
       <div class="dropzone" id="dropzone">
-        <h1>drop a request, or paste one</h1>
+        <h2>drop a request, or paste one</h2>
         <p class="lead">A single Anthropic Messages or OpenAI (Chat Completions or Responses) request, a JSON array, or JSONL - one API request per line, the shape an agent loop actually sends. Batch-API files and gateway logs are unwrapped, and a gzipped <code>.jsonl.gz</code> works too, decompressed right here.</p>
         <div class="intake-actions">
           <button class="btn primary" id="pick-file-btn" type="button">choose file…</button>
           <button class="btn" id="paste-btn" type="button">paste JSON…</button>
-          <input type="file" id="file-input" accept=".json,.jsonl,.gz,application/json,application/gzip" class="visually-hidden" />
+          <input type="file" id="file-input" accept=".json,.jsonl,.gz,application/json,application/gzip" class="visually-hidden" aria-label="Request file" tabindex="-1" />
         </div>
         <textarea id="paste-area" placeholder="paste a request, a JSON array of requests, or JSONL here" spellcheck="false"></textarea>
         <div class="intake-actions" id="paste-run-row" hidden>
@@ -91,7 +91,7 @@ function shellHtml(): string {
 
     <div id="dashboard" class="dashboard">
       <nav class="request-tabs" id="request-tabs"></nav>
-      <div class="content" id="content"></div>
+      <main class="content" id="content"></main>
       <footer class="app-footer">
         contextscope is local-first: analysis runs in your browser, nothing is uploaded. Claude token counts are estimates (≈) - see
         <a href="https://github.com/antonsoo/contextscope#accuracy-and-limitations" target="_blank" rel="noopener">accuracy and limitations</a>.
@@ -430,7 +430,7 @@ function treemapPanel(report: RequestTokenReport, format: Provider): string {
   return `
     <section class="panel">
       <h2>Token usage — treemap <span class="count">colored by category, sized by ${format === "openai" ? "OpenAI tokens (exact)" : "≈ Claude tokens"}</span></h2>
-      <div class="treemap" id="treemap" role="img" aria-label="Treemap of token usage by segment"></div>
+      <div class="treemap" id="treemap" role="group" aria-label="Treemap of token usage by segment: each block opens its segment"></div>
       <div class="legend">
         ${CATEGORY_ORDER.filter((c) => report.byCategory.some((b) => b.category === c))
           .map((c) => `<span class="legend-item"><span class="legend-swatch" style="background:${categoryVar(c)}"></span>${CATEGORY_LABEL[c]}</span>`)
@@ -458,7 +458,7 @@ function wireTreemap(report: RequestTokenReport, format: Provider): void {
       const tokens = `${approx}${fmtInt(blockTokens(s, format))} tok`;
       const label =
         lines === 0 ? "" : `<div class="tm-label"><span class="tm-name">${esc(truncate(s.label, 40))}</span>${lines === 2 ? `<span class="tm-tok">${tokens}</span>` : ""}</div>`;
-      return `<div class="tm-block" tabindex="0" role="button" data-segment="${esc(s.id)}" style="left:${r.x}px;top:${r.y}px;width:${r.w}px;height:${r.h}px;background:${categoryVar(s.category)}" title="${esc(s.label)} — ${tokens}" aria-label="${esc(s.label)}, ${tokens}">${label}</div>`;
+      return `<div class="tm-block" tabindex="0" role="button" data-segment="${esc(s.id)}" style="left:${r.x}px;top:${r.y}px;width:${r.w}px;height:${r.h}px;background:${categoryVar(s.category)};color:var(--cat-${s.category}-ink)" title="${esc(s.label)} — ${tokens}" aria-label="${esc(s.label)}, ${tokens}">${label}</div>`;
     })
     .join("");
 
@@ -484,7 +484,7 @@ function segmentsTablePanel(report: RequestTokenReport): string {
   return `
     <section class="panel">
       <h2>Segments <span class="count">${report.segments.length} total — click a row to inspect</span></h2>
-      <div class="table-scroll">
+      <div class="table-scroll" tabindex="0" role="group" aria-label="Table, scrolls sideways">
         <table class="segments">
           <thead><tr><th>category</th><th>label</th><th>path</th><th>≈ Claude</th><th>OpenAI</th><th>cache</th></tr></thead>
           <tbody id="segments-tbody">
@@ -549,7 +549,7 @@ function sequencePanel(result: AnalysisResult): string {
           })
           .join("")}
       </div>
-      <div class="diff-view" id="diff-view"></div>
+      <div class="diff-view" id="diff-view" tabindex="0" role="group" aria-label="Difference from the request this one continues"></div>
     </section>
   `;
 }
@@ -587,7 +587,7 @@ function cachePanel(result: AnalysisResult): string {
   return `
     <section class="panel">
       <h2>Cache simulation <span class="count">${sim.provider} · ${esc(result.model.displayName)} · ${modelSourceNote(result)}</span></h2>
-      <div class="table-scroll">
+      <div class="table-scroll" tabindex="0" role="group" aria-label="Table, scrolls sideways">
         <table class="cache">
           <thead><tr><th>request</th><th>read</th><th>write 5m</th><th>write 1h</th><th>uncached</th><th>cost</th></tr></thead>
           <tbody>

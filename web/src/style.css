@@ -12,7 +12,7 @@
   /* ink */
   --text: #e3e6ec;
   --text-muted: #8a92a3;
-  --text-faint: #5b6270;
+  --text-faint: #788191;
 
   /* categorical (dataviz validated 8-slot theme, dark steps, fixed order) */
   --cat-system: #3987e5;
@@ -23,6 +23,17 @@
   --cat-tool_result: #2fae2f;
   --cat-image: #9085e9;
   --cat-thinking: #e66767;
+
+  /* The label colour for text set on each category colour (the treemap): whichever of dark
+     ink and white reaches 4.5:1 on it. */
+  --cat-system-ink: #10131a;
+  --cat-tools-ink: #10131a;
+  --cat-user-ink: #10131a;
+  --cat-assistant-ink: #10131a;
+  --cat-tool_call-ink: #10131a;
+  --cat-tool_result-ink: #10131a;
+  --cat-image-ink: #10131a;
+  --cat-thinking-ink: #10131a;
 
   --status-good: #0ca30c;
   --status-warning: #fab219;
@@ -45,9 +56,9 @@
   --border-strong: rgba(27, 31, 39, 0.24);
   --text: #1b1f27;
   --text-muted: #5c6270;
-  --text-faint: #8b8f99;
+  --text-faint: #656973;
 
-  --cat-system: #2a78d6;
+  --cat-system: #2470cc;
   --cat-tools: #eb6834;
   --cat-user: #1baf7a;
   --cat-assistant: #eda100;
@@ -55,6 +66,19 @@
   --cat-tool_result: #008300;
   --cat-image: #4a3aa7;
   --cat-thinking: #e34948;
+  --cat-system-ink: #ffffff;
+  --cat-tools-ink: #10131a;
+  --cat-user-ink: #10131a;
+  --cat-assistant-ink: #10131a;
+  --cat-tool_call-ink: #10131a;
+  --cat-tool_result-ink: #ffffff;
+  --cat-image-ink: #ffffff;
+  --cat-thinking-ink: #10131a;
+  /* The status colours double as text here, so they are the darker steps. */
+  --status-good: #097a09;
+  --status-warning: #8c6003;
+  --status-serious: #b74215;
+  --status-critical: #c52f2f;
   --shadow: 0 8px 24px rgba(27, 31, 39, 0.12);
 }
 
@@ -68,9 +92,9 @@
     --border-strong: rgba(27, 31, 39, 0.24);
     --text: #1b1f27;
     --text-muted: #5c6270;
-    --text-faint: #8b8f99;
+    --text-faint: #656973;
 
-    --cat-system: #2a78d6;
+    --cat-system: #2470cc;
     --cat-tools: #eb6834;
     --cat-user: #1baf7a;
     --cat-assistant: #eda100;
@@ -78,6 +102,19 @@
     --cat-tool_result: #008300;
     --cat-image: #4a3aa7;
     --cat-thinking: #e34948;
+    --cat-system-ink: #ffffff;
+    --cat-tools-ink: #10131a;
+    --cat-user-ink: #10131a;
+    --cat-assistant-ink: #10131a;
+    --cat-tool_call-ink: #10131a;
+    --cat-tool_result-ink: #ffffff;
+    --cat-image-ink: #ffffff;
+    --cat-thinking-ink: #10131a;
+    /* The status colours double as text here, so they are the darker steps. */
+    --status-good: #097a09;
+    --status-warning: #8c6003;
+    --status-serious: #b74215;
+    --status-critical: #c52f2f;
     --shadow: 0 8px 24px rgba(27, 31, 39, 0.12);
   }
 }
@@ -139,6 +176,8 @@ input {
 }
 
 .wordmark {
+  margin: 0;
+  line-height: inherit;
   font-family: var(--font-mono);
   font-weight: 700;
   font-size: 15px;
@@ -215,8 +254,9 @@ input:focus-visible,
   font-weight: 500;
 }
 .btn.primary {
-  background: var(--cat-system);
-  border-color: var(--cat-system);
+  /* Not --cat-system: white on the category blue is 4.4:1 (light) and 3.6:1 (dark). */
+  background: #2470cc;
+  border-color: #2470cc;
   color: #fff;
 }
 .btn.primary:hover {
@@ -256,7 +296,7 @@ input:focus-visible,
   border-color: var(--cat-system);
   background: var(--bg-inset);
 }
-.dropzone h1 {
+.dropzone h2 {
   font-family: var(--font-mono);
   font-size: 22px;
   margin: 0 0 6px;
@@ -355,6 +395,9 @@ input:focus-visible,
   font-family: var(--font-mono);
   font-size: 12px;
   padding: 8px 14px;
+  /* A button's default face is a grey (darker in the dark scheme) that the muted label
+     can't be read on; an inactive tab has no face of its own. */
+  background: transparent;
   border: 1px solid transparent;
   border-bottom: none;
   border-radius: 6px 6px 0 0;
@@ -374,7 +417,6 @@ input:focus-visible,
 }
 .request-tab .pct {
   color: inherit;
-  opacity: 0.85;
   margin-left: 6px;
 }
 
@@ -474,8 +516,8 @@ input:focus-visible,
   padding: 4px 6px;
   font-family: var(--font-mono);
   font-size: 10.5px;
-  color: rgba(255, 255, 255, 0.96);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  /* The block sets the colour: dark ink or white, whichever reads on its category colour. */
+  color: inherit;
   overflow: hidden;
   pointer-events: none;
   line-height: 1.3;
@@ -486,9 +528,6 @@ input:focus-visible,
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-.tm-label .tm-tok {
-  opacity: 0.85;
 }
 
 .legend {

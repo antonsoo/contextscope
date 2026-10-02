@@ -44,6 +44,23 @@ All notable changes to this project are documented in this file.
   event handlers and `eval` are not allowed. Every control was exercised
   in Chromium and Firefox with a listener for policy violations: none.
 
+### Accessibility
+
+- Checked with axe-core (WCAG 2.1 A and AA, and its best-practice rules) in light and dark,
+  at desktop and phone widths, empty and with each example loaded: no
+  findings now.
+  - In the dark theme the inactive request tabs were unreadable: they had no
+    background of their own, so they got the browser's grey button face under
+    the muted label (1.7:1).
+  - Treemap labels were white on every category colour (2.2:1 to 4.4:1). Each
+    category now has a label ink, dark or white, that reaches 4.5:1 on it.
+  - Faint text (2.7:1 to 3.1:1), the primary button (white on the category
+    blue, 3.6:1 in the dark theme) and, in the light theme, the status colours
+    used as text (2.8:1) are above 4.5:1.
+  - The dashboard has a `main` landmark and the page an `h1` in both views;
+    the treemap is a group of buttons, not an image; the tables and the diff
+    that scroll can take keyboard focus; the file input has a name.
+
 ## [0.3.1] - 2026-10-02
 
 Checked against request bodies written by the real anthropic and openai
