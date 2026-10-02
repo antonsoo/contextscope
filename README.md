@@ -95,7 +95,8 @@ drop a request file, paste one, or click a built-in example.
   same file or tool output fetched more than once in one conversation.
 - **Reads the files you already have.** Anthropic Messages bodies, OpenAI Chat
   Completions and Responses API bodies, as a single request, a JSON array, or
-  JSONL, optionally gzipped. Anthropic Message Batches and OpenAI Batch API
+  JSONL, optionally gzipped. The parsers are tested on request bodies written
+  by the real Python SDKs (`tests/fixtures/sdk/`), not only on hand-made ones. Anthropic Message Batches and OpenAI Batch API
   files, and gateway logs that wrap each body in `request`/`request_body`, are
   unwrapped automatically. The format is auto-detected.
 - **Exact OpenAI token counts** (o200k_base, via `gpt-tokenizer`) and
@@ -268,7 +269,11 @@ longest common subsequence.
 **Cache simulation.** `src/core/cache-anthropic.ts` and `cache-openai.ts`
 implement each provider's documented rules:
 
-- **Anthropic**: up to 4 `cache_control` breakpoints per request, read against
+- **Anthropic**: up to 4 `cache_control` breakpoints per request. A top-level
+  `cache_control`, beside `model` (automatic caching), is a breakpoint on the
+  last cacheable block of the request, the last block that is not thinking or
+  empty text; it is simulated like a marker placed there by hand, and takes
+  one of the four. Breakpoints are read against
   the entries earlier requests wrote at theirs: an entry is read if its prefix
   is byte-identical to this request's up to that point, whichever earlier
   request wrote it, and the position distance is within the 20-block lookback window (a
@@ -288,7 +293,9 @@ implement each provider's documented rules:
   `developers.openai.com/api/docs/guides/prompt-caching` and
   `developers.openai.com/api/docs/pricing` as of 2026-09-24. OpenAI's newer
   explicit-breakpoint, 30-minute-TTL caching mode (GPT-5.6 and later) is **not**
-  simulated.
+  simulated: a file that uses it (`prompt_cache_options`,
+  `prompt_cache_breakpoint`) gets a note saying so, and one saying that
+  `mode: "explicit"` with no breakpoint caches nothing.
 - **Both**: a cached prefix is the model's own attention state, so a request
   reads only what earlier requests on its own model cached, however much of the
   prefix another model was sent.

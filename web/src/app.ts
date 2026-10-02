@@ -496,7 +496,7 @@ function segmentsTablePanel(report: RequestTokenReport): string {
                   <td>${esc(s.path)}</td>
                   <td class="num">${fmtInt(s.claudeTokensEstimate)}</td>
                   <td class="num">${fmtInt(s.openaiTokens)}</td>
-                  <td>${s.cacheControl ? `<span class="cache-flag">● ${s.cacheControl.ttl}</span>` : ""}</td>
+                  <td>${s.cacheControl ? `<span class="cache-flag"${s.cacheControl.automatic ? ' title="automatic breakpoint: the request has a top-level cache_control"' : ""}>● ${s.cacheControl.ttl}${s.cacheControl.automatic ? " auto" : ""}</span>` : ""}</td>
                 </tr>`,
               )
               .join("")}
@@ -788,7 +788,7 @@ function openInspector(segment: Segment): void {
       <dt>chars</dt><dd>${fmtInt(segment.charLength)}</dd>
       <dt>≈ Claude tokens</dt><dd>${fmtInt(segment.claudeTokensEstimate)}${state.calibration ? ` <span class="muted">(scaled ×${state.calibration.scale.toFixed(3)})</span>` : ""}</dd>
       <dt>OpenAI tokens</dt><dd>${fmtInt(segment.openaiTokens)}</dd>
-      <dt>cache_control</dt><dd>${segment.cacheControl ? `ephemeral, ${segment.cacheControl.ttl}` : "none"}</dd>
+      <dt>cache_control</dt><dd>${segment.cacheControl ? `ephemeral, ${segment.cacheControl.ttl}${segment.cacheControl.automatic ? " (automatic: the request's top-level cache_control lands on this block)" : ""}` : "none"}</dd>
     </dl>
     <pre>${esc(rawPretty)}</pre>
   `;

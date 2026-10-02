@@ -27,6 +27,12 @@ export type CacheTtl = "5m" | "1h";
 export interface CacheControl {
   type: "ephemeral";
   ttl: CacheTtl;
+  /**
+   * Set when the block has no marker of its own: the request carries a top-level
+   * `cache_control` (Anthropic's automatic caching), which puts a breakpoint on the last
+   * cacheable block of the request, and this is that block.
+   */
+  automatic?: true;
 }
 
 /**

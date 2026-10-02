@@ -16,6 +16,27 @@ function readCacheControl(block: unknown): CacheControl | undefined {
   return { type: "ephemeral", ttl };
 }
 
+/**
+ * Automatic caching: a `cache_control` at the top level of the request, beside `model` and
+ * `messages`, "automatically applies a cache_control marker to the last cacheable block in
+ * the request" (the SDK's own description of the parameter). It is the one-line way to turn
+ * caching on, and it moves forward by itself as the conversation grows.
+ *
+ * The last cacheable block is the last block that could carry a marker of its own: thinking
+ * blocks can't, and an empty text block can't be cached. A block that already has a marker
+ * keeps it.
+ */
+function applyAutomaticBreakpoint(request: Record<string, unknown>, segments: Segment[]): void {
+  const automatic = readCacheControl(request);
+  if (!automatic) return;
+  for (let i = segments.length - 1; i >= 0; i--) {
+    const segment = segments[i]!;
+    if (segment.category === "thinking" || segment.text.length === 0) continue;
+    if (!segment.cacheControl) segment.cacheControl = { ...automatic, automatic: true };
+    return;
+  }
+}
+
 function makeSegment(params: {
   id: string;
   category: SegmentCategory;
@@ -228,6 +249,8 @@ export function parseAnthropicRequest(raw: unknown, index: number, counter: Toke
       }
     });
   });
+
+  applyAutomaticBreakpoint(obj, segments);
 
   const model = typeof obj["model"] === "string" ? (obj["model"] as string) : undefined;
   return { provider: "anthropic", index, model, raw, segments };

@@ -2,6 +2,38 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.3.1] - 2026-10-02
+
+Checked against request bodies written by the real anthropic and openai
+Python SDKs (their HTTP transport replaced by one that records the request),
+committed as `tests/fixtures/sdk/` with the script that writes them.
+
+### Fixed
+
+- **Anthropic's automatic caching was read as no caching.** A top-level
+  `cache_control` beside `model` puts a breakpoint on the last cacheable
+  block of the request and moves it forward as the conversation grows; it is
+  the one-line way to turn caching on. contextscope only looked for markers
+  on blocks, so an eight-turn agent loop that caches cleanly was reported as
+  $0.3134 with "No cache_control breakpoint set" on all eight requests. It is
+  now simulated exactly like the same loop with a marker placed by hand on
+  each request's last block: $0.0687 and no findings. The block the automatic
+  breakpoint lands on is shown as such (`● 5m auto` in the web app,
+  `"automatic": true` in `--json`).
+- A chain of OpenAI requests using `previous_response_id` produced the same
+  parse warning once per request. It is one note naming the requests
+  (`Requests 2–6 continue a stored response or conversation ...`), and a
+  `conversation` is covered by it too.
+
+### Added
+
+- OpenAI requests that place cache breakpoints by hand (`prompt_cache_options`,
+  `prompt_cache_breakpoint`, GPT-5.6 and later) get a note that the simulation
+  models automatic prefix caching only; `mode: "explicit"` with no breakpoint
+  gets one saying that OpenAI then caches nothing of the request.
+- The "No cache_control breakpoint set" finding says how to fix it in one
+  line (the top-level `cache_control`).
+
 ## [0.3.0] - 2026-10-01
 
 ### Fixed

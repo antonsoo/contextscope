@@ -86,7 +86,7 @@ export function computeFindings(
           severity: "warning",
           requestIndex: i,
           title: "No cache_control breakpoint set",
-          detail: `Request ${i + 1} carries ≈${totalTokens.toLocaleString()} Claude tokens but no cache_control marker, so nothing is ever cached even though this is part of a ${requests.length}-request sequence.`,
+          detail: `Request ${i + 1} carries ≈${totalTokens.toLocaleString()} Claude tokens but no cache_control marker, so nothing is ever cached even though this is part of a ${requests.length}-request sequence. One line turns it on: a top-level "cache_control": {"type": "ephemeral"} beside "model" puts a breakpoint on the last block of every request.`,
           segmentIds: [],
         });
       }
@@ -98,7 +98,7 @@ export function computeFindings(
             severity: "warning",
             requestIndex: i,
             title: "Prefix below minimum cacheable length",
-            detail: `The cache_control breakpoint at "${bp.label}" covers only ≈${cum.toLocaleString()} tokens, below ${modelInfo.displayName}'s ${modelInfo.minCacheableTokens.toLocaleString()}-token minimum - it silently never caches.`,
+            detail: `The ${bp.cacheControl?.automatic ? "automatic breakpoint (top-level cache_control), which lands on" : "cache_control breakpoint at"} "${bp.label}"${bp.cacheControl?.automatic ? "," : ""} covers only ≈${cum.toLocaleString()} tokens, below ${modelInfo.displayName}'s ${modelInfo.minCacheableTokens.toLocaleString()}-token minimum - it silently never caches.`,
             segmentIds: [bp.id],
           });
         }
@@ -221,7 +221,7 @@ export function computeFindings(
             severity: "warning",
             requestIndex: i,
             title: "Cache breakpoint placed after content that changes",
-            detail: `"${bp.label}" carries a cache_control marker, but it (or something before it) already differs from request ${from + 1}. The breakpoint can only pay off once the content it covers is stable.`,
+            detail: `"${bp.label}" carries ${bp.cacheControl?.automatic ? "the automatic breakpoint (top-level cache_control)" : "a cache_control marker"}, but it (or something before it) already differs from request ${from + 1}. The breakpoint can only pay off once the content it covers is stable.`,
             segmentIds: [bp.id],
           });
         }
