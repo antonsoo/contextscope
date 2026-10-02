@@ -1,4 +1,4 @@
-import type { DiffLine, ParsedRequest, PrefixMatch, Segment } from "./types.js";
+import type { DiffLine, ParsedRequest, PrefixMatch, PrefixRelation, Segment } from "./types.js";
 import { stripVolatilePatterns } from "./volatile.js";
 import { canonicalBlockJson } from "./json-utils.js";
 
@@ -37,6 +37,14 @@ function inCanonicalOrder(segments: Segment[]): Segment[] {
     return kx < ky ? -1 : kx > ky ? 1 : 0;
   });
   return [...tools, ...segments.slice(toolCount)];
+}
+
+/**
+ * A request's segments as keys, in the order they are compared: equal keys at equal positions are
+ * equal segments. Normalized, the keys are volatile-free and the leading tool definitions sorted.
+ */
+export function comparisonKeys(segments: Segment[], normalizeVolatile: boolean): string[] {
+  return (normalizeVolatile ? inCanonicalOrder(segments) : segments).map((segment) => segmentKey(segment, normalizeVolatile));
 }
 
 /** Length of the longest run of leading segments that are identical (by category + text) in both requests. */
@@ -187,25 +195,46 @@ function withContext(ops: DiffOp[], radius = 2): DiffLine[] {
   return out;
 }
 
-/** `withDiff: false` skips the display diff - the optimized (volatile-normalized) scenario only needs the match length. */
-export function computePrefixMatch(from: ParsedRequest, to: ParsedRequest, normalizeVolatile = false, withDiff = true): PrefixMatch {
+/** The leading tool definitions and system blocks: what a request sends before its conversation. */
+function setupLength(segments: Segment[]): number {
+  let n = 0;
+  while (n < segments.length && (segments[n]!.category === "tools" || segments[n]!.category === "system")) n++;
+  return n;
+}
+
+/**
+ * `withDiff: false` skips the display diff - the optimized (volatile-normalized) scenario only needs the match length.
+ *
+ * A `new_conversation` is compared with its predecessor only as far as that request's setup
+ * (and whatever opening messages they happen to share): the rest of the other conversation was
+ * never this one's to re-send, and listing it as removed would bury the lines that matter.
+ */
+export function computePrefixMatch(
+  from: ParsedRequest,
+  to: ParsedRequest,
+  normalizeVolatile = false,
+  withDiff = true,
+  relation: PrefixRelation = "continues",
+): PrefixMatch {
   const matchedSegments = commonPrefixLength(from.segments, to.segments, normalizeVolatile);
+  const fromSegments = relation === "new_conversation" ? from.segments.slice(0, Math.max(setupLength(from.segments), matchedSegments)) : from.segments;
   const matchedTo = to.segments.slice(0, matchedSegments);
   const matchedOpenaiTokens = matchedTo.reduce((sum, s) => sum + s.openaiTokens, 0);
   const matchedClaudeTokensEstimate = matchedTo.reduce((sum, s) => sum + s.claudeTokensEstimate, 0);
 
-  const fromDiverged = from.segments[matchedSegments];
+  const fromDiverged = fromSegments[matchedSegments];
   const toDiverged = to.segments[matchedSegments];
   const divergedAt =
-    matchedSegments < from.segments.length || matchedSegments < to.segments.length
+    matchedSegments < fromSegments.length || matchedSegments < to.segments.length
       ? { fromSegmentId: fromDiverged?.id, toSegmentId: toDiverged?.id }
       : undefined;
 
-  const diff = withDiff ? withContext(diffSegments(from.segments, to.segments)) : [];
+  const diff = withDiff ? withContext(diffSegments(fromSegments, to.segments)) : [];
 
   return {
     fromIndex: from.index,
     toIndex: to.index,
+    relation,
     matchedSegments,
     matchedOpenaiTokens,
     matchedClaudeTokensEstimate,
@@ -214,10 +243,22 @@ export function computePrefixMatch(from: ParsedRequest, to: ParsedRequest, norma
   };
 }
 
-export function computeAllPrefixMatches(requests: ParsedRequest[], normalizeVolatile = false, withDiff = true): PrefixMatch[] {
+/**
+ * One match for each request that has an earlier request to be compared with. Without `threads`
+ * that is every request after the first, compared with the one before it, which is right for a
+ * file that holds a single conversation; `threadRequests` works out the pairs for any file.
+ */
+export function computeAllPrefixMatches(
+  requests: ParsedRequest[],
+  normalizeVolatile = false,
+  withDiff = true,
+  threads?: { predecessor: (number | undefined)[]; relation: (PrefixRelation | undefined)[] },
+): PrefixMatch[] {
   const out: PrefixMatch[] = [];
   for (let i = 1; i < requests.length; i++) {
-    out.push(computePrefixMatch(requests[i - 1]!, requests[i]!, normalizeVolatile, withDiff));
+    const from = threads ? threads.predecessor[i] : i - 1;
+    if (from === undefined) continue;
+    out.push(computePrefixMatch(requests[from]!, requests[i]!, normalizeVolatile, withDiff, threads?.relation[i] ?? "continues"));
   }
   return out;
 }

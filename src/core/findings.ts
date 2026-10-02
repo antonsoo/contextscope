@@ -47,6 +47,13 @@ function isSystemPrompt(segments: readonly Segment[], index: number): boolean {
   return segments.slice(0, index).every((seg) => seg.category === "tools" || seg.category === "system");
 }
 
+/** The request cut down to its tools and system prompt, or to `atLeast` segments if that is more. */
+function setupOf(request: ParsedRequest, atLeast: number): ParsedRequest {
+  let setup = 0;
+  while (setup < request.segments.length && (request.segments[setup]!.category === "tools" || request.segments[setup]!.category === "system")) setup++;
+  return { ...request, segments: request.segments.slice(0, Math.max(setup, atLeast)) };
+}
+
 function volatileFix(provider: Provider, modelInfo: ReturnType<typeof findAnthropicModel> | undefined): string {
   if (provider === "anthropic" && modelInfo?.midConversationSystem) {
     return `Move it out of the cached region: ${modelInfo.displayName} accepts a mid-conversation {"role": "system"} message after the cached history, or put it at the end of the latest user turn.`;
@@ -64,6 +71,9 @@ export function computeFindings(
 ): Finding[] {
   const findings: Finding[] = [];
   const modelInfo = provider === "anthropic" ? findAnthropicModel(model) : undefined;
+  // Each request is compared with the request it continues (threads.ts), which in a file that
+  // holds several conversations is not the line before it.
+  const matchTo = new Map(prefixMatches.map((match) => [match.toIndex, match]));
 
   requests.forEach((request, i) => {
     // no_cache_control / below_minimum_cacheable only apply to Anthropic, whose caching is opt-in via a marker.
@@ -111,9 +121,13 @@ export function computeFindings(
       }
     }
 
-    if (i === 0) return;
-    const match = prefixMatches[i - 1]!;
-    const prev = requests[i - 1]!;
+    const match = matchTo.get(i);
+    if (!match) return;
+    const from = match.fromIndex;
+    const startsConversation = match.relation === "new_conversation";
+    // A new conversation shares its predecessor's setup (tools and system prompt) and whatever
+    // opening messages they have in common, not the rest of that other conversation.
+    const prev = startsConversation ? setupOf(requests[from]!, match.matchedSegments) : requests[from]!;
 
     // model_switch: caches are per model, so alternating models inside one conversation rewrites
     // the whole prefix on every switch - even when every byte of it matches.
@@ -123,8 +137,8 @@ export function computeFindings(
         kind: "model_switch",
         severity: "warning",
         requestIndex: i,
-        title: `Model changed between requests ${i} and ${i + 1}`,
-        detail: `Request ${i} ran on ${String(prev.model)} and request ${i + 1} on ${String(request.model)}. Prompt caches belong to one model, so request ${i + 1} can't read anything request ${i} cached and re-sends its whole ≈${prefixTokens.toLocaleString()}-token prompt at full price. If the switch routes a sub-task to a cheaper model, give that sub-task its own conversation instead of alternating models inside one.`,
+        title: `Model changed between requests ${from + 1} and ${i + 1}`,
+        detail: `Request ${from + 1} ran on ${String(prev.model)} and request ${i + 1} on ${String(request.model)}. Prompt caches belong to one model, so request ${i + 1} can't read anything request ${from + 1} cached and re-sends its whole ≈${prefixTokens.toLocaleString()}-token prompt at full price. ${startsConversation ? "Conversations that share a prompt share its cache only when they run on the same model." : "If the switch routes a sub-task to a cheaper model, give that sub-task its own conversation instead of alternating models inside one."}`,
         segmentIds: [],
       });
     }
@@ -142,7 +156,7 @@ export function computeFindings(
           severity: "error",
           requestIndex: i,
           title: `${isSystemPrompt(request.segments, s) ? "System prompt" : b.label} contains a value that changes every request`,
-          detail: `"${b.label}" differs between requests ${i} and ${i + 1}, and looks like a timestamp/UUID/epoch value. Every byte after this point falls out of the cached prefix on every request. ${volatileFix(provider, modelInfo)}`,
+          detail: `"${b.label}" differs between requests ${from + 1} and ${i + 1}, and looks like a timestamp/UUID/epoch value. Every byte after this point falls out of the cached prefix on every request. ${volatileFix(provider, modelInfo)}`,
           segmentIds: [a.id, b.id],
         });
       }
@@ -161,7 +175,7 @@ export function computeFindings(
           kind: "tools_reordered",
           severity: "error",
           requestIndex: i,
-          title: `Tools reordered between requests ${i} and ${i + 1}`,
+          title: `Tools reordered between requests ${from + 1} and ${i + 1}`,
           detail: `Same ${currNames.length} tools, different order: ${describeReorder(prevNames.map(String), currNames.map(String))}. Tools render at position 0 of the prefix, so any reorder invalidates the entire cache. Sort tools deterministically (e.g. by name) before sending.`,
           segmentIds: currTools.map((t) => t.id),
         });
@@ -182,7 +196,7 @@ export function computeFindings(
               severity: "error",
               requestIndex: i,
               title: `Tool "${String(name)}" schema key order differs`,
-              detail: `The "${String(name)}" tool definition is semantically identical between requests ${i} and ${i + 1}, but its JSON key order changed - almost always non-deterministic object key iteration (e.g. building the schema from an unordered map/set) upstream. Serialize tool schemas with sorted keys before sending.`,
+              detail: `The "${String(name)}" tool definition is semantically identical between requests ${from + 1} and ${i + 1}, but its JSON key order changed - almost always non-deterministic object key iteration (e.g. building the schema from an unordered map/set) upstream. Serialize tool schemas with sorted keys before sending.`,
               segmentIds: [prevTool.id, currTool.id],
             });
           }
@@ -207,13 +221,15 @@ export function computeFindings(
             severity: "warning",
             requestIndex: i,
             title: "Cache breakpoint placed after content that changes",
-            detail: `"${bp.label}" carries a cache_control marker, but it (or something before it) already differs from request ${i}. The breakpoint can only pay off once the content it covers is stable.`,
+            detail: `"${bp.label}" carries a cache_control marker, but it (or something before it) already differs from request ${from + 1}. The breakpoint can only pay off once the content it covers is stable.`,
             segmentIds: [bp.id],
           });
         }
       }
 
       // lookback_window_exceeded (approximate re-check, mirrors cache-anthropic.ts's own distance test).
+      // Not for a new conversation: its first breakpoints have no earlier entry of their own to find.
+      if (startsConversation) return;
       const positions: number[] = [];
       let pos = -1;
       let run: string | undefined;
@@ -238,7 +254,7 @@ export function computeFindings(
             severity: "warning",
             requestIndex: i,
             title: "Breakpoint is outside the 20-position lookback window",
-            detail: `"${bp.label}" sits ${distance} positions past the last matching prefix boundary with request ${i}. Anthropic only looks back 20 positions for a prior cache entry, so this breakpoint can never find one - add an intermediate breakpoint closer to the boundary.`,
+            detail: `"${bp.label}" sits ${distance} positions past the last matching prefix boundary with request ${from + 1}. Anthropic only looks back 20 positions for a prior cache entry, so this breakpoint can never find one - add an intermediate breakpoint closer to the boundary.`,
             segmentIds: [bp.id],
           });
         }

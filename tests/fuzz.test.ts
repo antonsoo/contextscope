@@ -62,6 +62,78 @@ it("fuzz: mutated request logs only ever raise ContextScopeParseError", { timeou
   expect(ok + rejected).toBe(400);
 });
 
+it("fuzz: logs of several conversations, shuffled together and mutated, keep every invariant", { timeout: 120_000 }, () => {
+  const sources = ["anthropic-duplicate-tool-results.jsonl", "openai-agent-tools-reordered.jsonl"].map((n) =>
+    readFileSync(new URL(`../examples/${n}`, import.meta.url), "utf8").trim().split("\n").map((l) => JSON.parse(l) as Record<string, unknown>),
+  );
+  let ok = 0, rejected = 0, several = 0;
+  const bad: string[] = [];
+  for (let seed = 1; seed <= 300 && bad.length < 6; seed++) {
+    const r = rng(seed);
+    const base = sources[seed % sources.length]!;
+    // Two to four copies of the session, each on its own task (and sometimes its own model),
+    // merged in a random order that keeps each copy's own order: what a shared log looks like.
+    const copies = Array.from({ length: 2 + Math.floor(r() * 3) }, (_, c) =>
+      base.map((request) => {
+        const copy = structuredClone(request);
+        const messages = (copy["messages"] ?? copy["input"]) as { content?: unknown }[] | undefined;
+        const first = messages?.find((m) => typeof m?.content === "string");
+        if (first && c > 0) first.content = `task ${c}: ${String(first.content)}`;
+        if (c > 0 && r() < 0.2) copy["model"] = r() < 0.5 ? "claude-haiku-4-5" : "gpt-6-luna";
+        return r() < 0.25 ? mutate(copy, r) : copy;
+      }),
+    );
+    const cursors = copies.map(() => 0);
+    const lines: string[] = [];
+    while (cursors.some((at, c) => at < copies[c]!.length)) {
+      const c = Math.floor(r() * copies.length);
+      if (cursors[c]! < copies[c]!.length) lines.push(JSON.stringify(copies[c]![cursors[c]!++]) ?? "null");
+    }
+    try {
+      const result = analyze(lines.join("\n"));
+      const n = result.parse.requests.length;
+      const check = (ok: boolean, what: string): void => {
+        if (!ok) throw new Error(what);
+      };
+      check(result.conversations.byRequest.length === n && result.conversations.byRequest.every((c) => c >= 0 && c < result.conversations.count), "conversation numbers");
+      check(result.conversations.count >= 1 && result.conversations.count <= n, "conversation count");
+      const compared = new Set<number>();
+      for (const match of result.prefixMatches) {
+        check(match.fromIndex >= 0 && match.fromIndex < match.toIndex && match.toIndex < n, `pair ${match.fromIndex} > ${match.toIndex}`);
+        check(!compared.has(match.toIndex), `request ${match.toIndex} compared twice`);
+        compared.add(match.toIndex);
+        check(match.matchedSegments <= result.parse.requests[match.toIndex]!.segments.length, "more matched than sent");
+        const same = result.conversations.byRequest[match.fromIndex] === result.conversations.byRequest[match.toIndex];
+        check(same === (match.relation !== "new_conversation"), `relation ${match.relation} across conversations`);
+      }
+      for (const scenario of [result.cacheSimulation.actual, result.cacheSimulation.optimized]) {
+        check(scenario.length === n, "one cache step per request");
+        scenario.forEach((step, i) => {
+          const total = result.reports[i]!.totals;
+          const billed = step.readTokens + step.writeTokens5m + step.writeTokens1h + step.uncachedTokens;
+          check(step.readTokens >= 0 && step.uncachedTokens >= 0 && step.writeTokens5m >= 0 && step.writeTokens1h >= 0, `negative tokens at ${i}`);
+          check(billed === (result.parse.format === "anthropic" ? total.claudeTokensEstimate : total.openaiTokens), `request ${i}: ${billed} tokens billed`);
+          check(step.costUsd === undefined || (Number.isFinite(step.costUsd) && step.costUsd >= 0), `cost at ${i}`);
+        });
+      }
+      check(result.cacheSimulation.actual[0]!.readTokens === 0, "the first request read from an empty cache");
+      for (const finding of result.findings) check(finding.requestIndex >= 0 && finding.requestIndex < n, "finding outside the log");
+      groupFindings(result.findings);
+      renderTerminalReport(result, { verbose: r() < 0.5 });
+      renderHtmlReport(result);
+      ok++;
+      if (result.conversations.count > 1) several++;
+    } catch (err) {
+      if (err instanceof ContextScopeParseError) rejected++;
+      else bad.push(`seed ${seed}: ${(err as Error).stack?.split("\n").slice(0, 3).join(" | ")}`);
+    }
+  }
+  expect(bad).toEqual([]);
+  expect(ok).toBeGreaterThan(250);
+  expect(several).toBeGreaterThan(150);
+  expect(ok + rejected).toBe(300);
+});
+
 describe("malformed entries keep their position instead of crashing the parse", () => {
   it("Anthropic: a null message, a null block, non-string text, a non-string type, a null tool", () => {
     const request = {

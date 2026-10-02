@@ -1,6 +1,6 @@
-import type { CacheSimStep, ParsedRequest, PrefixMatch } from "./types.js";
+import type { CacheSimStep, ParsedRequest } from "./types.js";
 import { findOpenAiModel } from "./pricing.js";
-import { sameModel } from "./model-id.js";
+import { ModelScoped } from "./model-id.js";
 
 /**
  * Simulates OpenAI's automatic (implicit) prompt caching: no `cache_control`
@@ -17,14 +17,28 @@ import { sameModel } from "./model-id.js";
 const MIN_CACHEABLE_TOKENS = 1024;
 const CACHE_GRANULARITY = 128;
 
-export function simulateOpenAiCacheSequence(requests: ParsedRequest[], prefixMatches: PrefixMatch[], model: string | undefined): CacheSimStep[] {
+export function simulateOpenAiCacheSequence(requests: ParsedRequest[], paths: number[][], model: string | undefined): CacheSimStep[] {
   const modelInfo = findOpenAiModel(model);
   const steps: CacheSimStep[] = [];
+  // The cache is keyed by content: a request reads the longest prefix any earlier request on its
+  // model sent, whether or not that was the line before it. `paths` (threads.ts `prefixPaths`)
+  // gives every prefix a node, and these are the nodes sent so far.
+  const sent = new ModelScoped();
 
   requests.forEach((request, i) => {
+    const path = paths[i]!;
     const total = request.segments.reduce((sum, s) => sum + s.openaiTokens, 0);
-    const match = i > 0 && sameModel(requests[i - 1]!.model, request.model) ? prefixMatches[i - 1] : undefined;
-    const rawCacheable = match ? match.matchedOpenaiTokens : 0;
+    const earlier = sent.visibleTo(request.model);
+    // Whether a prefix was sent before is monotone in its length, so the longest is a binary search.
+    let matched = 0;
+    let high = path.length;
+    while (matched < high) {
+      const mid = (matched + high + 1) >> 1;
+      if (earlier.some((nodes) => nodes.has(path[mid - 1]!))) matched = mid;
+      else high = mid - 1;
+    }
+    let rawCacheable = 0;
+    for (let k = 0; k < matched; k++) rawCacheable += request.segments[k]!.openaiTokens;
     const cachedTokens = rawCacheable >= MIN_CACHEABLE_TOKENS ? Math.floor(rawCacheable / CACHE_GRANULARITY) * CACHE_GRANULARITY : 0;
     const uncachedTokens = Math.max(0, total - cachedTokens);
 
@@ -33,6 +47,9 @@ export function simulateOpenAiCacheSequence(requests: ParsedRequest[], prefixMat
     const costUsd = uncachedTokens * perTok + cachedTokens * cachedPerTok;
 
     steps.push({ requestIndex: request.index, readTokens: cachedTokens, writeTokens5m: 0, writeTokens1h: 0, uncachedTokens, costUsd });
+
+    const mine = sent.of(request.model);
+    for (const node of path) mine.add(node);
   });
 
   return steps;

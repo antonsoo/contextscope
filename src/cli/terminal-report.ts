@@ -1,4 +1,4 @@
-import type { AnalysisResult, CalibrationResult, RequestTokenReport, SegmentCategory } from "../core/index.js";
+import type { AnalysisResult, CalibrationResult, PrefixMatch, RequestTokenReport, SegmentCategory } from "../core/index.js";
 import { describeRequestIndices, groupFindings } from "../core/index.js";
 import { bar, blue, bold, cyan, dim, fmtPct, fmtTokens, fmtUsd, fmtUsdRounded, green, magenta, red, severityColor, wrapIndented, yellow } from "./ansi.js";
 
@@ -43,7 +43,8 @@ export function renderTerminalReport(result: AnalysisResult, options: TerminalRe
 
   const modelNote =
     model.source === "option" ? "set with --model" : model.source === "request" ? "from the requests" : model.unrecognized ? `"${model.unrecognized}" is not in the pricing table` : "default; no model in the requests";
-  lines.push(bold(`contextscope — ${parse.format} · ${n} request${n === 1 ? "" : "s"}${parse.autoDetected ? " (auto-detected)" : ""}`));
+  const conversationNote = result.conversations.count > 1 ? ` in ${result.conversations.count} conversations` : "";
+  lines.push(bold(`contextscope — ${parse.format} · ${n} request${n === 1 ? "" : "s"}${conversationNote}${parse.autoDetected ? " (auto-detected)" : ""}`));
   lines.push(dim(`priced as ${model.displayName} (${modelNote})${parse.envelope ? ` · requests read from each record's "${parse.envelope}" field` : ""}`));
   if (options.calibration) {
     const c = options.calibration;
@@ -88,7 +89,8 @@ export function renderTerminalReport(result: AnalysisResult, options: TerminalRe
   lines.push(dim(`  total optimized cost: ${fmtUsd(cacheSimulation.totalOptimizedCostUsd)}  (${optimizedNote})`));
   if (cacheSimulation.totalActualCostUsd !== undefined && cacheSimulation.totalOptimizedCostUsd !== undefined) {
     const savings = cacheSimulation.totalActualCostUsd - cacheSimulation.totalOptimizedCostUsd;
-    if (savings > 1e-9) {
+    // Below half of the last digit shown, the line would read "would save $0.0000 (0%)".
+    if (savings >= 0.00005) {
       const how = cacheSimulation.provider === "anthropic" ? "applying the fixes below (plus that trailing breakpoint)" : "applying the fixes below";
       lines.push(green(`  → ${how} would save ${fmtUsd(savings)} (${((savings / cacheSimulation.totalActualCostUsd) * 100).toFixed(0)}%) on this sequence`));
       lines.push(dim(`    ≈ ${fmtUsdRounded(savings * 1000)} per 1,000 sessions shaped like this one`));
@@ -151,40 +153,70 @@ function breakdown(title: string, report: RequestTokenReport): string[] {
  * changed. Default output lists the breaks grouped by where they happen; --verbose lists every pair.
  */
 function prefixSection(result: AnalysisResult, verbose: boolean): string[] {
-  const { parse, prefixMatches } = result;
+  const { parse, prefixMatches, conversations } = result;
   const out = [bold("Prefix match across the sequence")];
+  if (conversations.count > 1) {
+    out.push(dim(`  ${conversations.count} conversations in this file; each request is compared with the request it continues`));
+  }
   if (verbose) {
-    prefixMatches.forEach((match, i) => {
-      const total = parse.requests[i + 1]!.segments.length;
+    for (const match of prefixMatches) {
+      const total = parse.requests[match.toIndex]!.segments.length;
       const pct = total > 0 ? match.matchedSegments / total : 0;
       out.push(
-        `  req ${i + 1} → req ${i + 2}: ${bar(pct, 20)} ${match.matchedSegments}/${total} segments matched, ≈${fmtTokens(match.matchedClaudeTokensEstimate)} tokens` +
-          (match.divergedAt ? dim(`  diverges at ${match.divergedAt.toSegmentId ?? "(end)"}`) : dim("  (identical)")),
+        `  req ${match.fromIndex + 1} → req ${match.toIndex + 1}: ${bar(pct, 20)} ${match.matchedSegments}/${total} segments matched, ≈${fmtTokens(match.matchedClaudeTokensEstimate)} tokens` +
+          (match.relation === "new_conversation"
+            ? dim(`  new conversation${match.divergedAt?.fromSegmentId ? `, setup differs at ${match.divergedAt.fromSegmentId}` : ""}`)
+            : match.divergedAt
+              ? dim(`  diverges at ${match.divergedAt.toSegmentId ?? "(end)"}`)
+              : dim("  (identical)")),
       );
-    });
+    }
     return out;
   }
 
-  const breaks = new Map<string, number[]>();
-  prefixMatches.forEach((match, i) => {
-    const previous = parse.requests[i]!;
-    if (match.matchedSegments >= previous.segments.length) return;
-    const segment = previous.segments[match.matchedSegments]!;
-    const key = segment.label;
-    breaks.set(key, [...(breaks.get(key) ?? []), i]);
-  });
+  // A pair breaks when something the earlier request sent is not there any more, byte for byte.
+  // For a new conversation that means its setup: the rest of the other conversation was never
+  // its to re-send.
+  const breaks = new Map<string, PrefixMatch[]>();
+  let starts = 0;
+  let brokenStarts = 0;
+  for (const match of prefixMatches) {
+    const previous = parse.requests[match.fromIndex]!;
+    const startsConversation = match.relation === "new_conversation";
+    if (startsConversation) starts++;
+    const sent = startsConversation ? setupLength(previous.segments) : previous.segments.length;
+    if (match.matchedSegments >= sent) continue;
+    if (startsConversation) brokenStarts++;
+    const label = previous.segments[match.matchedSegments]!.label;
+    breaks.set(label, [...(breaks.get(label) ?? []), match]);
+  }
   const total = prefixMatches.length;
   const broken = [...breaks.values()].reduce((sum, pairs) => sum + pairs.length, 0);
+  const followUps = total - starts;
+  const startsNote =
+    starts === 0 ? [] : [dim(`  ${starts} request${starts === 1 ? " starts a new conversation" : "s start a new conversation"} on a setup already sent${brokenStarts > 0 ? ` (${brokenStarts} with a changed setup, above)` : ""}`)];
   if (broken === 0) {
-    out.push(green(`  all ${total} consecutive pair${total === 1 ? "" : "s"} only append to the previous request`));
+    if (starts === 0) out.push(green(`  all ${total} consecutive pair${total === 1 ? "" : "s"} only append to the previous request`));
+    else if (followUps > 0) out.push(green(`  all ${followUps} follow-up request${followUps === 1 ? "" : "s"} only append to the request they continue`));
+    out.push(...startsNote);
     return out;
   }
+  const pair = (match: PrefixMatch): string => `req ${match.fromIndex + 1} → ${match.toIndex + 1}`;
   for (const [label, pairs] of breaks) {
-    const first = pairs[0]!;
-    const last = pairs[pairs.length - 1]!;
-    const span = pairs.length === 1 ? `req ${first + 1} → ${first + 2}` : `req ${first + 1} → ${first + 2} … req ${last + 1} → ${last + 2}`;
+    const span = pairs.length === 1 ? pair(pairs[0]!) : `${pair(pairs[0]!)} … ${pair(pairs[pairs.length - 1]!)}`;
     out.push(`  ${red(`${pairs.length} of ${total}`)} pair${pairs.length === 1 ? "" : "s"} rewrite content already sent, starting at ${bold(`"${label}"`)} ${dim(`(${span})`)}`);
   }
-  out.push(dim(`  ${total - broken} of ${total} only append to the previous request`));
+  if (starts === 0) out.push(dim(`  ${total - broken} of ${total} only append to the previous request`));
+  else {
+    if (followUps > 0) out.push(dim(`  ${followUps - (broken - brokenStarts)} of ${followUps} follow-up request${followUps === 1 ? "" : "s"} only append to the request they continue`));
+    out.push(...startsNote);
+  }
   return out;
+}
+
+/** The leading tool definitions and system blocks: what a request sends before its conversation. */
+function setupLength(segments: { category: string }[]): number {
+  let n = 0;
+  while (n < segments.length && (segments[n]!.category === "tools" || segments[n]!.category === "system")) n++;
+  return n;
 }

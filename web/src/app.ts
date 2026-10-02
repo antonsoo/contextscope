@@ -269,9 +269,16 @@ async function runAnalysisAsync(input: string, fresh: boolean): Promise<void> {
     state.analysis = result;
     showIntakeError(undefined);
     // Default to the LAST request: that's where the context is biggest and most interesting
-    // (a growing agent-loop transcript), not the smallest, near-empty first turn.
-    if (fresh || state.selectedRequest >= result.reports.length) state.selectedRequest = result.reports.length - 1;
-    if (fresh || state.selectedPair >= result.prefixMatches.length) state.selectedPair = Math.max(0, result.prefixMatches.length - 1);
+    // (a growing agent-loop transcript), not the smallest, near-empty first turn. In a file of
+    // several conversations the last line is whichever one happened to end last - often a small
+    // side request - so there the view opens on the largest request, and on its comparison.
+    if (fresh || state.selectedRequest >= result.reports.length) {
+      state.selectedRequest = result.conversations.count > 1 ? largestRequest(result) : result.reports.length - 1;
+    }
+    if (fresh || state.selectedPair >= result.prefixMatches.length) {
+      const own = result.prefixMatches.findIndex((m) => m.toIndex === state.selectedRequest);
+      state.selectedPair = own >= 0 ? own : Math.max(0, result.prefixMatches.length - 1);
+    }
     showDashboard(core);
   } catch (err) {
     const message = `Could not analyze this input: ${(err as Error).message}`;
@@ -396,13 +403,15 @@ function statTilesPanel(report: RequestTokenReport, result: AnalysisResult): str
       : undefined;
   return `
     <section class="panel">
-      <h2>Request ${state.selectedRequest + 1} of ${result.reports.length}</h2>
+      <h2>Request ${state.selectedRequest + 1} of ${result.reports.length}${
+        result.conversations.count > 1 ? ` <span class="count">conversation ${result.conversations.byRequest[state.selectedRequest]! + 1} of ${fmtInt(result.conversations.count)}</span>` : ""
+      }</h2>
       <div class="stat-row">
         <div class="stat-tile"><div class="label">≈ Claude tokens${result.claudeTokenScale !== 1 ? " (calibrated)" : ""}</div><div class="value">${fmtInt(report.totals.claudeTokensEstimate)}</div></div>
         <div class="stat-tile"><div class="label">OpenAI tokens (exact)</div><div class="value">${fmtInt(report.totals.openaiTokens)}</div></div>
         <div class="stat-tile"><div class="label">of context window</div><div class="value">${fmtPct(report.percentOfContextWindow, 2)}</div></div>
         <div class="stat-tile"><div class="label">issues</div><div class="value">${errorCount > 0 ? errorCount + " err" : warnCount > 0 ? warnCount + " warn" : groups.length}</div></div>
-        ${savings !== undefined && savings > 1e-9 ? `<div class="stat-tile"><div class="label">potential savings</div><div class="value good">${fmtUsd(savings)}</div></div>` : ""}
+        ${savings !== undefined && savings >= 0.00005 ? `<div class="stat-tile"><div class="label">potential savings</div><div class="value good">${fmtUsd(savings)}</div></div>` : ""}
       </div>
     </section>
   `;
@@ -505,6 +514,15 @@ function wireSegmentsTable(report: RequestTokenReport): void {
   });
 }
 
+/** The request with the most tokens, the later one on a tie. */
+function largestRequest(result: AnalysisResult): number {
+  let best = 0;
+  result.reports.forEach((report, i) => {
+    if (report.totals.claudeTokensEstimate >= result.reports[best]!.totals.claudeTokensEstimate) best = i;
+  });
+  return best;
+}
+
 // ---------------------------------------------------------------------------
 // sequence / prefix panel
 // ---------------------------------------------------------------------------
@@ -513,7 +531,11 @@ function sequencePanel(result: AnalysisResult): string {
   const pairs = result.prefixMatches;
   return `
     <section class="panel">
-      <h2>Prompt-cache prefix match <span class="count">longest common prefix between each consecutive pair</span></h2>
+      <h2>Prompt-cache prefix match <span class="count">${
+        result.conversations.count > 1
+          ? `${fmtInt(result.conversations.count)} conversations in this file · each request against the request it continues`
+          : "longest common prefix between each consecutive pair"
+      }</span></h2>
       <div class="prefix-list" id="prefix-list">
         ${pairs
           .map((m, i) => {
@@ -522,7 +544,7 @@ function sequencePanel(result: AnalysisResult): string {
             return `<div class="prefix-row ${i === state.selectedPair ? "active" : ""}" data-pair="${i}">
               <span class="arrow">req ${m.fromIndex + 1} → req ${m.toIndex + 1}</span>
               <span class="prefix-bar-track"><span class="prefix-bar-fill" style="width:${(pct * 100).toFixed(1)}%"></span></span>
-              <span class="prefix-meta">${m.matchedSegments}/${totalNext} segs · ≈${fmtInt(m.matchedClaudeTokensEstimate)} tok</span>
+              <span class="prefix-meta">${m.matchedSegments}/${totalNext} segs · ≈${fmtInt(m.matchedClaudeTokensEstimate)} tok${m.relation === "new_conversation" ? " · new conversation" : m.relation === "rewrites" ? " · history rewritten" : ""}</span>
             </div>`;
           })
           .join("")}
@@ -582,7 +604,7 @@ function cachePanel(result: AnalysisResult): string {
         <div class="stat-tile"><div class="label">total actual cost</div><div class="value">${fmtUsd(sim.totalActualCostUsd)}</div></div>
         <div class="stat-tile"><div class="label">total optimized cost</div><div class="value">${fmtUsd(sim.totalOptimizedCostUsd)}</div></div>
       </div>
-      ${savings !== undefined && savings > 1e-9 ? `<div class="savings-banner">Fixing the findings below${sim.provider === "anthropic" ? ", plus an automatic breakpoint on every request's tail," : ""} would save ${fmtUsd(savings)} (${((savings / sim.totalActualCostUsd!) * 100).toFixed(0)}%) on this sequence — ≈${fmtUsdRounded(savings * 1000)} per 1,000 sessions shaped like this one.</div>` : ""}
+      ${savings !== undefined && savings >= 0.00005 ? `<div class="savings-banner">Fixing the findings below${sim.provider === "anthropic" ? ", plus an automatic breakpoint on every request's tail," : ""} would save ${fmtUsd(savings)} (${((savings / sim.totalActualCostUsd!) * 100).toFixed(0)}%) on this sequence — ≈${fmtUsdRounded(savings * 1000)} per 1,000 sessions shaped like this one.</div>` : ""}
     </section>
   `;
 }

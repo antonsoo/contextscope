@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { parseAnthropicRequest } from "../src/core/parse-anthropic.js";
-import { computeAllPrefixMatches } from "../src/core/prefix.js";
+import { prefixPaths } from "../src/core/threads.js";
 import { simulateAnthropicCacheSequence } from "../src/core/cache-anthropic.js";
 import { findAnthropicModel } from "../src/core/pricing.js";
 
@@ -22,8 +22,8 @@ describe("simulateAnthropicCacheSequence - stable prefix", () => {
       parseAnthropicRequest(withCacheControlSystem(LONG_STABLE_PROMPT, "turn 1"), 0),
       parseAnthropicRequest(withCacheControlSystem(LONG_STABLE_PROMPT, "turn 2"), 1),
     ];
-    const matches = computeAllPrefixMatches(requests);
-    const steps = simulateAnthropicCacheSequence(requests, matches, MODEL, false);
+    const paths = prefixPaths(requests, false);
+    const steps = simulateAnthropicCacheSequence(requests, paths, MODEL, false);
 
     expect(steps[0]!.writeTokens5m).toBeGreaterThan(0);
     expect(steps[0]!.readTokens).toBe(0);
@@ -35,8 +35,8 @@ describe("simulateAnthropicCacheSequence - stable prefix", () => {
 
   it("keeps reading across a longer steady loop (3+ requests)", () => {
     const requests = [1, 2, 3, 4].map((n) => parseAnthropicRequest(withCacheControlSystem(LONG_STABLE_PROMPT, `turn ${n}`), n - 1));
-    const matches = computeAllPrefixMatches(requests);
-    const steps = simulateAnthropicCacheSequence(requests, matches, MODEL, false);
+    const paths = prefixPaths(requests, false);
+    const steps = simulateAnthropicCacheSequence(requests, paths, MODEL, false);
     for (let i = 1; i < steps.length; i++) {
       expect(steps[i]!.readTokens).toBeGreaterThan(0);
       expect(steps[i]!.writeTokens5m).toBe(0);
@@ -52,8 +52,8 @@ describe("simulateAnthropicCacheSequence - volatile prefix (the flagship example
 
   it("never gets a cache hit when a timestamp sits inside the cached block", () => {
     const requests = [0, 1, 2].map((n) => parseAnthropicRequest(withTimestamp(n), n));
-    const matches = computeAllPrefixMatches(requests, false);
-    const steps = simulateAnthropicCacheSequence(requests, matches, MODEL, false);
+    const paths = prefixPaths(requests, false);
+    const steps = simulateAnthropicCacheSequence(requests, paths, MODEL, false);
     for (const step of steps) {
       expect(step.readTokens).toBe(0);
     }
@@ -64,8 +64,8 @@ describe("simulateAnthropicCacheSequence - volatile prefix (the flagship example
 
   it("recovers cache hits once the timestamp is normalized out of the prefix (the 'optimized' fix)", () => {
     const requests = [0, 1, 2].map((n) => parseAnthropicRequest(withTimestamp(n), n));
-    const optimizedMatches = computeAllPrefixMatches(requests, true);
-    const steps = simulateAnthropicCacheSequence(requests, optimizedMatches, MODEL, true);
+    const optimizedPaths = prefixPaths(requests, true);
+    const steps = simulateAnthropicCacheSequence(requests, optimizedPaths, MODEL, true);
     expect(steps[1]!.readTokens).toBeGreaterThan(0);
     expect(steps[2]!.readTokens).toBeGreaterThan(0);
   });
@@ -76,8 +76,8 @@ describe("simulateAnthropicCacheSequence - below minimum cacheable length", () =
     const model = findAnthropicModel(MODEL);
     expect(model.minCacheableTokens).toBe(1024);
     const requests = [0, 1].map((n) => parseAnthropicRequest(withCacheControlSystem("short stable prompt", `turn ${n}`), n));
-    const matches = computeAllPrefixMatches(requests);
-    const steps = simulateAnthropicCacheSequence(requests, matches, MODEL, false);
+    const paths = prefixPaths(requests, false);
+    const steps = simulateAnthropicCacheSequence(requests, paths, MODEL, false);
     for (const step of steps) {
       expect(step.readTokens).toBe(0);
       expect(step.writeTokens5m).toBe(0);

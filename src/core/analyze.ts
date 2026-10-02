@@ -1,6 +1,7 @@
 import type { AnalysisOptions, AnalysisResult, CacheSimulation, ParsedRequest } from "./types.js";
 import { parseInput } from "./parse.js";
 import { computeAllPrefixMatches } from "./prefix.js";
+import { prefixPaths, threadRequests } from "./threads.js";
 import { buildRequestReport } from "./report.js";
 import { simulateAnthropicCacheSequence } from "./cache-anthropic.js";
 import { simulateOpenAiCacheSequence } from "./cache-openai.js";
@@ -20,13 +21,17 @@ export function analyze(input: string, options: AnalysisOptions = {}): AnalysisR
   const model = resolveModel(format, options.model, requests.map((r) => r.model));
 
   const reports = requests.map((r) => buildRequestReport(r, format, model.id));
-  const prefixMatches = computeAllPrefixMatches(requests, false);
-  const optimizedPrefixMatches = computeAllPrefixMatches(requests, true, false);
+  // Which earlier request each request continues: the line before it only when the file is one
+  // conversation (see threads.ts).
+  const paths = prefixPaths(requests, false);
+  const optimizedPaths = prefixPaths(requests, true);
+  const threads = threadRequests(requests, paths, optimizedPaths);
+  const prefixMatches = computeAllPrefixMatches(requests, false, true, threads);
 
   let cacheSimulation: CacheSimulation;
   if (format === "anthropic") {
-    const actual = simulateAnthropicCacheSequence(requests, prefixMatches, model.id, false);
-    const optimized = simulateAnthropicCacheSequence(requests, optimizedPrefixMatches, model.id, true);
+    const actual = simulateAnthropicCacheSequence(requests, paths, model.id, false);
+    const optimized = simulateAnthropicCacheSequence(requests, optimizedPaths, model.id, true);
     cacheSimulation = {
       provider: "anthropic",
       model: model.id,
@@ -36,8 +41,8 @@ export function analyze(input: string, options: AnalysisOptions = {}): AnalysisR
       totalOptimizedCostUsd: sumCost(optimized),
     };
   } else {
-    const actual = simulateOpenAiCacheSequence(requests, prefixMatches, model.id);
-    const optimized = simulateOpenAiCacheSequence(requests, optimizedPrefixMatches, model.id);
+    const actual = simulateOpenAiCacheSequence(requests, paths, model.id);
+    const optimized = simulateOpenAiCacheSequence(requests, optimizedPaths, model.id);
     cacheSimulation = {
       provider: "openai",
       model: model.id,
@@ -48,10 +53,13 @@ export function analyze(input: string, options: AnalysisOptions = {}): AnalysisR
     };
   }
 
-  const duplicates = findDuplicates(requests);
+  // Each conversation is scanned where it is longest: at the requests no later request continues.
+  const continued = new Set(prefixMatches.filter((m) => m.relation !== "new_conversation").map((m) => m.fromIndex));
+  const duplicates = findDuplicates(requests, requests.map((r) => r.index).filter((i) => !continued.has(i)));
   const findings = computeFindings(format, requests, prefixMatches, model.id, duplicates, cacheSimulation);
 
-  return { parse, model, claudeTokenScale: scale, reports, prefixMatches, cacheSimulation, findings, duplicates };
+  const conversations = { count: threads.conversationCount, byRequest: threads.conversation };
+  return { parse, model, claudeTokenScale: scale, reports, prefixMatches, conversations, cacheSimulation, findings, duplicates };
 }
 
 function validScale(scale: number | undefined): number {
@@ -73,6 +81,7 @@ function sumCost(steps: { costUsd: number | undefined }[]): number | undefined {
 
 export { ContextScopeParseError, parseInput } from "./parse.js";
 export { computeAllPrefixMatches, computePrefixMatch } from "./prefix.js";
+export { threadRequests, type Threads } from "./threads.js";
 export * from "./types.js";
 export {
   ANTHROPIC_MODELS,

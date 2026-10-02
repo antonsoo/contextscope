@@ -2,6 +2,53 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.3.0] - 2026-10-01
+
+### Fixed
+
+- A log that holds more than one conversation was analyzed as if it were
+  one: every request was compared with the line before it. A capture of an
+  agent with a small request on another model after every second turn
+  turned a session that caches cleanly ($0.4570, no findings) into $1.8699
+  and 34 findings, "Model changed mid-conversation" on 23 requests among
+  them, none of them real. The same capture now reads $0.4576 (the session
+  plus twelve 27-token requests) with no findings. Each request is paired
+  with the request it continues: the one whose messages it starts with;
+  failing that, a recent one most of whose messages it re-sends (a history
+  that was edited); failing that, the earlier request sharing the most of
+  its tools and system prompt (a new conversation of the same application).
+  In a file that is one conversation the pairs, and every number and
+  finding, are what they were: the four bundled examples give identical
+  terminal and HTML output, and identical JSON apart from the new fields.
+- The cache simulation only let a request read what the request before it
+  had cached. Both providers key their caches by content: a prefix cached
+  three requests ago, or by another conversation of the same application,
+  is read again. Both simulations now work that way, per model.
+- Repeated content was looked for in the last request of the file, which in
+  a mixed log is whichever conversation ended last. It is looked for in the
+  last request of each conversation, and content repeated identically by
+  many conversations is reported once.
+- "would save $0.0000 (0%)" was printed for a difference below the last
+  digit shown.
+
+### Added
+
+- `result.conversations` (how many, and which one each request belongs to),
+  and `relation` on each prefix match: `continues`, `rewrites` or
+  `new_conversation`. The terminal report says how many conversations a
+  file holds and counts conversation starts apart from follow-ups; the web
+  app labels them, and opens a file of several conversations on its largest
+  request.
+- `threadRequests()` is exported for callers that want the pairing alone.
+
+### Changed
+
+- `result.prefixMatches` has one entry per request that has an earlier
+  request to be compared with, which is no longer always every request but
+  the first: look a request's match up by `toIndex`, not by position.
+- Findings that compare two requests name the two they compared ("between
+  requests 2 and 4").
+
 ## [0.2.2] - 2026-10-01
 
 ### Changed

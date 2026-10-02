@@ -1,27 +1,28 @@
-import type { CacheSimStep, CacheTtl, ParsedRequest, PrefixMatch, Segment } from "./types.js";
+import type { CacheSimStep, CacheTtl, ParsedRequest, Segment } from "./types.js";
 import { ANTHROPIC_CACHE_WRITE_MULTIPLIER_1H, ANTHROPIC_CACHE_WRITE_MULTIPLIER_5M, ANTHROPIC_LOOKBACK_POSITIONS, findAnthropicModel } from "./pricing.js";
-import { sameModel } from "./model-id.js";
+import { ModelScoped } from "./model-id.js";
 
 /**
  * Simulates Anthropic prompt caching across a sequence of requests.
  *
  * Model (documented simplification - see README "How it works"): each
  * request's `cache_control` breakpoints (up to 4, taken in ascending
- * position order) are checked against the previous request's breakpoints.
- * A breakpoint reads from cache when (a) its cumulative prefix is
- * byte-identical to the previous request's up to that point (from the
- * segment-level prefix match), (b) the previous request wrote a cache entry
- * at or before that point, and (c) the position distance from the matched
- * prefix boundary to this breakpoint is within the 20-position lookback
- * window (consecutive tool_use / tool_result runs collapse to one position
- * each, per Anthropic's documented rule). Anything past the last valid
- * breakpoint's coverage, or below the model's minimum cacheable length, is
- * billed as plain uncached input. This does not model true TTL expiry
- * (5-minute / 1-hour wall-clock windows) since request JSON carries no
- * timestamps - it assumes consecutive requests in a session arrive inside
- * the TTL, which is the steady-agent-loop case the tool is built to catch.
- * Caches are model-scoped, so a request on a different model than the one
- * before it reads nothing, however much of the prefix matches.
+ * position order) are checked against the cache entries earlier requests
+ * wrote. The cache is keyed by content, not by conversation: a breakpoint
+ * reads from an entry when (a) the entry's prefix is byte-identical to this
+ * request's up to that point, whichever earlier request wrote it, (b) that
+ * request ran on the same model, and (c) the entry lies within the
+ * 20-position lookback window of this breakpoint (consecutive tool_use /
+ * tool_result runs collapse to one position each, per Anthropic's documented
+ * rule). Anything past the last valid breakpoint's coverage, or below the
+ * model's minimum cacheable length, is billed as plain uncached input. This
+ * does not model true TTL expiry (5-minute / 1-hour wall-clock windows)
+ * since request JSON carries no timestamps - it assumes the requests of a
+ * file arrive inside the TTL, which is the steady-agent-loop case the tool
+ * is built to catch.
+ *
+ * Prefixes are compared through `paths` (threads.ts `prefixPaths`): equal
+ * nodes at equal positions are equal prefixes.
  */
 
 interface BreakpointState {
@@ -69,26 +70,26 @@ function breakpointsOf(segments: Segment[]): BreakpointState[] {
 
 export function simulateAnthropicCacheSequence(
   requests: ParsedRequest[],
-  prefixMatches: PrefixMatch[],
+  paths: number[][],
   model: string | undefined,
   forceOptimizedBreakpoint: boolean,
 ): CacheSimStep[] {
   const modelInfo = findAnthropicModel(model);
   const steps: CacheSimStep[] = [];
-  let prevBreakpoints: BreakpointState[] = [];
+  /** The prefixes cached so far, by the model that cached them: each is the node a breakpoint ended at. */
+  const written = new ModelScoped();
 
   requests.forEach((request, i) => {
     const segments = request.segments;
+    const path = paths[i]!;
     let breakpoints = breakpointsOf(segments);
 
     // "Optimized" mode: pretend a trailing breakpoint was added at the end of every request (the
     // "automatic caching on the growing tail" pattern the docs recommend), on top of whatever the
-    // request already has. This - not a breakpoint keyed off the *previous* pair's boundary - is
+    // request already has. This - not a breakpoint keyed off the previous request's boundary - is
     // what actually composes across a sequence: the same position (this request's last segment)
     // is also where the *next* request will look for a prior entry, so consecutive forced
-    // breakpoints line up and can read each other. Anchoring instead to `prefixMatches[i - 1]`
-    // (tried first; kept here as a note, not code) picks a different, non-repeating position each
-    // turn, so it never finds its own prior write and only adds cold writes - a regression, not a fix.
+    // breakpoints line up and can read each other.
     if (forceOptimizedBreakpoint) {
       const lastIndex = segments.length - 1;
       if (lastIndex >= 0 && !breakpoints.some((b) => b.segmentIndex === lastIndex)) {
@@ -100,18 +101,15 @@ export function simulateAnthropicCacheSequence(
     const total = segments.reduce((sum, s) => sum + s.claudeTokensEstimate, 0);
 
     if (breakpoints.length === 0) {
-      // No cache_control marker at all: nothing is ever cached, regardless of history or how
-      // stable the prefix actually is (cache_control absent = no caching, full stop).
+      // No cache_control marker at all: nothing of this request is read or written, however
+      // stable its prefix is (cache_control absent = no caching, full stop).
       steps.push({ requestIndex: request.index, readTokens: 0, writeTokens5m: 0, writeTokens1h: 0, uncachedTokens: total, costUsd: undefined });
-      prevBreakpoints = [];
       return;
     }
 
     const positions = positionIndexBySegment(segments);
-    // No prior request (i === 0) means nothing can possibly be in cache yet: every breakpoint is a cold write.
-    // Neither does a model switch: the previous request's entries belong to the other model.
-    const match = i > 0 && sameModel(requests[i - 1]!.model, request.model) ? prefixMatches[i - 1] : undefined;
-    const matchedBoundarySegmentIndex = match ? match.matchedSegments - 1 : -1;
+    // Entries of another model are never visible: a cached prefix is that model's own state.
+    const cached = written.visibleTo(request.model);
 
     let readTokens = 0;
     let write5m = 0;
@@ -121,23 +119,15 @@ export function simulateAnthropicCacheSequence(
     for (const bp of breakpoints.slice(0, 4)) {
       if (bp.cumulativeTokens < modelInfo.minCacheableTokens) continue; // below minimum: silently uncached
 
-      // Find the best previous entry: the largest prior breakpoint that (a) lies at or before the
-      // matched prefix boundary and (b) covers no more than this breakpoint does - a larger prior
-      // entry can exist (e.g. a later, wider breakpoint from the previous request) but this
-      // breakpoint can't "read ahead" of its own coverage, so it must be excluded, not just
-      // skipped when it happens to be the sole candidate.
-      const candidate = prevBreakpoints
-        .filter((pb) => pb.segmentIndex <= matchedBoundarySegmentIndex && pb.cumulativeTokens <= bp.cumulativeTokens)
-        .sort((a, b) => b.cumulativeTokens - a.cumulativeTokens)[0];
-
+      // The longest cached prefix of this request that ends at or before the breakpoint - it can't
+      // "read ahead" of its own coverage - and no more than the lookback window behind it.
       let readFromThis = 0;
-      if (candidate) {
-        const distance = positions[bp.segmentIndex]! - positions[candidate.segmentIndex]!;
-        if (distance <= ANTHROPIC_LOOKBACK_POSITIONS) {
-          readFromThis = candidate.cumulativeTokens;
+      for (let at = bp.segmentIndex; at >= 0 && positions[bp.segmentIndex]! - positions[at]! <= ANTHROPIC_LOOKBACK_POSITIONS; at--) {
+        if (cached.some((entries) => entries.has(path[at]!))) {
+          readFromThis = cumulativeTokens(segments, at);
+          break;
         }
       }
-
       if (readFromThis > readTokens) readTokens = readFromThis; // a later breakpoint's read supersedes an earlier smaller one
 
       const writeFrom = Math.max(coveredThrough >= 0 ? cumulativeTokens(segments, coveredThrough) : 0, readTokens);
@@ -154,7 +144,10 @@ export function simulateAnthropicCacheSequence(
 
     steps.push({ requestIndex: request.index, readTokens, writeTokens5m: write5m, writeTokens1h: write1h, uncachedTokens, costUsd: undefined });
 
-    prevBreakpoints = breakpoints.filter((b) => b.cumulativeTokens >= modelInfo.minCacheableTokens);
+    const mine = written.of(request.model);
+    for (const bp of breakpoints) {
+      if (bp.cumulativeTokens >= modelInfo.minCacheableTokens) mine.add(path[bp.segmentIndex]!);
+    }
   });
 
   return steps.map((step) => ({ ...step, costUsd: anthropicStepCostUsd(step, modelInfo) }));

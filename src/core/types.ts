@@ -132,10 +132,22 @@ export interface Finding {
   segmentIds: string[];
 }
 
-/** Longest common prefix between two consecutive requests, in provider serialization order. */
+/**
+ * How a request relates to the earlier request it is compared with (see threads.ts):
+ * the next turn of the same conversation, the same conversation with its history
+ * edited, or a new conversation on a setup (tools and system prompt) sent before.
+ */
+export type PrefixRelation = "continues" | "rewrites" | "new_conversation";
+
+/**
+ * Longest common prefix between a request and the earlier request it is compared
+ * with, in provider serialization order. In a file that holds one conversation
+ * that is the request before it; in general it is the request it continues.
+ */
 export interface PrefixMatch {
   fromIndex: number;
   toIndex: number;
+  relation: PrefixRelation;
   /** Number of whole leading segments that are byte-identical (by normalized text). */
   matchedSegments: number;
   /** Token count (OpenAI exact) covered by the matched segments. */
@@ -220,7 +232,10 @@ export interface AnalysisResult {
   /** The claudeTokenScale actually applied (1 when uncalibrated). */
   claudeTokenScale: number;
   reports: RequestTokenReport[];
+  /** One entry for each request that has an earlier request to be compared with, in request order. */
   prefixMatches: PrefixMatch[];
+  /** The conversations found in the input: for each request, the number of its conversation, counted from 0. */
+  conversations: { count: number; byRequest: number[] };
   cacheSimulation: CacheSimulation;
   findings: Finding[];
   duplicates: DuplicateGroup[];

@@ -63,8 +63,8 @@ drop a request file, paste one, or click a built-in example.
   (system, tool definitions, user/assistant text, tool calls, tool results,
   images, thinking), colored by category and sized by tokens. Click a segment to
   see its raw content, path, and cache status.
-- **Prompt-cache simulation across a sequence.** For each consecutive pair of
-  requests, contextscope finds the longest common prefix in the provider's own
+- **Prompt-cache simulation across a sequence.** For each request and the
+  request it continues, contextscope finds the longest common prefix in the provider's own
   serialization order, shows a readable diff of exactly what changed, and
   simulates cache reads, writes and misses under that provider's rules:
   Anthropic's `cache_control` breakpoints, per-model minimum cacheable length,
@@ -72,6 +72,12 @@ drop a request file, paste one, or click a built-in example.
   automatic prefix caching. It reports actual cost against an optimized
   scenario, and projects the difference to 1,000 sessions shaped like yours (a
   straight multiplication, not a separate estimate).
+- **Logs of more than one conversation.** A proxy capture of an agent holds
+  its main loop and, between the turns, side requests on another model; a
+  gateway's log holds every user's conversation, interleaved. Each request is
+  matched to the request it continues, wherever in the file that is, and the
+  cache is simulated as the providers keep it: by content, per model. A
+  session reads the same whether it is alone in the file or not.
 - **Priced as the model you actually used.** The model named in the requests
   picks the pricing and cache rules (dated snapshots and Bedrock/Vertex ids
   included); `--model` overrides it, and an id with no pricing entry is reported
@@ -160,8 +166,9 @@ it), its fixed counterpart, a session with a file re-read three times, and an
 OpenAI session with tools reordered mid-conversation. The view opens on the
 *last* request, where a growing conversation is biggest. Findings come first,
 each with links to every request it fired on; below them are the treemap, the
-segment table, the line-level diff between consecutive requests, and the cache
-table. The format and model pickers in the top bar override detection for the
+segment table, the line-level diff between each request and the one it
+continues, and the cache table. A file of several conversations opens on its
+largest request. The format and model pickers in the top bar override detection for the
 current input only.
 
 <p align="center">
@@ -177,7 +184,8 @@ import { analyze, groupFindings } from "@antonsoloviev/contextscope";
 const result = analyze(rawRequestJsonOrJsonl); // or { model: "claude-opus-5-5" } to override
 // result.model            — the model priced with, and whether it came from the requests
 // result.reports          — per-request token totals and category breakdown
-// result.prefixMatches    — longest common prefix + diff between consecutive requests
+// result.prefixMatches    — longest common prefix + diff between each request and the one it continues
+// result.conversations    — how many conversations the input holds, and which one each request is in
 // result.cacheSimulation  — simulated reads/writes/cost, actual vs. optimized
 // result.findings         — concrete, located issues (groupFindings() collapses repeats)
 // result.duplicates       — near-duplicate content groups
@@ -214,8 +222,41 @@ count. The web app calls the endpoint directly from the page with Anthropic's
 `anthropic-dangerous-direct-browser-access` CORS opt-in; the key stays in that
 tab's memory and goes nowhere else.
 
+**Conversations.** A request log is rarely one conversation, and the line
+before a request is then some other conversation's. `src/core/threads.ts` pairs
+each request with the earlier request it continues: the one whose messages it
+starts with, all of them and in order (the previous turn of an agent loop);
+failing that, a recent request at least half of whose messages it re-sends (the
+same conversation with its history edited: a sliding window, a trimmed tool
+result); failing that, the earlier request that shares the most of its tools
+and system prompt once volatile values and ordering are normalized away (a new
+conversation of the same application, compared only as far as that shared
+setup). A request that matches nothing starts a conversation with nothing to
+compare it to. Prefixes are interned in a trie, so analyzing 3,000 requests of
+150 interleaved conversations takes about half a second. In a file that is one
+conversation, every request is paired with the one before it, as before.
+
+Real output for the fixed example session with a 27-token request on another
+model after every second turn (36 requests; alone, the session costs $0.4570
+and has no findings):
+
+```
+contextscope — anthropic · 36 requests in 13 conversations (auto-detected)
+priced as Claude Sonnet 5 (from the requests)
+...
+Prefix match across the sequence
+  13 conversations in this file; each request is compared with the request it continues
+  all 23 follow-up requests only append to the request they continue
+  11 requests start a new conversation on a setup already sent
+...
+  total actual cost:    $0.4576
+  total optimized cost: $0.4576  (findings fixed, plus a breakpoint on each request's tail)
+
+No findings — this sequence caches cleanly.
+```
+
 **Prefix matching and diffing.** `src/core/prefix.ts` finds the longest common
-prefix between two consecutive requests' segment lists, then diffs the *whole*
+prefix between the segment lists of a request and the one it continues, then diffs the *whole*
 lists, not just the tail, so a single reordered tool or one edited system block
 shows up as a small, localized change instead of "everything after position 3
 differs." The diff is Myers' O((N+M)·D) algorithm (E. W. Myers, "An O(ND)
@@ -228,8 +269,9 @@ longest common subsequence.
 implement each provider's documented rules:
 
 - **Anthropic**: up to 4 `cache_control` breakpoints per request, read against
-  the previous request's breakpoints if the matched prefix reaches at least
-  that far and the position distance is within the 20-block lookback window (a
+  the entries earlier requests wrote at theirs: an entry is read if its prefix
+  is byte-identical to this request's up to that point, whichever earlier
+  request wrote it, and the position distance is within the 20-block lookback window (a
   run of consecutive `tool_use` or `tool_result` blocks counts as one position,
   per Anthropic's documented rule). Writes cost 1.25× (5-minute TTL) or 2×
   (1-hour TTL) the input price. Reads cost 0.1× on most models, but 0.05× on
@@ -240,15 +282,16 @@ implement each provider's documented rules:
   Figures are from Anthropic's pricing and prompt-caching documentation as of
   2026-09-25.
 - **OpenAI**: automatic (implicit) prefix caching, with no marker needed, for
-  prompts of at least 1,024 tokens, with the cached portion rounded down to the
+  prompts of at least 1,024 tokens, with the cached portion (the longest prefix
+  any earlier request sent) rounded down to the
   nearest 128 tokens and no separate write charge. Rules and pricing are from
   `developers.openai.com/api/docs/guides/prompt-caching` and
   `developers.openai.com/api/docs/pricing` as of 2026-09-24. OpenAI's newer
   explicit-breakpoint, 30-minute-TTL caching mode (GPT-5.6 and later) is **not**
   simulated.
-- **Both**: a cached prefix is the model's own attention state, so a request on
-  a different model than the one before it reads nothing, however much of the
-  prefix matches.
+- **Both**: a cached prefix is the model's own attention state, so a request
+  reads only what earlier requests on its own model cached, however much of the
+  prefix another model was sent.
 
 The **"optimized"** scenario re-runs the same simulation with the findings
 fixed: ISO-8601 timestamps, UUIDs and epoch-looking integers are normalized out
@@ -262,12 +305,12 @@ rolling breakpoint moves every turn without changing the cached content. The
 dollar difference is the "potential savings" figure.
 
 **Duplicate detection.** 5-word shingles hashed with FNV-1a, grouped by Jaccard
-similarity ≥ 0.85 (union-find), scoped to the *last* request in a sequence. In
-an agent loop every later request resends the whole conversation, so comparing
-across requests would flag every earlier turn as a duplicate of itself. The
-last request already contains the full accumulated context, so scanning it
-alone still catches the real case: the same file or tool output fetched more
-than once in one conversation.
+similarity ≥ 0.85 (union-find), scoped to the *last* request of each
+conversation. In an agent loop every later request resends the whole
+conversation, so comparing across requests would flag every earlier turn as a
+duplicate of itself. The last request already contains the full accumulated
+context, so scanning it alone still catches the real case: the same file or
+tool output fetched more than once in one conversation.
 
 **Findings.** A fixed set of rule-based checks over the parsed sequence, the
 prefix diffs and the duplicate groups (`src/core/findings.ts`), not an LLM
@@ -318,9 +361,13 @@ fixed hue order, so a color always means the same category.
 - **Server-side state is invisible.** A Responses API request that continues a
   stored response (`previous_response_id`) carries only its new input; the tool
   warns and analyzes what is in the file.
-- **Duplicate detection is scoped to the last request**, so it won't flag
-  near-duplicates across unrelated requests in a batch that isn't one
-  conversation.
+- **Duplicate detection is scoped to the last request of each conversation**,
+  so it won't flag the same content appearing in two different conversations.
+- **Conversations are told apart by their content.** Two conversations that
+  send exactly the same messages are one as far as the analysis can see, which
+  is also how the cache sees them. A conversation whose history is replaced
+  wholesale (a summary in place of every earlier message) is read as a new
+  conversation, not as a rewrite of the old one.
 - **The web app's exact-tokenizer chunk is large.** The o200k_base vocabulary
   is about 1 MB gzipped. It is fetched on first analysis, not on page load; the
   drop-zone screen is about 14 KB gzipped. The flagship example is a separate
@@ -328,9 +375,11 @@ fixed hue order, so a color always means the same category.
 - **Performance.** `npm run bench` times `analyze()` on the flagship session
   (24 requests, 5.7 MB) and on a generated 300-request conversation (12.1 MB,
   93,900 segments in total). Measured back to back on a 14-vCPU WSL2 machine,
-  the current version takes a median 138 ms and 361 ms against 902 ms and
-  2,770 ms for v0.1.0. That machine was shared with other jobs, so run the
-  script for numbers on yours.
+  v0.2.0 took a median 138 ms and 361 ms against 902 ms and 2,770 ms for
+  v0.1.0. Pairing requests into conversations (v0.3.0) costs nothing
+  measurable: run alternately four times, v0.2.2 took 111-166 ms and
+  423-558 ms, and v0.3.0 120-131 ms and 476-570 ms. That machine was shared
+  with other jobs, so run the script for numbers on yours.
 - Synthetic example data is labelled synthetic, in both the CLI filenames and
   the web app's example picker.
 
@@ -340,7 +389,7 @@ fixed hue order, so a color always means the same category.
 npm install          # installs deps and builds dist/ via the `prepare` script
 npm run lint         # eslint
 npm run typecheck    # tsc --noEmit, core + cli and the web app
-npm test             # vitest, 148 tests
+npm test             # vitest, 174 tests
 npm run build        # core + cli (dist/) and the web app (web/dist/)
 npm run bench        # analyze() timings on the flagship and a 300-request session
 npm run dev:web      # Vite dev server for the web app
