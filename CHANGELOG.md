@@ -4,6 +4,13 @@ All notable changes to this project are documented in this file.
 
 ## [0.3.2] - 2026-10-02
 
+### Added
+
+- Published to npm as `@antonsoloviev/contextscope`:
+  `npx @antonsoloviev/contextscope analyze your-requests.jsonl`. The README
+  uses the registry package instead of the GitHub install, which npm 12 blocks
+  by default.
+
 ### Fixed
 
 - The inspector panel's Close button stayed in the tab order while the panel
@@ -162,9 +169,9 @@ committed as `tests/fixtures/sdk/` with the script that writes them.
 
 ### Added
 
-- The package is named `@antonsoloviev/contextscope`, ready for npm, and
-  carries the CLI and the library; the example sessions stay in the repository.
-  It isn't published yet; until it is, install from GitHub as before.
+- The package is named `@antonsoloviev/contextscope`, ready for npm (published
+  there from 0.3.2). It carries the CLI and the library; the example sessions
+  stay in the repository.
 - `contextscope --version` (`-V`).
 - `ContextScopeParseError` is exported from the library, so callers can tell a
   rejected input from a bug.

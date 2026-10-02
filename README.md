@@ -2,6 +2,7 @@
 
 See what's actually in your LLM context window, and why your prompt cache keeps missing.
 
+[![npm](https://img.shields.io/npm/v/@antonsoloviev/contextscope)](https://www.npmjs.com/package/@antonsoloviev/contextscope)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Live demo](https://img.shields.io/badge/live%20demo-antonsoo.github.io%2Fcontextscope-1baf7a)](https://antonsoo.github.io/contextscope/)
 
@@ -40,11 +41,12 @@ send what you paste to any other host.
 Run it against your own request log:
 
 ```sh
-npx --allow-git=root github:antonsoo/contextscope analyze your-requests.jsonl
+npx @antonsoloviev/contextscope analyze your-requests.jsonl
 ```
 
-That installs straight from GitHub: the npm package, `@antonsoloviev/contextscope`,
-isn't published yet (npm 12 needs `--allow-git=root` for a git-hosted package). To try the bundled
+That runs the published package
+([`@antonsoloviev/contextscope`](https://www.npmjs.com/package/@antonsoloviev/contextscope)
+on npm; the command it installs is `contextscope`). To try the bundled
 examples, clone the repository:
 
 ```sh
