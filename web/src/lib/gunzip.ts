@@ -1,3 +1,5 @@
+import { decodeText } from "@core/decode-text.js";
+
 const GZIP_MAGIC_0 = 0x1f;
 const GZIP_MAGIC_1 = 0x8b;
 
@@ -18,11 +20,11 @@ export function looksGzipped(bytes: Uint8Array): boolean {
  * `DecompressionStream` (Chrome/Edge 80+, Firefox 113+, Safari 16.4+ - no library for a feature
  * this narrow). */
 export async function bytesToText(bytes: Uint8Array): Promise<string> {
-  if (!looksGzipped(bytes)) return new TextDecoder().decode(bytes);
+  if (!looksGzipped(bytes)) return decodeText(bytes);
   // `bytes` is always backed by a real ArrayBuffer in this app's callers (arrayBuffer() results),
   // never a SharedArrayBuffer - TS's DOM lib types BlobPart more narrowly than that, hence the cast.
   const stream = new Blob([bytes as Uint8Array<ArrayBuffer>]).stream().pipeThrough(new DecompressionStream("gzip"));
-  return new Response(stream).text();
+  return decodeText(new Uint8Array(await new Response(stream).arrayBuffer()));
 }
 
 /** Reads a File/Blob as text, transparently gunzipping it if it's gzip-compressed - covers a user

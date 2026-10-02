@@ -2,6 +2,16 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.3.2] - 2026-10-02
+
+### Fixed
+
+- A log saved by a Windows shell. `... > requests.jsonl` in Windows PowerShell
+  writes UTF-16 with a byte-order mark; read as UTF-8 it held no JSON ("No
+  valid JSON objects found"), in the CLI and in the web app. The mark decides
+  the encoding now, for plain and gzipped files, and the analysis is the same
+  as for the UTF-8 file.
+
 ## [0.3.1] - 2026-10-02
 
 Checked against request bodies written by the real anthropic and openai

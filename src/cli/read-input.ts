@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs";
 import { gunzipSync } from "node:zlib";
+import { decodeText } from "../core/decode-text.js";
 
 const GZIP_MAGIC_0 = 0x1f;
 const GZIP_MAGIC_1 = 0x8b;
@@ -22,7 +23,7 @@ export function readInputFile(path: string, maxBytes = MAX_INPUT_BYTES): string 
     const mb = (n: number): string => (n / 2 ** 20).toFixed(n < 2 ** 20 ? 3 : 0);
     throw new Error(`it holds ${mb(bytes.length)} MB of JSON and the most this tool can load at once is ${mb(maxBytes)} MB; split it, for example one session per file`);
   }
-  return bytes.toString("utf8");
+  return decodeText(bytes);
 }
 
 export const MAX_INPUT_BYTES = 500 * 2 ** 20;
