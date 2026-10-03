@@ -16,6 +16,15 @@ export const blue = wrap("34");
 export const magenta = wrap("35");
 export const cyan = wrap("36");
 
+/**
+ * `text` with each control character (bar tab and line breaks) written as a visible escape,
+ * `\x1b`. Model names, labels and messages can come from the requests, and a terminal obeys
+ * an escape sequence in what it is given: clears the screen, retitles the window, hides text.
+ */
+export function visible(text: string): string {
+  return text.replace(/[^\P{Cc}\t\n\r]/gu, (ch) => `\\x${ch.charCodeAt(0).toString(16).padStart(2, "0")}`);
+}
+
 export function severityColor(severity: "info" | "warning" | "error"): (s: string) => string {
   if (severity === "error") return red;
   if (severity === "warning") return yellow;

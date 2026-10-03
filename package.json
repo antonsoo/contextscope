@@ -1,6 +1,6 @@
 {
   "name": "@antonsoloviev/contextscope",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "See what's actually in your LLM context window, and why your prompt cache keeps missing.",
   "type": "module",
   "author": "Anton Soloviev",

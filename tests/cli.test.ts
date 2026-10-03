@@ -66,6 +66,19 @@ describe("renderTerminalReport", () => {
   });
 });
 
+describe("text from the requests", () => {
+  it("reaches the terminal report as visible escapes, not as control characters", () => {
+    // A model name (or a label, or a finding about a tool) holding a terminal escape sequence went
+    // to the terminal as it was; this one retitles the window.
+    const osc = `${String.fromCharCode(0x1b)}]0;pwned${String.fromCharCode(7)}`;
+    const body = { model: `claude-x${osc}`, max_tokens: 10, system: "You help.", messages: [{ role: "user", content: `Hi${osc}` }] };
+    const text = renderTerminalReport(analyze(JSON.stringify(body)), { verbose: true });
+    expect(text).not.toContain(String.fromCharCode(7));
+    expect(text).not.toContain(`${String.fromCharCode(0x1b)}]`);
+    expect(text).toContain('"claude-x\\x1b]0;pwned\\x07" is not in the pricing table');
+  });
+});
+
 describe("--version", () => {
   it("is parsed with or without a command, and VERSION matches package.json", async () => {
     expect(parseArgs(["--version"])).toMatchObject({ command: undefined, version: true });

@@ -1,6 +1,6 @@
 import type { AnalysisResult, CalibrationResult, PrefixMatch, RequestTokenReport, SegmentCategory } from "../core/index.js";
 import { describeRequestIndices, groupFindings } from "../core/index.js";
-import { bar, blue, bold, cyan, dim, fmtPct, fmtTokens, fmtUsd, fmtUsdRounded, green, magenta, red, severityColor, wrapIndented, yellow } from "./ansi.js";
+import { bar, blue, bold, cyan, dim, fmtPct, fmtTokens, fmtUsd, fmtUsdRounded, green, magenta, red, severityColor, visible, wrapIndented, yellow } from "./ansi.js";
 
 const CATEGORY_LABEL: Record<SegmentCategory, string> = {
   system: "system",
@@ -42,16 +42,16 @@ export function renderTerminalReport(result: AnalysisResult, options: TerminalRe
   const n = parse.requests.length;
 
   const modelNote =
-    model.source === "option" ? "set with --model" : model.source === "request" ? "from the requests" : model.unrecognized ? `"${model.unrecognized}" is not in the pricing table` : "default; no model in the requests";
+    model.source === "option" ? "set with --model" : model.source === "request" ? "from the requests" : model.unrecognized ? `"${visible(model.unrecognized)}" is not in the pricing table` : "default; no model in the requests";
   const conversationNote = result.conversations.count > 1 ? ` in ${result.conversations.count} conversations` : "";
   lines.push(bold(`contextscope — ${parse.format} · ${n} request${n === 1 ? "" : "s"}${conversationNote}${parse.autoDetected ? " (auto-detected)" : ""}`));
-  lines.push(dim(`priced as ${model.displayName} (${modelNote})${parse.envelope ? ` · requests read from each record's "${parse.envelope}" field` : ""}`));
+  lines.push(dim(`priced as ${model.displayName} (${modelNote})${parse.envelope ? ` · requests read from each record's "${visible(parse.envelope)}" field` : ""}`));
   if (options.calibration) {
     const c = options.calibration;
     const error = (c.estimatedTokens - c.exactTokens) / c.exactTokens;
     lines.push(
       green(
-        `calibrated: request ${c.requestIndex + 1} is ${fmtTokens(c.exactTokens)} tokens by count_tokens (${c.model}); the estimate was ≈${fmtTokens(c.estimatedTokens)} (${error >= 0 ? "+" : ""}${(error * 100).toFixed(1)}%). Claude figures below are scaled ×${c.scale.toFixed(3)}.`,
+        `calibrated: request ${c.requestIndex + 1} is ${fmtTokens(c.exactTokens)} tokens by count_tokens (${visible(c.model)}); the estimate was ≈${fmtTokens(c.estimatedTokens)} (${error >= 0 ? "+" : ""}${(error * 100).toFixed(1)}%). Claude figures below are scaled ×${c.scale.toFixed(3)}.`,
       ),
     );
   }
@@ -106,8 +106,8 @@ export function renderTerminalReport(result: AnalysisResult, options: TerminalRe
       const color = severityColor(group.severity);
       const where = describeRequestIndices(group.requestIndices);
       const times = group.requestIndices.length > 1 ? `, ${group.requestIndices.length}×` : "";
-      lines.push(`  ${color(`[${group.severity}]`)} ${bold(group.title)} ${dim(`(${where}${times})`)}`);
-      lines.push(...wrapIndented(group.detail, 6));
+      lines.push(`  ${color(`[${group.severity}]`)} ${bold(visible(group.title))} ${dim(`(${where}${times})`)}`);
+      lines.push(...wrapIndented(visible(group.detail), 6));
     }
     lines.push("");
   } else {
@@ -118,14 +118,14 @@ export function renderTerminalReport(result: AnalysisResult, options: TerminalRe
   if (duplicates.length > 0) {
     lines.push(bold(`Duplicate content (${duplicates.length} group${duplicates.length === 1 ? "" : "s"})`));
     for (const group of duplicates) {
-      lines.push(`  ${group.members.length}× "${group.members[0]!.label}" — ≈${fmtTokens(group.estimatedWastedTokens)} wasted tokens`);
+      lines.push(`  ${group.members.length}× "${visible(group.members[0]!.label)}" — ≈${fmtTokens(group.estimatedWastedTokens)} wasted tokens`);
     }
     lines.push("");
   }
 
   if (parse.warnings.length > 0) {
     lines.push(yellow(`${parse.warnings.length} parse warning${parse.warnings.length === 1 ? "" : "s"}:`));
-    for (const w of parse.warnings) lines.push(dim(`  ${w.message}`));
+    for (const w of parse.warnings) lines.push(dim(`  ${visible(w.message)}`));
   }
 
   return lines.join("\n").replace(/\n+$/, "");
@@ -165,9 +165,9 @@ function prefixSection(result: AnalysisResult, verbose: boolean): string[] {
       out.push(
         `  req ${match.fromIndex + 1} → req ${match.toIndex + 1}: ${bar(pct, 20)} ${match.matchedSegments}/${total} segments matched, ≈${fmtTokens(match.matchedClaudeTokensEstimate)} tokens` +
           (match.relation === "new_conversation"
-            ? dim(`  new conversation${match.divergedAt?.fromSegmentId ? `, setup differs at ${match.divergedAt.fromSegmentId}` : ""}`)
+            ? dim(`  new conversation${match.divergedAt?.fromSegmentId ? `, setup differs at ${visible(match.divergedAt.fromSegmentId)}` : ""}`)
             : match.divergedAt
-              ? dim(`  diverges at ${match.divergedAt.toSegmentId ?? "(end)"}`)
+              ? dim(`  diverges at ${visible(match.divergedAt.toSegmentId ?? "(end)")}`)
               : dim("  (identical)")),
       );
     }
@@ -204,7 +204,7 @@ function prefixSection(result: AnalysisResult, verbose: boolean): string[] {
   const pair = (match: PrefixMatch): string => `req ${match.fromIndex + 1} → ${match.toIndex + 1}`;
   for (const [label, pairs] of breaks) {
     const span = pairs.length === 1 ? pair(pairs[0]!) : `${pair(pairs[0]!)} … ${pair(pairs[pairs.length - 1]!)}`;
-    out.push(`  ${red(`${pairs.length} of ${total}`)} pair${pairs.length === 1 ? "" : "s"} rewrite content already sent, starting at ${bold(`"${label}"`)} ${dim(`(${span})`)}`);
+    out.push(`  ${red(`${pairs.length} of ${total}`)} pair${pairs.length === 1 ? "" : "s"} rewrite content already sent, starting at ${bold(`"${visible(label)}"`)} ${dim(`(${span})`)}`);
   }
   if (starts === 0) out.push(dim(`  ${total - broken} of ${total} only append to the previous request`));
   else {

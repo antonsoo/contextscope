@@ -2,6 +2,17 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.3.3] - 2026-10-03
+
+### Security
+
+- Text from the requests reached the terminal as it came. A model name holding a terminal
+  escape sequence went straight into "priced as ... is not in the pricing table", and the same
+  held for finding titles, segment labels and parse warnings, so a crafted log could clear the
+  screen, retitle the window or hide part of the report. Each control character in such text
+  is now written as a visible escape (`claude-x\x1b]0;title\x07`). `--json` and `--html`
+  already escaped them.
+
 ## [0.3.2] - 2026-10-02
 
 ### Added

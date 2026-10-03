@@ -7,7 +7,7 @@ import { renderTerminalReport } from "./terminal-report.js";
 import { renderHtmlReport } from "./html-report.js";
 import { readInputFile } from "./read-input.js";
 import { toJsonReport } from "./json-report.js";
-import { bold, red } from "./ansi.js";
+import { bold, red, visible } from "./ansi.js";
 
 const HELP = `contextscope — see what's in your LLM context window
 
@@ -38,7 +38,7 @@ Exit status: 0 on success, 1 on bad arguments or unreadable input,
 `;
 
 function fail(message: string, showHelp = false): never {
-  process.stderr.write(red(message) + "\n");
+  process.stderr.write(red(visible(message)) + "\n");
   if (showHelp) process.stderr.write("\n" + HELP);
   process.exit(1);
 }
