@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
-import { contentSecurityPolicy } from "./vite.csp";
+import { contentSecurityPolicy } from "./vite.csp.ts";
 import { fileURLToPath } from "node:url";
 
 // Vite's project root is `web/` (index.html lives there); this file stays at the repo root so
