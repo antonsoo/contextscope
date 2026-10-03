@@ -2,6 +2,32 @@
 
 All notable changes to this project are documented in this file.
 
+## [Unreleased]
+
+### Fixed
+
+- Imports commit only after successful analysis. A newer import cancels older
+  file/example reads; failures preserve the current analysis and overrides.
+  Reset cancels pending work and releases request-bearing state, tokenizer
+  caches, pasted text, and rendered inspector/panel contents.
+- Bound file reads and gzip output before allocating a full expansion: 50 MiB
+  in the browser, 500 MiB in the CLI, with actionable errors and recovery.
+- Replace the browser calibration form blocked by its own privacy policy with
+  a local measured-token count. Show its request/model provenance, validate
+  safe positive integers, and preserve estimates and undo behavior.
+- Request tabs, finding links, and prefix comparisons stay aligned. Use the
+  provider's token counts when choosing the largest request and showing the
+  matched prefix. Prefix bars now render their shared fraction.
+- Keyboard tabs, comparison buttons, and segment labels; a modal inspector
+  with focus containment/return; responsive treemap and mobile header.
+- Qualify empty findings and label cache costs as simulations.
+
+### Tests
+
+- Chromium and Firefox production workflow tests, including accessibility in
+  both themes and mobile layouts, import races, cancellation, reset, bounded
+  gzip expansion, calibration, keyboard navigation, and built-in assets.
+
 ## [0.3.3] - 2026-10-03
 
 ### Security

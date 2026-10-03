@@ -105,8 +105,8 @@ drop a request file, paste one, or click a built-in example.
   unwrapped automatically. The format is auto-detected.
 - **Exact OpenAI token counts** (o200k_base, via `gpt-tokenizer`) and
   **estimated Claude token counts**, always labelled `≈`, with optional
-  calibration against Anthropic's real `count_tokens` endpoint (one call, in the
-  CLI or the browser).
+  calibration against a measured whole-request count. The CLI can call
+  Anthropic's `count_tokens` endpoint; the browser accepts a count you supply locally.
 - **A Node CLI** that works as a CI gate (`--fail-on warning` exits 2) and
   writes HTML or JSON reports, and **a Vite + TypeScript web app** for
   interactive exploration, sharing one core library.
@@ -218,14 +218,20 @@ punctuation. An agent loop re-sends its whole history on every request, so each
 distinct segment text is tokenized once per analysis: the flagship session has
 1,259 segments but only 109 distinct ones.
 
-**Calibration.** `POST /v1/messages/count_tokens` returns the real input-token
-count for a whole request body (tools, system, messages and the framing around
-them) and is free to call. contextscope sends the largest request (CLI) or the
-selected one (web), divides the exact count by its own estimate, and rescales
-every Claude estimate by that ratio, so the cost figures rest on a measured
-count. The web app calls the endpoint directly from the page with Anthropic's
-`anthropic-dangerous-direct-browser-access` CORS opt-in; the key stays in that
-tab's memory and goes nowhere else.
+**Calibration.** The CLI's optional `--calibrate` flag sends the largest
+Anthropic request to `POST /v1/messages/count_tokens`, using the API key you
+provide. This is the only network operation in the CLI. In the web app,
+enter the measured `input_tokens` total for the selected request and model in
+**Calibrate Claude estimates**. The browser does not ask for an API key or
+contact Anthropic; its same-origin network policy remains enforced.
+
+Both paths divide the measured whole-request count by the original heuristic
+estimate and rescale the session's Claude estimates. The UI identifies the
+reference request, model, count, and scale. Other requests and individual
+segments remain estimates; rounding means their sum may differ slightly from
+the measured total. Repeating a calibration starts from the original input,
+so scales do not compound. Undo it at any time; changing the model, format,
+or input clears it.
 
 **Conversations.** A request log is rarely one conversation, and the line
 before a request is then some other conversation's. `src/core/threads.ts` pairs
@@ -350,9 +356,9 @@ fixed hue order, so a color always means the same category.
   (Anthropic documents that the tokenizer introduced with Opus 4.7 uses up to
   about 1.35× as many tokens as Opus 4.6's for the same text), so no single
   heuristic can be accurate for every model. The heuristic is only checked for
-  the qualitative behavior described above. Calibration fixes the total for the
-  counted request; segments denser or sparser than that request's average keep
-  some error.
+  the qualitative behavior described above. Calibration aligns the total for
+  the counted request, subject to segment rounding; segments denser or sparser
+  than that request's average keep some error.
 - **OpenAI token counts are exact** for the o200k_base encoding, cross-checked
   in `tests/tokenize-openai.test.ts` against `js-tiktoken`, an independently
   maintained pure-JS tokenizer, on 9 varied samples (prose, code, JSON,
@@ -383,6 +389,11 @@ fixed hue order, so a color always means the same category.
   is about 1 MB gzipped. It is fetched on first analysis, not on page load; the
   drop-zone screen is about 14 KB gzipped. The flagship example is a separate
   ~0.48 MB static asset, decompressed in the browser with `DecompressionStream`.
+- **Input limits.** The browser accepts up to 50 MiB and the CLI up to 500 MiB,
+  for both the input bytes and the decompressed JSON. Reads and gzip inflation
+  stop at the limit. Split larger logs into separate sessions. Browser import
+  preparation can be cancelled or replaced; tokenization and analysis still
+  run synchronously and cannot be interrupted once that computation starts.
 - **Performance.** `npm run bench` times `analyze()` on the flagship session
   (24 requests, 5.7 MB) and on a generated 300-request conversation (12.1 MB,
   93,900 segments in total). Measured back to back on a 14-vCPU WSL2 machine,
@@ -394,6 +405,26 @@ fixed hue order, so a color always means the same category.
 - Synthetic example data is labelled synthetic, in both the CLI filenames and
   the web app's example picker.
 
+## Browser workspace
+
+- Requests are keyboard tabs: use Left/Right, Home, and End. Selecting one
+  updates its prefix comparison; selecting a comparison opens its destination
+  request. In a multi-conversation log, the largest request is chosen using
+  the analyzed provider's token counts.
+- Treemap blocks and segment labels open a keyboard-accessible inspector.
+  Escape closes it and returns focus. The treemap resizes with the viewport.
+- A failed import preserves the last successful analysis. A newer import or
+  **cancel import** discards pending reads; **new analysis** clears the app's
+  request data, pasted text, rendered panels, and inspector contents.
+
+<details>
+<summary>Updated workspace, desktop and mobile</summary>
+
+![Dark desktop workspace](docs/assets/workspace-dark-1440.png)
+![Light mobile workspace](docs/assets/workspace-light-375.png)
+
+</details>
+
 ## Development
 
 ```sh
@@ -402,6 +433,8 @@ npm run lint         # eslint
 npm run typecheck    # tsc --noEmit, core + cli and the web app
 npm test             # vitest
 npm run build        # core + cli (dist/) and the web app (web/dist/)
+npx playwright install chromium firefox
+npm run test:browser # production browser workflows + axe, after building
 npm run bench        # analyze() timings on the flagship and a 300-request session
 npm run dev:web      # Vite dev server for the web app
 ```
@@ -433,7 +466,8 @@ src/core/     shared library: parsers, tokenizers, prefix/diff, cache
               simulation, findings, duplicates, calibration (no I/O, no DOM)
 src/cli/      Node CLI: argument parsing, terminal and HTML report renderers
 web/          Vite + TypeScript web app (imports src/core directly, no framework)
-tests/        vitest suite for src/core and the CLI
+tests/        vitest suite for core, CLI and input handling
+tests/browser/ Chromium + Firefox workflow and accessibility regressions
 scripts/      example generator and benchmark (not part of the shipped package)
 examples/     synthetic example sessions, shared by the CLI and the web app
 docs/assets/  README screenshots

@@ -19,6 +19,10 @@ npm run typecheck
   tokenizer implementation, a hand-computed cache scenario), prefer that over
   a bare assertion.
 - `npm run lint && npm run typecheck && npm test` must pass.
+- For web changes, run `npm run build`, install Chromium and Firefox with
+  `npx playwright install chromium firefox`, then run `npm run test:browser`.
+  This checks production assets, keyboard behavior, privacy boundaries, and
+  dark/light mobile accessibility with Playwright and axe.
 - If you change the Anthropic or OpenAI caching rules in `src/core/pricing.ts`
   or `cache-*.ts`, cite the source (official docs URL + date, or the bundled
   reference you used) in a comment, the way the existing code does. Don't
