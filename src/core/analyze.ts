@@ -94,4 +94,7 @@ export {
   resolveModel,
 } from "./pricing.js";
 export { groupFindings, describeRequestIndices, type FindingGroup } from "./group-findings.js";
-export { calibrationScale, countRequestTokens, countTokensBody, CalibrationError, type CalibrationResult } from "./calibrate.js";
+export { calibrateRequest, calibrationScale, countRequestTokens, countTokensBody, CalibrationError, type CalibrationResult } from "./calibrate.js";
+
+// Tokenizer merge caches retain input substrings; interactive callers can release them on reset.
+export { clearMergeCache as clearTokenCache } from "gpt-tokenizer/encoding/o200k_base";

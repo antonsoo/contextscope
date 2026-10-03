@@ -56,8 +56,16 @@ export function countTokensBody(request: ParsedRequest, model: string): Record<s
 }
 
 export function calibrationScale(exactTokens: number, estimatedTokens: number): number {
-  if (!(exactTokens > 0) || !(estimatedTokens > 0)) throw new CalibrationError("Cannot calibrate against an empty request.");
+  if (!Number.isSafeInteger(exactTokens) || exactTokens <= 0) throw new CalibrationError("Enter a positive whole-number token count within the safe integer range.");
+  if (!Number.isSafeInteger(estimatedTokens) || estimatedTokens <= 0) throw new CalibrationError("Cannot calibrate against an empty or invalid request estimate.");
   return exactTokens / estimatedTokens;
+}
+
+/** Calibrate locally against a measured count supplied by the caller. No request is sent. */
+export function calibrateRequest(request: ParsedRequest, model: string, exactTokens: number): CalibrationResult {
+  if (request.provider !== "anthropic") throw new CalibrationError("Calibration only applies to Anthropic requests.");
+  const estimatedTokens = request.segments.reduce((sum, s) => sum + s.claudeTokensEstimate, 0);
+  return { requestIndex: request.index, model, exactTokens, estimatedTokens, scale: calibrationScale(exactTokens, estimatedTokens) };
 }
 
 /** Counts one request exactly and returns the scale that maps the heuristic onto it. */
@@ -84,17 +92,11 @@ export async function countRequestTokens(apiKey: string, model: string, request:
     const text = await response.text().catch(() => "");
     throw new CalibrationError(`count_tokens failed (HTTP ${response.status}): ${errorMessage(text)}`);
   }
-  const data = (await response.json()) as { input_tokens?: unknown };
-  if (typeof data.input_tokens !== "number") throw new CalibrationError("count_tokens returned no input_tokens field.");
-
-  const estimatedTokens = request.segments.reduce((sum, s) => sum + s.claudeTokensEstimate, 0);
-  return {
-    requestIndex: request.index,
-    model,
-    exactTokens: data.input_tokens,
-    estimatedTokens,
-    scale: calibrationScale(data.input_tokens, estimatedTokens),
-  };
+  const data: unknown = await response.json();
+  if (data === null || typeof data !== "object" || !("input_tokens" in data) || typeof data.input_tokens !== "number") {
+    throw new CalibrationError("count_tokens returned no input_tokens field.");
+  }
+  return calibrateRequest(request, model, data.input_tokens);
 }
 
 function errorMessage(body: string): string {

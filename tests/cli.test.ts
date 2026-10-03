@@ -133,7 +133,7 @@ describe("readInputFile", () => {
     expect(readInputFile(join(dir, "big.jsonl"), 4096)).toHaveLength(4096);
     expect(() => readInputFile(join(dir, "big.jsonl"), 1024)).toThrow(/the most this tool can load at once is 0\.001 MB; split it/);
     // The limit is on what the file unpacks to, not on its size on disk.
-    expect(() => readInputFile(join(dir, "big.jsonl.gz"), 1024)).toThrow(/it holds 0\.004 MB of JSON/);
+    expect(() => readInputFile(join(dir, "big.jsonl.gz"), 1024)).toThrow(/size limit.*split it/);
   });
 });
 

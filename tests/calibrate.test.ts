@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { CalibrationError, countRequestTokens, countTokensBody } from "../src/core/calibrate.js";
+import { CalibrationError, calibrateRequest, calibrationScale, countRequestTokens, countTokensBody } from "../src/core/calibrate.js";
 import { parseAnthropicRequest } from "../src/core/parse-anthropic.js";
 import { parseOpenAiRequest } from "../src/core/parse-openai.js";
 import { analyze } from "../src/core/analyze.js";
@@ -89,5 +89,26 @@ describe("analyze() with claudeTokenScale", () => {
 
   it("ignores a nonsensical scale", () => {
     for (const bad of [0, -2, Number.NaN, Number.POSITIVE_INFINITY]) expect(analyze(JSON.stringify(body), { claudeTokenScale: bad }).claudeTokenScale).toBe(1);
+  });
+});
+
+describe("local measured calibration", () => {
+  it("uses unscaled request estimates and preserves request/model provenance", () => {
+    const local = calibrateRequest(request, "claude-sonnet-5", 1234);
+    expect(local).toMatchObject({ requestIndex: 0, model: "claude-sonnet-5", exactTokens: 1234 });
+    expect(local.scale * local.estimatedTokens).toBeCloseTo(1234);
+    expect(calibrateRequest(request, "claude-sonnet-5", 1234)).toEqual(local);
+  });
+
+  it.each([0, -1, 1.5, NaN, Infinity, Number.MAX_SAFE_INTEGER + 1])("rejects invalid measured count %s", (count) => {
+    expect(() => calibrateRequest(request, "m", count)).toThrow(CalibrationError);
+  });
+
+  it.each([0, -1, 0.5, NaN, Infinity, Number.MAX_SAFE_INTEGER + 1])("rejects invalid reference estimate %s", (count) => {
+    expect(() => calibrationScale(10, count)).toThrow(CalibrationError);
+  });
+
+  it.each([null, [], {}, { input_tokens: 1.5 }, { input_tokens: 0 }, { input_tokens: 1e100 }])("rejects malformed API counts %j", async (payload) => {
+    await expect(countRequestTokens("sk", "m", request, { fetchImpl: fakeFetch(200, payload), browser: false })).rejects.toBeInstanceOf(CalibrationError);
   });
 });

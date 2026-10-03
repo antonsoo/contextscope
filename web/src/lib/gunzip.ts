@@ -1,35 +1,74 @@
-import { decodeText } from "@core/decode-text.js";
+import { decodeText } from "../../../src/core/decode-text.js";
 
-const GZIP_MAGIC_0 = 0x1f;
-const GZIP_MAGIC_1 = 0x8b;
+export const MAX_BROWSER_INPUT_BYTES = 50 * 2 ** 20;
+export interface ReadOptions {
+  signal?: AbortSignal;
+  maxBytes?: number;
+}
 
-/** True if `bytes` starts with the gzip magic bytes - the same check `src/cli/read-input.ts` does
- * on the Node side. This is the only reliable signal: a static file server may transparently
- * gzip-decode a `.gz` asset before it ever reaches this code (`vite preview`'s dev server does,
- * via a `Content-Encoding: gzip` response header that `fetch()` honors automatically - so despite
- * the `.gz` name, the bytes handed to JS are already plain text), while a GitHub Pages-style host
- * or a user's locally-saved `.jsonl.gz` file hands over the real compressed bytes. Checking the
- * name is not enough either way. */
+function byteLimit(options: ReadOptions): number {
+  const limit = options.maxBytes ?? MAX_BROWSER_INPUT_BYTES;
+  if (!Number.isSafeInteger(limit) || limit < 1 || limit > MAX_BROWSER_INPUT_BYTES) throw new Error("Invalid input byte limit.");
+  return limit;
+}
+
+function tooLarge(limit: number): Error {
+  return new Error(`Input exceeds ${(limit / 2 ** 20).toLocaleString("en-US")} MB before or after decompression. Split the log into smaller sessions.`);
+}
+
+/** Stop reading as soon as the cap is crossed; never buffer an entire gzip bomb. */
+export async function readBoundedStream(stream: ReadableStream<Uint8Array>, options: ReadOptions = {}): Promise<Uint8Array<ArrayBuffer>> {
+  const limit = byteLimit(options);
+  const { signal } = options;
+  const reader = stream.getReader();
+  const abort = (): void => { void reader.cancel(signal?.reason).catch(() => {}); };
+  signal?.addEventListener("abort", abort, { once: true });
+  const chunks: Uint8Array[] = [];
+  let length = 0;
+  try {
+    signal?.throwIfAborted();
+    while (true) {
+      const { done, value } = await reader.read();
+      signal?.throwIfAborted();
+      if (done) break;
+      length += value.byteLength;
+      if (length > limit) throw tooLarge(limit);
+      chunks.push(value);
+    }
+    const bytes = new Uint8Array(length);
+    let offset = 0;
+    for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.byteLength; }
+    return bytes;
+  } finally {
+    signal?.removeEventListener("abort", abort);
+    await reader.cancel().catch(() => {});
+    reader.releaseLock();
+  }
+}
+
+/** HTTP hosts may already have decoded .gz responses. Detect the actual bytes, not the name. */
 export function looksGzipped(bytes: Uint8Array): boolean {
-  return bytes.length >= 2 && bytes[0] === GZIP_MAGIC_0 && bytes[1] === GZIP_MAGIC_1;
+  return bytes[0] === 0x1f && bytes[1] === 0x8b;
 }
 
-/** Decodes a byte buffer to text, gunzipping first only if it's actually still gzip-compressed
- * (see `looksGzipped`). Used for both fetched static assets and user-dropped files, so either one
- * works whether or not something upstream already decompressed it. Uses the browser's native
- * `DecompressionStream` (Chrome/Edge 80+, Firefox 113+, Safari 16.4+ - no library for a feature
- * this narrow). */
-export async function bytesToText(bytes: Uint8Array): Promise<string> {
+export async function bytesToText(bytes: Uint8Array, options: ReadOptions = {}): Promise<string> {
+  options.signal?.throwIfAborted();
+  const limit = byteLimit(options);
+  if (bytes.byteLength > limit) throw tooLarge(limit);
   if (!looksGzipped(bytes)) return decodeText(bytes);
-  // `bytes` is always backed by a real ArrayBuffer in this app's callers (arrayBuffer() results),
-  // never a SharedArrayBuffer - TS's DOM lib types BlobPart more narrowly than that, hence the cast.
   const stream = new Blob([bytes as Uint8Array<ArrayBuffer>]).stream().pipeThrough(new DecompressionStream("gzip"));
-  return decodeText(new Uint8Array(await new Response(stream).arrayBuffer()));
+  return decodeText(await readBoundedStream(stream, options));
 }
 
-/** Reads a File/Blob as text, transparently gunzipping it if it's gzip-compressed - covers a user
- * dropping their own `.jsonl.gz` session log (a local File never goes through HTTP content
- * negotiation, so its bytes are exactly what's on disk either way). */
-export async function readPossiblyGzippedFile(file: File): Promise<string> {
-  return bytesToText(new Uint8Array(await file.arrayBuffer()));
+export async function readPossiblyGzippedFile(file: File, options: ReadOptions = {}): Promise<string> {
+  const limit = byteLimit(options);
+  if (file.size > limit) throw tooLarge(limit);
+  return bytesToText(await readBoundedStream(file.stream(), options), options);
+}
+
+/** Pasted strings bypass File.size; apply the same UTF-8 byte budget before parsing. */
+export function checkTextSize(text: string): void {
+  if (text.length > MAX_BROWSER_INPUT_BYTES || new TextEncoder().encode(text).byteLength > MAX_BROWSER_INPUT_BYTES) {
+    throw tooLarge(MAX_BROWSER_INPUT_BYTES);
+  }
 }
