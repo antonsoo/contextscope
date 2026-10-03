@@ -1038,8 +1038,9 @@ footer.app-footer a {
 
 @media (max-width: 680px) {
   .topbar { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; padding: 12px 16px; }
-  .topbar-controls { grid-column: 1 / -1; grid-row: 2; margin-left: 0; gap: 8px; }
+  .topbar-controls { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); grid-column: 1 / -1; grid-row: 2; margin-left: 0; gap: 8px; }
   #theme-toggle { grid-column: 2; grid-row: 1; }
-  .topbar-controls .field:nth-child(2) { flex: 1; min-width: 0; }
+  .topbar-controls .field { flex-direction: column; align-items: stretch; gap: 4px; min-width: 0; }
+  #new-analysis-btn { grid-column: 1 / -1; justify-self: end; }
   #model-select { min-width: 0; width: 100%; }
 }

@@ -54,6 +54,7 @@ test("intake, desktop/mobile workspace and modal have accessible controls in bot
     await page.setViewportSize({ width: 375, height: 812 });
     await scan(page);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    expect((await page.locator("#model-select").boundingBox())!.width).toBeGreaterThan(120);
     await page.setViewportSize({ width: 1440, height: 900 });
   }
 });
