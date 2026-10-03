@@ -4,7 +4,7 @@ import { squarify } from "./lib/treemap.js";
 import { BUILT_IN_EXAMPLES } from "./lib/examples.js";
 import { CATEGORY_LABEL, CATEGORY_ORDER, categoryVar, fmtInt, fmtPct, fmtUsd, fmtUsdRounded, truncate } from "./lib/format.js";
 import { $, $all, esc } from "./lib/dom.js";
-import { readPossiblyGzippedFile } from "./lib/gunzip.js";
+import { checkTextSize, readPossiblyGzippedFile } from "./lib/gunzip.js";
 
 // The core library (and the ~1MB o200k_base tokenizer data it pulls in) is loaded on demand, not
 // on page load - the drop-zone screen should be instant. Everything that touches it is async.
@@ -12,7 +12,10 @@ type CoreModule = typeof import("@core/index.js");
 let corePromise: Promise<CoreModule> | undefined;
 let loadedCore: CoreModule | undefined;
 function loadCore(): Promise<CoreModule> {
-  corePromise ??= import("@core/index.js");
+  corePromise ??= import("@core/index.js").catch((err: unknown) => {
+    corePromise = undefined;
+    throw err;
+  });
   return corePromise;
 }
 
@@ -67,6 +70,12 @@ function shellHtml(): string {
       <button class="icon-btn" id="theme-toggle" type="button" aria-label="Toggle light/dark theme" title="Toggle theme">◐</button>
     </header>
 
+    <div class="load-status" id="load-status" hidden>
+      <span role="status">Reading and analyzing locally…</span>
+      <button class="btn" id="cancel-load-btn" type="button">cancel import</button>
+    </div>
+    <p class="intake-error" id="intake-error" role="alert" hidden></p>
+
     <main id="intake" class="intake">
       <div class="dropzone" id="dropzone">
         <h2>drop a request, or paste one</h2>
@@ -76,12 +85,11 @@ function shellHtml(): string {
           <button class="btn" id="paste-btn" type="button">paste JSON…</button>
           <input type="file" id="file-input" accept=".json,.jsonl,.gz,application/json,application/gzip" class="visually-hidden" aria-label="Request file" tabindex="-1" />
         </div>
-        <textarea id="paste-area" placeholder="paste a request, a JSON array of requests, or JSONL here" spellcheck="false"></textarea>
+        <textarea aria-label="Request JSON or JSONL" id="paste-area" placeholder="paste a request, a JSON array of requests, or JSONL here" spellcheck="false"></textarea>
         <div class="intake-actions" id="paste-run-row" hidden>
           <button class="btn primary" id="run-paste-btn" type="button">analyze</button>
         </div>
-        <p class="intake-error" id="intake-error" role="alert" hidden></p>
-        <p class="hint">Nothing leaves your browser. Parsing and token counting run locally.</p>
+        <p class="hint">Nothing leaves your browser. Parsing and token counting run locally. Up to 50 MB before and after decompression.</p>
         <div class="examples-row">
           <p>or load a built-in example (synthetic data, labelled below)</p>
           <div class="example-chip-row" id="example-chips"></div>
@@ -90,22 +98,21 @@ function shellHtml(): string {
     </main>
 
     <div id="dashboard" class="dashboard">
-      <nav class="request-tabs" id="request-tabs"></nav>
-      <main class="content" id="content"></main>
+      <nav aria-label="Request navigation"><div class="request-tabs" id="request-tabs" role="tablist" aria-label="Requests"></div></nav>
+      <main><div class="content" id="content" role="tabpanel" tabindex="0"></div></main>
       <footer class="app-footer">
         contextscope is local-first: analysis runs in your browser, nothing is uploaded. Claude token counts are estimates (≈) - see
         <a href="https://github.com/antonsoo/contextscope#accuracy-and-limitations" target="_blank" rel="noopener">accuracy and limitations</a>.
       </footer>
     </div>
 
-    <div class="drawer-backdrop" id="drawer-backdrop"></div>
-    <aside class="drawer" id="drawer" aria-hidden="true" inert>
+    <dialog class="drawer" id="drawer" aria-labelledby="drawer-title">
       <div class="drawer-head">
         <h3 id="drawer-title">segment</h3>
         <button class="icon-btn" id="drawer-close" type="button" aria-label="Close">✕</button>
       </div>
-      <div class="drawer-body" id="drawer-body"></div>
-    </aside>
+      <div class="drawer-body" id="drawer-body" tabindex="0" role="region" aria-label="Segment details"></div>
+    </dialog>
   `;
 }
 
@@ -123,7 +130,7 @@ function wireIntake(): void {
   fileInput.addEventListener("change", () => {
     const file = fileInput.files?.[0];
     fileInput.value = ""; // choosing the same file again should still fire "change"
-    if (file) void loadFile(file);
+    if (file) loadFile(file);
   });
 
   $("#paste-btn").addEventListener("click", () => {
@@ -145,7 +152,7 @@ function wireIntake(): void {
     e.preventDefault();
     dropzone.classList.remove("drag");
     const file = e.dataTransfer?.files?.[0];
-    if (file) void loadFile(file);
+    if (file) loadFile(file);
   });
 
   const chipRow = $("#example-chips");
@@ -158,34 +165,16 @@ function wireIntake(): void {
     if (!target || target.disabled) return;
     const example = BUILT_IN_EXAMPLES.find((ex) => ex.id === target.dataset["example"]);
     if (!example) return;
-    const label = target.innerHTML;
-    target.disabled = true;
-    target.textContent = "loading…";
-    example
-      .load()
-      .then((content) => startNewInput(content))
-      .catch((err: unknown) => showIntakeError(`Could not load the example: ${(err as Error).message}`))
-      .finally(() => {
-        target.disabled = false;
-        target.innerHTML = label;
-      });
+    runInput((signal) => example.load(signal), true);
   });
 }
 
-async function loadFile(file: File): Promise<void> {
-  try {
-    startNewInput(await readPossiblyGzippedFile(file));
-  } catch (err) {
-    showIntakeError(`Could not read ${file.name}: ${(err as Error).message}`);
-  }
+function loadFile(file: File): void {
+  runInput((signal) => readPossiblyGzippedFile(file, { signal }), true);
 }
 
-/** A new input starts from auto-detection: overrides picked for the previous input don't carry over. */
 function startNewInput(text: string): void {
-  state.format = "auto";
-  state.model = undefined;
-  state.calibration = undefined;
-  runAnalysis(text, true);
+  runInput(async () => text, true);
 }
 
 function showIntakeError(message: string | undefined): void {
@@ -195,30 +184,21 @@ function showIntakeError(message: string | undefined): void {
 }
 
 function wireTopbar(): void {
-  $("#new-analysis-btn").addEventListener("click", () => {
-    state.analysis = undefined;
-    state.calibration = undefined;
-    showIntakeError(undefined);
-    $("#dashboard").classList.remove("shown");
-    $("#topbar-controls").hidden = true;
-    $("#intake").style.display = "grid";
+  $("#new-analysis-btn").addEventListener("click", resetAnalysis);
+  $("#cancel-load-btn").addEventListener("click", () => {
+    cancelPending();
+    showIntakeError("Import cancelled.");
+    $(state.analysis ? "#new-analysis-btn" : "#pick-file-btn").focus();
   });
 
   const formatSelect = $("#format-select") as HTMLSelectElement;
   formatSelect.addEventListener("change", () => {
-    state.format = formatSelect.value as Provider | "auto";
-    // A model from the other provider's list means nothing after a format switch.
-    state.model = undefined;
-    state.calibration = undefined;
-    if (lastRawInput !== undefined) runAnalysis(lastRawInput, false);
+    if (lastRawInput !== undefined) runAnalysis(lastRawInput, { format: formatSelect.value as Provider | "auto", model: undefined, calibration: undefined });
   });
 
   const modelSelect = $("#model-select") as HTMLSelectElement;
   modelSelect.addEventListener("change", () => {
-    state.model = modelSelect.value;
-    // count_tokens results are model-specific.
-    state.calibration = undefined;
-    if (lastRawInput !== undefined) runAnalysis(lastRawInput, false);
+    if (lastRawInput !== undefined) runAnalysis(lastRawInput, { ...state, model: modelSelect.value, calibration: undefined });
   });
 
   $("#theme-toggle").addEventListener("click", () => {
@@ -233,9 +213,29 @@ function wireTopbar(): void {
   });
 
   $("#drawer-close").addEventListener("click", closeDrawer);
-  $("#drawer-backdrop").addEventListener("click", closeDrawer);
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeDrawer();
+  const drawer = $("#drawer") as HTMLDialogElement;
+  drawer.addEventListener("cancel", (event) => {
+    event.preventDefault();
+    closeDrawer();
+  });
+  // Native dialogs make the background inert; explicitly wrap the last/first stops too,
+  // so Chromium does not hand Tab off to the browser chrome at the end of this drawer.
+  drawer.addEventListener("keydown", (event) => {
+    if (event.key !== "Tab") return;
+    const stops = $all('button, [tabindex="0"]', drawer);
+    const first = stops[0];
+    const last = stops[stops.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last?.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first?.focus();
+    }
+  });
+  drawer.addEventListener("click", (event) => {
+    const bounds = drawer.getBoundingClientRect();
+    if (event.target === drawer && (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom)) closeDrawer();
   });
 }
 
@@ -250,49 +250,115 @@ function applyStoredTheme(): void {
 
 let lastRawInput: string | undefined;
 
-/** `fresh` = a new input: jump to its last request. Otherwise (an override or calibration changed)
- * keep the request and pair the user was looking at. */
-function runAnalysis(input: string, fresh: boolean): void {
-  void runAnalysisAsync(input, fresh);
+type AnalysisSettings = Pick<State, "format" | "model" | "calibration">;
+let pendingLoad: AbortController | undefined;
+let treemapObserver: ResizeObserver | undefined;
+
+function cancelPending(): void {
+  pendingLoad?.abort();
+  pendingLoad = undefined;
+  setLoading(false);
+  syncControls();
 }
 
-async function runAnalysisAsync(input: string, fresh: boolean): Promise<void> {
-  lastRawInput = input;
+function resetAnalysis(): void {
+  cancelPending();
+  closeDrawer();
+  treemapObserver?.disconnect();
+  treemapObserver = undefined;
+  state.analysis = undefined;
+  state.calibration = undefined;
+  state.format = "auto";
+  state.model = undefined;
+  state.selectedRequest = 0;
+  state.selectedPair = -1;
+  lastRawInput = undefined;
+  groupsCache = undefined;
+  loadedCore?.clearTokenCache();
+  $("#content").replaceChildren();
+  $("#request-tabs").replaceChildren();
+  const paste = $("#paste-area") as HTMLTextAreaElement;
+  paste.value = "";
+  paste.classList.remove("shown");
+  $("#paste-run-row").hidden = true;
+  showIntakeError(undefined);
+  $("#dashboard").classList.remove("shown");
+  $("#topbar-controls").hidden = true;
+  $("#intake").style.display = "grid";
+  $("#pick-file-btn").focus();
+}
+
+function runAnalysis(input: string, settings: AnalysisSettings): void {
+  runInput(async () => input, false, { format: settings.format, model: settings.model, calibration: settings.calibration });
+}
+
+/** Prepare in isolation. Only the current successful operation may replace the workspace. */
+function runInput(read: (signal: AbortSignal) => Promise<string>, fresh: boolean, settings: AnalysisSettings = { format: "auto", model: undefined, calibration: undefined }): void {
+  cancelPending();
+  const operation = new AbortController();
+  pendingLoad = operation;
+  const focusedId = (document.activeElement as HTMLElement | null)?.id;
+  const { signal } = operation;
+  showIntakeError(undefined);
   setLoading(true);
-  try {
-    const core = await loadCore();
-    const result = core.analyze(input, {
-      format: state.format === "auto" ? undefined : state.format,
-      model: state.model,
-      claudeTokenScale: state.calibration?.scale,
-    });
-    state.analysis = result;
-    showIntakeError(undefined);
-    // Default to the LAST request: that's where the context is biggest and most interesting
-    // (a growing agent-loop transcript), not the smallest, near-empty first turn. In a file of
-    // several conversations the last line is whichever one happened to end last - often a small
-    // side request - so there the view opens on the largest request, and on its comparison.
-    if (fresh || state.selectedRequest >= result.reports.length) {
-      state.selectedRequest = result.conversations.count > 1 ? largestRequest(result) : result.reports.length - 1;
+  void (async () => {
+    try {
+      const input = await read(signal);
+      signal.throwIfAborted();
+      checkTextSize(input);
+      const core = await loadCore();
+      loadedCore = core;
+      signal.throwIfAborted();
+      // Let the status paint before the synchronous tokenizer and analysis run.
+      await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+      signal.throwIfAborted();
+      const result = core.analyze(input, {
+        format: settings.format === "auto" ? undefined : settings.format,
+        model: settings.model,
+        claudeTokenScale: settings.calibration?.scale,
+      });
+      closeDrawer();
+      state.format = settings.format;
+      state.model = settings.model;
+      state.calibration = settings.calibration;
+      state.analysis = result;
+      lastRawInput = input;
+      if (fresh || state.selectedRequest >= result.reports.length) {
+        state.selectedRequest = result.conversations.count > 1 ? largestRequest(result) : result.reports.length - 1;
+      }
+      state.selectedPair = result.prefixMatches.findIndex((match) => match.toIndex === state.selectedRequest);
+      showDashboard(core);
+      if (fresh) $(".request-tab.active").focus();
+    } catch (err) {
+      if (!signal.aborted) {
+        showIntakeError(`Could not analyze this input: ${(err as Error).message}`);
+        syncControls();
+      }
+    } finally {
+      if (pendingLoad === operation) {
+        loadedCore?.clearTokenCache();
+        pendingLoad = undefined;
+        setLoading(false);
+        if (!fresh && focusedId) {
+          const target = document.getElementById(focusedId) ?? (focusedId === "calibrate-reset" ? document.getElementById("calibrate-count") : null);
+          target?.focus({ preventScroll: true });
+        }
+      }
     }
-    if (fresh || state.selectedPair >= result.prefixMatches.length) {
-      const own = result.prefixMatches.findIndex((m) => m.toIndex === state.selectedRequest);
-      state.selectedPair = own >= 0 ? own : Math.max(0, result.prefixMatches.length - 1);
-    }
-    showDashboard(core);
-  } catch (err) {
-    const message = `Could not analyze this input: ${(err as Error).message}`;
-    if (state.analysis) window.alert(message);
-    else showIntakeError(message);
-  } finally {
-    setLoading(false);
-  }
+  })();
+}
+
+function syncControls(): void {
+  ($("#format-select") as HTMLSelectElement).value = state.format;
+  if (state.analysis) ($("#model-select") as HTMLSelectElement).value = state.analysis.model.id;
 }
 
 function setLoading(loading: boolean): void {
-  const btns = [$("#run-paste-btn"), $("#pick-file-btn")] as HTMLButtonElement[];
-  for (const btn of btns) btn.disabled = loading;
-  document.getElementById("dropzone")?.setAttribute("aria-busy", String(loading));
+  $("#load-status").hidden = !loading;
+  for (const control of $all("#format-select, #model-select, #calibrate-count, #calibrate-btn, #calibrate-reset")) {
+    (control as HTMLButtonElement).disabled = loading;
+  }
+  $("#dropzone").setAttribute("aria-busy", String(loading));
 }
 
 // ---------------------------------------------------------------------------
@@ -328,9 +394,11 @@ function renderRequestTabs(): void {
   tabs.innerHTML = result.reports
     .map(
       (r, i) =>
-        `<button class="request-tab ${i === state.selectedRequest ? "active" : ""}" data-req="${i}" type="button">req ${i + 1}<span class="pct">${fmtPct(r.percentOfContextWindow, 2)}</span></button>`,
+        `<button class="request-tab ${i === state.selectedRequest ? "active" : ""}" data-req="${i}" id="request-tab-${i}" role="tab" aria-selected="${i === state.selectedRequest}" aria-controls="content" tabindex="${i === state.selectedRequest ? 0 : -1}" type="button">req ${i + 1}<span class="pct">${fmtPct(r.percentOfContextWindow, 2)}</span></button>`,
     )
     .join("");
+
+  $("#content").setAttribute("aria-labelledby", `request-tab-${state.selectedRequest}`);
 
   // Bring the active tab into view - important now that the default is the LAST request, which
   // is usually scrolled off the right edge of this horizontally-scrolling strip.
@@ -341,17 +409,44 @@ function renderRequestTabs(): void {
   // would stack N duplicate handlers after N tab switches.
   if (!requestTabsWired) {
     requestTabsWired = true;
+    // Keep the active tab visible as this strip narrows, without scrolling the page vertically.
+    new ResizeObserver(() => {
+      const active = tabs.querySelector<HTMLElement>(".request-tab.active");
+      if (!active) return;
+      const strip = tabs.getBoundingClientRect();
+      const tab = active.getBoundingClientRect();
+      if (tab.left < strip.left) tabs.scrollLeft += tab.left - strip.left;
+      else if (tab.right > strip.right) tabs.scrollLeft += tab.right - strip.right;
+    }).observe(tabs);
     tabs.addEventListener("click", (e) => {
       const btn = (e.target as HTMLElement).closest<HTMLElement>("[data-req]");
       if (!btn) return;
-      state.selectedRequest = Number(btn.dataset["req"]);
-      renderRequestTabs();
-      renderContent();
+      selectRequest(Number(btn.dataset["req"]));
+    });
+    tabs.addEventListener("keydown", (event) => {
+      if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+      const button = (event.target as HTMLElement).closest<HTMLElement>("[data-req]");
+      if (!button) return;
+      event.preventDefault();
+      const count = state.analysis!.reports.length;
+      const current = Number(button.dataset["req"]);
+      const next = event.key === "Home" ? 0 : event.key === "End" ? count - 1 : (current + (event.key === "ArrowRight" ? 1 : -1) + count) % count;
+      selectRequest(next);
     });
   }
 }
 
+function selectRequest(index: number): void {
+  state.selectedRequest = index;
+  state.selectedPair = state.analysis!.prefixMatches.findIndex((match) => match.toIndex === index);
+  renderRequestTabs();
+  renderContent();
+  $(".request-tab.active").focus({ preventScroll: true });
+}
+
 function renderContent(): void {
+  treemapObserver?.disconnect();
+  treemapObserver = undefined;
   const result = state.analysis!;
   const content = $("#content");
   const report = result.reports[state.selectedRequest]!;
@@ -442,37 +537,33 @@ function treemapPanel(report: RequestTokenReport, format: Provider): string {
 
 function wireTreemap(report: RequestTokenReport, format: Provider): void {
   const container = $("#treemap");
-  const rect = container.getBoundingClientRect();
-  const w = rect.width || 800;
-  const h = rect.height || 340;
   const approx = format === "openai" ? "" : "≈";
   const items = report.segments
     .filter((s) => blockTokens(s, format) > 0)
     .map((s) => ({ value: blockTokens(s, format), item: s }));
-  const laid = squarify(items, { x: 0, y: 0, w, h });
-
-  container.innerHTML = laid
-    .map(({ rect: r, item: s }) => {
-      // Two label lines need ~34px of height, one needs ~20px; narrower or shorter blocks rely on the tooltip.
+  container.innerHTML = items.map(({ item: segment }) => `<button type="button" class="tm-block" data-segment="${esc(segment.id)}"></button>`).join("");
+  const blocks = new Map($all("[data-segment]", container).map((block) => [block.dataset["segment"], block]));
+  const layout = (): void => {
+    const w = container.clientWidth;
+    const h = container.clientHeight;
+    if (w <= 0 || h <= 0) return;
+    for (const { rect: r, item: segment } of squarify(items, { x: 0, y: 0, w, h })) {
+      const block = blocks.get(segment.id)!;
       const lines = r.w <= 46 ? 0 : r.h >= 34 ? 2 : r.h >= 20 ? 1 : 0;
-      const tokens = `${approx}${fmtInt(blockTokens(s, format))} tok`;
-      const label =
-        lines === 0 ? "" : `<div class="tm-label"><span class="tm-name">${esc(truncate(s.label, 40))}</span>${lines === 2 ? `<span class="tm-tok">${tokens}</span>` : ""}</div>`;
-      return `<div class="tm-block" tabindex="0" role="button" data-segment="${esc(s.id)}" style="left:${r.x}px;top:${r.y}px;width:${r.w}px;height:${r.h}px;background:${categoryVar(s.category)};color:var(--cat-${s.category}-ink)" title="${esc(s.label)} — ${tokens}" aria-label="${esc(s.label)}, ${tokens}">${label}</div>`;
-    })
-    .join("");
+      const tokens = `${approx}${fmtInt(blockTokens(segment, format))} tok`;
+      block.style.cssText = `left:${r.x}px;top:${r.y}px;width:${r.w}px;height:${r.h}px;background:${categoryVar(segment.category)};color:var(--cat-${segment.category}-ink)`;
+      block.title = `${segment.label} — ${tokens}`;
+      block.setAttribute("aria-label", `${segment.label}, ${tokens}`);
+      block.innerHTML = lines === 0 ? "" : `<span class="tm-label"><span class="tm-name">${esc(truncate(segment.label, 40))}</span>${lines === 2 ? `<span class="tm-tok">${tokens}</span>` : ""}</span>`;
+    }
+  };
+  layout();
+  treemapObserver = new ResizeObserver(layout);
+  treemapObserver.observe(container);
 
   container.addEventListener("click", (e) => {
     const block = (e.target as HTMLElement).closest<HTMLElement>("[data-segment]");
     if (block) openInspector(report.segments.find((s) => s.id === block.dataset["segment"])!);
-  });
-  container.addEventListener("keydown", (e) => {
-    if (e.key !== "Enter" && e.key !== " ") return;
-    const block = (e.target as HTMLElement).closest<HTMLElement>("[data-segment]");
-    if (block) {
-      e.preventDefault();
-      openInspector(report.segments.find((s) => s.id === block.dataset["segment"])!);
-    }
   });
 }
 
@@ -492,7 +583,7 @@ function segmentsTablePanel(report: RequestTokenReport): string {
               .map(
                 (s) => `<tr data-segment="${esc(s.id)}">
                   <td><span class="cat-chip" style="--dot:${categoryVar(s.category)}">${CATEGORY_LABEL[s.category]}</span></td>
-                  <td>${esc(truncate(s.label, 60))}</td>
+                  <td><button class="segment-inspect" type="button" aria-label="Inspect ${esc(s.label)}">${esc(truncate(s.label, 60))}</button></td>
                   <td>${esc(s.path)}</td>
                   <td class="num">${fmtInt(s.claudeTokensEstimate)}</td>
                   <td class="num">${fmtInt(s.openaiTokens)}</td>
@@ -517,8 +608,9 @@ function wireSegmentsTable(report: RequestTokenReport): void {
 /** The request with the most tokens, the later one on a tie. */
 function largestRequest(result: AnalysisResult): number {
   let best = 0;
+  const tokens = (r: RequestTokenReport): number => result.parse.format === "openai" ? r.totals.openaiTokens : r.totals.claudeTokensEstimate;
   result.reports.forEach((report, i) => {
-    if (report.totals.claudeTokensEstimate >= result.reports[best]!.totals.claudeTokensEstimate) best = i;
+    if (tokens(report) >= tokens(result.reports[best]!)) best = i;
   });
   return best;
 }
@@ -541,11 +633,11 @@ function sequencePanel(result: AnalysisResult): string {
           .map((m, i) => {
             const totalNext = result.parse.requests[m.toIndex]!.segments.length;
             const pct = totalNext > 0 ? m.matchedSegments / totalNext : 0;
-            return `<div class="prefix-row ${i === state.selectedPair ? "active" : ""}" data-pair="${i}">
+            return `<button type="button" aria-pressed="${i === state.selectedPair}" class="prefix-row ${i === state.selectedPair ? "active" : ""}" data-pair="${i}">
               <span class="arrow">req ${m.fromIndex + 1} → req ${m.toIndex + 1}</span>
               <span class="prefix-bar-track"><span class="prefix-bar-fill" style="width:${(pct * 100).toFixed(1)}%"></span></span>
-              <span class="prefix-meta">${m.matchedSegments}/${totalNext} segs · ≈${fmtInt(m.matchedClaudeTokensEstimate)} tok${m.relation === "new_conversation" ? " · new conversation" : m.relation === "rewrites" ? " · history rewritten" : ""}</span>
-            </div>`;
+              <span class="prefix-meta">${m.matchedSegments}/${totalNext} segs · ${result.parse.format === "openai" ? fmtInt(m.matchedOpenaiTokens) : `≈${fmtInt(m.matchedClaudeTokensEstimate)}`} tok${m.relation === "new_conversation" ? " · new conversation" : m.relation === "rewrites" ? " · history rewritten" : ""}</span>
+            </button>`;
           })
           .join("")}
       </div>
@@ -560,10 +652,9 @@ function wireSequencePanel(result: AnalysisResult): void {
   list.addEventListener("click", (e) => {
     const row = (e.target as HTMLElement).closest<HTMLElement>("[data-pair]");
     if (!row) return;
-    state.selectedPair = Number(row.dataset["pair"]);
-    $all(".prefix-row", list).forEach((el) => el.classList.remove("active"));
-    row.classList.add("active");
-    renderDiff(result);
+    const pair = Number(row.dataset["pair"]);
+    selectRequest(result.prefixMatches[pair]!.toIndex);
+    document.querySelector<HTMLElement>(`[data-pair="${pair}"]`)?.focus({ preventScroll: true });
   });
 }
 
@@ -571,7 +662,7 @@ function renderDiff(result: AnalysisResult): void {
   const match = result.prefixMatches[state.selectedPair];
   const view = $("#diff-view");
   if (!match) {
-    view.innerHTML = "";
+    view.textContent = "This request has no earlier request to compare.";
     return;
   }
   view.innerHTML = match.diff.map((line) => `<div class="diff-line ${line.type}">${line.type === "add" ? "+ " : line.type === "remove" ? "- " : "  "}${esc(line.text)}</div>`).join("");
@@ -601,10 +692,10 @@ function cachePanel(result: AnalysisResult): string {
         </table>
       </div>
       <div class="stat-row" style="margin-top:12px">
-        <div class="stat-tile"><div class="label">total actual cost</div><div class="value">${fmtUsd(sim.totalActualCostUsd)}</div></div>
-        <div class="stat-tile"><div class="label">total optimized cost</div><div class="value">${fmtUsd(sim.totalOptimizedCostUsd)}</div></div>
+        <div class="stat-tile"><div class="label">current simulated cost</div><div class="value">${fmtUsd(sim.totalActualCostUsd)}</div></div>
+        <div class="stat-tile"><div class="label">optimized simulated cost</div><div class="value">${fmtUsd(sim.totalOptimizedCostUsd)}</div></div>
       </div>
-      ${savings !== undefined && savings >= 0.00005 ? `<div class="savings-banner">Fixing the findings below${sim.provider === "anthropic" ? ", plus an automatic breakpoint on every request's tail," : ""} would save ${fmtUsd(savings)} (${((savings / sim.totalActualCostUsd!) * 100).toFixed(0)}%) on this sequence — ≈${fmtUsdRounded(savings * 1000)} per 1,000 sessions shaped like this one.</div>` : ""}
+      ${savings !== undefined && savings >= 0.00005 ? `<div class="savings-banner">Fixing these findings${sim.provider === "anthropic" ? ", plus an automatic breakpoint on every request's tail," : ""} would save ${fmtUsd(savings)} (${((savings / sim.totalActualCostUsd!) * 100).toFixed(0)}%) on this sequence — ≈${fmtUsdRounded(savings * 1000)} per 1,000 sessions shaped like this one.</div>` : ""}
     </section>
   `;
 }
@@ -635,7 +726,7 @@ const MAX_OCCURRENCE_LINKS = 12;
 function findingsPanel(result: AnalysisResult): string {
   const groups = currentGroups(result);
   if (groups.length === 0) {
-    return `<section class="panel"><h2>Findings</h2><p class="empty-state">✓ No findings — this sequence caches cleanly.</p></section>`;
+    return `<section class="panel"><h2>Findings</h2><p class="empty-state">No supported cache or duplicate-content issues detected in the parsed requests. This does not verify live cache hits.</p></section>`;
   }
   const recurring = result.findings.length > groups.length ? ` from ${result.findings.length} findings` : "";
   return `
@@ -673,9 +764,9 @@ function wireFindings(result: AnalysisResult): void {
       if (!group) return;
       const finding = group.findings.find((f) => f.requestIndex === requestIndex) ?? group.findings[0]!;
       if (finding.requestIndex !== state.selectedRequest) {
-        state.selectedRequest = finding.requestIndex;
-        renderRequestTabs();
-        renderContent();
+        selectRequest(finding.requestIndex);
+        const replacement = document.querySelector<HTMLElement>(`[data-group="${el.dataset["group"]}"][data-req="${requestIndex}"].${el.classList.contains("occ") ? "occ" : "fhead"}`);
+        replacement?.focus({ preventScroll: true });
       }
       const segId = finding.segmentIds[finding.segmentIds.length - 1];
       if (segId) {
@@ -714,64 +805,48 @@ function calibratePanel(result: AnalysisResult): string {
   if (result.parse.format !== "anthropic") return "";
   const c = state.calibration;
   const summary = c
-    ? `<p class="calibrate-result">Request ${c.requestIndex + 1} is <strong>${fmtInt(c.exactTokens)}</strong> tokens by <code>count_tokens</code> on ${esc(c.model)}; the heuristic said ≈${fmtInt(c.estimatedTokens)} (${fmtSignedPct((c.estimatedTokens - c.exactTokens) / c.exactTokens)}). Every ≈ figure on this page is now scaled ×${c.scale.toFixed(3)}. <button class="btn link" id="calibrate-reset" type="button">undo</button></p>`
+    ? `<p class="calibrate-result" role="status">Using your measured count of <strong>${fmtInt(c.exactTokens)}</strong> input tokens for request ${c.requestIndex + 1} on ${esc(c.model)}. The original estimate was ≈${fmtInt(c.estimatedTokens)}. Every Claude estimate is scaled ×${c.scale.toFixed(3)}. Other requests and individual segments remain estimates. <button class="btn link" id="calibrate-reset" type="button">undo calibration</button></p>`
     : "";
   return `
     <section class="panel">
-      <h2>Calibrate Claude estimates <span class="count">optional</span></h2>
-      <p class="panel-note">
-        Claude's tokenizer isn't public, so ≈ counts are a heuristic. Paste an Anthropic API key to count request
-        ${state.selectedRequest + 1} exactly with the free <code>count_tokens</code> endpoint and rescale every estimate to match.
-        One call; the key stays in this tab's memory and is sent only to api.anthropic.com.
+      <h2>Calibrate Claude estimates <span class="count">optional · local only</span></h2>
+      <p class="panel-note" id="calibrate-help">
+        Enter the whole-request <code>input_tokens</code> count you measured with <code>count_tokens</code>
+        for request ${state.selectedRequest + 1} on ${esc(result.model.displayName)}. This rescales the session's estimates;
+        it does not make each segment exact. Use the same request and model. No API key or request is sent from this page.
       </p>
-      <div class="calibrate-row">
-        <input type="password" id="calibrate-key" placeholder="sk-ant-…" autocomplete="off" aria-label="Anthropic API key" />
-        <button class="btn primary" id="calibrate-btn" type="button">count request ${state.selectedRequest + 1}</button>
-        <span class="calibrate-status" id="calibrate-status" role="status"></span>
-      </div>
+      <form class="calibrate-row" id="calibrate-form" novalidate>
+        <label for="calibrate-count">Measured input tokens</label>
+        <input type="number" id="calibrate-count" min="1" max="9007199254740991" step="1" inputmode="numeric" placeholder="e.g. 18420" aria-describedby="calibrate-help calibrate-status" />
+        <button class="btn primary" id="calibrate-btn" type="submit">apply to request ${state.selectedRequest + 1}</button>
+        <span class="calibrate-status" id="calibrate-status" role="alert"></span>
+      </form>
       ${summary}
     </section>
   `;
 }
 
-function fmtSignedPct(fraction: number): string {
-  return `${fraction >= 0 ? "+" : "−"}${Math.abs(fraction * 100).toFixed(1)}%`;
-}
-
 function wireCalibrate(result: AnalysisResult): void {
-  document.getElementById("calibrate-btn")?.addEventListener("click", () => {
-    void runCalibration(result);
+  document.getElementById("calibrate-form")?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (pendingLoad) return;
+    const input = $("#calibrate-count") as HTMLInputElement;
+    try {
+      // Re-parse the unscaled input: repeated calibration must never compound rounding.
+      const parsed = loadedCore!.parseInput(lastRawInput!, result.parse.format);
+      const calibration = loadedCore!.calibrateRequest(parsed.requests[state.selectedRequest]!, result.model.id, input.valueAsNumber);
+      runAnalysis(lastRawInput!, { ...state, calibration });
+    } catch (err) {
+      $("#calibrate-status").textContent = (err as Error).message;
+      input.setAttribute("aria-invalid", "true");
+      input.focus();
+    } finally {
+      loadedCore?.clearTokenCache();
+    }
   });
   document.getElementById("calibrate-reset")?.addEventListener("click", () => {
-    state.calibration = undefined;
-    if (lastRawInput !== undefined) runAnalysis(lastRawInput, false);
+    if (lastRawInput !== undefined) runAnalysis(lastRawInput, { ...state, calibration: undefined });
   });
-}
-
-async function runCalibration(result: AnalysisResult): Promise<void> {
-  const keyInput = $("#calibrate-key") as HTMLInputElement;
-  const status = $("#calibrate-status");
-  const key = keyInput.value.trim();
-  if (!key) {
-    status.textContent = "enter an API key first";
-    return;
-  }
-  const btn = $("#calibrate-btn") as HTMLButtonElement;
-  btn.disabled = true;
-  status.textContent = "counting…";
-  try {
-    const core = await loadCore();
-    // Count against unscaled estimates: re-parse so an earlier calibration doesn't compound.
-    const parsed = core.parseInput(lastRawInput!, result.parse.format);
-    const request = parsed.requests[state.selectedRequest]!;
-    state.calibration = await core.countRequestTokens(key, result.model.id, request);
-    keyInput.value = "";
-    runAnalysis(lastRawInput!, false);
-  } catch (err) {
-    status.textContent = `calibration failed: ${(err as Error).message}`;
-  } finally {
-    btn.disabled = false;
-  }
 }
 
 // ---------------------------------------------------------------------------
@@ -792,25 +867,21 @@ function openInspector(segment: Segment): void {
     </dl>
     <pre>${esc(rawPretty)}</pre>
   `;
-  // Closed, the drawer is off-screen and inert: its Close button used to stay in the tab
-  // order, a stop on a control nobody could see. Open, focus moves into it and comes back
-  // to what opened it when it closes.
-  if (!$("#drawer").classList.contains("open")) drawerOpener = document.activeElement;
-  $("#drawer").classList.add("open");
-  $("#drawer").setAttribute("aria-hidden", "false");
-  $("#drawer").removeAttribute("inert");
-  $("#drawer-backdrop").classList.add("open");
-  ($("#drawer-close") as HTMLElement).focus();
+  const drawer = $("#drawer") as HTMLDialogElement;
+  if (!drawer.open) {
+    drawerOpener = document.activeElement;
+    drawer.showModal();
+  }
+  $("#drawer-close").focus();
 }
 
 let drawerOpener: Element | null = null;
 
 function closeDrawer(): void {
-  if (!$("#drawer").classList.contains("open")) return;
-  $("#drawer").classList.remove("open");
-  $("#drawer").setAttribute("aria-hidden", "true");
-  $("#drawer").setAttribute("inert", "");
-  $("#drawer-backdrop").classList.remove("open");
+  const drawer = $("#drawer") as HTMLDialogElement;
+  if (drawer.open) drawer.close();
+  $("#drawer-title").textContent = "segment";
+  $("#drawer-body").replaceChildren();
   if (drawerOpener instanceof HTMLElement && drawerOpener.isConnected) drawerOpener.focus();
   drawerOpener = null;
 }
