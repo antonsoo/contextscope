@@ -30,3 +30,14 @@ npm run typecheck
 The most useful bug report is a minimal request JSON (or JSONL sequence) that
 reproduces it, plus what you expected. If it's related to caching, note which
 provider and model you were simulating for.
+
+## Community and private reports
+
+Please follow the [Code of Conduct](CODE_OF_CONDUCT.md). Anton Soloviev
+maintains this project and handles conduct reports at
+[anton@praviel.com](mailto:anton@praviel.com).
+
+Use the bug or improvement forms for public issues. For a suspected security
+vulnerability or a conduct concern, email the maintainer privately with the
+repository name and relevant details. Do not post credentials, personal data,
+private logs, or confidential documents in a public issue.
