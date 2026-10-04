@@ -188,6 +188,8 @@ import { analyze, groupFindings } from "@antonsoloviev/contextscope";
 
 const result = analyze(rawRequestJsonOrJsonl); // or { model: "claude-opus-5-5" } to override
 // result.model            — the model priced with, and whether it came from the requests
+// result.parse.complete   — false for skipped/non-request records or a mismatched format override
+// result.parse.requests[i].source — original record index, JSONL line, and envelope field
 // result.reports          — per-request token totals and category breakdown
 // result.prefixMatches    — longest common prefix + diff between each request and the one it continues
 // result.conversations    — how many conversations the input holds, and which one each request is in
@@ -203,9 +205,23 @@ const result = analyze(rawRequestJsonOrJsonl); // or { model: "claude-opus-5-5" 
 messages` for Anthropic, and `tools → messages` for OpenAI (whose system or
 developer message is `messages[0]`, or `instructions` in the Responses API).
 Every other analysis operates on this list, so the wire formats are understood
-once, in `src/core/parse-*.ts`. Record envelopes are recognized only when every
-record in the file has the same one, so a request body is never mistaken for a
-wrapper.
+once, in `src/core/parse-*.ts`. Each record can be a raw body or a supported
+`params`, `body`, `request`, or `request_body` envelope, including a JSON-encoded
+body string. Two possible bodies in one record are rejected as ambiguous.
+Original record positions and physical JSONL lines are retained after skips.
+Strong evidence for both providers requires separate analyses; an explicit
+format override remains available, with warnings and incomplete status for
+mismatches. Repeated plain-text messages cannot outweigh a provider signal.
+
+Duplicate JSON fields (including escaped equivalent keys), nonfinite numbers,
+and nesting beyond 128 containers are rejected. Malformed JSONL syntax is
+retained as a visible coverage gap: `parse.complete` is false,
+`parse.sourceRecords` includes skipped nonblank lines, and `parse.skippedRecords`
+counts malformed lines plus records with no analyzable segments. Any configured
+`--fail-on` gate exits 2 for incomplete input, regardless of finding severity.
+Reports retain the partial evidence and warnings. Completeness describes source
+coverage, not API validity or measured cache behavior. An empty request array is
+an error.
 
 **Token counts.** OpenAI counts are exact: `gpt-tokenizer`'s pure-JS o200k_base
 encoder, the BPE vocabulary GPT-4o and newer OpenAI models use. Claude counts
@@ -385,15 +401,18 @@ fixed hue order, so a color always means the same category.
   is also how the cache sees them. A conversation whose history is replaced
   wholesale (a summary in place of every earlier message) is read as a new
   conversation, not as a rewrite of the old one.
-- **The web app's exact-tokenizer chunk is large.** The o200k_base vocabulary
-  is about 1 MB gzipped. It is fetched on first analysis, not on page load; the
-  drop-zone screen is about 14 KB gzipped. The flagship example is a separate
+- **The web app's exact-tokenizer worker is large.** Its o200k_base vocabulary
+  is fetched when analysis starts, not on page load. The flagship example is a separate
   ~0.48 MB static asset, decompressed in the browser with `DecompressionStream`.
 - **Input limits.** The browser accepts up to 50 MiB and the CLI up to 500 MiB,
   for both the input bytes and the decompressed JSON. Reads and gzip inflation
   stop at the limit. Split larger logs into separate sessions. Browser import
-  preparation can be cancelled or replaced; tokenization and analysis still
-  run synchronously and cannot be interrupted once that computation starts.
+  reads and computation can be cancelled or replaced. Parsing, tokenization,
+  cache simulation and calibration run in disposable same-origin workers;
+  cancellation/reset terminates the worker and discards stale replies. Large
+  results still require memory to retain and transfer, and download serialization
+  runs on the UI thread. Byte/depth limits do not guarantee a fixed memory or
+  processing-time budget.
 - **Performance.** `npm run bench` times `analyze()` on the flagship session
   (24 requests, 5.7 MB) and on a generated 300-request conversation (12.1 MB,
   93,900 segments in total). Measured back to back on a 14-vCPU WSL2 machine,
@@ -413,6 +432,13 @@ fixed hue order, so a color always means the same category.
   the analyzed provider's token counts.
 - Treemap blocks and segment labels open a keyboard-accessible inspector.
   Escape closes it and returns focus. The treemap resizes with the viewport.
+- Large requests show their 128 largest positive-token segments individually
+  and group the rest by category, preserving every token in the area totals.
+  A grouped block filters the segment table. The table has 100-row pages,
+  category and label/path filters, and first/last navigation; every segment
+  remains available. Inspector previews show at most 20,000 characters, with
+  complete original raw JSON downloads. Sequence navigation and findings are
+  still proportional to the number of requests/issues.
 - A failed import preserves the last successful analysis. A newer import or
   **cancel import** discards pending reads; **new analysis** clears the app's
   request data, pasted text, rendered panels, and inspector contents.

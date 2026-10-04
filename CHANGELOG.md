@@ -6,6 +6,22 @@ All notable changes to this project are documented in this file.
 
 ### Fixed
 
+- Reject duplicate JSON fields, nonfinite numbers, excessive nesting and
+  ambiguous request envelopes. Preserve prototype-like schema keys when sorting.
+- Unwrap mixed gateway formats per record and retain source record/line/envelope
+  provenance. Detect strong mixed-provider evidence and keep forced mismatches
+  visibly incomplete; long text histories cannot flip provider detection.
+- Keep malformed prompt fields and original plain-string content in inspection.
+  Refuse calibration scales that would overflow safe token counts.
+- Report partial source coverage in terminal, HTML, JSON and the workspace;
+  configured CI gates fail incomplete input even with no findings. Empty arrays
+  fail with an actionable error. HTML no longer asserts live cache cleanliness.
+- Move browser parsing, tokenization, analysis and calibration into disposable
+  same-origin workers. Cancel, replacement and reset stop computation; worker
+  failures retain the prior report and allow retry.
+- Bound segment table pages, treemap controls and inspector previews without
+  changing totals; filters/pages and complete raw JSON downloads retain access
+  to all evidence.
 - Imports commit only after successful analysis. A newer import cancels older
   file/example reads; failures preserve the current analysis and overrides.
   Reset cancels pending work and releases request-bearing state, tokenizer
