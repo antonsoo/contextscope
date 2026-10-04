@@ -353,7 +353,10 @@ test("analysis workers inherit the page's off-origin network restriction", async
   });
   await context.route("**/assets/analysis-worker-*.js", async (route) => {
     const response = await route.fetch();
-    const probe = `await (async () => {
+    const probe = `const pendingProbeMessages = [];
+      const holdProbeMessage = event => { pendingProbeMessages.push(event.data); event.stopImmediatePropagation(); };
+      self.addEventListener("message", holdProbeMessage);
+      await (async () => {
       let directive = "";
       self.addEventListener("securitypolicyviolation", (event) => { directive = event.effectiveDirective; });
       let blocked = false;
@@ -361,7 +364,11 @@ test("analysis workers inherit the page's off-origin network restriction", async
       await new Promise(resolve => setTimeout(resolve, 0));
       self.postMessage({ type: "started", privacyProbe: { blocked, directive } });
     })();\n`;
-    await route.fulfill({ response, body: probe + await response.text() });
+    // Firefox delivers incoming jobs while the diagnostic's top-level await is suspended.
+    // Preserve those jobs and replay them once the real handler has been installed.
+    const replay = `\nself.removeEventListener("message", holdProbeMessage);
+      for (const data of pendingProbeMessages) self.dispatchEvent(new MessageEvent("message", { data }));`;
+    await route.fulfill({ response, body: probe + await response.text() + replay });
   });
   await load(page, request());
   await expect.poll(() => page.evaluate(() => (window as unknown as { privacyProbe: unknown }).privacyProbe)).toEqual({ blocked: true, directive: "connect-src" });
