@@ -57,7 +57,7 @@ describe("disposable analysis workers", () => {
     expect(worker.sent).toBeUndefined();
   });
 
-  it.each([null, {}, { type: "success" }, { type: "success", result: {} }, { type: "error", message: 42 }])("rejects malformed worker reply %j", async (reply) => {
+  it.each([null, {}, { type: "success" }, { type: "success", result: {} }, { type: "success", result: { parse: { complete: true }, reports: [{}] } }, { type: "error", message: 42 }])("rejects malformed worker reply %j", async (reply) => {
     const worker = new FakeWorker();
     const promise = analyzeInWorker({ input, options: {} }, new AbortController().signal, worker.factory);
     worker.reply(reply);

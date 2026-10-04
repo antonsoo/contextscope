@@ -3,6 +3,19 @@ import workerAsset from "./analysis-worker.ts?worker&url";
 
 type Success = Extract<AnalysisReply, { type: "success" }>;
 
+function resultContract(result: Success["result"] | undefined): boolean {
+  if (!result || typeof result.parse?.complete !== "boolean" || !Array.isArray(result.parse.requests)) return false;
+  const n = result.parse.requests.length;
+  return n > 0 && Array.isArray(result.reports) && result.reports.length === n
+    && typeof result.model?.id === "string" && typeof result.model.displayName === "string"
+    && Array.isArray(result.prefixMatches) && Array.isArray(result.findings) && Array.isArray(result.duplicates)
+    && Array.isArray(result.conversations?.byRequest) && result.conversations.byRequest.length === n
+    && Array.isArray(result.cacheSimulation?.actual) && result.cacheSimulation.actual.length === n
+    && Array.isArray(result.cacheSimulation.optimized) && result.cacheSimulation.optimized.length === n
+    && result.reports.every((report) => Array.isArray(report?.segments) && Array.isArray(report.byCategory)
+      && Number.isSafeInteger(report.totals?.openaiTokens) && Number.isSafeInteger(report.totals.claudeTokensEstimate));
+}
+
 /** Static hosts cannot attach a worker CSP header. A blob module inherits the page policy;
  * its only code imports our bundled asset, so connect-src 'self' also covers computation. */
 function localWorker(): Worker {
@@ -49,7 +62,7 @@ export function analyzeInWorker(job: AnalysisJob, signal: AbortSignal, createWor
         if (reply?.type === "started") return;
         if (reply?.type === "error" && typeof reply.message === "string") {
           finish(undefined, new Error(reply.message));
-        } else if (reply?.type === "success" && reply.result && typeof reply.result.parse?.complete === "boolean" && Array.isArray(reply.result.reports) && reply.result.reports.length > 0) {
+        } else if (reply?.type === "success" && resultContract(reply.result)) {
           finish(reply as Success);
         } else {
           finish(undefined, new Error("Analysis worker returned an unreadable result. Try importing the log again."));

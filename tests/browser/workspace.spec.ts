@@ -372,6 +372,7 @@ test("ambiguous, mixed-provider and deep imports preserve a valid report and rec
   const invalid = [
     '{"messages":[],"messages":[]}',
     JSON.stringify([request(), { model: "gpt-6-sol", input: "different provider" }]),
+    '{"model":"claude-sonnet-5","messages":[{"role":"user","content":1e-400}]}',
     `{"system":${"[".repeat(200)}0${"]".repeat(200)}}`,
   ];
   for (const text of invalid) {
