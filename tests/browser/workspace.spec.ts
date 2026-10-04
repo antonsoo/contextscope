@@ -1,6 +1,7 @@
 import { test, expect, type Page } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import { gzipSync } from "node:zlib";
+import { readFile } from "node:fs/promises";
 
 const request = (text = "private-request-marker") => ({ model: "claude-sonnet-5", system: "Keep the answer concise.", messages: [{ role: "user", content: text }] });
 const sequence = Array.from({ length: 4 }, (_, i) => ({
@@ -239,6 +240,8 @@ test("gzip files decode by bytes, oversized expansion fails cleanly, and next fi
 
 for (const name of [/Cache bust:/, /Cache fixed:/, /Duplicate content:/, /OpenAI: tools reordered/]) {
   test(`built-in example ${name.source} loads from production assets`, async ({ page }) => {
+    // Four full-rule axe scans of large examples, including both phone layouts.
+    test.setTimeout(120_000);
     await page.getByRole("button", { name }).click();
     await expect(page.locator("#dashboard")).toHaveClass(/shown/);
     await expect(page.locator("#intake-error")).toBeHidden();
@@ -295,12 +298,12 @@ test("prefix bars render the shared fraction and use the selected provider's tok
   for (const bar of bars) expect(bar.ratio).toBeCloseTo(bar.expected, 2);
 });
 
-test("a newer paste supersedes input waiting for the lazy tokenizer", async ({ page }) => {
+test("a newer paste supersedes input waiting for the analysis worker", async ({ page }) => {
   let release!: () => void;
   let requested!: () => void;
   const gate = new Promise<void>((resolve) => { release = resolve; });
   const seen = new Promise<void>((resolve) => { requested = resolve; });
-  await page.route("**/assets/core-*.js", async (route) => {
+  await page.route("**/assets/analysis-worker-*.js", async (route) => {
     requested();
     await gate;
     await route.continue();
@@ -317,6 +320,146 @@ test("a newer paste supersedes input waiting for the lazy tokenizer", async ({ p
     await page.locator(".segment-inspect").last().click();
     await expect(page.getByRole("dialog")).toContainText("newest-paste");
   } finally { release(); }
+});
+
+test("partial JSONL shows original lines and incomplete coverage in the workspace", async ({ page }) => {
+  await page.getByRole("button", { name: "paste JSON" }).click();
+  await page.locator("#paste-area").fill(`\n${JSON.stringify(request())}\n\n{broken\n${JSON.stringify(request("last valid request"))}`);
+  await page.getByRole("button", { name: "analyze", exact: true }).click();
+  await expect(page.getByRole("tab")).toHaveCount(2);
+  await expect(page.locator(".notes-panel")).toContainText("Incomplete input");
+  await expect(page.locator(".notes-panel")).toContainText("1 of 3 source records");
+  await expect(page.locator(".notes-panel")).toContainText("Line 4");
+  await expect(page.locator(".notes-panel")).toContainText("source record 3, line 5");
+  await page.setViewportSize({ width: 375, height: 812 });
+  await scan(page);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});
+
+test("ambiguous, mixed-provider and deep imports preserve a valid report and recover", async ({ page }) => {
+  await load(page);
+  const invalid = [
+    '{"messages":[],"messages":[]}',
+    JSON.stringify([request(), { model: "gpt-6-sol", input: "different provider" }]),
+    `{"system":${"[".repeat(200)}0${"]".repeat(200)}}`,
+  ];
+  for (const text of invalid) {
+    await page.locator("#file-input").setInputFiles({ name: "invalid.json", mimeType: "application/json", buffer: Buffer.from(text) });
+    await expect(page.locator("#intake-error")).toContainText("Could not analyze");
+    await expect(page.getByRole("tab")).toHaveCount(4);
+    await expect(page.locator("#load-status")).toBeHidden();
+  }
+  await page.locator("#file-input").setInputFiles({ name: "valid.json", mimeType: "application/json", buffer: Buffer.from(JSON.stringify({ request_body: request("recovered wrapper") })) });
+  await expect(page.getByRole("tab")).toHaveCount(1);
+  await expect(page.locator("#intake-error")).toBeHidden();
+});
+
+for (const action of ["cancel", "reset"] as const) test(`${action} terminates an active computing worker and the next import recovers`, async ({ page }) => {
+  await load(page);
+  await page.evaluate(() => {
+    const OriginalWorker = Worker;
+    const audit = { active: 0, terminated: 0, posts: 0, started: 0 };
+    Object.assign(window, { workerAudit: audit, restoreWorker: () => { window.Worker = OriginalWorker; } });
+    window.Worker = class extends OriginalWorker {
+      constructor(url: string | URL, options?: WorkerOptions) {
+        super(url, options);
+        audit.active++;
+        this.addEventListener("message", (event) => { if (event.data?.type === "started") audit.started++; });
+      }
+      override postMessage(message: unknown): void {
+        audit.posts++;
+        // Run real CPU work in the same-origin module worker, independent of main-thread timers.
+        super.postMessage({ ...message as object, input: JSON.stringify({ model: "claude-sonnet-5", messages: [{ role: "user", content: "expensive-tokenization-".repeat(700_000) }] }) });
+      }
+      override terminate(): void { audit.terminated++; audit.active--; super.terminate(); }
+    };
+  });
+  await page.locator("#file-input").setInputFiles({ name: "slow.json", mimeType: "application/json", buffer: Buffer.from(JSON.stringify(request())) });
+  await expect.poll(() => page.evaluate(() => (window as unknown as { workerAudit: { started: number } }).workerAudit.started)).toBe(1);
+  await page.getByRole("button", { name: action === "cancel" ? "cancel import" : "new analysis" }).click();
+  if (action === "cancel") await expect(page.locator("#intake-error")).toHaveText("Import cancelled.");
+  expect(await page.evaluate(() => (window as unknown as { workerAudit: { active: number; terminated: number } }).workerAudit)).toMatchObject({ active: 0, terminated: 1 });
+  await expect(page.getByRole("tab")).toHaveCount(action === "cancel" ? 4 : 0);
+  await page.evaluate(() => (window as unknown as { restoreWorker: () => void }).restoreWorker());
+  await page.locator("#file-input").setInputFiles({ name: "after-cancel.json", mimeType: "application/json", buffer: Buffer.from(JSON.stringify(request("after computation cancellation"))) });
+  await expect(page.getByRole("tab")).toHaveCount(1);
+  await expect(page.locator("#intake-error")).toBeHidden();
+});
+
+test("a worker script load failure reports recovery without a page exception", async ({ page }) => {
+  await load(page);
+  await page.evaluate(() => {
+    const original = Worker;
+    Object.assign(window, { restoreWorker: () => { window.Worker = original; } });
+    window.Worker = class extends original { constructor() { super("/contextscope/missing-worker.js", { type: "module" }); } };
+  });
+  await page.locator("#file-input").setInputFiles({ name: "failed-worker.json", mimeType: "application/json", buffer: Buffer.from(JSON.stringify(request())) });
+  await expect(page.locator("#intake-error")).toContainText("Analysis worker failed");
+  await expect(page.getByRole("tab")).toHaveCount(4);
+  await expect(page.locator("#load-status")).toBeHidden();
+  await page.evaluate(() => (window as unknown as { restoreWorker: () => void }).restoreWorker());
+  await page.locator("#file-input").setInputFiles({ name: "after-worker-failure.json", mimeType: "application/json", buffer: Buffer.from(JSON.stringify(request())) });
+  await expect(page.getByRole("tab")).toHaveCount(1);
+});
+
+test("large requests keep complete totals and every segment reachable through bounded views", async ({ page }) => {
+  const messages = Array.from({ length: 1205 }, (_, i) => ({ role: i % 2 ? "assistant" : "user", content: `segment marker ${i}` }));
+  await load(page, { model: "claude-sonnet-5", messages });
+  await expect(page.locator("#segments-tbody tr")).toHaveCount(100);
+  expect(await page.locator(".tm-block").count()).toBeLessThanOrEqual(136);
+  const blocksTotal = await page.locator(".tm-block").evaluateAll((blocks) => blocks.reduce((sum, block) => sum + Number((block as HTMLElement).dataset["tokens"]), 0));
+  const displayedTotal = Number((await page.locator(".stat-tile .value").first().textContent())!.replaceAll(",", ""));
+  expect(blocksTotal).toBe(displayedTotal);
+  const last = page.getByRole("button", { name: "Last segment page" });
+  await last.focus();
+  await page.keyboard.press("Enter");
+  await expect(page.locator("#segments-tbody tr")).toHaveCount(5);
+  await expect(page.locator("#segment-range")).toContainText("1201–1205 of 1205");
+  await page.locator(".segment-inspect").last().click();
+  await expect(page.getByRole("dialog")).toContainText("segment marker 1204");
+  await page.keyboard.press("Escape");
+  await page.locator('[data-block="other:assistant"]').click();
+  await expect(page.locator("#segment-category")).toHaveValue("assistant");
+  await expect(page.locator("#segment-category")).toBeFocused();
+  await page.getByRole("searchbox", { name: "find label or path" }).fill("messages[1203]");
+  await expect(page.locator("#segments-tbody tr")).toHaveCount(1);
+  await page.getByRole("searchbox", { name: "find label or path" }).fill("no such segment");
+  await expect(page.locator("#segment-range")).toContainText("No matching segments");
+  await page.getByRole("searchbox", { name: "find label or path" }).fill("");
+  await page.setViewportSize({ width: 375, height: 812 });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await scan(page);
+});
+
+test("large inspector preview is bounded and its download retains the original raw JSON", async ({ page }) => {
+  const content = "raw-evidence-marker ".repeat(2500) + "complete-evidence-ending";
+  const message = { role: "user", content };
+  await load(page, { model: "claude-sonnet-5", messages: [message] });
+  await page.locator(".segment-inspect").first().click();
+  await expect(page.getByRole("dialog")).toContainText("Showing the first 20,000 characters");
+  expect((await page.locator("#drawer-body pre").textContent())!.length).toBe(20_000);
+  const downloadEvent = page.waitForEvent("download");
+  await page.getByRole("button", { name: "download original raw JSON" }).click();
+  const download = await downloadEvent;
+  const raw: unknown = JSON.parse(await readFile((await download.path())!, "utf8"));
+  expect(raw).toBe(content);
+  await page.keyboard.press("Escape");
+  await expect(page.locator(".segment-inspect").first()).toBeFocused();
+});
+
+test("worker startup failure retains the prior report and permits retry", async ({ page }) => {
+  await load(page);
+  await page.evaluate(() => {
+    const original = Worker;
+    Object.assign(window, { restoreWorker: () => { window.Worker = original; } });
+    window.Worker = function () { throw new Error("worker unavailable"); } as unknown as typeof Worker;
+  });
+  await page.locator("#file-input").setInputFiles({ name: "failed.json", mimeType: "application/json", buffer: Buffer.from(JSON.stringify(request())) });
+  await expect(page.locator("#intake-error")).toContainText("Could not start local analysis");
+  await expect(page.getByRole("tab")).toHaveCount(4);
+  await page.evaluate(() => (window as unknown as { restoreWorker: () => void }).restoreWorker());
+  await page.locator("#file-input").setInputFiles({ name: "retry.json", mimeType: "application/json", buffer: Buffer.from(JSON.stringify(request())) });
+  await expect(page.getByRole("tab")).toHaveCount(1);
 });
 
 test("calibration is scoped to the chosen model and provider", async ({ page }) => {
