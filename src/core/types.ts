@@ -69,17 +69,26 @@ export interface ParsedRequest {
   model: string | undefined;
   /** The original parsed JSON, kept for raw inspection and re-serialization. */
   raw: unknown;
+  /** Original record position and, for JSONL, its physical line before any skips. */
+  source?: { recordIndex: number; line?: number; envelope?: string };
   /** Segments in the provider's own render/serialization order (tools -> system -> messages for Anthropic). */
   segments: Segment[];
 }
 
 export interface ParseWarning {
-  requestIndex: number;
+  requestIndex?: number;
+  sourceLine?: number;
   message: string;
 }
 
 export interface ParseResult {
   format: Provider;
+  /** False when malformed lines, non-request records or a mismatched override leave gaps. */
+  complete: boolean;
+  /** Nonblank source records, including malformed JSONL lines. */
+  sourceRecords: number;
+  /** Malformed JSONL lines and records with no analyzable segments. */
+  skippedRecords: number;
   /** True when the format was inferred rather than explicitly specified. */
   autoDetected: boolean;
   /**

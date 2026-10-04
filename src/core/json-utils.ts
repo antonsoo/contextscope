@@ -46,7 +46,8 @@ function sortKeysDeep(value: unknown): unknown {
   if (Array.isArray(value)) return value.map(sortKeysDeep);
   if (value !== null && typeof value === "object") {
     const entries = Object.entries(value as Record<string, unknown>).sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0));
-    const out: Record<string, unknown> = {};
+    // A JSON field named __proto__ is ordinary content, not a prototype setter.
+    const out: Record<string, unknown> = Object.create(null) as Record<string, unknown>;
     for (const [k, v] of entries) out[k] = sortKeysDeep(v);
     return out;
   }

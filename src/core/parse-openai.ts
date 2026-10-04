@@ -159,6 +159,8 @@ function parseResponsesBody(obj: Record<string, unknown>, seg: (params: SegmentP
   const segments: Segment[] = [];
   if (typeof obj["instructions"] === "string" && obj["instructions"].length > 0) {
     segments.push(seg({ id: "instructions", category: "system", label: "instructions", path: "instructions", text: obj["instructions"], raw: obj["instructions"] }));
+  } else if (obj["instructions"] !== undefined && obj["instructions"] !== null && typeof obj["instructions"] !== "string") {
+    segments.push(seg({ id: "instructions", category: "system", label: "instructions (malformed)", path: "instructions", text: blockJson(obj["instructions"]), raw: obj["instructions"] }));
   }
 
   const input = obj["input"];
@@ -166,7 +168,10 @@ function parseResponsesBody(obj: Record<string, unknown>, seg: (params: SegmentP
     if (input.length > 0) segments.push(seg({ id: "input", category: "user", label: "input (user) text", path: "input", text: input, raw: input }));
     return segments;
   }
-  if (!Array.isArray(input)) return segments;
+  if (!Array.isArray(input)) {
+    if (input !== undefined && input !== null) segments.push(seg({ id: "input", category: "user", label: "input (malformed)", path: "input", text: blockJson(input), raw: input }));
+    return segments;
+  }
 
   (input as unknown[]).forEach((item, ii) => {
     const path = `input[${ii}]`;
@@ -200,6 +205,8 @@ function parseResponsesBody(obj: Record<string, unknown>, seg: (params: SegmentP
               segments.push(seg({ id: partPath, category, label: `item ${ii + 1} (${role}) ${partType}`, path: partPath, text: blockJson(part), raw: part }));
             }
           });
+        } else if (content !== undefined && content !== null) {
+          segments.push(seg({ id: path, category, label: `item ${ii + 1} (${role}) malformed content`, path: `${path}.content`, text: blockJson(content), raw: item }));
         }
         break;
       }

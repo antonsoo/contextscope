@@ -7,8 +7,20 @@ import type { Provider } from "./types.js";
  * carry only a subset (e.g. no tools, no system prompt).
  */
 export function detectFormat(request: unknown): Provider {
+  const scores = formatScores(request);
+  return scores.openai > scores.anthropic ? "openai" : "anthropic";
+}
+
+/** Strong provider evidence only: a bare user message works in either format. */
+export function detectProvider(request: unknown): Provider | undefined {
+  const scores = formatScores(request);
+  if (Math.max(scores.openai, scores.anthropic) < 2 || Math.abs(scores.openai - scores.anthropic) < 1) return undefined;
+  return scores.openai > scores.anthropic ? "openai" : "anthropic";
+}
+
+function formatScores(request: unknown): Record<Provider, number> {
   const scores = { anthropic: 0, openai: 0 };
-  if (request === null || typeof request !== "object") return "anthropic";
+  if (request === null || typeof request !== "object") return scores;
   const obj = request as Record<string, unknown>;
 
   // The model id is the strongest signal a minimal request carries: the canonical Anthropic
@@ -32,6 +44,9 @@ export function detectFormat(request: unknown): Provider {
   }
 
   const messages = Array.isArray(obj["messages"]) ? (obj["messages"] as unknown[]) : [];
+  // String content is shared by both providers. Repetition must not outweigh a model/system
+  // signal: a longer Anthropic history remains Anthropic.
+  if (messages.some((message) => message !== null && typeof message === "object" && typeof (message as Record<string, unknown>)["content"] === "string")) scores.openai += 0.25;
   messages.forEach((message, index) => {
     if (message === null || typeof message !== "object") return;
     const m = message as Record<string, unknown>;
@@ -41,7 +56,6 @@ export function detectFormat(request: unknown): Provider {
     // mid-conversation (never as messages[0]), so a later one says nothing about the provider.
     if (m["role"] === "system" && index === 0) scores.openai += 1;
     if (Array.isArray(m["tool_calls"])) scores.openai += 2;
-    if (typeof m["content"] === "string") scores.openai += 0.25; // both allow this; weak signal
     const content = Array.isArray(m["content"]) ? (m["content"] as unknown[]) : [];
     for (const block of content) {
       if (block === null || typeof block !== "object") continue;
@@ -69,5 +83,5 @@ export function detectFormat(request: unknown): Provider {
     }
   });
 
-  return scores.openai > scores.anthropic ? "openai" : "anthropic";
+  return scores;
 }

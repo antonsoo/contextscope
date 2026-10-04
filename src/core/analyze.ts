@@ -1,5 +1,5 @@
 import type { AnalysisOptions, AnalysisResult, CacheSimulation, ParsedRequest } from "./types.js";
-import { parseInput } from "./parse.js";
+import { ContextScopeParseError, parseInput } from "./parse.js";
 import { computeAllPrefixMatches } from "./prefix.js";
 import { prefixPaths, threadRequests } from "./threads.js";
 import { buildRequestReport } from "./report.js";
@@ -68,9 +68,15 @@ function validScale(scale: number | undefined): number {
 }
 
 function scaleClaudeEstimates(request: ParsedRequest, scale: number): ParsedRequest {
+  let total = 0;
   return {
     ...request,
-    segments: request.segments.map((s) => ({ ...s, claudeTokensEstimate: Math.max(s.claudeTokensEstimate > 0 ? 1 : 0, Math.round(s.claudeTokensEstimate * scale)) })),
+    segments: request.segments.map((s) => {
+      const tokens = Math.max(s.claudeTokensEstimate > 0 ? 1 : 0, Math.round(s.claudeTokensEstimate * scale));
+      total += tokens;
+      if (!Number.isSafeInteger(total)) throw new ContextScopeParseError(`Calibration scale makes request ${request.index + 1} token counts exceed the safe integer range. Use a smaller measured count or scale.`);
+      return { ...s, claudeTokensEstimate: tokens };
+    }),
   };
 }
 

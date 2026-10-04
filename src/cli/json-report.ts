@@ -31,6 +31,7 @@ export function toJsonReport(result: AnalysisResult): string {
         provider: request.provider,
         index: request.index,
         model: request.model,
+        source: request.source,
         segments: request.segments.map(summarize),
       })),
     },

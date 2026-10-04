@@ -94,10 +94,11 @@ export function renderHtmlReport(result: AnalysisResult): string {
 <body>
   <h1>contextscope report</h1>
   <p class="muted">${esc(parse.format)} · ${parse.requests.length} request(s)${parse.autoDetected ? " · format auto-detected" : ""} · priced as ${esc(model.displayName)}${model.unrecognized ? ` ("${esc(model.unrecognized)}" is not in the pricing table)` : ""}${result.claudeTokenScale !== 1 ? ` · Claude estimates calibrated ×${result.claudeTokenScale.toFixed(3)}` : ""} · generated ${new Date().toISOString()}</p>
+  ${!parse.complete || parse.warnings.length > 0 ? `<section class="card"><h3>${parse.complete ? "Parse notes" : "Incomplete input"}</h3>${!parse.complete ? `<p>${parse.skippedRecords} of ${parse.sourceRecords} source records skipped or not analyzable. Counts and simulations cover retained content only; review all warnings.</p>` : ""}<ul>${parse.warnings.map((warning) => `<li>${esc(warning.message)}</li>`).join("")}</ul></section>` : ""}
 
   <section class="card">
     <h3>Findings (${groups.length} issue${groups.length === 1 ? "" : "s"}${findings.length > groups.length ? ` from ${findings.length} findings` : ""})</h3>
-    <ul class="findings">${findingRows || '<li class="muted">None — this sequence caches cleanly.</li>'}</ul>
+    <ul class="findings">${findingRows || '<li class="muted">No supported cache or duplicate-content issues detected in the retained requests. This does not verify live cache hits.</li>'}</ul>
   </section>
 
   <section class="card">

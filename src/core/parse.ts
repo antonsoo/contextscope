@@ -1,13 +1,14 @@
-import type { ParseResult, ParseWarning, Provider } from "./types.js";
-import { detectFormat } from "./detect.js";
+import type { ParsedRequest, ParseResult, ParseWarning, Provider } from "./types.js";
+import { detectFormat, detectProvider } from "./detect.js";
 import { parseAnthropicRequest } from "./parse-anthropic.js";
 import { parseOpenAiRequest } from "./parse-openai.js";
 import { memoizedCounter } from "./token-counter.js";
+import { JsonIntegrityError, readJson } from "./read-json.js";
 
 export class ContextScopeParseError extends Error {}
 
 /** Splits raw input text into an array of request objects: a JSON array, a single JSON object, or JSONL (one JSON object per line, blank lines ignored). */
-function splitRequests(input: string): { values: unknown[]; warnings: ParseWarning[] } {
+function splitRequests(input: string): { values: unknown[]; sources: NonNullable<ParsedRequest["source"]>[]; warnings: ParseWarning[]; sourceRecords: number } {
   const trimmed = input.trim();
   if (trimmed.length === 0) {
     throw new ContextScopeParseError("Input is empty.");
@@ -15,30 +16,38 @@ function splitRequests(input: string): { values: unknown[]; warnings: ParseWarni
 
   // Try whole-input JSON first (single object or array).
   try {
-    const parsed: unknown = JSON.parse(trimmed);
-    if (Array.isArray(parsed)) return { values: parsed, warnings: [] };
-    return { values: [parsed], warnings: [] };
-  } catch {
+    const parsed = readJson(trimmed);
+    const values = Array.isArray(parsed) ? parsed : [parsed];
+    if (values.length === 0) throw new ContextScopeParseError("The input array is empty: no requests to analyze.");
+    return { values, sources: values.map((_, recordIndex) => ({ recordIndex })), warnings: [], sourceRecords: values.length };
+  } catch (err) {
+    if (err instanceof JsonIntegrityError) throw new ContextScopeParseError(err.message);
+    if (err instanceof ContextScopeParseError) throw err;
     // Fall through to JSONL.
   }
 
-  const lines = trimmed.split("\n");
+  const lines = input.split("\n");
   const values: unknown[] = [];
+  const sources: NonNullable<ParsedRequest["source"]>[] = [];
   const warnings: ParseWarning[] = [];
+  let sourceRecords = 0;
   lines.forEach((line, i) => {
     const t = line.trim();
     if (t.length === 0) return;
+    const recordIndex = sourceRecords++;
     try {
-      values.push(JSON.parse(t));
+      values.push(readJson(t));
+      sources.push({ recordIndex, line: i + 1 });
     } catch (err) {
-      warnings.push({ requestIndex: i, message: `Line ${i + 1}: could not parse as JSON (${(err as Error).message}). Skipped.` });
+      if (err instanceof JsonIntegrityError) throw new ContextScopeParseError(`Line ${i + 1}: ${err.message}`);
+      warnings.push({ sourceLine: i + 1, message: `Line ${i + 1}: could not parse as JSON. Skipped; analysis is incomplete.` });
     }
   });
 
   if (values.length === 0) {
     throw new ContextScopeParseError("No valid JSON objects found (input is neither valid JSON nor valid JSONL).");
   }
-  return { values, warnings };
+  return { values, sources, warnings, sourceRecords };
 }
 
 // Record fields that hold a request body in the batch-file and log formats people actually have:
@@ -54,21 +63,23 @@ function looksLikeRequestBody(value: unknown): boolean {
   return isRecord(value) && (Array.isArray(value["messages"]) || "input" in value || "instructions" in value);
 }
 
-/** The envelope field that wraps every request body in `values`, if there is one. */
-function detectEnvelope(values: unknown[]): string | undefined {
-  if (values.length === 0 || values.some(looksLikeRequestBody)) return undefined;
-  for (const field of ENVELOPE_FIELDS) {
-    if (values.every((v) => isRecord(v) && looksLikeRequestBody(unwrapField(v[field])))) return field;
+/** A capture can mix raw requests and different gateway wrappers; choose per record. */
+function unwrapRecord(value: unknown, recordIndex: number): { value: unknown; envelope?: string } {
+  if (!isRecord(value)) return { value };
+  const candidates = ENVELOPE_FIELDS.map((field) => ({ envelope: field, value: unwrapField(value[field]) })).filter((candidate) => looksLikeRequestBody(candidate.value));
+  if (candidates.length > 1 || (looksLikeRequestBody(value) && candidates.length > 0)) {
+    throw new ContextScopeParseError(`Source record ${recordIndex + 1} has ambiguous request bodies. Keep one body or analyze each capture separately.`);
   }
-  return undefined;
+  return candidates[0] ?? { value };
 }
 
 // Some gateways log the body as a JSON string rather than an object.
 function unwrapField(value: unknown): unknown {
   if (typeof value !== "string") return value;
   try {
-    return JSON.parse(value) as unknown;
-  } catch {
+    return readJson(value);
+  } catch (err) {
+    if (err instanceof JsonIntegrityError) throw new ContextScopeParseError(err.message);
     return value;
   }
 }
@@ -135,21 +146,38 @@ function openAiStateWarnings(values: unknown[]): ParseWarning[] {
 }
 
 export function parseInput(input: string, formatOverride?: Provider): ParseResult {
-  const { values: rawValues, warnings } = splitRequests(input);
+  const { values: rawValues, sources, warnings, sourceRecords } = splitRequests(input);
 
-  const envelope = detectEnvelope(rawValues);
-  const values = envelope ? rawValues.map((v) => unwrapField((v as Record<string, unknown>)[envelope])) : rawValues;
+  const records = rawValues.map((value, i) => unwrapRecord(value, sources[i]!.recordIndex));
+  const values = records.map((record) => record.value);
+  const envelope = records.every((record) => record.envelope === records[0]!.envelope) ? records[0]!.envelope : undefined;
 
-  const format = formatOverride ?? detectFormat(values[0]);
+  const providers = values.map(detectProvider);
+  if (!formatOverride && new Set(providers.filter((provider) => provider !== undefined)).size > 1) {
+    throw new ContextScopeParseError("Mixed provider log contains both Anthropic and OpenAI requests. Split it by provider before analysis; their serialization and caching differ.");
+  }
+  const format = formatOverride ?? providers.find((provider) => provider !== undefined) ?? detectFormat(values[0]);
   const parser = format === "openai" ? parseOpenAiRequest : parseAnthropicRequest;
 
   const counter = memoizedCounter();
-  const requests = values.map((value, i) => parser(value, i, counter));
+  let complete = warnings.length === 0;
+  let skippedRecords = sourceRecords - values.length;
+  const requests = values.map((value, i) => {
+    const source = { ...sources[i]!, ...(records[i]!.envelope ? { envelope: records[i]!.envelope } : {}) };
+    if (providers[i] && providers[i] !== format) {
+      complete = false;
+      warnings.push({ requestIndex: i, ...(source.line ? { sourceLine: source.line } : {}), message: `Request ${i + 1} has ${providers[i]} provider evidence but the format override selects ${format}. Some content may not be analyzed; split the log by provider.` });
+    }
+    return { ...parser(value, i, counter), source };
+  });
   if (format === "openai") warnings.push(...openAiStateWarnings(values));
   requests.forEach((request, i) => {
     if (request.segments.length === 0) {
+      complete = false;
+      skippedRecords++;
       warnings.push({
         requestIndex: i,
+        ...(request.source.line ? { sourceLine: request.source.line } : {}),
         message: `Request ${i + 1} has no tools, system prompt or messages - is it an API request body? (Response objects and usage records aren't analyzable.)`,
       });
     }
@@ -157,6 +185,9 @@ export function parseInput(input: string, formatOverride?: Provider): ParseResul
 
   return {
     format,
+    complete,
+    sourceRecords,
+    skippedRecords,
     autoDetected: formatOverride === undefined,
     envelope,
     requests,

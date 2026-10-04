@@ -115,7 +115,7 @@ async function main(): Promise<void> {
 
   if (opts.failOn !== undefined) {
     const threshold = SEVERITY_RANK[opts.failOn];
-    if (result.findings.some((f) => SEVERITY_RANK[f.severity] >= threshold)) process.exitCode = 2;
+    if (!result.parse.complete || result.findings.some((f) => SEVERITY_RANK[f.severity] >= threshold)) process.exitCode = 2;
   }
 }
 

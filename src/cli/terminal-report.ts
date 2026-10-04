@@ -46,6 +46,7 @@ export function renderTerminalReport(result: AnalysisResult, options: TerminalRe
   const conversationNote = result.conversations.count > 1 ? ` in ${result.conversations.count} conversations` : "";
   lines.push(bold(`contextscope — ${parse.format} · ${n} request${n === 1 ? "" : "s"}${conversationNote}${parse.autoDetected ? " (auto-detected)" : ""}`));
   lines.push(dim(`priced as ${model.displayName} (${modelNote})${parse.envelope ? ` · requests read from each record's "${visible(parse.envelope)}" field` : ""}`));
+  if (!parse.complete) lines.push(yellow(`Incomplete input: ${parse.skippedRecords} of ${parse.sourceRecords} source records skipped or not analyzable; check parse warnings. Counts and simulations cover the retained content only.`));
   if (options.calibration) {
     const c = options.calibration;
     const error = (c.estimatedTokens - c.exactTokens) / c.exactTokens;

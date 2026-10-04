@@ -123,6 +123,8 @@ export function parseAnthropicRequest(raw: unknown, index: number, counter: Toke
         }),
       );
     });
+  } else if (system !== undefined && system !== null) {
+    segments.push(seg({ id: "system", category: "system", label: "system prompt (malformed)", path: "system", text: blockJson(system), raw: system }));
   }
 
   const messages: unknown[] = Array.isArray(obj["messages"]) ? obj["messages"] : [];
@@ -136,6 +138,10 @@ export function parseAnthropicRequest(raw: unknown, index: number, counter: Toke
     const role = typeof message["role"] === "string" ? message["role"] : "user";
     const content = message["content"];
     const blocks: unknown[] = typeof content === "string" ? [{ type: "text", text: content }] : Array.isArray(content) ? content : [];
+    if (content !== undefined && content !== null && typeof content !== "string" && !Array.isArray(content)) {
+      const path = `messages[${mi}].content`;
+      segments.push(seg({ id: path, category: roleCategory(role), label: `message ${mi + 1} (${role}) malformed content`, path, text: blockJson(content), raw: message }));
+    }
 
     blocks.forEach((entry, bi) => {
       const path = `messages[${mi}].content[${bi}]`;
@@ -154,7 +160,8 @@ export function parseAnthropicRequest(raw: unknown, index: number, counter: Toke
               label: `message ${mi + 1} (${role}) text`,
               path,
               text: asText(block.text ?? ""),
-              raw: block,
+              // A plain content string is not a text-block object in the source log.
+              raw: typeof content === "string" ? content : block,
               cacheControl: readCacheControl(block),
             }),
           );
