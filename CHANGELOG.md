@@ -6,7 +6,7 @@ All notable changes to this project are documented in this file.
 
 ### Fixed
 
-- Reject duplicate JSON fields, nonfinite numbers, excessive nesting and
+- Reject duplicate JSON fields, overflowing/underflowing numbers, excessive nesting and
   ambiguous request envelopes. Preserve prototype-like schema keys when sorting.
 - Unwrap mixed gateway formats per record and retain source record/line/envelope
   provenance. Detect strong mixed-provider evidence and keep forced mismatches

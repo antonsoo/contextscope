@@ -31,16 +31,15 @@ export function readJson(text: string): unknown {
       if (containers.length > MAX_JSON_DEPTH) throw new JsonIntegrityError(`JSON nesting exceeds ${MAX_JSON_DEPTH} levels. Flatten the request metadata or split the log before analysis.`);
     } else if (char === "}" || char === "]") {
       containers.pop();
-    }
-  }
-  const pending = [value];
-  while (pending.length > 0) {
-    const current = pending.pop();
-    if (typeof current === "number" && !Number.isFinite(current)) {
-      throw new JsonIntegrityError("JSON number is outside the finite JavaScript number range. Preserve it as a string or use representable units.");
-    }
-    if (current !== null && typeof current === "object") {
-      for (const item of Object.values(current)) pending.push(item);
+    } else if (char === "-" || (char !== undefined && char >= "0" && char <= "9")) {
+      const start = i;
+      while (i + 1 < text.length && /[\d.eE+-]/.test(text[i + 1]!)) i++;
+      const literal = text.slice(start, i + 1);
+      const number = Number(literal);
+      if (!Number.isFinite(number)) throw new JsonIntegrityError("JSON number is outside the finite JavaScript number range. Preserve it as a string or use representable units.");
+      if (number === 0 && /[1-9]/.test(literal.split(/[eE]/, 1)[0]!)) {
+        throw new JsonIntegrityError("Nonzero JSON number underflows to zero in JavaScript. Preserve it as a string or use representable units.");
+      }
     }
   }
   return value;

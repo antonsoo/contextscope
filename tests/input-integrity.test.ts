@@ -31,6 +31,10 @@ describe("JSON evidence integrity", () => {
     expect(() => parseInput(`{"messages":[{"content":[{"type":"tool_use","input":{"x":${number}}}]}]}`)).toThrow(/finite|range/i);
   });
 
+  it.each(["1e-400", "-1e-400"])("refuses a nonzero JSON number rounded to zero: %s", (number) => {
+    expect(() => parseInput(`{"messages":[{"content":[{"type":"tool_use","input":{"x":${number}}}]}]}`)).toThrow(/range|underflow|zero/i);
+  });
+
   it("refuses excessive nesting with a parse error before recursive analysis", () => {
     const input = `{"model":"gpt-6-sol","input":[{"type":"reasoning","data":${"[".repeat(5000)}0${"]".repeat(5000)}}]}`;
     expect(() => analyze(input)).toThrow(ContextScopeParseError);

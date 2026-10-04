@@ -213,7 +213,8 @@ Strong evidence for both providers requires separate analyses; an explicit
 format override remains available, with warnings and incomplete status for
 mismatches. Repeated plain-text messages cannot outweigh a provider signal.
 
-Duplicate JSON fields (including escaped equivalent keys), nonfinite numbers,
+Duplicate JSON fields (including escaped equivalent keys), numbers that overflow
+or turn a nonzero value into zero,
 and nesting beyond 128 containers are rejected. Malformed JSONL syntax is
 retained as a visible coverage gap: `parse.complete` is false,
 `parse.sourceRecords` includes skipped nonblank lines, and `parse.skippedRecords`
