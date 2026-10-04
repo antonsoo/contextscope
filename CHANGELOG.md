@@ -19,6 +19,8 @@ All notable changes to this project are documented in this file.
 - Move browser parsing, tokenization, analysis and calibration into disposable
   same-origin workers. Cancel, replacement and reset stop computation; worker
   failures retain the prior report and allow retry.
+- Preserve the page's local-only network policy inside workers through an
+  inherited-CSP blob bootstrap, with URL cleanup and production privacy probes.
 - Bound segment table pages, treemap controls and inspector previews without
   changing totals; filters/pages and complete raw JSON downloads retain access
   to all evidence.

@@ -1,9 +1,27 @@
 import type { AnalysisJob, AnalysisReply } from "./analysis-protocol.js";
+import workerAsset from "./analysis-worker.ts?worker&url";
 
 type Success = Extract<AnalysisReply, { type: "success" }>;
 
+/** Static hosts cannot attach a worker CSP header. A blob module inherits the page policy;
+ * its only code imports our bundled asset, so connect-src 'self' also covers computation. */
+function localWorker(): Worker {
+  const asset = new URL(workerAsset, location.href);
+  if (asset.origin !== location.origin) throw new Error("The analysis worker must be served from this site's origin.");
+  const url = URL.createObjectURL(new Blob([`import ${JSON.stringify(asset.href)};`], { type: "text/javascript" }));
+  try {
+    const worker = new Worker(url, { type: "module" });
+    const terminate = worker.terminate.bind(worker);
+    worker.terminate = () => { terminate(); URL.revokeObjectURL(url); };
+    return worker;
+  } catch (err) {
+    URL.revokeObjectURL(url);
+    throw err;
+  }
+}
+
 /** One disposable worker per operation. Abort stops CPU work and drops its tokenizer caches. */
-export function analyzeInWorker(job: AnalysisJob, signal: AbortSignal, createWorker: () => Worker = () => new Worker(new URL("./analysis-worker.ts", import.meta.url), { type: "module" })): Promise<Success> {
+export function analyzeInWorker(job: AnalysisJob, signal: AbortSignal, createWorker: () => Worker = localWorker): Promise<Success> {
   return new Promise((resolve, reject) => {
     let worker: Worker | undefined;
     let settled = false;

@@ -22,7 +22,7 @@ async function scan(page: Page) {
   expect(report.violations.map(({ id, nodes }) => ({ id, targets: nodes.map((node) => node.target) }))).toEqual([]);
 }
 
-test.beforeEach(async ({ page }) => {
+test.beforeEach(async ({ page, context }) => {
   await page.addInitScript(() => {
     const audit = { errors: [] as string[], csp: [] as string[] };
     Object.assign(window, { contextscopeAudit: audit });
@@ -30,7 +30,7 @@ test.beforeEach(async ({ page }) => {
     addEventListener("unhandledrejection", (event) => audit.errors.push(String(event.reason)));
     addEventListener("securitypolicyviolation", (event) => audit.csp.push(event.violatedDirective));
   });
-  await page.route("**/*", async (route) => {
+  await context.route("**/*", async (route) => {
     if (!route.request().url().startsWith("http://127.0.0.1:4320/")) throw new Error(`Unexpected external request: ${route.request().url()}`);
     await route.continue();
   });
@@ -298,12 +298,12 @@ test("prefix bars render the shared fraction and use the selected provider's tok
   for (const bar of bars) expect(bar.ratio).toBeCloseTo(bar.expected, 2);
 });
 
-test("a newer paste supersedes input waiting for the analysis worker", async ({ page }) => {
+test("a newer paste supersedes input waiting for the analysis worker", async ({ page, context }) => {
   let release!: () => void;
   let requested!: () => void;
   const gate = new Promise<void>((resolve) => { release = resolve; });
   const seen = new Promise<void>((resolve) => { requested = resolve; });
-  await page.route("**/assets/analysis-worker-*.js", async (route) => {
+  await context.route("**/assets/analysis-worker-*.js", async (route) => {
     requested();
     await gate;
     await route.continue();
@@ -330,10 +330,41 @@ test("partial JSONL shows original lines and incomplete coverage in the workspac
   await expect(page.locator(".notes-panel")).toContainText("Incomplete input");
   await expect(page.locator(".notes-panel")).toContainText("1 of 3 source records");
   await expect(page.locator(".notes-panel")).toContainText("Line 4");
+  await expect(page.locator(".notes-panel")).toContainText("source record 1, line 2");
+  await page.getByRole("tab").nth(1).click();
   await expect(page.locator(".notes-panel")).toContainText("source record 3, line 5");
   await page.setViewportSize({ width: 375, height: 812 });
   await scan(page);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});
+
+test("analysis workers inherit the page's off-origin network restriction", async ({ page, context }) => {
+  await page.evaluate(() => {
+    const original = Worker;
+    Object.assign(window, { privacyProbe: undefined });
+    window.Worker = class extends original {
+      constructor(url: string | URL, options?: WorkerOptions) {
+        super(url, options);
+        this.addEventListener("message", (event) => {
+          if (event.data?.privacyProbe) Object.assign(window, { privacyProbe: event.data.privacyProbe });
+        });
+      }
+    };
+  });
+  await context.route("**/assets/analysis-worker-*.js", async (route) => {
+    const response = await route.fetch();
+    const probe = `await (async () => {
+      let directive = "";
+      self.addEventListener("securitypolicyviolation", (event) => { directive = event.effectiveDirective; });
+      let blocked = false;
+      try { await fetch("https://contextscope.invalid/privacy-probe"); } catch { blocked = true; }
+      await new Promise(resolve => setTimeout(resolve, 0));
+      self.postMessage({ type: "started", privacyProbe: { blocked, directive } });
+    })();\n`;
+    await route.fulfill({ response, body: probe + await response.text() });
+  });
+  await load(page, request());
+  await expect.poll(() => page.evaluate(() => (window as unknown as { privacyProbe: unknown }).privacyProbe)).toEqual({ blocked: true, directive: "connect-src" });
 });
 
 test("ambiguous, mixed-provider and deep imports preserve a valid report and recover", async ({ page }) => {
@@ -358,7 +389,11 @@ for (const action of ["cancel", "reset"] as const) test(`${action} terminates an
   await load(page);
   await page.evaluate(() => {
     const OriginalWorker = Worker;
-    const audit = { active: 0, terminated: 0, posts: 0, started: 0 };
+    const audit = { active: 0, terminated: 0, posts: 0, started: 0, urls: 0, revoked: 0 };
+    const create = URL.createObjectURL.bind(URL);
+    const revoke = URL.revokeObjectURL.bind(URL);
+    URL.createObjectURL = (blob) => { audit.urls++; return create(blob); };
+    URL.revokeObjectURL = (url) => { audit.revoked++; revoke(url); };
     Object.assign(window, { workerAudit: audit, restoreWorker: () => { window.Worker = OriginalWorker; } });
     window.Worker = class extends OriginalWorker {
       constructor(url: string | URL, options?: WorkerOptions) {
@@ -378,7 +413,7 @@ for (const action of ["cancel", "reset"] as const) test(`${action} terminates an
   await expect.poll(() => page.evaluate(() => (window as unknown as { workerAudit: { started: number } }).workerAudit.started)).toBe(1);
   await page.getByRole("button", { name: action === "cancel" ? "cancel import" : "new analysis" }).click();
   if (action === "cancel") await expect(page.locator("#intake-error")).toHaveText("Import cancelled.");
-  expect(await page.evaluate(() => (window as unknown as { workerAudit: { active: number; terminated: number } }).workerAudit)).toMatchObject({ active: 0, terminated: 1 });
+  expect(await page.evaluate(() => (window as unknown as { workerAudit: { active: number; terminated: number; urls: number; revoked: number } }).workerAudit)).toMatchObject({ active: 0, terminated: 1, urls: 1, revoked: 1 });
   await expect(page.getByRole("tab")).toHaveCount(action === "cancel" ? 4 : 0);
   await page.evaluate(() => (window as unknown as { restoreWorker: () => void }).restoreWorker());
   await page.locator("#file-input").setInputFiles({ name: "after-cancel.json", mimeType: "application/json", buffer: Buffer.from(JSON.stringify(request("after computation cancellation"))) });

@@ -39,7 +39,7 @@ export function contentSecurityPolicy(additions: Record<string, string[]> = {}):
           // data: because the bundler inlines font files of a few kilobytes into the stylesheet.
           "font-src": ["'self'", "data:"],
           "connect-src": ["'self'"],
-          "worker-src": ["'self'"],
+          "worker-src": ["'self'", "blob:"],
           "manifest-src": ["'self'"],
           "base-uri": ["'none'"],
           "form-action": ["'none'"],

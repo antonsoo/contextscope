@@ -413,6 +413,11 @@ fixed hue order, so a color always means the same category.
   results still require memory to retain and transfer, and download serialization
   runs on the UI thread. Byte/depth limits do not guarantee a fixed memory or
   processing-time budget.
+- **Worker privacy.** A small blob module inherits the page's CSP and imports
+  only the same-origin analysis asset, so `connect-src 'self'` covers worker
+  computation too. Bootstrap URLs are revoked when work succeeds, fails or is
+  cancelled. This uses the documented [worker CSP inheritance rule](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers#content_security_policy);
+  the production suite probes an off-origin fetch from inside the worker.
 - **Performance.** `npm run bench` times `analyze()` on the flagship session
   (24 requests, 5.7 MB) and on a generated 300-request conversation (12.1 MB,
   93,900 segments in total). Measured back to back on a 14-vCPU WSL2 machine,
