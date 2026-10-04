@@ -5,14 +5,16 @@ import { BUILT_IN_EXAMPLES } from "./lib/examples.js";
 import { CATEGORY_LABEL, CATEGORY_ORDER, categoryVar, fmtInt, fmtPct, fmtUsd, fmtUsdRounded, truncate } from "./lib/format.js";
 import { $, $all, esc } from "./lib/dom.js";
 import { checkTextSize, readPossiblyGzippedFile } from "./lib/gunzip.js";
+import { analyzeInWorker } from "./analysis.js";
+import type { Measurement } from "./analysis-protocol.js";
+import { INSPECTOR_TEXT_LIMIT, SEGMENT_PAGE_SIZE, TREEMAP_SEGMENT_LIMIT, treemapBlocks } from "./lib/segment-preview.js";
 
-// The core library (and the ~1MB o200k_base tokenizer data it pulls in) is loaded on demand, not
-// on page load - the drop-zone screen should be instant. Everything that touches it is async.
-type CoreModule = typeof import("@core/index.js");
+// Presentation helpers are lazy; parsing and tokenizer data stay in disposable workers.
+type CoreModule = typeof import("@core/presentation.js");
 let corePromise: Promise<CoreModule> | undefined;
 let loadedCore: CoreModule | undefined;
 function loadCore(): Promise<CoreModule> {
-  corePromise ??= import("@core/index.js").catch((err: unknown) => {
+  corePromise ??= import("@core/presentation.js").catch((err: unknown) => {
     corePromise = undefined;
     throw err;
   });
@@ -274,7 +276,6 @@ function resetAnalysis(): void {
   state.selectedPair = -1;
   lastRawInput = undefined;
   groupsCache = undefined;
-  loadedCore?.clearTokenCache();
   $("#content").replaceChildren();
   $("#request-tabs").replaceChildren();
   const paste = $("#paste-area") as HTMLTextAreaElement;
@@ -288,12 +289,12 @@ function resetAnalysis(): void {
   $("#pick-file-btn").focus();
 }
 
-function runAnalysis(input: string, settings: AnalysisSettings): void {
-  runInput(async () => input, false, { format: settings.format, model: settings.model, calibration: settings.calibration });
+function runAnalysis(input: string, settings: AnalysisSettings, measurement?: Measurement): void {
+  runInput(async () => input, false, { format: settings.format, model: settings.model, calibration: settings.calibration }, measurement);
 }
 
 /** Prepare in isolation. Only the current successful operation may replace the workspace. */
-function runInput(read: (signal: AbortSignal) => Promise<string>, fresh: boolean, settings: AnalysisSettings = { format: "auto", model: undefined, calibration: undefined }): void {
+function runInput(read: (signal: AbortSignal) => Promise<string>, fresh: boolean, settings: AnalysisSettings = { format: "auto", model: undefined, calibration: undefined }, measurement?: Measurement): void {
   cancelPending();
   const operation = new AbortController();
   pendingLoad = operation;
@@ -309,18 +310,17 @@ function runInput(read: (signal: AbortSignal) => Promise<string>, fresh: boolean
       const core = await loadCore();
       loadedCore = core;
       signal.throwIfAborted();
-      // Let the status paint before the synchronous tokenizer and analysis run.
-      await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
-      signal.throwIfAborted();
-      const result = core.analyze(input, {
+      const completed = await analyzeInWorker({ input, options: {
         format: settings.format === "auto" ? undefined : settings.format,
         model: settings.model,
         claudeTokenScale: settings.calibration?.scale,
-      });
+      }, ...(measurement ? { measurement } : {}) }, signal);
+      signal.throwIfAborted();
+      const result = completed.result;
       closeDrawer();
       state.format = settings.format;
       state.model = settings.model;
-      state.calibration = settings.calibration;
+      state.calibration = completed.calibration ?? settings.calibration;
       state.analysis = result;
       lastRawInput = input;
       if (fresh || state.selectedRequest >= result.reports.length) {
@@ -336,7 +336,6 @@ function runInput(read: (signal: AbortSignal) => Promise<string>, fresh: boolean
       }
     } finally {
       if (pendingLoad === operation) {
-        loadedCore?.clearTokenCache();
         pendingLoad = undefined;
         setLoading(false);
         if (!fresh && focusedId) {
@@ -475,6 +474,9 @@ function renderContent(): void {
  * continuations) - things the user should know before trusting the numbers below. */
 function parseNotesPanel(result: AnalysisResult): string {
   const notes: string[] = [];
+  const source = result.parse.requests[state.selectedRequest]?.source;
+  if (source && (source.line || source.envelope || !result.parse.complete)) notes.push(`Selected request: source record ${source.recordIndex + 1}${source.line ? `, line ${source.line}` : ""}${source.envelope ? `, <code>${esc(source.envelope)}</code> field` : ""}.`);
+  if (!result.parse.complete) notes.push(`<strong>Incomplete input.</strong> ${result.parse.skippedRecords} of ${result.parse.sourceRecords} source records skipped or not analyzable. Counts and simulations cover retained content only; review the parse warnings.`);
   if (result.parse.envelope) notes.push(`Request bodies were read from each record's <code>${esc(result.parse.envelope)}</code> field.`);
   if (result.model.unrecognized) notes.push(`The requests name <code>${esc(result.model.unrecognized)}</code>, which isn't in the pricing table, so costs use ${esc(result.model.displayName)}. Pick the right model above.`);
   const warnings = result.parse.warnings;
@@ -525,7 +527,8 @@ function treemapPanel(report: RequestTokenReport, format: Provider): string {
   return `
     <section class="panel">
       <h2>Token usage — treemap <span class="count">colored by category, sized by ${format === "openai" ? "OpenAI tokens (exact)" : "≈ Claude tokens"}</span></h2>
-      <div class="treemap" id="treemap" role="group" aria-label="Treemap of token usage by segment: each block opens its segment"></div>
+      <div class="treemap" id="treemap" role="group" aria-label="Treemap of token usage: segments open inspection; grouped categories filter the table"></div>
+      ${report.segments.filter((s) => blockTokens(s, format) > 0).length > TREEMAP_SEGMENT_LIMIT ? `<p class="muted">The ${TREEMAP_SEGMENT_LIMIT} largest segments are shown individually; the rest are grouped by category. Grouped blocks filter the table below. All tokens remain included.</p>` : ""}
       <div class="legend">
         ${CATEGORY_ORDER.filter((c) => report.byCategory.some((b) => b.category === c))
           .map((c) => `<span class="legend-item"><span class="legend-swatch" style="background:${categoryVar(c)}"></span>${CATEGORY_LABEL[c]}</span>`)
@@ -538,23 +541,23 @@ function treemapPanel(report: RequestTokenReport, format: Provider): string {
 function wireTreemap(report: RequestTokenReport, format: Provider): void {
   const container = $("#treemap");
   const approx = format === "openai" ? "" : "≈";
-  const items = report.segments
-    .filter((s) => blockTokens(s, format) > 0)
-    .map((s) => ({ value: blockTokens(s, format), item: s }));
-  container.innerHTML = items.map(({ item: segment }) => `<button type="button" class="tm-block" data-segment="${esc(segment.id)}"></button>`).join("");
-  const blocks = new Map($all("[data-segment]", container).map((block) => [block.dataset["segment"], block]));
+  const previews = treemapBlocks(report.segments, format);
+  const items = previews.map((item) => ({ value: item.value, item }));
+  container.innerHTML = previews.map((item) => `<button type="button" class="tm-block" data-block="${esc(item.id)}"${item.segment ? ` data-segment="${esc(item.id)}"` : ""}></button>`).join("");
+  const blocks = new Map($all("[data-block]", container).map((block) => [block.dataset["block"], block]));
   const layout = (): void => {
     const w = container.clientWidth;
     const h = container.clientHeight;
     if (w <= 0 || h <= 0) return;
-    for (const { rect: r, item: segment } of squarify(items, { x: 0, y: 0, w, h })) {
-      const block = blocks.get(segment.id)!;
+    for (const { rect: r, item } of squarify(items, { x: 0, y: 0, w, h })) {
+      const block = blocks.get(item.id)!;
       const lines = r.w <= 46 ? 0 : r.h >= 34 ? 2 : r.h >= 20 ? 1 : 0;
-      const tokens = `${approx}${fmtInt(blockTokens(segment, format))} tok`;
-      block.style.cssText = `left:${r.x}px;top:${r.y}px;width:${r.w}px;height:${r.h}px;background:${categoryVar(segment.category)};color:var(--cat-${segment.category}-ink)`;
-      block.title = `${segment.label} — ${tokens}`;
-      block.setAttribute("aria-label", `${segment.label}, ${tokens}`);
-      block.innerHTML = lines === 0 ? "" : `<span class="tm-label"><span class="tm-name">${esc(truncate(segment.label, 40))}</span>${lines === 2 ? `<span class="tm-tok">${tokens}</span>` : ""}</span>`;
+      const tokens = `${approx}${fmtInt(item.value)} tok`;
+      block.style.cssText = `left:${r.x}px;top:${r.y}px;width:${r.w}px;height:${r.h}px;background:${categoryVar(item.category)};color:var(--cat-${item.category}-ink)`;
+      block.title = `${item.label} — ${tokens}${item.segment ? "" : `, ${item.count} segments; filter table`}`;
+      block.setAttribute("aria-label", block.title);
+      block.dataset["tokens"] = String(item.value);
+      block.innerHTML = lines === 0 ? "" : `<span class="tm-label"><span class="tm-name">${esc(truncate(item.label, 40))}</span>${lines === 2 ? `<span class="tm-tok">${tokens}</span>` : ""}</span>`;
     }
   };
   layout();
@@ -562,8 +565,17 @@ function wireTreemap(report: RequestTokenReport, format: Provider): void {
   treemapObserver.observe(container);
 
   container.addEventListener("click", (e) => {
-    const block = (e.target as HTMLElement).closest<HTMLElement>("[data-segment]");
-    if (block) openInspector(report.segments.find((s) => s.id === block.dataset["segment"])!);
+    const block = (e.target as HTMLElement).closest<HTMLElement>("[data-block]");
+    const item = previews.find((candidate) => candidate.id === block?.dataset["block"]);
+    if (item?.segment) openInspector(item.segment);
+    else if (item) {
+      const category = $("#segment-category") as HTMLSelectElement;
+      category.value = item.category;
+      ($("#segment-search") as HTMLInputElement).value = "";
+      category.dispatchEvent(new Event("change"));
+      category.focus();
+      category.scrollIntoView({ block: "center", behavior: "smooth" });
+    }
   });
 }
 
@@ -575,22 +587,21 @@ function segmentsTablePanel(report: RequestTokenReport): string {
   return `
     <section class="panel">
       <h2>Segments <span class="count">${report.segments.length} total — click a row to inspect</span></h2>
+      <div class="segment-controls">
+        <label>category <select id="segment-category"><option value="">all categories</option>${report.byCategory.map((category) => `<option value="${category.category}">${CATEGORY_LABEL[category.category]}</option>`).join("")}</select></label>
+        <label>find label or path <input id="segment-search" type="search" placeholder="e.g. messages[12]" /></label>
+      </div>
+      <div class="segment-controls">
+        <span id="segment-range" role="status"></span>
+        <button class="btn" id="segments-first" type="button" aria-label="First segment page">first</button>
+        <button class="btn" id="segments-prev" type="button" aria-label="Previous segment page">previous</button>
+        <button class="btn" id="segments-next" type="button" aria-label="Next segment page">next</button>
+        <button class="btn" id="segments-last" type="button" aria-label="Last segment page">last</button>
+      </div>
       <div class="table-scroll" tabindex="0" role="group" aria-label="Table, scrolls sideways">
         <table class="segments">
           <thead><tr><th>category</th><th>label</th><th>path</th><th>≈ Claude</th><th>OpenAI</th><th>cache</th></tr></thead>
           <tbody id="segments-tbody">
-            ${report.segments
-              .map(
-                (s) => `<tr data-segment="${esc(s.id)}">
-                  <td><span class="cat-chip" style="--dot:${categoryVar(s.category)}">${CATEGORY_LABEL[s.category]}</span></td>
-                  <td><button class="segment-inspect" type="button" aria-label="Inspect ${esc(s.label)}">${esc(truncate(s.label, 60))}</button></td>
-                  <td>${esc(s.path)}</td>
-                  <td class="num">${fmtInt(s.claudeTokensEstimate)}</td>
-                  <td class="num">${fmtInt(s.openaiTokens)}</td>
-                  <td>${s.cacheControl ? `<span class="cache-flag"${s.cacheControl.automatic ? ' title="automatic breakpoint: the request has a top-level cache_control"' : ""}>● ${s.cacheControl.ttl}${s.cacheControl.automatic ? " auto" : ""}</span>` : ""}</td>
-                </tr>`,
-              )
-              .join("")}
           </tbody>
         </table>
       </div>
@@ -599,6 +610,39 @@ function segmentsTablePanel(report: RequestTokenReport): string {
 }
 
 function wireSegmentsTable(report: RequestTokenReport): void {
+  let page = 0;
+  let filtered = report.segments;
+  const search = $("#segment-search") as HTMLInputElement;
+  const category = $("#segment-category") as HTMLSelectElement;
+  const render = (): void => {
+    const pages = Math.max(1, Math.ceil(filtered.length / SEGMENT_PAGE_SIZE));
+    page = Math.max(0, Math.min(page, pages - 1));
+    const start = page * SEGMENT_PAGE_SIZE;
+    const visible = filtered.slice(start, start + SEGMENT_PAGE_SIZE);
+    $("#segment-range").textContent = filtered.length ? `${start + 1}–${start + visible.length} of ${filtered.length} matching segments · page ${page + 1} of ${pages}` : "No matching segments. Clear the filter to see all segments.";
+    $("#segments-tbody").innerHTML = visible.map((s) => `<tr data-segment="${esc(s.id)}">
+      <td><span class="cat-chip" style="--dot:${categoryVar(s.category)}">${CATEGORY_LABEL[s.category]}</span></td>
+      <td><button class="segment-inspect" type="button" aria-label="Inspect ${esc(s.label)}">${esc(truncate(s.label, 60))}</button></td>
+      <td>${esc(s.path)}</td><td class="num">${fmtInt(s.claudeTokensEstimate)}</td><td class="num">${fmtInt(s.openaiTokens)}</td>
+      <td>${s.cacheControl ? `<span class="cache-flag"${s.cacheControl.automatic ? ' title="automatic breakpoint: the request has a top-level cache_control"' : ""}>● ${s.cacheControl.ttl}${s.cacheControl.automatic ? " auto" : ""}</span>` : ""}</td></tr>`).join("");
+    for (const [id, disabled] of [["segments-first", page === 0], ["segments-prev", page === 0], ["segments-next", page === pages - 1], ["segments-last", page === pages - 1]] as const) {
+      const button = document.getElementById(id) as HTMLButtonElement;
+      button.disabled = disabled;
+      if (disabled && document.activeElement === button) search.focus();
+    }
+  };
+  const filter = (): void => {
+    const query = search.value.trim().toLocaleLowerCase("en-US");
+    filtered = report.segments.filter((s) => (!category.value || s.category === category.value) && (!query || `${s.label} ${s.path}`.toLocaleLowerCase("en-US").includes(query)));
+    page = 0;
+    render();
+  };
+  search.addEventListener("input", filter);
+  category.addEventListener("change", filter);
+  for (const [id, target] of [["segments-first", () => 0], ["segments-prev", () => page - 1], ["segments-next", () => page + 1], ["segments-last", () => Math.ceil(filtered.length / SEGMENT_PAGE_SIZE) - 1]] as const) {
+    document.getElementById(id)!.addEventListener("click", () => { page = target(); render(); });
+  }
+  render();
   $("#segments-tbody").addEventListener("click", (e) => {
     const row = (e.target as HTMLElement).closest<HTMLElement>("[data-segment]");
     if (row) openInspector(report.segments.find((s) => s.id === row.dataset["segment"])!);
@@ -832,16 +876,13 @@ function wireCalibrate(result: AnalysisResult): void {
     if (pendingLoad) return;
     const input = $("#calibrate-count") as HTMLInputElement;
     try {
-      // Re-parse the unscaled input: repeated calibration must never compound rounding.
-      const parsed = loadedCore!.parseInput(lastRawInput!, result.parse.format);
-      const calibration = loadedCore!.calibrateRequest(parsed.requests[state.selectedRequest]!, result.model.id, input.valueAsNumber);
-      runAnalysis(lastRawInput!, { ...state, calibration });
+      loadedCore!.calibrationScale(input.valueAsNumber, 1);
+      // The worker re-parses unscaled input; calibration cannot compound rounding or block UI.
+      runAnalysis(lastRawInput!, state, { requestIndex: state.selectedRequest, model: result.model.id, exactTokens: input.valueAsNumber });
     } catch (err) {
       $("#calibrate-status").textContent = (err as Error).message;
       input.setAttribute("aria-invalid", "true");
       input.focus();
-    } finally {
-      loadedCore?.clearTokenCache();
     }
   });
   document.getElementById("calibrate-reset")?.addEventListener("click", () => {
@@ -855,7 +896,8 @@ function wireCalibrate(result: AnalysisResult): void {
 
 function openInspector(segment: Segment): void {
   $("#drawer-title").textContent = segment.label;
-  const rawPretty = typeof segment.raw === "string" ? segment.raw : JSON.stringify(segment.raw, null, 2);
+  const textPreview = segment.charLength > INSPECTOR_TEXT_LIMIT;
+  const rawPretty = textPreview ? segment.text : typeof segment.raw === "string" ? segment.raw : JSON.stringify(segment.raw, null, 2);
   $("#drawer-body").innerHTML = `
     <dl>
       <dt>category</dt><dd>${CATEGORY_LABEL[segment.category]}</dd>
@@ -865,8 +907,18 @@ function openInspector(segment: Segment): void {
       <dt>OpenAI tokens</dt><dd>${fmtInt(segment.openaiTokens)}</dd>
       <dt>cache_control</dt><dd>${segment.cacheControl ? `ephemeral, ${segment.cacheControl.ttl}${segment.cacheControl.automatic ? " (automatic: the request's top-level cache_control lands on this block)" : ""}` : "none"}</dd>
     </dl>
-    <pre>${esc(rawPretty)}</pre>
+    ${textPreview || rawPretty.length > INSPECTOR_TEXT_LIMIT ? `<p>Showing the first ${INSPECTOR_TEXT_LIMIT.toLocaleString("en-US")} characters${textPreview ? " of the analyzed segment text" : " of raw content"}. Download the original raw JSON for complete evidence.</p>` : ""}
+    <button class="btn" id="download-segment" type="button">download original raw JSON</button>
+    <pre>${esc(rawPretty.slice(0, INSPECTOR_TEXT_LIMIT))}</pre>
   `;
+  $("#download-segment").addEventListener("click", () => {
+    const url = URL.createObjectURL(new Blob([JSON.stringify(segment.raw, null, 2)], { type: "application/json" }));
+    const anchor = document.createElement("a");
+    anchor.href = url;
+    anchor.download = "contextscope-segment.json";
+    anchor.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  });
   const drawer = $("#drawer") as HTMLDialogElement;
   if (!drawer.open) {
     drawerOpener = document.activeElement;

@@ -1,0 +1,50 @@
+import type { AnalysisJob, AnalysisReply } from "./analysis-protocol.js";
+
+type Success = Extract<AnalysisReply, { type: "success" }>;
+
+/** One disposable worker per operation. Abort stops CPU work and drops its tokenizer caches. */
+export function analyzeInWorker(job: AnalysisJob, signal: AbortSignal, createWorker: () => Worker = () => new Worker(new URL("./analysis-worker.ts", import.meta.url), { type: "module" })): Promise<Success> {
+  return new Promise((resolve, reject) => {
+    let worker: Worker | undefined;
+    let settled = false;
+    const finish = (result?: Success, error?: unknown): void => {
+      if (settled) return;
+      settled = true;
+      signal.removeEventListener("abort", abort);
+      if (worker) {
+        worker.onmessage = null;
+        worker.onerror = null;
+        worker.onmessageerror = null;
+        worker.terminate();
+      }
+      if (result) resolve(result);
+      else reject(error);
+    };
+    const abort = (): void => finish(undefined, signal.reason ?? new DOMException("Analysis cancelled.", "AbortError"));
+    if (signal.aborted) { abort(); return; }
+    signal.addEventListener("abort", abort, { once: true });
+    try {
+      worker = createWorker();
+      if (signal.aborted || settled) { worker.terminate(); return; }
+      worker.onmessage = (event: MessageEvent<unknown>) => {
+        const reply = event.data as Partial<AnalysisReply> | null;
+        if (reply?.type === "started") return;
+        if (reply?.type === "error" && typeof reply.message === "string") {
+          finish(undefined, new Error(reply.message));
+        } else if (reply?.type === "success" && reply.result && typeof reply.result.parse?.complete === "boolean" && Array.isArray(reply.result.reports) && reply.result.reports.length > 0) {
+          finish(reply as Success);
+        } else {
+          finish(undefined, new Error("Analysis worker returned an unreadable result. Try importing the log again."));
+        }
+      };
+      worker.onerror = (event) => {
+        event.preventDefault();
+        finish(undefined, new Error(`Analysis worker failed: ${event.message || "could not load or process this log"}. Try importing the log again.`));
+      };
+      worker.onmessageerror = () => finish(undefined, new Error("Could not receive the analysis result. Try a smaller session."));
+      worker.postMessage(job);
+    } catch (err) {
+      finish(undefined, new Error(`Could not start local analysis: ${err instanceof Error ? err.message : String(err)}. Try importing the log again.`));
+    }
+  });
+}

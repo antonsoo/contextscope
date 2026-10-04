@@ -907,6 +907,11 @@ table.cache td {
   cursor: progress;
 }
 
+.segment-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 10px 0; }
+.segment-controls label { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; min-width: 0; }
+.segment-controls input { max-width: 100%; min-width: 0; }
+#segment-range { color: var(--text-muted); font-size: 12px; flex: 1 1 260px; }
+
 /* inspector drawer */
 .drawer {
   position: fixed;
