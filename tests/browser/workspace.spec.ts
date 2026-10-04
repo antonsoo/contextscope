@@ -338,7 +338,14 @@ test("partial JSONL shows original lines and incomplete coverage in the workspac
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
 
-test("analysis workers inherit the page's off-origin network restriction", async ({ page, context }) => {
+test("analysis workers inherit the page's off-origin network restriction", async ({ page, context, browserName }) => {
+  const policyErrors: string[] = [];
+  page.on("console", (message) => {
+    if (message.type() === "error" && message.text().includes("Content-Security-Policy")
+      && message.text().includes("connect-src") && message.text().includes("https://contextscope.invalid/privacy-probe")) {
+      policyErrors.push(message.text());
+    }
+  });
   await page.evaluate(() => {
     const original = Worker;
     Object.assign(window, { privacyProbe: undefined });
@@ -371,7 +378,15 @@ test("analysis workers inherit the page's off-origin network restriction", async
     await route.fulfill({ response, body: probe + await response.text() + replay });
   });
   await load(page, request());
-  await expect.poll(() => page.evaluate(() => (window as unknown as { privacyProbe: unknown }).privacyProbe)).toEqual({ blocked: true, directive: "connect-src" });
+  await expect.poll(() => page.evaluate(() => (window as unknown as { privacyProbe?: { blocked: boolean } }).privacyProbe?.blocked)).toBe(true);
+  if (browserName === "firefox") {
+    // Firefox reports the inherited worker restriction in its console but does not
+    // dispatch securitypolicyviolation inside this blob module. Require positive
+    // CSP evidence: a failed fetch alone could instead mean DNS or route failure.
+    await expect.poll(() => policyErrors.length).toBeGreaterThan(0);
+  } else {
+    await expect.poll(() => page.evaluate(() => (window as unknown as { privacyProbe: unknown }).privacyProbe)).toEqual({ blocked: true, directive: "connect-src" });
+  }
 });
 
 test("ambiguous, mixed-provider and deep imports preserve a valid report and recover", async ({ page }) => {
