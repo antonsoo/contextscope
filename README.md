@@ -124,7 +124,7 @@ Options:
   --calibrate                     Anthropic only: count the largest request exactly with the
                                   count_tokens endpoint (reads ANTHROPIC_API_KEY) and scale
                                   every Claude estimate to match
-  --fail-on <error|warning|info>  Exit with status 2 if any finding is at least this severe
+  --fail-on <error|warning|info>  Exit 2 for incomplete input or a finding at least this severe
   --html <out.html>               Also write a self-contained HTML report
   --json <out.json>               Also write the analysis as JSON: counts, findings and cache
                                   steps for every request and segment, without the request text
@@ -132,7 +132,8 @@ Options:
 ```
 
 Exit status is 0 on success, 1 on bad arguments or unreadable input, and 2
-when `--fail-on` is set and a finding meets it. Gzipped input is detected by
+when `--fail-on` is set and either input coverage is incomplete or a finding
+meets the threshold. Gzipped input is detected by
 extension or, failing that, by gzip magic bytes.
 
 Real output on `examples/anthropic-agent-cache-bust.jsonl.gz`, a synthetic
@@ -504,6 +505,10 @@ scripts/      example generator and benchmark (not part of the shipped package)
 examples/     synthetic example sessions, shared by the CLI and the web app
 docs/assets/  README screenshots
 ```
+
+The [2026-10-04 verification record](docs/verification-context-2026-10-04.md)
+documents input-integrity counterexamples, worker recovery/privacy checks,
+clean package consumption and inspected desktop/phone screenshots.
 
 ## Contributing
 

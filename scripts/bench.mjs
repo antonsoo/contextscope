@@ -2,7 +2,7 @@
 //   npm run build:core && node scripts/bench.mjs [runs]
 // Prints the median of `runs` (default 9) after one warm-up, so numbers are comparable across
 // commits on the same machine. The stress session is deterministic: 300 requests of a growing
-// conversation (tool calls, tool results, a timestamped system prompt), ~2.9 MB of JSONL.
+// conversation (tool calls, tool results, a timestamped system prompt), ~12.1 MB of JSONL.
 import { readFileSync } from "node:fs";
 import { gunzipSync } from "node:zlib";
 import { analyze } from "../dist/core/index.js";
