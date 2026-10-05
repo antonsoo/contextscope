@@ -338,6 +338,54 @@ test("partial JSONL shows original lines and incomplete coverage in the workspac
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
 
+test("corrupt encoded replacements retain the report, show recovery and preserve genuine Unicode", async ({ page }) => {
+  await load(page);
+  const corrupt = Buffer.concat([Buffer.from('{"model":"gpt-6-sol","input":"'), Buffer.from([0xff]), Buffer.from('"}')]);
+  const files = [
+    { name: "corrupt.json", buffer: corrupt },
+    { name: "corrupt.json.gz", buffer: gzipSync(corrupt) },
+    { name: "corrupt-utf16.json", buffer: Buffer.from([0xff, 0xfe, 0x61]) },
+  ];
+  for (const file of files) {
+    await page.locator("#file-input").setInputFiles({ ...file, mimeType: "application/json" });
+    await expect(page.locator("#intake-error")).toContainText("encoding");
+    await expect(page.locator("#intake-error")).toContainText("Export or save");
+    await expect(page.getByRole("tab")).toHaveCount(4);
+    await expect(page.locator("#load-status")).toBeHidden();
+  }
+  await scan(page);
+  await page.locator("#file-input").setInputFiles({ name: "valid-unicode.json", mimeType: "application/json", buffer: Buffer.from(JSON.stringify(request("Hello 😀 日本語 \uFFFD"))) });
+  await expect(page.getByRole("tab")).toHaveCount(1);
+  await expect(page.locator("#intake-error")).toBeHidden();
+  await page.locator(".segment-inspect").last().click();
+  await expect(page.getByRole("dialog")).toContainText("Hello 😀 日本語 \uFFFD");
+});
+
+test("metadata-only prompt changes break the cached prefix and appear in the diff", async ({ page }) => {
+  const make = (is_error: boolean) => ({
+    model: "claude-sonnet-5", cache_control: { type: "ephemeral" },
+    messages: [
+      { role: "user", content: "Read the evidence" },
+      { role: "assistant", content: [{ type: "tool_use", id: "call-1", name: "read_file", input: { path: "evidence.txt" } }] },
+      { role: "user", content: [{ type: "tool_result", tool_use_id: "call-1", is_error, content: "same result ".repeat(700) }] },
+    ],
+  });
+  await load(page, [make(false), make(true)]);
+  await expect(page.locator("#diff-view")).toContainText("prompt metadata or message boundary changed");
+  await expect(page.locator('[data-pair="0"]')).toContainText("2/3 segs");
+  await page.locator(".segment-inspect").last().click();
+  await expect(page.getByRole("dialog")).toContainText('"is_error": true');
+  await page.keyboard.press("Escape");
+  for (const theme of ["dark", "light"]) {
+    await page.evaluate((value) => document.documentElement.setAttribute("data-theme", value), theme);
+    for (const width of [1440, 375]) {
+      await page.setViewportSize({ width, height: 900 });
+      await scan(page);
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    }
+  }
+});
+
 test("analysis workers inherit the page's off-origin network restriction", async ({ page, context, browserName }) => {
   const policyErrors: string[] = [];
   page.on("console", (message) => {
