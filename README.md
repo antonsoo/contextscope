@@ -127,7 +127,7 @@ Options:
   --fail-on <error|warning|info>  Exit 2 for incomplete input or a finding at least this severe
   --html <out.html>               Also write a self-contained HTML report
   --json <out.json>               Also write the analysis as JSON: counts, findings and cache
-                                  steps for every request and segment, without the request text
+                                  steps for every request and segment, without raw prompt values
   -v, --verbose                   Show every request's breakdown and every prefix/cache row
 ```
 
@@ -225,6 +225,10 @@ Reports retain the partial evidence and warnings. Completeness describes source
 coverage, not API validity or measured cache behavior. An empty request array is
 an error.
 
+File decoding is strict UTF-8, or UTF-16 selected by its byte-order mark. Corrupt
+encodings are rejected before replacement characters can rewrite the evidence,
+including gzipped inputs. A real U+FFFD character in a valid encoding is retained.
+
 **Token counts.** OpenAI counts are exact: `gpt-tokenizer`'s pure-JS o200k_base
 encoder, the BPE vocabulary GPT-4o and newer OpenAI models use. Claude counts
 are a documented heuristic (`src/core/tokenize-claude.ts`), because Anthropic
@@ -288,7 +292,15 @@ No findings — this sequence caches cleanly.
 prefix between the segment lists of a request and the one it continues, then diffs the *whole*
 lists, not just the tail, so a single reordered tool or one edited system block
 shows up as a small, localized change instead of "everything after position 3
-differs." The diff is Myers' O((N+M)·D) algorithm (E. W. Myers, "An O(ND)
+differs." Identity includes the original prompt block, message header and message
+boundary, separately from the text used for token counts. Tool destinations,
+error flags, thinking signatures, document metadata and speaker names therefore
+cannot disappear from a prefix comparison when visible text stays the same.
+Metadata-only changes are marked in readable diffs. The optimized scenario sorts
+keys and parameterizes volatile text while preserving routing IDs, names, roles,
+types and signed/opaque thinking. Following tool calls have their own identity;
+they are not compared as part of the assistant text before them.
+The diff is Myers' O((N+M)·D) algorithm (E. W. Myers, "An O(ND)
 Difference Algorithm and Its Variations", *Algorithmica* 1, 1986): consecutive
 agent requests differ by a few edits, so D is small even when N and M are in
 the thousands. A randomized test checks that the unchanged lines always form a
@@ -303,7 +315,7 @@ implement each provider's documented rules:
   empty text; it is simulated like a marker placed there by hand, and takes
   one of the four. Breakpoints are read against
   the entries earlier requests wrote at theirs: an entry is read if its prefix
-  is byte-identical to this request's up to that point, whichever earlier
+  matches this request's modeled prompt units up to that point, whichever earlier
   request wrote it, and the position distance is within the 20-block lookback window (a
   run of consecutive `tool_use` or `tool_result` blocks counts as one position,
   per Anthropic's documented rule). Writes cost 1.25× (5-minute TTL) or 2×
@@ -389,7 +401,9 @@ fixed hue order, so a color always means the same category.
   expiring between requests minutes apart. Matching is at segment granularity:
   OpenAI caches at token granularity, so a change near the end of a long
   segment earns partial credit there that this simulation doesn't give, which
-  errs toward fewer cached tokens, never more. A sequence is priced as a single
+  can underestimate token-prefix reuse. Prompt identities retain source structure;
+  they are not a reproduction of a provider's private prompt renderer or a
+  guarantee of its live cache behavior. A sequence is priced as a single
   model (the one named most often); a model switch is treated as a cache miss,
   not re-priced. Exotic breakpoint placements (for example deliberately
   non-monotonic TTLs across many blocks) are simplified.
@@ -509,6 +523,13 @@ docs/assets/  README screenshots
 The [2026-10-04 verification record](docs/verification-context-2026-10-04.md)
 documents input-integrity counterexamples, worker recovery/privacy checks,
 clean package consumption and inspected desktop/phone screenshots.
+
+Summary JSON omits raw blocks, prompt identities, analyzed segment text and
+textual diff previews. Match counts/boundaries, source positions, cache steps and
+findings remain. Tool names, paths and rule explanations can still identify an
+application; review those before sharing. Detailed text diffs remain in local
+browser, terminal and HTML inspection. The [follow-up verification record](docs/verification-prompt-2026-10-04.md)
+covers structural comparisons, strict decoding and this export boundary.
 
 ## Contributing
 

@@ -6,6 +6,17 @@ All notable changes to this project are documented in this file.
 
 ### Fixed
 
+- Preserve full prompt structure and message boundaries in prefix, diff, cache
+  and conversation identity, separately from token-counted content. Mark
+  metadata-only changes and preserve tool-routing IDs and signed thinking when
+  normalizing volatile text. Following tool calls no longer alter the identity
+  of preceding assistant text. Plain-string source paths point to their actual field.
+- Reject corrupt UTF-8/UTF-16 before replacement decoding changes evidence,
+  including compressed input; valid Unicode and literal replacement characters remain.
+- Remove request-text diff previews from summary JSON exports while retaining
+  counts, boundaries and source provenance. Local detailed inspection is unchanged.
+- Improve cache-placement badge contrast on hovered light-theme rows.
+
 - Reject duplicate JSON fields, overflowing/underflowing numbers, excessive nesting and
   ambiguous request envelopes. Preserve prototype-like schema keys when sorting.
 - Unwrap mixed gateway formats per record and retain source record/line/envelope
