@@ -1,6 +1,7 @@
 import type { ParsedRequest, Segment, SegmentCategory } from "./types.js";
 import { asText, blockJson, isRecord } from "./json-utils.js";
 import { countTokens, type TokenCounter } from "./token-counter.js";
+import { attachPromptIdentity } from "./prompt-identity.js";
 
 interface OpenAiContentPart {
   type?: string;
@@ -56,6 +57,7 @@ export function parseOpenAiRequest(raw: unknown, index: number, counter: TokenCo
 
   if (!Array.isArray(obj["messages"]) && ("input" in obj || "instructions" in obj)) {
     segments.push(...parseResponsesBody(obj, seg));
+    attachPromptIdentity(obj, segments, "openai");
     const model = typeof obj["model"] === "string" ? (obj["model"] as string) : undefined;
     return { provider: "openai", index, model, raw, segments };
   }
@@ -146,6 +148,7 @@ export function parseOpenAiRequest(raw: unknown, index: number, counter: TokenCo
     }
   });
 
+  attachPromptIdentity(obj, segments, "openai");
   const model = typeof obj["model"] === "string" ? (obj["model"] as string) : undefined;
   return { provider: "openai", index, model, raw, segments };
 }

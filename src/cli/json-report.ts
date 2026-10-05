@@ -1,7 +1,7 @@
 import type { AnalysisResult, Segment } from "../core/index.js";
 
 /** A segment as `--json` writes it: where it is, what it is and what it costs, without its content. */
-function summarize(segment: Segment): Omit<Segment, "text" | "raw"> {
+function summarize(segment: Segment): Omit<Segment, "text" | "raw" | "prefix"> {
   return {
     id: segment.id,
     category: segment.category,
@@ -36,6 +36,9 @@ export function toJsonReport(result: AnalysisResult): string {
       })),
     },
     reports: result.reports.map((r) => ({ ...r, segments: r.segments.map(summarize) })),
+    // A compact segment summary is insufficient if the readable diff still repeats
+    // its first 80 characters. Match counts/boundaries survive without those previews.
+    prefixMatches: result.prefixMatches.map((match) => ({ ...match, diff: undefined })),
   };
   return JSON.stringify(report, null, 2);
 }

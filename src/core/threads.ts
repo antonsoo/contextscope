@@ -118,8 +118,9 @@ export function threadRequests(
   // Messages on their own: which conversation a request belongs to does not depend on its tools
   // or system prompt, which are exactly what a cache-breaking request gets wrong.
   const messageTrie = new PrefixTrie();
-  const messageItems = requests.map((r) => r.segments.filter((s) => isMessage(s.category)).map((s) => messageTrie.item(`${s.category}::${s.text}`)));
-  const messagePaths = requests.map((r) => messageTrie.path(r.segments.filter((s) => isMessage(s.category)).map((s) => `${s.category}::${s.text}`)));
+  const messageKeys = requests.map((r) => comparisonKeys(r.segments.filter((s) => isMessage(s.category)), false));
+  const messageItems = messageKeys.map((keys) => keys.map((key) => messageTrie.item(key)));
+  const messagePaths = messageKeys.map((keys) => messageTrie.path(keys));
   /** Requests whose message list ends exactly at a node, latest last. */
   const endingAt = new Map<number, number[]>();
   const toolNames = requests.map((r) => r.segments.filter((s) => s.category === "tools").map((s) => s.label).join("\u0000"));

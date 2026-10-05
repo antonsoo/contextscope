@@ -37,10 +37,10 @@ export interface CacheControl {
 
 /**
  * One content block, tool definition, or system block, normalized into a
- * single addressable unit. `text` is the deterministic serialization used
- * for tokenizing and hashing - for a text block it's the text verbatim; for
- * an image it's a placeholder plus a content hash; for a tool definition
- * it's the canonicalized (sorted-key) JSON schema.
+ * single addressable unit. `text` is the analyzed content used for token counts
+ * and duplicate detection. Prompt structure is kept separately for prefix
+ * comparison; a tool result's destination or a message boundary can change
+ * while its analyzed text remains identical.
  */
 export interface Segment {
   /** Stable within one request, e.g. "tools[2]", "system[0]", "messages[3].content[1]". */
@@ -50,8 +50,11 @@ export interface Segment {
   label: string;
   /** Dot/bracket path into the original request JSON, for the inspector. */
   path: string;
-  /** Deterministic textual content used for tokenizing, hashing, and diffing. */
+  /** Analyzed textual content used for tokenizing and duplicate detection. */
   text: string;
+  /** Full prompt block and its message header/boundary, separate from counted text.
+   * Optional for callers constructing segments directly; parsed segments include it. */
+  prefix?: { content: unknown; context?: unknown };
   /** Original block, for the raw-content inspector view. */
   raw: unknown;
   /** Exact token count under OpenAI's o200k_base encoding. */

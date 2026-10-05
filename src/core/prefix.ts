@@ -1,29 +1,34 @@
 import type { DiffLine, ParsedRequest, PrefixMatch, PrefixRelation, Segment } from "./types.js";
 import { stripVolatilePatterns } from "./volatile.js";
-import { canonicalBlockJson } from "./json-utils.js";
+import { blockJson, canonicalJson, normalizedBlockJson } from "./json-utils.js";
 
 // The optimized scenario compares each segment as if it were fixed: timestamps/UUIDs redacted and
 // JSON keys sorted. That runs four regexes and a deep key sort per segment, and in a growing
 // conversation every segment is compared against its counterpart in both neighbouring requests.
 // Segments are immutable once parsed, so the normalized form is computed once per segment object.
 const normalizedText = new WeakMap<Segment, string>();
+const literalText = new WeakMap<Segment, string>();
 
-/** category + text, or - normalized - category + deterministic, volatile-free content. */
+/** Category plus prompt content/structure; constructed segments retain legacy text fallback. */
 function segmentKey(segment: Segment, normalizeVolatile: boolean): string {
-  if (!normalizeVolatile) return `${segment.category}::${segment.text}`;
-  let text = normalizedText.get(segment);
+  const cache = normalizeVolatile ? normalizedText : literalText;
+  let text = cache.get(segment);
   if (text === undefined) {
-    const content = segment.raw !== null && typeof segment.raw === "object" ? canonicalBlockJson(segment.raw) : segment.text;
-    text = stripVolatilePatterns(content);
-    normalizedText.set(segment, text);
+    if (segment.prefix) {
+      const context = normalizeVolatile ? canonicalJson(segment.prefix.context) : blockJson(segment.prefix.context);
+      const content = normalizeVolatile ? normalizedBlockJson(segment.prefix.content) : blockJson(segment.prefix.content);
+      text = JSON.stringify([context, content]);
+    } else if (normalizeVolatile) {
+      text = segment.raw !== null && typeof segment.raw === "object" ? normalizedBlockJson(segment.raw) : stripVolatilePatterns(segment.text);
+    } else text = segment.text;
+    cache.set(segment, text);
   }
   return `${segment.category}::${text}`;
 }
 
 function sameSegment(a: Segment, b: Segment, normalizeVolatile: boolean): boolean {
   if (a.category !== b.category) return false;
-  if (!normalizeVolatile) return a.text === b.text;
-  return segmentKey(a, true) === segmentKey(b, true);
+  return segmentKey(a, normalizeVolatile) === segmentKey(b, normalizeVolatile);
 }
 
 /** Normalized mode also sorts the leading tool definitions, as a deterministic tool list would be. */
@@ -47,7 +52,7 @@ export function comparisonKeys(segments: Segment[], normalizeVolatile: boolean):
   return (normalizeVolatile ? inCanonicalOrder(segments) : segments).map((segment) => segmentKey(segment, normalizeVolatile));
 }
 
-/** Length of the longest run of leading segments that are identical (by category + text) in both requests. */
+/** Length of the longest run of leading segments with identical prompt identities. */
 function commonPrefixLength(a: Segment[], b: Segment[], normalizeVolatile: boolean): number {
   const left = normalizeVolatile ? inCanonicalOrder(a) : a;
   const right = normalizeVolatile ? inCanonicalOrder(b) : b;
@@ -78,19 +83,15 @@ const MAX_EDIT_DISTANCE = 2000;
  * LCS table would.
  */
 function diffSegments(a: Segment[], b: Segment[]): DiffOp[] {
-  // Intern each distinct (category, text) to a small integer so comparisons are integer compares.
-  const ids = new Map<string, Map<string, number>>();
+  // Intern prompt identities to small integers for the diff's inner comparisons.
+  const ids = new Map<string, number>();
   let nextId = 0;
   const intern = (s: Segment): number => {
-    let byText = ids.get(s.category);
-    if (byText === undefined) {
-      byText = new Map();
-      ids.set(s.category, byText);
-    }
-    let id = byText.get(s.text);
+    const key = segmentKey(s, false);
+    let id = ids.get(key);
     if (id === undefined) {
       id = nextId++;
-      byText.set(s.text, id);
+      ids.set(key, id);
     }
     return id;
   };
@@ -170,7 +171,25 @@ function describeSegment(segment: Segment): string {
 
 /** Keeps context lines within `radius` of a change, like a unified diff, and renders only what is kept. */
 function withContext(ops: DiffOp[], radius = 2): DiffLine[] {
-  const render = (op: DiffOp): DiffLine => ({ type: op.type, text: describeSegment(op.segment) });
+  const identities = (type: DiffOp["type"]): Map<string, Set<string>> => {
+    const grouped = new Map<string, Set<string>>();
+    for (const op of ops) {
+      if (op.type !== type) continue;
+      const key = `${op.segment.category}::${op.segment.text}`;
+      const values = grouped.get(key) ?? new Set<string>();
+      values.add(segmentKey(op.segment, false));
+      grouped.set(key, values);
+    }
+    return grouped;
+  };
+  const removed = identities("remove");
+  const added = identities("add");
+  const render = (op: DiffOp): DiffLine => {
+    const key = `${op.segment.category}::${op.segment.text}`;
+    const other = (op.type === "remove" ? added : removed).get(key);
+    const structureChanged = op.type !== "context" && other !== undefined && (other.size > 1 || !other.has(segmentKey(op.segment, false)));
+    return { type: op.type, text: describeSegment(op.segment) + (structureChanged ? " [prompt metadata or message boundary changed]" : "") };
+  };
   if (ops.length <= 60) return ops.map(render); // small requests: show everything, no need to trim
   const keep = new Array<boolean>(ops.length).fill(false);
   ops.forEach((op, idx) => {

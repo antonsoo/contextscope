@@ -3,6 +3,7 @@ import { canonicalJson, isRecord, keyOrderFingerprint } from "./json-utils.js";
 import { ANTHROPIC_LOOKBACK_POSITIONS, findAnthropicModel } from "./pricing.js";
 import { containsVolatilePattern } from "./volatile.js";
 import { sameModel } from "./model-id.js";
+import { comparisonKeys } from "./prefix.js";
 
 function push(list: Finding[], f: Finding): void {
   list.push(f);
@@ -149,8 +150,9 @@ export function computeFindings(
       const a = prev.segments[s]!;
       const b = request.segments[s]!;
       if (a.category !== b.category) break;
-      if (a.text === b.text) continue;
-      if (containsVolatilePattern(a.text) || containsVolatilePattern(b.text)) {
+      if (comparisonKeys([a], false)[0] === comparisonKeys([b], false)[0]) continue;
+      if ((containsVolatilePattern(a.text) || containsVolatilePattern(b.text))
+        && comparisonKeys([a], true)[0] === comparisonKeys([b], true)[0]) {
         push(findings, {
           kind: "volatile_prefix",
           severity: "error",

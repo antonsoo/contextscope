@@ -40,4 +40,34 @@ describe("CLI evidence gates", () => {
       expect(result.stderr).not.toContain("at main");
     } finally { rmSync(dir, { recursive: true }); }
   });
+
+  it("corrupt bytes cannot produce a complete CLI report", () => {
+    const dir = mkdtempSync(join(tmpdir(), "contextscope-gate-"));
+    try {
+      const input = join(dir, "corrupt.json");
+      writeFileSync(input, Buffer.concat([Buffer.from('{"model":"gpt-6-sol","input":"'), Buffer.from([0xff]), Buffer.from('"}') ]));
+      const result = spawnSync(process.execPath, [cli, "analyze", input], { encoding: "utf8" });
+      expect(result.status).toBe(1);
+      expect(result.stderr).toMatch(/Invalid UTF-8 encoding.*Export or save/);
+      expect(result.stdout).toBe("");
+      expect(result.stderr).not.toContain("at main");
+    } finally { rmSync(dir, { recursive: true }); }
+  });
+
+  it("a real CLI JSON export does not repeat private prompt previews", () => {
+    const dir = mkdtempSync(join(tmpdir(), "contextscope-gate-"));
+    try {
+      const input = join(dir, "requests.json");
+      const json = join(dir, "report.json");
+      const marker = "synthetic-private-content-marker";
+      writeFileSync(input, JSON.stringify(["a", "b"].map((suffix) => ({ model: "gpt-6-sol", instructions: "stable setup", input: `${marker} ${suffix}` }))));
+      const result = spawnSync(process.execPath, [cli, "analyze", input, "--json", json], { encoding: "utf8" });
+      expect(result.status).toBe(0);
+      const text = readFileSync(json, "utf8");
+      expect(text).not.toContain(marker);
+      const report = JSON.parse(text) as { prefixMatches: Record<string, unknown>[] };
+      expect(report.prefixMatches[0]).toMatchObject({ fromIndex: 0, toIndex: 1, matchedSegments: 1 });
+      expect(report.prefixMatches[0]).not.toHaveProperty("diff");
+    } finally { rmSync(dir, { recursive: true }); }
+  });
 });

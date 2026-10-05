@@ -1,6 +1,7 @@
 import type { CacheControl, CacheTtl, ParsedRequest, Segment, SegmentCategory } from "./types.js";
 import { asText, blockJson, isRecord } from "./json-utils.js";
 import { countTokens, type TokenCounter } from "./token-counter.js";
+import { attachPromptIdentity } from "./prompt-identity.js";
 
 interface AnthropicBlock {
   type?: string;
@@ -158,7 +159,7 @@ export function parseAnthropicRequest(raw: unknown, index: number, counter: Toke
               id,
               category: roleCategory(role),
               label: `message ${mi + 1} (${role}) text`,
-              path,
+              path: typeof content === "string" ? `messages[${mi}].content` : path,
               text: asText(block.text ?? ""),
               // A plain content string is not a text-block object in the source log.
               raw: typeof content === "string" ? content : block,
@@ -257,6 +258,7 @@ export function parseAnthropicRequest(raw: unknown, index: number, counter: Toke
     });
   });
 
+  attachPromptIdentity(obj, segments, "anthropic");
   applyAutomaticBreakpoint(obj, segments);
 
   const model = typeof obj["model"] === "string" ? (obj["model"] as string) : undefined;

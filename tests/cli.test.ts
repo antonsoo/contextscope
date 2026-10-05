@@ -113,10 +113,27 @@ describe("--json", () => {
     expect(report.parse.requests[5]).not.toHaveProperty("raw");
     const segment = report.reports[5]!.segments.at(-1)!;
     expect(Object.keys(segment).sort()).toEqual(["category", "charLength", "claudeTokensEstimate", "id", "label", "openaiTokens", "path"]);
-    expect(segment["path"]).toBe("messages[5].content[0]"); // a string body counts as its first block
+    expect(segment["path"]).toBe("messages[5].content"); // source is a string, not an indexed block
     expect(segment["charLength"]).toBe(`turn 5: ${toolResult}`.length);
     expect(report.reports[5]!.totals.openaiTokens).toBe(result.reports[5]!.totals.openaiTokens);
     expect(report.findings).toHaveLength(result.findings.length);
+  });
+
+  it("does not include short request text through prefix diff previews", async () => {
+    const { toJsonReport } = await import("../src/cli/json-report.js");
+    const marker = "synthetic-private-content-marker";
+    const make = (suffix: string) => ({ model: "gpt-6-sol", instructions: "stable setup", input: `${marker} ${suffix}` });
+    const privateResult = analyze(JSON.stringify([make("a"), make("b")]));
+    const before = structuredClone(privateResult);
+    expect(privateResult.prefixMatches.some((match) => match.diff.some((line) => line.text.includes(marker)))).toBe(true);
+    const text = toJsonReport(privateResult);
+    expect(text).not.toContain(marker);
+    const report = JSON.parse(text) as { prefixMatches: Record<string, unknown>[]; cacheSimulation: unknown };
+    expect(report.prefixMatches).toHaveLength(privateResult.prefixMatches.length);
+    expect(report.prefixMatches[0]).not.toHaveProperty("diff");
+    expect(report.prefixMatches[0]).toMatchObject({ fromIndex: 0, toIndex: 1, matchedSegments: 1 });
+    expect(report.cacheSimulation).toEqual(privateResult.cacheSimulation);
+    expect(privateResult).toEqual(before);
   });
 });
 
@@ -136,4 +153,3 @@ describe("readInputFile", () => {
     expect(() => readInputFile(join(dir, "big.jsonl.gz"), 1024)).toThrow(/size limit.*split it/);
   });
 });
-

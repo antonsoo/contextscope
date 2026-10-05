@@ -1,3 +1,5 @@
+import { stripVolatilePatterns } from "./volatile.js";
+
 /** Small deterministic-serialization helpers shared by the parsers and findings. */
 
 /** JSON.stringify with recursively sorted object keys, so semantically identical objects with
@@ -40,6 +42,26 @@ export function blockJson(value: unknown): string {
 /** blockJson with sorted keys: the same block if it were serialized deterministically. */
 export function canonicalBlockJson(value: unknown): string {
   return canonicalJson(withoutCacheControl(value));
+}
+
+// Routing, speaker/type identity and signed thinking data are prompt structure.
+// A UUID-looking destination is not a timestamp that can be parameterized away.
+const STRUCTURAL_FIELDS = new Set(["id", "tool_use_id", "tool_call_id", "call_id", "signature", "name", "role", "type"]);
+
+function normalizeStrings(value: unknown): unknown {
+  if (typeof value === "string") return stripVolatilePatterns(value);
+  if (Array.isArray(value)) return value.map(normalizeStrings);
+  if (isRecord(value)) {
+    // Thinking is signed/opaque provider evidence, not freely editable prompt text.
+    if (value["type"] === "thinking" || value["type"] === "redacted_thinking") return value;
+    return Object.fromEntries(Object.entries(value).map(([key, item]) => [key, STRUCTURAL_FIELDS.has(key) ? item : normalizeStrings(item)]));
+  }
+  return value;
+}
+
+/** Optimized content: sorted keys and volatile text, with routing identities preserved. */
+export function normalizedBlockJson(value: unknown): string {
+  return canonicalJson(normalizeStrings(withoutCacheControl(value)));
 }
 
 function sortKeysDeep(value: unknown): unknown {
