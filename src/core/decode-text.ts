@@ -9,5 +9,12 @@
 export function decodeText(bytes: Uint8Array): string {
   const utf16 =
     bytes[0] === 0xff && bytes[1] === 0xfe ? "utf-16le" : bytes[0] === 0xfe && bytes[1] === 0xff ? "utf-16be" : null;
-  return new TextDecoder(utf16 ?? "utf-8").decode(bytes);
+  const encoding = utf16 ?? "utf-8";
+  try {
+    // Replacement decoding would turn two different corrupt captures into the same
+    // prompt, then incorrectly report complete coverage and matching cache prefixes.
+    return new TextDecoder(encoding, { fatal: true }).decode(bytes);
+  } catch {
+    throw new Error(`Invalid ${encoding.toUpperCase()} encoding. Export or save the original log as valid UTF-8 (or UTF-16 with a byte-order mark) and import it again.`);
+  }
 }

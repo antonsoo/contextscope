@@ -51,4 +51,12 @@ describe("bounded browser input", () => {
     expect(await bytesToText(new Uint8Array([0xef, 0xbb, 0xbf, ...bytes]))).toBe(sample);
     await expect(bytesToText(new Uint8Array([0x1f, 0x8b, 0, 0]))).rejects.toThrow();
   });
+
+  it("rejects malformed text before or after gzip inflation and retains literal replacement characters", async () => {
+    const corrupt = new Uint8Array([0xff]);
+    await expect(bytesToText(corrupt)).rejects.toThrow(/Invalid UTF-8 encoding/);
+    await expect(bytesToText(gzipSync(corrupt))).rejects.toThrow(/Invalid UTF-8 encoding/);
+    await expect(bytesToText(new Uint8Array([0xff, 0xfe, 0x61]))).rejects.toThrow(/Invalid UTF-16LE encoding/);
+    expect(await bytesToText(new TextEncoder().encode('Hello 😀 日本語 \uFFFD'))).toBe('Hello 😀 日本語 \uFFFD');
+  });
 });

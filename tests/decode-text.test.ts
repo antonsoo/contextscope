@@ -5,6 +5,7 @@ import { join } from "node:path";
 import { gzipSync } from "node:zlib";
 import { readInputFile } from "../src/cli/read-input.js";
 import { analyze } from "../src/core/index.js";
+import { decodeText } from "../src/core/decode-text.js";
 
 const dir = mkdtempSync(join(tmpdir(), "contextscope-encodings-"));
 afterAll(() => rmSync(dir, { recursive: true, force: true }));
@@ -47,5 +48,29 @@ describe("a log saved by a Windows shell or editor", () => {
     expect(fromUtf16.reports.length).toBe(expected.reports.length);
     expect(expected.reports.length).toBeGreaterThan(1);
     expect(fromUtf16.findings).toEqual(expected.findings);
+  });
+});
+
+describe("corrupt encoding cannot silently rewrite evidence", () => {
+  it.each([
+    ["invalid UTF-8", Buffer.from([0xff])],
+    ["truncated UTF-8", Buffer.from([0xe2, 0x82])],
+    ["overlong UTF-8", Buffer.from([0xc0, 0xaf])],
+    ["UTF-8 surrogate", Buffer.from([0xed, 0xa0, 0x80])],
+    ["odd UTF-16LE", Buffer.from([0xff, 0xfe, 0x61])],
+    ["unpaired UTF-16LE surrogate", Buffer.from([0xff, 0xfe, 0x00, 0xd8])],
+    ["unpaired UTF-16BE surrogate", Buffer.from([0xfe, 0xff, 0xd8, 0x00])],
+  ])("rejects %s with recovery instructions", (_name, bytes) => {
+    expect(() => decodeText(bytes)).toThrow(/encoding|UTF/i);
+    expect(() => decodeText(bytes)).toThrow(/save|export/i);
+    expect(() => saved("corrupt.json", bytes)).toThrow(/encoding|UTF/i);
+    expect(() => saved("corrupt.json.gz", gzipSync(bytes))).toThrow(/encoding|UTF/i);
+  });
+
+  it("preserves genuine Unicode including a literal replacement character", () => {
+    const unicode = 'Hello 😀 日本語 \uFFFD';
+    expect(decodeText(Buffer.from(unicode))).toBe(unicode);
+    expect(decodeText(utf16(unicode, false))).toBe(unicode);
+    expect(decodeText(utf16(unicode, true))).toBe(unicode);
   });
 });
