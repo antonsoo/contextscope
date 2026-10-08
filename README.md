@@ -25,12 +25,42 @@ Everything runs in your browser or on your machine. Nothing is uploaded, and the
 Content-Security-Policy (`connect-src 'self'`) has the browser enforce that: the page cannot
 send what you paste to any other host.
 
+## On real agent trajectories
+
+The first measurement of contextscope against what a provider reported, not against
+requests its own author wrote: 360 SWE-bench agent runs (mini-SWE-agent, public
+[trajectories](studies/real-trajectories/README.md)), 12,760 requests rebuilt from them, each
+next to the `usage` the API returned for it. Claude Sonnet 4.5, Opus 4.5, Haiku 4.5, Opus 4.6,
+gpt-5.1 and gpt-5.2.
+
+- **Claude token counts were 15 to 25% low (0.3.3).** Code and command output tokenize denser
+  than the estimate assumed. Re-fitted on half of the trajectories, the held-out mean error is
+  +1.6 to +3.3% on plain-text sessions and −6.5 to −11.3% on sessions that send tools (the
+  roughly 500-token tool-use system prompt is not modelled). This checkout only.
+- **OpenAI counts are exact once the message framing is added.** `prompt_tokens` was the
+  o200k_base count of the contents plus exactly 5 per message, in 2,205 of 2,205 requests.
+  0.3.3 left the 5 out (0.8 to 1.1% low).
+- **This checkout had broken the cache simulation on tool-using Claude sessions.**
+  A tool result sent as a string in one request and as a one-element list of text blocks in
+  the next was read as different content. On mini-SWE-agent 2.0 sessions the agreement with
+  Anthropic on "did this request read the cache" fell from 88 to 100% (0.3.3) to 6.5 to 23%, and
+  5,715 requests that did read the cache got a "breakpoint is outside the 20-position lookback
+  window" finding. 0.3.3 is not affected; the fix is in this checkout.
+- **With those fixed it agrees with Anthropic on 96 to 100% of requests** about whether the
+  cache was read, and its predicted share of input tokens read from cache is within 0.0 to
+  1.6 points of the reported one. Two Claude 4.5 models were missing from the model table and
+  were checked against a 512-token minimum instead of 4,096 (Opus 4.5).
+- **For OpenAI the simulation is an upper bound.** 27% of requests matched the reported
+  `cached_tokens` exactly; 34% got none where it predicted a read. gpt-5.2 cached 56 to 57% of
+  the predicted tokens, gpt-5.1 88%.
+
 ## Contents
 
 - [Quickstart](#quickstart)
 - [Features](#features)
 - [Usage](#usage)
 - [How it works](#how-it-works)
+- [On real agent trajectories](#on-real-agent-trajectories)
 - [Accuracy and limitations](#accuracy-and-limitations)
 - [Development](#development)
 - [Contributing](#contributing)
@@ -87,7 +117,8 @@ drop a request file, paste one, or click a built-in example.
   included); `--model` overrides it, and an id with no pricing entry is reported
   instead of silently priced as something else. All eleven current Claude
   models are covered, including the ones whose minimum cacheable prefix or
-  cache-read price differs from the usual.
+  cache-read price differs from the usual, and (source checkout) the two 4.5
+  models that coding agents still run, Opus 4.5 and Sonnet 4.5.
 - **Findings with concrete fixes**, grouped so a problem that recurs on every
   request is reported once: *"System prompt contains a value that changes every
   request (requests 2–24, 23×)"*, *"Tools reordered between requests 2 and 3:
@@ -143,6 +174,12 @@ prompt busts the cache on every turn:
 <p align="center">
   <img src="docs/assets/cli-cache-bust.png" alt="Terminal output of contextscope analyze: the largest request's token breakdown, all 23 request pairs rewriting the system block, zero cache reads across 24 requests, $2.8460 actual vs $0.4570 optimized (84% lower), and two grouped findings pinpointing the timestamp" width="880">
 </p>
+
+The screenshots, and the token counts and dollar figures in this section and
+the next, come from 0.3.3. This checkout's larger Claude estimate (see
+[On real agent trajectories](#on-real-agent-trajectories)) prices the same two
+sessions at $3.4459 actual and $0.5533 optimized, still 84% lower; the findings
+are unchanged. The other percentages here were not recomputed.
 
 The paired example, `examples/anthropic-agent-cache-fixed.jsonl.gz`, is the
 same session with two changes: the timestamp is gone from the system prompt,
@@ -233,10 +270,12 @@ including gzipped inputs. A real U+FFFD character in a valid encoding is retaine
 encoder, the BPE vocabulary GPT-4o and newer OpenAI models use. Claude counts
 are a documented heuristic (`src/core/tokenize-claude.ts`), because Anthropic
 does not publish Claude's tokenizer, and they are labelled `≈` everywhere. The
-method: characters per token scaled by how symbol-dense the text is (about 4.0
-chars/token for prose and 2.9 for JSON/code, interpolated by the fraction of
+method: characters per token scaled by how symbol-dense the text is (about 3.3
+chars/token for prose and 2.5 for JSON/code, interpolated by the fraction of
 non-alphanumeric characters), since BPE tokenizers split more often on
-punctuation. An agent loop re-sends its whole history on every request, so each
+punctuation. (Source checkout: these were 4.0 and 2.9 in 0.3.3, which counted
+the agent transcripts in [the real-trajectory study](studies/real-trajectories/README.md)
+20 to 30% low.) An agent loop re-sends its whole history on every request, so each
 distinct segment text is tokenized once per analysis: the flagship session has
 1,259 segments but only 109 distinct ones.
 
@@ -385,16 +424,35 @@ fixed hue order, so a color always means the same category.
   Claude tokenizer, and Claude's tokenizers differ between generations
   (Anthropic documents that the tokenizer introduced with Opus 4.7 uses up to
   about 1.35× as many tokens as Opus 4.6's for the same text), so no single
-  heuristic can be accurate for every model. The heuristic is only checked for
-  the qualitative behavior described above. Calibration aligns the total for
-  the counted request, subject to segment rounding; segments denser or sparser
-  than that request's average keep some error.
+  heuristic can be accurate for every model. Measured against the input tokens
+  Anthropic reported for 10,555 requests on Claude Sonnet 4.5, Opus 4.5,
+  Haiku 4.5 and Opus 4.6 ([study](studies/real-trajectories/README.md)), 0.3.3
+  was 15 to 25% low on average. In this checkout, on trajectories held out of
+  the fit, the mean error is +1.6 to +3.3% on plain-text sessions and −6.5 to
+  −11.3% on sessions that send tools, with 95% of requests within 11 to 15% and
+  13 to 22% respectively. The tool-use system prompt Anthropic adds (about 500
+  tokens on these models) and thinking blocks are not modelled. Nothing is
+  measured for Opus 4.7 and later. Calibration aligns the total for the counted
+  request, subject to segment rounding; segments denser or sparser than that
+  request's average keep some error.
 - **OpenAI token counts are exact** for the o200k_base encoding, cross-checked
   in `tests/tokenize-openai.test.ts` against `js-tiktoken`, an independently
   maintained pure-JS tokenizer, on 9 varied samples (prose, code, JSON,
   non-English text, emoji, repeated text); all match exactly. A model that uses
-  a different encoding still gets the o200k_base count. Per-message framing
-  tokens are not counted.
+  a different encoding still gets the o200k_base count. Chat Completions
+  messages with plain-string content carry 5 framing tokens each in this
+  checkout, the amount gpt-5.1 and gpt-5.2 reported for 2,205 requests with no
+  exception (0.3.3 left them out and was 0.8 to 1.1% low); messages with array
+  content, tool calls or tool definitions have framing that has not been
+  measured and is still not counted.
+- **For OpenAI the cache simulation is an upper bound, and on gpt-5.2 a loose one.**
+  Against the `cached_tokens` OpenAI reported for 2,085 steps whose prefix the
+  tool predicted would be cached, 27% matched exactly, 34% reported no cached
+  tokens at all and 38% fewer than predicted. gpt-5.1 cached 88% of the
+  predicted tokens, gpt-5.2 56 to 57%. OpenAI states that hits are not
+  guaranteed and that cached state lives on individual machines. For Anthropic
+  the same comparison agreed on whether a request read the cache in 96 to 100%
+  of 10,555 requests.
 - **The cache simulation is a documented model, not a measurement.** Request
   bodies carry no timestamps, so it assumes every request arrives within the
   TTL (the steady agent loop this tool targets) and never models an entry

@@ -4,7 +4,27 @@ All notable changes to this project are documented in this file.
 
 ## [Unreleased]
 
+Found by scoring contextscope against the usage Anthropic and OpenAI reported for 12,760 requests
+of public SWE-bench agent runs; see `studies/real-trajectories/`.
+
 ### Fixed
+
+- A tool result's string content and the same content as one text block are one prompt in
+  prefix, diff, cache and conversation identity. The unreleased prompt-identity change had made
+  them differ, so a tool-using Claude session whose cache marker moves between requests (as in
+  mini-SWE-agent 2.0 through litellm) showed no cache reads and a "lookback window" finding on
+  every request, while Anthropic reported reads on 90 to 97% of its input tokens. 0.3.3 is not
+  affected.
+- Claude token estimates were 15 to 25% low on agent transcripts. The characters-per-token
+  anchors move from 4.0 / 2.9 to 3.3 / 2.5, fitted on half of 5,160 measured steps and checked
+  on the other half. Estimates for Opus 4.7 and later are not measured and still lower than
+  Anthropic's documented tokenizer change implies.
+- OpenAI Chat Completions messages with plain-string content count 5 framing tokens each, the
+  amount gpt-5.1 and gpt-5.2 reported for 2,205 of 2,205 requests. Other message shapes are
+  unchanged.
+- Claude Opus 4.5 and Sonnet 4.5 are in the model table with their documented minimum cacheable
+  prefix (4,096 and 1,024 tokens) and prices. They were priced as Sonnet 5.5 with a 512-token
+  minimum, so Opus 4.5 sessions got cache reads predicted on prefixes the API does not cache.
 
 - Preserve full prompt structure and message boundaries in prefix, diff, cache
   and conversation identity, separately from token-counted content. Mark
@@ -51,8 +71,15 @@ All notable changes to this project are documented in this file.
   with focus containment/return; responsive treemap and mobile header.
 - Qualify empty findings and label cache costs as simulations.
 
+### Added
+
+- `studies/real-trajectories/`: the trajectories sampled, the scripts that rebuild their
+  request bodies and score contextscope against the reported usage, and the results.
+
 ### Tests
 
+- `tests/real-trajectory-fixes.test.ts`: the string / text-block tool result sequence, the
+  Claude 4.5 minimums and the Chat framing count, each taken from a case in the study.
 - Chromium and Firefox production workflow tests, including accessibility in
   both themes and mobile layouts, import races, cancellation, reset, bounded
   gzip expansion, calibration, keyboard navigation, and built-in assets.
