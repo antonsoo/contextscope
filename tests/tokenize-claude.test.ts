@@ -40,7 +40,7 @@ describe("estimateClaudeTokens ASCII fast path", () => {
     for (const ch of text) if (!/[\p{L}\p{N} ]/u.test(ch)) symbols++;
     const density = symbols / text.length;
     const t = Math.min(1, Math.max(0, (density - 0.15) / (0.45 - 0.15)));
-    return Math.max(1, Math.round(text.length / (4.0 + t * (2.9 - 4.0))));
+    return Math.max(1, Math.round(text.length / (3.3 + t * (2.5 - 3.3))));
   }
 
   it.each([

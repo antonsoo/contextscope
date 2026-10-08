@@ -61,6 +61,12 @@ export const ANTHROPIC_MODELS: readonly AnthropicModelInfo[] = [
   { id: "claude-sonnet-5-5", displayName: "Claude Sonnet 5.5", contextWindow: 1_000_000, inputPricePerMTok: 2, outputPricePerMTok: 10, cacheReadMultiplier: 0.1, minCacheableTokens: 512, midConversationSystem: true },
   { id: "claude-sonnet-5", displayName: "Claude Sonnet 5", contextWindow: 1_000_000, inputPricePerMTok: 2, outputPricePerMTok: 10, cacheReadMultiplier: 0.1, minCacheableTokens: 1024, midConversationSystem: false },
   { id: "claude-sonnet-4-6", displayName: "Claude Sonnet 4.6", contextWindow: 1_000_000, inputPricePerMTok: 3, outputPricePerMTok: 15, cacheReadMultiplier: 0.1, minCacheableTokens: 1024, midConversationSystem: false },
+  // Claude 4.5 generation, fetched 2026-10-08 from https://platform.claude.com/docs/en/about-claude/pricing and
+  // https://platform.claude.com/docs/en/build-with-claude/prompt-caching (minimums), context windows from
+  // https://platform.claude.com/docs/en/models/opus-4-5/overview and .../build-with-claude/context-windows.
+  // Without these two a Claude Opus 4.5 log was priced as the default model and its 4,096-token minimum read as 512.
+  { id: "claude-opus-4-5", displayName: "Claude Opus 4.5", contextWindow: 200_000, inputPricePerMTok: 5, outputPricePerMTok: 25, cacheReadMultiplier: 0.1, minCacheableTokens: 4096, midConversationSystem: false },
+  { id: "claude-sonnet-4-5", displayName: "Claude Sonnet 4.5", contextWindow: 200_000, inputPricePerMTok: 3, outputPricePerMTok: 15, cacheReadMultiplier: 0.1, minCacheableTokens: 1024, midConversationSystem: false },
   { id: "claude-haiku-4-5", displayName: "Claude Haiku 4.5", contextWindow: 200_000, inputPricePerMTok: 1, outputPricePerMTok: 5, cacheReadMultiplier: 0.1, minCacheableTokens: 4096, midConversationSystem: false },
 ];
 

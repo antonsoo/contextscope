@@ -10,6 +10,16 @@ interface OpenAiContentPart {
   [key: string]: unknown;
 }
 
+/**
+ * Tokens the Chat Completions format adds around each message (role, delimiters), which the
+ * message's text does not contain. Measured on 2,205 requests of gpt-5.1 and gpt-5.2 whose
+ * messages were all plain text: reported prompt_tokens equalled the o200k_base count of the
+ * contents plus exactly 5 per message, with no remainder in any request (see
+ * studies/real-trajectories/README.md). Not measured for messages with array content, tool calls
+ * or tool definitions, or for other models, so only plain-string messages get it.
+ */
+const CHAT_MESSAGE_FRAMING_TOKENS = 5;
+
 type SegmentParams = { id: string; category: SegmentCategory; label: string; path: string; text: string; raw: unknown };
 
 function makeSegment(params: SegmentParams, counter: TokenCounter): Segment {
@@ -76,16 +86,16 @@ export function parseOpenAiRequest(raw: unknown, index: number, counter: TokenCo
 
     if (typeof content === "string" || content === undefined || content === null) {
       if (typeof content === "string" && content.length > 0) {
-        segments.push(
-          seg({
-            id: `messages[${mi}].content`,
-            category,
-            label: `message ${mi + 1} (${role}) text`,
-            path: `messages[${mi}].content`,
-            text: content,
-            raw: message,
-          }),
-        );
+        const segment = seg({
+          id: `messages[${mi}].content`,
+          category,
+          label: `message ${mi + 1} (${role}) text`,
+          path: `messages[${mi}].content`,
+          text: content,
+          raw: message,
+        });
+        segment.openaiTokens += CHAT_MESSAGE_FRAMING_TOKENS;
+        segments.push(segment);
       }
     } else if (Array.isArray(content)) {
       (content as unknown[]).forEach((entry, pi) => {

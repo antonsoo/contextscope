@@ -6,6 +6,12 @@ function header(message: Record<string, unknown>): Record<string, unknown> {
   return Object.fromEntries(Object.entries(message).filter(([key]) => !["content", "tool_calls", "function_call"].includes(key)));
 }
 
+/** A tool result's string content is shorthand for one text block, as a message's string content is. */
+function withTextBlockContent(block: unknown): unknown {
+  if (!isRecord(block) || block["type"] !== "tool_result" || typeof block["content"] !== "string") return block;
+  return { ...block, content: [{ type: "text", text: block["content"] }] };
+}
+
 /** Attach source prompt units after parsing, without changing their text or token counts.
  * A start marker retains message boundaries without binding history to absolute indices:
  * a sliding-window rewrite can still match older messages at their new positions. */
@@ -28,7 +34,7 @@ export function attachPromptIdentity(request: Record<string, unknown>, segments:
         if (suffix.startsWith(".content")) {
           const raw = message["content"];
           content = typeof raw === "string" ? { type: "text", text: raw }
-            : part && Array.isArray(raw) ? raw[Number(part[1])] : raw;
+            : part && Array.isArray(raw) ? (provider === "anthropic" ? withTextBlockContent(raw[Number(part[1])]) : raw[Number(part[1])]) : raw;
         } else if (call && Array.isArray(message["tool_calls"])) content = message["tool_calls"][Number(call[1])];
         else if (suffix === ".function_call") content = message["function_call"];
       }

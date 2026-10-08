@@ -10,17 +10,19 @@
  * Method: a length-based estimate, characters-per-token, with the divisor
  * adjusted by how "dense" the text is (ratio of non-alphanumeric,
  * non-whitespace characters - punctuation, brackets, operators). Prose
- * tokenizes at roughly 3.8-4.2 characters/token in English; code and JSON,
- * which are punctuation-heavy, tokenize noticeably denser (BPE splits on
- * symbol boundaries more often), commonly 2.7-3.3 characters/token. This is
- * the same order-of-magnitude heuristic widely used for quick token
- * estimates across BPE tokenizers in general (it is not Claude-specific,
- * because no Claude-specific public data exists); `calibrate.ts` lets a user
- * with an API key replace it with real counts.
+ * tokenizes at roughly 3.3 characters/token on the agent transcripts it was
+ * fitted to; code and JSON, which are punctuation-heavy, tokenize denser (BPE
+ * splits on symbol boundaries more often), about 2.5 characters/token.
+ * `calibrate.ts` lets a user with an API key replace it with real counts.
  */
 
-const PROSE_CHARS_PER_TOKEN = 4.0;
-const DENSE_CHARS_PER_TOKEN = 2.9;
+// Fitted to the input tokens Anthropic reported for 5,160 agent steps (coding-agent trajectories on
+// Claude Sonnet 4.5, Opus 4.5, Haiku 4.5 and Opus 4.6, half of the trajectories held out); see
+// studies/real-trajectories/README.md. The earlier 4.0 and 2.9 undercounted that content by 20-30%.
+// These models share a tokenizer; Claude Opus 4.7 and later use a newer one that Anthropic documents
+// as producing about 30% more tokens, which this estimate does not model.
+const PROSE_CHARS_PER_TOKEN = 3.3;
+const DENSE_CHARS_PER_TOKEN = 2.5;
 
 const LETTER_OR_NUMBER = /[\p{L}\p{N}]/u;
 
