@@ -21,7 +21,7 @@ export default tseslint.config(
   },
   {
     // Example generator and benchmark (not part of the shipped library or CLI) - plain Node scripts.
-    files: ["scripts/**/*.mjs", "playwright.config.mjs"],
+    files: ["scripts/**/*.mjs", "studies/**/*.mjs", "playwright.config.mjs"],
     languageOptions: {
       globals: { console: "readonly", process: "readonly", Buffer: "readonly", performance: "readonly", URL: "readonly" },
     },

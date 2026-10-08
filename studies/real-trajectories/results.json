@@ -1,0 +1,1019 @@
+{
+ "provenance": {
+  "released": "contextscope v0.3.3 (tag, commit 4bef9ea)",
+  "head": "contextscope 9479694, the checkout before this study's changes",
+  "after": "the working tree of the commit that adds this study",
+  "reconstruction": "mini-swe-agent tags v1.13.3, v1.16.0, v2.0.0 (pinned source) with litellm 1.104.2; OpenAI entries need no library",
+  "swe_bench_experiments_commit": "40f164d5b8f1d249bf95a6df8b74b577fd8e519d (main, 2026-09-03)"
+ },
+ "splits": "trajectories are split by sha256(instance id) mod 2; side 1 is held out",
+ "versions": {},
+ "dataset": {
+  "20250929_mini-v1.13.3_sonnet-4-5-20250929": {
+   "listed": 500,
+   "sampled": 40,
+   "analysed_trajectories": 40,
+   "requests": 2108,
+   "calls_mismatch_trajectories": 0
+  },
+  "20251124_mini-v1.16.0_claude-opus-4-5-20251101": {
+   "listed": 500,
+   "sampled": 40,
+   "analysed_trajectories": 40,
+   "requests": 1592,
+   "calls_mismatch_trajectories": 0
+  },
+  "20260217_mini-v2.0.0_claude-4-5-haiku-high": {
+   "listed": 500,
+   "sampled": 40,
+   "analysed_trajectories": 40,
+   "requests": 2710,
+   "calls_mismatch_trajectories": 2
+  },
+  "20260217_mini-v2.0.0_claude-4-5-opus-high": {
+   "listed": 500,
+   "sampled": 40,
+   "analysed_trajectories": 40,
+   "requests": 1344,
+   "calls_mismatch_trajectories": 0
+  },
+  "20260217_mini-v2.0.0_claude-4-5-sonnet-high": {
+   "listed": 500,
+   "sampled": 40,
+   "analysed_trajectories": 40,
+   "requests": 1926,
+   "calls_mismatch_trajectories": 1
+  },
+  "20260217_mini-v2.0.0_claude-4-6-opus": {
+   "listed": 500,
+   "sampled": 40,
+   "analysed_trajectories": 40,
+   "requests": 875,
+   "calls_mismatch_trajectories": 0
+  },
+  "20251120_mini-v1.15.0_gpt-5.1-2025-11-13": {
+   "listed": 500,
+   "sampled": 40,
+   "analysed_trajectories": 40,
+   "requests": 771,
+   "calls_mismatch_trajectories": 0
+  },
+  "20251211_mini-v1.17.2_gpt-5.2-2025-12-11": {
+   "listed": 500,
+   "sampled": 40,
+   "analysed_trajectories": 40,
+   "requests": 635,
+   "calls_mismatch_trajectories": 0
+  },
+  "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high": {
+   "listed": 500,
+   "sampled": 40,
+   "analysed_trajectories": 40,
+   "requests": 799,
+   "calls_mismatch_trajectories": 0
+  },
+  "20251124_mini-v1.16.0_gpt-5.1-codex": {
+   "listed": 500,
+   "sampled": 40,
+   "analysed_trajectories": 0,
+   "requests": 0,
+   "calls_mismatch_trajectories": 0
+  },
+  "20260217_mini-v2.0.0_gpt-5-2-high": {
+   "listed": 500,
+   "sampled": 40,
+   "analysed_trajectories": 0,
+   "requests": 0,
+   "calls_mismatch_trajectories": 0
+  },
+  "20260217_mini-v2.0.0_gpt-5-mini": {
+   "listed": 500,
+   "sampled": 40,
+   "analysed_trajectories": 0,
+   "requests": 0,
+   "calls_mismatch_trajectories": 0
+  },
+  "20260219_mini-v2.0.0_gpt-5-2-codex": {
+   "listed": 500,
+   "sampled": 40,
+   "analysed_trajectories": 0,
+   "requests": 0,
+   "calls_mismatch_trajectories": 0
+  }
+ },
+ "token_counts": {
+  "20250929_mini-v1.13.3_sonnet-4-5-20250929": {
+   "released": {
+    "n": 2108,
+    "signed_mean_pct": -16.88,
+    "mape_pct": 16.93,
+    "p95_abs_pct": 26.06,
+    "heldout_n": 958,
+    "heldout_signed_mean_pct": -16.0,
+    "heldout_mape_pct": 16.0,
+    "heldout_p95_abs_pct": 24.63
+   },
+   "head": {
+    "n": 2108,
+    "signed_mean_pct": -16.88,
+    "mape_pct": 16.93,
+    "p95_abs_pct": 26.06,
+    "heldout_n": 958,
+    "heldout_signed_mean_pct": -16.0,
+    "heldout_mape_pct": 16.0,
+    "heldout_p95_abs_pct": 24.63
+   },
+   "after": {
+    "n": 2108,
+    "signed_mean_pct": 0.49,
+    "mape_pct": 4.85,
+    "p95_abs_pct": 13.72,
+    "heldout_n": 958,
+    "heldout_signed_mean_pct": 1.56,
+    "heldout_mape_pct": 4.08,
+    "heldout_p95_abs_pct": 11.25
+   }
+  },
+  "20251120_mini-v1.15.0_gpt-5.1-2025-11-13": {
+   "released": {
+    "n": 771,
+    "signed_mean_pct": -0.76,
+    "mape_pct": 0.76,
+    "p95_abs_pct": 1.1,
+    "heldout_n": 296,
+    "heldout_signed_mean_pct": -0.78,
+    "heldout_mape_pct": 0.78,
+    "heldout_p95_abs_pct": 1.16
+   },
+   "head": {
+    "n": 771,
+    "signed_mean_pct": -0.76,
+    "mape_pct": 0.76,
+    "p95_abs_pct": 1.1,
+    "heldout_n": 296,
+    "heldout_signed_mean_pct": -0.78,
+    "heldout_mape_pct": 0.78,
+    "heldout_p95_abs_pct": 1.16
+   },
+   "after": {
+    "n": 771,
+    "signed_mean_pct": 0.0,
+    "mape_pct": 0.0,
+    "p95_abs_pct": 0.0,
+    "heldout_n": 296,
+    "heldout_signed_mean_pct": 0.0,
+    "heldout_mape_pct": 0.0,
+    "heldout_p95_abs_pct": 0.0
+   }
+  },
+  "20251124_mini-v1.16.0_claude-opus-4-5-20251101": {
+   "released": {
+    "n": 1592,
+    "signed_mean_pct": -14.86,
+    "mape_pct": 14.87,
+    "p95_abs_pct": 27.5,
+    "heldout_n": 778,
+    "heldout_signed_mean_pct": -14.67,
+    "heldout_mape_pct": 14.68,
+    "heldout_p95_abs_pct": 27.06
+   },
+   "head": {
+    "n": 1592,
+    "signed_mean_pct": -14.86,
+    "mape_pct": 14.87,
+    "p95_abs_pct": 27.5,
+    "heldout_n": 778,
+    "heldout_signed_mean_pct": -14.67,
+    "heldout_mape_pct": 14.68,
+    "heldout_p95_abs_pct": 27.06
+   },
+   "after": {
+    "n": 1592,
+    "signed_mean_pct": 3.0,
+    "mape_pct": 7.63,
+    "p95_abs_pct": 14.94,
+    "heldout_n": 778,
+    "heldout_signed_mean_pct": 3.26,
+    "heldout_mape_pct": 7.64,
+    "heldout_p95_abs_pct": 14.9
+   }
+  },
+  "20251211_mini-v1.17.2_gpt-5.2-2025-12-11": {
+   "released": {
+    "n": 635,
+    "signed_mean_pct": -1.07,
+    "mape_pct": 1.07,
+    "p95_abs_pct": 1.62,
+    "heldout_n": 355,
+    "heldout_signed_mean_pct": -1.04,
+    "heldout_mape_pct": 1.04,
+    "heldout_p95_abs_pct": 1.65
+   },
+   "head": {
+    "n": 635,
+    "signed_mean_pct": -1.07,
+    "mape_pct": 1.07,
+    "p95_abs_pct": 1.62,
+    "heldout_n": 355,
+    "heldout_signed_mean_pct": -1.04,
+    "heldout_mape_pct": 1.04,
+    "heldout_p95_abs_pct": 1.65
+   },
+   "after": {
+    "n": 635,
+    "signed_mean_pct": 0.0,
+    "mape_pct": 0.0,
+    "p95_abs_pct": 0.0,
+    "heldout_n": 355,
+    "heldout_signed_mean_pct": 0.0,
+    "heldout_mape_pct": 0.0,
+    "heldout_p95_abs_pct": 0.0
+   }
+  },
+  "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high": {
+   "released": {
+    "n": 799,
+    "signed_mean_pct": -1.12,
+    "mape_pct": 1.12,
+    "p95_abs_pct": 1.71,
+    "heldout_n": 329,
+    "heldout_signed_mean_pct": -1.14,
+    "heldout_mape_pct": 1.14,
+    "heldout_p95_abs_pct": 1.66
+   },
+   "head": {
+    "n": 799,
+    "signed_mean_pct": -1.12,
+    "mape_pct": 1.12,
+    "p95_abs_pct": 1.71,
+    "heldout_n": 329,
+    "heldout_signed_mean_pct": -1.14,
+    "heldout_mape_pct": 1.14,
+    "heldout_p95_abs_pct": 1.66
+   },
+   "after": {
+    "n": 799,
+    "signed_mean_pct": 0.0,
+    "mape_pct": 0.0,
+    "p95_abs_pct": 0.0,
+    "heldout_n": 329,
+    "heldout_signed_mean_pct": 0.0,
+    "heldout_mape_pct": 0.0,
+    "heldout_p95_abs_pct": 0.0
+   }
+  },
+  "20260217_mini-v2.0.0_claude-4-5-haiku-high": {
+   "released": {
+    "n": 2710,
+    "signed_mean_pct": -23.45,
+    "mape_pct": 23.45,
+    "p95_abs_pct": 33.86,
+    "heldout_n": 1254,
+    "heldout_signed_mean_pct": -23.3,
+    "heldout_mape_pct": 23.3,
+    "heldout_p95_abs_pct": 33.52
+   },
+   "head": {
+    "n": 2710,
+    "signed_mean_pct": -23.45,
+    "mape_pct": 23.45,
+    "p95_abs_pct": 33.86,
+    "heldout_n": 1254,
+    "heldout_signed_mean_pct": -23.3,
+    "heldout_mape_pct": 23.3,
+    "heldout_p95_abs_pct": 33.52
+   },
+   "after": {
+    "n": 2710,
+    "signed_mean_pct": -7.53,
+    "mape_pct": 7.65,
+    "p95_abs_pct": 19.99,
+    "heldout_n": 1254,
+    "heldout_signed_mean_pct": -7.36,
+    "heldout_mape_pct": 7.41,
+    "heldout_p95_abs_pct": 19.73
+   }
+  },
+  "20260217_mini-v2.0.0_claude-4-5-opus-high": {
+   "released": {
+    "n": 1344,
+    "signed_mean_pct": -24.33,
+    "mape_pct": 24.33,
+    "p95_abs_pct": 34.29,
+    "heldout_n": 989,
+    "heldout_signed_mean_pct": -23.74,
+    "heldout_mape_pct": 23.74,
+    "heldout_p95_abs_pct": 33.57
+   },
+   "head": {
+    "n": 1344,
+    "signed_mean_pct": -24.33,
+    "mape_pct": 24.33,
+    "p95_abs_pct": 34.29,
+    "heldout_n": 989,
+    "heldout_signed_mean_pct": -23.74,
+    "heldout_mape_pct": 23.74,
+    "heldout_p95_abs_pct": 33.57
+   },
+   "after": {
+    "n": 1344,
+    "signed_mean_pct": -8.54,
+    "mape_pct": 8.75,
+    "p95_abs_pct": 20.54,
+    "heldout_n": 989,
+    "heldout_signed_mean_pct": -7.82,
+    "heldout_mape_pct": 8.08,
+    "heldout_p95_abs_pct": 19.65
+   }
+  },
+  "20260217_mini-v2.0.0_claude-4-5-sonnet-high": {
+   "released": {
+    "n": 1926,
+    "signed_mean_pct": -25.38,
+    "mape_pct": 25.38,
+    "p95_abs_pct": 35.63,
+    "heldout_n": 849,
+    "heldout_signed_mean_pct": -26.53,
+    "heldout_mape_pct": 26.53,
+    "heldout_p95_abs_pct": 35.28
+   },
+   "head": {
+    "n": 1926,
+    "signed_mean_pct": -25.38,
+    "mape_pct": 25.38,
+    "p95_abs_pct": 35.63,
+    "heldout_n": 849,
+    "heldout_signed_mean_pct": -26.53,
+    "heldout_mape_pct": 26.53,
+    "heldout_p95_abs_pct": 35.28
+   },
+   "after": {
+    "n": 1926,
+    "signed_mean_pct": -9.95,
+    "mape_pct": 10.27,
+    "p95_abs_pct": 22.58,
+    "heldout_n": 849,
+    "heldout_signed_mean_pct": -11.33,
+    "heldout_mape_pct": 11.33,
+    "heldout_p95_abs_pct": 21.9
+   }
+  },
+  "20260217_mini-v2.0.0_claude-4-6-opus": {
+   "released": {
+    "n": 875,
+    "signed_mean_pct": -24.3,
+    "mape_pct": 24.3,
+    "p95_abs_pct": 37.76,
+    "heldout_n": 450,
+    "heldout_signed_mean_pct": -22.63,
+    "heldout_mape_pct": 22.63,
+    "heldout_p95_abs_pct": 27.99
+   },
+   "head": {
+    "n": 875,
+    "signed_mean_pct": -24.3,
+    "mape_pct": 24.3,
+    "p95_abs_pct": 37.76,
+    "heldout_n": 450,
+    "heldout_signed_mean_pct": -22.63,
+    "heldout_mape_pct": 22.63,
+    "heldout_p95_abs_pct": 27.99
+   },
+   "after": {
+    "n": 875,
+    "signed_mean_pct": -8.56,
+    "mape_pct": 8.99,
+    "p95_abs_pct": 25.06,
+    "heldout_n": 450,
+    "heldout_signed_mean_pct": -6.5,
+    "heldout_mape_pct": 7.09,
+    "heldout_p95_abs_pct": 12.93
+   }
+  }
+ },
+ "openai_framing_residual_released_count_minus_5_per_message": {
+  "0": 2205
+ },
+ "openai_residual_after_change": {
+  "0": 2205
+ },
+ "by_content_type_heldout": {
+  "before (4.0 / 2.9)": {
+   "heldout_steps": 5155,
+   "factor_actual_over_estimate": {
+    "user": 1.157,
+    "assistant": 1.166,
+    "tool_call": 1.115,
+    "tool_result": 1.204,
+    "thinking": 1.443
+   },
+   "per_step_constant_tokens": 30.7,
+   "sum_actual_over_sum_est": 1.252,
+   "sum_ratio_by_entry": {
+    "20250929_mini-v1.13.3_sonnet-4-5-20250929": 1.196,
+    "20251124_mini-v1.16.0_claude-opus-4-5-20251101": 1.214,
+    "20260217_mini-v2.0.0_claude-4-5-haiku-high": 1.26,
+    "20260217_mini-v2.0.0_claude-4-5-opus-high": 1.278,
+    "20260217_mini-v2.0.0_claude-4-5-sonnet-high": 1.306,
+    "20260217_mini-v2.0.0_claude-4-6-opus": 1.263
+   }
+  },
+  "after (3.3 / 2.5)": {
+   "heldout_steps": 5155,
+   "factor_actual_over_estimate": {
+    "user": 0.956,
+    "assistant": 0.967,
+    "tool_call": 0.924,
+    "tool_result": 0.995,
+    "thinking": 1.19
+   },
+   "per_step_constant_tokens": 31.8,
+   "sum_actual_over_sum_est": 1.038,
+   "sum_ratio_by_entry": {
+    "20250929_mini-v1.13.3_sonnet-4-5-20250929": 0.991,
+    "20251124_mini-v1.16.0_claude-opus-4-5-20251101": 1.004,
+    "20260217_mini-v2.0.0_claude-4-5-haiku-high": 1.045,
+    "20260217_mini-v2.0.0_claude-4-5-opus-high": 1.058,
+    "20260217_mini-v2.0.0_claude-4-5-sonnet-high": 1.084,
+    "20260217_mini-v2.0.0_claude-4-6-opus": 1.047
+   }
+  }
+ },
+ "anthropic_cache": {
+  "20250929_mini-v1.13.3_sonnet-4-5-20250929": {
+   "released": {
+    "requests": 2108,
+    "actual_read_sim_read": 2068,
+    "actual_read_sim_none": 1,
+    "actual_none_sim_read": 0,
+    "actual_none_sim_none": 39,
+    "agree_pct": 99.95,
+    "actual_read_share_pct": 96.77,
+    "sim_read_share_pct": 96.77,
+    "findings": {},
+    "provider_cached_nothing": 0,
+    "of_which_flagged_below_minimum": 0
+   },
+   "head": {
+    "requests": 2108,
+    "actual_read_sim_read": 2068,
+    "actual_read_sim_none": 1,
+    "actual_none_sim_read": 0,
+    "actual_none_sim_none": 39,
+    "agree_pct": 99.95,
+    "actual_read_share_pct": 96.77,
+    "sim_read_share_pct": 96.77,
+    "findings": {},
+    "provider_cached_nothing": 0,
+    "of_which_flagged_below_minimum": 0
+   },
+   "after": {
+    "requests": 2108,
+    "actual_read_sim_read": 2068,
+    "actual_read_sim_none": 1,
+    "actual_none_sim_read": 0,
+    "actual_none_sim_none": 39,
+    "agree_pct": 99.95,
+    "actual_read_share_pct": 96.77,
+    "sim_read_share_pct": 96.78,
+    "findings": {},
+    "provider_cached_nothing": 0,
+    "of_which_flagged_below_minimum": 0
+   }
+  },
+  "20251124_mini-v1.16.0_claude-opus-4-5-20251101": {
+   "released": {
+    "requests": 1592,
+    "actual_read_sim_read": 1410,
+    "actual_read_sim_none": 0,
+    "actual_none_sim_read": 142,
+    "actual_none_sim_none": 40,
+    "agree_pct": 91.08,
+    "actual_read_share_pct": 94.79,
+    "sim_read_share_pct": 96.12,
+    "findings": {},
+    "provider_cached_nothing": 142,
+    "of_which_flagged_below_minimum": 0
+   },
+   "head": {
+    "requests": 1592,
+    "actual_read_sim_read": 1410,
+    "actual_read_sim_none": 0,
+    "actual_none_sim_read": 142,
+    "actual_none_sim_none": 40,
+    "agree_pct": 91.08,
+    "actual_read_share_pct": 94.79,
+    "sim_read_share_pct": 96.12,
+    "findings": {},
+    "provider_cached_nothing": 142,
+    "of_which_flagged_below_minimum": 0
+   },
+   "after": {
+    "requests": 1592,
+    "actual_read_sim_read": 1405,
+    "actual_read_sim_none": 5,
+    "actual_none_sim_read": 11,
+    "actual_none_sim_none": 171,
+    "agree_pct": 98.99,
+    "actual_read_share_pct": 94.79,
+    "sim_read_share_pct": 94.87,
+    "findings": {
+     "below_minimum_cacheable: provider cached": 5,
+     "below_minimum_cacheable: provider cached nothing": 131
+    },
+    "provider_cached_nothing": 142,
+    "of_which_flagged_below_minimum": 131
+   }
+  },
+  "20260217_mini-v2.0.0_claude-4-5-haiku-high": {
+   "released": {
+    "requests": 2710,
+    "actual_read_sim_read": 2434,
+    "actual_read_sim_none": 100,
+    "actual_none_sim_read": 2,
+    "actual_none_sim_none": 174,
+    "agree_pct": 96.24,
+    "actual_read_share_pct": 96.68,
+    "sim_read_share_pct": 96.21,
+    "findings": {
+     "below_minimum_cacheable: provider cached": 100,
+     "below_minimum_cacheable: provider cached nothing": 134
+    },
+    "provider_cached_nothing": 134,
+    "of_which_flagged_below_minimum": 134
+   },
+   "head": {
+    "requests": 2710,
+    "actual_read_sim_read": 1,
+    "actual_read_sim_none": 2533,
+    "actual_none_sim_read": 0,
+    "actual_none_sim_none": 176,
+    "agree_pct": 6.53,
+    "actual_read_share_pct": 96.68,
+    "sim_read_share_pct": 0.08,
+    "findings": {
+     "below_minimum_cacheable: provider cached": 100,
+     "below_minimum_cacheable: provider cached nothing": 134,
+     "lookback_window_exceeded: provider did not read": 3,
+     "lookback_window_exceeded: provider read the cache": 2427
+    },
+    "provider_cached_nothing": 134,
+    "of_which_flagged_below_minimum": 134
+   },
+   "after": {
+    "requests": 2710,
+    "actual_read_sim_read": 2486,
+    "actual_read_sim_none": 48,
+    "actual_none_sim_read": 2,
+    "actual_none_sim_none": 174,
+    "agree_pct": 98.15,
+    "actual_read_share_pct": 96.68,
+    "sim_read_share_pct": 96.59,
+    "findings": {
+     "below_minimum_cacheable: provider cached": 48,
+     "below_minimum_cacheable: provider cached nothing": 134
+    },
+    "provider_cached_nothing": 134,
+    "of_which_flagged_below_minimum": 134
+   }
+  },
+  "20260217_mini-v2.0.0_claude-4-5-opus-high": {
+   "released": {
+    "requests": 1344,
+    "actual_read_sim_read": 1238,
+    "actual_read_sim_none": 0,
+    "actual_none_sim_read": 66,
+    "actual_none_sim_none": 40,
+    "agree_pct": 95.09,
+    "actual_read_share_pct": 95.61,
+    "sim_read_share_pct": 96.29,
+    "findings": {},
+    "provider_cached_nothing": 66,
+    "of_which_flagged_below_minimum": 0
+   },
+   "head": {
+    "requests": 1344,
+    "actual_read_sim_read": 139,
+    "actual_read_sim_none": 1099,
+    "actual_none_sim_read": 66,
+    "actual_none_sim_none": 40,
+    "agree_pct": 13.32,
+    "actual_read_share_pct": 95.61,
+    "sim_read_share_pct": 1.47,
+    "findings": {
+     "lookback_window_exceeded: provider read the cache": 1099
+    },
+    "provider_cached_nothing": 66,
+    "of_which_flagged_below_minimum": 0
+   },
+   "after": {
+    "requests": 1344,
+    "actual_read_sim_read": 1215,
+    "actual_read_sim_none": 23,
+    "actual_none_sim_read": 0,
+    "actual_none_sim_none": 106,
+    "agree_pct": 98.29,
+    "actual_read_share_pct": 95.61,
+    "sim_read_share_pct": 95.47,
+    "findings": {
+     "below_minimum_cacheable: provider cached": 23,
+     "below_minimum_cacheable: provider cached nothing": 66
+    },
+    "provider_cached_nothing": 66,
+    "of_which_flagged_below_minimum": 66
+   }
+  },
+  "20260217_mini-v2.0.0_claude-4-5-sonnet-high": {
+   "released": {
+    "requests": 1926,
+    "actual_read_sim_read": 1885,
+    "actual_read_sim_none": 0,
+    "actual_none_sim_read": 1,
+    "actual_none_sim_none": 40,
+    "agree_pct": 99.95,
+    "actual_read_share_pct": 96.35,
+    "sim_read_share_pct": 96.38,
+    "findings": {},
+    "provider_cached_nothing": 0,
+    "of_which_flagged_below_minimum": 0
+   },
+   "head": {
+    "requests": 1926,
+    "actual_read_sim_read": 236,
+    "actual_read_sim_none": 1649,
+    "actual_none_sim_read": 0,
+    "actual_none_sim_none": 41,
+    "agree_pct": 14.38,
+    "actual_read_share_pct": 96.35,
+    "sim_read_share_pct": 1.97,
+    "findings": {
+     "lookback_window_exceeded: provider did not read": 1,
+     "lookback_window_exceeded: provider read the cache": 1649
+    },
+    "provider_cached_nothing": 0,
+    "of_which_flagged_below_minimum": 0
+   },
+   "after": {
+    "requests": 1926,
+    "actual_read_sim_read": 1885,
+    "actual_read_sim_none": 0,
+    "actual_none_sim_read": 1,
+    "actual_none_sim_none": 40,
+    "agree_pct": 99.95,
+    "actual_read_share_pct": 96.35,
+    "sim_read_share_pct": 96.39,
+    "findings": {},
+    "provider_cached_nothing": 0,
+    "of_which_flagged_below_minimum": 0
+   }
+  },
+  "20260217_mini-v2.0.0_claude-4-6-opus": {
+   "released": {
+    "requests": 875,
+    "actual_read_sim_read": 572,
+    "actual_read_sim_none": 101,
+    "actual_none_sim_read": 0,
+    "actual_none_sim_none": 202,
+    "agree_pct": 88.46,
+    "actual_read_share_pct": 90.2,
+    "sim_read_share_pct": 84.86,
+    "findings": {
+     "below_minimum_cacheable: provider cached": 106,
+     "below_minimum_cacheable: provider cached nothing": 164
+    },
+    "provider_cached_nothing": 164,
+    "of_which_flagged_below_minimum": 164
+   },
+   "head": {
+    "requests": 875,
+    "actual_read_sim_read": 0,
+    "actual_read_sim_none": 673,
+    "actual_none_sim_read": 0,
+    "actual_none_sim_none": 202,
+    "agree_pct": 23.09,
+    "actual_read_share_pct": 90.2,
+    "sim_read_share_pct": 0.0,
+    "findings": {
+     "below_minimum_cacheable: provider cached": 106,
+     "below_minimum_cacheable: provider cached nothing": 164,
+     "lookback_window_exceeded: provider did not read": 4,
+     "lookback_window_exceeded: provider read the cache": 540
+    },
+    "provider_cached_nothing": 164,
+    "of_which_flagged_below_minimum": 164
+   },
+   "after": {
+    "requests": 875,
+    "actual_read_sim_read": 641,
+    "actual_read_sim_none": 32,
+    "actual_none_sim_read": 1,
+    "actual_none_sim_none": 201,
+    "agree_pct": 96.23,
+    "actual_read_share_pct": 90.2,
+    "sim_read_share_pct": 88.56,
+    "findings": {
+     "below_minimum_cacheable: provider cached": 32,
+     "below_minimum_cacheable: provider cached nothing": 163
+    },
+    "provider_cached_nothing": 164,
+    "of_which_flagged_below_minimum": 163
+   }
+  }
+ },
+ "anthropic_losses": {
+  "20250929_mini-v1.13.3_sonnet-4-5-20250929": {
+   "steps": 2068,
+   "input_tokens_total": 40213950,
+   "tokens_not_read_below_minimum": 0,
+   "tokens_not_read_above_minimum": 0,
+   "unexplained_miss_steps": 0,
+   "unexplained_miss_examples": []
+  },
+  "20251124_mini-v1.16.0_claude-opus-4-5-20251101": {
+   "steps": 1552,
+   "input_tokens_total": 27675389,
+   "tokens_not_read_below_minimum": 357196,
+   "tokens_not_read_above_minimum": 0,
+   "unexplained_miss_steps": 0,
+   "unexplained_miss_examples": []
+  },
+  "20260217_mini-v2.0.0_claude-4-5-haiku-high": {
+   "steps": 2670,
+   "input_tokens_total": 67255478,
+   "tokens_not_read_below_minimum": 390593,
+   "tokens_not_read_above_minimum": 114500,
+   "unexplained_miss_steps": 3,
+   "unexplained_miss_examples": [
+    {
+     "traj": "django__django-12325",
+     "step": 4,
+     "prev_input": 4100,
+     "read": 0,
+     "seconds_since_prev": 1
+    },
+    {
+     "traj": "matplotlib__matplotlib-26291",
+     "step": 69,
+     "prev_input": 48709,
+     "read": 0,
+     "seconds_since_prev": 4
+    },
+    {
+     "traj": "sympy__sympy-13877",
+     "step": 82,
+     "prev_input": 61691,
+     "read": 0,
+     "seconds_since_prev": 11
+    }
+   ]
+  },
+  "20260217_mini-v2.0.0_claude-4-5-opus-high": {
+   "steps": 1304,
+   "input_tokens_total": 30199350,
+   "tokens_not_read_below_minimum": 189202,
+   "tokens_not_read_above_minimum": 0,
+   "unexplained_miss_steps": 0,
+   "unexplained_miss_examples": []
+  },
+  "20260217_mini-v2.0.0_claude-4-5-sonnet-high": {
+   "steps": 1886,
+   "input_tokens_total": 38878863,
+   "tokens_not_read_below_minimum": 0,
+   "tokens_not_read_above_minimum": 37223,
+   "unexplained_miss_steps": 1,
+   "unexplained_miss_examples": [
+    {
+     "traj": "django__django-11265",
+     "step": 37,
+     "prev_input": 37223,
+     "read": 0,
+     "seconds_since_prev": 15
+    }
+   ]
+  },
+  "20260217_mini-v2.0.0_claude-4-6-opus": {
+   "steps": 835,
+   "input_tokens_total": 9460800,
+   "tokens_not_read_below_minimum": 462268,
+   "tokens_not_read_above_minimum": 0,
+   "unexplained_miss_steps": 0,
+   "unexplained_miss_examples": []
+  }
+ },
+ "anthropic_seconds_between_calls": {
+  "n": 10315,
+  "median": 4.0,
+  "p99": 27.860000000000582,
+  "max": 143.0,
+  "over_300s": 0
+ },
+ "openai_cache": {
+  "20251120_mini-v1.15.0_gpt-5.1-2025-11-13": {
+   "released": {
+    "steps_after_first": 731,
+    "equal": 160,
+    "tool predicted a read, provider cached nothing": 99,
+    "provider cached less": 116,
+    "provider cached more": 356,
+    "equal_pct": 21.9,
+    "provider_cached_over_predicted_tokens": 0.888,
+    "first_requests": 40,
+    "first_requests_with_cached_tokens": 0
+   },
+   "after": {
+    "steps_after_first": 731,
+    "equal": 503,
+    "tool predicted a read, provider cached nothing": 99,
+    "provider cached less": 125,
+    "provider cached more": 4,
+    "equal_pct": 68.8,
+    "provider_cached_over_predicted_tokens": 0.881,
+    "first_requests": 40,
+    "first_requests_with_cached_tokens": 0,
+    "hit_rate_by_predicted_prefix_tokens": {
+     "0": 0.611,
+     "2048": 0.818,
+     "4096": 0.803,
+     "6144": 0.892,
+     "8192": 0.716,
+     "10240": 0.952,
+     "12288": 0.892,
+     "14336": 0.852,
+     "16384": 0.922
+    }
+   }
+  },
+  "20251211_mini-v1.17.2_gpt-5.2-2025-12-11": {
+   "released": {
+    "steps_after_first": 595,
+    "tool predicted a read, provider cached nothing": 275,
+    "provider cached less": 258,
+    "provider cached more": 34,
+    "equal": 28,
+    "equal_pct": 4.7,
+    "provider_cached_over_predicted_tokens": 0.567,
+    "first_requests": 40,
+    "first_requests_with_cached_tokens": 0
+   },
+   "after": {
+    "steps_after_first": 595,
+    "tool predicted a read, provider cached nothing": 275,
+    "provider cached less": 278,
+    "equal": 32,
+    "provider cached more": 10,
+    "equal_pct": 5.4,
+    "provider_cached_over_predicted_tokens": 0.561,
+    "first_requests": 40,
+    "first_requests_with_cached_tokens": 0,
+    "hit_rate_by_predicted_prefix_tokens": {
+     "0": 0.055,
+     "2048": 0.427,
+     "4096": 0.509,
+     "6144": 0.551,
+     "8192": 0.509,
+     "10240": 0.472,
+     "12288": 0.656,
+     "14336": 0.905,
+     "16384": 0.797
+    }
+   }
+  },
+  "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high": {
+   "released": {
+    "steps_after_first": 759,
+    "tool predicted a read, provider cached nothing": 338,
+    "equal": 27,
+    "provider cached less": 359,
+    "provider cached more": 35,
+    "equal_pct": 3.6,
+    "provider_cached_over_predicted_tokens": 0.575,
+    "first_requests": 40,
+    "first_requests_with_cached_tokens": 0
+   },
+   "after": {
+    "steps_after_first": 759,
+    "tool predicted a read, provider cached nothing": 338,
+    "equal": 27,
+    "provider cached less": 390,
+    "provider cached more": 4,
+    "equal_pct": 3.6,
+    "provider_cached_over_predicted_tokens": 0.569,
+    "first_requests": 40,
+    "first_requests_with_cached_tokens": 0,
+    "hit_rate_by_predicted_prefix_tokens": {
+     "0": 0.102,
+     "2048": 0.381,
+     "4096": 0.458,
+     "6144": 0.537,
+     "8192": 0.587,
+     "10240": 0.685,
+     "12288": 0.673,
+     "14336": 0.583,
+     "16384": 0.74
+    }
+   }
+  }
+ },
+ "openai_cache_all_entries_after": {
+  "equal": 562,
+  "tool predicted a read, provider cached nothing": 712,
+  "provider cached less": 793,
+  "provider cached more": 18
+ },
+ "claude_first_request_reported_minus_estimate_tokens_now": {
+  "20250929_mini-v1.13.3_sonnet-4-5-20250929": {
+   "mean": -306.0,
+   "median": -285.5
+  },
+  "20251124_mini-v1.16.0_claude-opus-4-5-20251101": {
+   "mean": -254.0,
+   "median": -274.0
+  },
+  "20260217_mini-v2.0.0_claude-4-5-haiku-high": {
+   "mean": 384.0,
+   "median": 376.0
+  },
+  "20260217_mini-v2.0.0_claude-4-5-opus-high": {
+   "mean": 413.0,
+   "median": 391.5
+  },
+  "20260217_mini-v2.0.0_claude-4-5-sonnet-high": {
+   "mean": 430.0,
+   "median": 397.5
+  },
+  "20260217_mini-v2.0.0_claude-4-6-opus": {
+   "mean": 228.0,
+   "median": 212.0
+  }
+ },
+ "session_length_requests": {
+  "min": 6,
+  "median": 29,
+  "max": 124
+ },
+ "openai_cached_tokens_not_multiple_of_128": 0,
+ "openai_nonzero_cached_tokens": 1373,
+ "steps_with_text_after_tool_result": {
+  "claude-haiku-4-5-20251001 | cache_read=0 | input fell": 2,
+  "claude-sonnet-4-5-20250929 | cache_read=0 | input fell": 1
+ },
+ "estimator_fit": {
+  "grid": "prose 2.8..4.4, dense 1.8..3.3, step 0.1, squared error of the change in input tokens, side 0 only",
+  "fitted": {
+   "prose": 3.3,
+   "dense": 2.5,
+   "fit_side": {
+    "steps": 5160,
+    "reported_over_estimated": 1.036,
+    "mean_abs_error_tokens": 69.3
+   },
+   "held_out_side": {
+    "steps": 5155,
+    "reported_over_estimated": 1.038,
+    "mean_abs_error_tokens": 74.4
+   }
+  },
+  "old (4.0, 2.9)": {
+   "fit_side": {
+    "steps": 5160,
+    "reported_over_estimated": 1.25,
+    "mean_abs_error_tokens": 130.7
+   },
+   "held_out_side": {
+    "steps": 5155,
+    "reported_over_estimated": 1.252,
+    "mean_abs_error_tokens": 135.9
+   }
+  },
+  "variant, constant per step (not in the tool)": {
+   "prose": 3.4,
+   "dense": 2.7,
+   "tokens_per_step": 40,
+   "fit_side": {
+    "steps": 5160,
+    "reported_over_estimated": 1.005,
+    "mean_abs_error_tokens": 63.5
+   },
+   "held_out_side": {
+    "steps": 5155,
+    "reported_over_estimated": 1.007,
+    "mean_abs_error_tokens": 67.7
+   }
+  },
+  "variant, constant per segment (not in the tool)": {
+   "prose": 3.4,
+   "dense": 2.9,
+   "tokens_per_segment": 20,
+   "fit_side": {
+    "steps": 5160,
+    "reported_over_estimated": 0.988,
+    "mean_abs_error_tokens": 63.8
+   },
+   "held_out_side": {
+    "steps": 5155,
+    "reported_over_estimated": 0.987,
+    "mean_abs_error_tokens": 69.1
+   }
+  }
+ }
+}

@@ -1,0 +1,3194 @@
+{
+ "bucket": "https://swe-bench-submissions.s3.amazonaws.com",
+ "fetched": "2026-10-08",
+ "seed": 20261008,
+ "per_entry": 40,
+ "listing": "S3 ListObjectsV2, prefix bash-only/<entry>/trajs/",
+ "entries": {
+  "20250929_mini-v1.13.3_sonnet-4-5-20250929": {
+   "listed": 500,
+   "files": {
+    "astropy__astropy-13453.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/astropy__astropy-13453/astropy__astropy-13453.traj.json",
+     "size": 252577,
+     "etag": "86d77b7450a17b89a381ed567e1c949c",
+     "sha256": "7a557cf0347881d55548de3e3f2c73b18fb990086c5c86665c7ef498cd856de9"
+    },
+    "django__django-11133.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/django__django-11133/django__django-11133.traj.json",
+     "size": 172401,
+     "etag": "f8f1398630e5ebc94fd0f7fcc49b99b0",
+     "sha256": "0fe987e3b2734992e3a064e4eac83479212815abe20066c5c60d5d2f461814a4"
+    },
+    "django__django-11333.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/django__django-11333/django__django-11333.traj.json",
+     "size": 260790,
+     "etag": "9e32b72a1ab2ab90d9b0c6e917dffb53",
+     "sha256": "db7981b9106e07c3ad1d1e85c8c975bdf3ca48df0491511305653856f44b7cd1"
+    },
+    "django__django-11433.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/django__django-11433/django__django-11433.traj.json",
+     "size": 255667,
+     "etag": "bf8fd3a214377e72c992ac6defeb4465",
+     "sha256": "bb031400bfc41693100bd1492446d3a313a4936870f05780129fe765028e4271"
+    },
+    "django__django-12419.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/django__django-12419/django__django-12419.traj.json",
+     "size": 174312,
+     "etag": "415db08d0636bb49eac971ffb5c9c707",
+     "sha256": "b80dded2140ee9570ef11c95cd49eb093777e77f8e45bfc0f37505e30739c3ff"
+    },
+    "django__django-12965.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/django__django-12965/django__django-12965.traj.json",
+     "size": 314769,
+     "etag": "fc93d3de36f37b543c3661437f919910",
+     "sha256": "1af1cdeb6cc9ba5eabef721da7d5dc68ee51b6fe0651211344b4f118af92a2dc"
+    },
+    "django__django-13033.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/django__django-13033/django__django-13033.traj.json",
+     "size": 328827,
+     "etag": "89e98060a25fbe9c9f6b9625b83ea1f7",
+     "sha256": "72254b176fb7dc0af168e169b6a4e4a4f1944d9f45849956a3b22c46c17246ed"
+    },
+    "django__django-13346.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/django__django-13346/django__django-13346.traj.json",
+     "size": 221873,
+     "etag": "3c98dd50887a1a5f41d04172add6ee8d",
+     "sha256": "9b7f2fc96057a565349041c4e6fb218cf2233337706115c5cbb1fef4afe7ba5e"
+    },
+    "django__django-13449.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/django__django-13449/django__django-13449.traj.json",
+     "size": 325992,
+     "etag": "33534de33565ac4ea69d071e9aa611a8",
+     "sha256": "327659efca331041498ba2581a2620a023685e8b78b390a83934049f47db2e14"
+    },
+    "django__django-13670.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/django__django-13670/django__django-13670.traj.json",
+     "size": 132057,
+     "etag": "5f4c2a313eb61e95d41863ad1f848e34",
+     "sha256": "7fc93a7848fe7a553c2054e682bec8ecddca1c71db01056da87382ee300a30cd"
+    },
+    "django__django-13794.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/django__django-13794/django__django-13794.traj.json",
+     "size": 243200,
+     "etag": "f5b2ee92fac17d8cc44e92b9c2e1e8b5",
+     "sha256": "0832d166f66bf0a373e5b64a52cc90a9e8ae08d060ad977daa644e3d095fcb6e"
+    },
+    "django__django-14311.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/django__django-14311/django__django-14311.traj.json",
+     "size": 231299,
+     "etag": "2f312727b6214dedddd7dc91a545bf21",
+     "sha256": "d8268f78c062766a59f8aaaff8f099ca0c997e9147bf87d4dcbcf650ff4f1229"
+    },
+    "django__django-14580.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/django__django-14580/django__django-14580.traj.json",
+     "size": 178676,
+     "etag": "70634ce8a411ab00a494722f46b19b3a",
+     "sha256": "bc218a4418b8fe0d62453e030c7d9471cc223da501ce00c314e35a6760e00307"
+    },
+    "django__django-14608.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/django__django-14608/django__django-14608.traj.json",
+     "size": 201504,
+     "etag": "aa2dc94191c7687ddd1300526636d28a",
+     "sha256": "c2d6b423c93b9408c1a0b9c5db7eec021b7f5253be5b907cec134233accff331"
+    },
+    "django__django-15022.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/django__django-15022/django__django-15022.traj.json",
+     "size": 467976,
+     "etag": "d5508b8adcf1fdbcd0cb30aebc2df2eb",
+     "sha256": "1d7ae656c3b823e0daf922cb3eed8bf7430a6a698fba8b5451cf3630ee818f89"
+    },
+    "django__django-15103.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/django__django-15103/django__django-15103.traj.json",
+     "size": 177122,
+     "etag": "c6ba8a215cdd92a4fc7ae62be30a3c10",
+     "sha256": "cb6617ba3925b1597f326ca6622bd601543113b7e0f36f76c21c949cbc92c63f"
+    },
+    "django__django-15127.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/django__django-15127/django__django-15127.traj.json",
+     "size": 238572,
+     "etag": "fbbb6e425e2f0874b66bad383c59878b",
+     "sha256": "528f099e5bbcecda3f97461615e599189fbd8da603635b2fed9c4036905c34b5"
+    },
+    "django__django-15525.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/django__django-15525/django__django-15525.traj.json",
+     "size": 359817,
+     "etag": "d99fe0c53f1bfa844dc2d13c7cbc9648",
+     "sha256": "b9525edd261002643a2a505cc88a5575739733cc6e3852f8b396a03c5f6aa6de"
+    },
+    "django__django-15629.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/django__django-15629/django__django-15629.traj.json",
+     "size": 514772,
+     "etag": "9bc4580917f2f6f399777e4f8cd1ec33",
+     "sha256": "eb08a6fa3b97b5e8bdee1cc83cb731e332b298fc2ac34d4e1c3f2f103e820652"
+    },
+    "django__django-15741.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/django__django-15741/django__django-15741.traj.json",
+     "size": 211581,
+     "etag": "f5033510f98a81ece7373a57101fa909",
+     "sha256": "09d53ebac141b66ea338de57f212e76aebec9820191d7e9bd2db38d811244f3b"
+    },
+    "django__django-16315.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/django__django-16315/django__django-16315.traj.json",
+     "size": 339436,
+     "etag": "d1b7b328be2ac797e3a95320bd2bdb24",
+     "sha256": "9e7a115db52308d6dc552d011e48ed09a3ce20b397443d7d626b77c2a0257c8c"
+    },
+    "matplotlib__matplotlib-22871.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/matplotlib__matplotlib-22871/matplotlib__matplotlib-22871.traj.json",
+     "size": 288740,
+     "etag": "cc0499f8e0a0f965aabe16001df63da2",
+     "sha256": "c026d2e15d7076fd5bb4b2a33adfc4e47bb1abc22781a9406dc5fd0d441fa60d"
+    },
+    "matplotlib__matplotlib-23299.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/matplotlib__matplotlib-23299/matplotlib__matplotlib-23299.traj.json",
+     "size": 193616,
+     "etag": "50aae0814e67452ecd8d909efc9b9799",
+     "sha256": "447e912a64687402fd8727a00e6d7f4badc3098efac28dad305e93e5fe1d957f"
+    },
+    "matplotlib__matplotlib-24026.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/matplotlib__matplotlib-24026/matplotlib__matplotlib-24026.traj.json",
+     "size": 211748,
+     "etag": "d32085a65a0a648ccde4069abeacce37",
+     "sha256": "e8c80fdbc1bb5aa91a1b205b25634a73d27ecac5ffb5f843f7344f5495a944b4"
+    },
+    "matplotlib__matplotlib-25775.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/matplotlib__matplotlib-25775/matplotlib__matplotlib-25775.traj.json",
+     "size": 409703,
+     "etag": "34ba0dd14bd38e0e97c24374d68412a7",
+     "sha256": "a4dff3ddcbded5799b1d17f90e0e19552d41b70bfa13adc02e7aa674a9cdfb57"
+    },
+    "mwaskom__seaborn-3069.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/mwaskom__seaborn-3069/mwaskom__seaborn-3069.traj.json",
+     "size": 352985,
+     "etag": "f53636cc26b4e283f22b51e27c2dc7f9",
+     "sha256": "eedab3048e90648c9dc51beacbbd8831f8928be784b057421a9145f79220e5b4"
+    },
+    "pytest-dev__pytest-7236.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/pytest-dev__pytest-7236/pytest-dev__pytest-7236.traj.json",
+     "size": 173497,
+     "etag": "9becee85801413cd8ed29cd36d1f4ae5",
+     "sha256": "767a25733c51ba8b5ad90d5278ceb1789dbe25a3afb66b30d0837ed0dc2161a1"
+    },
+    "pytest-dev__pytest-7490.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/pytest-dev__pytest-7490/pytest-dev__pytest-7490.traj.json",
+     "size": 163479,
+     "etag": "518214605d2c536df0232b36b901a3c6",
+     "sha256": "8924ed3fdf35437ac4296174d2c3ea68781b3b44da30a1d2b7a2dc76074a6559"
+    },
+    "scikit-learn__scikit-learn-13328.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/scikit-learn__scikit-learn-13328/scikit-learn__scikit-learn-13328.traj.json",
+     "size": 168701,
+     "etag": "7e613f7c72799d34ea474d29eb31be20",
+     "sha256": "996bd4c91d383f04fe9b6d62f10b558b95948ef21d17122193dbd4fb9ad38aa3"
+    },
+    "sphinx-doc__sphinx-10466.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/sphinx-doc__sphinx-10466/sphinx-doc__sphinx-10466.traj.json",
+     "size": 173683,
+     "etag": "a0ad883d2f2678b61886ebf21b718fd1",
+     "sha256": "6e126cdcac14a2e8d6580a10df6421bf124d263703520c8d9e0c190d4c4b8b8e"
+    },
+    "sphinx-doc__sphinx-7454.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/sphinx-doc__sphinx-7454/sphinx-doc__sphinx-7454.traj.json",
+     "size": 307824,
+     "etag": "4f23d712e2fe90a82a23270d8d98942d",
+     "sha256": "71b6fed599ce2d58eacf33bfb282f717b2a29f365b001b9a955055a55281b0d2"
+    },
+    "sphinx-doc__sphinx-9461.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/sphinx-doc__sphinx-9461/sphinx-doc__sphinx-9461.traj.json",
+     "size": 407682,
+     "etag": "6caffe700966e5a580ff7b1966edddf7",
+     "sha256": "11741517b78bfbcc93778a122f061e71d05f8ae80103986346bb81480a15ddeb"
+    },
+    "sphinx-doc__sphinx-9591.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/sphinx-doc__sphinx-9591/sphinx-doc__sphinx-9591.traj.json",
+     "size": 408757,
+     "etag": "7e387edc4e1eecf4bdaf318241246fbd",
+     "sha256": "65f80429fce527744d10df9146a7226626e5db27c9168ec052e0b9fb263643e7"
+    },
+    "sphinx-doc__sphinx-9602.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/sphinx-doc__sphinx-9602/sphinx-doc__sphinx-9602.traj.json",
+     "size": 431013,
+     "etag": "10cef7cf4cf218c2f837debb1a4ea7bf",
+     "sha256": "cdb3f84e8bb1449b0414cf046aaaa1e920e5c370c7fd148459f0cd6fc77cd0f3"
+    },
+    "sympy__sympy-12481.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/sympy__sympy-12481/sympy__sympy-12481.traj.json",
+     "size": 194706,
+     "etag": "ecae9b561bee5591063f5b2ffb9ec9ab",
+     "sha256": "491dd4d9a2ef92d65009c60355aed56c256328cc113a786dc7c8c94ee64f0b28"
+    },
+    "sympy__sympy-13877.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/sympy__sympy-13877/sympy__sympy-13877.traj.json",
+     "size": 142657,
+     "etag": "988c1f6bb96065d7b591f9896d338d03",
+     "sha256": "071d052f9717b5e00174298a097aff7e12d71f26efd4f93128d6a32dcc916460"
+    },
+    "sympy__sympy-15976.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/sympy__sympy-15976/sympy__sympy-15976.traj.json",
+     "size": 211122,
+     "etag": "0894e8deec67d05b7b69b7a209fb52c6",
+     "sha256": "f2122dea0a0e58171c014b420a9b4ec4d7fc648ecf0ddcafa733701a0e934d3e"
+    },
+    "sympy__sympy-17630.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/sympy__sympy-17630/sympy__sympy-17630.traj.json",
+     "size": 189671,
+     "etag": "1649fce1539b223e180cdc6389d6910e",
+     "sha256": "5cfc20d49131e695ccc58cbf44f41b12e82f109d1d9d4fe09d0e4843479ba4a4"
+    },
+    "sympy__sympy-19637.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/sympy__sympy-19637/sympy__sympy-19637.traj.json",
+     "size": 137024,
+     "etag": "0d482a9f0f67f14a8bd4f3f6cc1f2e63",
+     "sha256": "681facd9c80277dc18cafca34c1e02d80d04a1b5b6859f51b57693b3e969d794"
+    },
+    "sympy__sympy-20801.traj.json": {
+     "key": "bash-only/20250929_mini-v1.13.3_sonnet-4-5-20250929/trajs/sympy__sympy-20801/sympy__sympy-20801.traj.json",
+     "size": 241433,
+     "etag": "8af0308d76296aad3d366c8b2bb3c415",
+     "sha256": "d9ba93be98cff1fac94aa0e8f57aacad25de316f377ac046b97aa58b7fd36451"
+    }
+   }
+  },
+  "20251124_mini-v1.16.0_claude-opus-4-5-20251101": {
+   "listed": 500,
+   "files": {
+    "astropy__astropy-7166.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/astropy__astropy-7166/astropy__astropy-7166.traj.json",
+     "size": 113264,
+     "etag": "bc27bf267da8416f47b84c8fa0d2494f",
+     "sha256": "79947f2cb007581223cdc931663b300a2bbee85920378a423d075c7faf73dee6"
+    },
+    "django__django-11276.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/django__django-11276/django__django-11276.traj.json",
+     "size": 103162,
+     "etag": "38043266e8851c93ccaccb036f146b88",
+     "sha256": "7ab0a85e722e9a69dbd1e29109d40ec8f9d6639056c266b60888260267584ed4"
+    },
+    "django__django-12050.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/django__django-12050/django__django-12050.traj.json",
+     "size": 59780,
+     "etag": "869c0e360512a916316cd2e4cf5ef777",
+     "sha256": "db07a8a70a56d40af836e54d2224b3fa12ff3cb0f5090d2fbc18905e15b097b4"
+    },
+    "django__django-12708.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/django__django-12708/django__django-12708.traj.json",
+     "size": 116174,
+     "etag": "b769a08cfde9b6c4553943c180ee90ee",
+     "sha256": "c2e7a01b59f833882cccda3dae32ea3bfba9d944048f06a1a9a7df60c5c7bf30"
+    },
+    "django__django-13417.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/django__django-13417/django__django-13417.traj.json",
+     "size": 147475,
+     "etag": "ad4c7aac79abc7d0589b405ffb822c8c",
+     "sha256": "d7b98fce8ff0d04f7e957f75fbfa5ff0ff6131794ba9a08f33cccd2f52b6dcf5"
+    },
+    "django__django-13512.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/django__django-13512/django__django-13512.traj.json",
+     "size": 143365,
+     "etag": "7e806675a7809894180e66c3996ceb5b",
+     "sha256": "c8dd9be461b5d3aea3754e3c8208f9ac383ee020df8f9c3e70b062b93e588a99"
+    },
+    "django__django-13568.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/django__django-13568/django__django-13568.traj.json",
+     "size": 164335,
+     "etag": "6031b9bb23ebdb18cf31b9d04bae888f",
+     "sha256": "5c232cfb820f28c072020a3ef632a9d7fe025f1b3713227a2d203efe2a5781be"
+    },
+    "django__django-14725.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/django__django-14725/django__django-14725.traj.json",
+     "size": 253831,
+     "etag": "2aeaf1b8f58242f5769b61ca438c6721",
+     "sha256": "c8fd6c6d144b810f2f58e197747f47cf2b07290768c92168ebaec812e5d61283"
+    },
+    "django__django-14792.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/django__django-14792/django__django-14792.traj.json",
+     "size": 169364,
+     "etag": "cc3eedc662050badb763b44180c95ae4",
+     "sha256": "9ae52d99e3ec46dcc23099c548a3762b0c1df747ec06cfd6b4aa649a6cb94ab2"
+    },
+    "django__django-14999.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/django__django-14999/django__django-14999.traj.json",
+     "size": 287091,
+     "etag": "7d14b27446c3887f5fd3de27d423d69d",
+     "sha256": "6f8b579af76b93b54cb4d7ed92912d6fa9099f913f59d596e7ac39f36667436a"
+    },
+    "django__django-15037.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/django__django-15037/django__django-15037.traj.json",
+     "size": 249867,
+     "etag": "602004fad3699602a62be92c2b445088",
+     "sha256": "c0b9e1cc59237c50296837610012f737e275159af5c124ade9a3fa64fc3997da"
+    },
+    "django__django-15268.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/django__django-15268/django__django-15268.traj.json",
+     "size": 260254,
+     "etag": "9898b0ddf2c8e60e9b13551064e8c1ee",
+     "sha256": "07db6fcfba5cdc03c27bc1bfedc40050dd39e86c49a5e1f8e88e799b60e013ed"
+    },
+    "django__django-15277.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/django__django-15277/django__django-15277.traj.json",
+     "size": 119865,
+     "etag": "21ac84931c97de2de466d6acae59847e",
+     "sha256": "60e8cdfb6a1eb21e272283520580c9f274d464c08351b8abaa38bdc15f802b50"
+    },
+    "django__django-15695.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/django__django-15695/django__django-15695.traj.json",
+     "size": 256294,
+     "etag": "73bb88a506ab8b58c34f7d135116ebae",
+     "sha256": "3d249aa047501a47b098c51d0b67c34f78de5fcd68eb4b345a152323299274fd"
+    },
+    "django__django-15957.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/django__django-15957/django__django-15957.traj.json",
+     "size": 255536,
+     "etag": "d072d1c06246cd8568f82381f5462d7e",
+     "sha256": "cb420fa3de45f0c09fcc55855e7bd249848edfeb5b2cd9d1e15921cdb9514078"
+    },
+    "django__django-16136.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/django__django-16136/django__django-16136.traj.json",
+     "size": 154676,
+     "etag": "5dda4e920591a870fe94099cbca65e05",
+     "sha256": "b5c342d8d4286660201c6e4df49c2629d8dd1648e275f40295d1608abfffcb98"
+    },
+    "django__django-16485.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/django__django-16485/django__django-16485.traj.json",
+     "size": 76012,
+     "etag": "d536b9c159c3f205876a969cfea004d3",
+     "sha256": "35b6f7ad29e9cca401075d2b94e24dc353273acc9f6240a4210d009ac6e3bdc1"
+    },
+    "django__django-16502.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/django__django-16502/django__django-16502.traj.json",
+     "size": 177954,
+     "etag": "00b1f23ce61f2ccfe0a4cf4c8b746dd5",
+     "sha256": "3d1c192e1f567f69bc053d0e8d0709746f8d6a69687a0e54907fbec2c1a0cdad"
+    },
+    "django__django-16662.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/django__django-16662/django__django-16662.traj.json",
+     "size": 130126,
+     "etag": "cde3e6e86b68cf4999c38126413c9765",
+     "sha256": "bce09b72ef0979d35923152e50b60043acd3b922254a18adb0c44e0d1f6a27f0"
+    },
+    "django__django-16819.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/django__django-16819/django__django-16819.traj.json",
+     "size": 397698,
+     "etag": "ffe7cacca70a77d8ceb8c10303aeceeb",
+     "sha256": "02562535b3b0638710f124e44ae09a9704e3592ace0e4db8790b27ca04e9c6f8"
+    },
+    "django__django-16950.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/django__django-16950/django__django-16950.traj.json",
+     "size": 248849,
+     "etag": "eb48ede6b5765b19c331c838b8f8d974",
+     "sha256": "eef439bb199a743aa350b6460c555a36a52e475af6a7ef78158f63dafa3d957f"
+    },
+    "matplotlib__matplotlib-20676.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/matplotlib__matplotlib-20676/matplotlib__matplotlib-20676.traj.json",
+     "size": 122922,
+     "etag": "ea35aa5c96e2a66c83c46d2361d513cf",
+     "sha256": "b64e0a95285f9b8cc01ede124add9bad91a1a78462b5eeba3a88903d8e9bfffd"
+    },
+    "psf__requests-2931.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/psf__requests-2931/psf__requests-2931.traj.json",
+     "size": 149064,
+     "etag": "ae925b7160475a9af7e8bb9ed00b8db9",
+     "sha256": "9a36522490d07d50414072ba2e0aadb1f46e8eb7398133635813dc085e403bfa"
+    },
+    "psf__requests-5414.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/psf__requests-5414/psf__requests-5414.traj.json",
+     "size": 284657,
+     "etag": "f5c80ef6cdff189fe882907352823e45",
+     "sha256": "62cf31da960c706cd522922c06687089ff76b1d004b1a644662b8f70e9b3e945"
+    },
+    "pydata__xarray-3677.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/pydata__xarray-3677/pydata__xarray-3677.traj.json",
+     "size": 103960,
+     "etag": "e0e08e8fb677da9176557f89d9c36107",
+     "sha256": "95554bb44b5127e8097ff1b0d3e98cc874827c6a1caf3bc25ba3f4027fc817a7"
+    },
+    "pydata__xarray-6599.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/pydata__xarray-6599/pydata__xarray-6599.traj.json",
+     "size": 472986,
+     "etag": "178b2219da4aa66a73b4d3dcebebef2e",
+     "sha256": "f4be4e500dfabb18ede50637b375633b9c1b1286e550a23f912e8c6e55eaef96"
+    },
+    "pytest-dev__pytest-6202.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/pytest-dev__pytest-6202/pytest-dev__pytest-6202.traj.json",
+     "size": 108762,
+     "etag": "d38979c62e447a56ac38a86d908e3c95",
+     "sha256": "571848f8c81390de944cb1706df4e58882cc681c4ad736375759e43e4d6bc1bc"
+    },
+    "scikit-learn__scikit-learn-25973.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/scikit-learn__scikit-learn-25973/scikit-learn__scikit-learn-25973.traj.json",
+     "size": 172300,
+     "etag": "8623a06a0dade6c99c1f01e4f421579d",
+     "sha256": "afb7b9f3d50cc0537638b863c6cce0b4a0ce7c521acc1c6c25751ba39c6200d7"
+    },
+    "sphinx-doc__sphinx-10435.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/sphinx-doc__sphinx-10435/sphinx-doc__sphinx-10435.traj.json",
+     "size": 125894,
+     "etag": "6aee60951eb5422c2b051af2a68c60bb",
+     "sha256": "0db4dabbca79c5e1785cb7d3c841c932ce406189836e75e9cd9a5e83a72591ec"
+    },
+    "sphinx-doc__sphinx-7590.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/sphinx-doc__sphinx-7590/sphinx-doc__sphinx-7590.traj.json",
+     "size": 213046,
+     "etag": "93a645dd3083df121afd31156de2cfe0",
+     "sha256": "6d576914a9ea5289572af39d6e725588e319d7f7b30e89ce5daffdc7ffee34e2"
+    },
+    "sphinx-doc__sphinx-8265.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/sphinx-doc__sphinx-8265/sphinx-doc__sphinx-8265.traj.json",
+     "size": 175063,
+     "etag": "820bbe122b43848815b170e0cc7686fc",
+     "sha256": "f1ae9d2661244313ab84bb12185c7d1e04dbf55d1c92c32e635cfb5ccba8d773"
+    },
+    "sphinx-doc__sphinx-8269.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/sphinx-doc__sphinx-8269/sphinx-doc__sphinx-8269.traj.json",
+     "size": 91589,
+     "etag": "f22629817ef086790b57c3443e7a7d54",
+     "sha256": "c46653d220b47a3cbbf0c496097d4138ec0c7974c60007d13989aba4851fa22e"
+    },
+    "sphinx-doc__sphinx-8551.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/sphinx-doc__sphinx-8551/sphinx-doc__sphinx-8551.traj.json",
+     "size": 236880,
+     "etag": "0a4e804d857d16de3f9812350b3b0cf0",
+     "sha256": "55d51af26efd0d7d8f6b4019dd17240e889c0f85a098dc0752f0dc3789248269"
+    },
+    "sphinx-doc__sphinx-8595.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/sphinx-doc__sphinx-8595/sphinx-doc__sphinx-8595.traj.json",
+     "size": 181847,
+     "etag": "2bdcae0aeaceadee9ce73e8963205f0c",
+     "sha256": "4252edf3fdbf0ed06877275ade103d3c4b63a77cbc2b53399f3b2260ec112c77"
+    },
+    "sphinx-doc__sphinx-9281.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/sphinx-doc__sphinx-9281/sphinx-doc__sphinx-9281.traj.json",
+     "size": 140300,
+     "etag": "ec349c572ce441a4cd17c22dd32ceb3f",
+     "sha256": "4b42e44fbc90604f46a2a4ab37fa8c824686830bd505a4a7e535c3c2c957ca33"
+    },
+    "sympy__sympy-19040.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/sympy__sympy-19040/sympy__sympy-19040.traj.json",
+     "size": 152442,
+     "etag": "b569c773489d76c2ed38447f3549d114",
+     "sha256": "cfa237a01108b181b4297e7ba0bfa04590ee691330f3673cd8d2d34643f9b9fb"
+    },
+    "sympy__sympy-21596.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/sympy__sympy-21596/sympy__sympy-21596.traj.json",
+     "size": 197350,
+     "etag": "44476834e64d80a858f57cba2df17f2b",
+     "sha256": "dccb929735f1e318dd50c23530248350b00d6ee43761b0056a5b6de67147a28b"
+    },
+    "sympy__sympy-21847.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/sympy__sympy-21847/sympy__sympy-21847.traj.json",
+     "size": 79462,
+     "etag": "74f018954b5454e78f9b0a2abac5833e",
+     "sha256": "e6aca62b302282806aba0265dbf22489cd0e27ad298a06be625a6874105daecb"
+    },
+    "sympy__sympy-24066.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/sympy__sympy-24066/sympy__sympy-24066.traj.json",
+     "size": 100727,
+     "etag": "aafe7b181893679ab95a09c48cf25002",
+     "sha256": "3d4e20ccf8b1bd4d5278dd9a61be34b4eac92f6ca4db731316cdf6acbd632abd"
+    },
+    "sympy__sympy-24661.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_claude-opus-4-5-20251101/trajs/sympy__sympy-24661/sympy__sympy-24661.traj.json",
+     "size": 153579,
+     "etag": "032bcff590fc9f8a2fc5428f6832d813",
+     "sha256": "9b88a57f3d89dcce827cb2eb32f688f1f6210195c7be31f9a80ef8370c0a7f97"
+    }
+   }
+  },
+  "20260217_mini-v2.0.0_claude-4-5-haiku-high": {
+   "listed": 500,
+   "files": {
+    "astropy__astropy-7671.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/astropy__astropy-7671/astropy__astropy-7671.traj.json",
+     "size": 565928,
+     "etag": "f953c753143c7cb54e5e919ef295fe2b",
+     "sha256": "413be4fb29b48c166e6e11872b166896989c8082d6d69dcc67ed8b68d3bb59a5"
+    },
+    "astropy__astropy-8707.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/astropy__astropy-8707/astropy__astropy-8707.traj.json",
+     "size": 683894,
+     "etag": "ce32b22a0f40866ea7a7836d630da8ce",
+     "sha256": "b03b20da05ffbc9f9ca7bbb82844e7148574551b69d465f1d4d15f0cfb5e8904"
+    },
+    "django__django-11138.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/django__django-11138/django__django-11138.traj.json",
+     "size": 1064095,
+     "etag": "8b1c3d14b29688b2c87b427b89f5602a",
+     "sha256": "9b1636d796b533df32daf360891abef9299f7f1fdbc1cdbb6a5066f8a7359da0"
+    },
+    "django__django-11206.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/django__django-11206/django__django-11206.traj.json",
+     "size": 664985,
+     "etag": "04edd70d8baa84102fcae1e1598cd9c1",
+     "sha256": "689f31d3d9341f9178efa99e65eadc7476972cef5200ec233e825b301afb27f8"
+    },
+    "django__django-11400.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/django__django-11400/django__django-11400.traj.json",
+     "size": 738516,
+     "etag": "e3ac2d67661b99e52099a9a76466a10b",
+     "sha256": "a95e4646d4730e8f9e2df1b45c7092e84d10d0ee63265107110a0cc95d1dfbbd"
+    },
+    "django__django-11728.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/django__django-11728/django__django-11728.traj.json",
+     "size": 551607,
+     "etag": "48a59cf4c28ab1af0acf4f9d435ad704",
+     "sha256": "d582dfdc71d464e7037353e36d1b870a1bca58bd7966c1678d102d36587b06ea"
+    },
+    "django__django-11749.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/django__django-11749/django__django-11749.traj.json",
+     "size": 705580,
+     "etag": "f5039fb3e888826af33305d46e1a0fd9",
+     "sha256": "f0b69413133847260f783b573e4f8992e08a78e58fda79c7df7b9600027fa186"
+    },
+    "django__django-12325.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/django__django-12325/django__django-12325.traj.json",
+     "size": 1005735,
+     "etag": "ee4a9f3a054098e17211219919d7c759",
+     "sha256": "4142dd73f00a03e42f2bd5e54d9daf683f46dfe14650460e257d202a216046fe"
+    },
+    "django__django-12406.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/django__django-12406/django__django-12406.traj.json",
+     "size": 1074634,
+     "etag": "7aef91582530b6249f8efd28df8d734a",
+     "sha256": "d10ec97d252f97ca49180e598b0ac0b4bdee3402706682634e69320fda55e638"
+    },
+    "django__django-13012.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/django__django-13012/django__django-13012.traj.json",
+     "size": 707190,
+     "etag": "6c87fe886577a46b7d6a7e38dbb8aebb",
+     "sha256": "ef7f105a8cb6a5511bcf8a0b89af90719d4ba30aa19fa374a93583557dd0ec20"
+    },
+    "django__django-13109.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/django__django-13109/django__django-13109.traj.json",
+     "size": 551788,
+     "etag": "1df754b3ba65a76f1ece00aa4a92289a",
+     "sha256": "e1557c5a7fb54ceb0560e0a996de2a2e4ede189334f46232c5c00e8b0c3357d4"
+    },
+    "django__django-13344.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/django__django-13344/django__django-13344.traj.json",
+     "size": 1702059,
+     "etag": "d92149908561afbd48d154c7f64816f7",
+     "sha256": "0259af220ee524b48d83a9bebe6d8379552ec748e84bf312e489ac3f325e411d"
+    },
+    "django__django-13820.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/django__django-13820/django__django-13820.traj.json",
+     "size": 565658,
+     "etag": "2605ee2a295d8cc03a658b0ca2763f02",
+     "sha256": "92beb78adc7847584ea4d8d197a0161bf9d8fdfaf3fd47fe42f34e7117b6b578"
+    },
+    "django__django-13821.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/django__django-13821/django__django-13821.traj.json",
+     "size": 461715,
+     "etag": "9a0ec6ada4f927604ae5b14b82972a2d",
+     "sha256": "67b9a83caecf5b25ffd3fabdbce6ae731f79267c0b64016ed76d9e8d0b333915"
+    },
+    "django__django-14608.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/django__django-14608/django__django-14608.traj.json",
+     "size": 772453,
+     "etag": "6568ed37313829035119e1812213fca2",
+     "sha256": "ed01ff8d83f4c1e4d91e9dcaa2e1d5998e57de437fbf8820b8d6d833fb7d2da1"
+    },
+    "django__django-14915.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/django__django-14915/django__django-14915.traj.json",
+     "size": 401613,
+     "etag": "6f786d3637bea5d1e5e834385457c7d0",
+     "sha256": "d0c8250531895be70e51a985951265d044c6ba975ab13495f75758c9d0554098"
+    },
+    "django__django-15161.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/django__django-15161/django__django-15161.traj.json",
+     "size": 930957,
+     "etag": "6e8e65f6806edf89fbd4598545bbf861",
+     "sha256": "9e775206d09bde5b918000a0187dcacdec96f4563d3ce7369c4fbe1ef0c9d19d"
+    },
+    "django__django-15561.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/django__django-15561/django__django-15561.traj.json",
+     "size": 767482,
+     "etag": "cfa9df014173945ae2c828b9daea727e",
+     "sha256": "2468451d4a90b2e4d58c719021b4b3cc22e9ea84bc615673233ba5505e722f32"
+    },
+    "django__django-15629.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/django__django-15629/django__django-15629.traj.json",
+     "size": 1031128,
+     "etag": "ead145e0d841f2e75295a164e6f83e6d",
+     "sha256": "5ade5c4127c37d3a1760e973bd9ba111f8fcace8685df51b44f1eb64f33bc275"
+    },
+    "django__django-16315.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/django__django-16315/django__django-16315.traj.json",
+     "size": 832176,
+     "etag": "54556f1e453f47085f45ee6b710bd4ca",
+     "sha256": "6be8bbca4f8b076c76731de027e40f856ad62b916a36e4b403a6f08fd9771eca"
+    },
+    "django__django-16631.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/django__django-16631/django__django-16631.traj.json",
+     "size": 868746,
+     "etag": "8f3db91c5b77a2b627e1c0ff5de04082",
+     "sha256": "2fcfb41ba46c763a47e48fbafb24902f039c5f815376820577662c5ac27c782f"
+    },
+    "django__django-16801.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/django__django-16801/django__django-16801.traj.json",
+     "size": 492227,
+     "etag": "d0a3668281974ff208c912b479f76cc3",
+     "sha256": "8b0486d0f7ded070c75c8f0f4612febbc7a2e971eed13def281fafb435cf6738"
+    },
+    "django__django-16819.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/django__django-16819/django__django-16819.traj.json",
+     "size": 836269,
+     "etag": "e94447e441448591fc583d52c65ea2eb",
+     "sha256": "49141c98223ce51cf8694a82f3757d8a5b6dae751410960fc67f1816be199b81"
+    },
+    "matplotlib__matplotlib-13989.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/matplotlib__matplotlib-13989/matplotlib__matplotlib-13989.traj.json",
+     "size": 452126,
+     "etag": "5adc9dcc0d414c9b87b9072489bead71",
+     "sha256": "05246f15021251e94207cc14fcb11cfc32a9842cff75431fb426e1155c34b2d3"
+    },
+    "matplotlib__matplotlib-20488.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/matplotlib__matplotlib-20488/matplotlib__matplotlib-20488.traj.json",
+     "size": 828267,
+     "etag": "dcd1d6e9c4946dc831416fd2c714699a",
+     "sha256": "26f554a22bcc2a60a65c3f8837a0319de050cba662da905613231d274f8c6926"
+    },
+    "matplotlib__matplotlib-24637.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/matplotlib__matplotlib-24637/matplotlib__matplotlib-24637.traj.json",
+     "size": 640824,
+     "etag": "cac6bc10176c5ef281270a660f5fb800",
+     "sha256": "cb3337d747cf0614391d174e56164fed474ddfd5f2c127c1723d6d2faa3805dc"
+    },
+    "matplotlib__matplotlib-25311.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/matplotlib__matplotlib-25311/matplotlib__matplotlib-25311.traj.json",
+     "size": 979418,
+     "etag": "3e9fbebe2a33b1f59430497df6627166",
+     "sha256": "e5f414fbaaea2654cfc945c41ae55d5420daca5ad865f9379e22545c32e148f0"
+    },
+    "matplotlib__matplotlib-25332.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/matplotlib__matplotlib-25332/matplotlib__matplotlib-25332.traj.json",
+     "size": 674919,
+     "etag": "08cac7f2a43a0b13ff991b9b01f31168",
+     "sha256": "3bf6f356d64917f95358f3fb05c68f902d99eec63e944e71ec8f5e26815725fe"
+    },
+    "matplotlib__matplotlib-25775.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/matplotlib__matplotlib-25775/matplotlib__matplotlib-25775.traj.json",
+     "size": 1224843,
+     "etag": "95fa5958c8eb98920a04eec058f98092",
+     "sha256": "35230775b191fa448c721c1ed4e17ead8cd9f67f17533624c842a7be4d6f55ac"
+    },
+    "matplotlib__matplotlib-26291.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/matplotlib__matplotlib-26291/matplotlib__matplotlib-26291.traj.json",
+     "size": 800123,
+     "etag": "7f9d3ab333142aa7d71f4daecc558b86",
+     "sha256": "5890beb1b96be0a2cbfbfc44c289c1de86ff902f45084cd3631dad6f2d8da625"
+    },
+    "pydata__xarray-6938.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/pydata__xarray-6938/pydata__xarray-6938.traj.json",
+     "size": 851320,
+     "etag": "0e068b52291399c8fdfd577fe5ce8ea3",
+     "sha256": "df8ce6b48aedc9f0e18088bacdab974cba26e659a4e0dec34bc80ff35f2eaaba"
+    },
+    "pytest-dev__pytest-5840.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/pytest-dev__pytest-5840/pytest-dev__pytest-5840.traj.json",
+     "size": 796300,
+     "etag": "56d8c30c09587d9ad0dbaab75ccdbc5f",
+     "sha256": "87a3975c764297f6b94da9f9fbba67124b65d2d6c6e8d848ab0d55e738c7086d"
+    },
+    "scikit-learn__scikit-learn-14053.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/scikit-learn__scikit-learn-14053/scikit-learn__scikit-learn-14053.traj.json",
+     "size": 534088,
+     "etag": "1fc8fb28cdf200061a33eab4a3121539",
+     "sha256": "dd155609e0eb59a086091d5950aa6883764e3371a4f26b117daed8b2a10e2287"
+    },
+    "scikit-learn__scikit-learn-14496.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/scikit-learn__scikit-learn-14496/scikit-learn__scikit-learn-14496.traj.json",
+     "size": 361586,
+     "etag": "28c5113b7b645e86e938789d37b19b0e",
+     "sha256": "89901f47616f234beee22f51adfc457674f99872815b32172f37188e9d2132e5"
+    },
+    "sphinx-doc__sphinx-8035.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/sphinx-doc__sphinx-8035/sphinx-doc__sphinx-8035.traj.json",
+     "size": 1153717,
+     "etag": "7a53f6dfbb629a752cdcc9787deb66ae",
+     "sha256": "1d8643a377b9a6320443c0a02480d039ccf3111333b4d21129c935ed09fec4a7"
+    },
+    "sphinx-doc__sphinx-8265.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/sphinx-doc__sphinx-8265/sphinx-doc__sphinx-8265.traj.json",
+     "size": 744454,
+     "etag": "aa645dc10af4f59e2be0f547560de643",
+     "sha256": "178519ceba64c5139163cf0f2cfae5592e3a1fc8f919248c214d6e51b53b6ae0"
+    },
+    "sphinx-doc__sphinx-8721.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/sphinx-doc__sphinx-8721/sphinx-doc__sphinx-8721.traj.json",
+     "size": 683597,
+     "etag": "98f771e0f1a189898f75f49e1f79dbfa",
+     "sha256": "1be01484761bf4541f9beec2b0df736f77704117c59656deb1c571506684a1b2"
+    },
+    "sphinx-doc__sphinx-9281.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/sphinx-doc__sphinx-9281/sphinx-doc__sphinx-9281.traj.json",
+     "size": 900247,
+     "etag": "9184328d7ed1c7f40fb2a26e857aa3a0",
+     "sha256": "0f21c5d93c0ec4547384ea552b37de37f8f8373cb443ef44a1e7bd3953cde6dc"
+    },
+    "sympy__sympy-13877.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/sympy__sympy-13877/sympy__sympy-13877.traj.json",
+     "size": 1173230,
+     "etag": "0333169bdee2ee1c70fa226111080ec3",
+     "sha256": "74f138894cb73da0f01056a3c43ea39d1da728e4a83b0e4279e23c05628da455"
+    },
+    "sympy__sympy-16886.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-haiku-high/trajs/sympy__sympy-16886/sympy__sympy-16886.traj.json",
+     "size": 261075,
+     "etag": "991b6f639f98df5a18a5549a900196c9",
+     "sha256": "538fc6fd8ddb8bc3d3006cab80f5b67dc7abe0f099278bc28b6e58c8d3dc8f16"
+    }
+   }
+  },
+  "20260217_mini-v2.0.0_claude-4-5-opus-high": {
+   "listed": 500,
+   "files": {
+    "astropy__astropy-7166.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/astropy__astropy-7166/astropy__astropy-7166.traj.json",
+     "size": 342679,
+     "etag": "cb3ead24fee69858ff8ec539bd01f621",
+     "sha256": "0651be26066923c7eeb700ebe8a3758321e19fca839fd054e8d65271c9badff9"
+    },
+    "astropy__astropy-8707.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/astropy__astropy-8707/astropy__astropy-8707.traj.json",
+     "size": 707319,
+     "etag": "55164aa57cfb13697e235171118308a9",
+     "sha256": "de57f93ca75c1a3ce218123988b0581e9ab5bc5b91eb440ee050f7c13fd1256b"
+    },
+    "django__django-11095.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/django__django-11095/django__django-11095.traj.json",
+     "size": 232188,
+     "etag": "4a53ec5a4b1ebc5eb9fe859bfe069f79",
+     "sha256": "c800885366759cbfb8c9055b46fb0af0d76c44d66f0d4c3ca94bdf45d80e7991"
+    },
+    "django__django-11119.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/django__django-11119/django__django-11119.traj.json",
+     "size": 227132,
+     "etag": "1c2ea1b9c2f812b1c0543d20a02ed02c",
+     "sha256": "b6215dfd3cd67a1ae6d190b9bb1ee0873679bb7a372ece043a8a1406c6b46cf3"
+    },
+    "django__django-11265.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/django__django-11265/django__django-11265.traj.json",
+     "size": 1478403,
+     "etag": "0c1dffa3d9c0f4480addabc8c03e5dfa",
+     "sha256": "aeff85914c2ea125d0703c0be6ac2542e9b7bd7b64a1929fd739e8317907734a"
+    },
+    "django__django-11451.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/django__django-11451/django__django-11451.traj.json",
+     "size": 217979,
+     "etag": "04b58bb487f44a9c3fcc2900ae5a0a5b",
+     "sha256": "c6fb98b7a724bb835b232e1e9e6bae2813822a53c165b8ccc8f03a52b56fee86"
+    },
+    "django__django-11490.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/django__django-11490/django__django-11490.traj.json",
+     "size": 691251,
+     "etag": "a3754f109c939fa7f2b1f8246daf2243",
+     "sha256": "9f72c81668bd2f9b2beabc9c8de317fbe3bae27a925874c116a9d8b63a660d2b"
+    },
+    "django__django-11728.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/django__django-11728/django__django-11728.traj.json",
+     "size": 323882,
+     "etag": "5e6ab5377063504a97a1fbaa3212e149",
+     "sha256": "2b164d48e7b2027bdae40fcc25096dca5dd615d55714e72727dfe462ff8e1eb2"
+    },
+    "django__django-12209.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/django__django-12209/django__django-12209.traj.json",
+     "size": 1083712,
+     "etag": "750488f0f630427db3c42ca465cccbdd",
+     "sha256": "59b12bdcb43268e0354ef8836f4d82d42aae472ad73a28a16c124c5f12aa792d"
+    },
+    "django__django-12708.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/django__django-12708/django__django-12708.traj.json",
+     "size": 760284,
+     "etag": "c3c59334bb3f53cbd6dd1cc4b2ff284a",
+     "sha256": "5dc949b2686e699c717adbfb40d3b1304f4f99ccd145321720b2a01b18b8f98f"
+    },
+    "django__django-14631.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/django__django-14631/django__django-14631.traj.json",
+     "size": 779868,
+     "etag": "a33c05d3ae752aa16ff15ab5eedd1127",
+     "sha256": "a7a5d328953c6d43debdb9d8b30c70e79834392e99f1666e299307bead41e2ec"
+    },
+    "django__django-15103.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/django__django-15103/django__django-15103.traj.json",
+     "size": 274393,
+     "etag": "c9a9627edbb1c639342b482a58fa1226",
+     "sha256": "4c8cbf12b51a67cdbcefe638659a9769a7e96699ccf907f0791ee5d047ea8aa5"
+    },
+    "django__django-15569.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/django__django-15569/django__django-15569.traj.json",
+     "size": 162392,
+     "etag": "a1a24ca7fc32dc3cc03e9bd22700580f",
+     "sha256": "cc2716436317a6aa3a9a60f37299d2e9590ab47e1e8272984a73be5aa232d337"
+    },
+    "django__django-15957.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/django__django-15957/django__django-15957.traj.json",
+     "size": 992185,
+     "etag": "fa94680dd9c2a638d8a77a7d91148a6e",
+     "sha256": "94914454f72fd31afc28356359bd99f82aca6ef89baca894773cbb1a2243baeb"
+    },
+    "django__django-16136.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/django__django-16136/django__django-16136.traj.json",
+     "size": 266360,
+     "etag": "abda3c757321715901ee9f5d4f1e4d88",
+     "sha256": "84b250d9c647b1a0e861d73988f8e70b881774161ba9f9d75be84ec9eefce500"
+    },
+    "django__django-16569.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/django__django-16569/django__django-16569.traj.json",
+     "size": 159725,
+     "etag": "33afeca3becb5063ebf23ec3ff775d7a",
+     "sha256": "830c647ae44e2fdd42796ac2ba912ca8282f6ec64fcd835758cc4fb0317b8e41"
+    },
+    "django__django-16938.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/django__django-16938/django__django-16938.traj.json",
+     "size": 314689,
+     "etag": "9ff5ae0f4c7419dd11c396348e68929e",
+     "sha256": "91a3bc1d3f50d4db557baf92af7b678656235cb01379b006a8da17bd7fc56fde"
+    },
+    "django__django-7530.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/django__django-7530/django__django-7530.traj.json",
+     "size": 364375,
+     "etag": "5f771cb8d22e57bf8ad00bb0906a8e68",
+     "sha256": "a0a108bb3d2c022e6fecf135eaa98434467890e06ac390ab376b1605322f4fe0"
+    },
+    "matplotlib__matplotlib-14623.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/matplotlib__matplotlib-14623/matplotlib__matplotlib-14623.traj.json",
+     "size": 821635,
+     "etag": "d5ed8cb55f36d68b031da93bf866d65d",
+     "sha256": "47801c3524b13234454ae1a7a55e1c2080dab77b00cddfc6e3e9279281ec51a7"
+    },
+    "matplotlib__matplotlib-22719.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/matplotlib__matplotlib-22719/matplotlib__matplotlib-22719.traj.json",
+     "size": 256530,
+     "etag": "e0e6784c10e086826078b1770c26348c",
+     "sha256": "fbd461a41db131c0bb4563ac9c7c079fe5660c62c7d567b201a1e30903eaeca5"
+    },
+    "matplotlib__matplotlib-25960.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/matplotlib__matplotlib-25960/matplotlib__matplotlib-25960.traj.json",
+     "size": 447528,
+     "etag": "66ad6c04788ee964477b799888ab5454",
+     "sha256": "2d49ca5f0d27355b42f99f11d6a58b5da8f6423df392d71a02c3d4f2a36d7d5a"
+    },
+    "pydata__xarray-4629.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/pydata__xarray-4629/pydata__xarray-4629.traj.json",
+     "size": 148727,
+     "etag": "1c60956441d31eb8304c471892abbfc3",
+     "sha256": "e2b5f20b349d6d947e6ffcb8d42ddcaf5e1f6ef915e479fb69dd623a004ca162"
+    },
+    "pytest-dev__pytest-10081.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/pytest-dev__pytest-10081/pytest-dev__pytest-10081.traj.json",
+     "size": 379287,
+     "etag": "97313acebbfc3b4a71cb772dbfbc4700",
+     "sha256": "cbc5eca19cd1ddbc367c064f0f4c65c635f4237203bfc7ce0f4a85d8a48e45ba"
+    },
+    "pytest-dev__pytest-6202.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/pytest-dev__pytest-6202/pytest-dev__pytest-6202.traj.json",
+     "size": 349864,
+     "etag": "08acdb32c27e7e1023db598cde0d277b",
+     "sha256": "1e6087be35e96f68b7885626bb53457ede4d738e170c11dca3334c5380a40cd0"
+    },
+    "pytest-dev__pytest-7521.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/pytest-dev__pytest-7521/pytest-dev__pytest-7521.traj.json",
+     "size": 371881,
+     "etag": "9f7526a2436d8766aee64808b3c9cc74",
+     "sha256": "1b44191349088ce1af5601c4e52477c6dac8d05ebde739d9ad81fdb42b12090b"
+    },
+    "pytest-dev__pytest-7571.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/pytest-dev__pytest-7571/pytest-dev__pytest-7571.traj.json",
+     "size": 426472,
+     "etag": "5dfe7381aaaef762cce8bdfae461fca1",
+     "sha256": "22f14723b53aa4b05cb0f6bf52f812a7f6c37453dbed9074ff52bf70d1ce9e1f"
+    },
+    "scikit-learn__scikit-learn-14053.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/scikit-learn__scikit-learn-14053/scikit-learn__scikit-learn-14053.traj.json",
+     "size": 356761,
+     "etag": "6482299c9391626601337a936182a4e8",
+     "sha256": "4e8855162a659ee4092fb4f95163ae9f313a499134f92599237b8a8cafbc650e"
+    },
+    "scikit-learn__scikit-learn-15100.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/scikit-learn__scikit-learn-15100/scikit-learn__scikit-learn-15100.traj.json",
+     "size": 171071,
+     "etag": "2619a660a401fad5ee36fe8166f368d5",
+     "sha256": "73045083e713f2a97ad75c2f61dd720c6f69f069433f517d69f78d45cb76bc9b"
+    },
+    "scikit-learn__scikit-learn-26194.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/scikit-learn__scikit-learn-26194/scikit-learn__scikit-learn-26194.traj.json",
+     "size": 338222,
+     "etag": "ae0ebf3f2505e83b394aa7b528e8759f",
+     "sha256": "984a1641b46179c638c8087cf29a767c35b0c4b5f27a16b44b517fbd6acb98d2"
+    },
+    "sphinx-doc__sphinx-10466.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/sphinx-doc__sphinx-10466/sphinx-doc__sphinx-10466.traj.json",
+     "size": 276930,
+     "etag": "c1a065bba0cba43f9e8799d9a601eb97",
+     "sha256": "eb8581b09c9ff7f5908c722c865cdcd48f8517fb6c3e459b827c22efc5098aba"
+    },
+    "sphinx-doc__sphinx-11510.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/sphinx-doc__sphinx-11510/sphinx-doc__sphinx-11510.traj.json",
+     "size": 1096221,
+     "etag": "30bf5ff4050be15430ea24f26eff534b",
+     "sha256": "b3441b55da2f546fd0ccf5fedfa90b890c22d56b41e1a604cf750106bf89edd9"
+    },
+    "sphinx-doc__sphinx-8551.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/sphinx-doc__sphinx-8551/sphinx-doc__sphinx-8551.traj.json",
+     "size": 496384,
+     "etag": "f91c7c2f0cd825fa4376efca67ff9014",
+     "sha256": "77493c4bfc4c224a826cb1230de2a3de6debd3c51cfeec5758e978bfae94ecd0"
+    },
+    "sphinx-doc__sphinx-9258.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/sphinx-doc__sphinx-9258/sphinx-doc__sphinx-9258.traj.json",
+     "size": 305087,
+     "etag": "d638c4b7137160bb7d2c1a345a49de42",
+     "sha256": "e070ba15d322fd52ae3a41e1d3435efd68100597b9b64391dee73d09ad5f2db9"
+    },
+    "sympy__sympy-12419.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/sympy__sympy-12419/sympy__sympy-12419.traj.json",
+     "size": 577798,
+     "etag": "4de6b46dec9709e045c15cd99229f508",
+     "sha256": "2c207763dc76cc0b6f56d8c83cdfbbb50c14bde98fb5c0453a761cfd18484414"
+    },
+    "sympy__sympy-13877.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/sympy__sympy-13877/sympy__sympy-13877.traj.json",
+     "size": 256196,
+     "etag": "bf5ffb882b9015bb24134df5188db229",
+     "sha256": "c343ec3e33e840e0b880c915671e5c0d595c731333e1f5175d74c07b11e9874d"
+    },
+    "sympy__sympy-14976.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/sympy__sympy-14976/sympy__sympy-14976.traj.json",
+     "size": 576217,
+     "etag": "0bf9385c997c46faf35134195d4fdfaf",
+     "sha256": "f0100363785af218c67444939069d2290e8a6e9ec4d2cf6ad4b2721cc9b71bad"
+    },
+    "sympy__sympy-15345.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/sympy__sympy-15345/sympy__sympy-15345.traj.json",
+     "size": 279020,
+     "etag": "30ad7f78f9276d2294122790a13907ae",
+     "sha256": "17c5278392385b31f4e7883a0dcf2b664cf4fce02a60157a288dd65bdbb17a5e"
+    },
+    "sympy__sympy-17318.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/sympy__sympy-17318/sympy__sympy-17318.traj.json",
+     "size": 303824,
+     "etag": "2e9d7066471d02e51097103f864217dd",
+     "sha256": "49105a3bc52fdfb7f1f22b7d8b78e3f227fb276b0e4b6f080e24f78952a2910b"
+    },
+    "sympy__sympy-20154.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/sympy__sympy-20154/sympy__sympy-20154.traj.json",
+     "size": 285791,
+     "etag": "a0216f29a8740cb3f628bb031458cc5a",
+     "sha256": "8015f1de00db3d4313e17877481b3bfdc96c5af3cde3924b5b011f4f3971be7f"
+    },
+    "sympy__sympy-21847.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-opus-high/trajs/sympy__sympy-21847/sympy__sympy-21847.traj.json",
+     "size": 253512,
+     "etag": "59c7891b02d50619cb9bbffe4adb23aa",
+     "sha256": "1a29eaff44ac793bb9dc28a4af210ef79759c34304327a2d772ace7464ca2034"
+    }
+   }
+  },
+  "20260217_mini-v2.0.0_claude-4-5-sonnet-high": {
+   "listed": 500,
+   "files": {
+    "astropy__astropy-13453.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/astropy__astropy-13453/astropy__astropy-13453.traj.json",
+     "size": 730090,
+     "etag": "d53370e6c93280a857211bb23c50cf00",
+     "sha256": "633dd18d145fbdfa13272aa2e0677e5b0fa73d0694ead6fd70ba714d2d09c284"
+    },
+    "astropy__astropy-14539.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/astropy__astropy-14539/astropy__astropy-14539.traj.json",
+     "size": 487667,
+     "etag": "d96ac53dfaccb4bad054004b196f5b01",
+     "sha256": "e785b8d376bc0154769ab6655fa9b424fc491812038ca5d9ce140ff7bb9783b5"
+    },
+    "django__django-11138.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/django__django-11138/django__django-11138.traj.json",
+     "size": 855912,
+     "etag": "65d5eec0f2b44e3d4704a96ad03b3393",
+     "sha256": "ac330f672c7c93b2c5b620294edb089d61e92bb77519fe503e5bfc6dd6cd7fb3"
+    },
+    "django__django-11211.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/django__django-11211/django__django-11211.traj.json",
+     "size": 646417,
+     "etag": "10eba153c46df67ad6f6a75561415cf0",
+     "sha256": "4be1437185bc01a661fe61fb7e4cdd232ffef7e22864cd8d0aa76380bede19bb"
+    },
+    "django__django-11265.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/django__django-11265/django__django-11265.traj.json",
+     "size": 601528,
+     "etag": "f00a47bea09d3a7da86b73ce5f67a73a",
+     "sha256": "d0bf65d824fa0f1f13b40d475e03bfe28f05c60ca78b9cd16cf0e6f1b1d2499f"
+    },
+    "django__django-11333.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/django__django-11333/django__django-11333.traj.json",
+     "size": 538939,
+     "etag": "755fc81e226f10ce6b0aa609874d1dd8",
+     "sha256": "31207655ac0a51db571aba2d8df30d5e7149baa5ac1730153da7975d832ae1d5"
+    },
+    "django__django-12276.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/django__django-12276/django__django-12276.traj.json",
+     "size": 438484,
+     "etag": "71c3aca8d71efc84a71a0a814dfe4fc8",
+     "sha256": "43733c92e4c4999887986a27f48da170c3b876d657781e77ccf69d73f2239d08"
+    },
+    "django__django-13568.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/django__django-13568/django__django-13568.traj.json",
+     "size": 540181,
+     "etag": "3d39f7dcdca02e48a1fffbe99457ede2",
+     "sha256": "27d2f6a67d591b467f09dab2cc2c305ef6180fd8715586edec9548013a32a9cd"
+    },
+    "django__django-13807.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/django__django-13807/django__django-13807.traj.json",
+     "size": 560788,
+     "etag": "9c5c45441972e2c539884369138025b2",
+     "sha256": "1046ed5c692d8e31f18e2ac07c07a3fa445422a6a326b10e5a7b3d1f0d2e7084"
+    },
+    "django__django-13810.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/django__django-13810/django__django-13810.traj.json",
+     "size": 964078,
+     "etag": "839dfe793014655bd67d2288e2a90d0b",
+     "sha256": "74db576ad488a7f811b2eb859d8256c271e00ffb336ba416a3a987d91d6dbe04"
+    },
+    "django__django-14017.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/django__django-14017/django__django-14017.traj.json",
+     "size": 637405,
+     "etag": "6d49ad7cfeb6130f8a92ec6db18a21ef",
+     "sha256": "3877a8869e68fda38a29d6035bd5ab915f163f9bfba8badf7027265f87fbc6bb"
+    },
+    "django__django-14349.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/django__django-14349/django__django-14349.traj.json",
+     "size": 441020,
+     "etag": "51a550aa9cda1e876c7c0e175e0f7eb4",
+     "sha256": "e74e538846e74431eae700d52dda8181d7a3542c5e1d18601cfd7a59e34efa79"
+    },
+    "django__django-14404.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/django__django-14404/django__django-14404.traj.json",
+     "size": 683803,
+     "etag": "ee1433bf020ab809c481bbb9573be001",
+     "sha256": "afa7ea27f0c8cdc471befa07ae9db3b9073eb0465b2ab2a8760bd32e9f84fcfd"
+    },
+    "django__django-14559.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/django__django-14559/django__django-14559.traj.json",
+     "size": 350459,
+     "etag": "ef0da971768ec8dd24160e44b18a4c5a",
+     "sha256": "000e268e9e1360f81a265a62431347239ada7576d18894330c5caf183de2b8c1"
+    },
+    "django__django-14672.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/django__django-14672/django__django-14672.traj.json",
+     "size": 354728,
+     "etag": "b36be900d3b4e3f8981276c6be6eadf9",
+     "sha256": "d65832ace33ff952f44f87854dac960c7309f8ce8fdf4704adbf7f1c8ddd8567"
+    },
+    "django__django-15930.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/django__django-15930/django__django-15930.traj.json",
+     "size": 615349,
+     "etag": "0452cf8bda613093c94740bdc8854790",
+     "sha256": "1dd45874f6aa357505f8c0abdb1b58e00a70861117634371cd766b78ebf2fecc"
+    },
+    "django__django-16256.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/django__django-16256/django__django-16256.traj.json",
+     "size": 854146,
+     "etag": "4bd3e9b3bd034c294d7e6522df1b1825",
+     "sha256": "5913ac64f4e0965d535eb2d0f3998983570107773593c9cbfe2f25c8cfb110df"
+    },
+    "django__django-7530.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/django__django-7530/django__django-7530.traj.json",
+     "size": 547974,
+     "etag": "5425d35d48023e5280b54d2440f044c5",
+     "sha256": "a088adbda48809888086ca1912bb02bd7f99c3f36533817c47f010c134f483c3"
+    },
+    "matplotlib__matplotlib-20488.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/matplotlib__matplotlib-20488/matplotlib__matplotlib-20488.traj.json",
+     "size": 827657,
+     "etag": "9d1a00110d1c293b1d3c4314a51154eb",
+     "sha256": "12a3cc84889c5d50c202971892dcb265ef034f10d229557000fe74bb4df82dfc"
+    },
+    "matplotlib__matplotlib-20859.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/matplotlib__matplotlib-20859/matplotlib__matplotlib-20859.traj.json",
+     "size": 187523,
+     "etag": "dbaebb38552891504b2f760f48311011",
+     "sha256": "b8d29c93a816b1289500b23edb522f905aa9a6b3221b7eac338cffcdbc910d47"
+    },
+    "matplotlib__matplotlib-23476.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/matplotlib__matplotlib-23476/matplotlib__matplotlib-23476.traj.json",
+     "size": 547546,
+     "etag": "845a35c2a78c7903227fb424e7895831",
+     "sha256": "9d76ff2f89893a6ddaa598263b7bdc68fad6cf2b98ae1ea57e31c4075d4000df"
+    },
+    "matplotlib__matplotlib-24970.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/matplotlib__matplotlib-24970/matplotlib__matplotlib-24970.traj.json",
+     "size": 404304,
+     "etag": "ff2623ada13ee20b4753e22fd65cc91a",
+     "sha256": "67c1e245cd1db17281a45fe9e61de87f0e8cccc635ad4442b692458a06c9239f"
+    },
+    "pydata__xarray-6938.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/pydata__xarray-6938/pydata__xarray-6938.traj.json",
+     "size": 812676,
+     "etag": "3321069f019e5a66fa6088e9f15726dc",
+     "sha256": "3c23307f7578afba4b0e207bad3d522396d3d4ceb388e8f4ad031932d0026bea"
+    },
+    "pydata__xarray-7233.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/pydata__xarray-7233/pydata__xarray-7233.traj.json",
+     "size": 354863,
+     "etag": "50b2edcf1de69f513138d210a93a0dff",
+     "sha256": "7507de603e4cba3c48c49c535730929a7878a7e0bb7de4d8bcb4f9499752a178"
+    },
+    "pytest-dev__pytest-6202.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/pytest-dev__pytest-6202/pytest-dev__pytest-6202.traj.json",
+     "size": 528256,
+     "etag": "097abb5fe5e2e03b2f4607bf2d4738c1",
+     "sha256": "88be7bc8cc11bc3dfa45dbdaf10636198f0320d820c6921772c04cf3e793d73b"
+    },
+    "scikit-learn__scikit-learn-10908.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/scikit-learn__scikit-learn-10908/scikit-learn__scikit-learn-10908.traj.json",
+     "size": 531802,
+     "etag": "17394c04af49ff5b544d0335c2692c6c",
+     "sha256": "0e993a1c10a62885b43ea17f1f0356d202aebbd520b9745b8203f682d00b71b2"
+    },
+    "scikit-learn__scikit-learn-12585.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/scikit-learn__scikit-learn-12585/scikit-learn__scikit-learn-12585.traj.json",
+     "size": 401004,
+     "etag": "983f8e047303fa97ccd0554145dc9cb2",
+     "sha256": "fd1f3813708820b6ab1583fa06ed4dffc410cf03fef886c769fd90116099dfdc"
+    },
+    "scikit-learn__scikit-learn-13779.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/scikit-learn__scikit-learn-13779/scikit-learn__scikit-learn-13779.traj.json",
+     "size": 461660,
+     "etag": "6308f314ab2e5efd5b888db8ba565745",
+     "sha256": "fd09c9f4e0e5837eaf103677ea18f085eb5b0ab1d855fd7cc20fd03617953931"
+    },
+    "scikit-learn__scikit-learn-14141.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/scikit-learn__scikit-learn-14141/scikit-learn__scikit-learn-14141.traj.json",
+     "size": 347119,
+     "etag": "390300bea4a48b31a2568d45e255aac8",
+     "sha256": "a4a4cad39596edcd69a9641c317d8ed44789abbc5e45fe90fb5e488ff4b24254"
+    },
+    "scikit-learn__scikit-learn-25747.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/scikit-learn__scikit-learn-25747/scikit-learn__scikit-learn-25747.traj.json",
+     "size": 675434,
+     "etag": "a244ceeefa19e07063ef719e11b94e04",
+     "sha256": "fcb2458be42fe089b3ed6abf28b61d558de46f08fd5e36add9309f033a3cf0c0"
+    },
+    "sphinx-doc__sphinx-8120.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/sphinx-doc__sphinx-8120/sphinx-doc__sphinx-8120.traj.json",
+     "size": 601417,
+     "etag": "9bd4793f22babab8d2c072b6ac8b15f9",
+     "sha256": "d0c78b23a738e8355f92c0a2a82bc7ceb47b1a56229247fdff7a722196bb5cef"
+    },
+    "sphinx-doc__sphinx-9658.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/sphinx-doc__sphinx-9658/sphinx-doc__sphinx-9658.traj.json",
+     "size": 772547,
+     "etag": "e248266163887a4407917c3503e4d1c0",
+     "sha256": "a5c57fb5f490f2fe2fea11689f4e9ae4127750c4b30929d7b6cb899f55aab4e0"
+    },
+    "sympy__sympy-11618.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/sympy__sympy-11618/sympy__sympy-11618.traj.json",
+     "size": 400398,
+     "etag": "772a19af292cfbd4c7b41674bc3816a3",
+     "sha256": "ddd2365693542b4dbd7decfc64ea4d3628d1d78bbbb82fadc2ca8f1b3d995f6e"
+    },
+    "sympy__sympy-13091.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/sympy__sympy-13091/sympy__sympy-13091.traj.json",
+     "size": 784221,
+     "etag": "c1bed2d03b0de8c3b9c3aa542bd83973",
+     "sha256": "91d7515b0fb1f6343774ab32a3271fe8527d656a1dd6139d675cb55d2c078d58"
+    },
+    "sympy__sympy-14711.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/sympy__sympy-14711/sympy__sympy-14711.traj.json",
+     "size": 484004,
+     "etag": "5f0067389819e8fef79b81cccb1f46cd",
+     "sha256": "7bc5566727939a4dc478705871ebabdc531b21e8eb133ec781207c643dd7cd9d"
+    },
+    "sympy__sympy-14976.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/sympy__sympy-14976/sympy__sympy-14976.traj.json",
+     "size": 662174,
+     "etag": "1e3ac454373916a2caa7f886ec46968b",
+     "sha256": "01e32b457aee65103d3604ee6cdb166ec4fa85f9dd351e412cfb4666a3041ff8"
+    },
+    "sympy__sympy-18199.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/sympy__sympy-18199/sympy__sympy-18199.traj.json",
+     "size": 633999,
+     "etag": "f66368d59615cad9c93af48fd4f54691",
+     "sha256": "caf911598b96ebbdae8b69d637135329ff4239804ca67ae9fcb2d5acb9ea41e4"
+    },
+    "sympy__sympy-18763.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/sympy__sympy-18763/sympy__sympy-18763.traj.json",
+     "size": 421773,
+     "etag": "f67d0f3e3e849953b6c2888e3b326200",
+     "sha256": "2394e036decb8be65a85dc0bfd106933dc7941287c9387e166a2cfd0ee282a61"
+    },
+    "sympy__sympy-20428.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/sympy__sympy-20428/sympy__sympy-20428.traj.json",
+     "size": 694106,
+     "etag": "a52d05df900c5fafdb0073ee4ab90dbd",
+     "sha256": "c01c1e5f425461c20f400ce53af951fd4165d1222b6a5cbc1cd060c983fd0fa8"
+    },
+    "sympy__sympy-23950.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-5-sonnet-high/trajs/sympy__sympy-23950/sympy__sympy-23950.traj.json",
+     "size": 790536,
+     "etag": "5ef039cac6d93bdd13a989786d5d17b4",
+     "sha256": "19e74f8cca4d11d8091826897a3956b6d34d4fc98d02309c577a113cdaa7dc3d"
+    }
+   }
+  },
+  "20260217_mini-v2.0.0_claude-4-6-opus": {
+   "listed": 500,
+   "files": {
+    "astropy__astropy-12907.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/astropy__astropy-12907/astropy__astropy-12907.traj.json",
+     "size": 216478,
+     "etag": "263eca17d439f36dfbc3d219afa66685",
+     "sha256": "25bc166a1055f1304f44db28ba69787ff51ddaefdd693764a67e08605b017204"
+    },
+    "django__django-11163.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/django__django-11163/django__django-11163.traj.json",
+     "size": 45956,
+     "etag": "19dcd2c227869e0b81bfc9da18b26003",
+     "sha256": "aee4773d7b31e83ea3339ec6306b56a970b3f778cbca9dd828c65a1c7bd9e5bb"
+    },
+    "django__django-11400.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/django__django-11400/django__django-11400.traj.json",
+     "size": 236268,
+     "etag": "ae1449c6f6edaec043d634401a17aed7",
+     "sha256": "f62a2510e7fdffd51f724a0526c952b7a37f85f1ea13c32591ce9c19fafc300b"
+    },
+    "django__django-11603.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/django__django-11603/django__django-11603.traj.json",
+     "size": 65130,
+     "etag": "0d0dd9dece353f2b09ae1a5a4ab2e2fa",
+     "sha256": "1e0698967241c329194fb2705534618b7c0419dd81d615c340a61751f65b6dc4"
+    },
+    "django__django-12308.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/django__django-12308/django__django-12308.traj.json",
+     "size": 133343,
+     "etag": "bea007c2ce44ffd91174c7d9b5567225",
+     "sha256": "5448dbe51aebc258cb1f391396f3acfeff15003dda12ba23bd53de05fdca0d36"
+    },
+    "django__django-12741.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/django__django-12741/django__django-12741.traj.json",
+     "size": 70651,
+     "etag": "d47c61accf16cacf13bcedae3828857a",
+     "sha256": "dd37de25918b85c9796960839b735c12a1f2ec13687fa1ed05cc41356d983fa6"
+    },
+    "django__django-13279.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/django__django-13279/django__django-13279.traj.json",
+     "size": 326988,
+     "etag": "1683ca5da299f3a43c3f54cf5d6c6388",
+     "sha256": "074b10cf4825878d6863848e0e344865f328969b3e10ec91b66bf8632a96429e"
+    },
+    "django__django-13417.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/django__django-13417/django__django-13417.traj.json",
+     "size": 212813,
+     "etag": "f292e7789d2dc7e12957291a6f73a0a1",
+     "sha256": "8640abd01b03f783b098739e110d28784e161dac5c0677d22a7a363ee867a8ac"
+    },
+    "django__django-13512.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/django__django-13512/django__django-13512.traj.json",
+     "size": 80540,
+     "etag": "5402618d3b1cf14575a5348e5dd0af24",
+     "sha256": "850d9703b9470861db5a2f09fa6dac83134f359759d9bcdccbb718f32c28ea02"
+    },
+    "django__django-14011.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/django__django-14011/django__django-14011.traj.json",
+     "size": 146232,
+     "etag": "164e898f5e5926b1016bcd6f02dffda4",
+     "sha256": "b9581584e0ec7e73b98d8a385e05784f7f7fc2422a22e78e9bb779a1ef3650e2"
+    },
+    "django__django-14349.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/django__django-14349/django__django-14349.traj.json",
+     "size": 155957,
+     "etag": "1bcebb4557f5efa7195a227b0fbc7848",
+     "sha256": "cc5c7eb85c91609dcb568e321539afb4bcc7beced833092e500dce7077997799"
+    },
+    "django__django-14351.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/django__django-14351/django__django-14351.traj.json",
+     "size": 539790,
+     "etag": "5622ef9edb339bd9a9f9e140d08622c1",
+     "sha256": "63c5f06ae8b00848013b34a6ccbc0ecb52661cc0ea89ca2553c4a7ea79d2f488"
+    },
+    "django__django-14376.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/django__django-14376/django__django-14376.traj.json",
+     "size": 42950,
+     "etag": "e94481c4a6ad8b538cf7e2b7a35f0ce1",
+     "sha256": "b5f907c4b9a0e9281cd938e6b06ee3d25aca1a99a01e1cbd57a8a7e3204e6ca6"
+    },
+    "django__django-14631.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/django__django-14631/django__django-14631.traj.json",
+     "size": 346188,
+     "etag": "09e9a4e5cf3a1b1909f623b1de8dbb06",
+     "sha256": "f5a8ae26a0c451329edfcac12eb2cf7ca0275fe5e39faa7fe84a37624f60660f"
+    },
+    "django__django-14765.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/django__django-14765/django__django-14765.traj.json",
+     "size": 73394,
+     "etag": "a1ab00986350d6ce2fa5b0f1d7ab4e55",
+     "sha256": "57176c8abd502bc4ac52432d787bdc56a8ab5c5d41828447013826acdd96c391"
+    },
+    "django__django-14787.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/django__django-14787/django__django-14787.traj.json",
+     "size": 134247,
+     "etag": "420be017ad90a70c29041e6f2e369dcb",
+     "sha256": "6b44830cd9f31238dc7ad2ef94d961df01cc287b3c85011507e93802f8785cdc"
+    },
+    "django__django-15561.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/django__django-15561/django__django-15561.traj.json",
+     "size": 172833,
+     "etag": "f88b3126b2478b5e3397a6386a47ef0c",
+     "sha256": "e503e53b4a173268936d53811926574b52521630a49c442d31ec48f76ecda69d"
+    },
+    "django__django-15741.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/django__django-15741/django__django-15741.traj.json",
+     "size": 84621,
+     "etag": "ca5e2777e6289654f5c656d342334439",
+     "sha256": "92c1ed517f18146ff75a6a59ccf9d2f3f8cc1375c85690367b16627668ee9d1a"
+    },
+    "django__django-15851.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/django__django-15851/django__django-15851.traj.json",
+     "size": 101938,
+     "etag": "2d6fdb851bf73847bf0f2b9018c6f856",
+     "sha256": "952f411dd28d20a8fc860c1242db2755ff9fdc76deea3d9a2c7447be044808fd"
+    },
+    "django__django-16082.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/django__django-16082/django__django-16082.traj.json",
+     "size": 102775,
+     "etag": "f91c03fe00a87bf0d49f262f6d5d7af4",
+     "sha256": "18af9b04aed576e9a4b95d0935be751cc98713b204f190be06fdd6ce278bdf35"
+    },
+    "django__django-16493.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/django__django-16493/django__django-16493.traj.json",
+     "size": 139838,
+     "etag": "4c4bb372326e88c1d44c8d9701431fcf",
+     "sha256": "1794717817f78ac4926a8645006045b83b0f39244c7dd1a0ca636331d460c2a6"
+    },
+    "django__django-16502.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/django__django-16502/django__django-16502.traj.json",
+     "size": 211266,
+     "etag": "e490d472e7e360eb1c9c765bf24251c3",
+     "sha256": "1441d83ffc22e731de234fb3bbd03b23e0693bbda6a06b85f5126f085a513c30"
+    },
+    "django__django-16631.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/django__django-16631/django__django-16631.traj.json",
+     "size": 179270,
+     "etag": "643aa0296e85ebf76368cfe9f96bdd7f",
+     "sha256": "3fd51cbacb9e0369b8258c863de1e3907c8b72fda040f0eea43e15167220a37f"
+    },
+    "django__django-16642.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/django__django-16642/django__django-16642.traj.json",
+     "size": 114119,
+     "etag": "44c1bdf17489111ffeb8ccb1e571eb1d",
+     "sha256": "2182a2fed794b3a424115d77e60a19e1680038723ec1b594e0a50c818779e036"
+    },
+    "django__django-16877.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/django__django-16877/django__django-16877.traj.json",
+     "size": 156515,
+     "etag": "0f24ecdf291cddb432fda3305c7bd4d0",
+     "sha256": "3f43e413cc2e7190e43c8008c12828dbd60ce8e0659ef3fe5a03f4c5d8a8c65d"
+    },
+    "matplotlib__matplotlib-20859.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/matplotlib__matplotlib-20859/matplotlib__matplotlib-20859.traj.json",
+     "size": 70937,
+     "etag": "241f5028cbfeb9495a36d9afe9c28518",
+     "sha256": "aa0fbb8977e1765b76ef13aa97e604c4000cd48e7c543c597368e2579dc56a75"
+    },
+    "psf__requests-1724.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/psf__requests-1724/psf__requests-1724.traj.json",
+     "size": 108311,
+     "etag": "45727a3cce08163144b86e2380b55abd",
+     "sha256": "18e0f74796bd01abaa2b2f68e20c821a4f81d3a8efb4e5ba005b1681cd2374ce"
+    },
+    "scikit-learn__scikit-learn-10844.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/scikit-learn__scikit-learn-10844/scikit-learn__scikit-learn-10844.traj.json",
+     "size": 75531,
+     "etag": "2b19831cf9f941bf577150f8993ee214",
+     "sha256": "e92a9b29d540460646e326a86c01f3c3a1baf96158e1290e2a6e5b76737291d7"
+    },
+    "sphinx-doc__sphinx-10466.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/sphinx-doc__sphinx-10466/sphinx-doc__sphinx-10466.traj.json",
+     "size": 98667,
+     "etag": "4256b1db11d2c0380d5fef39927a6bad",
+     "sha256": "941b92ca833e7b032522e7966fd74cd251a226d24da5b0ff03d22525f7e7a82e"
+    },
+    "sphinx-doc__sphinx-9591.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/sphinx-doc__sphinx-9591/sphinx-doc__sphinx-9591.traj.json",
+     "size": 178052,
+     "etag": "2abacc615eaa170e70c1d27852f9cb68",
+     "sha256": "55a39317ea6c219cda5fdb15992d1fd867611baf8851ee6466b065270a2d7d52"
+    },
+    "sympy__sympy-12481.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/sympy__sympy-12481/sympy__sympy-12481.traj.json",
+     "size": 164003,
+     "etag": "5370575401f21ef90680c35abb4907e3",
+     "sha256": "33b0e77497cc293c9342b8db06fbd4640a565aaa965bf889ccd58cf606f72bb4"
+    },
+    "sympy__sympy-13372.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/sympy__sympy-13372/sympy__sympy-13372.traj.json",
+     "size": 111269,
+     "etag": "f9854ae1a4cb323b3618d67466fef04c",
+     "sha256": "243fc2d58e5e98d1c0646e56401160445ac5922e1eabd85a7e8622c736b82a58"
+    },
+    "sympy__sympy-15809.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/sympy__sympy-15809/sympy__sympy-15809.traj.json",
+     "size": 99913,
+     "etag": "aec970d80c8364c4cfec761d358dc66f",
+     "sha256": "a10b9634bf0af3e6b9fc920448a86e91b933bec0f30cec424e2e3e18c0f29308"
+    },
+    "sympy__sympy-15976.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/sympy__sympy-15976/sympy__sympy-15976.traj.json",
+     "size": 174308,
+     "etag": "1f1c873bb6e1a0195284fd75be4fe5a4",
+     "sha256": "ca1eff6447e16af02003a08c8e8ddc671a29ee2ee3a88c0f06ae5a8518cfbacb"
+    },
+    "sympy__sympy-16450.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/sympy__sympy-16450/sympy__sympy-16450.traj.json",
+     "size": 167520,
+     "etag": "057df1e8710aaa8c5f04a929c72be3b4",
+     "sha256": "1a4d15a3f5ec69d42cfe2a678d8dfa23fdd7dfbca47884d63552752028ba7628"
+    },
+    "sympy__sympy-17655.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/sympy__sympy-17655/sympy__sympy-17655.traj.json",
+     "size": 182045,
+     "etag": "9e8c1710a894722f5c139ea56100768a",
+     "sha256": "bb9d971eb807569a785f089c9bfd676cfd35bd59294f67f94eeb99250a08eceb"
+    },
+    "sympy__sympy-18211.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/sympy__sympy-18211/sympy__sympy-18211.traj.json",
+     "size": 110269,
+     "etag": "dd33deb0305cf7ef0b2fd8b1c2c66028",
+     "sha256": "f2cbe59081705a5c5442616179345b6ac204b3ddf8d0e1e3e7f730083546f1aa"
+    },
+    "sympy__sympy-21847.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/sympy__sympy-21847/sympy__sympy-21847.traj.json",
+     "size": 71925,
+     "etag": "5f3284bf8d20d6ee7cf4b600be9a858c",
+     "sha256": "ecdf3dafeb7929128e6782c6b13e41ce1f2e39834183fe9e00a533401759f5b2"
+    },
+    "sympy__sympy-22080.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/sympy__sympy-22080/sympy__sympy-22080.traj.json",
+     "size": 975691,
+     "etag": "4ad1036fcad45576196b224a97116912",
+     "sha256": "19b813b871ccd3fbb6a41db51fe0c0a4565498cceefb3eb86c4a79d87d155a42"
+    },
+    "sympy__sympy-22714.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_claude-4-6-opus/trajs/sympy__sympy-22714/sympy__sympy-22714.traj.json",
+     "size": 290267,
+     "etag": "f18646bd97097d087565c2e757253da0",
+     "sha256": "c73faa204065ddff4e9c1ae50e6a7aa0089ae217dbbda2fb786dd4172ffe0bbe"
+    }
+   }
+  },
+  "20251120_mini-v1.15.0_gpt-5.1-2025-11-13": {
+   "listed": 500,
+   "files": {
+    "django__django-11815.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/django__django-11815/django__django-11815.traj.json",
+     "size": 143850,
+     "etag": "36a472a51957c0d8635f95a8ddad5a24",
+     "sha256": "be1f7eba8b75b1fee50be24c82cfb30e2771e6d1b067d511ea7f4cea738d727f"
+    },
+    "django__django-11820.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/django__django-11820/django__django-11820.traj.json",
+     "size": 94779,
+     "etag": "f733925320c58018870b1f44976f2507",
+     "sha256": "f3d6c96fad5eee1588bde42259963bdcd3c3f01384c8b8c7b1ab7ede39afa6cb"
+    },
+    "django__django-11885.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/django__django-11885/django__django-11885.traj.json",
+     "size": 192679,
+     "etag": "bd5161aea0035e553689dba539da80a0",
+     "sha256": "2c058c367ce0c3f58d11c7f974daa9d68767bbac44779b70852b17bdb9068833"
+    },
+    "django__django-12155.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/django__django-12155/django__django-12155.traj.json",
+     "size": 70997,
+     "etag": "24359bbaa8b926b5fc430044a1c6d0a9",
+     "sha256": "4a332c6ea38625344d8f9946534c598684272983cf1e81b06a20f1f44c3f722f"
+    },
+    "django__django-12193.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/django__django-12193/django__django-12193.traj.json",
+     "size": 109796,
+     "etag": "8fc050d9ad374570c2aa44cff39d0353",
+     "sha256": "ac5a799afd0f2786f749c7f30c92ccbaf392409b1601e13d83b53d7594a8dd83"
+    },
+    "django__django-12858.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/django__django-12858/django__django-12858.traj.json",
+     "size": 75720,
+     "etag": "1e0b51726d7bdd2625f42c5f03c0de5c",
+     "sha256": "f69eba6f8956803e0d17649e83f820f5d291dff3cd05bf2bb0ad13104fbcb489"
+    },
+    "django__django-13012.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/django__django-13012/django__django-13012.traj.json",
+     "size": 120086,
+     "etag": "91ec1d07e766688b7e7e70e3c00d7427",
+     "sha256": "c01033302bd4fbbd5a2656d5d95758977c2ef57d6b9f8e9bbbe791abd09f5d97"
+    },
+    "django__django-13033.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/django__django-13033/django__django-13033.traj.json",
+     "size": 139484,
+     "etag": "20aa5e1ad317011a59a5f1c85817a7ea",
+     "sha256": "38f90d264361482cc17854801a9f7032f13b4d3db318a778e32ff10e3bf703bf"
+    },
+    "django__django-13315.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/django__django-13315/django__django-13315.traj.json",
+     "size": 138823,
+     "etag": "66b1972ac3abed4e52f87febe2332c5d",
+     "sha256": "32aa5df7c14277402d8e6e5bdb62946179cf3086f60174e1f04e1340746a4454"
+    },
+    "django__django-13343.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/django__django-13343/django__django-13343.traj.json",
+     "size": 113719,
+     "etag": "2b093b18e6c7ae9517c8b0a7c9118bb8",
+     "sha256": "61b52ab45efd9cda416a87e70a7091ae72568b57ffffa401e5cee8b3fe1ac5fd"
+    },
+    "django__django-14017.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/django__django-14017/django__django-14017.traj.json",
+     "size": 127595,
+     "etag": "53efaa012fa67de80d60aff72f7d373a",
+     "sha256": "ee13440890b7456a8bb3122b1f8508856170defaed6a9f27fbb36813f087ae42"
+    },
+    "django__django-14434.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/django__django-14434/django__django-14434.traj.json",
+     "size": 95523,
+     "etag": "c2dacb22688a4ae8b378705ab9e42ba3",
+     "sha256": "bd6bcfd46d987a58183e9bf833e97d539d2af371a564b3212a7b03bb56e1c9b2"
+    },
+    "django__django-14493.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/django__django-14493/django__django-14493.traj.json",
+     "size": 58548,
+     "etag": "b3374be677565c209c85c92bee0a283f",
+     "sha256": "7716dc64badb1be675edfd61a28a5313ac829b7e58eafe67178b05cb555005c7"
+    },
+    "django__django-14539.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/django__django-14539/django__django-14539.traj.json",
+     "size": 103109,
+     "etag": "f2d31484798b43625558c74de1fd7b7e",
+     "sha256": "f3b043b8e625fb54485660493f8382616049d181f1cbb0c29e02440508959f61"
+    },
+    "django__django-15037.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/django__django-15037/django__django-15037.traj.json",
+     "size": 245144,
+     "etag": "dcc5606ef1054866ca39ab244794ad8c",
+     "sha256": "2c9ed74ed99aa3191182b0d72b47ba603e943c19abeac59ba2737f346fe146a4"
+    },
+    "django__django-15315.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/django__django-15315/django__django-15315.traj.json",
+     "size": 117396,
+     "etag": "d0aafa1e7572e20fd77ce36779aa1677",
+     "sha256": "51a7145f71da5e1ca792f827c8bdacd2d082bc1372ea9d545c8e53664c7e4ee0"
+    },
+    "django__django-15741.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/django__django-15741/django__django-15741.traj.json",
+     "size": 111717,
+     "etag": "f54ffb47e151c51402c6849c6308330c",
+     "sha256": "c5e1f30d7ff83dce7e81962ec133d89b7f8bb9e172e4cde185b026b85c754c34"
+    },
+    "django__django-16032.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/django__django-16032/django__django-16032.traj.json",
+     "size": 210683,
+     "etag": "9eb218a2979d700a014d38a9ec3e4663",
+     "sha256": "2a82016c790eb3ac1c30b61e09349552607970d8406c203f916157ea4f2920ba"
+    },
+    "django__django-16255.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/django__django-16255/django__django-16255.traj.json",
+     "size": 60960,
+     "etag": "67ac8d9b4b4bfefb7e6870b88f482796",
+     "sha256": "b5c76098b8afca4058da502a6e2f41e23e741719ad2a7c97a24b3828b4299adc"
+    },
+    "django__django-16560.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/django__django-16560/django__django-16560.traj.json",
+     "size": 256208,
+     "etag": "6e1d90de041bf4e4afcfa06f0f2cc484",
+     "sha256": "688d9cf73954ce25b2163afb2d4e68778f7210ccde2f060376e6abfa4a6aaa18"
+    },
+    "django__django-16801.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/django__django-16801/django__django-16801.traj.json",
+     "size": 133178,
+     "etag": "9bbfafddf6b6b17cf339b97b8b58be76",
+     "sha256": "411eaf2d853acc8e2c1e378c7b5aad88944b4c2fa649fc3d957f12afa2f17090"
+    },
+    "django__django-16950.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/django__django-16950/django__django-16950.traj.json",
+     "size": 179828,
+     "etag": "4535a9c002f6f2a363f95603039215fb",
+     "sha256": "cfa4cd620fc8bf12754107187fef7a916cba6355963a09502da8cd01aefb429b"
+    },
+    "django__django-9296.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/django__django-9296/django__django-9296.traj.json",
+     "size": 63064,
+     "etag": "2774721d2218f571dff2c30152f0608a",
+     "sha256": "5cce40f301e664e55f2f3c5eb38a79d8d4903482c37c13b993ee03d39fac1d04"
+    },
+    "psf__requests-1724.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/psf__requests-1724/psf__requests-1724.traj.json",
+     "size": 126147,
+     "etag": "e1eac9d3b3746520cbe4a6a58ce48b4e",
+     "sha256": "b8790c69515cba690dfe406e0a96bac65e99373925549378c0a39d280bbe6d98"
+    },
+    "psf__requests-1921.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/psf__requests-1921/psf__requests-1921.traj.json",
+     "size": 115375,
+     "etag": "15bda13e0e142de8ee5801b0c7964bfc",
+     "sha256": "5a5ad1852fca5e55bff51784e99b251d7023ba8c17f167745de4886fb6907a87"
+    },
+    "psf__requests-2931.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/psf__requests-2931/psf__requests-2931.traj.json",
+     "size": 121871,
+     "etag": "4509b72780b71a0078f5d3dce33d1db5",
+     "sha256": "751b1204c6702bf86eea5a8b70d6253a5f776a9b82b4984825a8bacabdd836d5"
+    },
+    "pydata__xarray-6992.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/pydata__xarray-6992/pydata__xarray-6992.traj.json",
+     "size": 57726,
+     "etag": "801ba88712cd6b745205373fe8a1c826",
+     "sha256": "ac939a273dfdb76d20be8bcc2356967ab98b4c4fe96754681ec94e670e260755"
+    },
+    "pydata__xarray-7229.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/pydata__xarray-7229/pydata__xarray-7229.traj.json",
+     "size": 300916,
+     "etag": "4942307c811b5f0ae48ef51d60771592",
+     "sha256": "ee68c1d6ee8a87efcbe9e8bd96e0f502533d4a20f7439068b82fc5e1d5d4cc5a"
+    },
+    "pytest-dev__pytest-5787.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/pytest-dev__pytest-5787/pytest-dev__pytest-5787.traj.json",
+     "size": 664106,
+     "etag": "89c8ccf12ab3dd7f35e784d87b02315a",
+     "sha256": "c70ab117da89270ca47fd1333aec84f0d60ff640d479da51d5512c31650f35db"
+    },
+    "scikit-learn__scikit-learn-11578.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/scikit-learn__scikit-learn-11578/scikit-learn__scikit-learn-11578.traj.json",
+     "size": 172350,
+     "etag": "24e6ae2223145de34c8383275a41fa44",
+     "sha256": "c49b571f1c07b7aa1666f91b4da816d7cbb4b4126d5707984b279694a5fbfed4"
+    },
+    "scikit-learn__scikit-learn-12585.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/scikit-learn__scikit-learn-12585/scikit-learn__scikit-learn-12585.traj.json",
+     "size": 63471,
+     "etag": "0e1880c32f73e47d06d5d0046827dae0",
+     "sha256": "9cba19e03196e160a46df4711f931b51e3b9c0dda0d67cdbfefebc6aaa36b283"
+    },
+    "scikit-learn__scikit-learn-25973.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/scikit-learn__scikit-learn-25973/scikit-learn__scikit-learn-25973.traj.json",
+     "size": 84386,
+     "etag": "f9cd259f3e285ae79b2af95ee5e089ff",
+     "sha256": "7b53c6b2197fea2a0a41dbe698ad84ae11e95458504e0693f56fa15cf1090691"
+    },
+    "sphinx-doc__sphinx-11510.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/sphinx-doc__sphinx-11510/sphinx-doc__sphinx-11510.traj.json",
+     "size": 442642,
+     "etag": "d3b79157a311e2aee40ae4b89367f482",
+     "sha256": "5448ede76e7cab84bf7d833c24324f806fc77af023695a60e8c6d151a58e219c"
+    },
+    "sphinx-doc__sphinx-9281.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/sphinx-doc__sphinx-9281/sphinx-doc__sphinx-9281.traj.json",
+     "size": 109917,
+     "etag": "9cbcb1959eedce69d9648363a1369a2f",
+     "sha256": "a42e181f4eeb84766cef406e7b862fc3dcc19123f7217521400aa7a375a302bd"
+    },
+    "sympy__sympy-13647.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/sympy__sympy-13647/sympy__sympy-13647.traj.json",
+     "size": 86781,
+     "etag": "3144b4e84352600cbddfc334072d5171",
+     "sha256": "12f48f58a68aad01b1de37d599043ca02cba8870a5d9b9b0dc97a935348c251a"
+    },
+    "sympy__sympy-13757.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/sympy__sympy-13757/sympy__sympy-13757.traj.json",
+     "size": 109317,
+     "etag": "da01c3ead46823a58a638e0e2d630ea9",
+     "sha256": "7e5e9d7dc984b53d9cab84c58540e0db9779ede54abc2036a97103130fecd7e8"
+    },
+    "sympy__sympy-13878.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/sympy__sympy-13878/sympy__sympy-13878.traj.json",
+     "size": 245992,
+     "etag": "4a2521868c0d4e226d21f8783b250880",
+     "sha256": "7523a7c7de70d1ac547325a39faad8e42051347e04df0017b9c03d91dab22910"
+    },
+    "sympy__sympy-19637.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/sympy__sympy-19637/sympy__sympy-19637.traj.json",
+     "size": 69289,
+     "etag": "8a99e703bd5c2ec5bf9e280a0b48192a",
+     "sha256": "257e4048791468b790b2f6f28baea4600f490ee24fa9c08965a23795c1698540"
+    },
+    "sympy__sympy-20590.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/sympy__sympy-20590/sympy__sympy-20590.traj.json",
+     "size": 113247,
+     "etag": "798a3e0e8746e759758f5ff5b941b19d",
+     "sha256": "b1aefefd6e95a8cfc899da2a2ec9db9cabc5aabe8477cc24ef39dff4f6cb747e"
+    },
+    "sympy__sympy-24066.traj.json": {
+     "key": "bash-only/20251120_mini-v1.15.0_gpt-5.1-2025-11-13/trajs/sympy__sympy-24066/sympy__sympy-24066.traj.json",
+     "size": 131216,
+     "etag": "32e4c339a8f2f8ae0e33f2a909036486",
+     "sha256": "6dbfcce4d352935a673d4f85b54e71cc9a8a5fee54877f4d37681db01991a2ee"
+    }
+   }
+  },
+  "20251211_mini-v1.17.2_gpt-5.2-2025-12-11": {
+   "listed": 500,
+   "files": {
+    "astropy__astropy-14508.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/astropy__astropy-14508/astropy__astropy-14508.traj.json",
+     "size": 77517,
+     "etag": "175abb9bc71d93a43a8464a007363f9a",
+     "sha256": "c6fdd5b880b3f210142ce0d7769ef03074e1f10371834883db56dc701dc4cb11"
+    },
+    "astropy__astropy-14598.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/astropy__astropy-14598/astropy__astropy-14598.traj.json",
+     "size": 188908,
+     "etag": "8ab393eac7eedd4a22338c9f0e53f92f",
+     "sha256": "401197a2c6ce7b6a01e85654ecac9d9f58d987e1283bbef0d0e9278254c510fb"
+    },
+    "django__django-11299.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/django__django-11299/django__django-11299.traj.json",
+     "size": 94209,
+     "etag": "9070d71e377b88cfb2eba3939fdcd11f",
+     "sha256": "1dd6aa92a2502b99dabde225aae79cc861d3a0dbbc3faa1d9eeb2248b20bdf2b"
+    },
+    "django__django-11400.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/django__django-11400/django__django-11400.traj.json",
+     "size": 75977,
+     "etag": "d9d6b22c9b58a457de547cfa4442bd37",
+     "sha256": "71360166d42ee98bd83a7d0d2554e0fb41fb5d13d30e8422fd9fec991f740a28"
+    },
+    "django__django-11951.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/django__django-11951/django__django-11951.traj.json",
+     "size": 48106,
+     "etag": "b60d71cd6f2f9cf8a172ffd6a63738b6",
+     "sha256": "e926a0385b33d4645a7be17d65d826e62f4292cdc03672628258be77d92434ba"
+    },
+    "django__django-12193.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/django__django-12193/django__django-12193.traj.json",
+     "size": 99705,
+     "etag": "aca0b8e43983488f07c9213650958997",
+     "sha256": "34f3c7058fd482ead8223df8b357c2ebcfae9e44a48e7ea02274b24acc6fe817"
+    },
+    "django__django-12262.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/django__django-12262/django__django-12262.traj.json",
+     "size": 65913,
+     "etag": "db67fd5cbe5bbb976e15a77a3ecd6810",
+     "sha256": "d3c148951e0490df48d3f47c1f7c54fb3256448b07b86c87ce036fa4bdceee93"
+    },
+    "django__django-13028.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/django__django-13028/django__django-13028.traj.json",
+     "size": 77054,
+     "etag": "13c917b41436d90e20f962f78cfedf9b",
+     "sha256": "8e4a6c7fedc52ffd612ecb38dd83b8ca7483c85f9c7a52473235d9805a4a0b69"
+    },
+    "django__django-13109.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/django__django-13109/django__django-13109.traj.json",
+     "size": 53193,
+     "etag": "e4d189a57b1a13204a720d43fa997c80",
+     "sha256": "0e5d95e4f5a26a374a1fee78d838710526bb7dda25f27655dd90aae3d3ee8955"
+    },
+    "django__django-13658.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/django__django-13658/django__django-13658.traj.json",
+     "size": 62769,
+     "etag": "ea47c6e28e4e5cde9b388f8a4309c6bd",
+     "sha256": "30b1b53802cabeffeb677fefaf3a4365944ce75b5ea51924af3f5e5a9e9aa7f1"
+    },
+    "django__django-13837.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/django__django-13837/django__django-13837.traj.json",
+     "size": 64197,
+     "etag": "23a43a09f98edb23bc5be386ebb195ea",
+     "sha256": "58c941fdce3ecc3d6bcf54e86572ae5805f0a8671f786b2fd4d750f891f86507"
+    },
+    "django__django-14608.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/django__django-14608/django__django-14608.traj.json",
+     "size": 89286,
+     "etag": "85dbd1b708b7f9edd2b1264671fb878c",
+     "sha256": "a0aaeeeb827dfb2c7273bc7117222add07b31234db4a84c5ded65ed2a1069c08"
+    },
+    "django__django-14725.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/django__django-14725/django__django-14725.traj.json",
+     "size": 192108,
+     "etag": "e6ce606691470044b21266bed01b4541",
+     "sha256": "27fc759169a306803acb9495cf7368d91af2860edef14b17c9801a411d9bbf5f"
+    },
+    "django__django-14787.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/django__django-14787/django__django-14787.traj.json",
+     "size": 60272,
+     "etag": "2a81e4aa35aa1e75428690af73e53399",
+     "sha256": "6df83481a7b0b5d78bdb74350c4d6e4308ac577480b779acb5a9b4533e1f2358"
+    },
+    "django__django-15098.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/django__django-15098/django__django-15098.traj.json",
+     "size": 91415,
+     "etag": "e63442cdec70c20d1dfb481fcccbc091",
+     "sha256": "8208ac6b5ea5da374c9140daa5217db2b63ad92398f5c6c6f4585fff3a7cfea2"
+    },
+    "django__django-15277.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/django__django-15277/django__django-15277.traj.json",
+     "size": 62680,
+     "etag": "cb42ab04f57b1a27b74e8154974d6aaa",
+     "sha256": "bd536992ec607fa9b106ecb5f676a1e888a5205708b9c9fb144e9ae8e202fce4"
+    },
+    "django__django-15569.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/django__django-15569/django__django-15569.traj.json",
+     "size": 56048,
+     "etag": "933b0ee49e11ca813b4434cd528e8317",
+     "sha256": "1f59056925a1cc6c861499e235ffe807b1fab94dc6ff5d4f1c10f3a21a698040"
+    },
+    "django__django-16429.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/django__django-16429/django__django-16429.traj.json",
+     "size": 59763,
+     "etag": "68e2e2ff3c08dbdcae00131e19197f0b",
+     "sha256": "fbf0a8f86c4879d44b37d6975c874661577a8c6a021ce7e896c0bead69d17a65"
+    },
+    "django__django-16801.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/django__django-16801/django__django-16801.traj.json",
+     "size": 56670,
+     "etag": "35a49f7ae4a5db9d336742b28c90d474",
+     "sha256": "edf92c2a3496eae94234f635622fc135fb83fba0be728b5accb7c7ccf50c36a8"
+    },
+    "matplotlib__matplotlib-26113.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/matplotlib__matplotlib-26113/matplotlib__matplotlib-26113.traj.json",
+     "size": 79843,
+     "etag": "4c5b20932783686ae8b781b17d62357d",
+     "sha256": "fc12cb9ccc8d632dd8d41705a805300f1276ef2c2c8641da61b5e247a62dd4e6"
+    },
+    "psf__requests-1766.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/psf__requests-1766/psf__requests-1766.traj.json",
+     "size": 76635,
+     "etag": "2d9990805fed03a2972ab869d3abf020",
+     "sha256": "752714cbb5cf0dab1044585bfdf0517b4bf332d4c3fcc0549edc0b49a65188b0"
+    },
+    "pydata__xarray-2905.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/pydata__xarray-2905/pydata__xarray-2905.traj.json",
+     "size": 88031,
+     "etag": "2cf395f358936e4a6871e766bb08ad1b",
+     "sha256": "6eed0ac542c2bb9811183e2279fcfbb9c973500997fa44e7180cb6116cf7b5f5"
+    },
+    "pydata__xarray-4687.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/pydata__xarray-4687/pydata__xarray-4687.traj.json",
+     "size": 206907,
+     "etag": "e840dd8a0a05f8f9a5d93f32a05d1c19",
+     "sha256": "7b10d417a7caf3379b70d4b0894d96b23df0d1684364ef442d27f936360bbaa5"
+    },
+    "pylint-dev__pylint-6528.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/pylint-dev__pylint-6528/pylint-dev__pylint-6528.traj.json",
+     "size": 227065,
+     "etag": "bcbfab1fde65418009460ae429b23949",
+     "sha256": "e85df0a90d70c7376297a4aefb5480fb5930f9908995cad12c21c5d71877e036"
+    },
+    "pylint-dev__pylint-7080.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/pylint-dev__pylint-7080/pylint-dev__pylint-7080.traj.json",
+     "size": 234066,
+     "etag": "b061e8b23e8016db0915d7aacf649732",
+     "sha256": "fefe7a869b023a080082a9bfbe13bb6738673234cbc5ad6484d90c07750b33e7"
+    },
+    "scikit-learn__scikit-learn-13328.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/scikit-learn__scikit-learn-13328/scikit-learn__scikit-learn-13328.traj.json",
+     "size": 91463,
+     "etag": "ee4d0f846699635f158c1530cc534240",
+     "sha256": "f506d34dacdd881d56b691f807dcbd441e043156e0c20179615bb90dcf02814d"
+    },
+    "scikit-learn__scikit-learn-13439.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/scikit-learn__scikit-learn-13439/scikit-learn__scikit-learn-13439.traj.json",
+     "size": 62438,
+     "etag": "50fed7de7260cc12892d7134016a5dd3",
+     "sha256": "c79c9e7166d4c5a8e37c570eb3cd45bf262d71d77e62cd9fd2aad8404eb9c439"
+    },
+    "scikit-learn__scikit-learn-13496.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/scikit-learn__scikit-learn-13496/scikit-learn__scikit-learn-13496.traj.json",
+     "size": 81391,
+     "etag": "a646f4dcfda2abff818eb054f5c47724",
+     "sha256": "06bb81bbaa2d929fea085f910723be209982f7566be02bce3b9a728007b3354c"
+    },
+    "scikit-learn__scikit-learn-14710.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/scikit-learn__scikit-learn-14710/scikit-learn__scikit-learn-14710.traj.json",
+     "size": 79080,
+     "etag": "1970550ece84f732a6f35eeefef939b5",
+     "sha256": "815867c221548d3ed8d7c0afae39d1656b27a1da0e10b8b2546e228b99026614"
+    },
+    "sphinx-doc__sphinx-7454.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/sphinx-doc__sphinx-7454/sphinx-doc__sphinx-7454.traj.json",
+     "size": 111508,
+     "etag": "b21d65c1756188e1ba4401e3b75733a9",
+     "sha256": "41382b3d2a802ec1ae37ac4f0c79398266b18ee58c8e51a5121b9672a8f3b5d7"
+    },
+    "sphinx-doc__sphinx-7590.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/sphinx-doc__sphinx-7590/sphinx-doc__sphinx-7590.traj.json",
+     "size": 202963,
+     "etag": "d2d98be8e45094594c7ad849b25348d5",
+     "sha256": "d44e14986847e0b80a4f9f683fc0f35673e090884a8537db6e5b67ca7e0473cc"
+    },
+    "sphinx-doc__sphinx-7757.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/sphinx-doc__sphinx-7757/sphinx-doc__sphinx-7757.traj.json",
+     "size": 85395,
+     "etag": "3474af128e6be128898bb49ac6116125",
+     "sha256": "8aa7d66e878398d0889129b0b7c6083796a02cdfe1a3da04d89af7080fc30451"
+    },
+    "sphinx-doc__sphinx-9320.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/sphinx-doc__sphinx-9320/sphinx-doc__sphinx-9320.traj.json",
+     "size": 79145,
+     "etag": "d812216137f67956e3f94e729689f852",
+     "sha256": "d92254bc8d8cc7c8cfdaca0973e0e71f6c63533bce115a778bdc9fb447cd36fc"
+    },
+    "sympy__sympy-13798.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/sympy__sympy-13798/sympy__sympy-13798.traj.json",
+     "size": 80552,
+     "etag": "eeaa3553f3139d0cc5817e19948169f3",
+     "sha256": "b865662dff6901dd7c53974bba48f023ca30dec338572e595a3e9c3c84c1c378"
+    },
+    "sympy__sympy-13877.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/sympy__sympy-13877/sympy__sympy-13877.traj.json",
+     "size": 127655,
+     "etag": "a9ea4e61c20df7ce51cbe72795e251ae",
+     "sha256": "ba64ec6a115aa66f3c37757206f8080f47aff8862d5c64810d5c304cbe0eacd3"
+    },
+    "sympy__sympy-18763.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/sympy__sympy-18763/sympy__sympy-18763.traj.json",
+     "size": 51113,
+     "etag": "c128b0fba096cb25e66921d314257620",
+     "sha256": "7b4d22682fd5b3c3cdd08f77e1ddcfa0e20cb345fd3d30b2a0e0d0d9596bda9d"
+    },
+    "sympy__sympy-19637.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/sympy__sympy-19637/sympy__sympy-19637.traj.json",
+     "size": 60140,
+     "etag": "85fc91d01e1a1d6a6819b6ed5a450c5f",
+     "sha256": "e7db49ec5510dfcf1334bb9d232952e14b3755208a910d298924416906813cad"
+    },
+    "sympy__sympy-20916.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/sympy__sympy-20916/sympy__sympy-20916.traj.json",
+     "size": 66041,
+     "etag": "1362022438422f44d605c7ee2ab04e78",
+     "sha256": "4e7b9c121c44d210a79d2c8b93a56163ba73d458a8dd8b856d4e9bcf31be487d"
+    },
+    "sympy__sympy-22456.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/sympy__sympy-22456/sympy__sympy-22456.traj.json",
+     "size": 165099,
+     "etag": "f0ba9f766ed56f9407f895effdb156f4",
+     "sha256": "9218f9554ba0e03dd02b1dce7155ceff658cbd178387a28b3a6113fa9d0b64e9"
+    },
+    "sympy__sympy-23262.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11/trajs/sympy__sympy-23262/sympy__sympy-23262.traj.json",
+     "size": 138872,
+     "etag": "a2f7372285d693c877c9ea90628ac563",
+     "sha256": "059c61ac4bf7f41ef726f60877fe8ff1eb21b49d9c4bf33177427bf084a07e61"
+    }
+   }
+  },
+  "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high": {
+   "listed": 500,
+   "files": {
+    "astropy__astropy-12907.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/astropy__astropy-12907/astropy__astropy-12907.traj.json",
+     "size": 74263,
+     "etag": "072094bddb76e463eb6a4afc7f5f2b1e",
+     "sha256": "38879090740506faf2cf73b7e92f66e1cc2e8f858018e33ab971695b78ac9ce1"
+    },
+    "astropy__astropy-14508.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/astropy__astropy-14508/astropy__astropy-14508.traj.json",
+     "size": 71482,
+     "etag": "4a0a18ddee4b6611ba25fbdf990f0bb6",
+     "sha256": "4f8c77e5da8e5f48c948e223bbb917e9e0a1e33f4990f69d280a04452ac33434"
+    },
+    "astropy__astropy-14598.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/astropy__astropy-14598/astropy__astropy-14598.traj.json",
+     "size": 221392,
+     "etag": "5d799273654e111d8204495ab811a413",
+     "sha256": "f47c36c495e350fa4a59988a95ee84ce6965f3e12c5dc07dca6837a062e2ab07"
+    },
+    "astropy__astropy-7166.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/astropy__astropy-7166/astropy__astropy-7166.traj.json",
+     "size": 79367,
+     "etag": "26b6c2356b382eaf1bd45307813741a2",
+     "sha256": "74cbc7c388b40fe59eb33da5f5bd4e23a516fdede8bb39d4913a9958ffb3dff9"
+    },
+    "django__django-11999.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/django__django-11999/django__django-11999.traj.json",
+     "size": 134059,
+     "etag": "d402f58fd76c63dfe180b69d74acc854",
+     "sha256": "66458152c1de8f1768f25e6998f5ede7494014f72224c6b0616fcc98f642e8b0"
+    },
+    "django__django-12304.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/django__django-12304/django__django-12304.traj.json",
+     "size": 70333,
+     "etag": "d5fc06029d1afbd38a9ab2c74aff2813",
+     "sha256": "28c4d37de4e41ae43fbd1df6ee31afce4c3a537452dc73bd31459fd3f66bfee9"
+    },
+    "django__django-13344.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/django__django-13344/django__django-13344.traj.json",
+     "size": 111802,
+     "etag": "ab761967b9239eff889a900f85ce7556",
+     "sha256": "1a3e61a6297a87f49662d02d1735e75ddd766021788c5ac3db3bd38f1721e1b7"
+    },
+    "django__django-13658.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/django__django-13658/django__django-13658.traj.json",
+     "size": 62771,
+     "etag": "933b941afff21ea8f2554581fbfe236a",
+     "sha256": "019a0d64a7314e7fb73272243abc332a8d7cd182eeabbfef8238efac301095f7"
+    },
+    "django__django-13670.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/django__django-13670/django__django-13670.traj.json",
+     "size": 49791,
+     "etag": "7110b3489963f0cb98e76f26208aaab1",
+     "sha256": "922d05c5ef265c8cc859d94fefab06227566ba429d94a01410affc27c6436748"
+    },
+    "django__django-13741.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/django__django-13741/django__django-13741.traj.json",
+     "size": 101241,
+     "etag": "58368bd38c1b171e8967cd11f0e0085b",
+     "sha256": "8b7d96bd370c1ca0aa4e5540662fb26d232f6ffd6fbc141f4c35d9cbd5e3e0de"
+    },
+    "django__django-13964.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/django__django-13964/django__django-13964.traj.json",
+     "size": 92498,
+     "etag": "44fca3a03a4d5132ce563cbdd9c0aca0",
+     "sha256": "aea0068d38d1acc35ecc627a39b4a3d1017419c5dea8792de3725298d5f6b0e2"
+    },
+    "django__django-14493.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/django__django-14493/django__django-14493.traj.json",
+     "size": 52726,
+     "etag": "3f893a4e2a86557dc25a21b69f304858",
+     "sha256": "4b6154b7f3edd27bbde73d5a0badcb31fce055ef10ee67928542b4d23d0b1faf"
+    },
+    "django__django-14608.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/django__django-14608/django__django-14608.traj.json",
+     "size": 116692,
+     "etag": "c6a59017df9f1cd8365e758266161c9f",
+     "sha256": "090eeef6009676a80fcdb04c63b8734f31a3e8b1d6f125332718fb9bd1c97754"
+    },
+    "django__django-15037.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/django__django-15037/django__django-15037.traj.json",
+     "size": 159357,
+     "etag": "07678de34e0b0c8a04b59fad88cbfb94",
+     "sha256": "449ea1568b3456285f2648ea6d07ec85af607c8a5135bfb7157af2a565799ec6"
+    },
+    "django__django-15127.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/django__django-15127/django__django-15127.traj.json",
+     "size": 95044,
+     "etag": "e6cba1479f7e46173ff9be352db317f7",
+     "sha256": "610beac65a8808c8ef19bc3003d9489bf9307256eb0363afb8a05c0c78e61e7c"
+    },
+    "django__django-15380.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/django__django-15380/django__django-15380.traj.json",
+     "size": 168725,
+     "etag": "5a1f93967e0a0093bd9a58fdbefac38f",
+     "sha256": "5368df68ee818e44df5380c5930121b5cf831d12d5838dfa04cb2cf939292103"
+    },
+    "django__django-16116.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/django__django-16116/django__django-16116.traj.json",
+     "size": 112779,
+     "etag": "6a8e95bbcacba291c77948c556a54c76",
+     "sha256": "42fbc06e7b73f4e1dade7ec9d15e562e456c33dd889887786184e1e7dcb2c5c9"
+    },
+    "django__django-16429.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/django__django-16429/django__django-16429.traj.json",
+     "size": 55926,
+     "etag": "289e76b784ce3b652edddccb218003bc",
+     "sha256": "ca9a120e538e27c43ef2bdde3c1de8db496bf52b04de806ab207ce241725f192"
+    },
+    "matplotlib__matplotlib-21568.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/matplotlib__matplotlib-21568/matplotlib__matplotlib-21568.traj.json",
+     "size": 75882,
+     "etag": "c58f7d1e39cf899f02ea8fb8ad2c0ca0",
+     "sha256": "27828ad05a858fc7f7f146bbff7f5fb6c771c7b9fdad8bfb32b6b2de457aa863"
+    },
+    "matplotlib__matplotlib-25122.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/matplotlib__matplotlib-25122/matplotlib__matplotlib-25122.traj.json",
+     "size": 67938,
+     "etag": "d8644e4f2ecc36b5de36b77365880140",
+     "sha256": "33819c307043d19d64194455b269d3e47ce4698cef1f1aba6924a14c9a513f87"
+    },
+    "matplotlib__matplotlib-25775.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/matplotlib__matplotlib-25775/matplotlib__matplotlib-25775.traj.json",
+     "size": 332155,
+     "etag": "551260ec880513d9eac09c05730bf814",
+     "sha256": "47c2a177c9eb019451274f5149628ecb3aba14eab52bb35fc54942ae029e77a0"
+    },
+    "psf__requests-5414.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/psf__requests-5414/psf__requests-5414.traj.json",
+     "size": 120628,
+     "etag": "8bb170a291e26e5a0c303a8457954e89",
+     "sha256": "306fdd1ea85867f354d2f3edddd1cbb6716e3d0626f4d1f2747d681e6667cb85"
+    },
+    "pydata__xarray-3305.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/pydata__xarray-3305/pydata__xarray-3305.traj.json",
+     "size": 179215,
+     "etag": "adff29eadfbc3e945ee12497433b5da2",
+     "sha256": "3f26845842ed566c30a89fbb168556fcb26d8230935f9684ad4398c09fc0672d"
+    },
+    "pylint-dev__pylint-8898.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/pylint-dev__pylint-8898/pylint-dev__pylint-8898.traj.json",
+     "size": 138900,
+     "etag": "38e63ef901cdda8e59f8f54864c21793",
+     "sha256": "041cb9b3f2d91f679371fdacbd32dd19d7fd6a3dd90582e796ad92fa2790476a"
+    },
+    "pytest-dev__pytest-10051.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/pytest-dev__pytest-10051/pytest-dev__pytest-10051.traj.json",
+     "size": 73040,
+     "etag": "49ba73345d96f8f490318139be550d46",
+     "sha256": "2b36f50fc70f2cf07c28b8967da915b61cf1bd73a59d3aa0e87e42609e45d7b6"
+    },
+    "pytest-dev__pytest-5787.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/pytest-dev__pytest-5787/pytest-dev__pytest-5787.traj.json",
+     "size": 159617,
+     "etag": "9e9d6237d9d58d5ec449566b91633fcf",
+     "sha256": "c90cec8831edc9f10561f600f845da4af3d16e698efa7f10eec86b0d1eb43d97"
+    },
+    "pytest-dev__pytest-7490.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/pytest-dev__pytest-7490/pytest-dev__pytest-7490.traj.json",
+     "size": 152118,
+     "etag": "84004c75eda068fb226b6b67d51729d6",
+     "sha256": "e87dd0791d96d0ff34bd04fe2104a120b6a7c83a03ea2daf06db9e73c113999f"
+    },
+    "scikit-learn__scikit-learn-10297.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/scikit-learn__scikit-learn-10297/scikit-learn__scikit-learn-10297.traj.json",
+     "size": 101464,
+     "etag": "23ec24e68ebd733176957d0f98db0a7f",
+     "sha256": "c5724b4a51c138d92bb7fea6398fc8eb198869f4d5c8ddc960d3ddb79b679cf4"
+    },
+    "scikit-learn__scikit-learn-14141.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/scikit-learn__scikit-learn-14141/scikit-learn__scikit-learn-14141.traj.json",
+     "size": 48569,
+     "etag": "c25c0ebb18c0acc39fd30ee4b57af477",
+     "sha256": "107fc17521302ab251bc1966184c76c704e6d6782bf7065c345c9efdbd81603f"
+    },
+    "scikit-learn__scikit-learn-14496.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/scikit-learn__scikit-learn-14496/scikit-learn__scikit-learn-14496.traj.json",
+     "size": 114451,
+     "etag": "9b8f7b5d6a2c9bb8fc82ae902c1de0ad",
+     "sha256": "e5ac3217eda596ba0cc810d88dcbd120e5e9da45110315391a3b3016b8ee6376"
+    },
+    "scikit-learn__scikit-learn-14983.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/scikit-learn__scikit-learn-14983/scikit-learn__scikit-learn-14983.traj.json",
+     "size": 106531,
+     "etag": "c53701aa367da01567e1fb6f435619e0",
+     "sha256": "19ab26be5de73d530ee6124535d40ea6d1c90d102a77f299ec81c5f07ffd9c4d"
+    },
+    "sphinx-doc__sphinx-8035.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/sphinx-doc__sphinx-8035/sphinx-doc__sphinx-8035.traj.json",
+     "size": 208322,
+     "etag": "c05fe68256fdf14938eee0009c10950d",
+     "sha256": "a3443a2bbfcddd816c0cd1562aa38e89a0af006d85040e297c758fd16e2d0fbe"
+    },
+    "sympy__sympy-13480.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/sympy__sympy-13480/sympy__sympy-13480.traj.json",
+     "size": 48031,
+     "etag": "f2579beca00237fd17006126ec966249",
+     "sha256": "e71cc1e494de8cb1e3cb391941cd9741264afd25809e1e01431409b571fb15b4"
+    },
+    "sympy__sympy-13647.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/sympy__sympy-13647/sympy__sympy-13647.traj.json",
+     "size": 75599,
+     "etag": "e15ecd294757c6aead31e1ac61d45196",
+     "sha256": "24bb0a1d597191a2158b6e89f23bf78f82494d5565a1b14c7ece9b759f471002"
+    },
+    "sympy__sympy-16597.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/sympy__sympy-16597/sympy__sympy-16597.traj.json",
+     "size": 84696,
+     "etag": "a5ac830b4110051accfacc4f084f768f",
+     "sha256": "a520b3e1f268f2ad1d2f9e9aa03e17933029aa94844c45531f4a9bd6b54cf906"
+    },
+    "sympy__sympy-16792.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/sympy__sympy-16792/sympy__sympy-16792.traj.json",
+     "size": 153304,
+     "etag": "a30f4d678a62ba4ee449c6e4b35f357a",
+     "sha256": "c22ed105311a79032ab5a0892b7873f5c5cd4c8166a366d5b199318ea88b701f"
+    },
+    "sympy__sympy-16886.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/sympy__sympy-16886/sympy__sympy-16886.traj.json",
+     "size": 35835,
+     "etag": "a79a16aa69e53464a295f8e91b16adde",
+     "sha256": "8f2fc347d845d0e7e47d3960b0c1c187efe078e49bd7ab3c7a98a3db852523fb"
+    },
+    "sympy__sympy-19040.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/sympy__sympy-19040/sympy__sympy-19040.traj.json",
+     "size": 333685,
+     "etag": "76a4dfb2f99fa16e9b5e64f95c42777f",
+     "sha256": "323f3314f5e19492b5226187a038f4a4419056b274ecd7693847297d308cd4b2"
+    },
+    "sympy__sympy-21930.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/sympy__sympy-21930/sympy__sympy-21930.traj.json",
+     "size": 213368,
+     "etag": "5de65155812aa9fa10aa567fae1761d6",
+     "sha256": "05ed6bf09a84eb59bd2b321888d07ad8a768cb0324d72080f091da0e8883c632"
+    },
+    "sympy__sympy-24213.traj.json": {
+     "key": "bash-only/20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high/trajs/sympy__sympy-24213/sympy__sympy-24213.traj.json",
+     "size": 158805,
+     "etag": "5cc52fd8de93e46efb1ea2a25173c0f9",
+     "sha256": "0209e2c24a2066a9575e54259e5f09ad929bafa3471cded0a952d403b8b26d44"
+    }
+   }
+  },
+  "20251124_mini-v1.16.0_gpt-5.1-codex": {
+   "listed": 500,
+   "files": {
+    "astropy__astropy-13579.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/astropy__astropy-13579/astropy__astropy-13579.traj.json",
+     "size": 116091,
+     "etag": "eced848c29888c96c3177f8f3cf60769",
+     "sha256": "27bfbda6c905b96aac1ab11790f9c5d35ffe04ff0d33ee1c83b6ea978552a7f2"
+    },
+    "astropy__astropy-14539.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/astropy__astropy-14539/astropy__astropy-14539.traj.json",
+     "size": 109847,
+     "etag": "e23d484b94c11419b84c6df8e105db9f",
+     "sha256": "4b4519d101fbdf10deaba40d157c731d5ae3fecccdba9436b4c5b4b3398cbb4d"
+    },
+    "django__django-10914.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/django__django-10914/django__django-10914.traj.json",
+     "size": 249733,
+     "etag": "93a897ceb29aa2f4c6fe5e3ce5e0e505",
+     "sha256": "ee035b8e7ea565388b86cde8ea41de9087b422042dd27a093ad8b2ad47b5f76c"
+    },
+    "django__django-11265.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/django__django-11265/django__django-11265.traj.json",
+     "size": 141775,
+     "etag": "ebd4388dd8f9daca86fbd71db63a9e2d",
+     "sha256": "ee17fd45bdd75a15c68dc8467d138780cd16948bbd249e3c78336e35fc1d7447"
+    },
+    "django__django-11477.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/django__django-11477/django__django-11477.traj.json",
+     "size": 160347,
+     "etag": "4e9a0307f06887c99a63d6ab069ce203",
+     "sha256": "17aa7f41a2614fab4695cd82be26aca7d3871ec363823c77990b77b1efea3b99"
+    },
+    "django__django-11551.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/django__django-11551/django__django-11551.traj.json",
+     "size": 84313,
+     "etag": "8d6386930fbc30e2d4727fa0169f77f0",
+     "sha256": "3c2d457b11b48ec682459800f8ee9216d765f8d5aed405285dd22dc6d3baabed"
+    },
+    "django__django-11728.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/django__django-11728/django__django-11728.traj.json",
+     "size": 72018,
+     "etag": "bf00af6b10bbecc2998eb69502baa529",
+     "sha256": "1d28d2cb42a8f91760f95069c16bb3b9f7819895f461fc1de527799f0a23ebb8"
+    },
+    "django__django-11734.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/django__django-11734/django__django-11734.traj.json",
+     "size": 378813,
+     "etag": "8b6b8f62885f2aea7e10688ac48ff336",
+     "sha256": "816ecf2d48114aecdb7d188fb03940989e45bb8592423db1edfabbb12a8b6af8"
+    },
+    "django__django-11885.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/django__django-11885/django__django-11885.traj.json",
+     "size": 344190,
+     "etag": "5c328d8a0df5c5defdc7f2728e48c006",
+     "sha256": "3398e2af168d3f935209ee97664e27f7531de16280e891e4af98e77401189d43"
+    },
+    "django__django-12143.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/django__django-12143/django__django-12143.traj.json",
+     "size": 54466,
+     "etag": "7171369a5c1c5a5584cdaf491c11f54c",
+     "sha256": "288ec51aa08c95bbdc5f5325204f94490dfd668419dbf038bd7599037772e155"
+    },
+    "django__django-12193.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/django__django-12193/django__django-12193.traj.json",
+     "size": 70447,
+     "etag": "1020feac6cd90d9f2844af42113f3ee1",
+     "sha256": "c0c46f29359ab9bbda06e6978e86261091b9844fcc68d252c994c5cc46d9885d"
+    },
+    "django__django-13109.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/django__django-13109/django__django-13109.traj.json",
+     "size": 51805,
+     "etag": "358614b52399aafa8c5773f54ed6f33b",
+     "sha256": "5f7b38f75d86a5f587669296779cde89ffc7599870bc206f5f85fadb4a9e36ae"
+    },
+    "django__django-13741.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/django__django-13741/django__django-13741.traj.json",
+     "size": 59249,
+     "etag": "4fb6827dd9c10519daf4493d32001660",
+     "sha256": "f25486a2b164e3c04ee253d6a5dd8b5b0aab03b753362e0055d7209dcf930bd1"
+    },
+    "django__django-13794.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/django__django-13794/django__django-13794.traj.json",
+     "size": 104278,
+     "etag": "da4d42e50c7a6879dc592279239de283",
+     "sha256": "af29c42393b3855ee8eae1381da26f791805b64a3d992a4c8b7be358b42444ef"
+    },
+    "django__django-13837.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/django__django-13837/django__django-13837.traj.json",
+     "size": 103733,
+     "etag": "be8b555f39c41c2a770bf27a307a0494",
+     "sha256": "f8be8d234107e7b154e3bed6077db195b35bb19fd44d02b99d036757326e4a2d"
+    },
+    "django__django-13964.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/django__django-13964/django__django-13964.traj.json",
+     "size": 154849,
+     "etag": "effe93070da2735565c9fd29088622bc",
+     "sha256": "f5b56fe7549d240cf9210e72e8d0c941326987a71141b6748bcfa5871799ad09"
+    },
+    "django__django-14155.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/django__django-14155/django__django-14155.traj.json",
+     "size": 286151,
+     "etag": "59313339c39788e38ae02af59bd34721",
+     "sha256": "bfe17c8979c099584ca8ec24b8bd46902db367eb8506420debb32258e5c529ec"
+    },
+    "django__django-14855.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/django__django-14855/django__django-14855.traj.json",
+     "size": 64530,
+     "etag": "a7fd390b76fd266d3fa470d4b82e787c",
+     "sha256": "d528e92cfa044a641a5f861cd2a994febbb90589debd4b75a82e3dbb6548e6dc"
+    },
+    "django__django-15104.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/django__django-15104/django__django-15104.traj.json",
+     "size": 68580,
+     "etag": "b9e2cfc1688f2b5174a53170f1788a4a",
+     "sha256": "75474976c3a9684fe039d3c1e8539d887b5a1b70eef3facab914345961f78d9b"
+    },
+    "django__django-15252.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/django__django-15252/django__django-15252.traj.json",
+     "size": 451047,
+     "etag": "bc2d764a7e7d6daf712122e35ceff21d",
+     "sha256": "71c5b394d90ae6657da909740e2bdaddd6f628b93963b8921c15412d6dbde709"
+    },
+    "django__django-15277.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/django__django-15277/django__django-15277.traj.json",
+     "size": 52189,
+     "etag": "73378bd203855c825d3756c3587d9c7a",
+     "sha256": "eb93cf75f5064f40f1113f7edbc9ad147ae229eccdcf4c568a4c9f649f91456b"
+    },
+    "django__django-15525.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/django__django-15525/django__django-15525.traj.json",
+     "size": 140442,
+     "etag": "b79fcab9696454945186cc46bf91a634",
+     "sha256": "b8e76b0aafcc6f41c39fa7f311c88485efa90a5a005297946912f9283c5dbcb2"
+    },
+    "django__django-15572.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/django__django-15572/django__django-15572.traj.json",
+     "size": 210155,
+     "etag": "54a37a11fcbd438880caaec6627d51e9",
+     "sha256": "2500974ea17673274c6f406db037f8ee241584a66419ec204840611c07040e3d"
+    },
+    "django__django-16263.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/django__django-16263/django__django-16263.traj.json",
+     "size": 662950,
+     "etag": "57d141b360f19d1adfdc97da3624f0a5",
+     "sha256": "4cf0d393e354876fb57595b3f434ad16e25b37ccd0811047b46a7d9fff0803f5"
+    },
+    "django__django-16315.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/django__django-16315/django__django-16315.traj.json",
+     "size": 411041,
+     "etag": "52c1670f7035962770646de14555707f",
+     "sha256": "169163e83df6ac99ab818c9e309e98ca02b311954b0f6b2faeadb127c52809be"
+    },
+    "matplotlib__matplotlib-26466.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/matplotlib__matplotlib-26466/matplotlib__matplotlib-26466.traj.json",
+     "size": 207331,
+     "etag": "d12b395e5b5dc885df50f824abc44fb5",
+     "sha256": "ccae0fd7f9bcd0928d9778858c0617cbb0962e1d02ef6a46babffc9dcd71bd59"
+    },
+    "psf__requests-2317.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/psf__requests-2317/psf__requests-2317.traj.json",
+     "size": 102012,
+     "etag": "4272fd7f22d14993914c35ae01fb6ef6",
+     "sha256": "d732fa19033112a73bdcc1a8af6b83df10fb92bce3aafacc650c1264f2b499c4"
+    },
+    "pydata__xarray-4687.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/pydata__xarray-4687/pydata__xarray-4687.traj.json",
+     "size": 243762,
+     "etag": "73a31c71bcf4678be6b0a907b22f807c",
+     "sha256": "adccb1de89f605afdd768d4bf5b3f599d10fa113d3ab48c3ab272ea747a91ca0"
+    },
+    "pylint-dev__pylint-4970.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/pylint-dev__pylint-4970/pylint-dev__pylint-4970.traj.json",
+     "size": 405249,
+     "etag": "c7f633cf216b5cc66bf402210ae678f3",
+     "sha256": "2e2bf0a5e6cf4674be49eac4d5308e64fac56a62049277a9b8973fefc61a4ef6"
+    },
+    "pylint-dev__pylint-6528.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/pylint-dev__pylint-6528/pylint-dev__pylint-6528.traj.json",
+     "size": 268239,
+     "etag": "04e40be2471e4689bfc06035a0c4598a",
+     "sha256": "19f8f0c16f78540f9d2eab13b697ff4cb3d45b5bb65529fec59d8d2b6f1c41c0"
+    },
+    "pytest-dev__pytest-5787.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/pytest-dev__pytest-5787/pytest-dev__pytest-5787.traj.json",
+     "size": 526621,
+     "etag": "455ce678b6b92eead5e9f23c5cad86f0",
+     "sha256": "1dff8e2043e4fc6957b25466e651e22fd1e3f0840633fb4b2a60c73b8202fd00"
+    },
+    "scikit-learn__scikit-learn-13142.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/scikit-learn__scikit-learn-13142/scikit-learn__scikit-learn-13142.traj.json",
+     "size": 172010,
+     "etag": "9d0f61ce302d7d7afaa87bb3d2f6c3e0",
+     "sha256": "ef969c8c65ba9ce42b259106831697a33e9b7a31534fb5519665d12a1225e534"
+    },
+    "scikit-learn__scikit-learn-13439.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/scikit-learn__scikit-learn-13439/scikit-learn__scikit-learn-13439.traj.json",
+     "size": 89968,
+     "etag": "06b2aacbcbe0e0152e77348cc2ed1c7c",
+     "sha256": "58ae153dc5eacc0cf02bdfb4b0df4f31a791450d0a6d2a14af25cf88b82a3162"
+    },
+    "sphinx-doc__sphinx-8056.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/sphinx-doc__sphinx-8056/sphinx-doc__sphinx-8056.traj.json",
+     "size": 199138,
+     "etag": "ddd7dbb71f7a5eaba0f3aec32873fd55",
+     "sha256": "81aa55a3f1e7fe42ffc908f46309c5035318081912a8b94b5e721ac44fb9704e"
+    },
+    "sphinx-doc__sphinx-8621.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/sphinx-doc__sphinx-8621/sphinx-doc__sphinx-8621.traj.json",
+     "size": 222317,
+     "etag": "a1eda265fa4ed75293d4b94dac51dc9d",
+     "sha256": "b7231ce1fed8b4b2dddf361fcc007bd3bd882196341f40d9b3d267bf069ea3d6"
+    },
+    "sphinx-doc__sphinx-9281.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/sphinx-doc__sphinx-9281/sphinx-doc__sphinx-9281.traj.json",
+     "size": 95726,
+     "etag": "4d15aa2d30bd06897200cc84d43173d2",
+     "sha256": "30f287ded5b70dfdb261cde1fcd9c29a0852481ec085320e3892fafed1c556c6"
+    },
+    "sympy__sympy-15599.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/sympy__sympy-15599/sympy__sympy-15599.traj.json",
+     "size": 48422,
+     "etag": "22dd8303dd3f1e4b2e19feffe8a76b69",
+     "sha256": "429000354d23f8366a49a8b1ca89feaad3db0443e7fff61bc0d50a04eadc9008"
+    },
+    "sympy__sympy-15809.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/sympy__sympy-15809/sympy__sympy-15809.traj.json",
+     "size": 89394,
+     "etag": "58c808b6d37753001284edd6c86d8ea4",
+     "sha256": "18f558f22223965ffc70dd5793fd8aaa17637fb0821508f0501bee0438c0415d"
+    },
+    "sympy__sympy-21596.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/sympy__sympy-21596/sympy__sympy-21596.traj.json",
+     "size": 168467,
+     "etag": "b327feb53cf45bf930f4d88d7a2f0279",
+     "sha256": "37dc3f56c799ed659967723077ba06c9fba7d9baf57222b14d3c0a655e69b24c"
+    },
+    "sympy__sympy-22914.traj.json": {
+     "key": "bash-only/20251124_mini-v1.16.0_gpt-5.1-codex/trajs/sympy__sympy-22914/sympy__sympy-22914.traj.json",
+     "size": 79427,
+     "etag": "7ddf75e351a6cb4123a4050ad5b68195",
+     "sha256": "eb5fa856fac0f2c94d678f18c5d2447a1b4199ba0ac17e4125b14d90dafaa6d5"
+    }
+   }
+  },
+  "20260217_mini-v2.0.0_gpt-5-2-high": {
+   "listed": 500,
+   "files": {
+    "astropy__astropy-13236.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/astropy__astropy-13236/astropy__astropy-13236.traj.json",
+     "size": 130610,
+     "etag": "7ff943f55e89c564be3c4693e6a9db6f",
+     "sha256": "5d581db9d6479d0134b151035b542a4b444c59933c13e8ac864ad2931caac0d2"
+    },
+    "django__django-11292.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/django__django-11292/django__django-11292.traj.json",
+     "size": 211357,
+     "etag": "8ab3685a0fe60506af6e7c117935ce7f",
+     "sha256": "97e6ce7476e1d897efd4f3d2263aa88f804d566440672bb66f09c741c30b86bc"
+    },
+    "django__django-11734.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/django__django-11734/django__django-11734.traj.json",
+     "size": 417833,
+     "etag": "8ec619b24e3796ccc23fc7a7b863b72a",
+     "sha256": "bf6d7e9a917ec0b53f9377f115cc8f768cdc57680bab49f5eed242e8c060557a"
+    },
+    "django__django-11740.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/django__django-11740/django__django-11740.traj.json",
+     "size": 440520,
+     "etag": "0ff348d50145ec0e30975b32c3138af4",
+     "sha256": "2b8cb6e6f86bcb92ef2a95c0a76b966c034b7856f8cb686a3c5f1b54535cdd09"
+    },
+    "django__django-13315.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/django__django-13315/django__django-13315.traj.json",
+     "size": 261267,
+     "etag": "7c1af1dc1cfe209823a13e520ef01112",
+     "sha256": "b31e26c2009deadeec816f511f4cd6f1306431b3375d2677495cf235fa582ae4"
+    },
+    "django__django-13569.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/django__django-13569/django__django-13569.traj.json",
+     "size": 328176,
+     "etag": "1697f05ec601e5c1fdd3bf40a9ae79f1",
+     "sha256": "839f7428e30e4650d887c7eef81b60deb0f5b04e99b5181a137eda0940abbd4e"
+    },
+    "django__django-13658.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/django__django-13658/django__django-13658.traj.json",
+     "size": 185774,
+     "etag": "569165d8653a4ebd7e5fffa3407178c2",
+     "sha256": "d64d4be48c8df923bfabaa204f5a2696f9d940a24975fccba9db60c055bb87f8"
+    },
+    "django__django-13786.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/django__django-13786/django__django-13786.traj.json",
+     "size": 229655,
+     "etag": "96597a13e00a8b87a615f2fbf1c53185",
+     "sha256": "fda93a3ba9ee6162ef77d0a6a78cd0caf88e833319da032b2437b5ecf77911ee"
+    },
+    "django__django-13820.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/django__django-13820/django__django-13820.traj.json",
+     "size": 136371,
+     "etag": "c278aa2d9cce6f39367a204f32b24d43",
+     "sha256": "8d943fbd73bb6cad274f62c8a23fe8f5495d3eb48995ffa8f4541b323a5720e0"
+    },
+    "django__django-14011.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/django__django-14011/django__django-14011.traj.json",
+     "size": 281330,
+     "etag": "f90b140645808d8e7c0942e618f55583",
+     "sha256": "5bb542cc28328591bb4416041224b1714d27227fd69c2e69395168dd9fbb254a"
+    },
+    "django__django-14034.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/django__django-14034/django__django-14034.traj.json",
+     "size": 231493,
+     "etag": "d11357d287ad57454489cea1e2e73745",
+     "sha256": "5a4ca5f6375d8f5862e5086c0361420f7a57fb09a8e1847decc6e247a9051b44"
+    },
+    "django__django-14053.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/django__django-14053/django__django-14053.traj.json",
+     "size": 392501,
+     "etag": "5cdbc38fe36de1a672a3eb84e6f9253f",
+     "sha256": "bcda2e2771b2f915dec3130cc0c109ae0aa5e005085eba212369d1d88935b175"
+    },
+    "django__django-14238.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/django__django-14238/django__django-14238.traj.json",
+     "size": 107035,
+     "etag": "c33c8a90125bbf53174c1a76e1cd0013",
+     "sha256": "43f14a9e75bf413dc990863ec2986d7f4f9fde6e47dd2969f96c9c739e987e01"
+    },
+    "django__django-14792.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/django__django-14792/django__django-14792.traj.json",
+     "size": 265050,
+     "etag": "a9927dc6c8fdca7a5b59711752a1af32",
+     "sha256": "a0c0074481eca2d6bcabd012621b3540d278a3f54674f6bce039fb4a8eb6fe72"
+    },
+    "django__django-14915.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/django__django-14915/django__django-14915.traj.json",
+     "size": 89791,
+     "etag": "ff04a9ae71257f285962aea740c21db2",
+     "sha256": "beed5b76b6c871009d01c86319e6cf5dd626b3f3883a5219ec21d3607baf5020"
+    },
+    "django__django-15022.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/django__django-15022/django__django-15022.traj.json",
+     "size": 566866,
+     "etag": "6913604f3cba96b0a97369740a30880a",
+     "sha256": "1cdce567790fe69098796897b76124bc914f99b557d91ef439369db0e780da39"
+    },
+    "django__django-15098.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/django__django-15098/django__django-15098.traj.json",
+     "size": 381969,
+     "etag": "19bbb3f85a0631c614070bb275cb1383",
+     "sha256": "3e5e4cfbb61271445f61c3e5c406a6e314e45da713867fffe325dc8b0ea49004"
+    },
+    "django__django-15315.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/django__django-15315/django__django-15315.traj.json",
+     "size": 186316,
+     "etag": "cbe894c773e3a62d3c02234365e44f02",
+     "sha256": "9be016248383145cfe79d5e397cd031357b31d650a0523e0d45e0372db1b0863"
+    },
+    "django__django-15732.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/django__django-15732/django__django-15732.traj.json",
+     "size": 207780,
+     "etag": "29add02c64268faed40c3d12e5b16488",
+     "sha256": "db82e4badd953f4bb012ddf204b68e295e3094ff0a3c8ec1e7f9784dddb0b964"
+    },
+    "django__django-16502.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/django__django-16502/django__django-16502.traj.json",
+     "size": 280967,
+     "etag": "fac2e9a0af17cf93bf75c4ba6e60362f",
+     "sha256": "0487030bd24521ef42e86e777b29dba29263a331b51f71412e0933b95ea9ba14"
+    },
+    "django__django-16569.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/django__django-16569/django__django-16569.traj.json",
+     "size": 105286,
+     "etag": "4901d8214d1b8fcb39b9647fd657027f",
+     "sha256": "4401e7b02b6ba0f94af72c164dcb180497177d0438dc9d65798a6507658c3b2c"
+    },
+    "django__django-16662.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/django__django-16662/django__django-16662.traj.json",
+     "size": 182975,
+     "etag": "7df6dd754227297480d715a9f15a9d2e",
+     "sha256": "379417b8f89238ac47aa1d850138150b29852c31cad2d548799ddd8c8da5d8e5"
+    },
+    "matplotlib__matplotlib-20488.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/matplotlib__matplotlib-20488/matplotlib__matplotlib-20488.traj.json",
+     "size": 276087,
+     "etag": "b7188cc11f902d3d1a51d5121a3acd02",
+     "sha256": "dc91d70a70c390072c2b306d329b7c4e7ea99c8dc899fc1fe3ae8ba8a7afdba7"
+    },
+    "psf__requests-1766.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/psf__requests-1766/psf__requests-1766.traj.json",
+     "size": 150148,
+     "etag": "4c3847c3ca9346950ea9bd88e3654d76",
+     "sha256": "291e494c760f40a134f614c667645a0ee2c6e9756dd0fab1ecb5a5b01e398e39"
+    },
+    "pydata__xarray-6938.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/pydata__xarray-6938/pydata__xarray-6938.traj.json",
+     "size": 198343,
+     "etag": "7ee6a9aa4009f71170a5e49dca033db4",
+     "sha256": "452d6c56f15c00dbd40073aa652d114bddb8d94c89c9915de99f349fab1a4059"
+    },
+    "pylint-dev__pylint-8898.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/pylint-dev__pylint-8898/pylint-dev__pylint-8898.traj.json",
+     "size": 438810,
+     "etag": "b76e90555fb0ae7ada67b2fe6fde6067",
+     "sha256": "d50c526f4733449fd8f2c6dcb0cc0df8848f9dea00b8f13bfd6e2a89893feaea"
+    },
+    "pytest-dev__pytest-10356.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/pytest-dev__pytest-10356/pytest-dev__pytest-10356.traj.json",
+     "size": 248594,
+     "etag": "2d98e4d76acb7a65eb5163c9505293d2",
+     "sha256": "fe3f719774e24ced159a2d61473b2d2cd9d8999b7fbfa8015df45fb76c4a91c7"
+    },
+    "scikit-learn__scikit-learn-11578.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/scikit-learn__scikit-learn-11578/scikit-learn__scikit-learn-11578.traj.json",
+     "size": 407945,
+     "etag": "d3e6428bdc57f4a10d45d65cd134580b",
+     "sha256": "e80e2d0b07813af7c0b234396ce7a94117aaa17a621b3f615079b75628c2813a"
+    },
+    "scikit-learn__scikit-learn-13142.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/scikit-learn__scikit-learn-13142/scikit-learn__scikit-learn-13142.traj.json",
+     "size": 353299,
+     "etag": "c5aae61844d7eb89c4ce57d34fea0a05",
+     "sha256": "3ae76d8cbb616469bcc53130b5c415fd480df29abbce3f61d8a1e113adcd7014"
+    },
+    "scikit-learn__scikit-learn-13439.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/scikit-learn__scikit-learn-13439/scikit-learn__scikit-learn-13439.traj.json",
+     "size": 163932,
+     "etag": "d8828825ab49b15ec313499921edf29d",
+     "sha256": "35c7b050c4f0ce5bcc88004f1a5abe555f190a2e3a42d902a9fc54decb36a635"
+    },
+    "scikit-learn__scikit-learn-14053.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/scikit-learn__scikit-learn-14053/scikit-learn__scikit-learn-14053.traj.json",
+     "size": 124123,
+     "etag": "80e3f7ed51f56b52b2cf7b4aa08e15d2",
+     "sha256": "ac86f4199aa336aa1496f514405698a94e85d454d61e995147ff1ba836b7a42d"
+    },
+    "scikit-learn__scikit-learn-14629.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/scikit-learn__scikit-learn-14629/scikit-learn__scikit-learn-14629.traj.json",
+     "size": 293230,
+     "etag": "c17f22ca577766f2bf68aa6cf17975f0",
+     "sha256": "6716db123e150e1cab47865a03373edb186ebebb6f09a808bbf23672154fda06"
+    },
+    "sphinx-doc__sphinx-7454.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/sphinx-doc__sphinx-7454/sphinx-doc__sphinx-7454.traj.json",
+     "size": 266166,
+     "etag": "5221aa508e12f988f8599e70b5892606",
+     "sha256": "d37c8d50dcbeab7ac5847929249221136f11b63b1e7c89465619cba82413f38d"
+    },
+    "sphinx-doc__sphinx-9230.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/sphinx-doc__sphinx-9230/sphinx-doc__sphinx-9230.traj.json",
+     "size": 230200,
+     "etag": "b577f87d99b191942c519fdac4ef7bea",
+     "sha256": "e23011213092253ec46db40d712cc1f6d9fccf1f2caca66220e00d12435f050c"
+    },
+    "sphinx-doc__sphinx-9461.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/sphinx-doc__sphinx-9461/sphinx-doc__sphinx-9461.traj.json",
+     "size": 571233,
+     "etag": "c1ad6e3f5359a543fa7cd924c5dca334",
+     "sha256": "4197da333791e53ca8dfda1b912375ac74aa551be27673238a1f9d600698ded7"
+    },
+    "sympy__sympy-13372.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/sympy__sympy-13372/sympy__sympy-13372.traj.json",
+     "size": 239711,
+     "etag": "22ade9d323ea7b342df1430dd4310fd5",
+     "sha256": "363507d1d8b829b91372a7a90850fa70ddbf08ac687b3253072425ddfeaa3996"
+    },
+    "sympy__sympy-14976.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/sympy__sympy-14976/sympy__sympy-14976.traj.json",
+     "size": 211155,
+     "etag": "655ca33635e761fbc71eb953ce81d1cc",
+     "sha256": "78a402f58b76a8f9b4e0db9aef61e935cb962f00359a842032344c94c2e69aef"
+    },
+    "sympy__sympy-20154.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/sympy__sympy-20154/sympy__sympy-20154.traj.json",
+     "size": 158083,
+     "etag": "bcc48718b6ed08786be75a16da6811fb",
+     "sha256": "95faced7c7cf25c3e87433e8a49a357f11a66e12b118e1a1ee0e0c84fd24c397"
+    },
+    "sympy__sympy-20590.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/sympy__sympy-20590/sympy__sympy-20590.traj.json",
+     "size": 112904,
+     "etag": "41141d9e8353fa98d1e3fca6c7fecd98",
+     "sha256": "7f65d5babb6f0c3bde60ec3409994b720e74d2b90ebdb6b37482251d25acd168"
+    },
+    "sympy__sympy-22456.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-2-high/trajs/sympy__sympy-22456/sympy__sympy-22456.traj.json",
+     "size": 360363,
+     "etag": "33faa465c02e8b5749f4baa8b0aa4e9a",
+     "sha256": "9a60b03c130569043893cf2c7c3e1c10fa9a818f9087734878f06dfa8ff99304"
+    }
+   }
+  },
+  "20260217_mini-v2.0.0_gpt-5-mini": {
+   "listed": 500,
+   "files": {
+    "astropy__astropy-14365.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/astropy__astropy-14365/astropy__astropy-14365.traj.json",
+     "size": 114343,
+     "etag": "67015571ab6e7b8626885514947372f0",
+     "sha256": "c5e4049121fb44ceb23263047e0f5ead40fa7c5e41376adc270befebd67020a6"
+    },
+    "astropy__astropy-14369.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/astropy__astropy-14369/astropy__astropy-14369.traj.json",
+     "size": 139331,
+     "etag": "1dec43b0d72ed31302cb2c6efaeef7bb",
+     "sha256": "61ffeb51e5e3ef9e4e13cdb59b796e1b5795714be9bb6e8eb0e940472631ed0e"
+    },
+    "django__django-10554.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/django__django-10554/django__django-10554.traj.json",
+     "size": 601326,
+     "etag": "637d2a918a58ad73b63920a4faf0235a",
+     "sha256": "a73d76a689fb0e2b73d83e366f925034b1bf0764a3b305624d81f8caa27b85ac"
+    },
+    "django__django-11490.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/django__django-11490/django__django-11490.traj.json",
+     "size": 206343,
+     "etag": "39d7d10a2b6452c1e27a9dc0c8ded919",
+     "sha256": "1166b868fcd5dc6a018900edcdd3dbe891debb42ca24714d56aaac23115bfde3"
+    },
+    "django__django-12039.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/django__django-12039/django__django-12039.traj.json",
+     "size": 178298,
+     "etag": "8698629429bca000729d3f190c51d3af",
+     "sha256": "8d6948de85aae16e5c843ac2545f36e1d908e748b55141247a402b77f907a086"
+    },
+    "django__django-12125.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/django__django-12125/django__django-12125.traj.json",
+     "size": 235728,
+     "etag": "3b399f08f0a8bc69f9dc5b277dce4c8f",
+     "sha256": "1196d59f1edfadac0184f403d27f1ba5532293241df9ac0b23350a284237b370"
+    },
+    "django__django-12193.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/django__django-12193/django__django-12193.traj.json",
+     "size": 162460,
+     "etag": "409eb9edae40e3018622a1ac379ac599",
+     "sha256": "f48d67f10c480a8b6c150653465a1e0158971a70131e46abd71caff8511a4afc"
+    },
+    "django__django-12774.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/django__django-12774/django__django-12774.traj.json",
+     "size": 321201,
+     "etag": "47e1179dc17002d7ec773fc966d50cf8",
+     "sha256": "22e55297026e3fc9f19a0ca513421b0ea714897fa45231663bbf71fc550550e0"
+    },
+    "django__django-13279.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/django__django-13279/django__django-13279.traj.json",
+     "size": 165419,
+     "etag": "bc8decd0f2b6ab1f4729d6a0ba8f6ca3",
+     "sha256": "61546df15bd0834b784692c279b9a225a0c9ac9326b26c93540c41194deb6ea8"
+    },
+    "django__django-13344.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/django__django-13344/django__django-13344.traj.json",
+     "size": 260633,
+     "etag": "02a9aa8fd69aa0e415a1c6687b731e42",
+     "sha256": "c104fa5402a58cd04c274eb52f198854f9efd8ff14b887b2219d7b6b976209cc"
+    },
+    "django__django-13346.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/django__django-13346/django__django-13346.traj.json",
+     "size": 245778,
+     "etag": "04f2ef4c31daa6155aa4cb293b1974be",
+     "sha256": "ca531a921b91770acc6602e0edfe588361e2f8187af04af14cca022e59078c36"
+    },
+    "django__django-13821.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/django__django-13821/django__django-13821.traj.json",
+     "size": 429880,
+     "etag": "2c42d4358f363ea90e76b6b0dd21c2e9",
+     "sha256": "4c333befed6c45273048ecad0ca197741138dc391c552c9606c8f64228588cbb"
+    },
+    "django__django-13837.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/django__django-13837/django__django-13837.traj.json",
+     "size": 99705,
+     "etag": "23a184f37884e282db9e8c84458230e7",
+     "sha256": "7fd867e54e474ffb914b871b1c1eb3771fb54dc31b67f82f467db713844dec73"
+    },
+    "django__django-14238.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/django__django-14238/django__django-14238.traj.json",
+     "size": 114067,
+     "etag": "d4d260869df036e4d2309de10e226391",
+     "sha256": "0dbb1052b4cff4f58386a0ecb5b0cbfc3362ddcab7fe8b4e38c2b4fdc8320b69"
+    },
+    "django__django-14631.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/django__django-14631/django__django-14631.traj.json",
+     "size": 222070,
+     "etag": "c9c4cb6ce51373d66dd7e095e17c895b",
+     "sha256": "9a3c00e9232130785fdd65c11f0b4f6170fbfe3954a6a7529ca89cb44ef88669"
+    },
+    "django__django-15128.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/django__django-15128/django__django-15128.traj.json",
+     "size": 540166,
+     "etag": "f1be4997bcf0e871d865c1fcc97eb5a3",
+     "sha256": "a03593c4459fce1f6486463bff2de387dcdbb5a9ae33c64d1f4ea16130af73d0"
+    },
+    "django__django-15161.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/django__django-15161/django__django-15161.traj.json",
+     "size": 360597,
+     "etag": "dee8071d37ddfb97b46be1e4031317ee",
+     "sha256": "588671935da74b3ef418d9eb422e3828a37f6dc537624e25d3261426c90502de"
+    },
+    "django__django-15315.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/django__django-15315/django__django-15315.traj.json",
+     "size": 124042,
+     "etag": "9367d10c998284c47fb8560659cc0ae9",
+     "sha256": "aed4bbb523a97a32b72ef3bd441b8a392e73f862af2271dadae65aca0a7c9f06"
+    },
+    "django__django-16082.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/django__django-16082/django__django-16082.traj.json",
+     "size": 182345,
+     "etag": "53b68923979134b5a8fb3eef95905846",
+     "sha256": "b1822e4df0ac3b35b1d69c44f89e828ead1ac300962ac03e405c0388c6235ed7"
+    },
+    "django__django-16485.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/django__django-16485/django__django-16485.traj.json",
+     "size": 111098,
+     "etag": "7a9b0c2018f2e45bbc81c69c0705776c",
+     "sha256": "494718db677c7b0881d58643327b196f2569b43600095b3f7459acdab96f2f5c"
+    },
+    "django__django-17087.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/django__django-17087/django__django-17087.traj.json",
+     "size": 293666,
+     "etag": "c6e9a7e4e898f3b8a020335e0f38f171",
+     "sha256": "c083cb0d4d51548df725cdaf7c694aa236b49e81ec9b1dfa4b17ae5d2a9ae083"
+    },
+    "matplotlib__matplotlib-13989.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/matplotlib__matplotlib-13989/matplotlib__matplotlib-13989.traj.json",
+     "size": 159240,
+     "etag": "de8b5505fe10ac150ca473f2bd1cb8b1",
+     "sha256": "31ed1d423d6234c8bdc327ec94ce2654532e3dd8d7244514cf71868b55397042"
+    },
+    "matplotlib__matplotlib-20826.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/matplotlib__matplotlib-20826/matplotlib__matplotlib-20826.traj.json",
+     "size": 394546,
+     "etag": "5a84f800d2e476fc78ddc0c69097b25a",
+     "sha256": "ee87c16bd7a32b0500e83b3dc7dddef39fc5d20bfa9a28e16e22dcb60ec87a94"
+    },
+    "matplotlib__matplotlib-21568.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/matplotlib__matplotlib-21568/matplotlib__matplotlib-21568.traj.json",
+     "size": 174781,
+     "etag": "3c1e39049f3cd1e9acb7220b70c7cbfd",
+     "sha256": "f06eec5cd5fb8d73da6074e502e1cc91338c5ad66dec9bbaea2c50896d37b36b"
+    },
+    "pydata__xarray-4966.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/pydata__xarray-4966/pydata__xarray-4966.traj.json",
+     "size": 135984,
+     "etag": "4c4626258fb1e25b6f52976d7ee46045",
+     "sha256": "26d819c89c4c9be8434f1b7b6e05b8f48897cc51a6675081fa519e7bee14ea84"
+    },
+    "pydata__xarray-6938.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/pydata__xarray-6938/pydata__xarray-6938.traj.json",
+     "size": 409724,
+     "etag": "dc84c6756e70321dee328e34a26ee3ee",
+     "sha256": "c3e34925ca1fc63ba4d0706523aa65f3f0ae7862e52da44fa44a7cac98446df7"
+    },
+    "pydata__xarray-7229.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/pydata__xarray-7229/pydata__xarray-7229.traj.json",
+     "size": 491614,
+     "etag": "4de48a556f9138286d1bdbed67599788",
+     "sha256": "69d0fd670a355aa79cb74ebd2b5fe7367b812cbc6df4ccd6c29c5647a838175e"
+    },
+    "pydata__xarray-7233.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/pydata__xarray-7233/pydata__xarray-7233.traj.json",
+     "size": 202689,
+     "etag": "52f4ff5c4ccb97b63f5c48e22208dc88",
+     "sha256": "6a1dfb5cce819c7227da94a5ce0aa8be9cca4cfcbaba566cb17728a57257b3e0"
+    },
+    "pydata__xarray-7393.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/pydata__xarray-7393/pydata__xarray-7393.traj.json",
+     "size": 434868,
+     "etag": "281473564d962953772925d48061a237",
+     "sha256": "695a9b7de651d72c07a8eb76fb4b0384435b8eceb315f37e5f0d101b1f0b9fd5"
+    },
+    "pylint-dev__pylint-7080.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/pylint-dev__pylint-7080/pylint-dev__pylint-7080.traj.json",
+     "size": 437236,
+     "etag": "e49bb7ced6083338e2ae38dcace7d300",
+     "sha256": "8d5879ec393d3f9f11bf242e1a121aa25a2feff3ea733fc84d48594aee3f2a11"
+    },
+    "pytest-dev__pytest-10081.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/pytest-dev__pytest-10081/pytest-dev__pytest-10081.traj.json",
+     "size": 174170,
+     "etag": "3a97efa2b6c29da622808cffcc8462f6",
+     "sha256": "fde03b93cab82991d32d2b4c86acd3c39a64db8b49ac0df09066918a2ac04b1b"
+    },
+    "pytest-dev__pytest-7324.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/pytest-dev__pytest-7324/pytest-dev__pytest-7324.traj.json",
+     "size": 123346,
+     "etag": "3b200bbb3577f2255e29e803db819ed1",
+     "sha256": "1840e75e0a2cf958dbdf7baef9f6001630b10f5bead47d1a7083838784fcbfab"
+    },
+    "pytest-dev__pytest-7432.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/pytest-dev__pytest-7432/pytest-dev__pytest-7432.traj.json",
+     "size": 205250,
+     "etag": "b15e1b5474f21853f119544ad877aa38",
+     "sha256": "b643e78c9aea843513a7e17cf1b4d44dfbbba313150782fdb5410ea0303d90f4"
+    },
+    "scikit-learn__scikit-learn-14894.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/scikit-learn__scikit-learn-14894/scikit-learn__scikit-learn-14894.traj.json",
+     "size": 136574,
+     "etag": "c888a20f91ce1e338c6d8df19ed27d95",
+     "sha256": "0ec3d8f966d304d9e23d44c30ecde2cefb2f5d30b5414c5ac15590e67fab93e3"
+    },
+    "sphinx-doc__sphinx-7590.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/sphinx-doc__sphinx-7590/sphinx-doc__sphinx-7590.traj.json",
+     "size": 328777,
+     "etag": "441876cef87f166d05222a7c724e430f",
+     "sha256": "1809fa275d18efd9b126883fd1379db410e53d3621ed6cdb88240f590264c1cf"
+    },
+    "sphinx-doc__sphinx-8269.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/sphinx-doc__sphinx-8269/sphinx-doc__sphinx-8269.traj.json",
+     "size": 186511,
+     "etag": "7659c2f70208f7c64f6debc7882fa358",
+     "sha256": "00ad56b76e9148d67aa61ea8589f0c28fc01f556e4701294422a40f68367c056"
+    },
+    "sympy__sympy-18199.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/sympy__sympy-18199/sympy__sympy-18199.traj.json",
+     "size": 147780,
+     "etag": "922e58136efe350ef703f2124e3d05a1",
+     "sha256": "3ef9c201816d550aec2f84646b8d7db62ba7f68e1fb2943522d6c32c0d78ba70"
+    },
+    "sympy__sympy-19346.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/sympy__sympy-19346/sympy__sympy-19346.traj.json",
+     "size": 232672,
+     "etag": "7c2fb53f4348022eea5fb36305861068",
+     "sha256": "ba32fc6914c1c5e5f2bba5af3c17ea959df63407f6faa4193314ff82b0843337"
+    },
+    "sympy__sympy-19954.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/sympy__sympy-19954/sympy__sympy-19954.traj.json",
+     "size": 128665,
+     "etag": "8536093a3a3beff16c89f215825262eb",
+     "sha256": "a38f4a0f056f0bd9ed670ca3acb6375d992c5966f134a43f56188fe65fcdad0c"
+    },
+    "sympy__sympy-23824.traj.json": {
+     "key": "bash-only/20260217_mini-v2.0.0_gpt-5-mini/trajs/sympy__sympy-23824/sympy__sympy-23824.traj.json",
+     "size": 220793,
+     "etag": "416df3fccd66e49c78d4b9c8a59311a8",
+     "sha256": "07a92bbb18b760930f2520c5fe8d729dc70aef57350f480846e7116053d8490a"
+    }
+   }
+  },
+  "20260219_mini-v2.0.0_gpt-5-2-codex": {
+   "listed": 500,
+   "files": {
+    "django__django-11299.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/django__django-11299/django__django-11299.traj.json",
+     "size": 175773,
+     "etag": "5bbe3c463ae773488dc3f85478ce31ef",
+     "sha256": "14a9ec5448dcf94103f93ccec8ec139d35f95007041401bdacb61f6f6308168e"
+    },
+    "django__django-11433.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/django__django-11433/django__django-11433.traj.json",
+     "size": 140808,
+     "etag": "345c65d936d6450c2b712576e71629ae",
+     "sha256": "49977f999f257bb91e4b3ca01e2f45ec1d5008b3b035a8c671e36e4efbc70adf"
+    },
+    "django__django-11734.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/django__django-11734/django__django-11734.traj.json",
+     "size": 417833,
+     "etag": "8ec619b24e3796ccc23fc7a7b863b72a",
+     "sha256": "bf6d7e9a917ec0b53f9377f115cc8f768cdc57680bab49f5eed242e8c060557a"
+    },
+    "django__django-11964.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/django__django-11964/django__django-11964.traj.json",
+     "size": 170347,
+     "etag": "46ff0467203d7bb63092def75b70c667",
+     "sha256": "6a6dd28623e4278228e83c963a2dc55f331b721e962d1259469a3166318684d3"
+    },
+    "django__django-12858.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/django__django-12858/django__django-12858.traj.json",
+     "size": 461871,
+     "etag": "3fa0e8080a97d415c6d69bba5c91e3dc",
+     "sha256": "b8015fec36bde2d4f061c82819bbfb58aa6277bea69185c2eaebcbd3ed0853c7"
+    },
+    "django__django-13363.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/django__django-13363/django__django-13363.traj.json",
+     "size": 158495,
+     "etag": "50ddc4fb3c154515b032c90c249e0e14",
+     "sha256": "1d988710c53380ed011bf560751a0041dd4d2d24b6328d4efcaa11db1ef63549"
+    },
+    "django__django-13658.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/django__django-13658/django__django-13658.traj.json",
+     "size": 185774,
+     "etag": "569165d8653a4ebd7e5fffa3407178c2",
+     "sha256": "d64d4be48c8df923bfabaa204f5a2696f9d940a24975fccba9db60c055bb87f8"
+    },
+    "django__django-13809.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/django__django-13809/django__django-13809.traj.json",
+     "size": 196108,
+     "etag": "fd6ab68cf76f0b1d86a9cc350b178e3d",
+     "sha256": "5180d26dc98e0e4247e12e5f69c50053286fabb5bb7f460452e430cc31055d06"
+    },
+    "django__django-13810.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/django__django-13810/django__django-13810.traj.json",
+     "size": 143780,
+     "etag": "4300d44a786747c1c1d3675f3862143e",
+     "sha256": "ef0c2a0cf67b67d2106e3a633e9582805df475cc8e4860168b478e51568a032d"
+    },
+    "django__django-14011.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/django__django-14011/django__django-14011.traj.json",
+     "size": 281330,
+     "etag": "f90b140645808d8e7c0942e618f55583",
+     "sha256": "5bb542cc28328591bb4416041224b1714d27227fd69c2e69395168dd9fbb254a"
+    },
+    "django__django-14034.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/django__django-14034/django__django-14034.traj.json",
+     "size": 231493,
+     "etag": "d11357d287ad57454489cea1e2e73745",
+     "sha256": "5a4ca5f6375d8f5862e5086c0361420f7a57fb09a8e1847decc6e247a9051b44"
+    },
+    "django__django-15572.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/django__django-15572/django__django-15572.traj.json",
+     "size": 221847,
+     "etag": "c02cd82020622f0aaef2e3b24ea8d30a",
+     "sha256": "74f31bd0fab543de0d095588f378634f828611f6a3898decdcd35a5869620af4"
+    },
+    "django__django-15741.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/django__django-15741/django__django-15741.traj.json",
+     "size": 213012,
+     "etag": "14a1d22e85f71f7c201424657e564dbe",
+     "sha256": "f62ba397df7d5c51e76b0ebad9a4bba6db1a5a0cdd0293c11b464e5787acf36b"
+    },
+    "django__django-15973.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/django__django-15973/django__django-15973.traj.json",
+     "size": 373084,
+     "etag": "3051cc960bdc7fbab743fa3016dbbeb3",
+     "sha256": "a4d86ce3f11c03aaf5577d503da79c1a2d69fd5729a4ab2ffcd5166f40029abd"
+    },
+    "django__django-16493.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/django__django-16493/django__django-16493.traj.json",
+     "size": 109003,
+     "etag": "9cd7638df92c223ec8a0121ef33c364c",
+     "sha256": "889b9ffcd2d5b79e251cfb461ab2c31ac8e624e417492617806ee5ef867ff806"
+    },
+    "django__django-16877.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/django__django-16877/django__django-16877.traj.json",
+     "size": 120454,
+     "etag": "3fc00281b8b7fbe9ed9501b06247c06d",
+     "sha256": "9ff2e0e3ddd7235e483648a7cb344a31d011a459c1e10b9c5052ee33727b1291"
+    },
+    "django__django-16950.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/django__django-16950/django__django-16950.traj.json",
+     "size": 225254,
+     "etag": "573af4042c08e9d202c009b33cd0bb42",
+     "sha256": "8ef7f759c1a3f72b84869f09b9f7e08098de2ceef9142c3a92111f68753db61b"
+    },
+    "django__django-17029.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/django__django-17029/django__django-17029.traj.json",
+     "size": 106454,
+     "etag": "8a71013791e516d0f98d0b88c8d3153a",
+     "sha256": "bf0657de691255a5ee5ca3d2dea30e438257617f1997f7f7bf39a1eab7913167"
+    },
+    "matplotlib__matplotlib-20488.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/matplotlib__matplotlib-20488/matplotlib__matplotlib-20488.traj.json",
+     "size": 276087,
+     "etag": "b7188cc11f902d3d1a51d5121a3acd02",
+     "sha256": "dc91d70a70c390072c2b306d329b7c4e7ea99c8dc899fc1fe3ae8ba8a7afdba7"
+    },
+    "matplotlib__matplotlib-25775.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/matplotlib__matplotlib-25775/matplotlib__matplotlib-25775.traj.json",
+     "size": 568904,
+     "etag": "4684031311d20ef4603345f0f2a442d1",
+     "sha256": "3fed8f0782e3dbef6221814754efdb8d6a758695b5e1c519d395d0ded870a453"
+    },
+    "matplotlib__matplotlib-25960.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/matplotlib__matplotlib-25960/matplotlib__matplotlib-25960.traj.json",
+     "size": 241446,
+     "etag": "482c42d5821265a7097912ff0d5be1de",
+     "sha256": "c3c4543704120e28d377a8729afc44a1fd1f7778be29adee4693c2bb891aafdb"
+    },
+    "matplotlib__matplotlib-26466.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/matplotlib__matplotlib-26466/matplotlib__matplotlib-26466.traj.json",
+     "size": 304023,
+     "etag": "778843002abcad159c802faa27b15e0b",
+     "sha256": "6937df2dcd6a12154af477600138fc6eec934973d5922ebb1f4aeceb82914c3c"
+    },
+    "pylint-dev__pylint-4661.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/pylint-dev__pylint-4661/pylint-dev__pylint-4661.traj.json",
+     "size": 219150,
+     "etag": "f10f750b9a58061127fd0667e5d43705",
+     "sha256": "e187bd651bcb69cefe3aae272fce19a57b65fdadba95c15962be615e03f6cb54"
+    },
+    "pylint-dev__pylint-7277.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/pylint-dev__pylint-7277/pylint-dev__pylint-7277.traj.json",
+     "size": 207589,
+     "etag": "93d61f80385dc47a58c754883c556e4b",
+     "sha256": "484103d8de01e8ede6bf72508e2acd902df8598e50926f5784b34cc55664cca2"
+    },
+    "pytest-dev__pytest-10081.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/pytest-dev__pytest-10081/pytest-dev__pytest-10081.traj.json",
+     "size": 166055,
+     "etag": "b9d06e061834a48601d9fe90213038bd",
+     "sha256": "cbfe9737ad5c861da2f8ff568c6528bf74525a4af2ff4a84abd564418887ffbf"
+    },
+    "pytest-dev__pytest-5262.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/pytest-dev__pytest-5262/pytest-dev__pytest-5262.traj.json",
+     "size": 127049,
+     "etag": "f7372187e66b8a21129b9127905d3484",
+     "sha256": "cbf31b7353cc2f31956683bab9f98e299391d53c24ab988f4cf8d981be270842"
+    },
+    "pytest-dev__pytest-5840.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/pytest-dev__pytest-5840/pytest-dev__pytest-5840.traj.json",
+     "size": 330478,
+     "etag": "591e01efb3b017ec357677ef9c7bb57a",
+     "sha256": "6af0b88442ea8497c523b8c809510dba3b4308daa1521bb252c6213954886fe6"
+    },
+    "scikit-learn__scikit-learn-14087.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/scikit-learn__scikit-learn-14087/scikit-learn__scikit-learn-14087.traj.json",
+     "size": 169423,
+     "etag": "61b9269bdb5df00b2ea58fb42a7fee44",
+     "sha256": "7cbd8e0a9b7ccd80f6db8982e07b5da6d67143b616c40cfc3edeca8f2e1f3220"
+    },
+    "scikit-learn__scikit-learn-25931.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/scikit-learn__scikit-learn-25931/scikit-learn__scikit-learn-25931.traj.json",
+     "size": 361388,
+     "etag": "1bb0edad0b6bd47c4ab191c08d4c9ab4",
+     "sha256": "ba96ac02f211757ac59ee601dc80601f62d9e02e7887323dfcc7887fe0cd2792"
+    },
+    "sphinx-doc__sphinx-7985.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/sphinx-doc__sphinx-7985/sphinx-doc__sphinx-7985.traj.json",
+     "size": 328788,
+     "etag": "5b295f93a75587f24ab81f38ee455e47",
+     "sha256": "2104b73a75c5d0247fcb4259ee1d0d2543220e69f95ed01274c59f2b4ec6feae"
+    },
+    "sphinx-doc__sphinx-8120.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/sphinx-doc__sphinx-8120/sphinx-doc__sphinx-8120.traj.json",
+     "size": 194033,
+     "etag": "79f344c584fca94a35b48d5891c83492",
+     "sha256": "f6915a405ea1c082536d30db07cd24416248b2a281ec7533dbcb365375213398"
+    },
+    "sphinx-doc__sphinx-8595.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/sphinx-doc__sphinx-8595/sphinx-doc__sphinx-8595.traj.json",
+     "size": 287525,
+     "etag": "0ed244ed2a22a3425f9be2659b7461f9",
+     "sha256": "294527eb1876ddbffa170c0f6e98f1a01baacaa75b615a17aaccd917e9af75b8"
+    },
+    "sphinx-doc__sphinx-9698.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/sphinx-doc__sphinx-9698/sphinx-doc__sphinx-9698.traj.json",
+     "size": 215194,
+     "etag": "f34645475f85cf913e7c27ca94ae2c67",
+     "sha256": "2a4b8412b39e2208166d95596ffcae68c6f6ba829e59b925905780aebd51fda6"
+    },
+    "sympy__sympy-13480.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/sympy__sympy-13480/sympy__sympy-13480.traj.json",
+     "size": 241971,
+     "etag": "065515a2f92b9bc0db7942fc59a94a0e",
+     "sha256": "28b55a9dd0ad9811471e1fec1e175068311984ce16b2bce0147185b4f2505773"
+    },
+    "sympy__sympy-13615.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/sympy__sympy-13615/sympy__sympy-13615.traj.json",
+     "size": 244725,
+     "etag": "017286d764b414d4cc951307884495ab",
+     "sha256": "567d97a91f9074fbc823c036dcf0302c4e71800efb3820c8dbf6d3bede9cf82b"
+    },
+    "sympy__sympy-15875.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/sympy__sympy-15875/sympy__sympy-15875.traj.json",
+     "size": 181176,
+     "etag": "10724c70a668207c848bb11a9d08de98",
+     "sha256": "9fc4a30fb48de49a8cb38e96c6176239d9fc71c866f0f2581138dfa39118842d"
+    },
+    "sympy__sympy-17139.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/sympy__sympy-17139/sympy__sympy-17139.traj.json",
+     "size": 161819,
+     "etag": "3c0377ac0a6897fd5bcb40db9c8e76cb",
+     "sha256": "60606fb872cc25e777a9cab38333c82e3b623b8249041e9440f45ce8c41c05bf"
+    },
+    "sympy__sympy-19954.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/sympy__sympy-19954/sympy__sympy-19954.traj.json",
+     "size": 99120,
+     "etag": "725af35b4f5d353cb595041413029064",
+     "sha256": "a6b2efb9826864fd397bb5f248e546aea54aa0edf985a6a7475e6bbfc1cc242d"
+    },
+    "sympy__sympy-20801.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/sympy__sympy-20801/sympy__sympy-20801.traj.json",
+     "size": 191896,
+     "etag": "277ecad448d779bda55cfe32b3fbb7f6",
+     "sha256": "3d9690bc4661fc236f11612debd44b31dc4138192e46ff62dd88804f745f2777"
+    },
+    "sympy__sympy-21612.traj.json": {
+     "key": "bash-only/20260219_mini-v2.0.0_gpt-5-2-codex/trajs/sympy__sympy-21612/sympy__sympy-21612.traj.json",
+     "size": 217248,
+     "etag": "55d5d4d1f55ee7b12f5f42df39b54773",
+     "sha256": "0c4f8b3dc784f41d217e9954bc0d5d50473da39e2c6d749f31604094b8d50421"
+    }
+   }
+  }
+ }
+}
