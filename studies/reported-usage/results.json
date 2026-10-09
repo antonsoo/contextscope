@@ -1,0 +1,4874 @@
+{
+  "source_manifest_sha256": "da378619eb0633debd8ac970c5b321c625e091e54096cf1aa46c4a45dd1d22d2",
+  "source_files": 520,
+  "response_counters_checked": 17425,
+  "normalization_disagreements": 0,
+  "full_trajectories": 120,
+  "full_requests": 2205,
+  "reconciliation_disagreements": 0,
+  "scope": "All 520 files for usage normalization; only the 120 stateless OpenAI Chat trajectories for reconstructed-request comparisons. Gateway input totals with cache creation are withheld. No live API calls.",
+  "elapsed_seconds": 39.3,
+  "groups": {
+    "20250929_mini-v1.13.3_sonnet-4-5-20250929": {
+      "files": 40,
+      "response_counters": 2108,
+      "input_totals_withheld": 2107,
+      "creation_exceeds_gateway_prompt_count": 51
+    },
+    "20251124_mini-v1.16.0_claude-opus-4-5-20251101": {
+      "files": 40,
+      "response_counters": 1592,
+      "input_totals_withheld": 1450,
+      "creation_exceeds_gateway_prompt_count": 40
+    },
+    "20260217_mini-v2.0.0_claude-4-5-haiku-high": {
+      "files": 40,
+      "response_counters": 2710,
+      "input_totals_withheld": 2576
+    },
+    "20260217_mini-v2.0.0_claude-4-5-opus-high": {
+      "files": 40,
+      "response_counters": 1344,
+      "input_totals_withheld": 1278
+    },
+    "20260217_mini-v2.0.0_claude-4-5-sonnet-high": {
+      "files": 40,
+      "response_counters": 1926,
+      "input_totals_withheld": 1926
+    },
+    "20260217_mini-v2.0.0_claude-4-6-opus": {
+      "files": 40,
+      "response_counters": 875,
+      "input_totals_withheld": 711
+    },
+    "20251120_mini-v1.15.0_gpt-5.1-2025-11-13": {
+      "files": 40,
+      "response_counters": 771
+    },
+    "20251211_mini-v1.17.2_gpt-5.2-2025-12-11": {
+      "files": 40,
+      "response_counters": 635
+    },
+    "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high": {
+      "files": 40,
+      "response_counters": 799
+    },
+    "20251124_mini-v1.16.0_gpt-5.1-codex": {
+      "files": 40,
+      "response_counters": 1065
+    },
+    "20260217_mini-v2.0.0_gpt-5-2-high": {
+      "files": 40,
+      "response_counters": 1429
+    },
+    "20260217_mini-v2.0.0_gpt-5-mini": {
+      "files": 40,
+      "response_counters": 882
+    },
+    "20260219_mini-v2.0.0_gpt-5-2-codex": {
+      "files": 40,
+      "response_counters": 1289
+    }
+  },
+  "trajectories": [
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-11815.traj.json",
+      "requests": 17,
+      "reported_input": 218010,
+      "reported_read": 179584,
+      "simulated_read": 196352,
+      "read_outcomes": {
+        "both_zero": 1,
+        "both_positive": 14,
+        "simulated_hit_reported_zero": 2
+      },
+      "capture_bytes": 963790
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-11820.traj.json",
+      "requests": 13,
+      "reported_input": 143454,
+      "reported_read": 109696,
+      "simulated_read": 126592,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 2,
+        "both_positive": 10
+      },
+      "capture_bytes": 482571
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-11885.traj.json",
+      "requests": 24,
+      "reported_input": 412421,
+      "reported_read": 345984,
+      "simulated_read": 375552,
+      "read_outcomes": {
+        "both_zero": 1,
+        "both_positive": 22,
+        "simulated_hit_reported_zero": 1
+      },
+      "capture_bytes": 1858214
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-12155.traj.json",
+      "requests": 10,
+      "reported_input": 68701,
+      "reported_read": 40576,
+      "simulated_read": 58240,
+      "read_outcomes": {
+        "both_zero": 1,
+        "both_positive": 7,
+        "simulated_hit_reported_zero": 2
+      },
+      "capture_bytes": 274384
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-12193.traj.json",
+      "requests": 16,
+      "reported_input": 137902,
+      "reported_read": 93696,
+      "simulated_read": 122624,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 4,
+        "both_positive": 11
+      },
+      "capture_bytes": 579141
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-12858.traj.json",
+      "requests": 12,
+      "reported_input": 87002,
+      "reported_read": 56576,
+      "simulated_read": 75648,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 3,
+        "both_positive": 8
+      },
+      "capture_bytes": 354473
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-13012.traj.json",
+      "requests": 18,
+      "reported_input": 220024,
+      "reported_read": 103296,
+      "simulated_read": 200448,
+      "read_outcomes": {
+        "both_zero": 1,
+        "both_positive": 10,
+        "simulated_hit_reported_zero": 7
+      },
+      "capture_bytes": 904138
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-13033.traj.json",
+      "requests": 21,
+      "reported_input": 244723,
+      "reported_read": 185088,
+      "simulated_read": 223232,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 3,
+        "both_positive": 17
+      },
+      "capture_bytes": 1057906
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-13315.traj.json",
+      "requests": 22,
+      "reported_input": 278974,
+      "reported_read": 214912,
+      "simulated_read": 256128,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 3,
+        "both_positive": 18
+      },
+      "capture_bytes": 1161480
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-13343.traj.json",
+      "requests": 17,
+      "reported_input": 175993,
+      "reported_read": 158848,
+      "simulated_read": 160256,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 1,
+        "both_positive": 15
+      },
+      "capture_bytes": 790096
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-14017.traj.json",
+      "requests": 17,
+      "reported_input": 213990,
+      "reported_read": 134784,
+      "simulated_read": 193280,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 6,
+        "both_positive": 10
+      },
+      "capture_bytes": 921813
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-14434.traj.json",
+      "requests": 13,
+      "reported_input": 95520,
+      "reported_read": 69248,
+      "simulated_read": 81664,
+      "read_outcomes": {
+        "both_zero": 1,
+        "both_positive": 11,
+        "simulated_hit_reported_zero": 1
+      },
+      "capture_bytes": 419811
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-14493.traj.json",
+      "requests": 8,
+      "reported_input": 51269,
+      "reported_read": 27264,
+      "simulated_read": 42624,
+      "read_outcomes": {
+        "both_zero": 1,
+        "both_positive": 5,
+        "simulated_hit_reported_zero": 2
+      },
+      "capture_bytes": 214114
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-14539.traj.json",
+      "requests": 13,
+      "reported_input": 125399,
+      "reported_read": 90752,
+      "simulated_read": 107904,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 2,
+        "both_positive": 10
+      },
+      "capture_bytes": 497868
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-15037.traj.json",
+      "requests": 33,
+      "reported_input": 612312,
+      "reported_read": 432896,
+      "simulated_read": 577792,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 7,
+        "both_positive": 25
+      },
+      "capture_bytes": 2821778
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-15315.traj.json",
+      "requests": 22,
+      "reported_input": 206951,
+      "reported_read": 116736,
+      "simulated_read": 191104,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 7,
+        "both_positive": 14
+      },
+      "capture_bytes": 871231
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-15741.traj.json",
+      "requests": 15,
+      "reported_input": 165156,
+      "reported_read": 132992,
+      "simulated_read": 147328,
+      "read_outcomes": {
+        "both_zero": 1,
+        "both_positive": 13,
+        "simulated_hit_reported_zero": 1
+      },
+      "capture_bytes": 699000
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-16032.traj.json",
+      "requests": 27,
+      "reported_input": 547509,
+      "reported_read": 454272,
+      "simulated_read": 514176,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 3,
+        "both_positive": 23
+      },
+      "capture_bytes": 2486103
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-16255.traj.json",
+      "requests": 11,
+      "reported_input": 65000,
+      "reported_read": 41856,
+      "simulated_read": 56192,
+      "read_outcomes": {
+        "both_zero": 1,
+        "both_positive": 8,
+        "simulated_hit_reported_zero": 2
+      },
+      "capture_bytes": 263420
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-16560.traj.json",
+      "requests": 30,
+      "reported_input": 539520,
+      "reported_read": 474624,
+      "simulated_read": 504064,
+      "read_outcomes": {
+        "both_zero": 1,
+        "both_positive": 27,
+        "simulated_hit_reported_zero": 2
+      },
+      "capture_bytes": 2377965
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-16801.traj.json",
+      "requests": 19,
+      "reported_input": 213090,
+      "reported_read": 164480,
+      "simulated_read": 194560,
+      "read_outcomes": {
+        "both_zero": 1,
+        "both_positive": 15,
+        "simulated_hit_reported_zero": 3
+      },
+      "capture_bytes": 961659
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-16950.traj.json",
+      "requests": 24,
+      "reported_input": 444705,
+      "reported_read": 412928,
+      "simulated_read": 412928,
+      "read_outcomes": {
+        "both_zero": 1,
+        "both_positive": 23
+      },
+      "capture_bytes": 1821235
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-9296.traj.json",
+      "requests": 10,
+      "reported_input": 53209,
+      "reported_read": 44800,
+      "simulated_read": 44800,
+      "read_outcomes": {
+        "both_zero": 1,
+        "both_positive": 9
+      },
+      "capture_bytes": 225776
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "psf__requests-1724.traj.json",
+      "requests": 15,
+      "reported_input": 209655,
+      "reported_read": 152320,
+      "simulated_read": 188160,
+      "read_outcomes": {
+        "both_zero": 1,
+        "both_positive": 12,
+        "simulated_hit_reported_zero": 2
+      },
+      "capture_bytes": 836796
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "psf__requests-1921.traj.json",
+      "requests": 17,
+      "reported_input": 178440,
+      "reported_read": 149632,
+      "simulated_read": 161664,
+      "read_outcomes": {
+        "both_zero": 1,
+        "both_positive": 15,
+        "simulated_hit_reported_zero": 1
+      },
+      "capture_bytes": 790496
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "psf__requests-2931.traj.json",
+      "requests": 18,
+      "reported_input": 186492,
+      "reported_read": 148352,
+      "simulated_read": 166656,
+      "read_outcomes": {
+        "both_zero": 1,
+        "both_positive": 15,
+        "simulated_hit_reported_zero": 2
+      },
+      "capture_bytes": 769378
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "pydata__xarray-6992.traj.json",
+      "requests": 9,
+      "reported_input": 47253,
+      "reported_read": 39296,
+      "simulated_read": 39296,
+      "read_outcomes": {
+        "both_zero": 1,
+        "both_positive": 8
+      },
+      "capture_bytes": 191760
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "pydata__xarray-7229.traj.json",
+      "requests": 43,
+      "reported_input": 1329106,
+      "reported_read": 1134592,
+      "simulated_read": 1277184,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 4,
+        "both_positive": 38
+      },
+      "capture_bytes": 5242368
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "pytest-dev__pytest-5787.traj.json",
+      "requests": 62,
+      "reported_input": 2582769,
+      "reported_read": 2363264,
+      "simulated_read": 2504832,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 3,
+        "both_positive": 58
+      },
+      "capture_bytes": 12205535
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "scikit-learn__scikit-learn-11578.traj.json",
+      "requests": 18,
+      "reported_input": 341272,
+      "reported_read": 266240,
+      "simulated_read": 310912,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 3,
+        "both_positive": 14
+      },
+      "capture_bytes": 1427149
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "scikit-learn__scikit-learn-12585.traj.json",
+      "requests": 8,
+      "reported_input": 59910,
+      "reported_read": 30720,
+      "simulated_read": 49664,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 3,
+        "both_positive": 4
+      },
+      "capture_bytes": 243699
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "scikit-learn__scikit-learn-25973.traj.json",
+      "requests": 9,
+      "reported_input": 85101,
+      "reported_read": 52096,
+      "simulated_read": 70400,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 2,
+        "both_positive": 6
+      },
+      "capture_bytes": 338055
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "sphinx-doc__sphinx-11510.traj.json",
+      "requests": 40,
+      "reported_input": 860733,
+      "reported_read": 791040,
+      "simulated_read": 822784,
+      "read_outcomes": {
+        "both_zero": 1,
+        "both_positive": 38,
+        "simulated_hit_reported_zero": 1
+      },
+      "capture_bytes": 3549529
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "sphinx-doc__sphinx-9281.traj.json",
+      "requests": 13,
+      "reported_input": 128945,
+      "reported_read": 74752,
+      "simulated_read": 111360,
+      "read_outcomes": {
+        "both_zero": 1,
+        "both_positive": 9,
+        "simulated_hit_reported_zero": 3
+      },
+      "capture_bytes": 546910
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "sympy__sympy-13647.traj.json",
+      "requests": 14,
+      "reported_input": 120305,
+      "reported_read": 88448,
+      "simulated_read": 105344,
+      "read_outcomes": {
+        "both_zero": 1,
+        "both_positive": 11,
+        "simulated_hit_reported_zero": 2
+      },
+      "capture_bytes": 430965
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "sympy__sympy-13757.traj.json",
+      "requests": 17,
+      "reported_input": 181602,
+      "reported_read": 145408,
+      "simulated_read": 161408,
+      "read_outcomes": {
+        "both_zero": 1,
+        "both_positive": 14,
+        "simulated_hit_reported_zero": 2
+      },
+      "capture_bytes": 688165
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "sympy__sympy-13878.traj.json",
+      "requests": 31,
+      "reported_input": 870047,
+      "reported_read": 750976,
+      "simulated_read": 823680,
+      "read_outcomes": {
+        "both_zero": 1,
+        "both_positive": 28,
+        "simulated_hit_reported_zero": 2
+      },
+      "capture_bytes": 3159749
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "sympy__sympy-19637.traj.json",
+      "requests": 11,
+      "reported_input": 76730,
+      "reported_read": 58240,
+      "simulated_read": 65792,
+      "read_outcomes": {
+        "both_zero": 1,
+        "both_positive": 9,
+        "simulated_hit_reported_zero": 1
+      },
+      "capture_bytes": 284983
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "sympy__sympy-20590.traj.json",
+      "requests": 15,
+      "reported_input": 205690,
+      "reported_read": 145664,
+      "simulated_read": 185600,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 3,
+        "both_positive": 11
+      },
+      "capture_bytes": 827582
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "sympy__sympy-24066.traj.json",
+      "requests": 19,
+      "reported_input": 238631,
+      "reported_read": 207872,
+      "simulated_read": 218240,
+      "read_outcomes": {
+        "both_zero": 1,
+        "both_positive": 17,
+        "simulated_hit_reported_zero": 1
+      },
+      "capture_bytes": 955493
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "astropy__astropy-14508.traj.json",
+      "requests": 8,
+      "reported_input": 53901,
+      "reported_read": 4480,
+      "simulated_read": 42496,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 5,
+        "both_positive": 2
+      },
+      "capture_bytes": 195641
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "astropy__astropy-14598.traj.json",
+      "requests": 29,
+      "reported_input": 454623,
+      "reported_read": 255360,
+      "simulated_read": 426496,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 11,
+        "both_positive": 17
+      },
+      "capture_bytes": 1800535
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "django__django-11299.traj.json",
+      "requests": 14,
+      "reported_input": 106452,
+      "reported_read": 49536,
+      "simulated_read": 92416,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 4,
+        "both_positive": 9
+      },
+      "capture_bytes": 438829
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "django__django-11400.traj.json",
+      "requests": 11,
+      "reported_input": 63183,
+      "reported_read": 16384,
+      "simulated_read": 53504,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 7,
+        "both_positive": 3
+      },
+      "capture_bytes": 265921
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "django__django-11951.traj.json",
+      "requests": 7,
+      "reported_input": 24744,
+      "reported_read": 12160,
+      "simulated_read": 18816,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 3,
+        "both_positive": 3
+      },
+      "capture_bytes": 110761
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "django__django-12193.traj.json",
+      "requests": 18,
+      "reported_input": 119649,
+      "reported_read": 58112,
+      "simulated_read": 106624,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 6,
+        "both_positive": 11
+      },
+      "capture_bytes": 493441
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "django__django-12262.traj.json",
+      "requests": 12,
+      "reported_input": 52817,
+      "reported_read": 24832,
+      "simulated_read": 45568,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 5,
+        "both_positive": 6
+      },
+      "capture_bytes": 229846
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "django__django-13028.traj.json",
+      "requests": 13,
+      "reported_input": 64349,
+      "reported_read": 16256,
+      "simulated_read": 54784,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 9,
+        "both_positive": 3
+      },
+      "capture_bytes": 279680
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "django__django-13109.traj.json",
+      "requests": 9,
+      "reported_input": 33821,
+      "reported_read": 9088,
+      "simulated_read": 27904,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 5,
+        "both_positive": 3
+      },
+      "capture_bytes": 145915
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "django__django-13658.traj.json",
+      "requests": 12,
+      "reported_input": 49561,
+      "reported_read": 12672,
+      "simulated_read": 42496,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 8,
+        "both_positive": 3
+      },
+      "capture_bytes": 224185
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "django__django-13837.traj.json",
+      "requests": 10,
+      "reported_input": 43070,
+      "reported_read": 11136,
+      "simulated_read": 35328,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 6,
+        "both_positive": 3
+      },
+      "capture_bytes": 189933
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "django__django-14608.traj.json",
+      "requests": 17,
+      "reported_input": 108870,
+      "reported_read": 70784,
+      "simulated_read": 97152,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 3,
+        "both_positive": 13
+      },
+      "capture_bytes": 455641
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "django__django-14725.traj.json",
+      "requests": 24,
+      "reported_input": 379864,
+      "reported_read": 130944,
+      "simulated_read": 350720,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 15,
+        "both_positive": 8
+      },
+      "capture_bytes": 1635811
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "django__django-14787.traj.json",
+      "requests": 8,
+      "reported_input": 36001,
+      "reported_read": 16256,
+      "simulated_read": 29312,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 4,
+        "both_positive": 3
+      },
+      "capture_bytes": 156061
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "django__django-15098.traj.json",
+      "requests": 15,
+      "reported_input": 118644,
+      "reported_read": 48256,
+      "simulated_read": 105856,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 6,
+        "both_positive": 8
+      },
+      "capture_bytes": 478570
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "django__django-15277.traj.json",
+      "requests": 13,
+      "reported_input": 62348,
+      "reported_read": 20224,
+      "simulated_read": 54272,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 6,
+        "both_positive": 6
+      },
+      "capture_bytes": 247770
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "django__django-15569.traj.json",
+      "requests": 9,
+      "reported_input": 39553,
+      "reported_read": 14208,
+      "simulated_read": 32512,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 4,
+        "both_positive": 4
+      },
+      "capture_bytes": 175494
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "django__django-16429.traj.json",
+      "requests": 14,
+      "reported_input": 58811,
+      "reported_read": 27136,
+      "simulated_read": 51968,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 7,
+        "both_positive": 6
+      },
+      "capture_bytes": 241044
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "django__django-16801.traj.json",
+      "requests": 8,
+      "reported_input": 38425,
+      "reported_read": 15360,
+      "simulated_read": 31360,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 4,
+        "both_positive": 3
+      },
+      "capture_bytes": 168208
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "matplotlib__matplotlib-26113.traj.json",
+      "requests": 10,
+      "reported_input": 78947,
+      "reported_read": 25600,
+      "simulated_read": 65280,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 5,
+        "both_positive": 4
+      },
+      "capture_bytes": 297422
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "psf__requests-1766.traj.json",
+      "requests": 11,
+      "reported_input": 61889,
+      "reported_read": 8064,
+      "simulated_read": 50816,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 7,
+        "both_positive": 3
+      },
+      "capture_bytes": 243542
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "pydata__xarray-2905.traj.json",
+      "requests": 13,
+      "reported_input": 102300,
+      "reported_read": 27008,
+      "simulated_read": 88704,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 9,
+        "both_positive": 3
+      },
+      "capture_bytes": 407233
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "pydata__xarray-4687.traj.json",
+      "requests": 34,
+      "reported_input": 608576,
+      "reported_read": 415872,
+      "simulated_read": 571648,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 9,
+        "both_positive": 24
+      },
+      "capture_bytes": 2242232
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "pylint-dev__pylint-6528.traj.json",
+      "requests": 34,
+      "reported_input": 546140,
+      "reported_read": 302208,
+      "simulated_read": 514304,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 12,
+        "both_positive": 21
+      },
+      "capture_bytes": 2338295
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "pylint-dev__pylint-7080.traj.json",
+      "requests": 37,
+      "reported_input": 735716,
+      "reported_read": 562688,
+      "simulated_read": 702208,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 7,
+        "both_positive": 29
+      },
+      "capture_bytes": 2993545
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "scikit-learn__scikit-learn-13328.traj.json",
+      "requests": 15,
+      "reported_input": 127359,
+      "reported_read": 10752,
+      "simulated_read": 113024,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 10,
+        "both_positive": 4
+      },
+      "capture_bytes": 476386
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "scikit-learn__scikit-learn-13439.traj.json",
+      "requests": 10,
+      "reported_input": 55916,
+      "reported_read": 25728,
+      "simulated_read": 46848,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 4,
+        "both_positive": 5
+      },
+      "capture_bytes": 221963
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "scikit-learn__scikit-learn-13496.traj.json",
+      "requests": 13,
+      "reported_input": 81069,
+      "reported_read": 17024,
+      "simulated_read": 69760,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 9,
+        "both_positive": 3
+      },
+      "capture_bytes": 330252
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "scikit-learn__scikit-learn-14710.traj.json",
+      "requests": 12,
+      "reported_input": 77471,
+      "reported_read": 29440,
+      "simulated_read": 66560,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 5,
+        "both_positive": 6
+      },
+      "capture_bytes": 320358
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "sphinx-doc__sphinx-7454.traj.json",
+      "requests": 17,
+      "reported_input": 147422,
+      "reported_read": 65280,
+      "simulated_read": 132096,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 9,
+        "both_positive": 7
+      },
+      "capture_bytes": 590148
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "sphinx-doc__sphinx-7590.traj.json",
+      "requests": 36,
+      "reported_input": 600247,
+      "reported_read": 349056,
+      "simulated_read": 568576,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 10,
+        "both_positive": 25
+      },
+      "capture_bytes": 2356752
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "sphinx-doc__sphinx-7757.traj.json",
+      "requests": 13,
+      "reported_input": 78796,
+      "reported_read": 26496,
+      "simulated_read": 67456,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 7,
+        "both_positive": 5
+      },
+      "capture_bytes": 321255
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "sphinx-doc__sphinx-9320.traj.json",
+      "requests": 10,
+      "reported_input": 73955,
+      "reported_read": 2944,
+      "simulated_read": 61568,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 7,
+        "both_positive": 2
+      },
+      "capture_bytes": 281174
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "sympy__sympy-13798.traj.json",
+      "requests": 13,
+      "reported_input": 77836,
+      "reported_read": 34688,
+      "simulated_read": 66304,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 7,
+        "both_positive": 5
+      },
+      "capture_bytes": 294264
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "sympy__sympy-13877.traj.json",
+      "requests": 19,
+      "reported_input": 190543,
+      "reported_read": 99456,
+      "simulated_read": 170880,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 7,
+        "both_positive": 11
+      },
+      "capture_bytes": 718519
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "sympy__sympy-18763.traj.json",
+      "requests": 9,
+      "reported_input": 37689,
+      "reported_read": 11264,
+      "simulated_read": 30720,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 4,
+        "both_positive": 4
+      },
+      "capture_bytes": 143676
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "sympy__sympy-19637.traj.json",
+      "requests": 15,
+      "reported_input": 71152,
+      "reported_read": 22912,
+      "simulated_read": 63744,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 8,
+        "both_positive": 6
+      },
+      "capture_bytes": 261681
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "sympy__sympy-20916.traj.json",
+      "requests": 12,
+      "reported_input": 63768,
+      "reported_read": 28928,
+      "simulated_read": 54272,
+      "read_outcomes": {
+        "both_zero": 1,
+        "both_positive": 7,
+        "simulated_hit_reported_zero": 4
+      },
+      "capture_bytes": 240233
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "sympy__sympy-22456.traj.json",
+      "requests": 27,
+      "reported_input": 371388,
+      "reported_read": 240640,
+      "simulated_read": 345984,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 8,
+        "both_positive": 18
+      },
+      "capture_bytes": 1466486
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "sympy__sympy-23262.traj.json",
+      "requests": 24,
+      "reported_input": 285755,
+      "reported_read": 141440,
+      "simulated_read": 262016,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 9,
+        "both_positive": 14
+      },
+      "capture_bytes": 1063931
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "astropy__astropy-12907.traj.json",
+      "requests": 14,
+      "reported_input": 82627,
+      "reported_read": 31616,
+      "simulated_read": 72192,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 7,
+        "both_positive": 6
+      },
+      "capture_bytes": 313776
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "astropy__astropy-14508.traj.json",
+      "requests": 11,
+      "reported_input": 62588,
+      "reported_read": 23040,
+      "simulated_read": 53376,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 6,
+        "both_positive": 4
+      },
+      "capture_bytes": 255459
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "astropy__astropy-14598.traj.json",
+      "requests": 29,
+      "reported_input": 520430,
+      "reported_read": 260352,
+      "simulated_read": 484864,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 11,
+        "both_positive": 17
+      },
+      "capture_bytes": 2052431
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "astropy__astropy-7166.traj.json",
+      "requests": 13,
+      "reported_input": 67292,
+      "reported_read": 29312,
+      "simulated_read": 57728,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 7,
+        "both_positive": 5
+      },
+      "capture_bytes": 272170
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "django__django-11999.traj.json",
+      "requests": 21,
+      "reported_input": 192475,
+      "reported_read": 106624,
+      "simulated_read": 174592,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 8,
+        "both_positive": 12
+      },
+      "capture_bytes": 814274
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "django__django-12304.traj.json",
+      "requests": 15,
+      "reported_input": 66998,
+      "reported_read": 30336,
+      "simulated_read": 58752,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 7,
+        "both_positive": 7
+      },
+      "capture_bytes": 275161
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "django__django-13344.traj.json",
+      "requests": 17,
+      "reported_input": 153251,
+      "reported_read": 52608,
+      "simulated_read": 138752,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 10,
+        "both_positive": 6
+      },
+      "capture_bytes": 731939
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "django__django-13658.traj.json",
+      "requests": 12,
+      "reported_input": 54307,
+      "reported_read": 25600,
+      "simulated_read": 46592,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 5,
+        "both_positive": 6
+      },
+      "capture_bytes": 231255
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "django__django-13670.traj.json",
+      "requests": 12,
+      "reported_input": 43396,
+      "reported_read": 14208,
+      "simulated_read": 37888,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 6,
+        "both_positive": 5
+      },
+      "capture_bytes": 167810
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "django__django-13741.traj.json",
+      "requests": 21,
+      "reported_input": 144756,
+      "reported_read": 90624,
+      "simulated_read": 131328,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 7,
+        "both_positive": 13
+      },
+      "capture_bytes": 589919
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "django__django-13964.traj.json",
+      "requests": 15,
+      "reported_input": 95594,
+      "reported_read": 34048,
+      "simulated_read": 83840,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 8,
+        "both_positive": 6
+      },
+      "capture_bytes": 406437
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "django__django-14493.traj.json",
+      "requests": 7,
+      "reported_input": 33085,
+      "reported_read": 7424,
+      "simulated_read": 26752,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 4,
+        "both_positive": 2
+      },
+      "capture_bytes": 149719
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "django__django-14608.traj.json",
+      "requests": 20,
+      "reported_input": 194907,
+      "reported_read": 72832,
+      "simulated_read": 177024,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 10,
+        "both_positive": 9
+      },
+      "capture_bytes": 794413
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "django__django-15037.traj.json",
+      "requests": 23,
+      "reported_input": 294375,
+      "reported_read": 175488,
+      "simulated_read": 273024,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 7,
+        "both_positive": 15
+      },
+      "capture_bytes": 1320744
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "django__django-15127.traj.json",
+      "requests": 18,
+      "reported_input": 118928,
+      "reported_read": 44032,
+      "simulated_read": 107008,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 9,
+        "both_positive": 8
+      },
+      "capture_bytes": 488575
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "django__django-15380.traj.json",
+      "requests": 21,
+      "reported_input": 252500,
+      "reported_read": 98432,
+      "simulated_read": 231552,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 10,
+        "both_positive": 10
+      },
+      "capture_bytes": 1138740
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "django__django-16116.traj.json",
+      "requests": 16,
+      "reported_input": 149901,
+      "reported_read": 64128,
+      "simulated_read": 134656,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 8,
+        "both_positive": 7
+      },
+      "capture_bytes": 669836
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "django__django-16429.traj.json",
+      "requests": 12,
+      "reported_input": 51026,
+      "reported_read": 22784,
+      "simulated_read": 44544,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 5,
+        "both_positive": 6
+      },
+      "capture_bytes": 211122
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "matplotlib__matplotlib-21568.traj.json",
+      "requests": 10,
+      "reported_input": 80655,
+      "reported_read": 40064,
+      "simulated_read": 67840,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 4,
+        "both_positive": 5
+      },
+      "capture_bytes": 299246
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "matplotlib__matplotlib-25122.traj.json",
+      "requests": 14,
+      "reported_input": 78865,
+      "reported_read": 13568,
+      "simulated_read": 70272,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 10,
+        "both_positive": 3
+      },
+      "capture_bytes": 308028
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "matplotlib__matplotlib-25775.traj.json",
+      "requests": 56,
+      "reported_input": 1413995,
+      "reported_read": 852224,
+      "simulated_read": 1362432,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 18,
+        "both_positive": 37
+      },
+      "capture_bytes": 5338940
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "psf__requests-5414.traj.json",
+      "requests": 19,
+      "reported_input": 181431,
+      "reported_read": 66304,
+      "simulated_read": 164224,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 9,
+        "both_positive": 9
+      },
+      "capture_bytes": 750086
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "pydata__xarray-3305.traj.json",
+      "requests": 27,
+      "reported_input": 391323,
+      "reported_read": 187904,
+      "simulated_read": 362112,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 10,
+        "both_positive": 16
+      },
+      "capture_bytes": 1553503
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "pylint-dev__pylint-8898.traj.json",
+      "requests": 21,
+      "reported_input": 257238,
+      "reported_read": 109312,
+      "simulated_read": 236160,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 9,
+        "both_positive": 11
+      },
+      "capture_bytes": 1016219
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "pytest-dev__pytest-10051.traj.json",
+      "requests": 13,
+      "reported_input": 72670,
+      "reported_read": 26368,
+      "simulated_read": 63360,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 7,
+        "both_positive": 5
+      },
+      "capture_bytes": 290983
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "pytest-dev__pytest-5787.traj.json",
+      "requests": 20,
+      "reported_input": 229635,
+      "reported_read": 125824,
+      "simulated_read": 207104,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 7,
+        "both_positive": 12
+      },
+      "capture_bytes": 969650
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "pytest-dev__pytest-7490.traj.json",
+      "requests": 15,
+      "reported_input": 237690,
+      "reported_read": 144512,
+      "simulated_read": 212992,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 4,
+        "both_positive": 10
+      },
+      "capture_bytes": 1032346
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "scikit-learn__scikit-learn-10297.traj.json",
+      "requests": 17,
+      "reported_input": 129342,
+      "reported_read": 38912,
+      "simulated_read": 115456,
+      "read_outcomes": {
+        "both_zero": 1,
+        "both_positive": 6,
+        "simulated_hit_reported_zero": 10
+      },
+      "capture_bytes": 508037
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "scikit-learn__scikit-learn-14141.traj.json",
+      "requests": 10,
+      "reported_input": 36708,
+      "reported_read": 14976,
+      "simulated_read": 30464,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 4,
+        "both_positive": 5
+      },
+      "capture_bytes": 140973
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "scikit-learn__scikit-learn-14496.traj.json",
+      "requests": 18,
+      "reported_input": 194918,
+      "reported_read": 78208,
+      "simulated_read": 175744,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 8,
+        "both_positive": 9
+      },
+      "capture_bytes": 747884
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "scikit-learn__scikit-learn-14983.traj.json",
+      "requests": 17,
+      "reported_input": 159429,
+      "reported_read": 54400,
+      "simulated_read": 142464,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 9,
+        "both_positive": 7
+      },
+      "capture_bytes": 596037
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "sphinx-doc__sphinx-8035.traj.json",
+      "requests": 36,
+      "reported_input": 561957,
+      "reported_read": 293632,
+      "simulated_read": 532992,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 12,
+        "both_positive": 23
+      },
+      "capture_bytes": 2340937
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "sympy__sympy-13480.traj.json",
+      "requests": 10,
+      "reported_input": 38010,
+      "reported_read": 8960,
+      "simulated_read": 32000,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 7,
+        "both_positive": 2
+      },
+      "capture_bytes": 145188
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "sympy__sympy-13647.traj.json",
+      "requests": 15,
+      "reported_input": 94981,
+      "reported_read": 23296,
+      "simulated_read": 84224,
+      "read_outcomes": {
+        "both_zero": 1,
+        "both_positive": 6,
+        "simulated_hit_reported_zero": 8
+      },
+      "capture_bytes": 346701
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "sympy__sympy-16597.traj.json",
+      "requests": 18,
+      "reported_input": 123783,
+      "reported_read": 50688,
+      "simulated_read": 111104,
+      "read_outcomes": {
+        "both_zero": 1,
+        "both_positive": 9,
+        "simulated_hit_reported_zero": 8
+      },
+      "capture_bytes": 448777
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "sympy__sympy-16792.traj.json",
+      "requests": 26,
+      "reported_input": 358724,
+      "reported_read": 174848,
+      "simulated_read": 337024,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 11,
+        "both_positive": 14
+      },
+      "capture_bytes": 1578010
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "sympy__sympy-16886.traj.json",
+      "requests": 8,
+      "reported_input": 17272,
+      "reported_read": 1280,
+      "simulated_read": 13568,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 6,
+        "both_positive": 1
+      },
+      "capture_bytes": 73099
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "sympy__sympy-19040.traj.json",
+      "requests": 65,
+      "reported_input": 2157650,
+      "reported_read": 1473920,
+      "simulated_read": 2094208,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 16,
+        "both_positive": 48
+      },
+      "capture_bytes": 7179959
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "sympy__sympy-21930.traj.json",
+      "requests": 40,
+      "reported_input": 582105,
+      "reported_read": 339840,
+      "simulated_read": 555008,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 15,
+        "both_positive": 24
+      },
+      "capture_bytes": 2171271
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "sympy__sympy-24213.traj.json",
+      "requests": 27,
+      "reported_input": 336561,
+      "reported_read": 172544,
+      "simulated_read": 313600,
+      "read_outcomes": {
+        "both_zero": 1,
+        "simulated_hit_reported_zero": 11,
+        "both_positive": 15
+      },
+      "capture_bytes": 1398128
+    }
+  ],
+  "sources": [
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "astropy__astropy-13453.traj.json",
+      "sha256": "7a557cf0347881d55548de3e3f2c73b18fb990086c5c86665c7ef498cd856de9",
+      "responses": 46
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-11133.traj.json",
+      "sha256": "0fe987e3b2734992e3a064e4eac83479212815abe20066c5c60d5d2f461814a4",
+      "responses": 36
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-11333.traj.json",
+      "sha256": "db7981b9106e07c3ad1d1e85c8c975bdf3ca48df0491511305653856f44b7cd1",
+      "responses": 49
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-11433.traj.json",
+      "sha256": "bb031400bfc41693100bd1492446d3a313a4936870f05780129fe765028e4271",
+      "responses": 49
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-12419.traj.json",
+      "sha256": "b80dded2140ee9570ef11c95cd49eb093777e77f8e45bfc0f37505e30739c3ff",
+      "responses": 38
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-12965.traj.json",
+      "sha256": "1af1cdeb6cc9ba5eabef721da7d5dc68ee51b6fe0651211344b4f118af92a2dc",
+      "responses": 69
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-13033.traj.json",
+      "sha256": "72254b176fb7dc0af168e169b6a4e4a4f1944d9f45849956a3b22c46c17246ed",
+      "responses": 50
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-13346.traj.json",
+      "sha256": "9b7f2fc96057a565349041c4e6fb218cf2233337706115c5cbb1fef4afe7ba5e",
+      "responses": 51
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-13449.traj.json",
+      "sha256": "327659efca331041498ba2581a2620a023685e8b78b390a83934049f47db2e14",
+      "responses": 50
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-13670.traj.json",
+      "sha256": "7fc93a7848fe7a553c2054e682bec8ecddca1c71db01056da87382ee300a30cd",
+      "responses": 37
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-13794.traj.json",
+      "sha256": "0832d166f66bf0a373e5b64a52cc90a9e8ae08d060ad977daa644e3d095fcb6e",
+      "responses": 72
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-14311.traj.json",
+      "sha256": "d8268f78c062766a59f8aaaff8f099ca0c997e9147bf87d4dcbcf650ff4f1229",
+      "responses": 53
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-14580.traj.json",
+      "sha256": "bc218a4418b8fe0d62453e030c7d9471cc223da501ce00c314e35a6760e00307",
+      "responses": 42
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-14608.traj.json",
+      "sha256": "c2d6b423c93b9408c1a0b9c5db7eec021b7f5253be5b907cec134233accff331",
+      "responses": 49
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-15022.traj.json",
+      "sha256": "1d7ae656c3b823e0daf922cb3eed8bf7430a6a698fba8b5451cf3630ee818f89",
+      "responses": 60
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-15103.traj.json",
+      "sha256": "cb6617ba3925b1597f326ca6622bd601543113b7e0f36f76c21c949cbc92c63f",
+      "responses": 34
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-15127.traj.json",
+      "sha256": "528f099e5bbcecda3f97461615e599189fbd8da603635b2fed9c4036905c34b5",
+      "responses": 35
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-15525.traj.json",
+      "sha256": "b9525edd261002643a2a505cc88a5575739733cc6e3852f8b396a03c5f6aa6de",
+      "responses": 47
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-15629.traj.json",
+      "sha256": "eb08a6fa3b97b5e8bdee1cc83cb731e332b298fc2ac34d4e1c3f2f103e820652",
+      "responses": 57
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-15741.traj.json",
+      "sha256": "09d53ebac141b66ea338de57f212e76aebec9820191d7e9bd2db38d811244f3b",
+      "responses": 50
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-16315.traj.json",
+      "sha256": "9e7a115db52308d6dc552d011e48ed09a3ce20b397443d7d626b77c2a0257c8c",
+      "responses": 64
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "matplotlib__matplotlib-22871.traj.json",
+      "sha256": "c026d2e15d7076fd5bb4b2a33adfc4e47bb1abc22781a9406dc5fd0d441fa60d",
+      "responses": 59
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "matplotlib__matplotlib-23299.traj.json",
+      "sha256": "447e912a64687402fd8727a00e6d7f4badc3098efac28dad305e93e5fe1d957f",
+      "responses": 42
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "matplotlib__matplotlib-24026.traj.json",
+      "sha256": "e8c80fdbc1bb5aa91a1b205b25634a73d27ecac5ffb5f843f7344f5495a944b4",
+      "responses": 44
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "matplotlib__matplotlib-25775.traj.json",
+      "sha256": "a4dff3ddcbded5799b1d17f90e0e19552d41b70bfa13adc02e7aa674a9cdfb57",
+      "responses": 107
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "mwaskom__seaborn-3069.traj.json",
+      "sha256": "eedab3048e90648c9dc51beacbbd8831f8928be784b057421a9145f79220e5b4",
+      "responses": 63
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "pytest-dev__pytest-7236.traj.json",
+      "sha256": "767a25733c51ba8b5ad90d5278ceb1789dbe25a3afb66b30d0837ed0dc2161a1",
+      "responses": 46
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "pytest-dev__pytest-7490.traj.json",
+      "sha256": "8924ed3fdf35437ac4296174d2c3ea68781b3b44da30a1d2b7a2dc76074a6559",
+      "responses": 34
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "scikit-learn__scikit-learn-13328.traj.json",
+      "sha256": "996bd4c91d383f04fe9b6d62f10b558b95948ef21d17122193dbd4fb9ad38aa3",
+      "responses": 38
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "sphinx-doc__sphinx-10466.traj.json",
+      "sha256": "6e126cdcac14a2e8d6580a10df6421bf124d263703520c8d9e0c190d4c4b8b8e",
+      "responses": 36
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "sphinx-doc__sphinx-7454.traj.json",
+      "sha256": "71b6fed599ce2d58eacf33bfb282f717b2a29f365b001b9a955055a55281b0d2",
+      "responses": 85
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "sphinx-doc__sphinx-9461.traj.json",
+      "sha256": "11741517b78bfbcc93778a122f061e71d05f8ae80103986346bb81480a15ddeb",
+      "responses": 103
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "sphinx-doc__sphinx-9591.traj.json",
+      "sha256": "65f80429fce527744d10df9146a7226626e5db27c9168ec052e0b9fb263643e7",
+      "responses": 94
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "sphinx-doc__sphinx-9602.traj.json",
+      "sha256": "cdb3f84e8bb1449b0414cf046aaaa1e920e5c370c7fd148459f0cd6fc77cd0f3",
+      "responses": 84
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "sympy__sympy-12481.traj.json",
+      "sha256": "491dd4d9a2ef92d65009c60355aed56c256328cc113a786dc7c8c94ee64f0b28",
+      "responses": 45
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "sympy__sympy-13877.traj.json",
+      "sha256": "071d052f9717b5e00174298a097aff7e12d71f26efd4f93128d6a32dcc916460",
+      "responses": 29
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "sympy__sympy-15976.traj.json",
+      "sha256": "f2122dea0a0e58171c014b420a9b4ec4d7fc648ecf0ddcafa733701a0e934d3e",
+      "responses": 33
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "sympy__sympy-17630.traj.json",
+      "sha256": "5cfc20d49131e695ccc58cbf44f41b12e82f109d1d9d4fe09d0e4843479ba4a4",
+      "responses": 47
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "sympy__sympy-19637.traj.json",
+      "sha256": "681facd9c80277dc18cafca34c1e02d80d04a1b5b6859f51b57693b3e969d794",
+      "responses": 30
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "sympy__sympy-20801.traj.json",
+      "sha256": "d9ba93be98cff1fac94aa0e8f57aacad25de316f377ac046b97aa58b7fd36451",
+      "responses": 51
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "astropy__astropy-7166.traj.json",
+      "sha256": "79947f2cb007581223cdc931663b300a2bbee85920378a423d075c7faf73dee6",
+      "responses": 29
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-11276.traj.json",
+      "sha256": "7ab0a85e722e9a69dbd1e29109d40ec8f9d6639056c266b60888260267584ed4",
+      "responses": 31
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-12050.traj.json",
+      "sha256": "db07a8a70a56d40af836e54d2224b3fa12ff3cb0f5090d2fbc18905e15b097b4",
+      "responses": 15
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-12708.traj.json",
+      "sha256": "c2e7a01b59f833882cccda3dae32ea3bfba9d944048f06a1a9a7df60c5c7bf30",
+      "responses": 25
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-13417.traj.json",
+      "sha256": "d7b98fce8ff0d04f7e957f75fbfa5ff0ff6131794ba9a08f33cccd2f52b6dcf5",
+      "responses": 34
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-13512.traj.json",
+      "sha256": "c8dd9be461b5d3aea3754e3c8208f9ac383ee020df8f9c3e70b062b93e588a99",
+      "responses": 37
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-13568.traj.json",
+      "sha256": "5c232cfb820f28c072020a3ef632a9d7fe025f1b3713227a2d203efe2a5781be",
+      "responses": 24
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-14725.traj.json",
+      "sha256": "c8fd6c6d144b810f2f58e197747f47cf2b07290768c92168ebaec812e5d61283",
+      "responses": 46
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-14792.traj.json",
+      "sha256": "9ae52d99e3ec46dcc23099c548a3762b0c1df747ec06cfd6b4aa649a6cb94ab2",
+      "responses": 48
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-14999.traj.json",
+      "sha256": "6f8b579af76b93b54cb4d7ed92912d6fa9099f913f59d596e7ac39f36667436a",
+      "responses": 52
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-15037.traj.json",
+      "sha256": "c0b9e1cc59237c50296837610012f737e275159af5c124ade9a3fa64fc3997da",
+      "responses": 53
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-15268.traj.json",
+      "sha256": "07db6fcfba5cdc03c27bc1bfedc40050dd39e86c49a5e1f8e88e799b60e013ed",
+      "responses": 51
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-15277.traj.json",
+      "sha256": "60e8cdfb6a1eb21e272283520580c9f274d464c08351b8abaa38bdc15f802b50",
+      "responses": 33
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-15695.traj.json",
+      "sha256": "3d249aa047501a47b098c51d0b67c34f78de5fcd68eb4b345a152323299274fd",
+      "responses": 52
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-15957.traj.json",
+      "sha256": "cb420fa3de45f0c09fcc55855e7bd249848edfeb5b2cd9d1e15921cdb9514078",
+      "responses": 45
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-16136.traj.json",
+      "sha256": "b5c342d8d4286660201c6e4df49c2629d8dd1648e275f40295d1608abfffcb98",
+      "responses": 26
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-16485.traj.json",
+      "sha256": "35b6f7ad29e9cca401075d2b94e24dc353273acc9f6240a4210d009ac6e3bdc1",
+      "responses": 18
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-16502.traj.json",
+      "sha256": "3d1c192e1f567f69bc053d0e8d0709746f8d6a69687a0e54907fbec2c1a0cdad",
+      "responses": 33
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-16662.traj.json",
+      "sha256": "bce09b72ef0979d35923152e50b60043acd3b922254a18adb0c44e0d1f6a27f0",
+      "responses": 28
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-16819.traj.json",
+      "sha256": "02562535b3b0638710f124e44ae09a9704e3592ace0e4db8790b27ca04e9c6f8",
+      "responses": 95
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-16950.traj.json",
+      "sha256": "eef439bb199a743aa350b6460c555a36a52e475af6a7ef78158f63dafa3d957f",
+      "responses": 53
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "matplotlib__matplotlib-20676.traj.json",
+      "sha256": "b64e0a95285f9b8cc01ede124add9bad91a1a78462b5eeba3a88903d8e9bfffd",
+      "responses": 32
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "psf__requests-2931.traj.json",
+      "sha256": "9a36522490d07d50414072ba2e0aadb1f46e8eb7398133635813dc085e403bfa",
+      "responses": 36
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "psf__requests-5414.traj.json",
+      "sha256": "62cf31da960c706cd522922c06687089ff76b1d004b1a644662b8f70e9b3e945",
+      "responses": 65
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "pydata__xarray-3677.traj.json",
+      "sha256": "95554bb44b5127e8097ff1b0d3e98cc874827c6a1caf3bc25ba3f4027fc817a7",
+      "responses": 24
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "pydata__xarray-6599.traj.json",
+      "sha256": "f4be4e500dfabb18ede50637b375633b9c1b1286e550a23f912e8c6e55eaef96",
+      "responses": 83
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "pytest-dev__pytest-6202.traj.json",
+      "sha256": "571848f8c81390de944cb1706df4e58882cc681c4ad736375759e43e4d6bc1bc",
+      "responses": 34
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "scikit-learn__scikit-learn-25973.traj.json",
+      "sha256": "afb7b9f3d50cc0537638b863c6cce0b4a0ce7c521acc1c6c25751ba39c6200d7",
+      "responses": 39
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "sphinx-doc__sphinx-10435.traj.json",
+      "sha256": "0db4dabbca79c5e1785cb7d3c841c932ce406189836e75e9cd9a5e83a72591ec",
+      "responses": 30
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "sphinx-doc__sphinx-7590.traj.json",
+      "sha256": "6d576914a9ea5289572af39d6e725588e319d7f7b30e89ce5daffdc7ffee34e2",
+      "responses": 50
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "sphinx-doc__sphinx-8265.traj.json",
+      "sha256": "f1ae9d2661244313ab84bb12185c7d1e04dbf55d1c92c32e635cfb5ccba8d773",
+      "responses": 40
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "sphinx-doc__sphinx-8269.traj.json",
+      "sha256": "c46653d220b47a3cbbf0c496097d4138ec0c7974c60007d13989aba4851fa22e",
+      "responses": 13
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "sphinx-doc__sphinx-8551.traj.json",
+      "sha256": "55d51af26efd0d7d8f6b4019dd17240e889c0f85a098dc0752f0dc3789248269",
+      "responses": 59
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "sphinx-doc__sphinx-8595.traj.json",
+      "sha256": "4252edf3fdbf0ed06877275ade103d3c4b63a77cbc2b53399f3b2260ec112c77",
+      "responses": 45
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "sphinx-doc__sphinx-9281.traj.json",
+      "sha256": "4b42e44fbc90604f46a2a4ab37fa8c824686830bd505a4a7e535c3c2c957ca33",
+      "responses": 38
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "sympy__sympy-19040.traj.json",
+      "sha256": "cfa237a01108b181b4297e7ba0bfa04590ee691330f3673cd8d2d34643f9b9fb",
+      "responses": 50
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "sympy__sympy-21596.traj.json",
+      "sha256": "dccb929735f1e318dd50c23530248350b00d6ee43761b0056a5b6de67147a28b",
+      "responses": 52
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "sympy__sympy-21847.traj.json",
+      "sha256": "e6aca62b302282806aba0265dbf22489cd0e27ad298a06be625a6874105daecb",
+      "responses": 14
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "sympy__sympy-24066.traj.json",
+      "sha256": "3d4e20ccf8b1bd4d5278dd9a61be34b4eac92f6ca4db731316cdf6acbd632abd",
+      "responses": 24
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "sympy__sympy-24661.traj.json",
+      "sha256": "9b88a57f3d89dcce827cb2eb32f688f1f6210195c7be31f9a80ef8370c0a7f97",
+      "responses": 36
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "astropy__astropy-7671.traj.json",
+      "sha256": "413be4fb29b48c166e6e11872b166896989c8082d6d69dcc67ed8b68d3bb59a5",
+      "responses": 50
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "astropy__astropy-8707.traj.json",
+      "sha256": "b03b20da05ffbc9f9ca7bbb82844e7148574551b69d465f1d4d15f0cfb5e8904",
+      "responses": 60
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-11138.traj.json",
+      "sha256": "9b1636d796b533df32daf360891abef9299f7f1fdbc1cdbb6a5066f8a7359da0",
+      "responses": 87
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-11206.traj.json",
+      "sha256": "689f31d3d9341f9178efa99e65eadc7476972cef5200ec233e825b301afb27f8",
+      "responses": 43
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-11400.traj.json",
+      "sha256": "a95e4646d4730e8f9e2df1b45c7092e84d10d0ee63265107110a0cc95d1dfbbd",
+      "responses": 63
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-11728.traj.json",
+      "sha256": "d582dfdc71d464e7037353e36d1b870a1bca58bd7966c1678d102d36587b06ea",
+      "responses": 39
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-11749.traj.json",
+      "sha256": "f0b69413133847260f783b573e4f8992e08a78e58fda79c7df7b9600027fa186",
+      "responses": 69
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-12325.traj.json",
+      "sha256": "4142dd73f00a03e42f2bd5e54d9daf683f46dfe14650460e257d202a216046fe",
+      "responses": 89
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-12406.traj.json",
+      "sha256": "d10ec97d252f97ca49180e598b0ac0b4bdee3402706682634e69320fda55e638",
+      "responses": 109
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-13012.traj.json",
+      "sha256": "ef7f105a8cb6a5511bcf8a0b89af90719d4ba30aa19fa374a93583557dd0ec20",
+      "responses": 69
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-13109.traj.json",
+      "sha256": "e1557c5a7fb54ceb0560e0a996de2a2e4ede189334f46232c5c00e8b0c3357d4",
+      "responses": 48
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-13344.traj.json",
+      "sha256": "0259af220ee524b48d83a9bebe6d8379552ec748e84bf312e489ac3f325e411d",
+      "responses": 78
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-13820.traj.json",
+      "sha256": "92beb78adc7847584ea4d8d197a0161bf9d8fdfaf3fd47fe42f34e7117b6b578",
+      "responses": 49
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-13821.traj.json",
+      "sha256": "67b9a83caecf5b25ffd3fabdbce6ae731f79267c0b64016ed76d9e8d0b333915",
+      "responses": 50
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-14608.traj.json",
+      "sha256": "ed01ff8d83f4c1e4d91e9dcaa2e1d5998e57de437fbf8820b8d6d833fb7d2da1",
+      "responses": 78
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-14915.traj.json",
+      "sha256": "d0c8250531895be70e51a985951265d044c6ba975ab13495f75758c9d0554098",
+      "responses": 37
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-15161.traj.json",
+      "sha256": "9e775206d09bde5b918000a0187dcacdec96f4563d3ce7369c4fbe1ef0c9d19d",
+      "responses": 86
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-15561.traj.json",
+      "sha256": "2468451d4a90b2e4d58c719021b4b3cc22e9ea84bc615673233ba5505e722f32",
+      "responses": 74
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-15629.traj.json",
+      "sha256": "5ade5c4127c37d3a1760e973bd9ba111f8fcace8685df51b44f1eb64f33bc275",
+      "responses": 112
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-16315.traj.json",
+      "sha256": "6be8bbca4f8b076c76731de027e40f856ad62b916a36e4b403a6f08fd9771eca",
+      "responses": 77
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-16631.traj.json",
+      "sha256": "2fcfb41ba46c763a47e48fbafb24902f039c5f815376820577662c5ac27c782f",
+      "responses": 74
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-16801.traj.json",
+      "sha256": "8b0486d0f7ded070c75c8f0f4612febbc7a2e971eed13def281fafb435cf6738",
+      "responses": 45
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-16819.traj.json",
+      "sha256": "49141c98223ce51cf8694a82f3757d8a5b6dae751410960fc67f1816be199b81",
+      "responses": 71
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "matplotlib__matplotlib-13989.traj.json",
+      "sha256": "05246f15021251e94207cc14fcb11cfc32a9842cff75431fb426e1155c34b2d3",
+      "responses": 37
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "matplotlib__matplotlib-20488.traj.json",
+      "sha256": "26f554a22bcc2a60a65c3f8837a0319de050cba662da905613231d274f8c6926",
+      "responses": 74
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "matplotlib__matplotlib-24637.traj.json",
+      "sha256": "cb3337d747cf0614391d174e56164fed474ddfd5f2c127c1723d6d2faa3805dc",
+      "responses": 68
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "matplotlib__matplotlib-25311.traj.json",
+      "sha256": "e5f414fbaaea2654cfc945c41ae55d5420daca5ad865f9379e22545c32e148f0",
+      "responses": 95
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "matplotlib__matplotlib-25332.traj.json",
+      "sha256": "3bf6f356d64917f95358f3fb05c68f902d99eec63e944e71ec8f5e26815725fe",
+      "responses": 55
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "matplotlib__matplotlib-25775.traj.json",
+      "sha256": "35230775b191fa448c721c1ed4e17ead8cd9f67f17533624c842a7be4d6f55ac",
+      "responses": 124
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "matplotlib__matplotlib-26291.traj.json",
+      "sha256": "5890beb1b96be0a2cbfbfc44c289c1de86ff902f45084cd3631dad6f2d8da625",
+      "responses": 70
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "pydata__xarray-6938.traj.json",
+      "sha256": "df8ce6b48aedc9f0e18088bacdab974cba26e659a4e0dec34bc80ff35f2eaaba",
+      "responses": 69
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "pytest-dev__pytest-5840.traj.json",
+      "sha256": "87a3975c764297f6b94da9f9fbba67124b65d2d6c6e8d848ab0d55e738c7086d",
+      "responses": 66
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "scikit-learn__scikit-learn-14053.traj.json",
+      "sha256": "dd155609e0eb59a086091d5950aa6883764e3371a4f26b117daed8b2a10e2287",
+      "responses": 40
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "scikit-learn__scikit-learn-14496.traj.json",
+      "sha256": "89901f47616f234beee22f51adfc457674f99872815b32172f37188e9d2132e5",
+      "responses": 33
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "sphinx-doc__sphinx-8035.traj.json",
+      "sha256": "1d8643a377b9a6320443c0a02480d039ccf3111333b4d21129c935ed09fec4a7",
+      "responses": 111
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "sphinx-doc__sphinx-8265.traj.json",
+      "sha256": "178519ceba64c5139163cf0f2cfae5592e3a1fc8f919248c214d6e51b53b6ae0",
+      "responses": 66
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "sphinx-doc__sphinx-8721.traj.json",
+      "sha256": "1be01484761bf4541f9beec2b0df736f77704117c59656deb1c571506684a1b2",
+      "responses": 55
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "sphinx-doc__sphinx-9281.traj.json",
+      "sha256": "0f21c5d93c0ec4547384ea552b37de37f8f8373cb443ef44a1e7bd3953cde6dc",
+      "responses": 88
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "sympy__sympy-13877.traj.json",
+      "sha256": "74f138894cb73da0f01056a3c43ea39d1da728e4a83b0e4279e23c05628da455",
+      "responses": 84
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "sympy__sympy-16886.traj.json",
+      "sha256": "538fc6fd8ddb8bc3d3006cab80f5b67dc7abe0f099278bc28b6e58c8d3dc8f16",
+      "responses": 18
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "astropy__astropy-7166.traj.json",
+      "sha256": "0651be26066923c7eeb700ebe8a3758321e19fca839fd054e8d65271c9badff9",
+      "responses": 23
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "astropy__astropy-8707.traj.json",
+      "sha256": "de57f93ca75c1a3ce218123988b0581e9ab5bc5b91eb440ee050f7c13fd1256b",
+      "responses": 35
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "django__django-11095.traj.json",
+      "sha256": "c800885366759cbfb8c9055b46fb0af0d76c44d66f0d4c3ca94bdf45d80e7991",
+      "responses": 16
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "django__django-11119.traj.json",
+      "sha256": "b6215dfd3cd67a1ae6d190b9bb1ee0873679bb7a372ece043a8a1406c6b46cf3",
+      "responses": 18
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "django__django-11265.traj.json",
+      "sha256": "aeff85914c2ea125d0703c0be6ac2542e9b7bd7b64a1929fd739e8317907734a",
+      "responses": 75
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "django__django-11451.traj.json",
+      "sha256": "c6fb98b7a724bb835b232e1e9e6bae2813822a53c165b8ccc8f03a52b56fee86",
+      "responses": 16
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "django__django-11490.traj.json",
+      "sha256": "9f72c81668bd2f9b2beabc9c8de317fbe3bae27a925874c116a9d8b63a660d2b",
+      "responses": 48
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "django__django-11728.traj.json",
+      "sha256": "2b164d48e7b2027bdae40fcc25096dca5dd615d55714e72727dfe462ff8e1eb2",
+      "responses": 25
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "django__django-12209.traj.json",
+      "sha256": "59b12bdcb43268e0354ef8836f4d82d42aae472ad73a28a16c124c5f12aa792d",
+      "responses": 63
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "django__django-12708.traj.json",
+      "sha256": "5dc949b2686e699c717adbfb40d3b1304f4f99ccd145321720b2a01b18b8f98f",
+      "responses": 56
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "django__django-14631.traj.json",
+      "sha256": "a7a5d328953c6d43debdb9d8b30c70e79834392e99f1666e299307bead41e2ec",
+      "responses": 67
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "django__django-15103.traj.json",
+      "sha256": "4c8cbf12b51a67cdbcefe638659a9769a7e96699ccf907f0791ee5d047ea8aa5",
+      "responses": 19
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "django__django-15569.traj.json",
+      "sha256": "cc2716436317a6aa3a9a60f37299d2e9590ab47e1e8272984a73be5aa232d337",
+      "responses": 13
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "django__django-15957.traj.json",
+      "sha256": "94914454f72fd31afc28356359bd99f82aca6ef89baca894773cbb1a2243baeb",
+      "responses": 80
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "django__django-16136.traj.json",
+      "sha256": "84b250d9c647b1a0e861d73988f8e70b881774161ba9f9d75be84ec9eefce500",
+      "responses": 19
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "django__django-16569.traj.json",
+      "sha256": "830c647ae44e2fdd42796ac2ba912ca8282f6ec64fcd835758cc4fb0317b8e41",
+      "responses": 12
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "django__django-16938.traj.json",
+      "sha256": "91a3bc1d3f50d4db557baf92af7b678656235cb01379b006a8da17bd7fc56fde",
+      "responses": 23
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "django__django-7530.traj.json",
+      "sha256": "a0a108bb3d2c022e6fecf135eaa98434467890e06ac390ab376b1605322f4fe0",
+      "responses": 25
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "matplotlib__matplotlib-14623.traj.json",
+      "sha256": "47801c3524b13234454ae1a7a55e1c2080dab77b00cddfc6e3e9279281ec51a7",
+      "responses": 63
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "matplotlib__matplotlib-22719.traj.json",
+      "sha256": "fbd461a41db131c0bb4563ac9c7c079fe5660c62c7d567b201a1e30903eaeca5",
+      "responses": 20
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "matplotlib__matplotlib-25960.traj.json",
+      "sha256": "2d49ca5f0d27355b42f99f11d6a58b5da8f6423df392d71a02c3d4f2a36d7d5a",
+      "responses": 34
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "pydata__xarray-4629.traj.json",
+      "sha256": "e2b5f20b349d6d947e6ffcb8d42ddcaf5e1f6ef915e479fb69dd623a004ca162",
+      "responses": 15
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "pytest-dev__pytest-10081.traj.json",
+      "sha256": "cbc5eca19cd1ddbc367c064f0f4c65c635f4237203bfc7ce0f4a85d8a48e45ba",
+      "responses": 27
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "pytest-dev__pytest-6202.traj.json",
+      "sha256": "1e6087be35e96f68b7885626bb53457ede4d738e170c11dca3334c5380a40cd0",
+      "responses": 29
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "pytest-dev__pytest-7521.traj.json",
+      "sha256": "1b44191349088ce1af5601c4e52477c6dac8d05ebde739d9ad81fdb42b12090b",
+      "responses": 24
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "pytest-dev__pytest-7571.traj.json",
+      "sha256": "22f14723b53aa4b05cb0f6bf52f812a7f6c37453dbed9074ff52bf70d1ce9e1f",
+      "responses": 29
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "scikit-learn__scikit-learn-14053.traj.json",
+      "sha256": "4e8855162a659ee4092fb4f95163ae9f313a499134f92599237b8a8cafbc650e",
+      "responses": 26
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "scikit-learn__scikit-learn-15100.traj.json",
+      "sha256": "73045083e713f2a97ad75c2f61dd720c6f69f069433f517d69f78d45cb76bc9b",
+      "responses": 15
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "scikit-learn__scikit-learn-26194.traj.json",
+      "sha256": "984a1641b46179c638c8087cf29a767c35b0c4b5f27a16b44b517fbd6acb98d2",
+      "responses": 34
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "sphinx-doc__sphinx-10466.traj.json",
+      "sha256": "eb8581b09c9ff7f5908c722c865cdcd48f8517fb6c3e459b827c22efc5098aba",
+      "responses": 20
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "sphinx-doc__sphinx-11510.traj.json",
+      "sha256": "b3441b55da2f546fd0ccf5fedfa90b890c22d56b41e1a604cf750106bf89edd9",
+      "responses": 83
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "sphinx-doc__sphinx-8551.traj.json",
+      "sha256": "77493c4bfc4c224a826cb1230de2a3de6debd3c51cfeec5758e978bfae94ecd0",
+      "responses": 41
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "sphinx-doc__sphinx-9258.traj.json",
+      "sha256": "e070ba15d322fd52ae3a41e1d3435efd68100597b9b64391dee73d09ad5f2db9",
+      "responses": 23
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "sympy__sympy-12419.traj.json",
+      "sha256": "2c207763dc76cc0b6f56d8c83cdfbbb50c14bde98fb5c0453a761cfd18484414",
+      "responses": 53
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "sympy__sympy-13877.traj.json",
+      "sha256": "c343ec3e33e840e0b880c915671e5c0d595c731333e1f5175d74c07b11e9874d",
+      "responses": 24
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "sympy__sympy-14976.traj.json",
+      "sha256": "f0100363785af218c67444939069d2290e8a6e9ec4d2cf6ad4b2721cc9b71bad",
+      "responses": 50
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "sympy__sympy-15345.traj.json",
+      "sha256": "17c5278392385b31f4e7883a0dcf2b664cf4fce02a60157a288dd65bdbb17a5e",
+      "responses": 26
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "sympy__sympy-17318.traj.json",
+      "sha256": "49105a3bc52fdfb7f1f22b7d8b78e3f227fb276b0e4b6f080e24f78952a2910b",
+      "responses": 28
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "sympy__sympy-20154.traj.json",
+      "sha256": "8015f1de00db3d4313e17877481b3bfdc96c5af3cde3924b5b011f4f3971be7f",
+      "responses": 24
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "sympy__sympy-21847.traj.json",
+      "sha256": "1a29eaff44ac793bb9dc28a4af210ef79759c34304327a2d772ace7464ca2034",
+      "responses": 23
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "astropy__astropy-13453.traj.json",
+      "sha256": "633dd18d145fbdfa13272aa2e0677e5b0fa73d0694ead6fd70ba714d2d09c284",
+      "responses": 60
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "astropy__astropy-14539.traj.json",
+      "sha256": "e785b8d376bc0154769ab6655fa9b424fc491812038ca5d9ce140ff7bb9783b5",
+      "responses": 40
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "django__django-11138.traj.json",
+      "sha256": "ac330f672c7c93b2c5b620294edb089d61e92bb77519fe503e5bfc6dd6cd7fb3",
+      "responses": 62
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "django__django-11211.traj.json",
+      "sha256": "4be1437185bc01a661fe61fb7e4cdd232ffef7e22864cd8d0aa76380bede19bb",
+      "responses": 57
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "django__django-11265.traj.json",
+      "sha256": "d0bf65d824fa0f1f13b40d475e03bfe28f05c60ca78b9cd16cf0e6f1b1d2499f",
+      "responses": 46
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "django__django-11333.traj.json",
+      "sha256": "31207655ac0a51db571aba2d8df30d5e7149baa5ac1730153da7975d832ae1d5",
+      "responses": 56
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "django__django-12276.traj.json",
+      "sha256": "43733c92e4c4999887986a27f48da170c3b876d657781e77ccf69d73f2239d08",
+      "responses": 38
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "django__django-13568.traj.json",
+      "sha256": "27d2f6a67d591b467f09dab2cc2c305ef6180fd8715586edec9548013a32a9cd",
+      "responses": 40
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "django__django-13807.traj.json",
+      "sha256": "1046ed5c692d8e31f18e2ac07c07a3fa445422a6a326b10e5a7b3d1f0d2e7084",
+      "responses": 44
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "django__django-13810.traj.json",
+      "sha256": "74db576ad488a7f811b2eb859d8256c271e00ffb336ba416a3a987d91d6dbe04",
+      "responses": 59
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "django__django-14017.traj.json",
+      "sha256": "3877a8869e68fda38a29d6035bd5ab915f163f9bfba8badf7027265f87fbc6bb",
+      "responses": 50
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "django__django-14349.traj.json",
+      "sha256": "e74e538846e74431eae700d52dda8181d7a3542c5e1d18601cfd7a59e34efa79",
+      "responses": 36
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "django__django-14404.traj.json",
+      "sha256": "afa7ea27f0c8cdc471befa07ae9db3b9073eb0465b2ab2a8760bd32e9f84fcfd",
+      "responses": 60
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "django__django-14559.traj.json",
+      "sha256": "000e268e9e1360f81a265a62431347239ada7576d18894330c5caf183de2b8c1",
+      "responses": 31
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "django__django-14672.traj.json",
+      "sha256": "d65832ace33ff952f44f87854dac960c7309f8ce8fdf4704adbf7f1c8ddd8567",
+      "responses": 34
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "django__django-15930.traj.json",
+      "sha256": "1dd45874f6aa357505f8c0abdb1b58e00a70861117634371cd766b78ebf2fecc",
+      "responses": 48
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "django__django-16256.traj.json",
+      "sha256": "5913ac64f4e0965d535eb2d0f3998983570107773593c9cbfe2f25c8cfb110df",
+      "responses": 46
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "django__django-7530.traj.json",
+      "sha256": "a088adbda48809888086ca1912bb02bd7f99c3f36533817c47f010c134f483c3",
+      "responses": 52
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "matplotlib__matplotlib-20488.traj.json",
+      "sha256": "12a3cc84889c5d50c202971892dcb265ef034f10d229557000fe74bb4df82dfc",
+      "responses": 58
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "matplotlib__matplotlib-20859.traj.json",
+      "sha256": "b8d29c93a816b1289500b23edb522f905aa9a6b3221b7eac338cffcdbc910d47",
+      "responses": 17
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "matplotlib__matplotlib-23476.traj.json",
+      "sha256": "9d76ff2f89893a6ddaa598263b7bdc68fad6cf2b98ae1ea57e31c4075d4000df",
+      "responses": 48
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "matplotlib__matplotlib-24970.traj.json",
+      "sha256": "67c1e245cd1db17281a45fe9e61de87f0e8cccc635ad4442b692458a06c9239f",
+      "responses": 42
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "pydata__xarray-6938.traj.json",
+      "sha256": "3c23307f7578afba4b0e207bad3d522396d3d4ceb388e8f4ad031932d0026bea",
+      "responses": 71
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "pydata__xarray-7233.traj.json",
+      "sha256": "7507de603e4cba3c48c49c535730929a7878a7e0bb7de4d8bcb4f9499752a178",
+      "responses": 31
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "pytest-dev__pytest-6202.traj.json",
+      "sha256": "88be7bc8cc11bc3dfa45dbdaf10636198f0320d820c6921772c04cf3e793d73b",
+      "responses": 37
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "scikit-learn__scikit-learn-10908.traj.json",
+      "sha256": "0e993a1c10a62885b43ea17f1f0356d202aebbd520b9745b8203f682d00b71b2",
+      "responses": 51
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "scikit-learn__scikit-learn-12585.traj.json",
+      "sha256": "fd1f3813708820b6ab1583fa06ed4dffc410cf03fef886c769fd90116099dfdc",
+      "responses": 27
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "scikit-learn__scikit-learn-13779.traj.json",
+      "sha256": "fd09c9f4e0e5837eaf103677ea18f085eb5b0ab1d855fd7cc20fd03617953931",
+      "responses": 38
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "scikit-learn__scikit-learn-14141.traj.json",
+      "sha256": "a4a4cad39596edcd69a9641c317d8ed44789abbc5e45fe90fb5e488ff4b24254",
+      "responses": 33
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "scikit-learn__scikit-learn-25747.traj.json",
+      "sha256": "fcb2458be42fe089b3ed6abf28b61d558de46f08fd5e36add9309f033a3cf0c0",
+      "responses": 57
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "sphinx-doc__sphinx-8120.traj.json",
+      "sha256": "d0c78b23a738e8355f92c0a2a82bc7ceb47b1a56229247fdff7a722196bb5cef",
+      "responses": 49
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "sphinx-doc__sphinx-9658.traj.json",
+      "sha256": "a5c57fb5f490f2fe2fea11689f4e9ae4127750c4b30929d7b6cb899f55aab4e0",
+      "responses": 72
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "sympy__sympy-11618.traj.json",
+      "sha256": "ddd2365693542b4dbd7decfc64ea4d3628d1d78bbbb82fadc2ca8f1b3d995f6e",
+      "responses": 43
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "sympy__sympy-13091.traj.json",
+      "sha256": "91d7515b0fb1f6343774ab32a3271fe8527d656a1dd6139d675cb55d2c078d58",
+      "responses": 76
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "sympy__sympy-14711.traj.json",
+      "sha256": "7bc5566727939a4dc478705871ebabdc531b21e8eb133ec781207c643dd7cd9d",
+      "responses": 41
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "sympy__sympy-14976.traj.json",
+      "sha256": "01e32b457aee65103d3604ee6cdb166ec4fa85f9dd351e412cfb4666a3041ff8",
+      "responses": 64
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "sympy__sympy-18199.traj.json",
+      "sha256": "caf911598b96ebbdae8b69d637135329ff4239804ca67ae9fcb2d5acb9ea41e4",
+      "responses": 59
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "sympy__sympy-18763.traj.json",
+      "sha256": "2394e036decb8be65a85dc0bfd106933dc7941287c9387e166a2cfd0ee282a61",
+      "responses": 35
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "sympy__sympy-20428.traj.json",
+      "sha256": "c01c1e5f425461c20f400ce53af951fd4165d1222b6a5cbc1cd060c983fd0fa8",
+      "responses": 62
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "sympy__sympy-23950.traj.json",
+      "sha256": "19e74f8cca4d11d8091826897a3956b6d34d4fc98d02309c577a113cdaa7dc3d",
+      "responses": 56
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "astropy__astropy-12907.traj.json",
+      "sha256": "25bc166a1055f1304f44db28ba69787ff51ddaefdd693764a67e08605b017204",
+      "responses": 36
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-11163.traj.json",
+      "sha256": "aee4773d7b31e83ea3339ec6306b56a970b3f778cbca9dd828c65a1c7bd9e5bb",
+      "responses": 7
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-11400.traj.json",
+      "sha256": "f62a2510e7fdffd51f724a0526c952b7a37f85f1ea13c32591ce9c19fafc300b",
+      "responses": 29
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-11603.traj.json",
+      "sha256": "1e0698967241c329194fb2705534618b7c0419dd81d615c340a61751f65b6dc4",
+      "responses": 8
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-12308.traj.json",
+      "sha256": "5448dbe51aebc258cb1f391396f3acfeff15003dda12ba23bd53de05fdca0d36",
+      "responses": 22
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-12741.traj.json",
+      "sha256": "dd37de25918b85c9796960839b735c12a1f2ec13687fa1ed05cc41356d983fa6",
+      "responses": 8
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-13279.traj.json",
+      "sha256": "074b10cf4825878d6863848e0e344865f328969b3e10ec91b66bf8632a96429e",
+      "responses": 25
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-13417.traj.json",
+      "sha256": "8640abd01b03f783b098739e110d28784e161dac5c0677d22a7a363ee867a8ac",
+      "responses": 28
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-13512.traj.json",
+      "sha256": "850d9703b9470861db5a2f09fa6dac83134f359759d9bcdccbb718f32c28ea02",
+      "responses": 13
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-14011.traj.json",
+      "sha256": "b9581584e0ec7e73b98d8a385e05784f7f7fc2422a22e78e9bb779a1ef3650e2",
+      "responses": 17
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-14349.traj.json",
+      "sha256": "cc5c7eb85c91609dcb568e321539afb4bcc7beced833092e500dce7077997799",
+      "responses": 25
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-14351.traj.json",
+      "sha256": "63c5f06ae8b00848013b34a6ccbc0ecb52661cc0ea89ca2553c4a7ea79d2f488",
+      "responses": 58
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-14376.traj.json",
+      "sha256": "b5f907c4b9a0e9281cd938e6b06ee3d25aca1a99a01e1cbd57a8a7e3204e6ca6",
+      "responses": 6
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-14631.traj.json",
+      "sha256": "f5a8ae26a0c451329edfcac12eb2cf7ca0275fe5e39faa7fe84a37624f60660f",
+      "responses": 32
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-14765.traj.json",
+      "sha256": "57176c8abd502bc4ac52432d787bdc56a8ab5c5d41828447013826acdd96c391",
+      "responses": 12
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-14787.traj.json",
+      "sha256": "6b44830cd9f31238dc7ad2ef94d961df01cc287b3c85011507e93802f8785cdc",
+      "responses": 16
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-15561.traj.json",
+      "sha256": "e503e53b4a173268936d53811926574b52521630a49c442d31ec48f76ecda69d",
+      "responses": 20
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-15741.traj.json",
+      "sha256": "92c1ed517f18146ff75a6a59ccf9d2f3f8cc1375c85690367b16627668ee9d1a",
+      "responses": 15
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-15851.traj.json",
+      "sha256": "952f411dd28d20a8fc860c1242db2755ff9fdc76deea3d9a2c7447be044808fd",
+      "responses": 15
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-16082.traj.json",
+      "sha256": "18af9b04aed576e9a4b95d0935be751cc98713b204f190be06fdd6ce278bdf35",
+      "responses": 13
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-16493.traj.json",
+      "sha256": "1794717817f78ac4926a8645006045b83b0f39244c7dd1a0ca636331d460c2a6",
+      "responses": 22
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-16502.traj.json",
+      "sha256": "1441d83ffc22e731de234fb3bbd03b23e0693bbda6a06b85f5126f085a513c30",
+      "responses": 17
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-16631.traj.json",
+      "sha256": "3fd51cbacb9e0369b8258c863de1e3907c8b72fda040f0eea43e15167220a37f",
+      "responses": 24
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-16642.traj.json",
+      "sha256": "2182a2fed794b3a424115d77e60a19e1680038723ec1b594e0a50c818779e036",
+      "responses": 15
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-16877.traj.json",
+      "sha256": "3f43e413cc2e7190e43c8008c12828dbd60ce8e0659ef3fe5a03f4c5d8a8c65d",
+      "responses": 28
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "matplotlib__matplotlib-20859.traj.json",
+      "sha256": "aa0fbb8977e1765b76ef13aa97e604c4000cd48e7c543c597368e2579dc56a75",
+      "responses": 13
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "psf__requests-1724.traj.json",
+      "sha256": "18e0f74796bd01abaa2b2f68e20c821a4f81d3a8efb4e5ba005b1681cd2374ce",
+      "responses": 18
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "scikit-learn__scikit-learn-10844.traj.json",
+      "sha256": "e92a9b29d540460646e326a86c01f3c3a1baf96158e1290e2a6e5b76737291d7",
+      "responses": 13
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "sphinx-doc__sphinx-10466.traj.json",
+      "sha256": "941b92ca833e7b032522e7966fd74cd251a226d24da5b0ff03d22525f7e7a82e",
+      "responses": 12
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "sphinx-doc__sphinx-9591.traj.json",
+      "sha256": "55a39317ea6c219cda5fdb15992d1fd867611baf8851ee6466b065270a2d7d52",
+      "responses": 28
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "sympy__sympy-12481.traj.json",
+      "sha256": "33b0e77497cc293c9342b8db06fbd4640a565aaa965bf889ccd58cf606f72bb4",
+      "responses": 27
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "sympy__sympy-13372.traj.json",
+      "sha256": "243fc2d58e5e98d1c0646e56401160445ac5922e1eabd85a7e8622c736b82a58",
+      "responses": 21
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "sympy__sympy-15809.traj.json",
+      "sha256": "a10b9634bf0af3e6b9fc920448a86e91b933bec0f30cec424e2e3e18c0f29308",
+      "responses": 16
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "sympy__sympy-15976.traj.json",
+      "sha256": "ca1eff6447e16af02003a08c8e8ddc671a29ee2ee3a88c0f06ae5a8518cfbacb",
+      "responses": 22
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "sympy__sympy-16450.traj.json",
+      "sha256": "1a4d15a3f5ec69d42cfe2a678d8dfa23fdd7dfbca47884d63552752028ba7628",
+      "responses": 29
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "sympy__sympy-17655.traj.json",
+      "sha256": "bb9d971eb807569a785f089c9bfd676cfd35bd59294f67f94eeb99250a08eceb",
+      "responses": 30
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "sympy__sympy-18211.traj.json",
+      "sha256": "f2cbe59081705a5c5442616179345b6ac204b3ddf8d0e1e3e7f730083546f1aa",
+      "responses": 19
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "sympy__sympy-21847.traj.json",
+      "sha256": "ecdf3dafeb7929128e6782c6b13e41ce1f2e39834183fe9e00a533401759f5b2",
+      "responses": 8
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "sympy__sympy-22080.traj.json",
+      "sha256": "19b813b871ccd3fbb6a41db51fe0c0a4565498cceefb3eb86c4a79d87d155a42",
+      "responses": 92
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "sympy__sympy-22714.traj.json",
+      "sha256": "c73faa204065ddff4e9c1ae50e6a7aa0089ae217dbbda2fb786dd4172ffe0bbe",
+      "responses": 16
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-11815.traj.json",
+      "sha256": "be1f7eba8b75b1fee50be24c82cfb30e2771e6d1b067d511ea7f4cea738d727f",
+      "responses": 17
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-11820.traj.json",
+      "sha256": "f3d6c96fad5eee1588bde42259963bdcd3c3f01384c8b8c7b1ab7ede39afa6cb",
+      "responses": 13
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-11885.traj.json",
+      "sha256": "2c058c367ce0c3f58d11c7f974daa9d68767bbac44779b70852b17bdb9068833",
+      "responses": 24
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-12155.traj.json",
+      "sha256": "4a332c6ea38625344d8f9946534c598684272983cf1e81b06a20f1f44c3f722f",
+      "responses": 10
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-12193.traj.json",
+      "sha256": "ac5a799afd0f2786f749c7f30c92ccbaf392409b1601e13d83b53d7594a8dd83",
+      "responses": 16
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-12858.traj.json",
+      "sha256": "f69eba6f8956803e0d17649e83f820f5d291dff3cd05bf2bb0ad13104fbcb489",
+      "responses": 12
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-13012.traj.json",
+      "sha256": "c01033302bd4fbbd5a2656d5d95758977c2ef57d6b9f8e9bbbe791abd09f5d97",
+      "responses": 18
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-13033.traj.json",
+      "sha256": "38f90d264361482cc17854801a9f7032f13b4d3db318a778e32ff10e3bf703bf",
+      "responses": 21
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-13315.traj.json",
+      "sha256": "32aa5df7c14277402d8e6e5bdb62946179cf3086f60174e1f04e1340746a4454",
+      "responses": 22
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-13343.traj.json",
+      "sha256": "61b52ab45efd9cda416a87e70a7091ae72568b57ffffa401e5cee8b3fe1ac5fd",
+      "responses": 17
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-14017.traj.json",
+      "sha256": "ee13440890b7456a8bb3122b1f8508856170defaed6a9f27fbb36813f087ae42",
+      "responses": 17
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-14434.traj.json",
+      "sha256": "bd6bcfd46d987a58183e9bf833e97d539d2af371a564b3212a7b03bb56e1c9b2",
+      "responses": 13
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-14493.traj.json",
+      "sha256": "7716dc64badb1be675edfd61a28a5313ac829b7e58eafe67178b05cb555005c7",
+      "responses": 8
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-14539.traj.json",
+      "sha256": "f3b043b8e625fb54485660493f8382616049d181f1cbb0c29e02440508959f61",
+      "responses": 13
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-15037.traj.json",
+      "sha256": "2c9ed74ed99aa3191182b0d72b47ba603e943c19abeac59ba2737f346fe146a4",
+      "responses": 33
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-15315.traj.json",
+      "sha256": "51a7145f71da5e1ca792f827c8bdacd2d082bc1372ea9d545c8e53664c7e4ee0",
+      "responses": 22
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-15741.traj.json",
+      "sha256": "c5e1f30d7ff83dce7e81962ec133d89b7f8bb9e172e4cde185b026b85c754c34",
+      "responses": 15
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-16032.traj.json",
+      "sha256": "2a82016c790eb3ac1c30b61e09349552607970d8406c203f916157ea4f2920ba",
+      "responses": 27
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-16255.traj.json",
+      "sha256": "b5c76098b8afca4058da502a6e2f41e23e741719ad2a7c97a24b3828b4299adc",
+      "responses": 11
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-16560.traj.json",
+      "sha256": "688d9cf73954ce25b2163afb2d4e68778f7210ccde2f060376e6abfa4a6aaa18",
+      "responses": 30
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-16801.traj.json",
+      "sha256": "411eaf2d853acc8e2c1e378c7b5aad88944b4c2fa649fc3d957f12afa2f17090",
+      "responses": 19
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-16950.traj.json",
+      "sha256": "cfa4cd620fc8bf12754107187fef7a916cba6355963a09502da8cd01aefb429b",
+      "responses": 24
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "django__django-9296.traj.json",
+      "sha256": "5cce40f301e664e55f2f3c5eb38a79d8d4903482c37c13b993ee03d39fac1d04",
+      "responses": 10
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "psf__requests-1724.traj.json",
+      "sha256": "b8790c69515cba690dfe406e0a96bac65e99373925549378c0a39d280bbe6d98",
+      "responses": 15
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "psf__requests-1921.traj.json",
+      "sha256": "5a5ad1852fca5e55bff51784e99b251d7023ba8c17f167745de4886fb6907a87",
+      "responses": 17
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "psf__requests-2931.traj.json",
+      "sha256": "751b1204c6702bf86eea5a8b70d6253a5f776a9b82b4984825a8bacabdd836d5",
+      "responses": 18
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "pydata__xarray-6992.traj.json",
+      "sha256": "ac939a273dfdb76d20be8bcc2356967ab98b4c4fe96754681ec94e670e260755",
+      "responses": 9
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "pydata__xarray-7229.traj.json",
+      "sha256": "ee68c1d6ee8a87efcbe9e8bd96e0f502533d4a20f7439068b82fc5e1d5d4cc5a",
+      "responses": 43
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "pytest-dev__pytest-5787.traj.json",
+      "sha256": "c70ab117da89270ca47fd1333aec84f0d60ff640d479da51d5512c31650f35db",
+      "responses": 62
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "scikit-learn__scikit-learn-11578.traj.json",
+      "sha256": "c49b571f1c07b7aa1666f91b4da816d7cbb4b4126d5707984b279694a5fbfed4",
+      "responses": 18
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "scikit-learn__scikit-learn-12585.traj.json",
+      "sha256": "9cba19e03196e160a46df4711f931b51e3b9c0dda0d67cdbfefebc6aaa36b283",
+      "responses": 8
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "scikit-learn__scikit-learn-25973.traj.json",
+      "sha256": "7b53c6b2197fea2a0a41dbe698ad84ae11e95458504e0693f56fa15cf1090691",
+      "responses": 9
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "sphinx-doc__sphinx-11510.traj.json",
+      "sha256": "5448ede76e7cab84bf7d833c24324f806fc77af023695a60e8c6d151a58e219c",
+      "responses": 40
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "sphinx-doc__sphinx-9281.traj.json",
+      "sha256": "a42e181f4eeb84766cef406e7b862fc3dcc19123f7217521400aa7a375a302bd",
+      "responses": 13
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "sympy__sympy-13647.traj.json",
+      "sha256": "12f48f58a68aad01b1de37d599043ca02cba8870a5d9b9b0dc97a935348c251a",
+      "responses": 14
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "sympy__sympy-13757.traj.json",
+      "sha256": "7e5e9d7dc984b53d9cab84c58540e0db9779ede54abc2036a97103130fecd7e8",
+      "responses": 17
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "sympy__sympy-13878.traj.json",
+      "sha256": "7523a7c7de70d1ac547325a39faad8e42051347e04df0017b9c03d91dab22910",
+      "responses": 31
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "sympy__sympy-19637.traj.json",
+      "sha256": "257e4048791468b790b2f6f28baea4600f490ee24fa9c08965a23795c1698540",
+      "responses": 11
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "sympy__sympy-20590.traj.json",
+      "sha256": "b1aefefd6e95a8cfc899da2a2ec9db9cabc5aabe8477cc24ef39dff4f6cb747e",
+      "responses": 15
+    },
+    {
+      "entry": "20251120_mini-v1.15.0_gpt-5.1-2025-11-13",
+      "file": "sympy__sympy-24066.traj.json",
+      "sha256": "6dbfcce4d352935a673d4f85b54e71cc9a8a5fee54877f4d37681db01991a2ee",
+      "responses": 19
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "astropy__astropy-14508.traj.json",
+      "sha256": "c6fdd5b880b3f210142ce0d7769ef03074e1f10371834883db56dc701dc4cb11",
+      "responses": 8
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "astropy__astropy-14598.traj.json",
+      "sha256": "401197a2c6ce7b6a01e85654ecac9d9f58d987e1283bbef0d0e9278254c510fb",
+      "responses": 29
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "django__django-11299.traj.json",
+      "sha256": "1dd6aa92a2502b99dabde225aae79cc861d3a0dbbc3faa1d9eeb2248b20bdf2b",
+      "responses": 14
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "django__django-11400.traj.json",
+      "sha256": "71360166d42ee98bd83a7d0d2554e0fb41fb5d13d30e8422fd9fec991f740a28",
+      "responses": 11
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "django__django-11951.traj.json",
+      "sha256": "e926a0385b33d4645a7be17d65d826e62f4292cdc03672628258be77d92434ba",
+      "responses": 7
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "django__django-12193.traj.json",
+      "sha256": "34f3c7058fd482ead8223df8b357c2ebcfae9e44a48e7ea02274b24acc6fe817",
+      "responses": 18
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "django__django-12262.traj.json",
+      "sha256": "d3c148951e0490df48d3f47c1f7c54fb3256448b07b86c87ce036fa4bdceee93",
+      "responses": 12
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "django__django-13028.traj.json",
+      "sha256": "8e4a6c7fedc52ffd612ecb38dd83b8ca7483c85f9c7a52473235d9805a4a0b69",
+      "responses": 13
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "django__django-13109.traj.json",
+      "sha256": "0e5d95e4f5a26a374a1fee78d838710526bb7dda25f27655dd90aae3d3ee8955",
+      "responses": 9
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "django__django-13658.traj.json",
+      "sha256": "30b1b53802cabeffeb677fefaf3a4365944ce75b5ea51924af3f5e5a9e9aa7f1",
+      "responses": 12
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "django__django-13837.traj.json",
+      "sha256": "58c941fdce3ecc3d6bcf54e86572ae5805f0a8671f786b2fd4d750f891f86507",
+      "responses": 10
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "django__django-14608.traj.json",
+      "sha256": "a0aaeeeb827dfb2c7273bc7117222add07b31234db4a84c5ded65ed2a1069c08",
+      "responses": 17
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "django__django-14725.traj.json",
+      "sha256": "27fc759169a306803acb9495cf7368d91af2860edef14b17c9801a411d9bbf5f",
+      "responses": 24
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "django__django-14787.traj.json",
+      "sha256": "6df83481a7b0b5d78bdb74350c4d6e4308ac577480b779acb5a9b4533e1f2358",
+      "responses": 8
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "django__django-15098.traj.json",
+      "sha256": "8208ac6b5ea5da374c9140daa5217db2b63ad92398f5c6c6f4585fff3a7cfea2",
+      "responses": 15
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "django__django-15277.traj.json",
+      "sha256": "bd536992ec607fa9b106ecb5f676a1e888a5205708b9c9fb144e9ae8e202fce4",
+      "responses": 13
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "django__django-15569.traj.json",
+      "sha256": "1f59056925a1cc6c861499e235ffe807b1fab94dc6ff5d4f1c10f3a21a698040",
+      "responses": 9
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "django__django-16429.traj.json",
+      "sha256": "fbf0a8f86c4879d44b37d6975c874661577a8c6a021ce7e896c0bead69d17a65",
+      "responses": 14
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "django__django-16801.traj.json",
+      "sha256": "edf92c2a3496eae94234f635622fc135fb83fba0be728b5accb7c7ccf50c36a8",
+      "responses": 8
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "matplotlib__matplotlib-26113.traj.json",
+      "sha256": "fc12cb9ccc8d632dd8d41705a805300f1276ef2c2c8641da61b5e247a62dd4e6",
+      "responses": 10
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "psf__requests-1766.traj.json",
+      "sha256": "752714cbb5cf0dab1044585bfdf0517b4bf332d4c3fcc0549edc0b49a65188b0",
+      "responses": 11
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "pydata__xarray-2905.traj.json",
+      "sha256": "6eed0ac542c2bb9811183e2279fcfbb9c973500997fa44e7180cb6116cf7b5f5",
+      "responses": 13
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "pydata__xarray-4687.traj.json",
+      "sha256": "7b10d417a7caf3379b70d4b0894d96b23df0d1684364ef442d27f936360bbaa5",
+      "responses": 34
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "pylint-dev__pylint-6528.traj.json",
+      "sha256": "e85df0a90d70c7376297a4aefb5480fb5930f9908995cad12c21c5d71877e036",
+      "responses": 34
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "pylint-dev__pylint-7080.traj.json",
+      "sha256": "fefe7a869b023a080082a9bfbe13bb6738673234cbc5ad6484d90c07750b33e7",
+      "responses": 37
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "scikit-learn__scikit-learn-13328.traj.json",
+      "sha256": "f506d34dacdd881d56b691f807dcbd441e043156e0c20179615bb90dcf02814d",
+      "responses": 15
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "scikit-learn__scikit-learn-13439.traj.json",
+      "sha256": "c79c9e7166d4c5a8e37c570eb3cd45bf262d71d77e62cd9fd2aad8404eb9c439",
+      "responses": 10
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "scikit-learn__scikit-learn-13496.traj.json",
+      "sha256": "06bb81bbaa2d929fea085f910723be209982f7566be02bce3b9a728007b3354c",
+      "responses": 13
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "scikit-learn__scikit-learn-14710.traj.json",
+      "sha256": "815867c221548d3ed8d7c0afae39d1656b27a1da0e10b8b2546e228b99026614",
+      "responses": 12
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "sphinx-doc__sphinx-7454.traj.json",
+      "sha256": "41382b3d2a802ec1ae37ac4f0c79398266b18ee58c8e51a5121b9672a8f3b5d7",
+      "responses": 17
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "sphinx-doc__sphinx-7590.traj.json",
+      "sha256": "d44e14986847e0b80a4f9f683fc0f35673e090884a8537db6e5b67ca7e0473cc",
+      "responses": 36
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "sphinx-doc__sphinx-7757.traj.json",
+      "sha256": "8aa7d66e878398d0889129b0b7c6083796a02cdfe1a3da04d89af7080fc30451",
+      "responses": 13
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "sphinx-doc__sphinx-9320.traj.json",
+      "sha256": "d92254bc8d8cc7c8cfdaca0973e0e71f6c63533bce115a778bdc9fb447cd36fc",
+      "responses": 10
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "sympy__sympy-13798.traj.json",
+      "sha256": "b865662dff6901dd7c53974bba48f023ca30dec338572e595a3e9c3c84c1c378",
+      "responses": 13
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "sympy__sympy-13877.traj.json",
+      "sha256": "ba64ec6a115aa66f3c37757206f8080f47aff8862d5c64810d5c304cbe0eacd3",
+      "responses": 19
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "sympy__sympy-18763.traj.json",
+      "sha256": "7b4d22682fd5b3c3cdd08f77e1ddcfa0e20cb345fd3d30b2a0e0d0d9596bda9d",
+      "responses": 9
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "sympy__sympy-19637.traj.json",
+      "sha256": "e7db49ec5510dfcf1334bb9d232952e14b3755208a910d298924416906813cad",
+      "responses": 15
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "sympy__sympy-20916.traj.json",
+      "sha256": "4e7b9c121c44d210a79d2c8b93a56163ba73d458a8dd8b856d4e9bcf31be487d",
+      "responses": 12
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "sympy__sympy-22456.traj.json",
+      "sha256": "9218f9554ba0e03dd02b1dce7155ceff658cbd178387a28b3a6113fa9d0b64e9",
+      "responses": 27
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11",
+      "file": "sympy__sympy-23262.traj.json",
+      "sha256": "059c61ac4bf7f41ef726f60877fe8ff1eb21b49d9c4bf33177427bf084a07e61",
+      "responses": 24
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "astropy__astropy-12907.traj.json",
+      "sha256": "38879090740506faf2cf73b7e92f66e1cc2e8f858018e33ab971695b78ac9ce1",
+      "responses": 14
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "astropy__astropy-14508.traj.json",
+      "sha256": "4f8c77e5da8e5f48c948e223bbb917e9e0a1e33f4990f69d280a04452ac33434",
+      "responses": 11
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "astropy__astropy-14598.traj.json",
+      "sha256": "f47c36c495e350fa4a59988a95ee84ce6965f3e12c5dc07dca6837a062e2ab07",
+      "responses": 29
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "astropy__astropy-7166.traj.json",
+      "sha256": "74cbc7c388b40fe59eb33da5f5bd4e23a516fdede8bb39d4913a9958ffb3dff9",
+      "responses": 13
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "django__django-11999.traj.json",
+      "sha256": "66458152c1de8f1768f25e6998f5ede7494014f72224c6b0616fcc98f642e8b0",
+      "responses": 21
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "django__django-12304.traj.json",
+      "sha256": "28c4d37de4e41ae43fbd1df6ee31afce4c3a537452dc73bd31459fd3f66bfee9",
+      "responses": 15
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "django__django-13344.traj.json",
+      "sha256": "1a3e61a6297a87f49662d02d1735e75ddd766021788c5ac3db3bd38f1721e1b7",
+      "responses": 17
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "django__django-13658.traj.json",
+      "sha256": "019a0d64a7314e7fb73272243abc332a8d7cd182eeabbfef8238efac301095f7",
+      "responses": 12
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "django__django-13670.traj.json",
+      "sha256": "922d05c5ef265c8cc859d94fefab06227566ba429d94a01410affc27c6436748",
+      "responses": 12
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "django__django-13741.traj.json",
+      "sha256": "8b7d96bd370c1ca0aa4e5540662fb26d232f6ffd6fbc141f4c35d9cbd5e3e0de",
+      "responses": 21
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "django__django-13964.traj.json",
+      "sha256": "aea0068d38d1acc35ecc627a39b4a3d1017419c5dea8792de3725298d5f6b0e2",
+      "responses": 15
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "django__django-14493.traj.json",
+      "sha256": "4b6154b7f3edd27bbde73d5a0badcb31fce055ef10ee67928542b4d23d0b1faf",
+      "responses": 7
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "django__django-14608.traj.json",
+      "sha256": "090eeef6009676a80fcdb04c63b8734f31a3e8b1d6f125332718fb9bd1c97754",
+      "responses": 20
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "django__django-15037.traj.json",
+      "sha256": "449ea1568b3456285f2648ea6d07ec85af607c8a5135bfb7157af2a565799ec6",
+      "responses": 23
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "django__django-15127.traj.json",
+      "sha256": "610beac65a8808c8ef19bc3003d9489bf9307256eb0363afb8a05c0c78e61e7c",
+      "responses": 18
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "django__django-15380.traj.json",
+      "sha256": "5368df68ee818e44df5380c5930121b5cf831d12d5838dfa04cb2cf939292103",
+      "responses": 21
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "django__django-16116.traj.json",
+      "sha256": "42fbc06e7b73f4e1dade7ec9d15e562e456c33dd889887786184e1e7dcb2c5c9",
+      "responses": 16
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "django__django-16429.traj.json",
+      "sha256": "ca9a120e538e27c43ef2bdde3c1de8db496bf52b04de806ab207ce241725f192",
+      "responses": 12
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "matplotlib__matplotlib-21568.traj.json",
+      "sha256": "27828ad05a858fc7f7f146bbff7f5fb6c771c7b9fdad8bfb32b6b2de457aa863",
+      "responses": 10
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "matplotlib__matplotlib-25122.traj.json",
+      "sha256": "33819c307043d19d64194455b269d3e47ce4698cef1f1aba6924a14c9a513f87",
+      "responses": 14
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "matplotlib__matplotlib-25775.traj.json",
+      "sha256": "47c2a177c9eb019451274f5149628ecb3aba14eab52bb35fc54942ae029e77a0",
+      "responses": 56
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "psf__requests-5414.traj.json",
+      "sha256": "306fdd1ea85867f354d2f3edddd1cbb6716e3d0626f4d1f2747d681e6667cb85",
+      "responses": 19
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "pydata__xarray-3305.traj.json",
+      "sha256": "3f26845842ed566c30a89fbb168556fcb26d8230935f9684ad4398c09fc0672d",
+      "responses": 27
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "pylint-dev__pylint-8898.traj.json",
+      "sha256": "041cb9b3f2d91f679371fdacbd32dd19d7fd6a3dd90582e796ad92fa2790476a",
+      "responses": 21
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "pytest-dev__pytest-10051.traj.json",
+      "sha256": "2b36f50fc70f2cf07c28b8967da915b61cf1bd73a59d3aa0e87e42609e45d7b6",
+      "responses": 13
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "pytest-dev__pytest-5787.traj.json",
+      "sha256": "c90cec8831edc9f10561f600f845da4af3d16e698efa7f10eec86b0d1eb43d97",
+      "responses": 20
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "pytest-dev__pytest-7490.traj.json",
+      "sha256": "e87dd0791d96d0ff34bd04fe2104a120b6a7c83a03ea2daf06db9e73c113999f",
+      "responses": 15
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "scikit-learn__scikit-learn-10297.traj.json",
+      "sha256": "c5724b4a51c138d92bb7fea6398fc8eb198869f4d5c8ddc960d3ddb79b679cf4",
+      "responses": 17
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "scikit-learn__scikit-learn-14141.traj.json",
+      "sha256": "107fc17521302ab251bc1966184c76c704e6d6782bf7065c345c9efdbd81603f",
+      "responses": 10
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "scikit-learn__scikit-learn-14496.traj.json",
+      "sha256": "e5ac3217eda596ba0cc810d88dcbd120e5e9da45110315391a3b3016b8ee6376",
+      "responses": 18
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "scikit-learn__scikit-learn-14983.traj.json",
+      "sha256": "19ab26be5de73d530ee6124535d40ea6d1c90d102a77f299ec81c5f07ffd9c4d",
+      "responses": 17
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "sphinx-doc__sphinx-8035.traj.json",
+      "sha256": "a3443a2bbfcddd816c0cd1562aa38e89a0af006d85040e297c758fd16e2d0fbe",
+      "responses": 36
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "sympy__sympy-13480.traj.json",
+      "sha256": "e71cc1e494de8cb1e3cb391941cd9741264afd25809e1e01431409b571fb15b4",
+      "responses": 10
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "sympy__sympy-13647.traj.json",
+      "sha256": "24bb0a1d597191a2158b6e89f23bf78f82494d5565a1b14c7ece9b759f471002",
+      "responses": 15
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "sympy__sympy-16597.traj.json",
+      "sha256": "a520b3e1f268f2ad1d2f9e9aa03e17933029aa94844c45531f4a9bd6b54cf906",
+      "responses": 18
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "sympy__sympy-16792.traj.json",
+      "sha256": "c22ed105311a79032ab5a0892b7873f5c5cd4c8166a366d5b199318ea88b701f",
+      "responses": 26
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "sympy__sympy-16886.traj.json",
+      "sha256": "8f2fc347d845d0e7e47d3960b0c1c187efe078e49bd7ab3c7a98a3db852523fb",
+      "responses": 8
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "sympy__sympy-19040.traj.json",
+      "sha256": "323f3314f5e19492b5226187a038f4a4419056b274ecd7693847297d308cd4b2",
+      "responses": 65
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "sympy__sympy-21930.traj.json",
+      "sha256": "05ed6bf09a84eb59bd2b321888d07ad8a768cb0324d72080f091da0e8883c632",
+      "responses": 40
+    },
+    {
+      "entry": "20251211_mini-v1.17.2_gpt-5.2-2025-12-11-high",
+      "file": "sympy__sympy-24213.traj.json",
+      "sha256": "0209e2c24a2066a9575e54259e5f09ad929bafa3471cded0a952d403b8b26d44",
+      "responses": 27
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "astropy__astropy-13579.traj.json",
+      "sha256": "27bfbda6c905b96aac1ab11790f9c5d35ffe04ff0d33ee1c83b6ea978552a7f2",
+      "responses": 14
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "astropy__astropy-14539.traj.json",
+      "sha256": "4b4519d101fbdf10deaba40d157c731d5ae3fecccdba9436b4c5b4b3398cbb4d",
+      "responses": 16
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "django__django-10914.traj.json",
+      "sha256": "ee035b8e7ea565388b86cde8ea41de9087b422042dd27a093ad8b2ad47b5f76c",
+      "responses": 45
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "django__django-11265.traj.json",
+      "sha256": "ee17fd45bdd75a15c68dc8467d138780cd16948bbd249e3c78336e35fc1d7447",
+      "responses": 13
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "django__django-11477.traj.json",
+      "sha256": "17aa7f41a2614fab4695cd82be26aca7d3871ec363823c77990b77b1efea3b99",
+      "responses": 26
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "django__django-11551.traj.json",
+      "sha256": "3c2d457b11b48ec682459800f8ee9216d765f8d5aed405285dd22dc6d3baabed",
+      "responses": 10
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "django__django-11728.traj.json",
+      "sha256": "1d28d2cb42a8f91760f95069c16bb3b9f7819895f461fc1de527799f0a23ebb8",
+      "responses": 11
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "django__django-11734.traj.json",
+      "sha256": "816ecf2d48114aecdb7d188fb03940989e45bb8592423db1edfabbb12a8b6af8",
+      "responses": 67
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "django__django-11885.traj.json",
+      "sha256": "3398e2af168d3f935209ee97664e27f7531de16280e891e4af98e77401189d43",
+      "responses": 50
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "django__django-12143.traj.json",
+      "sha256": "288ec51aa08c95bbdc5f5325204f94490dfd668419dbf038bd7599037772e155",
+      "responses": 9
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "django__django-12193.traj.json",
+      "sha256": "c0c46f29359ab9bbda06e6978e86261091b9844fcc68d252c994c5cc46d9885d",
+      "responses": 11
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "django__django-13109.traj.json",
+      "sha256": "5f7b38f75d86a5f587669296779cde89ffc7599870bc206f5f85fadb4a9e36ae",
+      "responses": 8
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "django__django-13741.traj.json",
+      "sha256": "f25486a2b164e3c04ee253d6a5dd8b5b0aab03b753362e0055d7209dcf930bd1",
+      "responses": 10
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "django__django-13794.traj.json",
+      "sha256": "af29c42393b3855ee8eae1381da26f791805b64a3d992a4c8b7be358b42444ef",
+      "responses": 16
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "django__django-13837.traj.json",
+      "sha256": "f8be8d234107e7b154e3bed6077db195b35bb19fd44d02b99d036757326e4a2d",
+      "responses": 16
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "django__django-13964.traj.json",
+      "sha256": "f5b56fe7549d240cf9210e72e8d0c941326987a71141b6748bcfa5871799ad09",
+      "responses": 22
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "django__django-14155.traj.json",
+      "sha256": "bfe17c8979c099584ca8ec24b8bd46902db367eb8506420debb32258e5c529ec",
+      "responses": 48
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "django__django-14855.traj.json",
+      "sha256": "d528e92cfa044a641a5f861cd2a994febbb90589debd4b75a82e3dbb6548e6dc",
+      "responses": 10
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "django__django-15104.traj.json",
+      "sha256": "75474976c3a9684fe039d3c1e8539d887b5a1b70eef3facab914345961f78d9b",
+      "responses": 9
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "django__django-15252.traj.json",
+      "sha256": "71c5b394d90ae6657da909740e2bdaddd6f628b93963b8921c15412d6dbde709",
+      "responses": 76
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "django__django-15277.traj.json",
+      "sha256": "eb93cf75f5064f40f1113f7edbc9ad147ae229eccdcf4c568a4c9f649f91456b",
+      "responses": 8
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "django__django-15525.traj.json",
+      "sha256": "b8e76b0aafcc6f41c39fa7f311c88485efa90a5a005297946912f9283c5dbcb2",
+      "responses": 23
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "django__django-15572.traj.json",
+      "sha256": "2500974ea17673274c6f406db037f8ee241584a66419ec204840611c07040e3d",
+      "responses": 34
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "django__django-16263.traj.json",
+      "sha256": "4cf0d393e354876fb57595b3f434ad16e25b37ccd0811047b46a7d9fff0803f5",
+      "responses": 68
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "django__django-16315.traj.json",
+      "sha256": "169163e83df6ac99ab818c9e309e98ca02b311954b0f6b2faeadb127c52809be",
+      "responses": 47
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "matplotlib__matplotlib-26466.traj.json",
+      "sha256": "ccae0fd7f9bcd0928d9778858c0617cbb0962e1d02ef6a46babffc9dcd71bd59",
+      "responses": 26
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "psf__requests-2317.traj.json",
+      "sha256": "d732fa19033112a73bdcc1a8af6b83df10fb92bce3aafacc650c1264f2b499c4",
+      "responses": 20
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "pydata__xarray-4687.traj.json",
+      "sha256": "adccb1de89f605afdd768d4bf5b3f599d10fa113d3ab48c3ab272ea747a91ca0",
+      "responses": 32
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "pylint-dev__pylint-4970.traj.json",
+      "sha256": "2e2bf0a5e6cf4674be49eac4d5308e64fac56a62049277a9b8973fefc61a4ef6",
+      "responses": 63
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "pylint-dev__pylint-6528.traj.json",
+      "sha256": "19f8f0c16f78540f9d2eab13b697ff4cb3d45b5bb65529fec59d8d2b6f1c41c0",
+      "responses": 41
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "pytest-dev__pytest-5787.traj.json",
+      "sha256": "1dff8e2043e4fc6957b25466e651e22fd1e3f0840633fb4b2a60c73b8202fd00",
+      "responses": 49
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "scikit-learn__scikit-learn-13142.traj.json",
+      "sha256": "ef969c8c65ba9ce42b259106831697a33e9b7a31534fb5519665d12a1225e534",
+      "responses": 22
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "scikit-learn__scikit-learn-13439.traj.json",
+      "sha256": "58ae153dc5eacc0cf02bdfb4b0df4f31a791450d0a6d2a14af25cf88b82a3162",
+      "responses": 12
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "sphinx-doc__sphinx-8056.traj.json",
+      "sha256": "81aa55a3f1e7fe42ffc908f46309c5035318081912a8b94b5e721ac44fb9704e",
+      "responses": 25
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "sphinx-doc__sphinx-8621.traj.json",
+      "sha256": "b7231ce1fed8b4b2dddf361fcc007bd3bd882196341f40d9b3d267bf069ea3d6",
+      "responses": 35
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "sphinx-doc__sphinx-9281.traj.json",
+      "sha256": "30f287ded5b70dfdb261cde1fcd9c29a0852481ec085320e3892fafed1c556c6",
+      "responses": 14
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "sympy__sympy-15599.traj.json",
+      "sha256": "429000354d23f8366a49a8b1ca89feaad3db0443e7fff61bc0d50a04eadc9008",
+      "responses": 6
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "sympy__sympy-15809.traj.json",
+      "sha256": "18f558f22223965ffc70dd5793fd8aaa17637fb0821508f0501bee0438c0415d",
+      "responses": 13
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "sympy__sympy-21596.traj.json",
+      "sha256": "37dc3f56c799ed659967723077ba06c9fba7d9baf57222b14d3c0a655e69b24c",
+      "responses": 28
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_gpt-5.1-codex",
+      "file": "sympy__sympy-22914.traj.json",
+      "sha256": "eb5fa856fac0f2c94d678f18c5d2447a1b4199ba0ac17e4125b14d90dafaa6d5",
+      "responses": 12
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "astropy__astropy-13236.traj.json",
+      "sha256": "5d581db9d6479d0134b151035b542a4b444c59933c13e8ac864ad2931caac0d2",
+      "responses": 22
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "django__django-11292.traj.json",
+      "sha256": "97e6ce7476e1d897efd4f3d2263aa88f804d566440672bb66f09c741c30b86bc",
+      "responses": 20
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "django__django-11734.traj.json",
+      "sha256": "bf6d7e9a917ec0b53f9377f115cc8f768cdc57680bab49f5eed242e8c060557a",
+      "responses": 61
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "django__django-11740.traj.json",
+      "sha256": "2b8cb6e6f86bcb92ef2a95c0a76b966c034b7856f8cb686a3c5f1b54535cdd09",
+      "responses": 48
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "django__django-13315.traj.json",
+      "sha256": "b31e26c2009deadeec816f511f4cd6f1306431b3375d2677495cf235fa582ae4",
+      "responses": 36
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "django__django-13569.traj.json",
+      "sha256": "839f7428e30e4650d887c7eef81b60deb0f5b04e99b5181a137eda0940abbd4e",
+      "responses": 49
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "django__django-13658.traj.json",
+      "sha256": "d64d4be48c8df923bfabaa204f5a2696f9d940a24975fccba9db60c055bb87f8",
+      "responses": 26
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "django__django-13786.traj.json",
+      "sha256": "fda93a3ba9ee6162ef77d0a6a78cd0caf88e833319da032b2437b5ecf77911ee",
+      "responses": 33
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "django__django-13820.traj.json",
+      "sha256": "8d943fbd73bb6cad274f62c8a23fe8f5495d3eb48995ffa8f4541b323a5720e0",
+      "responses": 19
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "django__django-14011.traj.json",
+      "sha256": "5bb542cc28328591bb4416041224b1714d27227fd69c2e69395168dd9fbb254a",
+      "responses": 35
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "django__django-14034.traj.json",
+      "sha256": "5a4ca5f6375d8f5862e5086c0361420f7a57fb09a8e1847decc6e247a9051b44",
+      "responses": 33
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "django__django-14053.traj.json",
+      "sha256": "bcda2e2771b2f915dec3130cc0c109ae0aa5e005085eba212369d1d88935b175",
+      "responses": 47
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "django__django-14238.traj.json",
+      "sha256": "43f14a9e75bf413dc990863ec2986d7f4f9fde6e47dd2969f96c9c739e987e01",
+      "responses": 19
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "django__django-14792.traj.json",
+      "sha256": "a0c0074481eca2d6bcabd012621b3540d278a3f54674f6bce039fb4a8eb6fe72",
+      "responses": 36
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "django__django-14915.traj.json",
+      "sha256": "beed5b76b6c871009d01c86319e6cf5dd626b3f3883a5219ec21d3607baf5020",
+      "responses": 15
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "django__django-15022.traj.json",
+      "sha256": "1cdce567790fe69098796897b76124bc914f99b557d91ef439369db0e780da39",
+      "responses": 78
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "django__django-15098.traj.json",
+      "sha256": "3e5e4cfbb61271445f61c3e5c406a6e314e45da713867fffe325dc8b0ea49004",
+      "responses": 64
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "django__django-15315.traj.json",
+      "sha256": "9be016248383145cfe79d5e397cd031357b31d650a0523e0d45e0372db1b0863",
+      "responses": 29
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "django__django-15732.traj.json",
+      "sha256": "db82e4badd953f4bb012ddf204b68e295e3094ff0a3c8ec1e7f9784dddb0b964",
+      "responses": 22
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "django__django-16502.traj.json",
+      "sha256": "0487030bd24521ef42e86e777b29dba29263a331b51f71412e0933b95ea9ba14",
+      "responses": 39
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "django__django-16569.traj.json",
+      "sha256": "4401e7b02b6ba0f94af72c164dcb180497177d0438dc9d65798a6507658c3b2c",
+      "responses": 17
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "django__django-16662.traj.json",
+      "sha256": "379417b8f89238ac47aa1d850138150b29852c31cad2d548799ddd8c8da5d8e5",
+      "responses": 25
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "matplotlib__matplotlib-20488.traj.json",
+      "sha256": "dc91d70a70c390072c2b306d329b7c4e7ea99c8dc899fc1fe3ae8ba8a7afdba7",
+      "responses": 40
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "psf__requests-1766.traj.json",
+      "sha256": "291e494c760f40a134f614c667645a0ee2c6e9756dd0fab1ecb5a5b01e398e39",
+      "responses": 14
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "pydata__xarray-6938.traj.json",
+      "sha256": "452d6c56f15c00dbd40073aa652d114bddb8d94c89c9915de99f349fab1a4059",
+      "responses": 32
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "pylint-dev__pylint-8898.traj.json",
+      "sha256": "d50c526f4733449fd8f2c6dcb0cc0df8848f9dea00b8f13bfd6e2a89893feaea",
+      "responses": 64
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "pytest-dev__pytest-10356.traj.json",
+      "sha256": "fe3f719774e24ced159a2d61473b2d2cd9d8999b7fbfa8015df45fb76c4a91c7",
+      "responses": 37
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "scikit-learn__scikit-learn-11578.traj.json",
+      "sha256": "e80e2d0b07813af7c0b234396ce7a94117aaa17a621b3f615079b75628c2813a",
+      "responses": 42
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "scikit-learn__scikit-learn-13142.traj.json",
+      "sha256": "3ae76d8cbb616469bcc53130b5c415fd480df29abbce3f61d8a1e113adcd7014",
+      "responses": 30
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "scikit-learn__scikit-learn-13439.traj.json",
+      "sha256": "35c7b050c4f0ce5bcc88004f1a5abe555f190a2e3a42d902a9fc54decb36a635",
+      "responses": 23
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "scikit-learn__scikit-learn-14053.traj.json",
+      "sha256": "ac86f4199aa336aa1496f514405698a94e85d454d61e995147ff1ba836b7a42d",
+      "responses": 19
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "scikit-learn__scikit-learn-14629.traj.json",
+      "sha256": "6716db123e150e1cab47865a03373edb186ebebb6f09a808bbf23672154fda06",
+      "responses": 38
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "sphinx-doc__sphinx-7454.traj.json",
+      "sha256": "d37c8d50dcbeab7ac5847929249221136f11b63b1e7c89465619cba82413f38d",
+      "responses": 45
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "sphinx-doc__sphinx-9230.traj.json",
+      "sha256": "e23011213092253ec46db40d712cc1f6d9fccf1f2caca66220e00d12435f050c",
+      "responses": 31
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "sphinx-doc__sphinx-9461.traj.json",
+      "sha256": "4197da333791e53ca8dfda1b912375ac74aa551be27673238a1f9d600698ded7",
+      "responses": 84
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "sympy__sympy-13372.traj.json",
+      "sha256": "363507d1d8b829b91372a7a90850fa70ddbf08ac687b3253072425ddfeaa3996",
+      "responses": 42
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "sympy__sympy-14976.traj.json",
+      "sha256": "78a402f58b76a8f9b4e0db9aef61e935cb962f00359a842032344c94c2e69aef",
+      "responses": 30
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "sympy__sympy-20154.traj.json",
+      "sha256": "95faced7c7cf25c3e87433e8a49a357f11a66e12b118e1a1ee0e0c84fd24c397",
+      "responses": 24
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "sympy__sympy-20590.traj.json",
+      "sha256": "7f65d5babb6f0c3bde60ec3409994b720e74d2b90ebdb6b37482251d25acd168",
+      "responses": 16
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-2-high",
+      "file": "sympy__sympy-22456.traj.json",
+      "sha256": "9a60b03c130569043893cf2c7c3e1c10fa9a818f9087734878f06dfa8ff99304",
+      "responses": 45
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "astropy__astropy-14365.traj.json",
+      "sha256": "c5e4049121fb44ceb23263047e0f5ead40fa7c5e41376adc270befebd67020a6",
+      "responses": 12
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "astropy__astropy-14369.traj.json",
+      "sha256": "61ffeb51e5e3ef9e4e13cdb59b796e1b5795714be9bb6e8eb0e940472631ed0e",
+      "responses": 14
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "django__django-10554.traj.json",
+      "sha256": "a73d76a689fb0e2b73d83e366f925034b1bf0764a3b305624d81f8caa27b85ac",
+      "responses": 42
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "django__django-11490.traj.json",
+      "sha256": "1166b868fcd5dc6a018900edcdd3dbe891debb42ca24714d56aaac23115bfde3",
+      "responses": 20
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "django__django-12039.traj.json",
+      "sha256": "8d6948de85aae16e5c843ac2545f36e1d908e748b55141247a402b77f907a086",
+      "responses": 14
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "django__django-12125.traj.json",
+      "sha256": "1196d59f1edfadac0184f403d27f1ba5532293241df9ac0b23350a284237b370",
+      "responses": 20
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "django__django-12193.traj.json",
+      "sha256": "f48d67f10c480a8b6c150653465a1e0158971a70131e46abd71caff8511a4afc",
+      "responses": 19
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "django__django-12774.traj.json",
+      "sha256": "22e55297026e3fc9f19a0ca513421b0ea714897fa45231663bbf71fc550550e0",
+      "responses": 30
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "django__django-13279.traj.json",
+      "sha256": "61546df15bd0834b784692c279b9a225a0c9ac9326b26c93540c41194deb6ea8",
+      "responses": 17
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "django__django-13344.traj.json",
+      "sha256": "c104fa5402a58cd04c274eb52f198854f9efd8ff14b887b2219d7b6b976209cc",
+      "responses": 25
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "django__django-13346.traj.json",
+      "sha256": "ca531a921b91770acc6602e0edfe588361e2f8187af04af14cca022e59078c36",
+      "responses": 22
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "django__django-13821.traj.json",
+      "sha256": "4c333befed6c45273048ecad0ca197741138dc391c552c9606c8f64228588cbb",
+      "responses": 12
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "django__django-13837.traj.json",
+      "sha256": "7fd867e54e474ffb914b871b1c1eb3771fb54dc31b67f82f467db713844dec73",
+      "responses": 10
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "django__django-14238.traj.json",
+      "sha256": "0dbb1052b4cff4f58386a0ecb5b0cbfc3362ddcab7fe8b4e38c2b4fdc8320b69",
+      "responses": 14
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "django__django-14631.traj.json",
+      "sha256": "9a3c00e9232130785fdd65c11f0b4f6170fbfe3954a6a7529ca89cb44ef88669",
+      "responses": 22
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "django__django-15128.traj.json",
+      "sha256": "a03593c4459fce1f6486463bff2de387dcdbb5a9ae33c64d1f4ea16130af73d0",
+      "responses": 26
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "django__django-15161.traj.json",
+      "sha256": "588671935da74b3ef418d9eb422e3828a37f6dc537624e25d3261426c90502de",
+      "responses": 26
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "django__django-15315.traj.json",
+      "sha256": "aed4bbb523a97a32b72ef3bd441b8a392e73f862af2271dadae65aca0a7c9f06",
+      "responses": 11
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "django__django-16082.traj.json",
+      "sha256": "b1822e4df0ac3b35b1d69c44f89e828ead1ac300962ac03e405c0388c6235ed7",
+      "responses": 16
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "django__django-16485.traj.json",
+      "sha256": "494718db677c7b0881d58643327b196f2569b43600095b3f7459acdab96f2f5c",
+      "responses": 13
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "django__django-17087.traj.json",
+      "sha256": "c083cb0d4d51548df725cdaf7c694aa236b49e81ec9b1dfa4b17ae5d2a9ae083",
+      "responses": 12
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "matplotlib__matplotlib-13989.traj.json",
+      "sha256": "31ed1d423d6234c8bdc327ec94ce2654532e3dd8d7244514cf71868b55397042",
+      "responses": 18
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "matplotlib__matplotlib-20826.traj.json",
+      "sha256": "ee87c16bd7a32b0500e83b3dc7dddef39fc5d20bfa9a28e16e22dcb60ec87a94",
+      "responses": 38
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "matplotlib__matplotlib-21568.traj.json",
+      "sha256": "f06eec5cd5fb8d73da6074e502e1cc91338c5ad66dec9bbaea2c50896d37b36b",
+      "responses": 14
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "pydata__xarray-4966.traj.json",
+      "sha256": "26d819c89c4c9be8434f1b7b6e05b8f48897cc51a6675081fa519e7bee14ea84",
+      "responses": 13
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "pydata__xarray-6938.traj.json",
+      "sha256": "c3e34925ca1fc63ba4d0706523aa65f3f0ae7862e52da44fa44a7cac98446df7",
+      "responses": 48
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "pydata__xarray-7229.traj.json",
+      "sha256": "69d0fd670a355aa79cb74ebd2b5fe7367b812cbc6df4ccd6c29c5647a838175e",
+      "responses": 48
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "pydata__xarray-7233.traj.json",
+      "sha256": "6a1dfb5cce819c7227da94a5ce0aa8be9cca4cfcbaba566cb17728a57257b3e0",
+      "responses": 22
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "pydata__xarray-7393.traj.json",
+      "sha256": "695a9b7de651d72c07a8eb76fb4b0384435b8eceb315f37e5f0d101b1f0b9fd5",
+      "responses": 51
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "pylint-dev__pylint-7080.traj.json",
+      "sha256": "8d5879ec393d3f9f11bf242e1a121aa25a2feff3ea733fc84d48594aee3f2a11",
+      "responses": 31
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "pytest-dev__pytest-10081.traj.json",
+      "sha256": "fde03b93cab82991d32d2b4c86acd3c39a64db8b49ac0df09066918a2ac04b1b",
+      "responses": 19
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "pytest-dev__pytest-7324.traj.json",
+      "sha256": "1840e75e0a2cf958dbdf7baef9f6001630b10f5bead47d1a7083838784fcbfab",
+      "responses": 13
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "pytest-dev__pytest-7432.traj.json",
+      "sha256": "b643e78c9aea843513a7e17cf1b4d44dfbbba313150782fdb5410ea0303d90f4",
+      "responses": 30
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "scikit-learn__scikit-learn-14894.traj.json",
+      "sha256": "0ec3d8f966d304d9e23d44c30ecde2cefb2f5d30b5414c5ac15590e67fab93e3",
+      "responses": 14
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "sphinx-doc__sphinx-7590.traj.json",
+      "sha256": "1809fa275d18efd9b126883fd1379db410e53d3621ed6cdb88240f590264c1cf",
+      "responses": 33
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "sphinx-doc__sphinx-8269.traj.json",
+      "sha256": "00ad56b76e9148d67aa61ea8589f0c28fc01f556e4701294422a40f68367c056",
+      "responses": 18
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "sympy__sympy-18199.traj.json",
+      "sha256": "3ef9c201816d550aec2f84646b8d7db62ba7f68e1fb2943522d6c32c0d78ba70",
+      "responses": 16
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "sympy__sympy-19346.traj.json",
+      "sha256": "ba32fc6914c1c5e5f2bba5af3c17ea959df63407f6faa4193314ff82b0843337",
+      "responses": 25
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "sympy__sympy-19954.traj.json",
+      "sha256": "a38f4a0f056f0bd9ed670ca3acb6375d992c5966f134a43f56188fe65fcdad0c",
+      "responses": 14
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_gpt-5-mini",
+      "file": "sympy__sympy-23824.traj.json",
+      "sha256": "07a92bbb18b760930f2520c5fe8d729dc70aef57350f480846e7116053d8490a",
+      "responses": 20
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "django__django-11299.traj.json",
+      "sha256": "14a9ec5448dcf94103f93ccec8ec139d35f95007041401bdacb61f6f6308168e",
+      "responses": 26
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "django__django-11433.traj.json",
+      "sha256": "49977f999f257bb91e4b3ca01e2f45ec1d5008b3b035a8c671e36e4efbc70adf",
+      "responses": 22
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "django__django-11734.traj.json",
+      "sha256": "bf6d7e9a917ec0b53f9377f115cc8f768cdc57680bab49f5eed242e8c060557a",
+      "responses": 61
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "django__django-11964.traj.json",
+      "sha256": "6a6dd28623e4278228e83c963a2dc55f331b721e962d1259469a3166318684d3",
+      "responses": 26
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "django__django-12858.traj.json",
+      "sha256": "b8015fec36bde2d4f061c82819bbfb58aa6277bea69185c2eaebcbd3ed0853c7",
+      "responses": 64
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "django__django-13363.traj.json",
+      "sha256": "1d988710c53380ed011bf560751a0041dd4d2d24b6328d4efcaa11db1ef63549",
+      "responses": 22
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "django__django-13658.traj.json",
+      "sha256": "d64d4be48c8df923bfabaa204f5a2696f9d940a24975fccba9db60c055bb87f8",
+      "responses": 26
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "django__django-13809.traj.json",
+      "sha256": "5180d26dc98e0e4247e12e5f69c50053286fabb5bb7f460452e430cc31055d06",
+      "responses": 20
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "django__django-13810.traj.json",
+      "sha256": "ef0c2a0cf67b67d2106e3a633e9582805df475cc8e4860168b478e51568a032d",
+      "responses": 11
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "django__django-14011.traj.json",
+      "sha256": "5bb542cc28328591bb4416041224b1714d27227fd69c2e69395168dd9fbb254a",
+      "responses": 35
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "django__django-14034.traj.json",
+      "sha256": "5a4ca5f6375d8f5862e5086c0361420f7a57fb09a8e1847decc6e247a9051b44",
+      "responses": 33
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "django__django-15572.traj.json",
+      "sha256": "74f31bd0fab543de0d095588f378634f828611f6a3898decdcd35a5869620af4",
+      "responses": 32
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "django__django-15741.traj.json",
+      "sha256": "f62ba397df7d5c51e76b0ebad9a4bba6db1a5a0cdd0293c11b464e5787acf36b",
+      "responses": 27
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "django__django-15973.traj.json",
+      "sha256": "a4d86ce3f11c03aaf5577d503da79c1a2d69fd5729a4ab2ffcd5166f40029abd",
+      "responses": 38
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "django__django-16493.traj.json",
+      "sha256": "889b9ffcd2d5b79e251cfb461ab2c31ac8e624e417492617806ee5ef867ff806",
+      "responses": 17
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "django__django-16877.traj.json",
+      "sha256": "9ff2e0e3ddd7235e483648a7cb344a31d011a459c1e10b9c5052ee33727b1291",
+      "responses": 22
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "django__django-16950.traj.json",
+      "sha256": "8ef7f759c1a3f72b84869f09b9f7e08098de2ceef9142c3a92111f68753db61b",
+      "responses": 33
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "django__django-17029.traj.json",
+      "sha256": "bf0657de691255a5ee5ca3d2dea30e438257617f1997f7f7bf39a1eab7913167",
+      "responses": 14
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "matplotlib__matplotlib-20488.traj.json",
+      "sha256": "dc91d70a70c390072c2b306d329b7c4e7ea99c8dc899fc1fe3ae8ba8a7afdba7",
+      "responses": 40
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "matplotlib__matplotlib-25775.traj.json",
+      "sha256": "3fed8f0782e3dbef6221814754efdb8d6a758695b5e1c519d395d0ded870a453",
+      "responses": 55
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "matplotlib__matplotlib-25960.traj.json",
+      "sha256": "c3c4543704120e28d377a8729afc44a1fd1f7778be29adee4693c2bb891aafdb",
+      "responses": 36
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "matplotlib__matplotlib-26466.traj.json",
+      "sha256": "6937df2dcd6a12154af477600138fc6eec934973d5922ebb1f4aeceb82914c3c",
+      "responses": 43
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "pylint-dev__pylint-4661.traj.json",
+      "sha256": "e187bd651bcb69cefe3aae272fce19a57b65fdadba95c15962be615e03f6cb54",
+      "responses": 32
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "pylint-dev__pylint-7277.traj.json",
+      "sha256": "484103d8de01e8ede6bf72508e2acd902df8598e50926f5784b34cc55664cca2",
+      "responses": 27
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "pytest-dev__pytest-10081.traj.json",
+      "sha256": "cbfe9737ad5c861da2f8ff568c6528bf74525a4af2ff4a84abd564418887ffbf",
+      "responses": 26
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "pytest-dev__pytest-5262.traj.json",
+      "sha256": "cbf31b7353cc2f31956683bab9f98e299391d53c24ab988f4cf8d981be270842",
+      "responses": 21
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "pytest-dev__pytest-5840.traj.json",
+      "sha256": "6af0b88442ea8497c523b8c809510dba3b4308daa1521bb252c6213954886fe6",
+      "responses": 47
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "scikit-learn__scikit-learn-14087.traj.json",
+      "sha256": "7cbd8e0a9b7ccd80f6db8982e07b5da6d67143b616c40cfc3edeca8f2e1f3220",
+      "responses": 18
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "scikit-learn__scikit-learn-25931.traj.json",
+      "sha256": "ba96ac02f211757ac59ee601dc80601f62d9e02e7887323dfcc7887fe0cd2792",
+      "responses": 41
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "sphinx-doc__sphinx-7985.traj.json",
+      "sha256": "2104b73a75c5d0247fcb4259ee1d0d2543220e69f95ed01274c59f2b4ec6feae",
+      "responses": 40
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "sphinx-doc__sphinx-8120.traj.json",
+      "sha256": "f6915a405ea1c082536d30db07cd24416248b2a281ec7533dbcb365375213398",
+      "responses": 28
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "sphinx-doc__sphinx-8595.traj.json",
+      "sha256": "294527eb1876ddbffa170c0f6e98f1a01baacaa75b615a17aaccd917e9af75b8",
+      "responses": 53
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "sphinx-doc__sphinx-9698.traj.json",
+      "sha256": "2a4b8412b39e2208166d95596ffcae68c6f6ba829e59b925905780aebd51fda6",
+      "responses": 35
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "sympy__sympy-13480.traj.json",
+      "sha256": "28b55a9dd0ad9811471e1fec1e175068311984ce16b2bce0147185b4f2505773",
+      "responses": 44
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "sympy__sympy-13615.traj.json",
+      "sha256": "567d97a91f9074fbc823c036dcf0302c4e71800efb3820c8dbf6d3bede9cf82b",
+      "responses": 35
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "sympy__sympy-15875.traj.json",
+      "sha256": "9fc4a30fb48de49a8cb38e96c6176239d9fc71c866f0f2581138dfa39118842d",
+      "responses": 30
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "sympy__sympy-17139.traj.json",
+      "sha256": "60606fb872cc25e777a9cab38333c82e3b623b8249041e9440f45ce8c41c05bf",
+      "responses": 26
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "sympy__sympy-19954.traj.json",
+      "sha256": "a6b2efb9826864fd397bb5f248e546aea54aa0edf985a6a7475e6bbfc1cc242d",
+      "responses": 12
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "sympy__sympy-20801.traj.json",
+      "sha256": "3d9690bc4661fc236f11612debd44b31dc4138192e46ff62dd88804f745f2777",
+      "responses": 36
+    },
+    {
+      "entry": "20260219_mini-v2.0.0_gpt-5-2-codex",
+      "file": "sympy__sympy-21612.traj.json",
+      "sha256": "0c4f8b3dc784f41d217e9954bc0d5d50473da39e2c6d749f31604094b8d50421",
+      "responses": 35
+    }
+  ]
+}

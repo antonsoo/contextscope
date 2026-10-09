@@ -54,6 +54,14 @@ gpt-5.1 and gpt-5.2.
   `cached_tokens` exactly; 34% got none where it predicted a read. gpt-5.2 cached 56 to 57% of
   the predicted tokens, gpt-5.1 88%.
 
+**Reported usage is now inspectable in the source checkout.** Pair a request with
+`response.usage` and the report compares captured counts with the simulation,
+preserving missing counters and the exact source fields. Verification covered
+17,425 responses from 520 hash-checked trajectories; full analysis of 2,205 OpenAI
+Chat requests exposed 712 simulated hits with a recorded zero. See the
+[reported-usage workflow](docs/reported-usage.md) and [verification study](studies/reported-usage/README.md).
+This feature is local source work, not yet in the npm package or hosted demo.
+
 ## Contents
 
 - [Quickstart](#quickstart)
@@ -103,9 +111,15 @@ drop a request file, paste one, or click a built-in example.
   simulates cache reads, writes and misses under that provider's rules:
   Anthropic's `cache_control` breakpoints, per-model minimum cacheable length,
   20-position lookback window and 5-minute/1-hour write pricing; OpenAI's
-  automatic prefix caching. It reports actual cost against an optimized
+  automatic prefix caching. It reports simulated cost against an optimized
   scenario, and projects the difference to 1,000 sessions shaped like yours (a
   straight multiplication, not a separate estimate).
+- **Reported usage review (source checkout).** Paired response counters stay
+  separate from estimates. Compare input and cache-read totals over identical
+  covered requests, filter simulated hits with reported zero, and inspect each
+  original counter path. Missing or ambiguous totals remain unavailable.
+  Browser JSON and offline HTML exports retain all requests, including those
+  hidden by a filter or page. [Capture formats and limitations](docs/reported-usage.md).
 - **Logs of more than one conversation.** A proxy capture of an agent holds
   its main loop and, between the turns, side requests on another model; a
   gateway's log holds every user's conversation, interleaved. Each request is
@@ -155,7 +169,8 @@ Options:
   --calibrate                     Anthropic only: count the largest request exactly with the
                                   count_tokens endpoint (reads ANTHROPIC_API_KEY) and scale
                                   every Claude estimate to match
-  --fail-on <error|warning|info>  Exit 2 for incomplete input or a finding at least this severe
+  --fail-on <error|warning|info>  Exit 2 for incomplete input, invalid usage, or a finding
+                                  at least this severe
   --html <out.html>               Also write a self-contained HTML report
   --json <out.json>               Also write the analysis as JSON: counts, findings and cache
                                   steps for every request and segment, without raw prompt values
@@ -163,8 +178,9 @@ Options:
 ```
 
 Exit status is 0 on success, 1 on bad arguments or unreadable input, and 2
-when `--fail-on` is set and either input coverage is incomplete or a finding
-meets the threshold. Gzipped input is detected by
+when `--fail-on` is set and input coverage is incomplete, reported usage is
+invalid, a usage aggregate overflows, or a finding meets the threshold.
+Missing optional response usage alone does not fail a gate. Gzipped input is detected by
 extension or, failing that, by gzip magic bytes.
 
 Real output on `examples/anthropic-agent-cache-bust.jsonl.gz`, a synthetic
@@ -202,11 +218,12 @@ npm run build:web      # outputs web/dist/
 npm run preview:web    # serve the built app locally
 ```
 
-Drop a file (plain or gzipped), paste JSON/JSONL, or pick one of four built-in
+Drop a file (plain or gzipped), paste JSON/JSONL, or pick one of five built-in
 synthetic examples, labelled as such: the 24-turn cache-busting session above
 (a ~5.7 MB session, shipped gzipped at ~0.48 MB and fetched only when you pick
 it), its fixed counterpart, a session with a file re-read three times, and an
-OpenAI session with tools reordered mid-conversation. The view opens on the
+OpenAI session with tools reordered mid-conversation, and a six-request paired
+capture with authored reported-usage counters (source checkout). The view opens on the
 *last* request, where a growing conversation is biggest. Findings come first,
 each with links to every request it fired on; below them are the treemap, the
 segment table, the line-level diff between each request and the one it
@@ -231,7 +248,8 @@ const result = analyze(rawRequestJsonOrJsonl); // or { model: "claude-opus-5-5" 
 // result.reports          — per-request token totals and category breakdown
 // result.prefixMatches    — longest common prefix + diff between each request and the one it continues
 // result.conversations    — how many conversations the input holds, and which one each request is in
-// result.cacheSimulation  — simulated reads/writes/cost, actual vs. optimized
+// result.cacheSimulation  — simulated reads/writes/cost, current vs. optimized
+// result.usageComparison  — reported vs. simulated counts with per-metric coverage
 // result.findings         — concrete, located issues (groupFindings() collapses repeats)
 // result.duplicates       — near-duplicate content groups
 ```
@@ -468,6 +486,12 @@ fixed hue order, so a color always means the same category.
 - **Server-side state is invisible.** A Responses API request that continues a
   stored response (`previous_response_id`) carries only its new input; the tool
   warns and analyzes what is in the file.
+- **Reported usage requires an explicit pair.** Usage must be beside its wrapped
+  request in the same record. Separate responses and streaming deltas are not
+  joined implicitly. Historical Claude gateway totals with cache creation are
+  ambiguous and remain unavailable; their cache-read counters are retained.
+  Captured usage does not authenticate the provider, identify a mismatch's cause,
+  or turn simulated costs into observed costs. [Details](docs/reported-usage.md).
 - **Duplicate detection is scoped to the last request of each conversation**,
   so it won't flag the same content appearing in two different conversations.
 - **Conversations are told apart by their content.** Two conversations that

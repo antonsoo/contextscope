@@ -4,6 +4,23 @@ All notable changes to this project are documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- Compare same-record provider response usage with token estimates and cache
+  simulation. Support native Anthropic, OpenAI Chat/Responses, and gateway
+  wrappers with original counter paths. Preserve missing fields, reject
+  inconsistent counts, and withhold ambiguous historical Claude gateway totals.
+- Browser filters, request inspection and 25-row pagination for reported usage;
+  full JSON and script-free offline HTML downloads preserve all rows. Terminal
+  summaries and `--verbose` show the same evidence. Configured CLI gates fail
+  invalid usage or unsafe aggregates without treating missing counters as zero.
+- Export `toJsonReport` from the library. Keep existing simulation JSON field
+  names for compatibility; human reports now label their costs as simulated.
+- Verify 17,425 captured responses from 520 hash-pinned public trajectories and
+  2,205 reconstructed OpenAI Chat requests. Surface 712 predicted hits with
+  recorded zero reads; retain gateway ambiguities instead of guessing totals.
+  See `studies/reported-usage/` and `docs/reported-usage.md`.
+
 Found by scoring contextscope against the usage Anthropic and OpenAI reported for 12,760 requests
 of public SWE-bench agent runs; see `studies/real-trajectories/`.
 
