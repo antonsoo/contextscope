@@ -20,6 +20,13 @@ async function loadAsset(filename: string, signal: AbortSignal): Promise<string>
 
 export const BUILT_IN_EXAMPLES: BuiltInExample[] = [
   {
+    id: "reported-cache-usage",
+    label: "Reported usage: predicted hits, recorded zeroes",
+    description: "Synthetic six-request review of Contextscope's JSON reader. Authored response counters include zero reads, a hit, missing counts and an invalid count. No live API measurements.",
+    approxSizeMb: 0.1,
+    load: (signal) => loadAsset("reported-cache-usage.jsonl", signal),
+  },
+  {
     id: "cache-bust",
     label: "Cache bust: timestamp in system prompt",
     description:
@@ -30,7 +37,7 @@ export const BUILT_IN_EXAMPLES: BuiltInExample[] = [
   {
     id: "cache-fixed",
     label: "Cache fixed: same session, timestamp removed",
-    description: "The same synthetic session with the timestamp removed from the cached prefix - the cache hits from turn 2 onward.",
+    description: "The same synthetic session with the timestamp removed from the cached prefix - the simulation predicts cache hits from turn 2 onward.",
     approxSizeMb: 0.48,
     load: (signal) => loadAsset("anthropic-agent-cache-fixed.jsonl.gz", signal),
   },

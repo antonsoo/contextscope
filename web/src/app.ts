@@ -8,6 +8,9 @@ import { checkTextSize, readPossiblyGzippedFile } from "./lib/gunzip.js";
 import { analyzeInWorker } from "./analysis.js";
 import type { Measurement } from "./analysis-protocol.js";
 import { INSPECTOR_TEXT_LIMIT, SEGMENT_PAGE_SIZE, TREEMAP_SEGMENT_LIMIT, treemapBlocks } from "./lib/segment-preview.js";
+import { mountUsageReview, type UsageView } from "./usage-review.js";
+
+const usageView: UsageView = { filter: "all", page: 0 };
 
 // Presentation helpers are lazy; parsing and tokenizer data stay in disposable workers.
 type CoreModule = typeof import("@core/presentation.js");
@@ -81,7 +84,7 @@ function shellHtml(): string {
     <main id="intake" class="intake">
       <div class="dropzone" id="dropzone">
         <h2>drop a request, or paste one</h2>
-        <p class="lead">A single Anthropic Messages or OpenAI (Chat Completions or Responses) request, a JSON array, or JSONL - one API request per line, the shape an agent loop actually sends. Batch-API files and gateway logs are unwrapped, and a gzipped <code>.jsonl.gz</code> works too, decompressed right here.</p>
+        <p class="lead">A single Anthropic Messages or OpenAI (Chat Completions or Responses) request, a JSON array, or JSONL - one API request per line, the shape an agent loop actually sends. Batch-API files and gateway logs are unwrapped. Keep <code>response.usage</code> beside each wrapped request to compare reported counts with the simulation. A gzipped <code>.jsonl.gz</code> works too, decompressed right here.</p>
         <div class="intake-actions">
           <button class="btn primary" id="pick-file-btn" type="button">choose file…</button>
           <button class="btn" id="paste-btn" type="button">paste JSON…</button>
@@ -322,6 +325,7 @@ function runInput(read: (signal: AbortSignal) => Promise<string>, fresh: boolean
       state.model = settings.model;
       state.calibration = completed.calibration ?? settings.calibration;
       state.analysis = result;
+      if (fresh) { usageView.filter = "all"; usageView.page = 0; }
       lastRawInput = input;
       if (fresh || state.selectedRequest >= result.reports.length) {
         state.selectedRequest = result.conversations.count > 1 ? largestRequest(result) : result.reports.length - 1;
@@ -454,6 +458,7 @@ function renderContent(): void {
   content.innerHTML = `
     ${statTilesPanel(report, result)}
     ${parseNotesPanel(result)}
+    ${result.usageComparison.capturedRequests ? '<section class="panel usage-review" id="usage-review" aria-labelledby="usage-heading"></section>' : ""}
     ${findingsPanel(result)}
     ${treemapPanel(report, result.parse.format)}
     ${segmentsTablePanel(report)}
@@ -468,6 +473,7 @@ function renderContent(): void {
   if (result.parse.requests.length > 1) wireSequencePanel(result);
   wireFindings(result);
   wireCalibrate(result);
+  if (result.usageComparison.capturedRequests) mountUsageReview($("#usage-review"), result, state.selectedRequest, usageView, selectRequest);
 }
 
 /** Unwrapped envelopes and parse warnings (skipped lines, non-request records, stored-response
@@ -722,6 +728,7 @@ function cachePanel(result: AnalysisResult): string {
   return `
     <section class="panel">
       <h2>Cache simulation <span class="count">${sim.provider} · ${esc(result.model.displayName)} · ${modelSourceNote(result)}</span></h2>
+      ${result.usageComparison.capturedRequests ? "" : '<p class="muted">No paired response usage. These cache reads and costs are simulated.</p>'}
       <div class="table-scroll" tabindex="0" role="group" aria-label="Table, scrolls sideways">
         <table class="cache">
           <thead><tr><th>request</th><th>read</th><th>write 5m</th><th>write 1h</th><th>uncached</th><th>cost</th></tr></thead>

@@ -274,7 +274,7 @@ test("findings remain separate and occurrence navigation returns focus after ins
   await expect(page.getByRole("tab", { selected: true })).toContainText("req 3");
   await expect(page.locator('[data-pair="1"]')).toHaveAttribute("aria-pressed", "true");
   await expect(occurrence).toBeFocused();
-  const duplicate = page.locator(".fhead").filter({ hasText: "same ~0.7k-token" });
+  const duplicate = page.locator(".fhead").filter({ hasText: /The same ~[\d.]+k-token content appears 3 times/ });
   await duplicate.click();
   await expect(page.getByRole("tab", { selected: true })).toContainText("req 4");
   await expect(page.getByRole("dialog")).toBeVisible();
