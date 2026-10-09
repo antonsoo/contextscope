@@ -275,6 +275,8 @@ export interface UsageComparison {
   /** Only requests with analyzable segments; skipped source records are tracked by ParseResult. */
   rows: UsageComparisonRow[];
   capturedRequests: number;
+  /** Paired usage exists, but the request has no analyzable prompt segments. */
+  uncomparedRequestIndices: number[];
   invalidRequestIndices: number[];
   input: UsageMetricComparison;
   cacheRead: UsageMetricComparison;

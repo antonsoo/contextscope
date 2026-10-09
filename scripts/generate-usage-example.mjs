@@ -18,7 +18,7 @@ const usage = [
 const replies = ["Check usage provenance next.", "Keep missing counters distinct from zero.", "Inspect counters that exceed input totals.", "Keep original line positions in the export.", "Summarize the review."];
 const records = usage.map((counts, index) => {
   if (index) messages.push({ role: "assistant", content: "I reviewed that part of the reader." }, { role: "user", content: replies[index - 1] });
-  return { capture_note: "Synthetic demonstration. Response counters are authored, not live API measurements.", request: { model: "gpt-5.2", messages: messages.map((message) => ({ ...message })) }, ...(counts ? { response: { usage: counts } } : {}) };
+  return { capture_note: "Synthetic demonstration. Response counters are authored, not live API measurements.", request: { model: "gpt-6-sol", messages: messages.map((message) => ({ ...message })) }, ...(counts ? { response: { usage: counts } } : {}) };
 });
 const content = records.map((record) => JSON.stringify(record)).join("\n") + "\n";
 writeFileSync(new URL("../examples/reported-cache-usage.jsonl", import.meta.url), content);

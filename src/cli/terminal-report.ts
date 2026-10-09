@@ -164,6 +164,11 @@ function reportedUsageSection(result: AnalysisResult, verbose: boolean): string[
   }
   if (rows.length < review.rows.length) out.push(dim(`  ${review.rows.length - rows.length} rows omitted. --verbose shows every row and source counter; --json and --html include all rows.`));
   else if (!verbose) out.push(dim("  --verbose shows the original counter paths; --json and --html retain all evidence."));
+  for (const index of review.uncomparedRequestIndices) {
+    const request = result.parse.requests[index]!;
+    out.push(yellow(`  req ${index + 1} / ${usageSourceLabel(request)}: paired usage retained, but no analyzable prompt; excluded from comparisons.`));
+    if (verbose) for (const counter of request.reportedUsage!.counters) out.push(dim(`    ${counter.path} = ${counter.status === "reported" ? fmtTokens(counter.value!) : counter.status}`));
+  }
   if (!verbose) {
     for (const index of review.invalidRequestIndices.slice(0, 5)) out.push(yellow(`  req ${index + 1}: ${result.parse.requests[index]!.reportedUsage!.issues.join(" ")}`));
     if (review.invalidRequestIndices.length > 5) out.push(yellow(`  ${review.invalidRequestIndices.length - 5} more invalid usage records; inspect the full export.`));

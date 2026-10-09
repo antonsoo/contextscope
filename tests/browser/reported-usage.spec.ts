@@ -122,3 +122,12 @@ test("reported-usage review and counter inspector remain accessible at desktop/m
     }
   }
 });
+
+test("a paired response survives an unanalyzable request without a fabricated zero estimate", async ({ page }) => {
+  await load(page, JSON.stringify({ ...captured(), request: { model: "gpt-6-sol", messages: [] } }));
+  await expect(page.locator("#usage-review")).toContainText("1 request(s) have paired usage but no analyzable prompt");
+  await expect(page.locator(".usage-rows tbody tr")).toHaveCount(0);
+  await expect(page.locator(".usage-summary")).toContainText("Input 42 reported / n/a estimated");
+  await expect(page.locator(".usage-counters")).toContainText("response.usage.prompt_tokens_details.cached_tokens");
+  await scan(page);
+});

@@ -3,16 +3,20 @@ import type { CacheSimulation, ParsedRequest, RequestTokenReport, UsageCompariso
 export function compareReportedUsage(requests: ParsedRequest[], reports: RequestTokenReport[], simulation: CacheSimulation): UsageComparison {
   const rows: UsageComparisonRow[] = [];
   const invalidRequestIndices: number[] = [];
+  const uncomparedRequestIndices: number[] = [];
   let capturedRequests = 0;
   const byReport = new Map(reports.map((report) => [report.requestIndex, report]));
   const byStep = new Map(simulation.actual.map((step) => [step.requestIndex, step]));
   for (const request of requests) {
-    if (!request.segments.length) continue;
-    const report = byReport.get(request.index)!;
-    const step = byStep.get(request.index)!;
     const usage = request.reportedUsage;
     if (usage) capturedRequests++;
     if (usage?.status === "invalid") invalidRequestIndices.push(request.index);
+    if (!request.segments.length) {
+      if (usage) uncomparedRequestIndices.push(request.index);
+      continue;
+    }
+    const report = byReport.get(request.index)!;
+    const step = byStep.get(request.index)!;
     const input = usage?.inputTokens ?? null;
     const read = usage?.cacheReadTokens ?? null;
     const estimated = simulation.provider === "openai" ? report.totals.openaiTokens : report.totals.claudeTokensEstimate;
@@ -49,7 +53,7 @@ export function compareReportedUsage(requests: ParsedRequest[], reports: Request
   };
   const readOutcomes: Record<UsageReadOutcome, number> = { both_zero: 0, both_positive: 0, simulated_hit_reported_zero: 0, reported_hit_simulated_zero: 0, unavailable: 0 };
   for (const row of rows) readOutcomes[row.readOutcome]++;
-  return { rows, capturedRequests, invalidRequestIndices, input: metric("reportedInputTokens", "estimatedInputTokens", "Input tokens"), cacheRead: metric("reportedReadTokens", "simulatedReadTokens", "Cache reads"), readOutcomes, issues };
+  return { rows, capturedRequests, uncomparedRequestIndices, invalidRequestIndices, input: metric("reportedInputTokens", "estimatedInputTokens", "Input tokens"), cacheRead: metric("reportedReadTokens", "simulatedReadTokens", "Cache reads"), readOutcomes, issues };
 }
 
 function outcome(read: number | null, simulated: number): UsageReadOutcome {

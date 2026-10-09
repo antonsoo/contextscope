@@ -31,6 +31,7 @@ export function mountUsageReview(root: HTMLElement, result: AnalysisResult, sele
       </tbody></table>
     </div>
     <p class="muted usage-note">Delta = estimate/simulation minus reported. n/a means unavailable. ${review.invalidRequestIndices.length} invalid usage record(s) excluded. Costs below remain simulated.</p>
+    ${review.uncomparedRequestIndices.length ? `<p class="usage-issue">${review.uncomparedRequestIndices.length} request(s) have paired usage but no analyzable prompt; excluded from comparisons. Select their request tabs to inspect the original counters.</p>` : ""}
     ${review.issues.map((issue) => `<p class="usage-issue">${esc(issue)}</p>`).join("")}
     <div class="usage-filters" role="group" aria-label="Filter usage comparisons">
       ${filters.map(([filter, label, count]) => `<button class="btn" type="button" data-usage-filter="${filter}" aria-pressed="${view.filter === filter}">${label} <span>${count}</span></button>`).join("")}
@@ -80,6 +81,7 @@ export function mountUsageReview(root: HTMLElement, result: AnalysisResult, sele
 function evidence(request: ParsedRequest, row: UsageComparisonRow | undefined): string {
   const usage = request.reportedUsage;
   return `<section class="usage-evidence" aria-labelledby="usage-evidence-heading"><h3 id="usage-evidence-heading">Request ${request.index + 1} <span class="muted">${usageSourceLabel(request)} / original counters</span></h3>
+    ${!request.segments.length ? '<p class="usage-issue">No analyzable prompt; excluded from comparisons.</p>' : ""}
     ${usage ? `<p class="muted">${usage.schema} · ${usage.status} · ${esc(usage.sources.join(", "))}</p>
     ${usage.issues.map((issue) => `<p class="usage-issue">${esc(issue)}</p>`).join("")}
     ${usage.notes.map((note) => `<p class="muted">${esc(note)}</p>`).join("")}

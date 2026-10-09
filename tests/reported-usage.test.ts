@@ -148,4 +148,18 @@ describe("usage reconciliation", () => {
     expect(result.usageComparison.issues).toHaveLength(1);
     expect(result.usageComparison.rows[0]!.reportedInputTokens).toBe(Number.MAX_SAFE_INTEGER);
   });
+
+  it("retains paired evidence when a request has no analyzable prompt, without treating its estimate as zero", () => {
+    const result = analyze(JSON.stringify(capture(chat, { model: "gpt-5.2", messages: [] })));
+    expect(result.parse.complete).toBe(false);
+    expect(result.usageComparison).toMatchObject({ capturedRequests: 1, rows: [], uncomparedRequestIndices: [0], input: { requestIndices: [], reportedTokens: null, simulatedTokens: null } });
+    const terminal = renderTerminalReport(result, { verbose: true });
+    expect(terminal).not.toContain("No paired response usage");
+    expect(terminal).toContain("no analyzable prompt; excluded from comparisons");
+    expect(terminal).toContain("response.usage.prompt_tokens = 1,200");
+    const html = renderHtmlReport(result);
+    expect(html).toContain('id="usage-0"');
+    expect(html).toContain("response.usage.prompt_tokens");
+    expect(html).not.toContain("No paired response usage");
+  });
 });
