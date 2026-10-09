@@ -8,6 +8,7 @@ import { simulateOpenAiCacheSequence } from "./cache-openai.js";
 import { findDuplicates } from "./duplicates.js";
 import { computeFindings } from "./findings.js";
 import { resolveModel } from "./pricing.js";
+import { compareReportedUsage } from "./usage-comparison.js";
 
 /** Runs the full contextscope pipeline: parse -> per-request token report -> prefix diffs
  * (actual and volatile-normalized) -> cache simulation (actual and optimized) -> duplicates -> findings. */
@@ -59,7 +60,8 @@ export function analyze(input: string, options: AnalysisOptions = {}): AnalysisR
   const findings = computeFindings(format, requests, prefixMatches, model.id, duplicates, cacheSimulation);
 
   const conversations = { count: threads.conversationCount, byRequest: threads.conversation };
-  return { parse, model, claudeTokenScale: scale, reports, prefixMatches, conversations, cacheSimulation, findings, duplicates };
+  const usageComparison = compareReportedUsage(requests, reports, cacheSimulation);
+  return { parse, model, claudeTokenScale: scale, reports, prefixMatches, conversations, cacheSimulation, usageComparison, findings, duplicates };
 }
 
 function validScale(scale: number | undefined): number {
@@ -89,6 +91,7 @@ export { ContextScopeParseError, parseInput } from "./parse.js";
 export { computeAllPrefixMatches, computePrefixMatch } from "./prefix.js";
 export { threadRequests, type Threads } from "./threads.js";
 export * from "./types.js";
+export { toJsonReport } from "./json-report.js";
 export {
   ANTHROPIC_MODELS,
   OPENAI_MODELS,

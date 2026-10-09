@@ -4,6 +4,7 @@ import { parseAnthropicRequest } from "./parse-anthropic.js";
 import { parseOpenAiRequest } from "./parse-openai.js";
 import { memoizedCounter } from "./token-counter.js";
 import { JsonIntegrityError, readJson } from "./read-json.js";
+import { readReportedUsage } from "./reported-usage.js";
 
 export class ContextScopeParseError extends Error {}
 
@@ -168,7 +169,8 @@ export function parseInput(input: string, formatOverride?: Provider): ParseResul
       complete = false;
       warnings.push({ requestIndex: i, ...(source.line ? { sourceLine: source.line } : {}), message: `Request ${i + 1} has ${providers[i]} provider evidence but the format override selects ${format}. Some content may not be analyzed; split the log by provider.` });
     }
-    return { ...parser(value, i, counter), source };
+    const reportedUsage = readReportedUsage(rawValues[i], records[i]!.envelope, format);
+    return { ...parser(value, i, counter), source, ...(reportedUsage ? { reportedUsage } : {}) };
   });
   if (format === "openai") warnings.push(...openAiStateWarnings(values));
   requests.forEach((request, i) => {

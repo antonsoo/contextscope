@@ -1,5 +1,6 @@
 import type { AnalysisResult, CalibrationResult, PrefixMatch, RequestTokenReport, SegmentCategory } from "../core/index.js";
 import { describeRequestIndices, groupFindings } from "../core/index.js";
+import { USAGE_OUTCOME_LABEL, usageDelta, usageNumber, usageSourceLabel } from "../core/usage-labels.js";
 import { bar, blue, bold, cyan, dim, fmtPct, fmtTokens, fmtUsd, fmtUsdRounded, green, magenta, red, severityColor, visible, wrapIndented, yellow } from "./ansi.js";
 
 const CATEGORY_LABEL: Record<SegmentCategory, string> = {
@@ -58,6 +59,8 @@ export function renderTerminalReport(result: AnalysisResult, options: TerminalRe
   }
   lines.push("");
 
+  lines.push(...reportedUsageSection(result, verbose), "");
+
   if (verbose) {
     for (const report of reports) lines.push(...breakdown(`Request ${report.requestIndex + 1}`, report), "");
   } else if (reports.length > 0) {
@@ -82,7 +85,7 @@ export function renderTerminalReport(result: AnalysisResult, options: TerminalRe
     const hidden = rows.length - CACHE_TABLE_HEAD - CACHE_TABLE_TAIL;
     lines.push(...rows.slice(0, CACHE_TABLE_HEAD), dim(`  ⋯ ${hidden} more requests (--verbose) ⋯`), ...rows.slice(-CACHE_TABLE_TAIL));
   }
-  lines.push(dim(`  total actual cost:    ${fmtUsd(cacheSimulation.totalActualCostUsd)}`));
+  lines.push(dim(`  total simulated cost: ${fmtUsd(cacheSimulation.totalActualCostUsd)}`));
   const optimizedNote =
     cacheSimulation.provider === "anthropic"
       ? "findings fixed, plus a breakpoint on each request's tail"
@@ -112,7 +115,7 @@ export function renderTerminalReport(result: AnalysisResult, options: TerminalRe
     }
     lines.push("");
   } else {
-    lines.push(green("No findings — this sequence caches cleanly."));
+    lines.push(dim("No supported cache or duplicate-content issues detected. This does not verify live cache hits."));
     lines.push("");
   }
 
@@ -130,6 +133,43 @@ export function renderTerminalReport(result: AnalysisResult, options: TerminalRe
   }
 
   return lines.join("\n").replace(/\n+$/, "");
+}
+
+function reportedUsageSection(result: AnalysisResult, verbose: boolean): string[] {
+  const review = result.usageComparison;
+  if (review.capturedRequests === 0) return [dim("No paired response usage. Cache reads and costs below are simulations.")];
+  const out = [bold("Reported usage vs simulation"), dim("  Each total compares the same covered requests. Delta = estimate/simulation - reported.")];
+  out.push(dim("  metric            coverage       reported    estimated/sim.         delta"));
+  for (const [label, metric] of [["input tokens", review.input], ["cache reads", review.cacheRead]] as const) {
+    out.push(`  ${label.padEnd(15)} ${`${metric.requestIndices.length}/${review.rows.length}`.padStart(8)} ${usageNumber(metric.reportedTokens).padStart(14)} ${usageNumber(metric.simulatedTokens).padStart(17)} ${usageDelta(metric.deltaTokens).padStart(13)}`);
+  }
+  const misses = review.readOutcomes.simulated_hit_reported_zero;
+  const unexpected = review.readOutcomes.reported_hit_simulated_zero;
+  out.push(`  ${misses} simulated hit / reported zero; ${unexpected} reported hit / simulated zero.`);
+  out.push(dim(`  ${review.readOutcomes.unavailable} read count unavailable; ${review.invalidRequestIndices.length} invalid usage record(s) excluded. n/a is not zero.`));
+  out.push(dim("  Counts do not establish a cause: cache routing, eviction, timing and hidden context are not captured."));
+  out.push(dim("  request / source          reported read    simulated read  comparison"));
+  const rows = verbose || review.rows.length <= CACHE_TABLE_FULL_ROWS ? review.rows : [...review.rows.slice(0, CACHE_TABLE_HEAD), ...review.rows.slice(-CACHE_TABLE_TAIL)];
+  for (const row of rows) {
+    const request = result.parse.requests[row.requestIndex]!;
+    const source = usageSourceLabel(request);
+    out.push(`  ${`req ${row.requestIndex + 1} / ${source}`.padEnd(25)} ${usageNumber(row.reportedReadTokens).padStart(12)} ${fmtTokens(row.simulatedReadTokens).padStart(17)}  ${USAGE_OUTCOME_LABEL[row.readOutcome]}`);
+    const usage = request.reportedUsage;
+    if (verbose && usage) {
+      out.push(dim(`    ${usage.schema} · ${usage.status}; total input ${usageNumber(usage.inputTokens)}, cache writes ${usageNumber(usage.cacheWriteTokens)}, output ${usageNumber(usage.outputTokens)}`));
+      for (const counter of usage.counters) out.push(dim(`    ${counter.path} = ${counter.status === "reported" ? fmtTokens(counter.value!) : counter.status}`));
+      for (const issue of usage.issues) out.push(yellow(`    ${issue}`));
+      for (const note of usage.notes) out.push(dim(`    ${note}`));
+    }
+  }
+  if (rows.length < review.rows.length) out.push(dim(`  ${review.rows.length - rows.length} rows omitted. --verbose shows every row and source counter; --json and --html include all rows.`));
+  else if (!verbose) out.push(dim("  --verbose shows the original counter paths; --json and --html retain all evidence."));
+  if (!verbose) {
+    for (const index of review.invalidRequestIndices.slice(0, 5)) out.push(yellow(`  req ${index + 1}: ${result.parse.requests[index]!.reportedUsage!.issues.join(" ")}`));
+    if (review.invalidRequestIndices.length > 5) out.push(yellow(`  ${review.invalidRequestIndices.length - 5} more invalid usage records; inspect the full export.`));
+  }
+  for (const issue of review.issues) out.push(yellow(`  ${issue}`));
+  return out;
 }
 
 function breakdown(title: string, report: RequestTokenReport): string[] {

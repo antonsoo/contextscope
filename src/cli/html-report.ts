@@ -1,5 +1,6 @@
-import type { AnalysisResult } from "../core/index.js";
-import { describeRequestIndices, groupFindings } from "../core/index.js";
+import type { AnalysisResult } from "../core/types.js";
+import { describeRequestIndices, groupFindings } from "../core/group-findings.js";
+import { renderUsageHtml } from "./usage-html.js";
 
 function esc(s: string): string {
   return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -39,7 +40,7 @@ export function renderHtmlReport(result: AnalysisResult): string {
         .join("");
       return `<section class="card"><h3>Request ${report.requestIndex + 1}</h3>
         <p class="muted">≈${report.totals.claudeTokensEstimate.toLocaleString("en-US")} Claude tokens · ${report.totals.openaiTokens.toLocaleString("en-US")} OpenAI tokens${report.percentOfContextWindow !== undefined ? ` · ${(report.percentOfContextWindow * 100).toFixed(1)}% of context window` : ""}</p>
-        <table><thead><tr><th>category</th><th>segments</th><th>≈Claude tok</th><th>OpenAI tok</th></tr></thead><tbody>${rows}</tbody></table>
+        <div class="table-scroll" tabindex="0" role="group" aria-label="Token categories for request ${report.requestIndex + 1}"><table><thead><tr><th>category</th><th>segments</th><th>≈Claude tok</th><th>OpenAI tok</th></tr></thead><tbody>${rows}</tbody></table></div>
       </section>`;
     })
     .join("\n");
@@ -78,7 +79,9 @@ export function renderHtmlReport(result: AnalysisResult): string {
   h1 { font-size: 20px; margin: 0 0 4px; }
   h2 { font-size: 16px; margin: 32px 0 0; }
   h3 { font-size: 15px; margin: 0 0 8px; }
-  .muted { color: #7c8494; font-size: 13px; }
+  .muted { color: #929aaa; font-size: 13px; }
+  a { color: #7fb6fa; }
+  @media (prefers-color-scheme: light) { .muted { color: #5c6270; } a { color: #1b5dad; } }
   .card { border: 1px solid rgba(127,127,127,.3); border-radius: 6px; padding: 16px; margin: 16px 0; }
   table { width: 100%; border-collapse: collapse; font-size: 13px; }
   th, td { text-align: left; padding: 4px 8px; border-bottom: 1px solid rgba(127,127,127,.2); }
@@ -90,30 +93,39 @@ export function renderHtmlReport(result: AnalysisResult): string {
   li.finding.info { border-color: #2a78d6; }
   .pill { text-transform: uppercase; font-size: 10px; letter-spacing: .05em; opacity: .7; }
   .savings { color: #1baf7a; font-weight: bold; }
+  @media (prefers-color-scheme: light) { .savings { color: #08764f; } }
+  .table-scroll { overflow-x: auto; margin: 12px 0; }
+  .table-scroll:focus-visible, summary:focus-visible, a:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+  .usage-evidence { border-top: 1px solid rgba(127,127,127,.3); padding: 12px 0; scroll-margin-top: 12px; }
+  .usage-evidence code { overflow-wrap: anywhere; }
+  .usage-evidence summary { cursor: pointer; }
+  .card > h2 { margin-top: 0; }
 </style></head>
-<body>
+<body><main>
   <h1>contextscope report</h1>
   <p class="muted">${esc(parse.format)} · ${parse.requests.length} request(s)${parse.autoDetected ? " · format auto-detected" : ""} · priced as ${esc(model.displayName)}${model.unrecognized ? ` ("${esc(model.unrecognized)}" is not in the pricing table)` : ""}${result.claudeTokenScale !== 1 ? ` · Claude estimates calibrated ×${result.claudeTokenScale.toFixed(3)}` : ""} · generated ${new Date().toISOString()}</p>
-  ${!parse.complete || parse.warnings.length > 0 ? `<section class="card"><h3>${parse.complete ? "Parse notes" : "Incomplete input"}</h3>${!parse.complete ? `<p>${parse.skippedRecords} of ${parse.sourceRecords} source records skipped or not analyzable. Counts and simulations cover retained content only; review all warnings.</p>` : ""}<ul>${parse.warnings.map((warning) => `<li>${esc(warning.message)}</li>`).join("")}</ul></section>` : ""}
+  ${!parse.complete || parse.warnings.length > 0 ? `<section class="card"><h2>${parse.complete ? "Parse notes" : "Incomplete input"}</h2>${!parse.complete ? `<p>${parse.skippedRecords} of ${parse.sourceRecords} source records skipped or not analyzable. Counts and simulations cover retained content only; review all warnings.</p>` : ""}<ul>${parse.warnings.map((warning) => `<li>${esc(warning.message)}</li>`).join("")}</ul></section>` : ""}
+
+  ${renderUsageHtml(result)}
 
   <section class="card">
-    <h3>Findings (${groups.length} issue${groups.length === 1 ? "" : "s"}${findings.length > groups.length ? ` from ${findings.length} findings` : ""})</h3>
+    <h2>Findings (${groups.length} issue${groups.length === 1 ? "" : "s"}${findings.length > groups.length ? ` from ${findings.length} findings` : ""})</h2>
     <ul class="findings">${findingRows || '<li class="muted">No supported cache or duplicate-content issues detected in the retained requests. This does not verify live cache hits.</li>'}</ul>
   </section>
 
   <section class="card">
-    <h3>Cache simulation (${esc(cacheSimulation.provider)})</h3>
-    <table><thead><tr><th>request</th><th>read</th><th>write (5m)</th><th>write (1h)</th><th>uncached</th><th>cost</th></tr></thead><tbody>${cacheRows}</tbody></table>
-    <p class="muted">total actual: ${cacheSimulation.totalActualCostUsd !== undefined ? `$${cacheSimulation.totalActualCostUsd.toFixed(4)}` : "n/a"} · total optimized: ${cacheSimulation.totalOptimizedCostUsd !== undefined ? `$${cacheSimulation.totalOptimizedCostUsd.toFixed(4)}` : "n/a"}</p>
+    <h2>Cache simulation (${esc(cacheSimulation.provider)})</h2>
+    <div class="table-scroll" tabindex="0" role="group" aria-label="Cache simulation"><table><thead><tr><th>request</th><th>read</th><th>write (5m)</th><th>write (1h)</th><th>uncached</th><th>cost</th></tr></thead><tbody>${cacheRows}</tbody></table></div>
+    <p class="muted">total simulated: ${cacheSimulation.totalActualCostUsd !== undefined ? `$${cacheSimulation.totalActualCostUsd.toFixed(4)}` : "n/a"} · optimized simulated: ${cacheSimulation.totalOptimizedCostUsd !== undefined ? `$${cacheSimulation.totalOptimizedCostUsd.toFixed(4)}` : "n/a"}</p>
     ${savings !== undefined && savings >= 0.00005 ? `<p class="savings">Applying the fixes above${cacheSimulation.provider === "anthropic" ? ", plus an automatic breakpoint on every request's tail," : ""} would save $${savings.toFixed(4)} on this sequence — ≈$${Math.round(savings * 1000).toLocaleString("en-US")} per 1,000 sessions shaped like this one.</p>` : ""}
   </section>
 
-  ${duplicates.length > 0 ? `<section class="card"><h3>Duplicate content</h3><ul>${duplicateRows}</ul></section>` : ""}
+  ${duplicates.length > 0 ? `<section class="card"><h2>Duplicate content</h2><ul>${duplicateRows}</ul></section>` : ""}
 
 
   <h2>Requests</h2>
   ${requestSections}
 
   <p class="muted">Generated by <a href="https://github.com/antonsoo/contextscope">contextscope</a>. Claude token counts are heuristic estimates (≈), not exact.</p>
-</body></html>`;
+</main></body></html>`;
 }

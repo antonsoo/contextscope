@@ -9,6 +9,24 @@ const request = JSON.stringify({ model: "gpt-6-sol", input: "hello" });
 const cli = fileURLToPath(new URL("../dist/cli/index.js", import.meta.url));
 
 describe("CLI evidence gates", () => {
+  it.each(["error", "warning", "info"])("invalid reported usage fails --fail-on %s, while missing usage stays unavailable", (severity) => {
+    const dir = mkdtempSync(join(tmpdir(), "contextscope-usage-"));
+    try {
+      const input = join(dir, "capture.json");
+      const json = join(dir, "report.json");
+      writeFileSync(input, JSON.stringify({ request: JSON.parse(request), response: { usage: { input_tokens: 20, input_tokens_details: { cached_tokens: 21 } } } }));
+      const result = spawnSync(process.execPath, [cli, "analyze", input, "--fail-on", severity, "--json", json], { encoding: "utf8" });
+      expect(result.status).toBe(2);
+      expect(result.stdout).toContain("1 invalid usage record(s) excluded");
+      expect(result.stdout).toContain("cache reads or writes exceed total input tokens");
+      expect(JSON.parse(readFileSync(json, "utf8")).usageComparison.invalidRequestIndices).toEqual([0]);
+      writeFileSync(input, JSON.stringify({ request: JSON.parse(request), response: { usage: { input_tokens: 20 } } }));
+      const missing = spawnSync(process.execPath, [cli, "analyze", input, "--fail-on", severity, "--json", json], { encoding: "utf8" });
+      expect(missing.status).toBe(0);
+      expect(JSON.parse(readFileSync(json, "utf8")).usageComparison.cacheRead.reportedTokens).toBeNull();
+    } finally { rmSync(dir, { recursive: true }); }
+  });
+
   it.each(["error", "warning", "info"])("an incomplete log fails --fail-on %s and exports coverage", (severity) => {
     const dir = mkdtempSync(join(tmpdir(), "contextscope-gate-"));
     try {

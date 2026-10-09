@@ -61,9 +61,11 @@ describe("Anthropic automatic caching (top-level cache_control)", () => {
     expect(automatic.cacheSimulation.totalActualCostUsd).toBeLessThan(0.1);
   });
 
-  it("reports the loop as caching cleanly", () => {
+  it("reports no structural findings without claiming observed cache hits", () => {
     const report = plain(renderTerminalReport(automatic, { verbose: false }));
-    expect(report).toContain("No findings");
+    expect(report).toContain("No supported cache or duplicate-content issues detected");
+    expect(report).toContain("No paired response usage");
+    expect(report).not.toContain("caches cleanly");
     expect(report).not.toContain("No cache_control breakpoint set");
   });
 

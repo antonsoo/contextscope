@@ -17,7 +17,8 @@ Usage:
 <file> is JSON, a JSON array, or JSONL of Anthropic Messages or OpenAI (Chat
 Completions or Responses) request bodies, optionally gzipped. Batch-API files
 and logs that wrap each body in "params", "body", "request" or "request_body"
-are unwrapped automatically.
+are unwrapped automatically. Response usage paired in the same record is compared
+with the simulation; missing counters stay unavailable.
 
 Options:
   --format <anthropic|openai>     Override auto-detected format
@@ -34,7 +35,8 @@ Options:
   -V, --version                   Show the version
 
 Exit status: 0 on success, 1 on bad arguments or unreadable input,
-2 when --fail-on is set and a finding meets it.
+2 when --fail-on is set and a finding meets it, input is incomplete, or reported
+usage is invalid. Missing optional usage does not fail the analysis.
 `;
 
 function fail(message: string, showHelp = false): never {
@@ -115,7 +117,7 @@ async function main(): Promise<void> {
 
   if (opts.failOn !== undefined) {
     const threshold = SEVERITY_RANK[opts.failOn];
-    if (!result.parse.complete || result.findings.some((f) => SEVERITY_RANK[f.severity] >= threshold)) process.exitCode = 2;
+    if (!result.parse.complete || result.usageComparison.invalidRequestIndices.length > 0 || result.usageComparison.issues.length > 0 || result.findings.some((f) => SEVERITY_RANK[f.severity] >= threshold)) process.exitCode = 2;
   }
 }
 

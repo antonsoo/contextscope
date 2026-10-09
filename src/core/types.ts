@@ -74,6 +74,8 @@ export interface ParsedRequest {
   raw: unknown;
   /** Original record position and, for JSONL, its physical line before any skips. */
   source?: { recordIndex: number; line?: number; envelope?: string };
+  /** Response usage paired with this request in the same source record; never inferred. */
+  reportedUsage?: ReportedUsage;
   /** Segments in the provider's own render/serialization order (tools -> system -> messages for Anthropic). */
   segments: Segment[];
 }
@@ -211,6 +213,7 @@ export interface CacheSimulation {
   provider: Provider;
   /** Canonical id of the model the simulation was priced with (see AnalysisResult.model for its source). */
   model: string;
+  /** Simulation of requests as captured; these are not provider-reported measurements. */
   actual: CacheSimStep[];
   /** The same sequence with the findings fixed: volatile values (timestamps, UUIDs, epochs)
    * normalized out of the prefix comparison, JSON keys and the tool list in a deterministic order,
@@ -219,6 +222,64 @@ export interface CacheSimulation {
   optimized: CacheSimStep[];
   totalActualCostUsd: number | undefined;
   totalOptimizedCostUsd: number | undefined;
+}
+
+export interface UsageCounter {
+  /** Path in the source record, including its response/usage envelope. */
+  path: string;
+  status: "reported" | "missing" | "invalid";
+  /** Only valid, nonnegative safe integers are retained. No arbitrary response content. */
+  value?: number;
+}
+
+export interface ReportedUsage {
+  sources: string[];
+  schema: "openai-chat" | "openai-responses" | "anthropic" | "unknown";
+  /** Valid does not mean complete: each absent counter stays null. Invalid records are excluded. */
+  status: "valid" | "unavailable" | "invalid";
+  inputTokens: number | null;
+  cacheReadTokens: number | null;
+  cacheWriteTokens: number | null;
+  outputTokens: number | null;
+  counters: UsageCounter[];
+  issues: string[];
+  /** Reasons a valid capture still cannot support a particular normalized measurement. */
+  notes: string[];
+}
+
+export type UsageReadOutcome = "both_zero" | "both_positive" | "simulated_hit_reported_zero" | "reported_hit_simulated_zero" | "unavailable";
+
+export interface UsageComparisonRow {
+  requestIndex: number;
+  estimatedInputTokens: number;
+  simulatedReadTokens: number;
+  reportedInputTokens: number | null;
+  reportedReadTokens: number | null;
+  reportedWriteTokens: number | null;
+  /** Estimate/simulation minus reported, over this request only. */
+  inputDeltaTokens: number | null;
+  readDeltaTokens: number | null;
+  readOutcome: UsageReadOutcome;
+}
+
+export interface UsageMetricComparison {
+  /** Both sides of this comparison contain exactly these requests. */
+  requestIndices: number[];
+  /** Null when there is no coverage or the aggregate exceeds the safe integer range. */
+  reportedTokens: number | null;
+  simulatedTokens: number | null;
+  deltaTokens: number | null;
+}
+
+export interface UsageComparison {
+  /** Only requests with analyzable segments; skipped source records are tracked by ParseResult. */
+  rows: UsageComparisonRow[];
+  capturedRequests: number;
+  invalidRequestIndices: number[];
+  input: UsageMetricComparison;
+  cacheRead: UsageMetricComparison;
+  readOutcomes: Record<UsageReadOutcome, number>;
+  issues: string[];
 }
 
 export interface DuplicateGroup {
@@ -255,6 +316,7 @@ export interface AnalysisResult {
   /** The conversations found in the input: for each request, the number of its conversation, counted from 0. */
   conversations: { count: number; byRequest: number[] };
   cacheSimulation: CacheSimulation;
+  usageComparison: UsageComparison;
   findings: Finding[];
   duplicates: DuplicateGroup[];
 }
