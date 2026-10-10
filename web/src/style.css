@@ -479,7 +479,7 @@ textarea:focus-visible,
 .usage-review .usage-rows { max-height: 450px; }
 .usage-rows table { min-width: 780px; }
 .usage-rows th:first-child { min-width: 115px; }
-.usage-filters, .usage-pagination, .usage-exports { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.usage-filters, .usage-pagination, .report-downloads { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
 .usage-filters .btn { text-align: left; }
 .usage-filters [aria-pressed="true"] { border-color: var(--cache-ink); box-shadow: inset 0 -2px var(--cache-ink); }
 .usage-filters span { font-family: var(--font-mono); margin-left: 5px; }
@@ -498,8 +498,7 @@ textarea:focus-visible,
 .usage-summary p { margin: 4px 0; }
 .usage-counters code { overflow-wrap: anywhere; font: inherit; }
 .usage-counters td { min-width: 90px; }
-.usage-exports { margin-top: 20px; }
-.usage-exports span { flex-basis: 100%; font-size: 12px; }
+.report-downloads span { flex-basis: 100%; font-size: 12px; }
 .usage-mobile { display: none; }
 @media (max-width: 680px) {
   .usage-mobile { display: block; font: 11px/1.5 var(--font-sans); color: var(--text-muted); }

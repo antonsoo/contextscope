@@ -88,7 +88,7 @@ export function renderTerminalReport(result: AnalysisResult, options: TerminalRe
   lines.push(dim(`  total simulated cost: ${fmtUsd(cacheSimulation.totalActualCostUsd)}`));
   const optimizedNote =
     cacheSimulation.provider === "anthropic"
-      ? "findings fixed, plus a breakpoint on each request's tail"
+      ? "findings fixed; tail breakpoint added, or last marker moved if four slots are used"
       : "findings fixed";
   lines.push(dim(`  total optimized cost: ${fmtUsd(cacheSimulation.totalOptimizedCostUsd)}  (${optimizedNote})`));
   if (cacheSimulation.totalActualCostUsd !== undefined && cacheSimulation.totalOptimizedCostUsd !== undefined) {

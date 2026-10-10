@@ -9,6 +9,7 @@ import { analyzeInWorker } from "./analysis.js";
 import type { Measurement } from "./analysis-protocol.js";
 import { INSPECTOR_TEXT_LIMIT, SEGMENT_PAGE_SIZE, TREEMAP_SEGMENT_LIMIT, treemapBlocks } from "./lib/segment-preview.js";
 import { mountUsageReview, type UsageView } from "./usage-review.js";
+import { mountReportExports } from "./report-exports.js";
 
 const usageView: UsageView = { filter: "all", page: 0 };
 
@@ -465,6 +466,7 @@ function renderContent(): void {
     ${result.parse.requests.length > 1 ? sequencePanel(result) : ""}
     ${cachePanel(result)}
     ${result.duplicates.length > 0 ? duplicatesPanel(result) : ""}
+    <section class="panel" id="report-exports" aria-labelledby="report-exports-heading"></section>
     ${calibratePanel(result)}
   `;
 
@@ -474,6 +476,7 @@ function renderContent(): void {
   wireFindings(result);
   wireCalibrate(result);
   if (result.usageComparison.capturedRequests) mountUsageReview($("#usage-review"), result, state.selectedRequest, usageView, selectRequest);
+  mountReportExports($("#report-exports"), result);
 }
 
 /** Unwrapped envelopes and parse warnings (skipped lines, non-request records, stored-response
@@ -746,7 +749,7 @@ function cachePanel(result: AnalysisResult): string {
         <div class="stat-tile"><div class="label">current simulated cost</div><div class="value">${fmtUsd(sim.totalActualCostUsd)}</div></div>
         <div class="stat-tile"><div class="label">optimized simulated cost</div><div class="value">${fmtUsd(sim.totalOptimizedCostUsd)}</div></div>
       </div>
-      ${savings !== undefined && savings >= 0.00005 ? `<div class="savings-banner">Fixing these findings${sim.provider === "anthropic" ? ", plus an automatic breakpoint on every request's tail," : ""} would save ${fmtUsd(savings)} (${((savings / sim.totalActualCostUsd!) * 100).toFixed(0)}%) on this sequence — ≈${fmtUsdRounded(savings * 1000)} per 1,000 sessions shaped like this one.</div>` : ""}
+      ${savings !== undefined && savings >= 0.00005 ? `<div class="savings-banner">Fixing these findings${sim.provider === "anthropic" ? ", with a breakpoint on each request's last cacheable block (moving the last marker if all four slots are used)," : ""} would save ${fmtUsd(savings)} (${((savings / sim.totalActualCostUsd!) * 100).toFixed(0)}%) on this sequence — ≈${fmtUsdRounded(savings * 1000)} per 1,000 sessions shaped like this one.</div>` : ""}
     </section>
   `;
 }

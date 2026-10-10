@@ -117,7 +117,7 @@ export function renderHtmlReport(result: AnalysisResult): string {
     <h2>Cache simulation (${esc(cacheSimulation.provider)})</h2>
     <div class="table-scroll" tabindex="0" role="group" aria-label="Cache simulation"><table><thead><tr><th>request</th><th>read</th><th>write (5m)</th><th>write (1h)</th><th>uncached</th><th>cost</th></tr></thead><tbody>${cacheRows}</tbody></table></div>
     <p class="muted">total simulated: ${cacheSimulation.totalActualCostUsd !== undefined ? `$${cacheSimulation.totalActualCostUsd.toFixed(4)}` : "n/a"} · optimized simulated: ${cacheSimulation.totalOptimizedCostUsd !== undefined ? `$${cacheSimulation.totalOptimizedCostUsd.toFixed(4)}` : "n/a"}</p>
-    ${savings !== undefined && savings >= 0.00005 ? `<p class="savings">Applying the fixes above${cacheSimulation.provider === "anthropic" ? ", plus an automatic breakpoint on every request's tail," : ""} would save $${savings.toFixed(4)} on this sequence — ≈$${Math.round(savings * 1000).toLocaleString("en-US")} per 1,000 sessions shaped like this one.</p>` : ""}
+    ${savings !== undefined && savings >= 0.00005 ? `<p class="savings">Applying the fixes above${cacheSimulation.provider === "anthropic" ? ", with a breakpoint on each request's last cacheable block (moving the last marker if all four slots are used)," : ""} would save $${savings.toFixed(4)} on this sequence — ≈$${Math.round(savings * 1000).toLocaleString("en-US")} per 1,000 sessions shaped like this one.</p>` : ""}
   </section>
 
   ${duplicates.length > 0 ? `<section class="card"><h2>Duplicate content</h2><ul>${duplicateRows}</ul></section>` : ""}

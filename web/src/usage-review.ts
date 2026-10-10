@@ -1,8 +1,6 @@
 import type { AnalysisResult, ParsedRequest, UsageComparisonRow, UsageReadOutcome } from "@core/types.js";
 import { USAGE_OUTCOME_LABEL, usageDelta, usageNumber, usageSourceLabel } from "@core/usage-labels.js";
-import { toJsonReport } from "@core/json-report.js";
-import { renderHtmlReport } from "../../src/cli/html-report.js";
-import { $, $all, esc } from "./lib/dom.js";
+import { $all, esc } from "./lib/dom.js";
 
 type Filter = "all" | "simulated_hit_reported_zero" | "reported_hit_simulated_zero" | "unavailable";
 export interface UsageView { filter: Filter; page: number }
@@ -46,8 +44,6 @@ export function mountUsageReview(root: HTMLElement, result: AnalysisResult, sele
     ${pages > 1 ? `<div class="usage-pagination"><button class="btn" id="usage-previous" type="button" ${view.page === 0 ? "disabled" : ""}>Previous requests</button><span>Page ${view.page + 1} of ${pages}</span><button class="btn" id="usage-next" type="button" ${view.page === pages - 1 ? "disabled" : ""}>Next requests</button></div>` : ""}
     <p class="muted usage-note">A discrepancy does not identify its cause: routing, eviction, timing and hidden context are not captured. Reuse on both sides does not mean the token counts agree.</p>
     ${evidence(result.parse.requests[selected]!, review.rows.find((row) => row.requestIndex === selected))}
-    <div class="usage-exports"><button class="btn" id="usage-json" type="button">Download full JSON report</button><button class="btn" id="usage-html" type="button">Download offline HTML report</button><span class="muted">All requests and counter paths; prompt and response text omitted.</span></div>
-    <p class="usage-issue" id="usage-export-error" role="alert" hidden></p>
   `;
   const redraw = (focus: string): void => {
     mountUsageReview(root, result, selected, view, selectRequest);
@@ -65,17 +61,6 @@ export function mountUsageReview(root: HTMLElement, result: AnalysisResult, sele
   });
   root.querySelector("#usage-previous")?.addEventListener("click", () => { view.page--; redraw(view.page === 0 ? "#usage-next" : "#usage-previous"); });
   root.querySelector("#usage-next")?.addEventListener("click", () => { view.page++; redraw(view.page === pages - 1 ? "#usage-previous" : "#usage-next"); });
-  for (const format of ["json", "html"] as const) $("#usage-" + format, root).addEventListener("click", () => {
-    const error = $("#usage-export-error", root);
-    error.hidden = true;
-    try {
-      const content = format === "json" ? toJsonReport(result) : renderHtmlReport(result);
-      download(content, `contextscope-report.${format}`, format === "json" ? "application/json" : "text/html");
-    } catch {
-      error.textContent = "Could not build the report. Try a smaller capture, or export it with the CLI.";
-      error.hidden = false;
-    }
-  });
 }
 
 function evidence(request: ParsedRequest, row: UsageComparisonRow | undefined): string {
@@ -92,15 +77,4 @@ function evidence(request: ParsedRequest, row: UsageComparisonRow | undefined): 
 
 function disagrees(outcome: UsageReadOutcome): boolean {
   return outcome === "simulated_hit_reported_zero" || outcome === "reported_hit_simulated_zero";
-}
-
-function download(content: string, filename: string, type: string): void {
-  const url = URL.createObjectURL(new Blob([content], { type }));
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = filename;
-  document.body.append(link);
-  link.click();
-  link.remove();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
