@@ -26,6 +26,15 @@ of public SWE-bench agent runs; see `studies/real-trajectories/`.
 
 ### Fixed
 
+- Simulate modern OpenAI implicit/explicit cache endpoints, four write slots,
+  and 30-minute write pricing. Explicit mode without markers no longer invents
+  discounted reads. Cache keys and renderer settings isolate entries; multipart
+  tool-output markers preserve call routing. Show writes in CLI/browser/HTML,
+  diagnose shared text without a reusable boundary, and remove obsolete
+  unsupported-mode warnings. Apply GPT-6 long-context input/cache prices above
+  272,000 modeled input tokens; retain the documented legacy approximation for
+  the newly recognized GPT-5.1/5.2 historical models.
+
 - Resolve prices, cache minimums, context windows and model-specific advice for
   each request in mixed-model logs. Expose the resolution in `reports[i].model`
   and human reports, including minority unknown-model fallbacks. Browser model

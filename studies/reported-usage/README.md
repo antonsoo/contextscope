@@ -38,9 +38,10 @@ Responses history. It does not claim to verify live cache rules. The captured
 values come through the original providers' client/gateway stacks, so the
 analysis retains those stacks' limitations.
 
-These older dated OpenAI model IDs are not in the current pricing table, so the
-existing simulator explicitly reports its fallback model. This study checks
-input/read counts and reports no measured cost or historical pricing claim.
+At the time of this study, these older dated OpenAI model IDs used an explicitly
+reported pricing fallback. The later [cache-mode work](../openai-cache/README.md)
+adds GPT-5.1/5.2 prices and rechecks all 2,205 requests without changing these
+input/read comparisons. Neither study reports a measured bill.
 
 ## Results
 

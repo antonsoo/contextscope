@@ -152,22 +152,27 @@ describe("OpenAI requests whose state is elsewhere", () => {
     expect(one.warnings[0]!.message).toMatch(/^Request 1 continues a stored response or conversation/);
   });
 
-  it("says that hand-placed cache breakpoints are not simulated", () => {
+  it("simulates hand-placed cache breakpoints without the obsolete unsupported warning", () => {
     const withBreakpoint = {
-      model: "gpt-5.6",
+      model: "gpt-6-sol",
       prompt_cache_options: { mode: "explicit" },
       input: [{ role: "user", content: [{ type: "input_text", text: "long shared context", prompt_cache_breakpoint: { mode: "explicit" } }] }],
     };
-    const result = parseInput(JSON.stringify([withBreakpoint, withBreakpoint]));
-    expect(result.warnings.map((w) => w.message)).toEqual([
-      expect.stringMatching(/^Requests 1–2 place cache breakpoints by hand \(prompt_cache_options, prompt_cache_breakpoint\)\. The simulation models OpenAI's automatic prefix caching only/),
-    ]);
+    const result = analyze(JSON.stringify([withBreakpoint, withBreakpoint]));
+    expect(result.parse.warnings).toEqual([]);
+    expect(result.cacheSimulation.actual[1]!.cacheMode).toBe("explicit");
   });
 
   it("says that explicit mode with no breakpoint caches nothing", () => {
-    const request = { model: "gpt-5.6", prompt_cache_options: { mode: "explicit" }, input: "hello" };
-    const result = parseInput(JSON.stringify(request));
-    expect(result.warnings[0]!.message).toMatch(/^Request 1 sets prompt_cache_options\.mode to "explicit" and marks no block with prompt_cache_breakpoint: OpenAI then caches nothing of it/);
+    const request = { model: "gpt-6-sol", prompt_cache_options: { mode: "explicit" }, input: "hello" };
+    const result = analyze(JSON.stringify(request));
+    expect(result.findings.find((f) => f.kind === "openai_cache_disabled")?.detail).toContain("disables cache reads and writes");
+  });
+
+  it("reuses marked multipart SDK tool outputs without crossing call identities", () => {
+    const result = analyze(fixture("openai-cache-tool-output"));
+    expect(result.cacheSimulation.actual.map((s) => s.readTokens)).toEqual([0, 2423, 0]); // 22 call + 2,401 reference tokens
+    expect(result.parse.requests[0]!.segments.find((s) => s.path === "input[1].output[0]")?.promptCacheBreakpoint).toBe(true);
   });
 
   it("says nothing about an ordinary request", () => {

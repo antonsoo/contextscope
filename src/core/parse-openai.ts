@@ -32,6 +32,7 @@ function makeSegment(params: SegmentParams, counter: TokenCounter): Segment {
     charLength: text.length,
     openaiTokens: counts.openai,
     claudeTokensEstimate: counts.claude,
+    ...(isRecord(params.raw) && isRecord(params.raw["prompt_cache_breakpoint"]) && params.raw["prompt_cache_breakpoint"].mode === "explicit" ? { promptCacheBreakpoint: true as const } : {}),
   };
 }
 
@@ -228,7 +229,13 @@ function parseResponsesBody(obj: Record<string, unknown>, seg: (params: SegmentP
         break;
       case "function_call_output": {
         const output = item["output"];
-        segments.push(seg({ id: path, category: "tool_result", label: `item ${ii + 1} function_call_output`, path, text: typeof output === "string" ? output : blockJson(output), raw: item }));
+        if (Array.isArray(output) && output.length > 0) {
+          output.forEach((part, pi) => {
+            const partPath = `${path}.output[${pi}]`;
+            segments.push(seg({ id: partPath, category: "tool_result", label: `item ${ii + 1} function_call_output part ${pi + 1}`, path: partPath,
+              text: isRecord(part) && typeof part.text === "string" ? part.text : blockJson(part), raw: part }));
+          });
+        } else segments.push(seg({ id: path, category: "tool_result", label: `item ${ii + 1} function_call_output`, path, text: typeof output === "string" ? output : blockJson(output), raw: item }));
         break;
       }
       case "reasoning":

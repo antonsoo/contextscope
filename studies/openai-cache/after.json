@@ -1,0 +1,116 @@
+{
+  "kind": "synthetic SDK-serialized requests; no provider measurements",
+  "rows": [
+    {
+      "request": 1,
+      "key": "disabled",
+      "mode": "explicit",
+      "totalTokens": 2404,
+      "requestIndex": 0,
+      "readTokens": 0,
+      "writeTokens5m": 0,
+      "writeTokens1h": 0,
+      "writeTokens30m": 0,
+      "cacheMode": "explicit",
+      "uncachedTokens": 2404,
+      "costUsd": 0.004808
+    },
+    {
+      "request": 2,
+      "key": "disabled",
+      "mode": "explicit",
+      "totalTokens": 2404,
+      "requestIndex": 1,
+      "readTokens": 0,
+      "writeTokens5m": 0,
+      "writeTokens1h": 0,
+      "writeTokens30m": 0,
+      "cacheMode": "explicit",
+      "uncachedTokens": 2404,
+      "costUsd": 0.004808
+    },
+    {
+      "request": 3,
+      "key": "implicit",
+      "mode": "implicit",
+      "totalTokens": 2404,
+      "requestIndex": 2,
+      "readTokens": 0,
+      "writeTokens5m": 0,
+      "writeTokens1h": 0,
+      "writeTokens30m": 2404,
+      "cacheMode": "implicit",
+      "uncachedTokens": 0,
+      "costUsd": 0.00601
+    },
+    {
+      "request": 4,
+      "key": "implicit",
+      "mode": "implicit",
+      "totalTokens": 2404,
+      "requestIndex": 3,
+      "readTokens": 0,
+      "writeTokens5m": 0,
+      "writeTokens1h": 0,
+      "writeTokens30m": 2404,
+      "cacheMode": "implicit",
+      "uncachedTokens": 0,
+      "costUsd": 0.00601
+    },
+    {
+      "request": 5,
+      "key": "marked",
+      "mode": "explicit",
+      "totalTokens": 2404,
+      "requestIndex": 4,
+      "readTokens": 0,
+      "writeTokens5m": 0,
+      "writeTokens1h": 0,
+      "writeTokens30m": 2401,
+      "cacheMode": "explicit",
+      "uncachedTokens": 3,
+      "costUsd": 0.0060085
+    },
+    {
+      "request": 6,
+      "key": "marked",
+      "mode": "explicit",
+      "totalTokens": 2404,
+      "requestIndex": 5,
+      "readTokens": 2401,
+      "writeTokens5m": 0,
+      "writeTokens1h": 0,
+      "writeTokens30m": 0,
+      "cacheMode": "explicit",
+      "uncachedTokens": 3,
+      "costUsd": 0.00048620000000000005
+    }
+  ],
+  "totalCostUsd": 0.0281307,
+  "findings": [
+    {
+      "kind": "openai_cache_disabled",
+      "severity": "info",
+      "requestIndex": 0,
+      "title": "Explicit caching has no breakpoints",
+      "detail": "Request 1 selects explicit-only caching but marks no content blocks. This disables cache reads and writes, even when the prompt repeats. If caching is intended, add prompt_cache_breakpoint: {\"mode\":\"explicit\"} after the reusable content in both the earlier and later request.",
+      "segmentIds": []
+    },
+    {
+      "kind": "openai_cache_disabled",
+      "severity": "info",
+      "requestIndex": 1,
+      "title": "Explicit caching has no breakpoints",
+      "detail": "Request 2 selects explicit-only caching but marks no content blocks. This disables cache reads and writes, even when the prompt repeats. If caching is intended, add prompt_cache_breakpoint: {\"mode\":\"explicit\"} after the reusable content in both the earlier and later request.",
+      "segmentIds": []
+    },
+    {
+      "kind": "openai_cache_boundary",
+      "severity": "warning",
+      "requestIndex": 3,
+      "title": "Shared text has no reusable cache boundary",
+      "detail": "Request 4 shares 2,401 modeled prefix tokens with request 3, but none of its eligible lookup boundaries finds a cached endpoint. Matching text alone is insufficient. Keep earlier message endings intact, or mark the end of the stable content explicitly in both requests. An explicit-only request checks its explicit boundaries; implicit lookup also has a message lookback limit.",
+      "segmentIds": []
+    }
+  ]
+}

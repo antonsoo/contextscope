@@ -5,7 +5,7 @@ import { prefixPaths } from "../src/core/threads.js";
 import { simulateOpenAiCacheSequence } from "../src/core/cache-openai.js";
 import { findOpenAiModel } from "../src/core/pricing.js";
 
-const MODEL = "gpt-6-sol";
+const MODEL = "gpt-5.2";
 const LONG_STABLE_SYSTEM = "You are a meticulous, detail-oriented coding assistant. ".repeat(120);
 
 function req(userText: string) {
@@ -18,7 +18,7 @@ function req(userText: string) {
   };
 }
 
-describe("simulateOpenAiCacheSequence", () => {
+describe("legacy OpenAI cache approximation", () => {
   it("caches nothing on the first request (cold cache)", () => {
     const requests = [parseOpenAiRequest(req("turn 1"), 0)];
     const steps = simulateOpenAiCacheSequence(requests, prefixPaths(requests, false), MODEL);

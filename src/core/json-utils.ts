@@ -21,27 +21,28 @@ export function asText(value: unknown): string {
   return typeof value === "string" ? value : blockJson(value);
 }
 
-function withoutCacheControl(value: unknown): unknown {
-  if (value === null || typeof value !== "object" || Array.isArray(value) || !("cache_control" in value)) return value;
+function withoutCacheMetadata(value: unknown): unknown {
+  if (value === null || typeof value !== "object" || Array.isArray(value) || (!("cache_control" in value) && !("prompt_cache_breakpoint" in value))) return value;
   const rest: Record<string, unknown> = { ...(value as Record<string, unknown>) };
   delete rest["cache_control"];
+  delete rest["prompt_cache_breakpoint"];
   return rest;
 }
 
 /**
  * A content block or tool definition as the API receives it - key order preserved, because the
  * prompt is rendered in that order and a reordered key breaks the cached prefix - minus its
- * `cache_control` marker. A rolling breakpoint moves every turn; the marker isn't part of the
+ * `cache_control` or `prompt_cache_breakpoint` marker. A rolling breakpoint moves every turn; the marker isn't part of the
  * cached content, so it must not make two otherwise identical blocks differ.
  */
 export function blockJson(value: unknown): string {
   // JSON.stringify(undefined) is undefined, not a string.
-  return JSON.stringify(withoutCacheControl(value)) ?? "null";
+  return JSON.stringify(withoutCacheMetadata(value)) ?? "null";
 }
 
 /** blockJson with sorted keys: the same block if it were serialized deterministically. */
 export function canonicalBlockJson(value: unknown): string {
-  return canonicalJson(withoutCacheControl(value));
+  return canonicalJson(withoutCacheMetadata(value));
 }
 
 // Routing, speaker/type identity and signed thinking data are prompt structure.
@@ -61,7 +62,7 @@ function normalizeStrings(value: unknown): unknown {
 
 /** Optimized content: sorted keys and volatile text, with routing identities preserved. */
 export function normalizedBlockJson(value: unknown): string {
-  return canonicalJson(normalizeStrings(withoutCacheControl(value)));
+  return canonicalJson(normalizeStrings(withoutCacheMetadata(value)));
 }
 
 function sortKeysDeep(value: unknown): unknown {

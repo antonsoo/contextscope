@@ -10,6 +10,7 @@ function summarize(segment: Segment): Omit<Segment, "text" | "raw" | "prefix"> {
     openaiTokens: segment.openaiTokens,
     claudeTokensEstimate: segment.claudeTokensEstimate,
     ...(segment.cacheControl ? { cacheControl: segment.cacheControl } : {}),
+    ...(segment.promptCacheBreakpoint ? { promptCacheBreakpoint: true } : {}),
     charLength: segment.charLength,
   };
 }

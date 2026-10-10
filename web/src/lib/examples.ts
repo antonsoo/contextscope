@@ -20,6 +20,13 @@ async function loadAsset(filename: string, signal: AbortSignal): Promise<string>
 
 export const BUILT_IN_EXAMPLES: BuiltInExample[] = [
   {
+    id: "openai-cache-modes",
+    label: "OpenAI cache modes: disabled, implicit, explicit",
+    description: "Six synthetic requests serialized by the OpenAI SDK. Compare no breakpoints, a changing implicit endpoint, and an explicit stable prefix. Transport was mocked; no live usage or bills.",
+    approxSizeMb: 0.08,
+    load: (signal) => loadAsset("openai-cache-modes.jsonl.gz", signal),
+  },
+  {
     id: "mixed-models",
     label: "Model routing: same prompt, different cache minimums",
     description: "Synthetic Sonnet 4.5 / Opus 4.5 log. The same short prefix caches on Sonnet and stays uncached on Opus. Each request uses its own model's rules and prices; no live measurements.",

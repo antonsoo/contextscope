@@ -62,6 +62,8 @@ export interface Segment {
   /** Estimated token count for Claude models - see tokenize-claude.ts. Always "≈", even when scaled by calibration. */
   claudeTokensEstimate: number;
   cacheControl?: CacheControl;
+  /** Explicit OpenAI content-block boundary; TTL comes from request options (30m). */
+  promptCacheBreakpoint?: true;
   charLength: number;
 }
 
@@ -131,6 +133,8 @@ export interface RequestTokenReport {
 export type FindingSeverity = "info" | "warning" | "error";
 
 export type FindingKind =
+  | "openai_cache_disabled"
+  | "openai_cache_boundary"
   | "volatile_prefix"
   | "tools_reordered"
   | "tool_schema_key_order"
@@ -194,6 +198,10 @@ export interface CacheSimStep {
   /** Tokens newly written to cache this request, split by TTL. */
   writeTokens5m: number;
   writeTokens1h: number;
+  /** Modern OpenAI cache writes. Absent for Anthropic and legacy OpenAI simulation. */
+  writeTokens30m?: number;
+  /** OpenAI caching regime actually modeled for this row. */
+  cacheMode?: "legacy" | "implicit" | "explicit";
   /** Tokens that were neither read nor written (no cache_control covers them, or below minimum). */
   uncachedTokens: number;
   /** Estimated cost in USD for the input side of this request, using the resolved pricing. */
@@ -218,7 +226,7 @@ export interface CacheSimulation {
   model: string;
   /** Simulation of requests as captured; these are not provider-reported measurements. */
   actual: CacheSimStep[];
-  /** The same sequence with the findings fixed: volatile values (timestamps, UUIDs, epochs)
+  /** The same sequence with content normalized: volatile values (timestamps, UUIDs, epochs)
    * normalized out of the prefix comparison, JSON keys and the tool list in a deterministic order,
    * and - Anthropic only - a cache_control breakpoint on the last cacheable block. When all four
    * slots are used, the last existing marker moves there, preserving its TTL. */

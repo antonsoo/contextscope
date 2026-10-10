@@ -63,7 +63,7 @@ describe("per-request model accounting", () => {
     expect(result.findings.filter((f) => f.kind === "model_switch").every((f) => !f.detail.includes("undefined"))).toBe(true);
   });
 
-  it("prices each OpenAI row independently within the documented legacy simulation", () => {
+  it("prices each OpenAI row independently", () => {
     const models = ["gpt-6-sol", "gpt-6-luna", "gpt-6-astra", "gpt-6-sol", "gpt-6-luna", "gpt-6-astra"];
     const requests = models.map((model) => ({ model, messages: [{ role: "user", content: reference }] }));
     const result = analyze(JSON.stringify(requests));

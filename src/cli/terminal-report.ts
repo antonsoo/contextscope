@@ -44,6 +44,7 @@ export function renderTerminalReport(result: AnalysisResult, options: TerminalRe
   const n = parse.requests.length;
 
   const mixedModels = modelGroups(result).length > 1;
+  const openai = cacheSimulation.provider === "openai";
   const modelNote = model.source === "option" ? "set with --model" : "per-request metadata";
   const conversationNote = result.conversations.count > 1 ? ` in ${result.conversations.count} conversations` : "";
   lines.push(bold(`contextscope — ${parse.format} · ${n} request${n === 1 ? "" : "s"}${conversationNote}${parse.autoDetected ? " (auto-detected)" : ""}`));
@@ -76,10 +77,10 @@ export function renderTerminalReport(result: AnalysisResult, options: TerminalRe
   if (prefixMatches.length > 0) lines.push(...prefixSection(result, verbose), "");
 
   lines.push(bold(`Cache simulation (${cacheSimulation.provider}, ${visible(modelSummary(result))})`));
-  lines.push(dim(`  request     read      write(5m)  write(1h)  uncached    cost${mixedModels ? "  model" : ""}`));
+  lines.push(dim(`  ${"request".padEnd(10)} ${"read".padStart(8)}  ${openai ? "write(30m)" : `${"write(5m)".padStart(8)}  ${"write(1h)".padStart(8)}`}  ${"uncached".padStart(9)}  ${"cost".padStart(9)}${openai ? "  mode" : ""}${mixedModels ? "  model" : ""}`));
   const rows = cacheSimulation.actual.map(
     (step, i) =>
-      `  req ${String(i + 1).padEnd(6)} ${fmtTokens(step.readTokens).padStart(8)}  ${fmtTokens(step.writeTokens5m).padStart(8)}  ${fmtTokens(step.writeTokens1h).padStart(8)}  ${fmtTokens(step.uncachedTokens).padStart(9)}  ${fmtUsd(step.costUsd).padStart(9)}${mixedModels ? `  ${visible(modelLabel(reports[i]!.model))}` : ""}`,
+      `  req ${String(i + 1).padEnd(6)} ${fmtTokens(step.readTokens).padStart(8)}  ${openai ? fmtTokens(step.writeTokens30m ?? 0).padStart(10) : `${fmtTokens(step.writeTokens5m).padStart(8)}  ${fmtTokens(step.writeTokens1h).padStart(8)}`}  ${fmtTokens(step.uncachedTokens).padStart(9)}  ${fmtUsd(step.costUsd).padStart(9)}${openai ? `  ${(step.cacheMode ?? "legacy").padEnd(8)}` : ""}${mixedModels ? `  ${visible(modelLabel(reports[i]!.model))}` : ""}`,
   );
   if (verbose || rows.length <= CACHE_TABLE_FULL_ROWS) {
     lines.push(...rows);
@@ -90,8 +91,8 @@ export function renderTerminalReport(result: AnalysisResult, options: TerminalRe
   lines.push(dim(`  total simulated cost: ${fmtUsd(cacheSimulation.totalActualCostUsd)}`));
   const optimizedNote =
     cacheSimulation.provider === "anthropic"
-      ? "findings fixed; tail breakpoint added, or last marker moved if four slots are used"
-      : "findings fixed";
+      ? "content normalized; tail breakpoint added, or last marker moved if four slots are used"
+      : "content normalized; OpenAI markers unchanged";
   lines.push(dim(`  total optimized cost: ${fmtUsd(cacheSimulation.totalOptimizedCostUsd)}  (${optimizedNote})`));
   if (cacheSimulation.totalActualCostUsd !== undefined && cacheSimulation.totalOptimizedCostUsd !== undefined) {
     const savings = cacheSimulation.totalActualCostUsd - cacheSimulation.totalOptimizedCostUsd;

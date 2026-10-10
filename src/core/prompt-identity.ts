@@ -47,6 +47,15 @@ export function attachPromptIdentity(request: Record<string, unknown>, segments:
       const index = Number(responsePath[1]);
       const item = request["input"][index];
       const owner = `input:${index}`;
+      const outputPart = /^\.output\[(\d+)\]$/.exec(responsePath[2]!);
+      if (isRecord(item) && outputPart && Array.isArray(item["output"])) {
+        segment.prefix = {
+          context: { api: "responses", header: Object.fromEntries(Object.entries(item).filter(([key]) => key !== "output")), startsMessage: owner !== previousMessage },
+          content: item["output"][Number(outputPart[1])],
+        };
+        previousMessage = owner;
+        continue;
+      }
       const message = isRecord(item) && (item["type"] === undefined || item["type"] === "message");
       const context = { api: "responses", header: message ? header(item) : null, startsMessage: owner !== previousMessage };
       previousMessage = owner;

@@ -110,7 +110,7 @@ it("fuzz: logs of several conversations, shuffled together and mutated, keep eve
         check(scenario.length === n, "one cache step per request");
         scenario.forEach((step, i) => {
           const total = result.reports[i]!.totals;
-          const billed = step.readTokens + step.writeTokens5m + step.writeTokens1h + step.uncachedTokens;
+          const billed = step.readTokens + step.writeTokens5m + step.writeTokens1h + (step.writeTokens30m ?? 0) + step.uncachedTokens;
           check(step.readTokens >= 0 && step.uncachedTokens >= 0 && step.writeTokens5m >= 0 && step.writeTokens1h >= 0, `negative tokens at ${i}`);
           check(billed === (result.parse.format === "anthropic" ? total.claudeTokensEstimate : total.openaiTokens), `request ${i}: ${billed} tokens billed`);
           check(step.costUsd === undefined || (Number.isFinite(step.costUsd) && step.costUsd >= 0), `cost at ${i}`);

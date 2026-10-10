@@ -14,9 +14,9 @@
  * OpenAI figures were fetched on 2026-09-24 from
  * https://developers.openai.com/api/docs/pricing (model pricing) and
  * https://developers.openai.com/api/docs/guides/prompt-caching (caching
- * rules). OpenAI's newer explicit-breakpoint / 30-minute-TTL caching mode
- * (GPT-5.6 and later) is not simulated here - only the older implicit,
- * round-to-128-tokens mode is (see cache-openai.ts).
+ * rules). Cache regimes were checked again on 2026-10-09: current models
+ * use exact modeled boundaries and 30-minute write charges; GPT-5.1/5.2
+ * retain the documented legacy approximation (see cache-openai.ts).
  */
 
 import type { ResolvedModel, ModelSource } from "./types.js";
@@ -42,6 +42,8 @@ export interface OpenAiModelInfo {
   inputPricePerMTok: number;
   outputPricePerMTok: number;
   cachedInputPricePerMTok: number;
+  cacheStyle: "legacy" | "breakpoints";
+  longContextInput?: { aboveTokens: number; multiplier: number };
 }
 
 // Cache write multipliers are the same across all current Anthropic models.
@@ -70,12 +72,16 @@ export const ANTHROPIC_MODELS: readonly AnthropicModelInfo[] = [
   { id: "claude-haiku-4-5", displayName: "Claude Haiku 4.5", contextWindow: 200_000, inputPricePerMTok: 1, outputPricePerMTok: 5, cacheReadMultiplier: 0.1, minCacheableTokens: 4096, midConversationSystem: false },
 ];
 
-// GPT-6 Astra / Sol / Luna: fetched from https://developers.openai.com/api/docs/pricing on 2026-09-24.
-// Context/output windows: https://developers.openai.com/api/docs/models, same date.
+// GPT-6 Astra / Sol / Luna: prices, context windows and long-context multiplier checked
+// against https://developers.openai.com/api/docs/models/gpt-6-{astra,sol,luna} on 2026-10-09.
 export const OPENAI_MODELS: readonly OpenAiModelInfo[] = [
-  { id: "gpt-6-astra", displayName: "GPT-6 Astra", contextWindow: 1_050_000, inputPricePerMTok: 10, outputPricePerMTok: 50, cachedInputPricePerMTok: 1 },
-  { id: "gpt-6-sol", displayName: "GPT-6 Sol", contextWindow: 1_050_000, inputPricePerMTok: 2, outputPricePerMTok: 10, cachedInputPricePerMTok: 0.2 },
-  { id: "gpt-6-luna", displayName: "GPT-6 Luna", contextWindow: 1_050_000, inputPricePerMTok: 0.1, outputPricePerMTok: 0.5, cachedInputPricePerMTok: 0.01 },
+  { id: "gpt-6-astra", displayName: "GPT-6 Astra", contextWindow: 1_050_000, inputPricePerMTok: 10, outputPricePerMTok: 50, cachedInputPricePerMTok: 1, cacheStyle: "breakpoints", longContextInput: { aboveTokens: 272_000, multiplier: 2 } },
+  { id: "gpt-6-sol", displayName: "GPT-6 Sol", contextWindow: 1_050_000, inputPricePerMTok: 2, outputPricePerMTok: 10, cachedInputPricePerMTok: 0.2, cacheStyle: "breakpoints", longContextInput: { aboveTokens: 272_000, multiplier: 2 } },
+  { id: "gpt-6-luna", displayName: "GPT-6 Luna", contextWindow: 1_050_000, inputPricePerMTok: 0.1, outputPricePerMTok: 0.5, cachedInputPricePerMTok: 0.01, cacheStyle: "breakpoints", longContextInput: { aboveTokens: 272_000, multiplier: 2 } },
+  // Historical models present in the public replay corpus. Model pages checked 2026-10-09:
+  // https://developers.openai.com/api/docs/models/gpt-5.1 and .../gpt-5.2.
+  { id: "gpt-5.2", displayName: "GPT-5.2", contextWindow: 400_000, inputPricePerMTok: 1.75, outputPricePerMTok: 14, cachedInputPricePerMTok: 0.175, cacheStyle: "legacy" },
+  { id: "gpt-5.1", displayName: "GPT-5.1", contextWindow: 400_000, inputPricePerMTok: 1.25, outputPricePerMTok: 10, cachedInputPricePerMTok: 0.125, cacheStyle: "legacy" },
 ];
 
 export const DEFAULT_ANTHROPIC_MODEL = "claude-sonnet-5-5";

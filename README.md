@@ -50,7 +50,7 @@ gpt-5.1 and gpt-5.2.
   cache was read, and its predicted share of input tokens read from cache is within 0.0 to
   1.6 points of the reported one. Two Claude 4.5 models were missing from the model table and
   were checked against a 512-token minimum instead of 4,096 (Opus 4.5).
-- **For OpenAI the simulation is an upper bound.** 27% of requests matched the reported
+- **The legacy OpenAI simulation is optimistic.** 27% of requests matched the reported
   `cached_tokens` exactly; 34% got none where it predicted a read. gpt-5.2 cached 56 to 57% of
   the predicted tokens, gpt-5.1 88%.
 
@@ -111,7 +111,8 @@ drop a request file, paste one, or click a built-in example.
   simulates cache reads, writes and misses under that provider's rules:
   Anthropic's `cache_control` breakpoints, per-model minimum cacheable length,
   20-position lookback window and 5-minute/1-hour write pricing; OpenAI's
-  automatic prefix caching. It reports simulated cost against an optimized
+  explicit/implicit breakpoint caching on the listed GPT-6 models and a legacy
+  approximation on GPT-5.1/5.2. It reports simulated cost against an optimized
   scenario, and projects the difference to 1,000 sessions shaped like yours (a
   straight multiplication, not a separate estimate).
 - **Reported usage review (source checkout).** Paired response counters stay
@@ -393,16 +394,15 @@ implement each provider's documented rules:
   Opus 4.8 and Sonnet 5, 2,048 on Opus 4.7, 4,096 on Opus 4.6 and Haiku 4.5.
   Figures are from Anthropic's pricing and prompt-caching documentation as of
   2026-09-25.
-- **OpenAI**: automatic (implicit) prefix caching, with no marker needed, for
-  prompts of at least 1,024 tokens, with the cached portion (the longest prefix
-  any earlier request sent) rounded down to the
-  nearest 128 tokens and no separate write charge. Rules and pricing are from
-  `developers.openai.com/api/docs/guides/prompt-caching` and
-  `developers.openai.com/api/docs/pricing` as of 2026-09-24. OpenAI's newer
-  explicit-breakpoint, 30-minute-TTL caching mode (GPT-5.6 and later) is **not**
-  simulated: a file that uses it (`prompt_cache_options`,
-  `prompt_cache_breakpoint`) gets a note saying so, and one saying that
-  `mode: "explicit"` with no breakpoint caches nothing.
+- **OpenAI**: listed GPT-6 models use explicit/implicit breakpoint simulation.
+  No markers in explicit mode means zero reads and writes. Lookup uses eligible
+  incoming boundaries, and cache writes have their own 30-minute column and
+  premium. GPT-5.1/5.2 keep the older optimistic 1,024/128-token approximation.
+  Cache keys and renderer settings isolate entries; changing either cannot
+  silently inherit another request's predicted hit. The SDK-serialized
+  [cache modes example](examples/openai-cache-modes.jsonl.gz) demonstrates why
+  identical developer text can still miss when the last user message changes.
+  [Rules, counterexamples and limits](studies/openai-cache/README.md).
 - **Both**: a cached prefix is the model's own attention state, so a request
   reads only what earlier requests on its own model cached, however much of the
   prefix another model was sent.
@@ -473,7 +473,7 @@ fixed hue order, so a color always means the same category.
   exception (0.3.3 left them out and was 0.8 to 1.1% low); messages with array
   content, tool calls or tool definitions have framing that has not been
   measured and is still not counted.
-- **For OpenAI the cache simulation is an upper bound, and on gpt-5.2 a loose one.**
+- **The legacy OpenAI simulation is optimistic, especially on gpt-5.2.**
   Against the `cached_tokens` OpenAI reported for 2,085 steps whose prefix the
   tool predicted would be cached, 27% matched exactly, 34% reported no cached
   tokens at all and 38% fewer than predicted. gpt-5.1 cached 88% of the
@@ -485,9 +485,10 @@ fixed hue order, so a color always means the same category.
   bodies carry no timestamps, so it assumes every request arrives within the
   TTL (the steady agent loop this tool targets) and never models an entry
   expiring between requests minutes apart. Matching is at segment granularity:
-  OpenAI caches at token granularity, so a change near the end of a long
-  segment earns partial credit there that this simulation doesn't give, which
-  can underestimate token-prefix reuse. Prompt identities retain source structure;
+  the legacy OpenAI approximation cannot give partial credit for a match ending
+  inside a segment. Modern OpenAI simulation checks modeled content/message
+  endpoints; provider framing and hidden content can change their token counts.
+  Prompt identities retain source structure;
   they are not a reproduction of a provider's private prompt renderer or a
   guarantee of its live cache behavior. Each request uses its own model
   for prices, cache thresholds and context windows. `--model` overrides those

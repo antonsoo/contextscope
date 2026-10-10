@@ -227,9 +227,9 @@ describe("the cache is keyed by content, not by the line before", () => {
     expect(reads(["claude-sonnet-5", undefined, "claude-opus-5"])).toEqual([false, false, false]);
   });
 
-  it("OpenAI: the longest prefix any earlier request on the model sent", () => {
+  it("Legacy OpenAI: the longest prefix any earlier request on the model sent", () => {
     const messages = (app: string, n: number) => [{ role: "system", content: `${app} instructions. `.repeat(600) }, { role: "user", content: `turn ${n}` }];
-    const result = analyze(JSON.stringify([0, 1, 2, 3, 4, 5].map((n) => ({ model: "gpt-6-sol", messages: messages(n % 2 ? "second app" : "first app", n) }))));
+    const result = analyze(JSON.stringify([0, 1, 2, 3, 4, 5].map((n) => ({ model: "gpt-5.2", messages: messages(n % 2 ? "second app" : "first app", n) }))));
     expect(result.cacheSimulation.actual.map((step) => step.readTokens > 0)).toEqual([false, false, true, true, true, true]);
     expect(result.conversations.count).toBe(6);
     expect(result.findings).toEqual([]);

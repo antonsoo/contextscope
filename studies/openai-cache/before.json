@@ -1,0 +1,79 @@
+{
+  "kind": "synthetic SDK-serialized requests; no provider measurements",
+  "rows": [
+    {
+      "request": 1,
+      "key": "disabled",
+      "mode": "explicit",
+      "totalTokens": 2404,
+      "requestIndex": 0,
+      "readTokens": 0,
+      "writeTokens5m": 0,
+      "writeTokens1h": 0,
+      "uncachedTokens": 2404,
+      "costUsd": 0.004808
+    },
+    {
+      "request": 2,
+      "key": "disabled",
+      "mode": "explicit",
+      "totalTokens": 2404,
+      "requestIndex": 1,
+      "readTokens": 2304,
+      "writeTokens5m": 0,
+      "writeTokens1h": 0,
+      "uncachedTokens": 100,
+      "costUsd": 0.0006608
+    },
+    {
+      "request": 3,
+      "key": "implicit",
+      "mode": "implicit",
+      "totalTokens": 2404,
+      "requestIndex": 2,
+      "readTokens": 2304,
+      "writeTokens5m": 0,
+      "writeTokens1h": 0,
+      "uncachedTokens": 100,
+      "costUsd": 0.0006608
+    },
+    {
+      "request": 4,
+      "key": "implicit",
+      "mode": "implicit",
+      "totalTokens": 2404,
+      "requestIndex": 3,
+      "readTokens": 2304,
+      "writeTokens5m": 0,
+      "writeTokens1h": 0,
+      "uncachedTokens": 100,
+      "costUsd": 0.0006608
+    },
+    {
+      "request": 5,
+      "key": "marked",
+      "mode": "explicit",
+      "totalTokens": 2404,
+      "requestIndex": 4,
+      "readTokens": 0,
+      "writeTokens5m": 0,
+      "writeTokens1h": 0,
+      "uncachedTokens": 2404,
+      "costUsd": 0.004808
+    },
+    {
+      "request": 6,
+      "key": "marked",
+      "mode": "explicit",
+      "totalTokens": 2404,
+      "requestIndex": 5,
+      "readTokens": 2304,
+      "writeTokens5m": 0,
+      "writeTokens1h": 0,
+      "uncachedTokens": 100,
+      "costUsd": 0.0006608
+    }
+  ],
+  "totalCostUsd": 0.012259199999999998,
+  "findings": []
+}

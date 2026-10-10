@@ -1,6 +1,7 @@
 import type { CacheSimulation, DuplicateGroup, Finding, ParsedRequest, PrefixMatch, Provider, Segment } from "./types.js";
 import { canonicalJson, isRecord, keyOrderFingerprint } from "./json-utils.js";
 import { ANTHROPIC_LOOKBACK_POSITIONS, findAnthropicModel, resolveModel } from "./pricing.js";
+import { openAiCachePlan, openAiCacheScope } from "./openai-breakpoints.js";
 import { containsVolatilePattern } from "./volatile.js";
 import { sameModel } from "./model-id.js";
 import { comparisonKeys } from "./prefix.js";
@@ -75,9 +76,37 @@ export function computeFindings(
   // Each request is compared with the request it continues (threads.ts), which in a file that
   // holds several conversations is not the line before it.
   const matchTo = new Map(prefixMatches.map((match) => [match.toIndex, match]));
+  const previousOpenAiScope = new Map<string, number>();
 
   requests.forEach((request, i) => {
     const modelInfo = provider === "anthropic" ? findAnthropicModel(resolveModel(provider, model, [request.model]).id) : undefined;
+    const cacheStep = cacheSimulation.actual[i];
+    const modernOpenAi = provider === "openai" && (cacheStep?.cacheMode === "implicit" || cacheStep?.cacheMode === "explicit");
+    if (modernOpenAi) {
+      const scope = openAiCacheScope(request);
+      const priorIndex = previousOpenAiScope.get(scope);
+      previousOpenAiScope.set(scope, i);
+      // Thread inference may choose an identical setup on another cache key. Diagnose
+      // against the previous request in this cache namespace, not that other thread.
+      if (priorIndex !== undefined && cacheStep.readTokens === 0
+        && (cacheSimulation.actual[priorIndex]?.writeTokens30m ?? 0) > 0
+        && !(cacheStep.cacheMode === "explicit" && openAiCachePlan(request).explicit.length === 0)) {
+        const left = comparisonKeys(requests[priorIndex]!.segments, false);
+        const right = comparisonKeys(request.segments, false);
+        let shared = 0;
+        for (let s = 0; s < Math.min(left.length, right.length) && left[s] === right[s]; s++) shared += request.segments[s]!.openaiTokens;
+        if (shared >= 1024) push(findings, { kind: "openai_cache_boundary", severity: "warning", requestIndex: i,
+          title: "Shared text has no reusable cache boundary",
+          detail: `Request ${i + 1} shares ${shared.toLocaleString("en-US")} modeled prefix tokens with request ${priorIndex + 1}, but none of its eligible lookup boundaries finds a cached endpoint. Matching text alone is insufficient. Keep earlier message endings intact, or mark the end of the stable content explicitly in both requests. An explicit-only request checks its explicit boundaries; implicit lookup also has a message lookback limit.`,
+          segmentIds: [] });
+      }
+    }
+    if (modernOpenAi && cacheStep.cacheMode === "explicit" && openAiCachePlan(request).explicit.length === 0) {
+      push(findings, { kind: "openai_cache_disabled", severity: "info", requestIndex: i,
+        title: "Explicit caching has no breakpoints",
+        detail: `Request ${i + 1} selects explicit-only caching but marks no content blocks. This disables cache reads and writes, even when the prompt repeats. If caching is intended, add prompt_cache_breakpoint: {"mode":"explicit"} after the reusable content in both the earlier and later request.`,
+        segmentIds: [] });
+    }
     // no_cache_control / below_minimum_cacheable only apply to Anthropic, whose caching is opt-in via a marker.
     if (provider === "anthropic" && modelInfo) {
       const totalTokens = request.segments.reduce((sum, s) => sum + s.claudeTokensEstimate, 0);
@@ -115,7 +144,6 @@ export function computeFindings(
     // A new conversation shares its predecessor's setup (tools and system prompt) and whatever
     // opening messages they have in common, not the rest of that other conversation.
     const prev = startsConversation ? setupOf(requests[from]!, match.matchedSegments) : requests[from]!;
-
     // A change blocks reuse from this predecessor, but not from earlier requests on the
     // destination model. Missing metadata is not evidence that a switch actually happened.
     if (prev.model && request.model && !sameModel(prev.model, request.model)) {

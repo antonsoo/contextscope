@@ -1,0 +1,18 @@
+{
+  "kind": "synthetic request bodies serialized by the real SDK; mocked transport, no provider usage",
+  "openai": "2.54.0",
+  "httpx": "0.28.1",
+  "providerCalls": 0,
+  "fixtures": [
+    {
+      "path": "examples/openai-cache-modes.jsonl.gz",
+      "requests": 6,
+      "jsonlSha256": "a9b9bc8d2842b40944128b2bdc6e0323cba82ee672ea9b9dec3ef9a43ead6ab7"
+    },
+    {
+      "path": "tests/fixtures/sdk/openai-cache-tool-output.jsonl.gz",
+      "requests": 3,
+      "jsonlSha256": "6265453b1fda94db78c188743adf2ee14d7b8b72f3705e79408eed1954de5d86"
+    }
+  ]
+}

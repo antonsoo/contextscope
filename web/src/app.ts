@@ -635,7 +635,7 @@ function wireSegmentsTable(report: RequestTokenReport): void {
       <td><span class="cat-chip" style="--dot:${categoryVar(s.category)}">${CATEGORY_LABEL[s.category]}</span></td>
       <td><button class="segment-inspect" type="button" aria-label="Inspect ${esc(s.label)}">${esc(truncate(s.label, 60))}</button></td>
       <td>${esc(s.path)}</td><td class="num">${fmtInt(s.claudeTokensEstimate)}</td><td class="num">${fmtInt(s.openaiTokens)}</td>
-      <td>${s.cacheControl ? `<span class="cache-flag"${s.cacheControl.automatic ? ' title="automatic breakpoint: the request has a top-level cache_control"' : ""}>● ${s.cacheControl.ttl}${s.cacheControl.automatic ? " auto" : ""}</span>` : ""}</td></tr>`).join("");
+      <td>${s.promptCacheBreakpoint ? '<span class="cache-flag" title="Explicit OpenAI cache breakpoint">● explicit</span>' : s.cacheControl ? `<span class="cache-flag"${s.cacheControl.automatic ? ' title="automatic breakpoint: the request has a top-level cache_control"' : ""}>● ${s.cacheControl.ttl}${s.cacheControl.automatic ? " auto" : ""}</span>` : ""}</td></tr>`).join("");
     for (const [id, disabled] of [["segments-first", page === 0], ["segments-prev", page === 0], ["segments-next", page === pages - 1], ["segments-last", page === pages - 1]] as const) {
       const button = document.getElementById(id) as HTMLButtonElement;
       button.disabled = disabled;
@@ -729,6 +729,7 @@ function renderDiff(result: AnalysisResult): void {
 
 function cachePanel(result: AnalysisResult): string {
   const sim = result.cacheSimulation;
+  const openai = sim.provider === "openai";
   const mixedModels = modelGroups(result).length > 1;
   const savings = sim.totalActualCostUsd !== undefined && sim.totalOptimizedCostUsd !== undefined ? sim.totalActualCostUsd - sim.totalOptimizedCostUsd : undefined;
   return `
@@ -737,12 +738,12 @@ function cachePanel(result: AnalysisResult): string {
       ${result.usageComparison.capturedRequests ? "" : '<p class="muted">No paired response usage. These cache reads and costs are simulated.</p>'}
       <div class="table-scroll" tabindex="0" role="group" aria-label="Table, scrolls sideways">
         <table class="cache">
-          <thead><tr><th>request</th>${mixedModels ? '<th class="cache-model">model</th>' : ""}<th>read</th><th>write 5m</th><th>write 1h</th><th>uncached</th><th>cost</th></tr></thead>
+          <thead><tr><th>request</th>${openai ? "<th>mode</th>" : ""}${mixedModels ? '<th class="cache-model">model</th>' : ""}<th>read</th>${openai ? "<th>write 30m</th>" : "<th>write 5m</th><th>write 1h</th>"}<th>uncached</th><th>cost</th></tr></thead>
           <tbody>
             ${sim.actual
               .map(
                 (s, i) =>
-                  `<tr><td>req ${i + 1}</td>${mixedModels ? `<td class="cache-model">${esc(modelLabel(result.reports[i]!.model))}</td>` : ""}<td>${fmtInt(s.readTokens)}</td><td>${fmtInt(s.writeTokens5m)}</td><td>${fmtInt(s.writeTokens1h)}</td><td>${fmtInt(s.uncachedTokens)}</td><td>${fmtUsd(s.costUsd)}</td></tr>`,
+                  `<tr><td>req ${i + 1}</td>${openai ? `<td>${esc(s.cacheMode ?? "legacy")}</td>` : ""}${mixedModels ? `<td class="cache-model">${esc(modelLabel(result.reports[i]!.model))}</td>` : ""}<td>${fmtInt(s.readTokens)}</td>${openai ? `<td>${fmtInt(s.writeTokens30m ?? 0)}</td>` : `<td>${fmtInt(s.writeTokens5m)}</td><td>${fmtInt(s.writeTokens1h)}</td>`}<td>${fmtInt(s.uncachedTokens)}</td><td>${fmtUsd(s.costUsd)}</td></tr>`,
               )
               .join("")}
           </tbody>
@@ -752,7 +753,7 @@ function cachePanel(result: AnalysisResult): string {
         <div class="stat-tile"><div class="label">current simulated cost</div><div class="value">${fmtUsd(sim.totalActualCostUsd)}</div></div>
         <div class="stat-tile"><div class="label">optimized simulated cost</div><div class="value">${fmtUsd(sim.totalOptimizedCostUsd)}</div></div>
       </div>
-      ${savings !== undefined && savings >= 0.00005 ? `<div class="savings-banner">Fixing these findings${sim.provider === "anthropic" ? ", with a breakpoint on each request's last cacheable block (moving the last marker if all four slots are used)," : ""} would save ${fmtUsd(savings)} (${((savings / sim.totalActualCostUsd!) * 100).toFixed(0)}%) on this sequence — ≈${fmtUsdRounded(savings * 1000)} per 1,000 sessions shaped like this one.</div>` : ""}
+      ${savings !== undefined && savings >= 0.00005 ? `<div class="savings-banner">Normalizing volatile text, JSON keys and tool order${sim.provider === "anthropic" ? ", with a breakpoint on each request's last cacheable block (moving the last marker if all four slots are used)," : ""} would save ${fmtUsd(savings)} (${((savings / sim.totalActualCostUsd!) * 100).toFixed(0)}%) on this sequence — ≈${fmtUsdRounded(savings * 1000)} per 1,000 sessions shaped like this one.</div>` : ""}
     </section>
   `;
 }
@@ -910,7 +911,7 @@ function openInspector(segment: Segment): void {
       <dt>chars</dt><dd>${fmtInt(segment.charLength)}</dd>
       <dt>≈ Claude tokens</dt><dd>${fmtInt(segment.claudeTokensEstimate)}${state.calibration ? ` <span class="muted">(scaled ×${state.calibration.scale.toFixed(3)})</span>` : ""}</dd>
       <dt>OpenAI tokens</dt><dd>${fmtInt(segment.openaiTokens)}</dd>
-      <dt>cache_control</dt><dd>${segment.cacheControl ? `ephemeral, ${segment.cacheControl.ttl}${segment.cacheControl.automatic ? " (automatic: the request's top-level cache_control lands on this block)" : ""}` : "none"}</dd>
+      <dt>cache boundary</dt><dd>${segment.promptCacheBreakpoint ? "explicit OpenAI breakpoint, 30m" : segment.cacheControl ? `ephemeral, ${segment.cacheControl.ttl}${segment.cacheControl.automatic ? " (automatic: the request's top-level cache_control lands on this block)" : ""}` : "none"}</dd>
     </dl>
     ${textPreview || rawPretty.length > INSPECTOR_TEXT_LIMIT ? `<p>Showing the first ${INSPECTOR_TEXT_LIMIT.toLocaleString("en-US")} characters${textPreview ? " of the analyzed segment text" : " of raw content"}. Download the original raw JSON for complete evidence.</p>` : ""}
     <button class="btn" id="download-segment" type="button">download original raw JSON</button>
