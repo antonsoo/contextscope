@@ -57,6 +57,31 @@ describe("disposable analysis workers", () => {
     expect(worker.sent).toBeUndefined();
   });
 
+  it("abort while loading code releases a late worker without sending request data", async () => {
+    const operation = new AbortController();
+    const worker = new FakeWorker();
+    let complete!: (value: Worker) => void;
+    const pending = new Promise<Worker>((resolve) => { complete = resolve; });
+    const result = analyzeInWorker({ input, options: {} }, operation.signal, () => pending);
+    operation.abort();
+    await expect(result).rejects.toMatchObject({ name: "AbortError" });
+    complete(worker.factory());
+    await Promise.resolve();
+    expect(worker.terminated).toBe(true);
+    expect(worker.sent).toBeUndefined();
+  });
+
+  it("reports asynchronous code-loading failures and permits another operation", async () => {
+    await expect(analyzeInWorker({ input, options: {} }, new AbortController().signal,
+      async () => { throw new Error("HTTP 404"); })).rejects.toThrow(/Could not start local analysis: HTTP 404/);
+    const worker = new FakeWorker();
+    const result = analyzeInWorker({ input, options: {} }, new AbortController().signal, async () => worker.factory());
+    await Promise.resolve();
+    worker.reply({ type: "success", result: analyze(input) });
+    await expect(result).resolves.toHaveProperty("type", "success");
+    expect(worker.terminated).toBe(true);
+  });
+
   it.each([null, {}, { type: "success" }, { type: "success", result: {} }, { type: "success", result: { parse: { complete: true }, reports: [{}] } }, { type: "error", message: 42 }])("rejects malformed worker reply %j", async (reply) => {
     const worker = new FakeWorker();
     const promise = analyzeInWorker({ input, options: {} }, new AbortController().signal, worker.factory);

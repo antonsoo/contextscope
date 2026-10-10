@@ -456,8 +456,9 @@ test("ambiguous, mixed-provider and deep imports preserve a valid report and rec
   await expect(page.locator("#intake-error")).toBeHidden();
 });
 
-for (const action of ["cancel", "reset"] as const) test(`${action} terminates an active computing worker and the next import recovers`, async ({ page }) => {
+for (const action of ["cancel", "reset"] as const) test(`${action} terminates an active computing worker and the next import recovers`, async ({ page, context }) => {
   await load(page);
+  await context.setOffline(true);
   await page.evaluate(() => {
     const OriginalWorker = Worker;
     const audit = { active: 0, terminated: 0, posts: 0, started: 0, urls: 0, revoked: 0 };
@@ -490,6 +491,60 @@ for (const action of ["cancel", "reset"] as const) test(`${action} terminates an
   await page.locator("#file-input").setInputFiles({ name: "after-cancel.json", mimeType: "application/json", buffer: Buffer.from(JSON.stringify(request("after computation cancellation"))) });
   await expect(page.getByRole("tab")).toHaveCount(1);
   await expect(page.locator("#intake-error")).toBeHidden();
+});
+
+test("fresh local imports, model changes and reset work offline after the first analysis", async ({ page, context }) => {
+  let assetRequests = 0;
+  page.on("request", (request) => { if (/\/assets\/analysis-worker-.*\.js$/.test(request.url())) assetRequests++; });
+  await load(page);
+  expect(assetRequests).toBe(1);
+  await context.setOffline(true);
+  const next = [{ model: "gpt-6-sol", input: "First offline request" }, { model: "gpt-6-sol", input: "Second offline request" }];
+  await page.locator("#file-input").setInputFiles({ name: "offline.json", mimeType: "application/json", buffer: Buffer.from(JSON.stringify(next)) });
+  await expect(page.getByRole("tab")).toHaveCount(2);
+  await page.locator("#model-select").selectOption("gpt-6-luna");
+  await expect(page.locator(".notes-panel")).toContainText("Model override applies");
+  await page.getByRole("button", { name: "new analysis", exact: true }).click();
+  await expect(page.getByRole("tab")).toHaveCount(0);
+  await load(page, request("fresh after offline reset"));
+  await expect(page.getByRole("tab")).toHaveCount(1);
+  await page.getByRole("spinbutton", { name: "Measured input tokens" }).fill("100");
+  await page.getByRole("button", { name: "apply to request 1", exact: true }).click();
+  await expect(page.locator(".calibrate-result")).toContainText("100");
+  await expect(page.locator("#intake-error")).toBeHidden();
+  expect(assetRequests).toBe(1);
+});
+
+for (const failure of ["html", "truncated script"] as const) test(`a ${failure} worker response is not cached and a later import recovers`, async ({ page, context }) => {
+  let assetRequests = 0;
+  await context.route("**/assets/analysis-worker-*.js", async (route) => {
+    if (++assetRequests === 1) await route.fulfill({ status: 200, contentType: failure === "html" ? "text/html" : "application/javascript", body: failure === "html" ? "<html>missing asset</html>" : "function broken(" });
+    else await route.continue();
+  });
+  await page.locator("#file-input").setInputFiles({ name: "first.json", mimeType: "application/json", buffer: Buffer.from(JSON.stringify(request())) });
+  await expect(page.locator("#intake-error")).toContainText(failure === "html" ? "analysis code response is not JavaScript" : "Analysis worker failed");
+  await load(page, request());
+  await expect(page.getByRole("tab")).toHaveCount(1);
+  expect(assetRequests).toBe(2);
+});
+
+test("cancelling the first worker-code download permits a fresh import", async ({ page, context }) => {
+  let assetRequests = 0;
+  let release!: () => void;
+  const held = new Promise<void>((resolve) => { release = resolve; });
+  await context.route("**/assets/analysis-worker-*.js", async (route) => {
+    if (++assetRequests === 1) await held;
+    await route.continue().catch(() => {}); // the first request may already have been aborted
+  });
+  try {
+    await page.locator("#file-input").setInputFiles({ name: "first.json", mimeType: "application/json", buffer: Buffer.from(JSON.stringify(request())) });
+    await expect.poll(() => assetRequests).toBe(1);
+    await page.getByRole("button", { name: "cancel import", exact: true }).click();
+    await expect(page.locator("#intake-error")).toHaveText("Import cancelled.");
+    await load(page, request("recovered after download cancellation"));
+    await expect(page.getByRole("tab")).toHaveCount(1);
+    expect(assetRequests).toBe(2);
+  } finally { release(); }
 });
 
 test("a worker script load failure reports recovery without a page exception", async ({ page }) => {

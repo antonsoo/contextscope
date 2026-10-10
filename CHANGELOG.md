@@ -26,6 +26,13 @@ of public SWE-bench agent runs; see `studies/real-trajectories/`.
 
 ### Fixed
 
+- Keep production browser analysis usable after disconnecting. Retain trusted
+  worker code after successful startup, while creating and terminating a fresh
+  worker for every operation. New local imports, model changes, calibration,
+  reset and CPU cancellation work offline in the open tab. Cancelled downloads,
+  HTML error responses and truncated scripts do not poison later imports;
+  workers retain the page's off-origin network restriction.
+
 - Simulate modern OpenAI implicit/explicit cache endpoints, four write slots,
   and 30-minute write pricing. Explicit mode without markers no longer invents
   discounted reads. Cache keys and renderer settings isolate entries; multipart

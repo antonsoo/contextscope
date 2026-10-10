@@ -25,6 +25,12 @@ Everything runs in your browser or on your machine. Nothing is uploaded, and the
 Content-Security-Policy (`connect-src 'self'`) has the browser enforce that: the page cannot
 send what you paste to any other host.
 
+After the first analysis, the production site can import more local files,
+change models and apply manual calibration offline in the same open tab.
+Only application code is retained for starting fresh workers; each analysis
+still releases its worker and tokenizer caches. Reloading the page or opening
+a built-in example that has not been downloaded can require a connection.
+
 ## On real agent trajectories
 
 The first measurement of contextscope against what a provider reported, not against
