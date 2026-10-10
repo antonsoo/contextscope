@@ -3,6 +3,8 @@
 This study reproduces a cache-accounting defect in source commit `7ecec70`, then
 replays 240 previously sampled public Claude trajectories as a regression check.
 The repairs are local source changes, not a published package update.
+The [verification record](../../docs/verification-cache-accounting-2026-10-09.md)
+covers clean installs, browser downloads and installed CLI checks on Node 20/24/26.
 
 ## Controlled counterexamples
 
