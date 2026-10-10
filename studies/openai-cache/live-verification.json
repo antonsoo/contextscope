@@ -1,0 +1,51 @@
+{
+  "url": "https://antonsoo.github.io/contextscope/?verified=39b8fb1",
+  "checkedAt": "2026-10-10T04:42:18.363Z",
+  "browser": "153.0.8010.12",
+  "scripts": [
+    "https://antonsoo.github.io/contextscope/assets/index-BJ4orj7E.js"
+  ],
+  "rows": [
+    "req 1explicit002,404$0.0048",
+    "req 2explicit002,404$0.0048",
+    "req 3implicit02,4040$0.0060",
+    "req 4implicit02,4040$0.0060",
+    "req 5explicit02,4013$0.0060",
+    "req 6explicit2,40103$0.0005"
+  ],
+  "partitions": [
+    [
+      0,
+      0,
+      2404
+    ],
+    [
+      0,
+      0,
+      2404
+    ],
+    [
+      0,
+      2404,
+      0
+    ],
+    [
+      0,
+      2404,
+      0
+    ],
+    [
+      0,
+      2401,
+      3
+    ],
+    [
+      2401,
+      0,
+      3
+    ]
+  ],
+  "totalSimulatedUsd": 0.0281307,
+  "offlineJsonDownload": true,
+  "pageErrors": []
+}

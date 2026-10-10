@@ -61,7 +61,9 @@ identity; unnamed requests share a separate assumed-model group. Cache
 eviction and elapsed TTL are not modeled. The legacy OpenAI simulation remains
 a separate follow-up; this change fixes row selection, not that cache regime.
 
-The source changes are prepared for the user's explicitly authorized push.
-The repository's existing Pages workflow runs on pushes to `main`; publication
-must be checked separately from this local verification. No npm publish or
-version tag is part of this work.
+Publication was checked separately: source `dbd7e15` and the verified Pages
+build `11db69b` were pushed on October 9. Chromium opened the live mixed-model
+example and verified the $0.0185 Opus row with no page errors. The later
+[OpenAI cache change](verification-openai-cache-2026-10-09.md) replaces that
+deployment while retaining this behavior. No npm publication or version tag
+was created.

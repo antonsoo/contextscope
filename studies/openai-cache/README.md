@@ -28,6 +28,9 @@ pair writes through changing text; the explicit pair preserves a reusable
 endpoint before it. The third fixture verifies partial tool-output reuse and
 ensures changing `call_id` prevents a false hit.
 
+[Clean-install, browser and CLI evidence](../../docs/verification-openai-cache-2026-10-09.md)
+includes actual screenshots and the packaged artifact hash.
+
 ## Rules and scope
 
 For the listed GPT-6 models, lookup follows the incoming boundaries and writes

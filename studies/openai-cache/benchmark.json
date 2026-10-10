@@ -1,0 +1,33 @@
+{
+  "method": "One warmup, three sequential timed analyses per checkout; same Node 24 engine and synthetic input; browser verification was running concurrently, so no speedup claim.",
+  "baselineCommit": "dbd7e15",
+  "currentCommit": "39b8fb1",
+  "before": {
+    "kind": "synthetic growing Responses history; no provider calls",
+    "node": "v24.21.0",
+    "requests": 300,
+    "inputBytes": 21547099,
+    "milliseconds": [
+      1825.733032,
+      2171.9677220000003,
+      2456.7229159999997
+    ],
+    "medianMilliseconds": 2171.9677220000003,
+    "cacheHits": 299,
+    "totalCost": 0.7376615999999999
+  },
+  "after": {
+    "kind": "synthetic growing Responses history; no provider calls",
+    "node": "v24.21.0",
+    "requests": 300,
+    "inputBytes": 21547099,
+    "milliseconds": [
+      2026.5651540000003,
+      2150.2572840000003,
+      2421.741561
+    ],
+    "medianMilliseconds": 2150.2572840000003,
+    "cacheHits": 299,
+    "totalCost": 0.7134058000000001
+  }
+}
