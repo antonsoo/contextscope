@@ -1,0 +1,31 @@
+{
+  "results": [
+    {
+      "nodeVersion": "v20.0.0",
+      "mixedModelPricing": true,
+      "perRequestModelExport": true,
+      "offlineHtmlRows": true,
+      "calibrationUsesLargestRequestsModel": true,
+      "calibrationHonorsOverride": true,
+      "providerCalls": 0
+    },
+    {
+      "nodeVersion": "v24.21.0",
+      "mixedModelPricing": true,
+      "perRequestModelExport": true,
+      "offlineHtmlRows": true,
+      "calibrationUsesLargestRequestsModel": true,
+      "calibrationHonorsOverride": true,
+      "providerCalls": 0
+    },
+    {
+      "nodeVersion": "v26.7.0",
+      "mixedModelPricing": true,
+      "perRequestModelExport": true,
+      "offlineHtmlRows": true,
+      "calibrationUsesLargestRequestsModel": true,
+      "calibrationHonorsOverride": true,
+      "providerCalls": 0
+    }
+  ]
+}

@@ -1,0 +1,152 @@
+{
+  "results": [
+    {
+      "nodeVersion": "v20.0.0",
+      "sample": "anthropic-agent-cache-bust.jsonl.gz",
+      "requests": 24,
+      "exit": 0,
+      "partitionsConserveTokens": true
+    },
+    {
+      "nodeVersion": "v20.0.0",
+      "sample": "anthropic-agent-cache-fixed.jsonl.gz",
+      "requests": 24,
+      "exit": 0,
+      "partitionsConserveTokens": true
+    },
+    {
+      "nodeVersion": "v20.0.0",
+      "sample": "anthropic-cache-breakpoints.jsonl.gz",
+      "requests": 2,
+      "exit": 0,
+      "partitionsConserveTokens": true
+    },
+    {
+      "nodeVersion": "v20.0.0",
+      "sample": "anthropic-duplicate-tool-results.jsonl",
+      "requests": 4,
+      "exit": 0,
+      "partitionsConserveTokens": true
+    },
+    {
+      "nodeVersion": "v20.0.0",
+      "sample": "anthropic-mixed-models.jsonl.gz",
+      "requests": 5,
+      "exit": 0,
+      "partitionsConserveTokens": true
+    },
+    {
+      "nodeVersion": "v20.0.0",
+      "sample": "openai-agent-tools-reordered.jsonl",
+      "requests": 4,
+      "exit": 0,
+      "partitionsConserveTokens": true
+    },
+    {
+      "nodeVersion": "v20.0.0",
+      "sample": "reported-cache-usage.jsonl",
+      "requests": 6,
+      "exit": 0,
+      "partitionsConserveTokens": true
+    },
+    {
+      "nodeVersion": "v24.21.0",
+      "sample": "anthropic-agent-cache-bust.jsonl.gz",
+      "requests": 24,
+      "exit": 0,
+      "partitionsConserveTokens": true
+    },
+    {
+      "nodeVersion": "v24.21.0",
+      "sample": "anthropic-agent-cache-fixed.jsonl.gz",
+      "requests": 24,
+      "exit": 0,
+      "partitionsConserveTokens": true
+    },
+    {
+      "nodeVersion": "v24.21.0",
+      "sample": "anthropic-cache-breakpoints.jsonl.gz",
+      "requests": 2,
+      "exit": 0,
+      "partitionsConserveTokens": true
+    },
+    {
+      "nodeVersion": "v24.21.0",
+      "sample": "anthropic-duplicate-tool-results.jsonl",
+      "requests": 4,
+      "exit": 0,
+      "partitionsConserveTokens": true
+    },
+    {
+      "nodeVersion": "v24.21.0",
+      "sample": "anthropic-mixed-models.jsonl.gz",
+      "requests": 5,
+      "exit": 0,
+      "partitionsConserveTokens": true
+    },
+    {
+      "nodeVersion": "v24.21.0",
+      "sample": "openai-agent-tools-reordered.jsonl",
+      "requests": 4,
+      "exit": 0,
+      "partitionsConserveTokens": true
+    },
+    {
+      "nodeVersion": "v24.21.0",
+      "sample": "reported-cache-usage.jsonl",
+      "requests": 6,
+      "exit": 0,
+      "partitionsConserveTokens": true
+    },
+    {
+      "nodeVersion": "v26.7.0",
+      "sample": "anthropic-agent-cache-bust.jsonl.gz",
+      "requests": 24,
+      "exit": 0,
+      "partitionsConserveTokens": true
+    },
+    {
+      "nodeVersion": "v26.7.0",
+      "sample": "anthropic-agent-cache-fixed.jsonl.gz",
+      "requests": 24,
+      "exit": 0,
+      "partitionsConserveTokens": true
+    },
+    {
+      "nodeVersion": "v26.7.0",
+      "sample": "anthropic-cache-breakpoints.jsonl.gz",
+      "requests": 2,
+      "exit": 0,
+      "partitionsConserveTokens": true
+    },
+    {
+      "nodeVersion": "v26.7.0",
+      "sample": "anthropic-duplicate-tool-results.jsonl",
+      "requests": 4,
+      "exit": 0,
+      "partitionsConserveTokens": true
+    },
+    {
+      "nodeVersion": "v26.7.0",
+      "sample": "anthropic-mixed-models.jsonl.gz",
+      "requests": 5,
+      "exit": 0,
+      "partitionsConserveTokens": true
+    },
+    {
+      "nodeVersion": "v26.7.0",
+      "sample": "openai-agent-tools-reordered.jsonl",
+      "requests": 4,
+      "exit": 0,
+      "partitionsConserveTokens": true
+    },
+    {
+      "nodeVersion": "v26.7.0",
+      "sample": "reported-cache-usage.jsonl",
+      "requests": 6,
+      "exit": 0,
+      "partitionsConserveTokens": true
+    }
+  ],
+  "invalidInputPreservesReports": true
+}

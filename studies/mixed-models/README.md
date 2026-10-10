@@ -66,6 +66,17 @@ per-batch counts and totals. The harness checkpoints each batch and refuses
 to resume with different compiled code or a different manifest. Only
 `complete: true` establishes that all 40 batches ran.
 
+The completed replay covers 10,555 requests. Comparing both scenarios gives
+21,110 rows: 12,378 old rows disagree with the model-separated reference,
+including 858 different token partitions. All corrected rows match. The
+actual-scenario totals are $99.1810284 before and $92.89381135 after; the latter
+matches the separate-model sum. This is a correction to simulated accounting,
+not measured savings or a provider-billing comparison.
+
+![Mixed models in the browser](../../docs/assets/mixed-models-1440.png)
+
+![Mixed models in the CLI](../../docs/assets/mixed-models-terminal.png)
+
 ```sh
 # Reconstruct sources as described in ../cache-accounting/README.md first.
 node studies/mixed-models/interleave-corpus.mjs SCRATCH /path/to/aa04dcc/dist studies/mixed-models/corpus.json 10

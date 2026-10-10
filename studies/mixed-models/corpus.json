@@ -1,0 +1,1981 @@
+{
+  "note": "Artificial interleaving of reconstructed public histories, not live measurements. Differences count actual plus optimized rows. Oracle is baseline analysis partitioned by model.",
+  "complete": true,
+  "implementations": {
+    "before": "2dc368480d8b9ef1bc4984472cfcbe973f2bc1ea86515b0ed3a90baee21bd42d",
+    "after": "0943da64a978568ee62660b1ea72b467996db069087f1cd0e4349d67f5681010"
+  },
+  "manifestSha256": "da378619eb0633debd8ac970c5b321c625e091e54096cf1aa46c4a45dd1d22d2",
+  "totals": {
+    "requests": 10555,
+    "beforeDifferentRows": 12378,
+    "afterDifferentRows": 0,
+    "beforeDifferentTokenPartitions": 858,
+    "afterDifferentTokenPartitions": 0,
+    "beforeCostUsd": 99.18102839999999,
+    "afterCostUsd": 92.89381135000001,
+    "isolatedCostUsd": 92.89381135000002
+  },
+  "batches": [
+    {
+      "batch": 1,
+      "requests": 244,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 276,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 24,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 1.8203166000000002,
+      "afterCostUsd": 1.9261325999999994,
+      "isolatedCostUsd": 1.9261326000000003,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "astropy__astropy-13453.traj.json",
+          "requestsSha256": "ed5a67e67a5063a7337b131f30638c3fca3b514685388dd56f54f4851a13e114"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "astropy__astropy-7166.traj.json",
+          "requestsSha256": "e387905f0441fef2ecc48ea842cd4307d5594f2e3a8e4c4752cc41d60e020a63"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "astropy__astropy-7671.traj.json",
+          "requestsSha256": "de83b43618c05ef54401662bea79b981de69cec8be0df8e6d42b27eb6e2c8942"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "astropy__astropy-7166.traj.json",
+          "requestsSha256": "f4f643ae0bcfca305d50a5a427c9ee952f1d79a9b9ca628a4129c1da7334fea7"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "astropy__astropy-13453.traj.json",
+          "requestsSha256": "96110c96999f8e2240136111b9ef17d1e2f14af148a34dd03b20f13d74d26637"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "astropy__astropy-12907.traj.json",
+          "requestsSha256": "3d79e317da1025322a909c0a44150719736148f3b26a84caf7b05dad276f365e"
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "requests": 209,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 272,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 18,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 2.7152069999999986,
+      "afterCostUsd": 1.607931,
+      "isolatedCostUsd": 1.607931,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "django__django-11133.traj.json",
+          "requestsSha256": "8aa531c813ba336317eb9956040ac50c80f0a20a4e9c64fc3a3e3837445aaf7b"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "django__django-11276.traj.json",
+          "requestsSha256": "9cbc8b1743081f2002be680bd853f8fb2c1382855f7d6c1d38c27f75bd885652"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "astropy__astropy-8707.traj.json",
+          "requestsSha256": "d4f4ed717f41e796b0cf87861cbff83545f3d1d13b6ea6aced5222af404eac18"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "astropy__astropy-8707.traj.json",
+          "requestsSha256": "38afe3969f20e93f7b88be240863b33200944625a479ff955e1a5a80a2758083"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "astropy__astropy-14539.traj.json",
+          "requestsSha256": "dfe1174529fd92fafd87481ea6ab961ee5aa5e1c7a1f830d5d65b8d9761d436b"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "django__django-11163.traj.json",
+          "requestsSha256": "d5995ce2b1092a15110823ec6bd33b065afd8d8e906180b4862779428508dd53"
+        }
+      ]
+    },
+    {
+      "batch": 3,
+      "requests": 258,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 342,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 12,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 0.8291017000000002,
+      "afterCostUsd": 2.0049121999999997,
+      "isolatedCostUsd": 2.0049122,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "django__django-11333.traj.json",
+          "requestsSha256": "4335e0d9a0856478e3ab78854f94b66b85c8fdb23f774883db0ec13efa2b5fc6"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "django__django-12050.traj.json",
+          "requestsSha256": "5912079d3317b2851e715806822259a91e1ce324dbaf61c80886ca16cde73d81"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "django__django-11138.traj.json",
+          "requestsSha256": "feb72106a57d8bb529012d9aa2b40b271ec0b60ce285dd222069e4838b48444e"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "django__django-11095.traj.json",
+          "requestsSha256": "1b0d380aa91190a3efc1b0ca284d4a556d2b6ab8f55c2f8c2485f59a1b4b49e3"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "django__django-11138.traj.json",
+          "requestsSha256": "dedb0b556e91ad720dfc60e3abb9366b6bc01a4960face314f1ed6e9bfb3d381"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "django__django-11400.traj.json",
+          "requestsSha256": "125fb354c1999a4559edbc369440669601135a0c1baa0af918915f3836da7fb9"
+        }
+      ]
+    },
+    {
+      "batch": 4,
+      "requests": 200,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 188,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 34,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 1.4919925499999995,
+      "afterCostUsd": 1.5523504500000003,
+      "isolatedCostUsd": 1.5523504500000005,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "django__django-11433.traj.json",
+          "requestsSha256": "9f9f262114ff147bf939a1f7852591df49d0150b6e817d8cc43cbe44aa3aa5fe"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "django__django-12708.traj.json",
+          "requestsSha256": "b6fa537b248e0917d9be1338792a680984c8143aed248378dd9eeaad466f79da"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "django__django-11206.traj.json",
+          "requestsSha256": "008d55694298a4a650d33e3614f0c8649c462ca7b37bd824dc7b3e2063f2902f"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "django__django-11119.traj.json",
+          "requestsSha256": "6b7de4ecd3712288b0726ace3d741258af1557d6fcb5c6bbe3d4669d2972ea09"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "django__django-11211.traj.json",
+          "requestsSha256": "049984631aa7119b602f2d7675321a762be6885ee1107cb8fca0f237ee431467"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "django__django-11603.traj.json",
+          "requestsSha256": "ac5eaec7ceff005c65d9c789d9d5b4b460bdc5f15117ec70fc454b396a61f85d"
+        }
+      ]
+    },
+    {
+      "batch": 5,
+      "requests": 278,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 294,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 18,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 5.03803875,
+      "afterCostUsd": 3.6133284499999996,
+      "isolatedCostUsd": 3.613328450000001,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "django__django-12419.traj.json",
+          "requestsSha256": "ed0ba40243da5205b16c107d039179f34ef30bff27d1afdcd1c0070d128e6b74"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "django__django-13417.traj.json",
+          "requestsSha256": "33de06fbd053ea39292305b5a3405b8ea0a960665470d754026f396b4266ee56"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "django__django-11400.traj.json",
+          "requestsSha256": "5b740b4a7014a8e6eee7a838bd3e1831d29e2fc7f9325f6db68123dd10801f84"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "django__django-11265.traj.json",
+          "requestsSha256": "8d5c29c0396b79bd2450cf3b43b4d663dd34d2d35fb9f8ab5d67b41df6f0b99f"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "django__django-11265.traj.json",
+          "requestsSha256": "f8d32de4d492d7c5af44cf1757d5fc499d947ae28b9dd655426060b80a9a0818"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "django__django-12308.traj.json",
+          "requestsSha256": "7f9aef16e3c0a66969ffc59c8b72d14740e859c89fe69e484c444d1e88921ba0"
+        }
+      ]
+    },
+    {
+      "batch": 6,
+      "requests": 225,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 200,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 38,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 1.5094704000000003,
+      "afterCostUsd": 1.6613095999999994,
+      "isolatedCostUsd": 1.6613096,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "django__django-12965.traj.json",
+          "requestsSha256": "ef8154237d48e373e9d8be6d5e3174790882f4e43a7c48b39320346ae02bf888"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "django__django-13512.traj.json",
+          "requestsSha256": "d5772db8540970aae35790e5232e3861931e8b9ef847b4f14dae083fc6f3c996"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "django__django-11728.traj.json",
+          "requestsSha256": "c8bb4d4b73dd00c6ec42f6b17cc3c022fffb9eecf016370706bd0074aec77f8c"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "django__django-11451.traj.json",
+          "requestsSha256": "806e7ba615eaacc9c54f36363c74e1f53e20dfa4eb2dde13dbb31aced43e1c8d"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "django__django-11333.traj.json",
+          "requestsSha256": "37bba17f146ce44c91a68dd590d2404a1a0ab54dfe6e32fed7c46a2bd7631ccb"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "django__django-12741.traj.json",
+          "requestsSha256": "bdbbf3d97fc03a4354554c65650eef9e132cac5751bc0329357d53ca8d048c3b"
+        }
+      ]
+    },
+    {
+      "batch": 7,
+      "requests": 254,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 314,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 18,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 3.9050385,
+      "afterCostUsd": 2.4043622000000013,
+      "isolatedCostUsd": 2.4043622000000004,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "django__django-13033.traj.json",
+          "requestsSha256": "ff8dfcc0c1273fa8c828ba9c7094598e5098043a4d4931b828b8d6d4cb0eefbd"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "django__django-13568.traj.json",
+          "requestsSha256": "91d016e3175de838ee056f2253134075888fa2e69725630de22b6ad7655d2137"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "django__django-11749.traj.json",
+          "requestsSha256": "838688ade29dfddde8ff925bdccb59573db3dc246ead02458ae822c615bbf7c1"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "django__django-11490.traj.json",
+          "requestsSha256": "33767e25848f8dd4485e3a78106a6c18f6e3817eeee8d8b8a72ac471be214837"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "django__django-12276.traj.json",
+          "requestsSha256": "d73dd1e04a5d341157239f26efa4b905dee035ba03c061473dba655a5d1330a1"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "django__django-13279.traj.json",
+          "requestsSha256": "1b86e59e55af807d1d076b9f109e4012266a3880b4fc05a5da56c4f86eeb8113"
+        }
+      ]
+    },
+    {
+      "batch": 8,
+      "requests": 279,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 380,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 14,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 0.8497324499999994,
+      "afterCostUsd": 2.404339049999999,
+      "isolatedCostUsd": 2.40433905,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "django__django-13346.traj.json",
+          "requestsSha256": "6d87ac51339552e9656f2d36563b69f30cdb7d7cc2ae7cf2fdbca708f805d7a6"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "django__django-14725.traj.json",
+          "requestsSha256": "6e2901854892181547f884730eb1f710da8eca0183b58434184135e137179526"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "django__django-12325.traj.json",
+          "requestsSha256": "e3a82c47e1995e0485e682887eee6cc1774a3f8a40c98ed461988b79db6b5f89"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "django__django-11728.traj.json",
+          "requestsSha256": "86bfdf8bce1e65db88c5c276c03b8aa562b231bc74ae683b486d0b7b4a144858"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "django__django-13568.traj.json",
+          "requestsSha256": "155ec8489d1975f1fb1cf1d8f6d9b3b6553280f618514f821f992a79fb00fb2b"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "django__django-13417.traj.json",
+          "requestsSha256": "928fbf8240754c97c03bc9acea47234198f3584ae4431f7e2d56fb534c5973e4"
+        }
+      ]
+    },
+    {
+      "batch": 9,
+      "requests": 327,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 406,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 12,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 5.402516249999999,
+      "afterCostUsd": 3.2202951499999983,
+      "isolatedCostUsd": 3.220295150000001,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "django__django-13449.traj.json",
+          "requestsSha256": "bfd0b8d01b4a027a75eee1c4e5c5a847a94201936f02a73af116b2584ff9ebb1"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "django__django-14792.traj.json",
+          "requestsSha256": "d27c4d1af511a491fbbf7da96f658464a667cc23bd85974d9c3d6dee01f060b4"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "django__django-12406.traj.json",
+          "requestsSha256": "3c1b911d2721df993d79438272ff3d180cbbbe78b5b8785de93972ed8228fc91"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "django__django-12209.traj.json",
+          "requestsSha256": "9afb2873566675de03e2662771e39fe0ff16091d08db09850dd49de0a7f316bd"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "django__django-13807.traj.json",
+          "requestsSha256": "9f87b6ac8fc2c22a8f98956cbb15192a85b884aa9822ba8fd07f22b63bf68661"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "django__django-13512.traj.json",
+          "requestsSha256": "cf079e94d8442c93f43408e21cda22d94b46164f1dc92ea81e8e48111e239530"
+        }
+      ]
+    },
+    {
+      "batch": 10,
+      "requests": 290,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 330,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 14,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 4.668920250000002,
+      "afterCostUsd": 3.1985262500000013,
+      "isolatedCostUsd": 3.19852625,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "django__django-13670.traj.json",
+          "requestsSha256": "90de38db395ce9bd19b67b2d33c99e827bdc059ba27de4dc0a84822c31297331"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "django__django-14999.traj.json",
+          "requestsSha256": "4375609ed9a6706a491062a656aa3bab0ea3f8413cdda9fa93d86e712dae77e0"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "django__django-13012.traj.json",
+          "requestsSha256": "e47e1d5521a961104519cb3dc68f88c698027a1e9e04599864ccc833c5ab08d0"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "django__django-12708.traj.json",
+          "requestsSha256": "74adf1e23429d569d197feb48d4d209e9038152ecd704213a64c6d33b1bdd47c"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "django__django-13810.traj.json",
+          "requestsSha256": "57a8255e8f8e52b1820c94f731b4cb32cdb300fd23f509696d4b41a50ab8200e"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "django__django-14011.traj.json",
+          "requestsSha256": "c7722dd5b58da6d43f7ca9da322a92ca4fe88e5ff4437c45cd38ddc44a560fff"
+        }
+      ]
+    },
+    {
+      "batch": 11,
+      "requests": 315,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 340,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 26,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 4.411767749999998,
+      "afterCostUsd": 3.2038891499999997,
+      "isolatedCostUsd": 3.2038891499999997,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "django__django-13794.traj.json",
+          "requestsSha256": "79ae55d167053640c501a95ba831a6f6406f6ec91612cdaea7d6305faa752157"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "django__django-15037.traj.json",
+          "requestsSha256": "fab5336fcdce2f1a43f9ee052231274fc3105335f2aa89f5b8da554f3d2dec09"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "django__django-13109.traj.json",
+          "requestsSha256": "04a56b3841187569c600d082d7895030a16e0f0f21eda90ae27959755b59affd"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "django__django-14631.traj.json",
+          "requestsSha256": "daf5e6dcdbc02c959158a8542b231edb34e24b0f8e9b7394b33039bc1a8a41c5"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "django__django-14017.traj.json",
+          "requestsSha256": "b54fc835fa325a60acfe46e03989fb0e98a33db7c9432ff228fb556d143f88be"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "django__django-14349.traj.json",
+          "requestsSha256": "04cc196cf818e036399f69624290f56cbb1b08e30bcc8061b518899c380c48dd"
+        }
+      ]
+    },
+    {
+      "batch": 12,
+      "requests": 295,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 434,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 14,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 0.98663995,
+      "afterCostUsd": 2.89674745,
+      "isolatedCostUsd": 2.896747450000001,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "django__django-14311.traj.json",
+          "requestsSha256": "a2575cbf53a7b23fd30cf573e0eece649c64944748dabd2a4ef0a524e62f92b9"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "django__django-15268.traj.json",
+          "requestsSha256": "9500fedeb2a9758f9aac7442510dcd9223b04cced582a0db21d8896b8e3616aa"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "django__django-13344.traj.json",
+          "requestsSha256": "716ca51ed848a9f7b54c439b3c6746b7e34d42cac29df11c8d24abb75a9bfc54"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "django__django-15103.traj.json",
+          "requestsSha256": "14c2803049d29abd1f753c4e7e8a2cc822031c077cb0e71d41286bb5933bf1cf"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "django__django-14349.traj.json",
+          "requestsSha256": "9ff8c61a313fb61145b3f01985567788136b60d706a5279e36d0f942c2078c40"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "django__django-14351.traj.json",
+          "requestsSha256": "0c53e78c87ba251ed02787f841aae689d9696ba5d2b821d89f645c03616ad874"
+        }
+      ]
+    },
+    {
+      "batch": 13,
+      "requests": 203,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 202,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 36,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 1.2876613500000007,
+      "afterCostUsd": 1.3236987000000011,
+      "isolatedCostUsd": 1.3236987000000002,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "django__django-14580.traj.json",
+          "requestsSha256": "c61582bae25d1c1748e3bb24d29de41e48c7b631f2f7430a99a17a6e2deb35c2"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "django__django-15277.traj.json",
+          "requestsSha256": "5b92256fe1a20242197dc9342c510607a8920dfaad4d4f89daf671b56fbe344f"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "django__django-13820.traj.json",
+          "requestsSha256": "76c98cdf45fb9ade3e625256977a60833e4729573554ffdafd9f36075bf56a43"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "django__django-15569.traj.json",
+          "requestsSha256": "d756dc59275739310f713510961af5be9e88a1572b27ace8d92b312dec15d270"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "django__django-14404.traj.json",
+          "requestsSha256": "46030d2efd6eb98770a14d30155f6c0a755f2eacc1bc0b6372ccadac3c739e69"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "django__django-14376.traj.json",
+          "requestsSha256": "06543b16eae55360f20b3448194a610af35516562aca003d3809069eff495ae1"
+        }
+      ]
+    },
+    {
+      "batch": 14,
+      "requests": 294,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 260,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 18,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 4.373488250000001,
+      "afterCostUsd": 3.574442450000002,
+      "isolatedCostUsd": 3.57444245,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "django__django-14608.traj.json",
+          "requestsSha256": "3c7e6a44c792125ed07fc320af182f4f076f0b535fc1d051a64ffa9ddfea349a"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "django__django-15695.traj.json",
+          "requestsSha256": "c09cf526e5e1ed93fb2ccba4662fa04e75e02e19ca82183eb4a1e94771b7bfba"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "django__django-13821.traj.json",
+          "requestsSha256": "04dcfc281f59319cd65188d929e64a558556cd67a8196f51c2e82378df2815c9"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "django__django-15957.traj.json",
+          "requestsSha256": "37d5dd45e42e8a8e018a12c05d41fa3b90a825bf3b7a5982ba783df8fba01b13"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "django__django-14559.traj.json",
+          "requestsSha256": "be128566b557c895e7d9651b44b881607e54400d5af032f5a3c84213ef155870"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "django__django-14631.traj.json",
+          "requestsSha256": "a335983f13ca4f1bd54425c9ea91acabc047049c6b59c77a78988a84b36c1d11"
+        }
+      ]
+    },
+    {
+      "batch": 15,
+      "requests": 248,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 340,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 10,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 0.7590245499999999,
+      "afterCostUsd": 2.2835929500000005,
+      "isolatedCostUsd": 2.28359295,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "django__django-15022.traj.json",
+          "requestsSha256": "43fdcdd84f2a1dd9ac5095da54bd894fb5491c479284932e07f488dbea4e7dda"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "django__django-15957.traj.json",
+          "requestsSha256": "eafb2e23abd795ff4e9dbadf8649f0dd3e308689d1239010601e8a33211b47d8"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "django__django-14608.traj.json",
+          "requestsSha256": "a7eff3e55990f5c3e4d61cf4cf26534d5fd48a2cc7696df1cc1a57b2f85b44b5"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "django__django-16136.traj.json",
+          "requestsSha256": "f79a8b69cd2b8d826a00983d145338eb80b8b390b2c2544143686bf95c4e0022"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "django__django-14672.traj.json",
+          "requestsSha256": "e90a345fe03686b1c0d2429d589bfd03eb7d4a2efda6f517ef537c412f97d1ff"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "django__django-14765.traj.json",
+          "requestsSha256": "967ad04792e55605dacddf319793bd5ae6f634c1c0f4b9d4c212390a9e22f2f4"
+        }
+      ]
+    },
+    {
+      "batch": 16,
+      "requests": 173,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 182,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 26,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 1.0853648999999996,
+      "afterCostUsd": 1.2230793999999998,
+      "isolatedCostUsd": 1.2230794,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "django__django-15103.traj.json",
+          "requestsSha256": "7db0f0785d63f1fa95a9c9e2e98314d9daa37ee3e2889178075edd7bab3e09a6"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "django__django-16136.traj.json",
+          "requestsSha256": "43af3fdcea9ea32e97514252b4976b2168078c8b3e8766d371d875b4cebd7f67"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "django__django-14915.traj.json",
+          "requestsSha256": "fbc0f4fe4f6b38228e2d55fef38487c256e73c81b646f247e955405e823d68e4"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "django__django-16569.traj.json",
+          "requestsSha256": "afd568078784dbfc9fcbfeaad0354e2922faf7750ae7cfe077acbdcfffcf6745"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "django__django-15930.traj.json",
+          "requestsSha256": "d38cfab51f08868c845f1affaa2ef5ec8a47fefb911f03d203d0f1c24312a004"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "django__django-14787.traj.json",
+          "requestsSha256": "3fa5db54d1206106663476e7926479d46eb6329812b9a6f85a055d477453e4d6"
+        }
+      ]
+    },
+    {
+      "batch": 17,
+      "requests": 228,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 284,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 14,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 0.7625294499999999,
+      "afterCostUsd": 1.9096995499999996,
+      "isolatedCostUsd": 1.9096995500000002,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "django__django-15127.traj.json",
+          "requestsSha256": "ba95e8c8f8523a4dd659363ae5d41f9cef8f01d8849211fbb38c4ae47fac14d4"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "django__django-16485.traj.json",
+          "requestsSha256": "46ae7e199ab664bc53039d1aa108475c500719d7ac2c7e4ad90cddaf128e008d"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "django__django-15161.traj.json",
+          "requestsSha256": "bf6ec071cd1b2ea39e43cc88608326507fe18a3f30628d252ddd2952f8f5824c"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "django__django-16938.traj.json",
+          "requestsSha256": "4bcfd4d74f2e3528e8e6816afc3e427f45bdfd644ac4d5b1a988e4ba9a5c161b"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "django__django-16256.traj.json",
+          "requestsSha256": "4b37bb15bd51b68356bb573516b20f07f1441187705431fdfe8076662d9a6d2b"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "django__django-15561.traj.json",
+          "requestsSha256": "c1393ccc0d7e574de458d0949cdff8edcb5555d57a01eb5ab549877808cdc361"
+        }
+      ]
+    },
+    {
+      "batch": 18,
+      "requests": 246,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 344,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 16,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 0.74876235,
+      "afterCostUsd": 2.1186198500000004,
+      "isolatedCostUsd": 2.11861985,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "django__django-15525.traj.json",
+          "requestsSha256": "be12cb4bd7718902bd77acb09ff19d164f9b68d3a477c793fb7a422d0ae849b8"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "django__django-16502.traj.json",
+          "requestsSha256": "fa06d110b7d2a34476f08f103cda64374340aa4571326020cf2e09905a4c17e2"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "django__django-15561.traj.json",
+          "requestsSha256": "74763e1decc6a17268f1cb44724e939ee5b7eddeb0118cc39872c62c5d273d72"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "django__django-7530.traj.json",
+          "requestsSha256": "dbf380b301c40359fdd5905fc5899d6c474637b769a1cfea3830afc00f7cabef"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "django__django-7530.traj.json",
+          "requestsSha256": "ba2b7b0f862ec66b27e32f84a156a28a744c1044abc21d7a014af190497a9df4"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "django__django-15741.traj.json",
+          "requestsSha256": "e56b122ce4bff73862cb8354a0f32830ead8c25a8cdfaaa3aa00dbf399ee3f0f"
+        }
+      ]
+    },
+    {
+      "batch": 19,
+      "requests": 333,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 442,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 20,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 1.1383867999999997,
+      "afterCostUsd": 3.2691518000000013,
+      "isolatedCostUsd": 3.2691518000000004,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "django__django-15629.traj.json",
+          "requestsSha256": "499deaf787b387ce6ace15781a35f98c88e05c03c69165bbf665011d010d6a49"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "django__django-16662.traj.json",
+          "requestsSha256": "03db75207ca86580bd5281b0969daf3e5e63cc5d4e05f1aa925adcf6bdd8fc9e"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "django__django-15629.traj.json",
+          "requestsSha256": "20ed95e493ed5b92ab422b28011033e60973873bb37ab68ee35b9039bb4b0110"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "matplotlib__matplotlib-14623.traj.json",
+          "requestsSha256": "335917b29f22a7056b68fa71f801a9079b9a42f8e34da5d5538a73f7e4191196"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "matplotlib__matplotlib-20488.traj.json",
+          "requestsSha256": "96aaace48eedd4fca9e7a2540a58abf218f7948cf177b279a6393643e781b1c0"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "django__django-15851.traj.json",
+          "requestsSha256": "e6319122faade9d72338430eac7afb81fcc8ce800d42c21fd7ec10ef91b24b55"
+        }
+      ]
+    },
+    {
+      "batch": 20,
+      "requests": 272,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 288,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 22,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 4.322485250000002,
+      "afterCostUsd": 2.90352525,
+      "isolatedCostUsd": 2.9035252500000004,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "django__django-15741.traj.json",
+          "requestsSha256": "8ea8556e7ed2210ed119c113daf41257b8649705094a9ba42458cf06afda54a1"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "django__django-16819.traj.json",
+          "requestsSha256": "c916cbb02f9723d3d347d064ef45fce6854353c78400f642a0c24e034e2fc5fe"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "django__django-16315.traj.json",
+          "requestsSha256": "992c69385bab057cac3a70388e33c4f12b73df1880e9b27c2169dc5da0268fb1"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "matplotlib__matplotlib-22719.traj.json",
+          "requestsSha256": "cea603911db53501c66b840c6bd1fac070b96bdd0e3034a8835eebd9001852be"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "matplotlib__matplotlib-20859.traj.json",
+          "requestsSha256": "f2970ce7e731e5430122268b8cd1576accbdbad7b1c9b44448684022bdc8dc36"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "django__django-16082.traj.json",
+          "requestsSha256": "1cd8a16576e41952ba17f4defc515c92dfc8cf7bdd37eb40950e538ba271d5e8"
+        }
+      ]
+    },
+    {
+      "batch": 21,
+      "requests": 295,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 372,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 18,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 4.2303102500000005,
+      "afterCostUsd": 2.5835382499999993,
+      "isolatedCostUsd": 2.583538250000001,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "django__django-16315.traj.json",
+          "requestsSha256": "991c934b03c5fa33533d6650ef0f637b3bdb2f4c7d3f043f9f1568e449abcba1"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "django__django-16950.traj.json",
+          "requestsSha256": "be6a126a161e2bd71903bd0af7d6a58ae26fe9e16ecad64f3d7e2176d72843c3"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "django__django-16631.traj.json",
+          "requestsSha256": "5c651339401ea59dedee7f6d7c8402f00b8bb1ff1d7aea44a8fc059087f1a1e0"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "matplotlib__matplotlib-25960.traj.json",
+          "requestsSha256": "cb2375d07c511ddfbe82297dfccb1db8129bbe495a33afaf82632df93849bb23"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "matplotlib__matplotlib-23476.traj.json",
+          "requestsSha256": "ce465f965c8f0f517c719d48ac2bceb7299f185816b583a4a7f7fb8eba3271d8"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "django__django-16493.traj.json",
+          "requestsSha256": "20da9dccb0c339a0cc6642cb2b60f285e5d50b5e7a892281b0c85c20f7152a91"
+        }
+      ]
+    },
+    {
+      "batch": 22,
+      "requests": 210,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 218,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 28,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 1.2665029500000005,
+      "afterCostUsd": 1.3505774500000003,
+      "isolatedCostUsd": 1.3505774500000003,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "matplotlib__matplotlib-22871.traj.json",
+          "requestsSha256": "bdfe77617770474e48fa12e6bf7bf4956e8ebc98869e7f1451d68048b23ca4b3"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "matplotlib__matplotlib-20676.traj.json",
+          "requestsSha256": "aff316bd13328b3652e138d5425a6dba7c3b13888dce70764d545b7c0751c940"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "django__django-16801.traj.json",
+          "requestsSha256": "364b43e67626334b52b35a5e75c7180b3dca80458998a8a24dfc651feba8106b"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "pydata__xarray-4629.traj.json",
+          "requestsSha256": "cbfdb9842ac2d104c64bbb1e264729ebc38e583691d0e0bc57b33920daec2fa8"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "matplotlib__matplotlib-24970.traj.json",
+          "requestsSha256": "87fe19f76034cd7c977242294bac11dea3281cf7b642ba0dfe99d46af2783f94"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "django__django-16502.traj.json",
+          "requestsSha256": "2d39d7945de9713564f3d415d32b97a51e4735121cc431fd1526834070bc82aa"
+        }
+      ]
+    },
+    {
+      "batch": 23,
+      "requests": 271,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 400,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 16,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 0.7826267499999998,
+      "afterCostUsd": 2.1833905500000013,
+      "isolatedCostUsd": 2.18339055,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "matplotlib__matplotlib-23299.traj.json",
+          "requestsSha256": "836f5d85d643224daa628996736e81af9cc60b552d4983604e20cf46935296b9"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "psf__requests-2931.traj.json",
+          "requestsSha256": "206d0f18ce7cd2cbf9ebb9bd76e9cbc41bd61b5bf641d8fe4681a350d61b7d86"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "django__django-16819.traj.json",
+          "requestsSha256": "c2456f75d50a588ebcdf2cf49536222866f6aa66e0e1b60096e1cce7d92dc80c"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "pytest-dev__pytest-10081.traj.json",
+          "requestsSha256": "37a3ea333e321c68b72eea6758aafbc4c590a89d7bb14dc0f6085e73027b4170"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "pydata__xarray-6938.traj.json",
+          "requestsSha256": "35620d52a269c020384a05ca4690951c3a123c239abae531d384c7c3539ed0da"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "django__django-16631.traj.json",
+          "requestsSha256": "66189eff41a7c992bf9f3180cbd88e6a0bc6878a3be5311d15dd1957cb758ad3"
+        }
+      ]
+    },
+    {
+      "batch": 24,
+      "requests": 221,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 224,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 18,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 2.8116667499999997,
+      "afterCostUsd": 2.049648249999999,
+      "isolatedCostUsd": 2.04964825,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "matplotlib__matplotlib-24026.traj.json",
+          "requestsSha256": "fd428dae4bddc61ee0889de63c6ca45055cc60e8618fb7ec93b4e2b11f0f2542"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "psf__requests-5414.traj.json",
+          "requestsSha256": "c5676acf1968d981af6b9e9f3ce4a707375c3be7415eedfb05b2748afd4a2ae9"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "matplotlib__matplotlib-13989.traj.json",
+          "requestsSha256": "9a3213c5d902174ddffa47723c2f8cbef4744e459eb7c0bc837c273ef069c805"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "pytest-dev__pytest-6202.traj.json",
+          "requestsSha256": "1bb66f6e8f971d961de306f3427313913ee3c83922ec56c575735fd4b9502a43"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "pydata__xarray-7233.traj.json",
+          "requestsSha256": "02c57e23f248f08b58f6961dc22d8fbaacf89891f5471218dbdd15a73b95b17c"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "django__django-16642.traj.json",
+          "requestsSha256": "8ba0c27078bc0c5c69d30cc75227b0764b004cf7a1e945a094b62263c242e8db"
+        }
+      ]
+    },
+    {
+      "batch": 25,
+      "requests": 294,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 300,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 50,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 2.3547226499999985,
+      "afterCostUsd": 2.398959249999999,
+      "isolatedCostUsd": 2.39895925,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "matplotlib__matplotlib-25775.traj.json",
+          "requestsSha256": "8648ca5c32b076f89b234172c248e70d429417dafcec96e079f58193a2066347"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "pydata__xarray-3677.traj.json",
+          "requestsSha256": "0a6818a87b6e65d2462b429fd40a4f12238f555a0c1ae1295b1cbde375609b00"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "matplotlib__matplotlib-20488.traj.json",
+          "requestsSha256": "63272a48c424fcabd67c78608af1712904e2c4381673696a857f481e841dd755"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "pytest-dev__pytest-7521.traj.json",
+          "requestsSha256": "07734eaccd4d3740217f69091205692481000c736c08b91b414f2aaed4848488"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "pytest-dev__pytest-6202.traj.json",
+          "requestsSha256": "26d4353e302a50a30a521333f6e414ca89ed6c84c4119bc58de9d6b513a7d30d"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "django__django-16877.traj.json",
+          "requestsSha256": "1881884983f62898483bcace805bb3f831f76837b5a7f55e02904e5884dad2d1"
+        }
+      ]
+    },
+    {
+      "batch": 26,
+      "requests": 307,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 364,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 22,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 5.030891749999997,
+      "afterCostUsd": 3.654141250000001,
+      "isolatedCostUsd": 3.654141250000001,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "mwaskom__seaborn-3069.traj.json",
+          "requestsSha256": "0362e063ab4bed81e7e359387447549fdb2ca0e62f49404e4a59fadf7b0c7f18"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "pydata__xarray-6599.traj.json",
+          "requestsSha256": "5f055d3bcacb7c202dff808e29c0a2b92160c55c8514be416e642532a811fb0c"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "matplotlib__matplotlib-24637.traj.json",
+          "requestsSha256": "60eba3bb3f49ea1084316d2057a5431f3882380a6d69d7ddcf426ea450a46c98"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "pytest-dev__pytest-7571.traj.json",
+          "requestsSha256": "f97162dbac94093ff68debb1163580a4f6ebcbe9067f4dc2bb1cb7448eb6ea30"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "scikit-learn__scikit-learn-10908.traj.json",
+          "requestsSha256": "d695609fff0c2e818471a1aa22a569f6e4368057ea4b7951626359a4cfea13d8"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "matplotlib__matplotlib-20859.traj.json",
+          "requestsSha256": "9e3e387777187f72c3fbfb7a16a9613734c5500e50c1a7be152d8a9cefa2b7c4"
+        }
+      ]
+    },
+    {
+      "batch": 27,
+      "requests": 246,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 302,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 18,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 0.62318165,
+      "afterCostUsd": 1.50188065,
+      "isolatedCostUsd": 1.50188065,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "pytest-dev__pytest-7236.traj.json",
+          "requestsSha256": "c754b3c7ffaca32a42cb4fc5ee6eac4cc65a0046e42ae152e66bfcaf9cf4d0bb"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "pytest-dev__pytest-6202.traj.json",
+          "requestsSha256": "5c96c971880c427b55e81fd7decc8a5b67949be7cdc11b3b725096531fb2ede4"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "matplotlib__matplotlib-25311.traj.json",
+          "requestsSha256": "688fa8681a5693d8883ae3eefe909d9877875856c0391ab46981bc8f78041d8e"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "scikit-learn__scikit-learn-14053.traj.json",
+          "requestsSha256": "d9c5844372ee0af5e46391026ab8f86f924e7cf0934e9dbfa40e49e2a86486ed"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "scikit-learn__scikit-learn-12585.traj.json",
+          "requestsSha256": "5c9ff5e5b8d4f5bf53fef9bc6d383bf5f428a64249dfc9a4a6caa70872ff70ba"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "psf__requests-1724.traj.json",
+          "requestsSha256": "6c05435c530305d2099043ac83d07ac0c9dbd29aaf56235823900cd9d0f6cc3e"
+        }
+      ]
+    },
+    {
+      "batch": 28,
+      "requests": 194,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 278,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 6,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 0.4821709499999997,
+      "afterCostUsd": 1.4444283500000006,
+      "isolatedCostUsd": 1.4444283500000006,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "pytest-dev__pytest-7490.traj.json",
+          "requestsSha256": "02415cf34594aa7d990ab3fc344be2c57dfb38c2b4a942d46c5d1a1e2ab772c5"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "scikit-learn__scikit-learn-25973.traj.json",
+          "requestsSha256": "e4078cfd24f65d2e58d1a8b8110945d24b33122066c83a44748d31155020ce1d"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "matplotlib__matplotlib-25332.traj.json",
+          "requestsSha256": "4679004968492676383a58cc2559da428259a4ce9c856f8c34ad4ffa19d03173"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "scikit-learn__scikit-learn-15100.traj.json",
+          "requestsSha256": "9ec37f028b8ba09e199b86271a56d3cbafb22f2a4a668f773b8c5c3d947f6b8d"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "scikit-learn__scikit-learn-13779.traj.json",
+          "requestsSha256": "624f9c3a2bc31f01a0ba32b5d220c04e536a1d3cfe5c9a715fae8500d86fd894"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "scikit-learn__scikit-learn-10844.traj.json",
+          "requestsSha256": "bc2a00ef4a5cccf692cec74f707f8d266759b9311020886e3616773416299900"
+        }
+      ]
+    },
+    {
+      "batch": 29,
+      "requests": 271,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 294,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 16,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 0.7606171000000005,
+      "afterCostUsd": 1.5417377,
+      "isolatedCostUsd": 1.5417376999999999,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "scikit-learn__scikit-learn-13328.traj.json",
+          "requestsSha256": "b20549fd48470c8251b929d41757de76c426842cd8d27f4976217c5799f24b99"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "sphinx-doc__sphinx-10435.traj.json",
+          "requestsSha256": "d0c36761bb2433f4f58a2731fd365b0d55c93f084cbca61775570445e5ae738a"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "matplotlib__matplotlib-25775.traj.json",
+          "requestsSha256": "a14e2349e3c0b870d3ee1c285ff89b9268516e4fd63000487a100b1e137bfedc"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "scikit-learn__scikit-learn-26194.traj.json",
+          "requestsSha256": "1322cdf7dcf11123116797c10c978bf7eeb404eb323bdf042c4f6edc089b2adb"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "scikit-learn__scikit-learn-14141.traj.json",
+          "requestsSha256": "c6989456be2e5d89c617067eef7ec4752c2bedab88d111b118007c0eb47c0892"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "sphinx-doc__sphinx-10466.traj.json",
+          "requestsSha256": "e52f08ea9931073a6de15cacf9ff4b6ba5bcb9d926f2904e5daf0f660a95c4aa"
+        }
+      ]
+    },
+    {
+      "batch": 30,
+      "requests": 261,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 326,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 12,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 3.5853549999999985,
+      "afterCostUsd": 2.1479856,
+      "isolatedCostUsd": 2.1479856,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "sphinx-doc__sphinx-10466.traj.json",
+          "requestsSha256": "5a55477c8d204f08e9587b0a78d77185e8c80eaabd7ef805c80c4cca7fd506d0"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "sphinx-doc__sphinx-7590.traj.json",
+          "requestsSha256": "61e84cbd023a344335d629bef1c1d9b7d5652b1af2df7aee62b75c4099aa60d0"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "matplotlib__matplotlib-26291.traj.json",
+          "requestsSha256": "0cf0c599f2641a670f66d933e26b01b77f1dbbc06ed64e1043c1b28d2d1bdf99"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "sphinx-doc__sphinx-10466.traj.json",
+          "requestsSha256": "d02bb4253640e3acb298c91922d5c414309b1c3db7775bc7c3e27256e245dfca"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "scikit-learn__scikit-learn-25747.traj.json",
+          "requestsSha256": "48d33aed8729c167b0c173023fc0819875085e26656fa3ab22011a30de9e54e4"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "sphinx-doc__sphinx-9591.traj.json",
+          "requestsSha256": "5e31bfb6362de8ffc2cc1184c91465b2c706cdb38d3372c7855827e530496a4e"
+        }
+      ]
+    },
+    {
+      "batch": 31,
+      "requests": 353,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 406,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 14,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 5.789147499999999,
+      "afterCostUsd": 4.0576675999999985,
+      "isolatedCostUsd": 4.057667600000001,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "sphinx-doc__sphinx-7454.traj.json",
+          "requestsSha256": "88d45d2274ddf7acb84c57127db915a336b5b515c4512f0e334876c5dd2011df"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "sphinx-doc__sphinx-8265.traj.json",
+          "requestsSha256": "eaa478fe2b845437f6222bff27d06cb8625897f0ef39381977b8894de62ce962"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "pydata__xarray-6938.traj.json",
+          "requestsSha256": "4c8ac9fddfc5257c2e1a151490096adb88fca5c19994c0fbff51a1116ad9b4fe"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "sphinx-doc__sphinx-11510.traj.json",
+          "requestsSha256": "a3f5acfa47b09f2ebdcf260847aab574f018445f9fa5e778deaa7aefb48cacfc"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "sphinx-doc__sphinx-8120.traj.json",
+          "requestsSha256": "34d578bc3f3ead4b94c57148f289986756873b198a1091796670c989cb4d85a4"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "sympy__sympy-12481.traj.json",
+          "requestsSha256": "649556783b4f132677b4cc29d0483c75be04de3d67ce62cae691bfe8a7863672"
+        }
+      ]
+    },
+    {
+      "batch": 32,
+      "requests": 316,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 282,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 54,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 2.712395550000001,
+      "afterCostUsd": 2.900776449999999,
+      "isolatedCostUsd": 2.9007764500000004,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "sphinx-doc__sphinx-9461.traj.json",
+          "requestsSha256": "e1fe68152aff2439d049c39009eabdcc305ae72b20c566ad22f4e5ddafe013bc"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "sphinx-doc__sphinx-8269.traj.json",
+          "requestsSha256": "7fce5849f83ccec08fbcade9aa7db204a9323b40c2465ec43b3f3094bb407050"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "pytest-dev__pytest-5840.traj.json",
+          "requestsSha256": "de951c816269c0c36601279978bd5ace887aaa20f442d6f377ab8e6d3f6b0038"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "sphinx-doc__sphinx-8551.traj.json",
+          "requestsSha256": "6fd48c9fe7999198f3a8df2c11d9b05c4f05f84c2548863bba73755bb1668e01"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "sphinx-doc__sphinx-9658.traj.json",
+          "requestsSha256": "e0fe6a8d55c288168ed875018b179c7eb14af98ea3eac22274033237367f6e53"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "sympy__sympy-13372.traj.json",
+          "requestsSha256": "c3a53a764bd7712161f7b70e5045dd22e193c6cdb4d9c4a1ea7c4b7222575506"
+        }
+      ]
+    },
+    {
+      "batch": 33,
+      "requests": 275,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 276,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 32,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 2.301356100000001,
+      "afterCostUsd": 2.745591000000002,
+      "isolatedCostUsd": 2.745591,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "sphinx-doc__sphinx-9591.traj.json",
+          "requestsSha256": "65befe4a504e1b5dbf8100291b59d23426da067e6981e86a2b927f9dff0e6518"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "sphinx-doc__sphinx-8551.traj.json",
+          "requestsSha256": "781aafbea41ae5962a9057de73d349dc2cdd1b3a8035be3922ad4dbdffe0f344"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "scikit-learn__scikit-learn-14053.traj.json",
+          "requestsSha256": "7dfe9d1e040133959611388166df8d6b3b2f50ecb80b09b090515634de3ff39c"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "sphinx-doc__sphinx-9258.traj.json",
+          "requestsSha256": "113fa337e15b0962671af269c9ad4218c8f0fa02f2d316f9810d14f918406257"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "sympy__sympy-11618.traj.json",
+          "requestsSha256": "6f66999ef13d129db0adc5fb2e0feb74d6b76467fdf219c268edb0e2cf358174"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "sympy__sympy-15809.traj.json",
+          "requestsSha256": "96b7bece83057e837117b5c4b50fc9fb0967a386cab5656d15de8392366f1c9d"
+        }
+      ]
+    },
+    {
+      "batch": 34,
+      "requests": 313,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 386,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 20,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 3.8950497499999996,
+      "afterCostUsd": 2.6940876500000006,
+      "isolatedCostUsd": 2.6940876499999997,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "sphinx-doc__sphinx-9602.traj.json",
+          "requestsSha256": "2cc6959819b5217d7b469698260d9c4487e123de09f00e8966788cb8852e74d5"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "sphinx-doc__sphinx-8595.traj.json",
+          "requestsSha256": "266fc744ea5d1785e102c29a84da3702a8804aa3b55bac7ab6a748229b752f44"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "scikit-learn__scikit-learn-14496.traj.json",
+          "requestsSha256": "e4bb0e02f1d0c6adc44049a1cc40a169cf25b53cbda8616ac6ee5b52ddc9a9b0"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "sympy__sympy-12419.traj.json",
+          "requestsSha256": "c0032c431c6bd8c1107a33d5519cc61c2819a2de6e21fdbd01c290adaa68b6be"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "sympy__sympy-13091.traj.json",
+          "requestsSha256": "d3130be3087817fae57a7291c40d4835ef54bc9ecdb7a58aeb1bde065f163d49"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "sympy__sympy-15976.traj.json",
+          "requestsSha256": "1ad2bff8e6b23f911b031d564a1197ea11c05a8392a3084978d012cac5b1bede"
+        }
+      ]
+    },
+    {
+      "batch": 35,
+      "requests": 288,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 354,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 18,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 0.7707457499999999,
+      "afterCostUsd": 1.7257903500000007,
+      "isolatedCostUsd": 1.7257903500000005,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "sympy__sympy-12481.traj.json",
+          "requestsSha256": "7b017c5794b61b6528392828faf7fe3e4672cd069a91e4fb95d026750f65578f"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "sphinx-doc__sphinx-9281.traj.json",
+          "requestsSha256": "f6cdc43bc4d565d6753dc363cec4c8911102d85e2aad6e67ca411b38ea1f81e4"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "sphinx-doc__sphinx-8035.traj.json",
+          "requestsSha256": "b6e99bff108d17189e2d47af379d4556aa4b39d6a74fb989a74174752a1891eb"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "sympy__sympy-13877.traj.json",
+          "requestsSha256": "1a0f199f02eb124e606558156f49f3847a5db77abbd97efae34a2011e0ae6eae"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "sympy__sympy-14711.traj.json",
+          "requestsSha256": "477331c665db4dd7534273d3e250d5a836be5d78b19552fb92aa93f550ac1c44"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "sympy__sympy-16450.traj.json",
+          "requestsSha256": "8823df88f67a78a7f9bdadf1091d851580645b0e8d8cc4570944f01599cf4e66"
+        }
+      ]
+    },
+    {
+      "batch": 36,
+      "requests": 289,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 318,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 26,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 3.4859970000000007,
+      "afterCostUsd": 2.1989949999999996,
+      "isolatedCostUsd": 2.198995,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "sympy__sympy-13877.traj.json",
+          "requestsSha256": "062ec5aea086659c9e1d82c74703b1d8ac2c9f914a794238e9272505fc2168e3"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "sympy__sympy-19040.traj.json",
+          "requestsSha256": "0edb87abd6d63c2a3ece9421db99aa237fc4f9da9b697242878881d6b1780527"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "sphinx-doc__sphinx-8265.traj.json",
+          "requestsSha256": "15c9833a1a41efd162a928e20fe9a2069c5aa6f012482c1911bda4732451128c"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "sympy__sympy-14976.traj.json",
+          "requestsSha256": "81229c3e198ae7dca1ea30f1f30167154ec7c2e37fbe4520770a9ee4b419f87c"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "sympy__sympy-14976.traj.json",
+          "requestsSha256": "df9e2dfa0b4201630421c74c00c6115ab33b279b68401b84dc4e0d63399973ce"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "sympy__sympy-17655.traj.json",
+          "requestsSha256": "d603c9a7aa3666c36c272d248c67e21203d192c26c6eba019326bc900dc20248"
+        }
+      ]
+    },
+    {
+      "batch": 37,
+      "requests": 244,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 294,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 20,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 2.9199185000000005,
+      "afterCostUsd": 1.8634775000000006,
+      "isolatedCostUsd": 1.8634775000000006,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "sympy__sympy-15976.traj.json",
+          "requestsSha256": "6036a9f1d559b8a1fb444d549a69b5a7df6e3eb83d4837c147deb45cc6107b62"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "sympy__sympy-21596.traj.json",
+          "requestsSha256": "e22532495aae8d02cd88b46eadd0d3b578af4e8ecb1411521a40718b2dfa1445"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "sphinx-doc__sphinx-8721.traj.json",
+          "requestsSha256": "1778de7d7d97260c3e04652e537d7e1563a467c8141a288167852a49320b5f49"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "sympy__sympy-15345.traj.json",
+          "requestsSha256": "a07ed52999f671b5ca811bdf43f74071909b6b149a00b2b07746282ab29820fe"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "sympy__sympy-18199.traj.json",
+          "requestsSha256": "b4aa6ce66cff2cd9195dc974946bf9eeb302c56bea7d404d4d2feb4fc234954b"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "sympy__sympy-18211.traj.json",
+          "requestsSha256": "8de6348c52510b9b2731e741bfd44526359c2d4d2774a02a9a5e7d4b3382863f"
+        }
+      ]
+    },
+    {
+      "batch": 38,
+      "requests": 220,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 264,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 20,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 0.5418501499999998,
+      "afterCostUsd": 1.2171557500000003,
+      "isolatedCostUsd": 1.21715575,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "sympy__sympy-17630.traj.json",
+          "requestsSha256": "275451f240f5c9c1b9b597a9a03f4f612c4e8ec4cb7c893c66bcb9177b7b5e0c"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "sympy__sympy-21847.traj.json",
+          "requestsSha256": "63e01c868ef0497c2a58359331273e5b32b3ae178bba2e4b262845894ad9c185"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "sphinx-doc__sphinx-9281.traj.json",
+          "requestsSha256": "da6bdd884c486139fd01738530f9e7dc604ece090403ba6efd15fc68c85ee36a"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "sympy__sympy-17318.traj.json",
+          "requestsSha256": "1c55d7415cbc86a249f1ba9b8910c54919d92b4820b770483c638564689f54ef"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "sympy__sympy-18763.traj.json",
+          "requestsSha256": "645f3176885d4615c5c17fa44f562db03ecc0ede87ca951b9d3a17b25916beff"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "sympy__sympy-21847.traj.json",
+          "requestsSha256": "6292ae34a3f758a669fabe88c343a1941fc8ad31bd34a74490d1b6838e68f6ee"
+        }
+      ]
+    },
+    {
+      "batch": 39,
+      "requests": 316,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 352,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 18,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 4.152981750000001,
+      "afterCostUsd": 2.6228731499999998,
+      "isolatedCostUsd": 2.62287315,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "sympy__sympy-19637.traj.json",
+          "requestsSha256": "96d4cb730906c415479d913c49a3217d4cece563ab9306523a345e6aa6517f77"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "sympy__sympy-24066.traj.json",
+          "requestsSha256": "5ec8083611cfd0d2d3b9190a0f34a319d59cb10c3e6c3ca2b481116d3ac118f8"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "sympy__sympy-13877.traj.json",
+          "requestsSha256": "4a53701737cab60f703554f26d06f5b16335ab48da4bb610150f2f4525ef3f0a"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "sympy__sympy-20154.traj.json",
+          "requestsSha256": "6f84d4dad7818463b548814eacca1048ec1bb75a9f604902205b0f46b7471abd"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "sympy__sympy-20428.traj.json",
+          "requestsSha256": "5e6c1861f02669f0c0ebf557720892d89d9c9ff1ad90a4983558cb469621e5e3"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "sympy__sympy-22080.traj.json",
+          "requestsSha256": "ddd97aeedb043fb1e331ece358f4eba2ed60817b80d90149babd29cffe36fc8a"
+        }
+      ]
+    },
+    {
+      "batch": 40,
+      "requests": 200,
+      "models": [
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        "claude-haiku-4-5",
+        "claude-opus-4-6"
+      ],
+      "beforeDifferentRows": 250,
+      "afterDifferentRows": 0,
+      "beforeDifferentTokenPartitions": 28,
+      "afterDifferentTokenPartitions": 0,
+      "beforeCostUsd": 2.5770955,
+      "afterCostUsd": 1.7111761,
+      "isolatedCostUsd": 1.7111761000000003,
+      "sources": [
+        {
+          "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+          "file": "sympy__sympy-20801.traj.json",
+          "requestsSha256": "673934e6b1598924b5b49e59737b670d2f8107d52febf41e96b999580fbefc18"
+        },
+        {
+          "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+          "file": "sympy__sympy-24661.traj.json",
+          "requestsSha256": "c5629125f5a63fbecd58056ef192597d117aefe4a5d55cd53831544b4fce9fe8"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+          "file": "sympy__sympy-16886.traj.json",
+          "requestsSha256": "170142636d74abd28b5a4949401eb2a4ce312be2152bb62b1c29d4aecd7420b1"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+          "file": "sympy__sympy-21847.traj.json",
+          "requestsSha256": "501c7950c444c52f1126c42824db4b3a89fde151b4df16f872e0760712c51320"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+          "file": "sympy__sympy-23950.traj.json",
+          "requestsSha256": "5b4aab0df912c23f7cad1173680c383a8b7746398135f2e954f6b9a9c6efaab5"
+        },
+        {
+          "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+          "file": "sympy__sympy-22714.traj.json",
+          "requestsSha256": "ca4e966b7368781f24e698056a67240535bb140758a0089dd1dde4f2188a9814"
+        }
+      ]
+    }
+  ]
+}
