@@ -21,7 +21,7 @@ export function analyze(input: string, options: AnalysisOptions = {}): AnalysisR
 
   const model = resolveModel(format, options.model, requests.map((r) => r.model));
 
-  const reports = requests.map((r) => buildRequestReport(r, format, model.id));
+  const reports = requests.map((r) => buildRequestReport(r, format, options.model));
   // Which earlier request each request continues: the line before it only when the file is one
   // conversation (see threads.ts).
   const paths = prefixPaths(requests, false);
@@ -31,8 +31,8 @@ export function analyze(input: string, options: AnalysisOptions = {}): AnalysisR
 
   let cacheSimulation: CacheSimulation;
   if (format === "anthropic") {
-    const actual = simulateAnthropicCacheSequence(requests, paths, model.id, false);
-    const optimized = simulateAnthropicCacheSequence(requests, optimizedPaths, model.id, true);
+    const actual = simulateAnthropicCacheSequence(requests, paths, options.model, false);
+    const optimized = simulateAnthropicCacheSequence(requests, optimizedPaths, options.model, true);
     cacheSimulation = {
       provider: "anthropic",
       model: model.id,
@@ -42,8 +42,8 @@ export function analyze(input: string, options: AnalysisOptions = {}): AnalysisR
       totalOptimizedCostUsd: sumCost(optimized),
     };
   } else {
-    const actual = simulateOpenAiCacheSequence(requests, paths, model.id);
-    const optimized = simulateOpenAiCacheSequence(requests, optimizedPaths, model.id);
+    const actual = simulateOpenAiCacheSequence(requests, paths, options.model);
+    const optimized = simulateOpenAiCacheSequence(requests, optimizedPaths, options.model);
     cacheSimulation = {
       provider: "openai",
       model: model.id,
@@ -57,7 +57,7 @@ export function analyze(input: string, options: AnalysisOptions = {}): AnalysisR
   // Each conversation is scanned where it is longest: at the requests no later request continues.
   const continued = new Set(prefixMatches.filter((m) => m.relation !== "new_conversation").map((m) => m.fromIndex));
   const duplicates = findDuplicates(requests, requests.map((r) => r.index).filter((i) => !continued.has(i)));
-  const findings = computeFindings(format, requests, prefixMatches, model.id, duplicates, cacheSimulation);
+  const findings = computeFindings(format, requests, prefixMatches, options.model, duplicates, cacheSimulation);
 
   const conversations = { count: threads.conversationCount, byRequest: threads.conversation };
   const usageComparison = compareReportedUsage(requests, reports, cacheSimulation);

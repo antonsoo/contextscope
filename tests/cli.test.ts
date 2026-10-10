@@ -43,7 +43,7 @@ describe("renderTerminalReport", () => {
     const text = renderTerminalReport(result);
     expect(text.match(/contains a value that changes every request/g)).toHaveLength(1);
     expect(text).toContain("requests 2–40, 39×");
-    expect(text).toContain("priced as Claude Opus 5 (from the requests)");
+    expect(text).toContain("priced as Claude Opus 5 (per-request metadata)");
   });
 
   it("abbreviates a long cache table unless verbose", () => {
@@ -53,7 +53,7 @@ describe("renderTerminalReport", () => {
     expect(short).toContain("req 40 ");
     const verbose = renderTerminalReport(result, { verbose: true });
     expect(verbose).toContain("req 20 ");
-    expect(verbose).toContain("Request 1  ");
+    expect(verbose).toContain("Request 1 · Claude Opus 5");
   });
 
   it("names the segment where the prefix keeps breaking", () => {
@@ -62,7 +62,7 @@ describe("renderTerminalReport", () => {
 
   it("says when a model has no pricing entry", () => {
     const unknown = analyze(JSON.stringify({ model: "claude-opus-9", messages: [{ role: "user", content: "hi" }] }));
-    expect(renderTerminalReport(unknown)).toContain('priced as Claude Sonnet 5.5 ("claude-opus-9" is not in the pricing table)');
+    expect(renderTerminalReport(unknown)).toContain('"claude-opus-9" is not in the pricing table');
   });
 });
 

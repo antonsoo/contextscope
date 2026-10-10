@@ -1,6 +1,6 @@
 import type { CacheSimulation, DuplicateGroup, Finding, ParsedRequest, PrefixMatch, Provider, Segment } from "./types.js";
 import { canonicalJson, isRecord, keyOrderFingerprint } from "./json-utils.js";
-import { ANTHROPIC_LOOKBACK_POSITIONS, findAnthropicModel } from "./pricing.js";
+import { ANTHROPIC_LOOKBACK_POSITIONS, findAnthropicModel, resolveModel } from "./pricing.js";
 import { containsVolatilePattern } from "./volatile.js";
 import { sameModel } from "./model-id.js";
 import { comparisonKeys } from "./prefix.js";
@@ -72,12 +72,12 @@ export function computeFindings(
   cacheSimulation: CacheSimulation,
 ): Finding[] {
   const findings: Finding[] = [];
-  const modelInfo = provider === "anthropic" ? findAnthropicModel(model) : undefined;
   // Each request is compared with the request it continues (threads.ts), which in a file that
   // holds several conversations is not the line before it.
   const matchTo = new Map(prefixMatches.map((match) => [match.toIndex, match]));
 
   requests.forEach((request, i) => {
+    const modelInfo = provider === "anthropic" ? findAnthropicModel(resolveModel(provider, model, [request.model]).id) : undefined;
     // no_cache_control / below_minimum_cacheable only apply to Anthropic, whose caching is opt-in via a marker.
     if (provider === "anthropic" && modelInfo) {
       const totalTokens = request.segments.reduce((sum, s) => sum + s.claudeTokensEstimate, 0);
@@ -116,16 +116,15 @@ export function computeFindings(
     // opening messages they have in common, not the rest of that other conversation.
     const prev = startsConversation ? setupOf(requests[from]!, match.matchedSegments) : requests[from]!;
 
-    // model_switch: caches are per model, so alternating models inside one conversation rewrites
-    // the whole prefix on every switch - even when every byte of it matches.
-    if (!sameModel(prev.model, request.model)) {
-      const prefixTokens = request.segments.reduce((sum, s) => sum + (provider === "anthropic" ? s.claudeTokensEstimate : s.openaiTokens), 0);
+    // A change blocks reuse from this predecessor, but not from earlier requests on the
+    // destination model. Missing metadata is not evidence that a switch actually happened.
+    if (prev.model && request.model && !sameModel(prev.model, request.model)) {
       push(findings, {
         kind: "model_switch",
         severity: "warning",
         requestIndex: i,
         title: `Model changed between requests ${from + 1} and ${i + 1}`,
-        detail: `Request ${from + 1} ran on ${String(prev.model)} and request ${i + 1} on ${String(request.model)}. Prompt caches belong to one model, so request ${i + 1} can't read anything request ${from + 1} cached and re-sends its whole ≈${prefixTokens.toLocaleString("en-US")}-token prompt at full price. ${startsConversation ? "Conversations that share a prompt share its cache only when they run on the same model." : "If the switch routes a sub-task to a cheaper model, give that sub-task its own conversation instead of alternating models inside one."}`,
+        detail: `Request ${from + 1} ran on ${prev.model} and request ${i + 1} on ${request.model}. Request ${i + 1} cannot reuse cache entries from ${prev.model}; it can still reuse a matching prefix that earlier requests on ${request.model} cached. Inspect this request's simulated read and write counts before attributing cost to the switch.`,
         segmentIds: [],
       });
     }

@@ -132,13 +132,16 @@ drop a request file, paste one, or click a built-in example.
   matched to the request it continues, wherever in the file that is, and the
   cache is simulated as the providers keep it: by content, per model. A
   session reads the same whether it is alone in the file or not.
-- **Priced as the model you actually used.** The model named in the requests
+- **Priced per request.** The model named in each request
   picks the pricing and cache rules (dated snapshots and Bedrock/Vertex ids
-  included); `--model` overrides it, and an id with no pricing entry is reported
+  included); `--model` overrides all rows, and an id with no pricing entry is reported
   instead of silently priced as something else. All eleven current Claude
   models are covered, including the ones whose minimum cacheable prefix or
   cache-read price differs from the usual, and (source checkout) the two 4.5
-  models that coding agents still run, Opus 4.5 and Sonnet 4.5.
+  models that coding agents still run, Opus 4.5 and Sonnet 4.5. Mixed logs retain
+  each request's prices, cache minimum and context window; model names appear
+  beside the costs. The browser's "from each request" option restores detection
+  after an override. [Counterexample and replay](studies/mixed-models/README.md).
 - **Findings with concrete fixes**, grouped so a problem that recurs on every
   request is reported once: *"System prompt contains a value that changes every
   request (requests 2–24, 23×)"*, *"Tools reordered between requests 2 and 3:
@@ -248,7 +251,8 @@ current input only.
 import { analyze, groupFindings } from "@antonsoloviev/contextscope";
 
 const result = analyze(rawRequestJsonOrJsonl); // or { model: "claude-opus-5-5" } to override
-// result.model            — the model priced with, and whether it came from the requests
+// result.reports[i].model — this request's model, override or explicit fallback
+// result.model            — compatibility summary only; not the pricing for every row
 // result.parse.complete   — false for skipped/non-request records or a mismatched format override
 // result.parse.requests[i].source — original record index, JSONL line, and envelope field
 // result.reports          — per-request token totals and category breakdown
@@ -485,9 +489,11 @@ fixed hue order, so a color always means the same category.
   segment earns partial credit there that this simulation doesn't give, which
   can underestimate token-prefix reuse. Prompt identities retain source structure;
   they are not a reproduction of a provider's private prompt renderer or a
-  guarantee of its live cache behavior. A sequence is priced as a single
-  model (the one named most often); a model switch is treated as a cache miss,
-  not re-priced. Invalid Anthropic cache-marker configurations are rejected before
+  guarantee of its live cache behavior. Each request uses its own model
+  for prices, cache thresholds and context windows. `--model` overrides those
+  assumptions for every row while preserving captured model identities for
+  cache isolation. Unknown IDs use an explicitly reported provider-default
+  fallback; missing model names form their own cache group. Invalid Anthropic cache-marker configurations are rejected before
   simulation in this source checkout; [accounting rules](docs/cache-accounting.md).
 - **Server-side state is invisible.** A Responses API request that continues a
   stored response (`previous_response_id`) carries only its new input; the tool

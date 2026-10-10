@@ -1,5 +1,6 @@
 import type { AnalysisResult, CalibrationResult, PrefixMatch, RequestTokenReport, SegmentCategory } from "../core/index.js";
 import { describeRequestIndices, groupFindings } from "../core/index.js";
+import { modelGroups, modelLabel, modelNotes, modelSummary } from "../core/model-summary.js";
 import { USAGE_OUTCOME_LABEL, usageDelta, usageNumber, usageSourceLabel } from "../core/usage-labels.js";
 import { bar, blue, bold, cyan, dim, fmtPct, fmtTokens, fmtUsd, fmtUsdRounded, green, magenta, red, severityColor, visible, wrapIndented, yellow } from "./ansi.js";
 
@@ -42,11 +43,12 @@ export function renderTerminalReport(result: AnalysisResult, options: TerminalRe
   const verbose = options.verbose === true;
   const n = parse.requests.length;
 
-  const modelNote =
-    model.source === "option" ? "set with --model" : model.source === "request" ? "from the requests" : model.unrecognized ? `"${visible(model.unrecognized)}" is not in the pricing table` : "default; no model in the requests";
+  const mixedModels = modelGroups(result).length > 1;
+  const modelNote = model.source === "option" ? "set with --model" : "per-request metadata";
   const conversationNote = result.conversations.count > 1 ? ` in ${result.conversations.count} conversations` : "";
   lines.push(bold(`contextscope — ${parse.format} · ${n} request${n === 1 ? "" : "s"}${conversationNote}${parse.autoDetected ? " (auto-detected)" : ""}`));
-  lines.push(dim(`priced as ${model.displayName} (${modelNote})${parse.envelope ? ` · requests read from each record's "${visible(parse.envelope)}" field` : ""}`));
+  lines.push(dim(`priced as ${visible(modelSummary(result))} (${modelNote})${parse.envelope ? ` · requests read from each record's "${visible(parse.envelope)}" field` : ""}`));
+  for (const note of modelNotes(result)) lines.push(...wrapIndented(visible(note), 2));
   if (!parse.complete) lines.push(yellow(`Incomplete input: ${parse.skippedRecords} of ${parse.sourceRecords} source records skipped or not analyzable; check parse warnings. Counts and simulations cover the retained content only.`));
   if (options.calibration) {
     const c = options.calibration;
@@ -62,22 +64,22 @@ export function renderTerminalReport(result: AnalysisResult, options: TerminalRe
   lines.push(...reportedUsageSection(result, verbose), "");
 
   if (verbose) {
-    for (const report of reports) lines.push(...breakdown(`Request ${report.requestIndex + 1}`, report), "");
+    for (const report of reports) lines.push(...breakdown(`Request ${report.requestIndex + 1} · ${visible(modelLabel(report.model))}`, report), "");
   } else if (reports.length > 0) {
     const largest = reports.reduce((best, r) => (r.totals.claudeTokensEstimate > best.totals.claudeTokensEstimate ? r : best));
     const title = reports.length === 1 ? "Request 1" : `Largest request: ${largest.requestIndex + 1} of ${reports.length}`;
-    lines.push(...breakdown(title, largest));
+    lines.push(...breakdown(`${title} · ${visible(modelLabel(largest.model))}`, largest));
     if (reports.length > 1) lines.push(dim("  (every request's breakdown: --verbose)"));
     lines.push("");
   }
 
   if (prefixMatches.length > 0) lines.push(...prefixSection(result, verbose), "");
 
-  lines.push(bold(`Cache simulation (${cacheSimulation.provider}, ${model.displayName})`));
-  lines.push(dim("  request     read      write(5m)  write(1h)  uncached    cost"));
+  lines.push(bold(`Cache simulation (${cacheSimulation.provider}, ${visible(modelSummary(result))})`));
+  lines.push(dim(`  request     read      write(5m)  write(1h)  uncached    cost${mixedModels ? "  model" : ""}`));
   const rows = cacheSimulation.actual.map(
     (step, i) =>
-      `  req ${String(i + 1).padEnd(6)} ${fmtTokens(step.readTokens).padStart(8)}  ${fmtTokens(step.writeTokens5m).padStart(8)}  ${fmtTokens(step.writeTokens1h).padStart(8)}  ${fmtTokens(step.uncachedTokens).padStart(9)}  ${fmtUsd(step.costUsd).padStart(9)}`,
+      `  req ${String(i + 1).padEnd(6)} ${fmtTokens(step.readTokens).padStart(8)}  ${fmtTokens(step.writeTokens5m).padStart(8)}  ${fmtTokens(step.writeTokens1h).padStart(8)}  ${fmtTokens(step.uncachedTokens).padStart(9)}  ${fmtUsd(step.costUsd).padStart(9)}${mixedModels ? `  ${visible(modelLabel(reports[i]!.model))}` : ""}`,
   );
   if (verbose || rows.length <= CACHE_TABLE_FULL_ROWS) {
     lines.push(...rows);

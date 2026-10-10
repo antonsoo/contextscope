@@ -1,5 +1,5 @@
 import type { CacheSimStep, CacheTtl, ParsedRequest, Segment } from "./types.js";
-import { ANTHROPIC_CACHE_WRITE_MULTIPLIER_1H, ANTHROPIC_CACHE_WRITE_MULTIPLIER_5M, ANTHROPIC_LOOKBACK_POSITIONS, findAnthropicModel } from "./pricing.js";
+import { ANTHROPIC_CACHE_WRITE_MULTIPLIER_1H, ANTHROPIC_CACHE_WRITE_MULTIPLIER_5M, ANTHROPIC_LOOKBACK_POSITIONS, findAnthropicModel, resolveModel } from "./pricing.js";
 import { ModelScoped } from "./model-id.js";
 import { anthropicPositions, lastCacheableSegment } from "./anthropic-breakpoints.js";
 import { ContextScopeParseError } from "./parse-error.js";
@@ -49,12 +49,13 @@ export function simulateAnthropicCacheSequence(
   model: string | undefined,
   forceOptimizedBreakpoint: boolean,
 ): CacheSimStep[] {
-  const modelInfo = findAnthropicModel(model);
+  const models = requests.map((request) => findAnthropicModel(resolveModel("anthropic", model, [request.model]).id));
   const steps: CacheSimStep[] = [];
   /** The prefixes cached so far, by the model that cached them: each is the node a breakpoint ended at. */
   const written = new ModelScoped();
 
   requests.forEach((request, i) => {
+    const modelInfo = models[i]!;
     const segments = request.segments;
     const path = paths[i]!;
     let total = 0;
@@ -121,7 +122,7 @@ export function simulateAnthropicCacheSequence(
     }
   });
 
-  return steps.map((step) => ({ ...step, costUsd: anthropicStepCostUsd(step, modelInfo) }));
+  return steps.map((step, i) => ({ ...step, costUsd: anthropicStepCostUsd(step, models[i]!) }));
 }
 
 function anthropicStepCostUsd(step: CacheSimStep, modelInfo: ReturnType<typeof findAnthropicModel>): number {

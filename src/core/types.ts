@@ -119,6 +119,8 @@ export interface CategoryBreakdown extends TokenTotals {
 /** One rectangle in the treemap / one row in the segment table, for a single request. */
 export interface RequestTokenReport {
   requestIndex: number;
+  /** This request's pricing, cache rules and context window, including any explicit override or fallback. */
+  model: ResolvedModel;
   totals: TokenTotals;
   byCategory: CategoryBreakdown[];
   segments: Segment[];
@@ -212,7 +214,7 @@ export interface ResolvedModel {
 
 export interface CacheSimulation {
   provider: Provider;
-  /** Canonical id of the model the simulation was priced with (see AnalysisResult.model for its source). */
+  /** Representative model retained for compatibility. Each reports[i].model governs its own row. */
   model: string;
   /** Simulation of requests as captured; these are not provider-reported measurements. */
   actual: CacheSimStep[];
@@ -297,7 +299,8 @@ export interface DuplicateGroup {
 export interface AnalysisOptions {
   /** Explicit format override; omit or pass undefined to auto-detect. */
   format?: Provider | undefined;
-  /** Model id for context-window and pricing lookups. Overrides the model named in the requests. */
+  /** Override prices, cache thresholds and context windows for all requests.
+   * Captured model names still determine which cache entries can be shared. */
   model?: string | undefined;
   /**
    * Multiplier applied to every Claude token estimate before analysis - the
@@ -309,7 +312,8 @@ export interface AnalysisOptions {
 
 export interface AnalysisResult {
   parse: ParseResult;
-  /** The model the whole sequence was priced with, and where that choice came from. */
+  /** Representative model retained for compatibility (most frequent, or explicit override).
+   * Use reports[i].model for each request's actual pricing and cache rules. */
   model: ResolvedModel;
   /** The claudeTokenScale actually applied (1 when uncalibrated). */
   claudeTokenScale: number;

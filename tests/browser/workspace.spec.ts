@@ -162,7 +162,7 @@ test("new input clears model overrides and calibration, failed imports preserve 
   await expect(page.getByRole("heading", { name: "Request 1 of 1", exact: true })).toBeVisible();
   await expect(page.locator(".calibrate-result")).toHaveCount(0);
   await expect(page.locator("#format-select")).toHaveValue("auto");
-  await expect(page.locator("#model-select")).toHaveValue("gpt-6-sol");
+  await expect(page.locator("#model-select")).toHaveValue("");
   await expect(page.locator("#intake-error")).toBeHidden();
 });
 

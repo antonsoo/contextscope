@@ -9,6 +9,7 @@ import { analyzeInWorker } from "./analysis.js";
 import type { Measurement } from "./analysis-protocol.js";
 import { INSPECTOR_TEXT_LIMIT, SEGMENT_PAGE_SIZE, TREEMAP_SEGMENT_LIMIT, treemapBlocks } from "./lib/segment-preview.js";
 import { mountUsageReview, type UsageView } from "./usage-review.js";
+import { modelGroups, modelLabel, modelNotes, modelSummary } from "@core/model-summary.js";
 import { mountReportExports } from "./report-exports.js";
 
 const usageView: UsageView = { filter: "all", page: 0 };
@@ -204,7 +205,7 @@ function wireTopbar(): void {
 
   const modelSelect = $("#model-select") as HTMLSelectElement;
   modelSelect.addEventListener("change", () => {
-    if (lastRawInput !== undefined) runAnalysis(lastRawInput, { ...state, model: modelSelect.value, calibration: undefined });
+    if (lastRawInput !== undefined) runAnalysis(lastRawInput, { ...state, model: modelSelect.value || undefined, calibration: undefined });
   });
 
   $("#theme-toggle").addEventListener("click", () => {
@@ -354,7 +355,7 @@ function runInput(read: (signal: AbortSignal) => Promise<string>, fresh: boolean
 
 function syncControls(): void {
   ($("#format-select") as HTMLSelectElement).value = state.format;
-  if (state.analysis) ($("#model-select") as HTMLSelectElement).value = state.analysis.model.id;
+  if (state.analysis) ($("#model-select") as HTMLSelectElement).value = state.model ?? "";
 }
 
 function setLoading(loading: boolean): void {
@@ -383,8 +384,8 @@ function showDashboard(core: CoreModule): void {
 
   const modelSelect = $("#model-select") as HTMLSelectElement;
   const models = result.parse.format === "anthropic" ? core.ANTHROPIC_MODELS : core.OPENAI_MODELS;
-  modelSelect.innerHTML = models.map((m) => `<option value="${m.id}">${esc(m.displayName)}</option>`).join("");
-  modelSelect.value = result.model.id;
+  modelSelect.innerHTML = '<option value="">from each request</option>' + models.map((m) => `<option value="${m.id}">${esc(m.displayName)}</option>`).join("");
+  modelSelect.value = state.model ?? "";
 
   renderRequestTabs();
   renderContent();
@@ -487,7 +488,7 @@ function parseNotesPanel(result: AnalysisResult): string {
   if (source && (source.line || source.envelope || !result.parse.complete)) notes.push(`Selected request: source record ${source.recordIndex + 1}${source.line ? `, line ${source.line}` : ""}${source.envelope ? `, <code>${esc(source.envelope)}</code> field` : ""}.`);
   if (!result.parse.complete) notes.push(`<strong>Incomplete input.</strong> ${result.parse.skippedRecords} of ${result.parse.sourceRecords} source records skipped or not analyzable. Counts and simulations cover retained content only; review the parse warnings.`);
   if (result.parse.envelope) notes.push(`Request bodies were read from each record's <code>${esc(result.parse.envelope)}</code> field.`);
-  if (result.model.unrecognized) notes.push(`The requests name <code>${esc(result.model.unrecognized)}</code>, which isn't in the pricing table, so costs use ${esc(result.model.displayName)}. Pick the right model above.`);
+  for (const note of modelNotes(result)) notes.push(esc(note));
   const warnings = result.parse.warnings;
   for (const w of warnings.slice(0, 5)) notes.push(esc(w.message));
   if (warnings.length > 5) notes.push(`…and ${warnings.length - 5} more parse warnings.`);
@@ -512,6 +513,7 @@ function statTilesPanel(report: RequestTokenReport, result: AnalysisResult): str
       <h2>Request ${state.selectedRequest + 1} of ${result.reports.length}${
         result.conversations.count > 1 ? ` <span class="count">conversation ${result.conversations.byRequest[state.selectedRequest]! + 1} of ${fmtInt(result.conversations.count)}</span>` : ""
       }</h2>
+      <p class="panel-note">${esc(modelLabel(report.model))}${report.contextWindow === undefined ? "" : ` · ${fmtInt(report.contextWindow)} token context window`}</p>
       <div class="stat-row">
         <div class="stat-tile"><div class="label">≈ Claude tokens${result.claudeTokenScale !== 1 ? " (calibrated)" : ""}</div><div class="value">${fmtInt(report.totals.claudeTokensEstimate)}</div></div>
         <div class="stat-tile"><div class="label">OpenAI tokens (exact)</div><div class="value">${fmtInt(report.totals.openaiTokens)}</div></div>
@@ -727,19 +729,20 @@ function renderDiff(result: AnalysisResult): void {
 
 function cachePanel(result: AnalysisResult): string {
   const sim = result.cacheSimulation;
+  const mixedModels = modelGroups(result).length > 1;
   const savings = sim.totalActualCostUsd !== undefined && sim.totalOptimizedCostUsd !== undefined ? sim.totalActualCostUsd - sim.totalOptimizedCostUsd : undefined;
   return `
     <section class="panel">
-      <h2>Cache simulation <span class="count">${sim.provider} · ${esc(result.model.displayName)} · ${modelSourceNote(result)}</span></h2>
+      <h2>Cache simulation <span class="count">${sim.provider} · ${esc(modelSummary(result))}</span></h2>
       ${result.usageComparison.capturedRequests ? "" : '<p class="muted">No paired response usage. These cache reads and costs are simulated.</p>'}
       <div class="table-scroll" tabindex="0" role="group" aria-label="Table, scrolls sideways">
         <table class="cache">
-          <thead><tr><th>request</th><th>read</th><th>write 5m</th><th>write 1h</th><th>uncached</th><th>cost</th></tr></thead>
+          <thead><tr><th>request</th>${mixedModels ? '<th class="cache-model">model</th>' : ""}<th>read</th><th>write 5m</th><th>write 1h</th><th>uncached</th><th>cost</th></tr></thead>
           <tbody>
             ${sim.actual
               .map(
                 (s, i) =>
-                  `<tr><td>req ${i + 1}</td><td>${fmtInt(s.readTokens)}</td><td>${fmtInt(s.writeTokens5m)}</td><td>${fmtInt(s.writeTokens1h)}</td><td>${fmtInt(s.uncachedTokens)}</td><td>${fmtUsd(s.costUsd)}</td></tr>`,
+                  `<tr><td>req ${i + 1}</td>${mixedModels ? `<td class="cache-model">${esc(modelLabel(result.reports[i]!.model))}</td>` : ""}<td>${fmtInt(s.readTokens)}</td><td>${fmtInt(s.writeTokens5m)}</td><td>${fmtInt(s.writeTokens1h)}</td><td>${fmtInt(s.uncachedTokens)}</td><td>${fmtUsd(s.costUsd)}</td></tr>`,
               )
               .join("")}
           </tbody>
@@ -764,14 +767,6 @@ let groupsCache: { result: AnalysisResult; groups: FindingGroup[] } | undefined;
 function currentGroups(result: AnalysisResult): FindingGroup[] {
   if (groupsCache?.result !== result) groupsCache = { result, groups: loadedCore!.groupFindings(result.findings) };
   return groupsCache.groups;
-}
-
-function modelSourceNote(result: AnalysisResult): string {
-  const { model } = result;
-  if (model.source === "option") return "chosen above";
-  if (model.source === "request") return "from the requests";
-  if (model.unrecognized) return `"${esc(model.unrecognized)}" isn't in the pricing table`;
-  return "default, no model in the requests";
 }
 
 // Occurrence buttons shown per group before collapsing the rest into a count.
@@ -866,7 +861,7 @@ function calibratePanel(result: AnalysisResult): string {
       <h2>Calibrate Claude estimates <span class="count">optional · local only</span></h2>
       <p class="panel-note" id="calibrate-help">
         Enter the whole-request <code>input_tokens</code> count you measured with <code>count_tokens</code>
-        for request ${state.selectedRequest + 1} on ${esc(result.model.displayName)}. This rescales the session's estimates;
+        for request ${state.selectedRequest + 1} on ${esc(modelLabel(result.reports[state.selectedRequest]!.model))}. This rescales the session's estimates;
         it does not make each segment exact. Use the same request and model. No API key or request is sent from this page.
       </p>
       <form class="calibrate-row" id="calibrate-form" novalidate>
@@ -888,7 +883,7 @@ function wireCalibrate(result: AnalysisResult): void {
     try {
       loadedCore!.calibrationScale(input.valueAsNumber, 1);
       // The worker re-parses unscaled input; calibration cannot compound rounding or block UI.
-      runAnalysis(lastRawInput!, state, { requestIndex: state.selectedRequest, model: result.model.id, exactTokens: input.valueAsNumber });
+      runAnalysis(lastRawInput!, state, { requestIndex: state.selectedRequest, model: result.reports[state.selectedRequest]!.model.id, exactTokens: input.valueAsNumber });
     } catch (err) {
       $("#calibrate-status").textContent = (err as Error).message;
       input.setAttribute("aria-invalid", "true");

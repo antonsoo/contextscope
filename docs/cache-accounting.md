@@ -85,6 +85,6 @@ placement, invalid inputs and actual browser downloads.
 
 The simulation still assumes requests arrive before cached entries expire.
 It does not observe eviction, concurrent request completion, provider rendering,
-or live cache state. Claude token counts remain estimates. A mixed-model file
-still uses one resolved pricing/minimum-length table while separating cache
-entries by request model; split the file by model for model-specific estimates.
+or live cache state. Claude token counts remain estimates. Mixed-model files now
+resolve pricing and cache rules per request; see the subsequent
+[mixed-model correction](../studies/mixed-models/README.md).

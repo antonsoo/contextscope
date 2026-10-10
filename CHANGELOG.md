@@ -26,6 +26,14 @@ of public SWE-bench agent runs; see `studies/real-trajectories/`.
 
 ### Fixed
 
+- Resolve prices, cache minimums, context windows and model-specific advice for
+  each request in mixed-model logs. Expose the resolution in `reports[i].model`
+  and human reports, including minority unknown-model fallbacks. Browser model
+  overrides can return to "from each request"; calibration uses the selected
+  request's model. Missing model names no longer bridge named models' caches.
+  Model-switch advice acknowledges earlier cache entries on the destination
+  model instead of claiming every switch pays full input price.
+
 - Resolve all Anthropic cache hits before assigning writes, preventing an earlier
   missed breakpoint from double-billing a later hit. Count the breakpoint itself
   among the 20 lookup positions. Keep the optimized tail within four marker slots

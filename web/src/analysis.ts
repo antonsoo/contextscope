@@ -13,6 +13,7 @@ function resultContract(result: Success["result"] | undefined): boolean {
     && Array.isArray(result.cacheSimulation?.actual) && result.cacheSimulation.actual.length === n
     && Array.isArray(result.cacheSimulation.optimized) && result.cacheSimulation.optimized.length === n
     && result.reports.every((report) => Array.isArray(report?.segments) && Array.isArray(report.byCategory)
+      && typeof report.model?.id === "string" && typeof report.model.displayName === "string"
       && Number.isSafeInteger(report.totals?.openaiTokens) && Number.isSafeInteger(report.totals.claudeTokensEstimate));
 }
 

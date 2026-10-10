@@ -119,11 +119,12 @@ export function findOpenAiModel(id: string | undefined): OpenAiModelInfo {
 }
 
 /**
- * Picks the model to price a sequence with: an explicit option wins; otherwise
+ * Resolves model metadata: an explicit option wins; otherwise
  * the model named most often in the requests themselves; otherwise the
  * provider default. An id with no pricing entry falls back to the default but
  * is reported as `unrecognized`, so callers can say so instead of silently
- * pricing an Opus log at Sonnet rates.
+ * pricing an Opus log at Sonnet rates. Analysis calls this for each request;
+ * the most-common choice remains only as a compatibility summary.
  */
 export function resolveModel(provider: "anthropic" | "openai", explicit: string | undefined, requestModels: (string | undefined)[]): ResolvedModel {
   const lookup = provider === "anthropic" ? lookupAnthropicModel : lookupOpenAiModel;

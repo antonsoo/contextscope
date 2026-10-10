@@ -1,5 +1,5 @@
 import type { CacheSimStep, ParsedRequest } from "./types.js";
-import { findOpenAiModel } from "./pricing.js";
+import { findOpenAiModel, resolveModel } from "./pricing.js";
 import { ModelScoped } from "./model-id.js";
 
 /**
@@ -18,7 +18,6 @@ const MIN_CACHEABLE_TOKENS = 1024;
 const CACHE_GRANULARITY = 128;
 
 export function simulateOpenAiCacheSequence(requests: ParsedRequest[], paths: number[][], model: string | undefined): CacheSimStep[] {
-  const modelInfo = findOpenAiModel(model);
   const steps: CacheSimStep[] = [];
   // The cache is keyed by content: a request reads the longest prefix any earlier request on its
   // model sent, whether or not that was the line before it. `paths` (threads.ts `prefixPaths`)
@@ -26,6 +25,7 @@ export function simulateOpenAiCacheSequence(requests: ParsedRequest[], paths: nu
   const sent = new ModelScoped();
 
   requests.forEach((request, i) => {
+    const modelInfo = findOpenAiModel(resolveModel("openai", model, [request.model]).id);
     const path = paths[i]!;
     const total = request.segments.reduce((sum, s) => sum + s.openaiTokens, 0);
     const earlier = sent.visibleTo(request.model);

@@ -1,5 +1,6 @@
 import type { AnalysisResult } from "../core/types.js";
 import { describeRequestIndices, groupFindings } from "../core/group-findings.js";
+import { modelGroups, modelLabel, modelNotes, modelSummary } from "../core/model-summary.js";
 import { renderUsageHtml } from "./usage-html.js";
 
 function esc(s: string): string {
@@ -28,8 +29,9 @@ const CATEGORY_COLOR: Record<string, string> = {
 const REPORT_CSP = "default-src 'none'; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'";
 
 export function renderHtmlReport(result: AnalysisResult): string {
-  const { parse, reports, cacheSimulation, findings, duplicates, model } = result;
+  const { parse, reports, cacheSimulation, findings, duplicates } = result;
 
+  const mixedModels = modelGroups(result).length > 1;
   const requestSections = reports
     .map((report) => {
       const rows = report.byCategory
@@ -38,7 +40,7 @@ export function renderHtmlReport(result: AnalysisResult): string {
             `<tr><td><span class="swatch" style="background:${CATEGORY_COLOR[c.category]}"></span>${esc(c.category)}</td><td>${c.segmentCount}</td><td>${c.claudeTokensEstimate.toLocaleString("en-US")}</td><td>${c.openaiTokens.toLocaleString("en-US")}</td></tr>`,
         )
         .join("");
-      return `<section class="card"><h3>Request ${report.requestIndex + 1}</h3>
+      return `<section class="card"><h3>Request ${report.requestIndex + 1} · ${esc(modelLabel(report.model))}</h3>
         <p class="muted">≈${report.totals.claudeTokensEstimate.toLocaleString("en-US")} Claude tokens · ${report.totals.openaiTokens.toLocaleString("en-US")} OpenAI tokens${report.percentOfContextWindow !== undefined ? ` · ${(report.percentOfContextWindow * 100).toFixed(1)}% of context window` : ""}</p>
         <div class="table-scroll" tabindex="0" role="group" aria-label="Token categories for request ${report.requestIndex + 1}"><table><thead><tr><th>category</th><th>segments</th><th>≈Claude tok</th><th>OpenAI tok</th></tr></thead><tbody>${rows}</tbody></table></div>
       </section>`;
@@ -48,7 +50,7 @@ export function renderHtmlReport(result: AnalysisResult): string {
   const cacheRows = cacheSimulation.actual
     .map(
       (step, i) =>
-        `<tr><td>req ${i + 1}</td><td>${step.readTokens.toLocaleString("en-US")}</td><td>${step.writeTokens5m.toLocaleString("en-US")}</td><td>${step.writeTokens1h.toLocaleString("en-US")}</td><td>${step.uncachedTokens.toLocaleString("en-US")}</td><td>${step.costUsd !== undefined ? `$${step.costUsd.toFixed(4)}` : "n/a"}</td></tr>`,
+        `<tr><td>req ${i + 1}</td>${mixedModels ? `<td>${esc(modelLabel(reports[i]!.model))}</td>` : ""}<td>${step.readTokens.toLocaleString("en-US")}</td><td>${step.writeTokens5m.toLocaleString("en-US")}</td><td>${step.writeTokens1h.toLocaleString("en-US")}</td><td>${step.uncachedTokens.toLocaleString("en-US")}</td><td>${step.costUsd !== undefined ? `$${step.costUsd.toFixed(4)}` : "n/a"}</td></tr>`,
     )
     .join("");
 
@@ -103,9 +105,10 @@ export function renderHtmlReport(result: AnalysisResult): string {
 </style></head>
 <body><main>
   <h1>contextscope report</h1>
-  <p class="muted">${esc(parse.format)} · ${parse.requests.length} request(s)${parse.autoDetected ? " · format auto-detected" : ""} · priced as ${esc(model.displayName)}${model.unrecognized ? ` ("${esc(model.unrecognized)}" is not in the pricing table)` : ""}${result.claudeTokenScale !== 1 ? ` · Claude estimates calibrated ×${result.claudeTokenScale.toFixed(3)}` : ""} · generated ${new Date().toISOString()}</p>
+  <p class="muted">${esc(parse.format)} · ${parse.requests.length} request(s)${parse.autoDetected ? " · format auto-detected" : ""} · priced as ${esc(modelSummary(result))}${result.claudeTokenScale !== 1 ? ` · Claude estimates calibrated ×${result.claudeTokenScale.toFixed(3)}` : ""} · generated ${new Date().toISOString()}</p>
   ${!parse.complete || parse.warnings.length > 0 ? `<section class="card"><h2>${parse.complete ? "Parse notes" : "Incomplete input"}</h2>${!parse.complete ? `<p>${parse.skippedRecords} of ${parse.sourceRecords} source records skipped or not analyzable. Counts and simulations cover retained content only; review all warnings.</p>` : ""}<ul>${parse.warnings.map((warning) => `<li>${esc(warning.message)}</li>`).join("")}</ul></section>` : ""}
 
+  ${modelNotes(result).map((note) => `<p class="muted">${esc(note)}</p>`).join("\n")}
   ${renderUsageHtml(result)}
 
   <section class="card">
@@ -115,7 +118,7 @@ export function renderHtmlReport(result: AnalysisResult): string {
 
   <section class="card">
     <h2>Cache simulation (${esc(cacheSimulation.provider)})</h2>
-    <div class="table-scroll" tabindex="0" role="group" aria-label="Cache simulation"><table><thead><tr><th>request</th><th>read</th><th>write (5m)</th><th>write (1h)</th><th>uncached</th><th>cost</th></tr></thead><tbody>${cacheRows}</tbody></table></div>
+    <div class="table-scroll" tabindex="0" role="group" aria-label="Cache simulation"><table><thead><tr><th>request</th>${mixedModels ? "<th>model</th>" : ""}<th>read</th><th>write (5m)</th><th>write (1h)</th><th>uncached</th><th>cost</th></tr></thead><tbody>${cacheRows}</tbody></table></div>
     <p class="muted">total simulated: ${cacheSimulation.totalActualCostUsd !== undefined ? `$${cacheSimulation.totalActualCostUsd.toFixed(4)}` : "n/a"} · optimized simulated: ${cacheSimulation.totalOptimizedCostUsd !== undefined ? `$${cacheSimulation.totalOptimizedCostUsd.toFixed(4)}` : "n/a"}</p>
     ${savings !== undefined && savings >= 0.00005 ? `<p class="savings">Applying the fixes above${cacheSimulation.provider === "anthropic" ? ", with a breakpoint on each request's last cacheable block (moving the last marker if all four slots are used)," : ""} would save $${savings.toFixed(4)} on this sequence — ≈$${Math.round(savings * 1000).toLocaleString("en-US")} per 1,000 sessions shaped like this one.</p>` : ""}
   </section>

@@ -762,6 +762,10 @@ table.cache th:first-child,
 table.cache td:first-child {
   text-align: left;
 }
+table.cache .cache-model {
+  text-align: left;
+  white-space: nowrap;
+}
 table.cache td {
   text-align: right;
   padding: 6px 8px;

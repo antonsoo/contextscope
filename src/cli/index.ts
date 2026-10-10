@@ -51,7 +51,7 @@ async function calibrate(input: string, opts: CliArgs): Promise<CalibrationResul
   const parse = parseInput(input, opts.format);
   if (parse.format !== "anthropic") fail("--calibrate uses Anthropic's count_tokens endpoint, so it only applies to Anthropic requests.");
   const largest = parse.requests.reduce((best, r) => (total(r) > total(best) ? r : best));
-  const model = resolveModel("anthropic", opts.model, parse.requests.map((r) => r.model));
+  const model = resolveModel("anthropic", opts.model, [largest.model]);
   return countRequestTokens(apiKey, model.id, largest, { browser: false });
 }
 

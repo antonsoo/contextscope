@@ -206,7 +206,7 @@ describe("a conversation whose history is edited", () => {
     const found = result.findings.filter((f) => f.kind === "model_switch");
     expect(found.map((f) => f.requestIndex)).toEqual([2]);
     expect(found[0]!.title).toBe("Model changed between requests 1 and 3");
-    expect(found[0]!.detail).toContain("alternating models inside one");
+    expect(found[0]!.detail).toContain("can still reuse a matching prefix");
   });
 });
 
@@ -220,11 +220,11 @@ describe("the cache is keyed by content, not by the line before", () => {
     expect(result.cacheSimulation.actual.map((step) => step.readTokens > 0)).toEqual([false, false, true, true]);
   });
 
-  it("never across models, and a request that names no model reads anything", () => {
+  it("never across models, and missing model names do not bridge their caches", () => {
     const on = (model: string | undefined, n: number) => ({ ...(model ? { model } : {}), system: big("shared"), messages: [{ role: "user", content: `turn ${n}` }] });
     const reads = (models: (string | undefined)[]) => analyze(JSON.stringify(models.map(on)), { model: "claude-sonnet-5" }).cacheSimulation.actual.map((step) => step.readTokens > 0);
     expect(reads(["claude-sonnet-5", "claude-opus-5", "claude-sonnet-5", "claude-opus-5"])).toEqual([false, false, true, true]);
-    expect(reads(["claude-sonnet-5", undefined, "claude-opus-5"])).toEqual([false, true, true]);
+    expect(reads(["claude-sonnet-5", undefined, "claude-opus-5"])).toEqual([false, false, false]);
   });
 
   it("OpenAI: the longest prefix any earlier request on the model sent", () => {

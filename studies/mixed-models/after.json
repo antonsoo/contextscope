@@ -1,0 +1,134 @@
+{
+  "kind": "synthetic counterexample",
+  "rows": [
+    {
+      "request": 1,
+      "capturedModel": "claude-sonnet-4-5",
+      "assumedModel": {
+        "id": "claude-sonnet-4-5",
+        "displayName": "Claude Sonnet 4.5",
+        "source": "request"
+      },
+      "combined": {
+        "requestIndex": 0,
+        "readTokens": 0,
+        "writeTokens5m": 3694,
+        "writeTokens1h": 0,
+        "uncachedTokens": 2,
+        "costUsd": 0.013858500000000001
+      },
+      "isolated": {
+        "requestIndex": 0,
+        "readTokens": 0,
+        "writeTokens5m": 3694,
+        "writeTokens1h": 0,
+        "uncachedTokens": 2,
+        "costUsd": 0.013858500000000001
+      }
+    },
+    {
+      "request": 2,
+      "capturedModel": "claude-sonnet-4-5",
+      "assumedModel": {
+        "id": "claude-sonnet-4-5",
+        "displayName": "Claude Sonnet 4.5",
+        "source": "request"
+      },
+      "combined": {
+        "requestIndex": 1,
+        "readTokens": 3694,
+        "writeTokens5m": 0,
+        "writeTokens1h": 0,
+        "uncachedTokens": 2,
+        "costUsd": 0.0011141999999999999
+      },
+      "isolated": {
+        "requestIndex": 1,
+        "readTokens": 3694,
+        "writeTokens5m": 0,
+        "writeTokens1h": 0,
+        "uncachedTokens": 2,
+        "costUsd": 0.0011141999999999999
+      }
+    },
+    {
+      "request": 3,
+      "capturedModel": "claude-opus-4-5",
+      "assumedModel": {
+        "id": "claude-opus-4-5",
+        "displayName": "Claude Opus 4.5",
+        "source": "request"
+      },
+      "combined": {
+        "requestIndex": 2,
+        "readTokens": 0,
+        "writeTokens5m": 0,
+        "writeTokens1h": 0,
+        "uncachedTokens": 3696,
+        "costUsd": 0.01848
+      },
+      "isolated": {
+        "requestIndex": 0,
+        "readTokens": 0,
+        "writeTokens5m": 0,
+        "writeTokens1h": 0,
+        "uncachedTokens": 3696,
+        "costUsd": 0.01848
+      }
+    },
+    {
+      "request": 4,
+      "capturedModel": "claude-opus-4-5",
+      "assumedModel": {
+        "id": "claude-opus-4-5",
+        "displayName": "Claude Opus 4.5",
+        "source": "request"
+      },
+      "combined": {
+        "requestIndex": 3,
+        "readTokens": 0,
+        "writeTokens5m": 0,
+        "writeTokens1h": 0,
+        "uncachedTokens": 3696,
+        "costUsd": 0.01848
+      },
+      "isolated": {
+        "requestIndex": 1,
+        "readTokens": 0,
+        "writeTokens5m": 0,
+        "writeTokens1h": 0,
+        "uncachedTokens": 3696,
+        "costUsd": 0.01848
+      }
+    },
+    {
+      "request": 5,
+      "capturedModel": "claude-sonnet-4-5",
+      "assumedModel": {
+        "id": "claude-sonnet-4-5",
+        "displayName": "Claude Sonnet 4.5",
+        "source": "request"
+      },
+      "combined": {
+        "requestIndex": 4,
+        "readTokens": 3694,
+        "writeTokens5m": 0,
+        "writeTokens1h": 0,
+        "uncachedTokens": 2,
+        "costUsd": 0.0011141999999999999
+      },
+      "isolated": {
+        "requestIndex": 2,
+        "readTokens": 3694,
+        "writeTokens5m": 0,
+        "writeTokens1h": 0,
+        "uncachedTokens": 2,
+        "costUsd": 0.0011141999999999999
+      }
+    }
+  ],
+  "totals": {
+    "combined": 0.0530469,
+    "isolated": 0.0530469
+  }
+}

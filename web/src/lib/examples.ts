@@ -20,6 +20,13 @@ async function loadAsset(filename: string, signal: AbortSignal): Promise<string>
 
 export const BUILT_IN_EXAMPLES: BuiltInExample[] = [
   {
+    id: "mixed-models",
+    label: "Model routing: same prompt, different cache minimums",
+    description: "Synthetic Sonnet 4.5 / Opus 4.5 log. The same short prefix caches on Sonnet and stays uncached on Opus. Each request uses its own model's rules and prices; no live measurements.",
+    approxSizeMb: 0.06,
+    load: (signal) => loadAsset("anthropic-mixed-models.jsonl.gz", signal),
+  },
+  {
     id: "reported-cache-usage",
     label: "Reported usage: predicted hits, recorded zeroes",
     description: "Synthetic six-request review of Contextscope's JSON reader. Authored response counters include zero reads, a hit, missing counts and an invalid count. No live API measurements.",
