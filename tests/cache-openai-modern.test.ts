@@ -145,6 +145,14 @@ describe("modern OpenAI breakpoint caching", () => {
     expect(steps.map((s) => s.readTokens)).toEqual([0, 0, 2001, 0]);
   });
 
+  it("does not merge structured-output schemas whose property order changed", () => {
+    const field = { type: "string" };
+    const raw = request([user(0)]);
+    const body = (properties: Record<string, unknown>) => ({ ...raw, text: { format: { type: "json_schema", name: "result", schema: { type: "object", properties } } } });
+    const steps = simulate([body({ evidence: field, decision: field }), body({ decision: field, evidence: field }), body({ evidence: field, decision: field })]);
+    expect(steps.map((step) => step.readTokens)).toEqual([0, 0, 2001]);
+  });
+
   it("exercises actual Responses and Chat parsing without invented cache reads", () => {
     const content = "Stable evidence for the decision. ".repeat(400);
     for (const shape of [{ input: [{ role: "user", content }] }, { messages: [{ role: "user", content }] }]) {

@@ -1,5 +1,5 @@
 import type { ParsedRequest, Segment } from "./types.js";
-import { canonicalJson, isRecord } from "./json-utils.js";
+import { isRecord } from "./json-utils.js";
 import { normalizeModelId } from "./pricing.js";
 import { ContextScopeParseError } from "./parse-error.js";
 
@@ -99,6 +99,8 @@ export function openAiCacheScope(request: ParsedRequest): string {
   const raw = isRecord(request.raw) ? request.raw : {};
   const settings = Object.fromEntries(["reasoning", "reasoning_effort", "text", "response_format", "parallel_tool_calls", "tool_choice", "context_management"]
     .filter((key) => raw[key] !== undefined).map((key) => [key, raw[key]]));
-  return canonicalJson([request.model === undefined ? null : normalizeModelId(request.model),
+  // Schema property order can affect the rendered instructions/output order. Preserve
+  // nested setting order rather than canonicalizing two potentially different prompts.
+  return JSON.stringify([request.model === undefined ? null : normalizeModelId(request.model),
     Array.isArray(raw["messages"]) ? "chat" : "responses", raw["prompt_cache_key"] ?? null, settings]);
 }

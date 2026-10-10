@@ -66,6 +66,14 @@ are unavailable. Changed renderer settings conservatively isolate the whole
 request, although a provider may reuse a shorter prefix. The optimized scenario
 normalizes existing content; it does not invent new OpenAI marker placements.
 
+Renderer identity preserves nested JSON order. OpenAI documents that
+[schema property order affects structured-output order](https://developers.openai.com/api/docs/guides/structured-outputs#key-ordering),
+so treating reordered schemas as an identical rendered prefix would be an
+unsafe inference. The [A/B/A schema counterexample](schema-order.json), generated
+by `schema-order.mjs`, changed the second request from a predicted 2,401-token
+read to zero; returning to schema A still reuses its entry. This is conservative
+isolation, not a measurement of how much hidden schema framing is cached.
+
 ## Reproduce
 
 From a source checkout with dependencies installed:

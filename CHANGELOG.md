@@ -34,6 +34,9 @@ of public SWE-bench agent runs; see `studies/real-trajectories/`.
   unsupported-mode warnings. Apply GPT-6 long-context input/cache prices above
   272,000 modeled input tokens; retain the documented legacy approximation for
   the newly recognized GPT-5.1/5.2 historical models.
+- Preserve nested renderer-setting order in OpenAI cache identity. Reordering
+  structured-output schema properties no longer shares a predicted cache entry
+  merely because canonical JSON would sort the schemas identically.
 
 - Resolve prices, cache minimums, context windows and model-specific advice for
   each request in mixed-model logs. Expose the resolution in `reports[i].model`
