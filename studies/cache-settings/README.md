@@ -2,7 +2,8 @@
 
 The source checkout now prevents Anthropic message-cache hits across changes
 to `tool_choice` or explicit image presence. Baseline `4d2183d` treated these
-requests as identical. This correction is local and unreleased.
+requests as identical. The correction is available in source; the verification
+below concerns a locally built package.
 
 [Anthropic documents](https://platform.claude.com/docs/en/build-with-claude/prompt-caching#what-invalidates-the-cache)
 that these settings affect message entries while preserving the tools and

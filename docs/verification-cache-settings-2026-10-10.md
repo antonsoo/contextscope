@@ -1,8 +1,8 @@
 # Anthropic cache-setting verification, 2026-10-10
 
-Implementation: local commit `8dc5d2b`, based on `4d2183d`. No push, tag,
-deployment, or package publication was performed. Version metadata remains
-0.3.3; verification below concerns a local npm tarball.
+Implementation: `8dc5d2b`, based on `4d2183d`. This report records validation
+completed before source publication. Version metadata remains 0.3.3;
+verification below concerns a locally built npm tarball, not a registry release.
 
 ## Observed defect
 
