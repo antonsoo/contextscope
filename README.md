@@ -120,6 +120,12 @@ drop a request file, paste one, or click a built-in example.
   original counter path. Missing or ambiguous totals remain unavailable.
   Browser JSON and offline HTML exports retain all requests, including those
   hidden by a filter or page. [Capture formats and limitations](docs/reported-usage.md).
+- **Cache accounting corrections (source checkout).** Several Anthropic
+  breakpoints now share one disjoint read/write calculation; lookup includes
+  exactly 20 positions, and the optimized scenario respects four marker slots.
+  Invalid cache configurations fail with the request and field location.
+  Browser JSON and offline HTML downloads also work without response usage.
+  [Reproduction and limits](docs/cache-accounting.md). These changes are unreleased.
 - **Logs of more than one conversation.** A proxy capture of an agent holds
   its main loop and, between the turns, side requests on another model; a
   gateway's log holds every user's conversation, interleaved. Each request is
@@ -401,8 +407,8 @@ The **"optimized"** scenario re-runs the same simulation with the findings
 fixed: ISO-8601 timestamps, UUIDs and epoch-looking integers are normalized out
 of the prefix comparison (the "timestamp in the system prompt" fix), JSON keys
 and the tool list are put in a deterministic order, and, for Anthropic, every
-request gets a trailing `cache_control` breakpoint (the "automatic caching on
-the growing tail" pattern). The actual scenario compares blocks exactly as sent,
+request gets a `cache_control` breakpoint on its last cacheable block. With four
+occupied slots, the final marker moves there with its TTL preserved. The actual scenario compares blocks exactly as sent,
 key order included, so a schema whose keys drift is a miss there and a saving
 here. A `cache_control` marker itself is never part of the comparison: a
 rolling breakpoint moves every turn without changing the cached content. The
@@ -481,8 +487,8 @@ fixed hue order, so a color always means the same category.
   they are not a reproduction of a provider's private prompt renderer or a
   guarantee of its live cache behavior. A sequence is priced as a single
   model (the one named most often); a model switch is treated as a cache miss,
-  not re-priced. Exotic breakpoint placements (for example deliberately
-  non-monotonic TTLs across many blocks) are simplified.
+  not re-priced. Invalid Anthropic cache-marker configurations are rejected before
+  simulation in this source checkout; [accounting rules](docs/cache-accounting.md).
 - **Server-side state is invisible.** A Responses API request that continues a
   stored response (`previous_response_id`) carries only its new input; the tool
   warns and analyzes what is in the file.

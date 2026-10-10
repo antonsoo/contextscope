@@ -26,6 +26,15 @@ of public SWE-bench agent runs; see `studies/real-trajectories/`.
 
 ### Fixed
 
+- Resolve all Anthropic cache hits before assigning writes, preventing an earlier
+  missed breakpoint from double-billing a later hit. Count the breakpoint itself
+  among the 20 lookup positions. Keep the optimized tail within four marker slots
+  and skip ineligible thinking/empty text. Reject invalid marker configurations
+  before they can produce simulated costs or contaminate later cache state.
+  See `docs/cache-accounting.md` for the controlled before/after reproduction.
+- Make whole-report JSON and offline HTML downloads available for request-only
+  browser analyses as well as captures with response usage.
+
 - A tool result's string content and the same content as one text block are one prompt in
   prefix, diff, cache and conversation identity. The unreleased prompt-identity change had made
   them differ, so a tool-using Claude session whose cache marker moves between requests (as in

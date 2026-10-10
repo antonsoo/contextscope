@@ -1,0 +1,266 @@
+{
+  "synthetic": true,
+  "note": "Controlled requests using estimated tokens; no API calls or observed charges.",
+  "cases": [
+    {
+      "name": "earlier-1h-marker-under-existing-hit",
+      "actual": [
+        {
+          "requestIndex": 0,
+          "readTokens": 0,
+          "writeTokens5m": 5939,
+          "writeTokens1h": 0,
+          "uncachedTokens": 0,
+          "costUsd": 0.02227125,
+          "estimatedInputTokens": 5939,
+          "accountedTokens": 5939,
+          "excessTokens": 0
+        },
+        {
+          "requestIndex": 1,
+          "readTokens": 5939,
+          "writeTokens5m": 0,
+          "writeTokens1h": 3636,
+          "uncachedTokens": 0,
+          "costUsd": 0.023597700000000003,
+          "estimatedInputTokens": 5939,
+          "accountedTokens": 9575,
+          "excessTokens": 3636
+        }
+      ],
+      "optimized": [
+        {
+          "requestIndex": 0,
+          "readTokens": 0,
+          "writeTokens5m": 5939,
+          "writeTokens1h": 0,
+          "uncachedTokens": 0,
+          "costUsd": 0.02227125,
+          "estimatedInputTokens": 5939,
+          "accountedTokens": 5939,
+          "excessTokens": 0
+        },
+        {
+          "requestIndex": 1,
+          "readTokens": 5939,
+          "writeTokens5m": 0,
+          "writeTokens1h": 3636,
+          "uncachedTokens": 0,
+          "costUsd": 0.023597700000000003,
+          "estimatedInputTokens": 5939,
+          "accountedTokens": 9575,
+          "excessTokens": 3636
+        }
+      ],
+      "findings": []
+    },
+    {
+      "name": "earlier-5m-marker-under-existing-hit",
+      "actual": [
+        {
+          "requestIndex": 0,
+          "readTokens": 0,
+          "writeTokens5m": 5939,
+          "writeTokens1h": 0,
+          "uncachedTokens": 0,
+          "costUsd": 0.02227125,
+          "estimatedInputTokens": 5939,
+          "accountedTokens": 5939,
+          "excessTokens": 0
+        },
+        {
+          "requestIndex": 1,
+          "readTokens": 5939,
+          "writeTokens5m": 3636,
+          "writeTokens1h": 0,
+          "uncachedTokens": 0,
+          "costUsd": 0.015416700000000002,
+          "estimatedInputTokens": 5939,
+          "accountedTokens": 9575,
+          "excessTokens": 3636
+        }
+      ],
+      "optimized": [
+        {
+          "requestIndex": 0,
+          "readTokens": 0,
+          "writeTokens5m": 5939,
+          "writeTokens1h": 0,
+          "uncachedTokens": 0,
+          "costUsd": 0.02227125,
+          "estimatedInputTokens": 5939,
+          "accountedTokens": 5939,
+          "excessTokens": 0
+        },
+        {
+          "requestIndex": 1,
+          "readTokens": 5939,
+          "writeTokens5m": 3636,
+          "writeTokens1h": 0,
+          "uncachedTokens": 0,
+          "costUsd": 0.015416700000000002,
+          "estimatedInputTokens": 5939,
+          "accountedTokens": 9575,
+          "excessTokens": 3636
+        }
+      ],
+      "findings": []
+    },
+    {
+      "name": "nineteen-new-positions",
+      "actual": [
+        {
+          "requestIndex": 0,
+          "readTokens": 0,
+          "writeTokens5m": 1700,
+          "writeTokens1h": 0,
+          "uncachedTokens": 0,
+          "costUsd": 0.0063750000000000005,
+          "estimatedInputTokens": 1700,
+          "accountedTokens": 1700,
+          "excessTokens": 0
+        },
+        {
+          "requestIndex": 1,
+          "readTokens": 1700,
+          "writeTokens5m": 32310,
+          "writeTokens1h": 0,
+          "uncachedTokens": 0,
+          "costUsd": 0.1216725,
+          "estimatedInputTokens": 34010,
+          "accountedTokens": 34010,
+          "excessTokens": 0
+        }
+      ],
+      "optimized": [
+        {
+          "requestIndex": 0,
+          "readTokens": 0,
+          "writeTokens5m": 1700,
+          "writeTokens1h": 0,
+          "uncachedTokens": 0,
+          "costUsd": 0.0063750000000000005,
+          "estimatedInputTokens": 1700,
+          "accountedTokens": 1700,
+          "excessTokens": 0
+        },
+        {
+          "requestIndex": 1,
+          "readTokens": 1700,
+          "writeTokens5m": 32310,
+          "writeTokens1h": 0,
+          "uncachedTokens": 0,
+          "costUsd": 0.1216725,
+          "estimatedInputTokens": 34010,
+          "accountedTokens": 34010,
+          "excessTokens": 0
+        }
+      ],
+      "findings": []
+    },
+    {
+      "name": "twenty-new-positions",
+      "actual": [
+        {
+          "requestIndex": 0,
+          "readTokens": 0,
+          "writeTokens5m": 1700,
+          "writeTokens1h": 0,
+          "uncachedTokens": 0,
+          "costUsd": 0.0063750000000000005,
+          "estimatedInputTokens": 1700,
+          "accountedTokens": 1700,
+          "excessTokens": 0
+        },
+        {
+          "requestIndex": 1,
+          "readTokens": 1700,
+          "writeTokens5m": 34011,
+          "writeTokens1h": 0,
+          "uncachedTokens": 0,
+          "costUsd": 0.12805125,
+          "estimatedInputTokens": 35711,
+          "accountedTokens": 35711,
+          "excessTokens": 0
+        }
+      ],
+      "optimized": [
+        {
+          "requestIndex": 0,
+          "readTokens": 0,
+          "writeTokens5m": 1700,
+          "writeTokens1h": 0,
+          "uncachedTokens": 0,
+          "costUsd": 0.0063750000000000005,
+          "estimatedInputTokens": 1700,
+          "accountedTokens": 1700,
+          "excessTokens": 0
+        },
+        {
+          "requestIndex": 1,
+          "readTokens": 1700,
+          "writeTokens5m": 34011,
+          "writeTokens1h": 0,
+          "uncachedTokens": 0,
+          "costUsd": 0.12805125,
+          "estimatedInputTokens": 35711,
+          "accountedTokens": 35711,
+          "excessTokens": 0
+        }
+      ],
+      "findings": []
+    },
+    {
+      "name": "optimized-four-existing-markers",
+      "actual": [
+        {
+          "requestIndex": 0,
+          "readTokens": 0,
+          "writeTokens5m": 6800,
+          "writeTokens1h": 0,
+          "uncachedTokens": 1700,
+          "costUsd": 0.030600000000000002,
+          "estimatedInputTokens": 8500,
+          "accountedTokens": 8500,
+          "excessTokens": 0
+        },
+        {
+          "requestIndex": 1,
+          "readTokens": 6800,
+          "writeTokens5m": 0,
+          "writeTokens1h": 0,
+          "uncachedTokens": 3400,
+          "costUsd": 0.012240000000000001,
+          "estimatedInputTokens": 10200,
+          "accountedTokens": 10200,
+          "excessTokens": 0
+        }
+      ],
+      "optimized": [
+        {
+          "requestIndex": 0,
+          "readTokens": 0,
+          "writeTokens5m": 6800,
+          "writeTokens1h": 0,
+          "uncachedTokens": 1700,
+          "costUsd": 0.030600000000000002,
+          "estimatedInputTokens": 8500,
+          "accountedTokens": 8500,
+          "excessTokens": 0
+        },
+        {
+          "requestIndex": 1,
+          "readTokens": 6800,
+          "writeTokens5m": 0,
+          "writeTokens1h": 0,
+          "uncachedTokens": 3400,
+          "costUsd": 0.012240000000000001,
+          "estimatedInputTokens": 10200,
+          "accountedTokens": 10200,
+          "excessTokens": 0
+        }
+      ],
+      "findings": []
+    }
+  ]
+}
