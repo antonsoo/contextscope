@@ -26,6 +26,12 @@ of public SWE-bench agent runs; see `studies/real-trajectories/`.
 
 ### Fixed
 
+- Isolate Anthropic message cache entries by `tool_choice` and explicit image
+  presence while retaining eligible tools/system entries. The optimized
+  scenario preserves those settings. Explain changes in CLI, browser and
+  exported reports; retain earlier scopes for a later return to the same
+  configuration. See `studies/cache-settings/` for executable counterexamples.
+
 - Keep production browser analysis usable after disconnecting. Retain trusted
   worker code after successful startup, while creating and terminating a fresh
   worker for every operation. New local imports, model changes, calibration,

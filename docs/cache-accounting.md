@@ -88,3 +88,5 @@ It does not observe eviction, concurrent request completion, provider rendering,
 or live cache state. Claude token counts remain estimates. Mixed-model files now
 resolve pricing and cache rules per request; see the subsequent
 [mixed-model correction](../studies/mixed-models/README.md).
+Message-cache lookup also respects tool choice and explicit image presence;
+see the [request-settings correction](../studies/cache-settings/README.md).

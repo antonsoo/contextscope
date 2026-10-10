@@ -400,6 +400,11 @@ implement each provider's documented rules:
   Opus 4.8 and Sonnet 5, 2,048 on Opus 4.7, 4,096 on Opus 4.6 and Haiku 4.5.
   Figures are from Anthropic's pricing and prompt-caching documentation as of
   2026-09-25.
+  Message entries also require matching `tool_choice` and explicit image
+  presence. Changing either preserves tools and top-level system entries,
+  but cannot reuse the other setting's message entries, even when an image
+  is added after a breakpoint. Both simulation scenarios enforce this.
+  [Reproduction, defaults and boundaries](studies/cache-settings/README.md).
 - **OpenAI**: listed GPT-6 models use explicit/implicit breakpoint simulation.
   No markers in explicit mode means zero reads and writes. Lookup uses eligible
   incoming boundaries, and cache writes have their own 30-minute column and
@@ -502,6 +507,12 @@ fixed hue order, so a color always means the same category.
   cache isolation. Unknown IDs use an explicitly reported provider-default
   fallback; missing model names form their own cache group. Invalid Anthropic cache-marker configurations are rejected before
   simulation in this source checkout; [accounting rules](docs/cache-accounting.md).
+- **Anthropic request-setting coverage is partial.** Message caches account for
+  tool choice (including parallel-tool policy) and explicit image presence.
+  Model-specific thinking/effort changes, speed changes, feature toggles that
+  alter provider-injected prompts, and images rendered from opaque documents
+  are not fully modeled. Compare captured usage before treating predictions
+  across those changes as evidence of a hit.
 - **Server-side state is invisible.** A Responses API request that continues a
   stored response (`previous_response_id`) carries only its new input; the tool
   warns and analyzes what is in the file.

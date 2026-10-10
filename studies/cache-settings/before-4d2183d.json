@@ -1,0 +1,598 @@
+{
+  "synthetic": true,
+  "note": "Estimated tokens and costs under documented cache rules; no API calls or observed charges.",
+  "implementationSha256": {
+    "core/cache-anthropic.js": "2fd7465baf87b8b92058aedc75307e161dd9fb5f18269c21e91917ca1e0366d3",
+    "core/findings.js": "c6ee6a15f7542b276c02de5be54f87e89a7e8a2341365813f949da067b0d9c6b"
+  },
+  "cases": [
+    {
+      "name": "choice-with-setup-marker",
+      "inputSha256": "b03049b76de6460a0dc7afb4a918af493d491376a28e12b0130767e50b0e4242",
+      "expectedReads": [
+        0,
+        2778,
+        5202
+      ],
+      "cacheSimulation": {
+        "provider": "anthropic",
+        "model": "claude-sonnet-4-5",
+        "actual": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 5202,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0195075
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 5202,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0015606
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 5202,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0015606
+          }
+        ],
+        "optimized": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 5202,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0195075
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 5202,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0015606
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 5202,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0015606
+          }
+        ],
+        "totalActualCostUsd": 0.022628699999999998,
+        "totalOptimizedCostUsd": 0.022628699999999998
+      },
+      "findings": [],
+      "prefixMatches": [
+        {
+          "fromIndex": 0,
+          "toIndex": 1,
+          "relation": "continues",
+          "matchedSegments": 3,
+          "matchedOpenaiTokens": 2834,
+          "matchedClaudeTokensEstimate": 5202,
+          "diff": [
+            {
+              "type": "context",
+              "text": "[tools] tool: lookup — {\"name\":\"lookup\",\"description\":\"Find a record\",\"input_schema\":{\"type\":\"object\",\"…"
+            },
+            {
+              "type": "context",
+              "text": "[system] system block 1 — You answer questions using verified records. You answer questions using verified…"
+            },
+            {
+              "type": "context",
+              "text": "[user] message 1 (user) text — Find documentation on reliable parsers. Find documentation on reliable parsers. …"
+            }
+          ]
+        },
+        {
+          "fromIndex": 1,
+          "toIndex": 2,
+          "relation": "continues",
+          "matchedSegments": 3,
+          "matchedOpenaiTokens": 2834,
+          "matchedClaudeTokensEstimate": 5202,
+          "diff": [
+            {
+              "type": "context",
+              "text": "[tools] tool: lookup — {\"name\":\"lookup\",\"description\":\"Find a record\",\"input_schema\":{\"type\":\"object\",\"…"
+            },
+            {
+              "type": "context",
+              "text": "[system] system block 1 — You answer questions using verified records. You answer questions using verified…"
+            },
+            {
+              "type": "context",
+              "text": "[user] message 1 (user) text — Find documentation on reliable parsers. Find documentation on reliable parsers. …"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "choice-without-setup-marker",
+      "inputSha256": "75ee769e7c89a68f469cc3607404a9662e84b197d642856d50165475060a6e6d",
+      "expectedReads": [
+        0,
+        0,
+        5202
+      ],
+      "cacheSimulation": {
+        "provider": "anthropic",
+        "model": "claude-sonnet-4-5",
+        "actual": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 5202,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0195075
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 5202,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0015606
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 5202,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0015606
+          }
+        ],
+        "optimized": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 5202,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0195075
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 5202,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0015606
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 5202,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0015606
+          }
+        ],
+        "totalActualCostUsd": 0.022628699999999998,
+        "totalOptimizedCostUsd": 0.022628699999999998
+      },
+      "findings": [],
+      "prefixMatches": [
+        {
+          "fromIndex": 0,
+          "toIndex": 1,
+          "relation": "continues",
+          "matchedSegments": 3,
+          "matchedOpenaiTokens": 2834,
+          "matchedClaudeTokensEstimate": 5202,
+          "diff": [
+            {
+              "type": "context",
+              "text": "[tools] tool: lookup — {\"name\":\"lookup\",\"description\":\"Find a record\",\"input_schema\":{\"type\":\"object\",\"…"
+            },
+            {
+              "type": "context",
+              "text": "[system] system block 1 — You answer questions using verified records. You answer questions using verified…"
+            },
+            {
+              "type": "context",
+              "text": "[user] message 1 (user) text — Find documentation on reliable parsers. Find documentation on reliable parsers. …"
+            }
+          ]
+        },
+        {
+          "fromIndex": 1,
+          "toIndex": 2,
+          "relation": "continues",
+          "matchedSegments": 3,
+          "matchedOpenaiTokens": 2834,
+          "matchedClaudeTokensEstimate": 5202,
+          "diff": [
+            {
+              "type": "context",
+              "text": "[tools] tool: lookup — {\"name\":\"lookup\",\"description\":\"Find a record\",\"input_schema\":{\"type\":\"object\",\"…"
+            },
+            {
+              "type": "context",
+              "text": "[system] system block 1 — You answer questions using verified records. You answer questions using verified…"
+            },
+            {
+              "type": "context",
+              "text": "[user] message 1 (user) text — Find documentation on reliable parsers. Find documentation on reliable parsers. …"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "parallel-tool-policy",
+      "inputSha256": "3e03ad7d6e7cc5caea724898ada26e131b863797c9043dde53d93eae9f1ddd0e",
+      "expectedReads": [
+        0,
+        2778,
+        5202
+      ],
+      "cacheSimulation": {
+        "provider": "anthropic",
+        "model": "claude-sonnet-4-5",
+        "actual": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 5202,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0195075
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 5202,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0015606
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 5202,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0015606
+          }
+        ],
+        "optimized": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 5202,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0195075
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 5202,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0015606
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 5202,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0015606
+          }
+        ],
+        "totalActualCostUsd": 0.022628699999999998,
+        "totalOptimizedCostUsd": 0.022628699999999998
+      },
+      "findings": [],
+      "prefixMatches": [
+        {
+          "fromIndex": 0,
+          "toIndex": 1,
+          "relation": "continues",
+          "matchedSegments": 3,
+          "matchedOpenaiTokens": 2834,
+          "matchedClaudeTokensEstimate": 5202,
+          "diff": [
+            {
+              "type": "context",
+              "text": "[tools] tool: lookup — {\"name\":\"lookup\",\"description\":\"Find a record\",\"input_schema\":{\"type\":\"object\",\"…"
+            },
+            {
+              "type": "context",
+              "text": "[system] system block 1 — You answer questions using verified records. You answer questions using verified…"
+            },
+            {
+              "type": "context",
+              "text": "[user] message 1 (user) text — Find documentation on reliable parsers. Find documentation on reliable parsers. …"
+            }
+          ]
+        },
+        {
+          "fromIndex": 1,
+          "toIndex": 2,
+          "relation": "continues",
+          "matchedSegments": 3,
+          "matchedOpenaiTokens": 2834,
+          "matchedClaudeTokensEstimate": 5202,
+          "diff": [
+            {
+              "type": "context",
+              "text": "[tools] tool: lookup — {\"name\":\"lookup\",\"description\":\"Find a record\",\"input_schema\":{\"type\":\"object\",\"…"
+            },
+            {
+              "type": "context",
+              "text": "[system] system block 1 — You answer questions using verified records. You answer questions using verified…"
+            },
+            {
+              "type": "context",
+              "text": "[user] message 1 (user) text — Find documentation on reliable parsers. Find documentation on reliable parsers. …"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "image-after-marked-prefix",
+      "inputSha256": "9f80984d326145b5b6af0382e05c627cf4b8ba768e6abd4b9e6c5e858a89e023",
+      "expectedReads": [
+        0,
+        2778,
+        5202
+      ],
+      "cacheSimulation": {
+        "provider": "anthropic",
+        "model": "claude-sonnet-4-5",
+        "actual": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 5202,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0195075
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 5202,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 44,
+            "costUsd": 0.0016926
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 5202,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0015606
+          }
+        ],
+        "optimized": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 5202,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0195075
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 5202,
+            "writeTokens5m": 44,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0017256
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 5202,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0015606
+          }
+        ],
+        "totalActualCostUsd": 0.0227607,
+        "totalOptimizedCostUsd": 0.0227937
+      },
+      "findings": [],
+      "prefixMatches": [
+        {
+          "fromIndex": 0,
+          "toIndex": 1,
+          "relation": "continues",
+          "matchedSegments": 3,
+          "matchedOpenaiTokens": 2834,
+          "matchedClaudeTokensEstimate": 5202,
+          "divergedAt": {
+            "toSegmentId": "messages[0].content[1]"
+          },
+          "diff": [
+            {
+              "type": "context",
+              "text": "[tools] tool: lookup — {\"name\":\"lookup\",\"description\":\"Find a record\",\"input_schema\":{\"type\":\"object\",\"…"
+            },
+            {
+              "type": "context",
+              "text": "[system] system block 1 — You answer questions using verified records. You answer questions using verified…"
+            },
+            {
+              "type": "context",
+              "text": "[user] message 1 (user) text — Find documentation on reliable parsers. Find documentation on reliable parsers. …"
+            },
+            {
+              "type": "add",
+              "text": "[image] message 1 image — {\"type\":\"base64\",\"media_type\":\"image/png\",\"data\":\"iVBORw0KGgoAAAANSUhEUgAAAAEAAA…"
+            }
+          ]
+        },
+        {
+          "fromIndex": 0,
+          "toIndex": 2,
+          "relation": "continues",
+          "matchedSegments": 3,
+          "matchedOpenaiTokens": 2834,
+          "matchedClaudeTokensEstimate": 5202,
+          "diff": [
+            {
+              "type": "context",
+              "text": "[tools] tool: lookup — {\"name\":\"lookup\",\"description\":\"Find a record\",\"input_schema\":{\"type\":\"object\",\"…"
+            },
+            {
+              "type": "context",
+              "text": "[system] system block 1 — You answer questions using verified records. You answer questions using verified…"
+            },
+            {
+              "type": "context",
+              "text": "[user] message 1 (user) text — Find documentation on reliable parsers. Find documentation on reliable parsers. …"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "tool-result-image-after-prefix",
+      "inputSha256": "126fc92b60dc7a1afd5fd0e7d7854f5bb311c801e002e8b49362fb6ac72df6e5",
+      "expectedReads": [
+        0,
+        2778,
+        5202
+      ],
+      "cacheSimulation": {
+        "provider": "anthropic",
+        "model": "claude-sonnet-4-5",
+        "actual": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 5202,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0195075
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 5202,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 84,
+            "costUsd": 0.0018126000000000001
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 5202,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0015606
+          }
+        ],
+        "optimized": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 5202,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0195075
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 5202,
+            "writeTokens5m": 84,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0018756
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 5202,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0015606
+          }
+        ],
+        "totalActualCostUsd": 0.0228807,
+        "totalOptimizedCostUsd": 0.0229437
+      },
+      "findings": [],
+      "prefixMatches": [
+        {
+          "fromIndex": 0,
+          "toIndex": 1,
+          "relation": "continues",
+          "matchedSegments": 3,
+          "matchedOpenaiTokens": 2834,
+          "matchedClaudeTokensEstimate": 5202,
+          "divergedAt": {
+            "toSegmentId": "messages[1].content[0]"
+          },
+          "diff": [
+            {
+              "type": "context",
+              "text": "[tools] tool: lookup — {\"name\":\"lookup\",\"description\":\"Find a record\",\"input_schema\":{\"type\":\"object\",\"…"
+            },
+            {
+              "type": "context",
+              "text": "[system] system block 1 — You answer questions using verified records. You answer questions using verified…"
+            },
+            {
+              "type": "context",
+              "text": "[user] message 1 (user) text — Find documentation on reliable parsers. Find documentation on reliable parsers. …"
+            },
+            {
+              "type": "add",
+              "text": "[tool_call] message 2 tool_use: lookup — {\"type\":\"tool_use\",\"id\":\"lookup-1\",\"name\":\"lookup\",\"input\":{\"query\":\"figure\"}}"
+            },
+            {
+              "type": "add",
+              "text": "[tool_result] message 3 tool_result — {\"type\":\"image\",\"source\":{\"type\":\"base64\",\"media_type\":\"image/png\",\"data\":\"iVBOR…"
+            }
+          ]
+        },
+        {
+          "fromIndex": 0,
+          "toIndex": 2,
+          "relation": "continues",
+          "matchedSegments": 3,
+          "matchedOpenaiTokens": 2834,
+          "matchedClaudeTokensEstimate": 5202,
+          "diff": [
+            {
+              "type": "context",
+              "text": "[tools] tool: lookup — {\"name\":\"lookup\",\"description\":\"Find a record\",\"input_schema\":{\"type\":\"object\",\"…"
+            },
+            {
+              "type": "context",
+              "text": "[system] system block 1 — You answer questions using verified records. You answer questions using verified…"
+            },
+            {
+              "type": "context",
+              "text": "[user] message 1 (user) text — Find documentation on reliable parsers. Find documentation on reliable parsers. …"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

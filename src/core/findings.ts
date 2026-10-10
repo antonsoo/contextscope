@@ -6,6 +6,7 @@ import { containsVolatilePattern } from "./volatile.js";
 import { sameModel } from "./model-id.js";
 import { comparisonKeys } from "./prefix.js";
 import { anthropicPositions } from "./anthropic-breakpoints.js";
+import { anthropicMessageCacheScope, isAnthropicMessageSegment } from "./anthropic-cache-scope.js";
 
 function push(list: Finding[], f: Finding): void {
   list.push(f);
@@ -144,6 +145,17 @@ export function computeFindings(
     // A new conversation shares its predecessor's setup (tools and system prompt) and whatever
     // opening messages they have in common, not the rest of that other conversation.
     const prev = startsConversation ? setupOf(requests[from]!, match.matchedSegments) : requests[from]!;
+    if (provider === "anthropic" && request.segments.some((s) => s.cacheControl && isAnthropicMessageSegment(s))) {
+      const before = anthropicMessageCacheScope(prev);
+      const after = anthropicMessageCacheScope(request);
+      const changed = [before.toolChoice !== after.toolChoice ? "tool_choice" : "", before.hasImages !== after.hasImages ? "image presence" : ""].filter(Boolean);
+      if (changed.length > 0) push(findings, {
+        kind: "anthropic_message_cache_scope", severity: "info", requestIndex: i,
+        title: "Message cache settings changed",
+        detail: `${changed.join(" and ")} differs between requests ${from + 1} and ${i + 1}. Message cache entries from that request cannot be reused, even when the visible prefix matches or an image was added after its breakpoint. Stable tools and top-level system entries remain eligible. An earlier request with the current settings can still supply a hit; inspect the read/write counts. The optimized scenario preserves these settings.`,
+        segmentIds: request.segments.filter((s) => s.cacheControl && isAnthropicMessageSegment(s)).map((s) => s.id),
+      });
+    }
     // A change blocks reuse from this predecessor, but not from earlier requests on the
     // destination model. Missing metadata is not evidence that a switch actually happened.
     if (prev.model && request.model && !sameModel(prev.model, request.model)) {

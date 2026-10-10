@@ -133,6 +133,7 @@ export interface RequestTokenReport {
 export type FindingSeverity = "info" | "warning" | "error";
 
 export type FindingKind =
+  | "anthropic_message_cache_scope"
   | "openai_cache_disabled"
   | "openai_cache_boundary"
   | "volatile_prefix"

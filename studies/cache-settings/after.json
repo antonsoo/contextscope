@@ -1,0 +1,683 @@
+{
+  "synthetic": true,
+  "note": "Estimated tokens and costs under documented cache rules; no API calls or observed charges.",
+  "implementationSha256": {
+    "core/cache-anthropic.js": "2e8fdacb110622450e2f4496d2b9eddeaca64050fc1d1003aa89ed7e9a6f1ec7",
+    "core/findings.js": "2245d60adef9df07579e46555fc27429c4072d2cdb487311867774674ac8fb7b"
+  },
+  "cases": [
+    {
+      "name": "choice-with-setup-marker",
+      "inputSha256": "b03049b76de6460a0dc7afb4a918af493d491376a28e12b0130767e50b0e4242",
+      "expectedReads": [
+        0,
+        2778,
+        5202
+      ],
+      "cacheSimulation": {
+        "provider": "anthropic",
+        "model": "claude-sonnet-4-5",
+        "actual": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 5202,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0195075
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 2778,
+            "writeTokens5m": 2424,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.009923399999999999
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 5202,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0015606
+          }
+        ],
+        "optimized": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 5202,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0195075
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 2778,
+            "writeTokens5m": 2424,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.009923399999999999
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 5202,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0015606
+          }
+        ],
+        "totalActualCostUsd": 0.030991499999999998,
+        "totalOptimizedCostUsd": 0.030991499999999998
+      },
+      "findings": [
+        {
+          "kind": "anthropic_message_cache_scope",
+          "severity": "info",
+          "requestIndex": 1,
+          "title": "Message cache settings changed",
+          "detail": "tool_choice differs between requests 1 and 2. Message cache entries from that request cannot be reused, even when the visible prefix matches or an image was added after its breakpoint. Stable tools and top-level system entries remain eligible. An earlier request with the current settings can still supply a hit; inspect the read/write counts. The optimized scenario preserves these settings.",
+          "segmentIds": [
+            "messages[0].content[0]"
+          ]
+        },
+        {
+          "kind": "anthropic_message_cache_scope",
+          "severity": "info",
+          "requestIndex": 2,
+          "title": "Message cache settings changed",
+          "detail": "tool_choice differs between requests 2 and 3. Message cache entries from that request cannot be reused, even when the visible prefix matches or an image was added after its breakpoint. Stable tools and top-level system entries remain eligible. An earlier request with the current settings can still supply a hit; inspect the read/write counts. The optimized scenario preserves these settings.",
+          "segmentIds": [
+            "messages[0].content[0]"
+          ]
+        }
+      ],
+      "prefixMatches": [
+        {
+          "fromIndex": 0,
+          "toIndex": 1,
+          "relation": "continues",
+          "matchedSegments": 3,
+          "matchedOpenaiTokens": 2834,
+          "matchedClaudeTokensEstimate": 5202,
+          "diff": [
+            {
+              "type": "context",
+              "text": "[tools] tool: lookup — {\"name\":\"lookup\",\"description\":\"Find a record\",\"input_schema\":{\"type\":\"object\",\"…"
+            },
+            {
+              "type": "context",
+              "text": "[system] system block 1 — You answer questions using verified records. You answer questions using verified…"
+            },
+            {
+              "type": "context",
+              "text": "[user] message 1 (user) text — Find documentation on reliable parsers. Find documentation on reliable parsers. …"
+            }
+          ]
+        },
+        {
+          "fromIndex": 1,
+          "toIndex": 2,
+          "relation": "continues",
+          "matchedSegments": 3,
+          "matchedOpenaiTokens": 2834,
+          "matchedClaudeTokensEstimate": 5202,
+          "diff": [
+            {
+              "type": "context",
+              "text": "[tools] tool: lookup — {\"name\":\"lookup\",\"description\":\"Find a record\",\"input_schema\":{\"type\":\"object\",\"…"
+            },
+            {
+              "type": "context",
+              "text": "[system] system block 1 — You answer questions using verified records. You answer questions using verified…"
+            },
+            {
+              "type": "context",
+              "text": "[user] message 1 (user) text — Find documentation on reliable parsers. Find documentation on reliable parsers. …"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "choice-without-setup-marker",
+      "inputSha256": "75ee769e7c89a68f469cc3607404a9662e84b197d642856d50165475060a6e6d",
+      "expectedReads": [
+        0,
+        0,
+        5202
+      ],
+      "cacheSimulation": {
+        "provider": "anthropic",
+        "model": "claude-sonnet-4-5",
+        "actual": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 5202,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0195075
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 0,
+            "writeTokens5m": 5202,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0195075
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 5202,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0015606
+          }
+        ],
+        "optimized": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 5202,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0195075
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 0,
+            "writeTokens5m": 5202,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0195075
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 5202,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0015606
+          }
+        ],
+        "totalActualCostUsd": 0.0405756,
+        "totalOptimizedCostUsd": 0.0405756
+      },
+      "findings": [
+        {
+          "kind": "anthropic_message_cache_scope",
+          "severity": "info",
+          "requestIndex": 1,
+          "title": "Message cache settings changed",
+          "detail": "tool_choice differs between requests 1 and 2. Message cache entries from that request cannot be reused, even when the visible prefix matches or an image was added after its breakpoint. Stable tools and top-level system entries remain eligible. An earlier request with the current settings can still supply a hit; inspect the read/write counts. The optimized scenario preserves these settings.",
+          "segmentIds": [
+            "messages[0].content[0]"
+          ]
+        },
+        {
+          "kind": "anthropic_message_cache_scope",
+          "severity": "info",
+          "requestIndex": 2,
+          "title": "Message cache settings changed",
+          "detail": "tool_choice differs between requests 2 and 3. Message cache entries from that request cannot be reused, even when the visible prefix matches or an image was added after its breakpoint. Stable tools and top-level system entries remain eligible. An earlier request with the current settings can still supply a hit; inspect the read/write counts. The optimized scenario preserves these settings.",
+          "segmentIds": [
+            "messages[0].content[0]"
+          ]
+        }
+      ],
+      "prefixMatches": [
+        {
+          "fromIndex": 0,
+          "toIndex": 1,
+          "relation": "continues",
+          "matchedSegments": 3,
+          "matchedOpenaiTokens": 2834,
+          "matchedClaudeTokensEstimate": 5202,
+          "diff": [
+            {
+              "type": "context",
+              "text": "[tools] tool: lookup — {\"name\":\"lookup\",\"description\":\"Find a record\",\"input_schema\":{\"type\":\"object\",\"…"
+            },
+            {
+              "type": "context",
+              "text": "[system] system block 1 — You answer questions using verified records. You answer questions using verified…"
+            },
+            {
+              "type": "context",
+              "text": "[user] message 1 (user) text — Find documentation on reliable parsers. Find documentation on reliable parsers. …"
+            }
+          ]
+        },
+        {
+          "fromIndex": 1,
+          "toIndex": 2,
+          "relation": "continues",
+          "matchedSegments": 3,
+          "matchedOpenaiTokens": 2834,
+          "matchedClaudeTokensEstimate": 5202,
+          "diff": [
+            {
+              "type": "context",
+              "text": "[tools] tool: lookup — {\"name\":\"lookup\",\"description\":\"Find a record\",\"input_schema\":{\"type\":\"object\",\"…"
+            },
+            {
+              "type": "context",
+              "text": "[system] system block 1 — You answer questions using verified records. You answer questions using verified…"
+            },
+            {
+              "type": "context",
+              "text": "[user] message 1 (user) text — Find documentation on reliable parsers. Find documentation on reliable parsers. …"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "parallel-tool-policy",
+      "inputSha256": "3e03ad7d6e7cc5caea724898ada26e131b863797c9043dde53d93eae9f1ddd0e",
+      "expectedReads": [
+        0,
+        2778,
+        5202
+      ],
+      "cacheSimulation": {
+        "provider": "anthropic",
+        "model": "claude-sonnet-4-5",
+        "actual": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 5202,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0195075
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 2778,
+            "writeTokens5m": 2424,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.009923399999999999
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 5202,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0015606
+          }
+        ],
+        "optimized": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 5202,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0195075
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 2778,
+            "writeTokens5m": 2424,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.009923399999999999
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 5202,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0015606
+          }
+        ],
+        "totalActualCostUsd": 0.030991499999999998,
+        "totalOptimizedCostUsd": 0.030991499999999998
+      },
+      "findings": [
+        {
+          "kind": "anthropic_message_cache_scope",
+          "severity": "info",
+          "requestIndex": 1,
+          "title": "Message cache settings changed",
+          "detail": "tool_choice differs between requests 1 and 2. Message cache entries from that request cannot be reused, even when the visible prefix matches or an image was added after its breakpoint. Stable tools and top-level system entries remain eligible. An earlier request with the current settings can still supply a hit; inspect the read/write counts. The optimized scenario preserves these settings.",
+          "segmentIds": [
+            "messages[0].content[0]"
+          ]
+        },
+        {
+          "kind": "anthropic_message_cache_scope",
+          "severity": "info",
+          "requestIndex": 2,
+          "title": "Message cache settings changed",
+          "detail": "tool_choice differs between requests 2 and 3. Message cache entries from that request cannot be reused, even when the visible prefix matches or an image was added after its breakpoint. Stable tools and top-level system entries remain eligible. An earlier request with the current settings can still supply a hit; inspect the read/write counts. The optimized scenario preserves these settings.",
+          "segmentIds": [
+            "messages[0].content[0]"
+          ]
+        }
+      ],
+      "prefixMatches": [
+        {
+          "fromIndex": 0,
+          "toIndex": 1,
+          "relation": "continues",
+          "matchedSegments": 3,
+          "matchedOpenaiTokens": 2834,
+          "matchedClaudeTokensEstimate": 5202,
+          "diff": [
+            {
+              "type": "context",
+              "text": "[tools] tool: lookup — {\"name\":\"lookup\",\"description\":\"Find a record\",\"input_schema\":{\"type\":\"object\",\"…"
+            },
+            {
+              "type": "context",
+              "text": "[system] system block 1 — You answer questions using verified records. You answer questions using verified…"
+            },
+            {
+              "type": "context",
+              "text": "[user] message 1 (user) text — Find documentation on reliable parsers. Find documentation on reliable parsers. …"
+            }
+          ]
+        },
+        {
+          "fromIndex": 1,
+          "toIndex": 2,
+          "relation": "continues",
+          "matchedSegments": 3,
+          "matchedOpenaiTokens": 2834,
+          "matchedClaudeTokensEstimate": 5202,
+          "diff": [
+            {
+              "type": "context",
+              "text": "[tools] tool: lookup — {\"name\":\"lookup\",\"description\":\"Find a record\",\"input_schema\":{\"type\":\"object\",\"…"
+            },
+            {
+              "type": "context",
+              "text": "[system] system block 1 — You answer questions using verified records. You answer questions using verified…"
+            },
+            {
+              "type": "context",
+              "text": "[user] message 1 (user) text — Find documentation on reliable parsers. Find documentation on reliable parsers. …"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "image-after-marked-prefix",
+      "inputSha256": "9f80984d326145b5b6af0382e05c627cf4b8ba768e6abd4b9e6c5e858a89e023",
+      "expectedReads": [
+        0,
+        2778,
+        5202
+      ],
+      "cacheSimulation": {
+        "provider": "anthropic",
+        "model": "claude-sonnet-4-5",
+        "actual": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 5202,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0195075
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 2778,
+            "writeTokens5m": 2424,
+            "writeTokens1h": 0,
+            "uncachedTokens": 44,
+            "costUsd": 0.010055399999999999
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 5202,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0015606
+          }
+        ],
+        "optimized": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 5202,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0195075
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 2778,
+            "writeTokens5m": 2468,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.010088399999999999
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 5202,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0015606
+          }
+        ],
+        "totalActualCostUsd": 0.0311235,
+        "totalOptimizedCostUsd": 0.0311565
+      },
+      "findings": [
+        {
+          "kind": "anthropic_message_cache_scope",
+          "severity": "info",
+          "requestIndex": 1,
+          "title": "Message cache settings changed",
+          "detail": "image presence differs between requests 1 and 2. Message cache entries from that request cannot be reused, even when the visible prefix matches or an image was added after its breakpoint. Stable tools and top-level system entries remain eligible. An earlier request with the current settings can still supply a hit; inspect the read/write counts. The optimized scenario preserves these settings.",
+          "segmentIds": [
+            "messages[0].content[0]"
+          ]
+        }
+      ],
+      "prefixMatches": [
+        {
+          "fromIndex": 0,
+          "toIndex": 1,
+          "relation": "continues",
+          "matchedSegments": 3,
+          "matchedOpenaiTokens": 2834,
+          "matchedClaudeTokensEstimate": 5202,
+          "divergedAt": {
+            "toSegmentId": "messages[0].content[1]"
+          },
+          "diff": [
+            {
+              "type": "context",
+              "text": "[tools] tool: lookup — {\"name\":\"lookup\",\"description\":\"Find a record\",\"input_schema\":{\"type\":\"object\",\"…"
+            },
+            {
+              "type": "context",
+              "text": "[system] system block 1 — You answer questions using verified records. You answer questions using verified…"
+            },
+            {
+              "type": "context",
+              "text": "[user] message 1 (user) text — Find documentation on reliable parsers. Find documentation on reliable parsers. …"
+            },
+            {
+              "type": "add",
+              "text": "[image] message 1 image — {\"type\":\"base64\",\"media_type\":\"image/png\",\"data\":\"iVBORw0KGgoAAAANSUhEUgAAAAEAAA…"
+            }
+          ]
+        },
+        {
+          "fromIndex": 0,
+          "toIndex": 2,
+          "relation": "continues",
+          "matchedSegments": 3,
+          "matchedOpenaiTokens": 2834,
+          "matchedClaudeTokensEstimate": 5202,
+          "diff": [
+            {
+              "type": "context",
+              "text": "[tools] tool: lookup — {\"name\":\"lookup\",\"description\":\"Find a record\",\"input_schema\":{\"type\":\"object\",\"…"
+            },
+            {
+              "type": "context",
+              "text": "[system] system block 1 — You answer questions using verified records. You answer questions using verified…"
+            },
+            {
+              "type": "context",
+              "text": "[user] message 1 (user) text — Find documentation on reliable parsers. Find documentation on reliable parsers. …"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "tool-result-image-after-prefix",
+      "inputSha256": "126fc92b60dc7a1afd5fd0e7d7854f5bb311c801e002e8b49362fb6ac72df6e5",
+      "expectedReads": [
+        0,
+        2778,
+        5202
+      ],
+      "cacheSimulation": {
+        "provider": "anthropic",
+        "model": "claude-sonnet-4-5",
+        "actual": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 5202,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0195075
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 2778,
+            "writeTokens5m": 2424,
+            "writeTokens1h": 0,
+            "uncachedTokens": 84,
+            "costUsd": 0.0101754
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 5202,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0015606
+          }
+        ],
+        "optimized": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 5202,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0195075
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 2778,
+            "writeTokens5m": 2508,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0102384
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 5202,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0015606
+          }
+        ],
+        "totalActualCostUsd": 0.031243499999999997,
+        "totalOptimizedCostUsd": 0.0313065
+      },
+      "findings": [
+        {
+          "kind": "anthropic_message_cache_scope",
+          "severity": "info",
+          "requestIndex": 1,
+          "title": "Message cache settings changed",
+          "detail": "image presence differs between requests 1 and 2. Message cache entries from that request cannot be reused, even when the visible prefix matches or an image was added after its breakpoint. Stable tools and top-level system entries remain eligible. An earlier request with the current settings can still supply a hit; inspect the read/write counts. The optimized scenario preserves these settings.",
+          "segmentIds": [
+            "messages[0].content[0]"
+          ]
+        }
+      ],
+      "prefixMatches": [
+        {
+          "fromIndex": 0,
+          "toIndex": 1,
+          "relation": "continues",
+          "matchedSegments": 3,
+          "matchedOpenaiTokens": 2834,
+          "matchedClaudeTokensEstimate": 5202,
+          "divergedAt": {
+            "toSegmentId": "messages[1].content[0]"
+          },
+          "diff": [
+            {
+              "type": "context",
+              "text": "[tools] tool: lookup — {\"name\":\"lookup\",\"description\":\"Find a record\",\"input_schema\":{\"type\":\"object\",\"…"
+            },
+            {
+              "type": "context",
+              "text": "[system] system block 1 — You answer questions using verified records. You answer questions using verified…"
+            },
+            {
+              "type": "context",
+              "text": "[user] message 1 (user) text — Find documentation on reliable parsers. Find documentation on reliable parsers. …"
+            },
+            {
+              "type": "add",
+              "text": "[tool_call] message 2 tool_use: lookup — {\"type\":\"tool_use\",\"id\":\"lookup-1\",\"name\":\"lookup\",\"input\":{\"query\":\"figure\"}}"
+            },
+            {
+              "type": "add",
+              "text": "[tool_result] message 3 tool_result — {\"type\":\"image\",\"source\":{\"type\":\"base64\",\"media_type\":\"image/png\",\"data\":\"iVBOR…"
+            }
+          ]
+        },
+        {
+          "fromIndex": 0,
+          "toIndex": 2,
+          "relation": "continues",
+          "matchedSegments": 3,
+          "matchedOpenaiTokens": 2834,
+          "matchedClaudeTokensEstimate": 5202,
+          "diff": [
+            {
+              "type": "context",
+              "text": "[tools] tool: lookup — {\"name\":\"lookup\",\"description\":\"Find a record\",\"input_schema\":{\"type\":\"object\",\"…"
+            },
+            {
+              "type": "context",
+              "text": "[system] system block 1 — You answer questions using verified records. You answer questions using verified…"
+            },
+            {
+              "type": "context",
+              "text": "[user] message 1 (user) text — Find documentation on reliable parsers. Find documentation on reliable parsers. …"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
