@@ -1,0 +1,212 @@
+[
+  {
+    "node": "v20.0.0",
+    "installedArtifact": true,
+    "kind": "synthetic structured-output request sequence, A/B/A property order; no provider calls",
+    "before": [
+      {
+        "requestIndex": 0,
+        "readTokens": 0,
+        "writeTokens5m": 0,
+        "writeTokens1h": 0,
+        "writeTokens30m": 2401,
+        "cacheMode": "implicit",
+        "uncachedTokens": 0,
+        "costUsd": 0.0060025
+      },
+      {
+        "requestIndex": 1,
+        "readTokens": 2401,
+        "writeTokens5m": 0,
+        "writeTokens1h": 0,
+        "writeTokens30m": 0,
+        "cacheMode": "implicit",
+        "uncachedTokens": 0,
+        "costUsd": 0.00048020000000000007
+      },
+      {
+        "requestIndex": 2,
+        "readTokens": 2401,
+        "writeTokens5m": 0,
+        "writeTokens1h": 0,
+        "writeTokens30m": 0,
+        "cacheMode": "implicit",
+        "uncachedTokens": 0,
+        "costUsd": 0.00048020000000000007
+      }
+    ],
+    "after": [
+      {
+        "requestIndex": 0,
+        "readTokens": 0,
+        "writeTokens5m": 0,
+        "writeTokens1h": 0,
+        "writeTokens30m": 2401,
+        "cacheMode": "implicit",
+        "uncachedTokens": 0,
+        "costUsd": 0.0060025
+      },
+      {
+        "requestIndex": 1,
+        "readTokens": 0,
+        "writeTokens5m": 0,
+        "writeTokens1h": 0,
+        "writeTokens30m": 2401,
+        "cacheMode": "implicit",
+        "uncachedTokens": 0,
+        "costUsd": 0.0060025
+      },
+      {
+        "requestIndex": 2,
+        "readTokens": 2401,
+        "writeTokens5m": 0,
+        "writeTokens1h": 0,
+        "writeTokens30m": 0,
+        "cacheMode": "implicit",
+        "uncachedTokens": 0,
+        "costUsd": 0.00048020000000000007
+      }
+    ],
+    "assumption": "Changed schema order conservatively isolates the whole request; provider framing is unmeasured."
+  },
+  {
+    "node": "v24.21.0",
+    "installedArtifact": true,
+    "kind": "synthetic structured-output request sequence, A/B/A property order; no provider calls",
+    "before": [
+      {
+        "requestIndex": 0,
+        "readTokens": 0,
+        "writeTokens5m": 0,
+        "writeTokens1h": 0,
+        "writeTokens30m": 2401,
+        "cacheMode": "implicit",
+        "uncachedTokens": 0,
+        "costUsd": 0.0060025
+      },
+      {
+        "requestIndex": 1,
+        "readTokens": 2401,
+        "writeTokens5m": 0,
+        "writeTokens1h": 0,
+        "writeTokens30m": 0,
+        "cacheMode": "implicit",
+        "uncachedTokens": 0,
+        "costUsd": 0.00048020000000000007
+      },
+      {
+        "requestIndex": 2,
+        "readTokens": 2401,
+        "writeTokens5m": 0,
+        "writeTokens1h": 0,
+        "writeTokens30m": 0,
+        "cacheMode": "implicit",
+        "uncachedTokens": 0,
+        "costUsd": 0.00048020000000000007
+      }
+    ],
+    "after": [
+      {
+        "requestIndex": 0,
+        "readTokens": 0,
+        "writeTokens5m": 0,
+        "writeTokens1h": 0,
+        "writeTokens30m": 2401,
+        "cacheMode": "implicit",
+        "uncachedTokens": 0,
+        "costUsd": 0.0060025
+      },
+      {
+        "requestIndex": 1,
+        "readTokens": 0,
+        "writeTokens5m": 0,
+        "writeTokens1h": 0,
+        "writeTokens30m": 2401,
+        "cacheMode": "implicit",
+        "uncachedTokens": 0,
+        "costUsd": 0.0060025
+      },
+      {
+        "requestIndex": 2,
+        "readTokens": 2401,
+        "writeTokens5m": 0,
+        "writeTokens1h": 0,
+        "writeTokens30m": 0,
+        "cacheMode": "implicit",
+        "uncachedTokens": 0,
+        "costUsd": 0.00048020000000000007
+      }
+    ],
+    "assumption": "Changed schema order conservatively isolates the whole request; provider framing is unmeasured."
+  },
+  {
+    "node": "v26.7.0",
+    "installedArtifact": true,
+    "kind": "synthetic structured-output request sequence, A/B/A property order; no provider calls",
+    "before": [
+      {
+        "requestIndex": 0,
+        "readTokens": 0,
+        "writeTokens5m": 0,
+        "writeTokens1h": 0,
+        "writeTokens30m": 2401,
+        "cacheMode": "implicit",
+        "uncachedTokens": 0,
+        "costUsd": 0.0060025
+      },
+      {
+        "requestIndex": 1,
+        "readTokens": 2401,
+        "writeTokens5m": 0,
+        "writeTokens1h": 0,
+        "writeTokens30m": 0,
+        "cacheMode": "implicit",
+        "uncachedTokens": 0,
+        "costUsd": 0.00048020000000000007
+      },
+      {
+        "requestIndex": 2,
+        "readTokens": 2401,
+        "writeTokens5m": 0,
+        "writeTokens1h": 0,
+        "writeTokens30m": 0,
+        "cacheMode": "implicit",
+        "uncachedTokens": 0,
+        "costUsd": 0.00048020000000000007
+      }
+    ],
+    "after": [
+      {
+        "requestIndex": 0,
+        "readTokens": 0,
+        "writeTokens5m": 0,
+        "writeTokens1h": 0,
+        "writeTokens30m": 2401,
+        "cacheMode": "implicit",
+        "uncachedTokens": 0,
+        "costUsd": 0.0060025
+      },
+      {
+        "requestIndex": 1,
+        "readTokens": 0,
+        "writeTokens5m": 0,
+        "writeTokens1h": 0,
+        "writeTokens30m": 2401,
+        "cacheMode": "implicit",
+        "uncachedTokens": 0,
+        "costUsd": 0.0060025
+      },
+      {
+        "requestIndex": 2,
+        "readTokens": 2401,
+        "writeTokens5m": 0,
+        "writeTokens1h": 0,
+        "writeTokens30m": 0,
+        "cacheMode": "implicit",
+        "uncachedTokens": 0,
+        "costUsd": 0.00048020000000000007
+      }
+    ],
+    "assumption": "Changed schema order conservatively isolates the whole request; provider framing is unmeasured."
+  }
+]

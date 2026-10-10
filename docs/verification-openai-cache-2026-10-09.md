@@ -2,6 +2,10 @@
 
 Runtime commit: `39b8fb1`. Baseline: `dbd7e15`.
 
+This records the initial breakpoint implementation. The later
+[schema-order correction and offline workflow](verification-offline-analysis-2026-10-09.md)
+include newer verification and deployment evidence.
+
 The [counterexample study](../studies/openai-cache/README.md) retains SDK-generated
 inputs and before/after accounting. Explicit mode without markers no longer
 gets a simulated hit. Implicit caching respects message endpoints; explicit
