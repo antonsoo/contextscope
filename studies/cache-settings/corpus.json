@@ -1,0 +1,1780 @@
+{
+  "note": "Historical bodies reconstructed by the pinned mini-SWE-agent and LiteLLM harness; no live provider calls.",
+  "manifestSha256": "da378619eb0633debd8ac970c5b321c625e091e54096cf1aa46c4a45dd1d22d2",
+  "totals": {
+    "trajectories": 240,
+    "requests": 10555,
+    "changedActualSteps": 0,
+    "changedOptimizedSteps": 0,
+    "beforeExcessSteps": 0,
+    "afterExcessSteps": 0,
+    "beforeHitAgreement": 10431,
+    "afterHitAgreement": 10431,
+    "reportedReadTokens": 205535739,
+    "beforeReadTokens": 195982596,
+    "afterReadTokens": 195982596
+  },
+  "groups": {
+    "20250929_mini-v1.13.3_sonnet-4-5-20250929": {
+      "trajectories": 40,
+      "requests": 2108,
+      "changedActualSteps": 0,
+      "changedOptimizedSteps": 0,
+      "beforeExcessSteps": 0,
+      "afterExcessSteps": 0,
+      "beforeHitAgreement": 2107,
+      "afterHitAgreement": 2107,
+      "reportedReadTokens": 38994008,
+      "beforeReadTokens": 39288949,
+      "afterReadTokens": 39288949
+    },
+    "20251124_mini-v1.16.0_claude-opus-4-5-20251101": {
+      "trajectories": 40,
+      "requests": 1592,
+      "changedActualSteps": 0,
+      "changedOptimizedSteps": 0,
+      "beforeExcessSteps": 0,
+      "afterExcessSteps": 0,
+      "beforeHitAgreement": 1576,
+      "afterHitAgreement": 1576,
+      "reportedReadTokens": 26298820,
+      "beforeReadTokens": 26712794,
+      "afterReadTokens": 26712794
+    },
+    "20260217_mini-v2.0.0_claude-4-5-haiku-high": {
+      "trajectories": 40,
+      "requests": 2710,
+      "changedActualSteps": 0,
+      "changedOptimizedSteps": 0,
+      "beforeExcessSteps": 0,
+      "afterExcessSteps": 0,
+      "beforeHitAgreement": 2660,
+      "afterHitAgreement": 2660,
+      "reportedReadTokens": 65108615,
+      "beforeReadTokens": 60944281,
+      "afterReadTokens": 60944281
+    },
+    "20260217_mini-v2.0.0_claude-4-5-opus-high": {
+      "trajectories": 40,
+      "requests": 1344,
+      "changedActualSteps": 0,
+      "changedOptimizedSteps": 0,
+      "beforeExcessSteps": 0,
+      "afterExcessSteps": 0,
+      "beforeHitAgreement": 1321,
+      "afterHitAgreement": 1321,
+      "reportedReadTokens": 28967897,
+      "beforeReadTokens": 27089171,
+      "afterReadTokens": 27089171
+    },
+    "20260217_mini-v2.0.0_claude-4-5-sonnet-high": {
+      "trajectories": 40,
+      "requests": 1926,
+      "changedActualSteps": 0,
+      "changedOptimizedSteps": 0,
+      "beforeExcessSteps": 0,
+      "afterExcessSteps": 0,
+      "beforeHitAgreement": 1925,
+      "afterHitAgreement": 1925,
+      "reportedReadTokens": 37556399,
+      "beforeReadTokens": 34440696,
+      "afterReadTokens": 34440696
+    },
+    "20260217_mini-v2.0.0_claude-4-6-opus": {
+      "trajectories": 40,
+      "requests": 875,
+      "changedActualSteps": 0,
+      "changedOptimizedSteps": 0,
+      "beforeExcessSteps": 0,
+      "afterExcessSteps": 0,
+      "beforeHitAgreement": 842,
+      "afterHitAgreement": 842,
+      "reportedReadTokens": 8610000,
+      "beforeReadTokens": 7506705,
+      "afterReadTokens": 7506705
+    }
+  },
+  "changes": [],
+  "sources": [
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "astropy__astropy-13453.traj.json",
+      "requests": 46,
+      "sourceSha256": "7a557cf0347881d55548de3e3f2c73b18fb990086c5c86665c7ef498cd856de9",
+      "requestsSha256": "ed5a67e67a5063a7337b131f30638c3fca3b514685388dd56f54f4851a13e114"
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-11133.traj.json",
+      "requests": 36,
+      "sourceSha256": "0fe987e3b2734992e3a064e4eac83479212815abe20066c5c60d5d2f461814a4",
+      "requestsSha256": "8aa531c813ba336317eb9956040ac50c80f0a20a4e9c64fc3a3e3837445aaf7b"
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-11333.traj.json",
+      "requests": 49,
+      "sourceSha256": "db7981b9106e07c3ad1d1e85c8c975bdf3ca48df0491511305653856f44b7cd1",
+      "requestsSha256": "4335e0d9a0856478e3ab78854f94b66b85c8fdb23f774883db0ec13efa2b5fc6"
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-11433.traj.json",
+      "requests": 49,
+      "sourceSha256": "bb031400bfc41693100bd1492446d3a313a4936870f05780129fe765028e4271",
+      "requestsSha256": "9f9f262114ff147bf939a1f7852591df49d0150b6e817d8cc43cbe44aa3aa5fe"
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-12419.traj.json",
+      "requests": 38,
+      "sourceSha256": "b80dded2140ee9570ef11c95cd49eb093777e77f8e45bfc0f37505e30739c3ff",
+      "requestsSha256": "ed0ba40243da5205b16c107d039179f34ef30bff27d1afdcd1c0070d128e6b74"
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-12965.traj.json",
+      "requests": 69,
+      "sourceSha256": "1af1cdeb6cc9ba5eabef721da7d5dc68ee51b6fe0651211344b4f118af92a2dc",
+      "requestsSha256": "ef8154237d48e373e9d8be6d5e3174790882f4e43a7c48b39320346ae02bf888"
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-13033.traj.json",
+      "requests": 50,
+      "sourceSha256": "72254b176fb7dc0af168e169b6a4e4a4f1944d9f45849956a3b22c46c17246ed",
+      "requestsSha256": "ff8dfcc0c1273fa8c828ba9c7094598e5098043a4d4931b828b8d6d4cb0eefbd"
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-13346.traj.json",
+      "requests": 51,
+      "sourceSha256": "9b7f2fc96057a565349041c4e6fb218cf2233337706115c5cbb1fef4afe7ba5e",
+      "requestsSha256": "6d87ac51339552e9656f2d36563b69f30cdb7d7cc2ae7cf2fdbca708f805d7a6"
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-13449.traj.json",
+      "requests": 50,
+      "sourceSha256": "327659efca331041498ba2581a2620a023685e8b78b390a83934049f47db2e14",
+      "requestsSha256": "bfd0b8d01b4a027a75eee1c4e5c5a847a94201936f02a73af116b2584ff9ebb1"
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-13670.traj.json",
+      "requests": 37,
+      "sourceSha256": "7fc93a7848fe7a553c2054e682bec8ecddca1c71db01056da87382ee300a30cd",
+      "requestsSha256": "90de38db395ce9bd19b67b2d33c99e827bdc059ba27de4dc0a84822c31297331"
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-13794.traj.json",
+      "requests": 72,
+      "sourceSha256": "0832d166f66bf0a373e5b64a52cc90a9e8ae08d060ad977daa644e3d095fcb6e",
+      "requestsSha256": "79ae55d167053640c501a95ba831a6f6406f6ec91612cdaea7d6305faa752157"
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-14311.traj.json",
+      "requests": 53,
+      "sourceSha256": "d8268f78c062766a59f8aaaff8f099ca0c997e9147bf87d4dcbcf650ff4f1229",
+      "requestsSha256": "a2575cbf53a7b23fd30cf573e0eece649c64944748dabd2a4ef0a524e62f92b9"
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-14580.traj.json",
+      "requests": 42,
+      "sourceSha256": "bc218a4418b8fe0d62453e030c7d9471cc223da501ce00c314e35a6760e00307",
+      "requestsSha256": "c61582bae25d1c1748e3bb24d29de41e48c7b631f2f7430a99a17a6e2deb35c2"
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-14608.traj.json",
+      "requests": 49,
+      "sourceSha256": "c2d6b423c93b9408c1a0b9c5db7eec021b7f5253be5b907cec134233accff331",
+      "requestsSha256": "3c7e6a44c792125ed07fc320af182f4f076f0b535fc1d051a64ffa9ddfea349a"
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-15022.traj.json",
+      "requests": 60,
+      "sourceSha256": "1d7ae656c3b823e0daf922cb3eed8bf7430a6a698fba8b5451cf3630ee818f89",
+      "requestsSha256": "43fdcdd84f2a1dd9ac5095da54bd894fb5491c479284932e07f488dbea4e7dda"
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-15103.traj.json",
+      "requests": 34,
+      "sourceSha256": "cb6617ba3925b1597f326ca6622bd601543113b7e0f36f76c21c949cbc92c63f",
+      "requestsSha256": "7db0f0785d63f1fa95a9c9e2e98314d9daa37ee3e2889178075edd7bab3e09a6"
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-15127.traj.json",
+      "requests": 35,
+      "sourceSha256": "528f099e5bbcecda3f97461615e599189fbd8da603635b2fed9c4036905c34b5",
+      "requestsSha256": "ba95e8c8f8523a4dd659363ae5d41f9cef8f01d8849211fbb38c4ae47fac14d4"
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-15525.traj.json",
+      "requests": 47,
+      "sourceSha256": "b9525edd261002643a2a505cc88a5575739733cc6e3852f8b396a03c5f6aa6de",
+      "requestsSha256": "be12cb4bd7718902bd77acb09ff19d164f9b68d3a477c793fb7a422d0ae849b8"
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-15629.traj.json",
+      "requests": 57,
+      "sourceSha256": "eb08a6fa3b97b5e8bdee1cc83cb731e332b298fc2ac34d4e1c3f2f103e820652",
+      "requestsSha256": "499deaf787b387ce6ace15781a35f98c88e05c03c69165bbf665011d010d6a49"
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-15741.traj.json",
+      "requests": 50,
+      "sourceSha256": "09d53ebac141b66ea338de57f212e76aebec9820191d7e9bd2db38d811244f3b",
+      "requestsSha256": "8ea8556e7ed2210ed119c113daf41257b8649705094a9ba42458cf06afda54a1"
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "django__django-16315.traj.json",
+      "requests": 64,
+      "sourceSha256": "9e7a115db52308d6dc552d011e48ed09a3ce20b397443d7d626b77c2a0257c8c",
+      "requestsSha256": "991c934b03c5fa33533d6650ef0f637b3bdb2f4c7d3f043f9f1568e449abcba1"
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "matplotlib__matplotlib-22871.traj.json",
+      "requests": 59,
+      "sourceSha256": "c026d2e15d7076fd5bb4b2a33adfc4e47bb1abc22781a9406dc5fd0d441fa60d",
+      "requestsSha256": "bdfe77617770474e48fa12e6bf7bf4956e8ebc98869e7f1451d68048b23ca4b3"
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "matplotlib__matplotlib-23299.traj.json",
+      "requests": 42,
+      "sourceSha256": "447e912a64687402fd8727a00e6d7f4badc3098efac28dad305e93e5fe1d957f",
+      "requestsSha256": "836f5d85d643224daa628996736e81af9cc60b552d4983604e20cf46935296b9"
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "matplotlib__matplotlib-24026.traj.json",
+      "requests": 44,
+      "sourceSha256": "e8c80fdbc1bb5aa91a1b205b25634a73d27ecac5ffb5f843f7344f5495a944b4",
+      "requestsSha256": "fd428dae4bddc61ee0889de63c6ca45055cc60e8618fb7ec93b4e2b11f0f2542"
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "matplotlib__matplotlib-25775.traj.json",
+      "requests": 107,
+      "sourceSha256": "a4dff3ddcbded5799b1d17f90e0e19552d41b70bfa13adc02e7aa674a9cdfb57",
+      "requestsSha256": "8648ca5c32b076f89b234172c248e70d429417dafcec96e079f58193a2066347"
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "mwaskom__seaborn-3069.traj.json",
+      "requests": 63,
+      "sourceSha256": "eedab3048e90648c9dc51beacbbd8831f8928be784b057421a9145f79220e5b4",
+      "requestsSha256": "0362e063ab4bed81e7e359387447549fdb2ca0e62f49404e4a59fadf7b0c7f18"
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "pytest-dev__pytest-7236.traj.json",
+      "requests": 46,
+      "sourceSha256": "767a25733c51ba8b5ad90d5278ceb1789dbe25a3afb66b30d0837ed0dc2161a1",
+      "requestsSha256": "c754b3c7ffaca32a42cb4fc5ee6eac4cc65a0046e42ae152e66bfcaf9cf4d0bb"
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "pytest-dev__pytest-7490.traj.json",
+      "requests": 34,
+      "sourceSha256": "8924ed3fdf35437ac4296174d2c3ea68781b3b44da30a1d2b7a2dc76074a6559",
+      "requestsSha256": "02415cf34594aa7d990ab3fc344be2c57dfb38c2b4a942d46c5d1a1e2ab772c5"
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "scikit-learn__scikit-learn-13328.traj.json",
+      "requests": 38,
+      "sourceSha256": "996bd4c91d383f04fe9b6d62f10b558b95948ef21d17122193dbd4fb9ad38aa3",
+      "requestsSha256": "b20549fd48470c8251b929d41757de76c426842cd8d27f4976217c5799f24b99"
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "sphinx-doc__sphinx-10466.traj.json",
+      "requests": 36,
+      "sourceSha256": "6e126cdcac14a2e8d6580a10df6421bf124d263703520c8d9e0c190d4c4b8b8e",
+      "requestsSha256": "5a55477c8d204f08e9587b0a78d77185e8c80eaabd7ef805c80c4cca7fd506d0"
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "sphinx-doc__sphinx-7454.traj.json",
+      "requests": 85,
+      "sourceSha256": "71b6fed599ce2d58eacf33bfb282f717b2a29f365b001b9a955055a55281b0d2",
+      "requestsSha256": "88d45d2274ddf7acb84c57127db915a336b5b515c4512f0e334876c5dd2011df"
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "sphinx-doc__sphinx-9461.traj.json",
+      "requests": 103,
+      "sourceSha256": "11741517b78bfbcc93778a122f061e71d05f8ae80103986346bb81480a15ddeb",
+      "requestsSha256": "e1fe68152aff2439d049c39009eabdcc305ae72b20c566ad22f4e5ddafe013bc"
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "sphinx-doc__sphinx-9591.traj.json",
+      "requests": 94,
+      "sourceSha256": "65f80429fce527744d10df9146a7226626e5db27c9168ec052e0b9fb263643e7",
+      "requestsSha256": "65befe4a504e1b5dbf8100291b59d23426da067e6981e86a2b927f9dff0e6518"
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "sphinx-doc__sphinx-9602.traj.json",
+      "requests": 84,
+      "sourceSha256": "cdb3f84e8bb1449b0414cf046aaaa1e920e5c370c7fd148459f0cd6fc77cd0f3",
+      "requestsSha256": "2cc6959819b5217d7b469698260d9c4487e123de09f00e8966788cb8852e74d5"
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "sympy__sympy-12481.traj.json",
+      "requests": 45,
+      "sourceSha256": "491dd4d9a2ef92d65009c60355aed56c256328cc113a786dc7c8c94ee64f0b28",
+      "requestsSha256": "7b017c5794b61b6528392828faf7fe3e4672cd069a91e4fb95d026750f65578f"
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "sympy__sympy-13877.traj.json",
+      "requests": 29,
+      "sourceSha256": "071d052f9717b5e00174298a097aff7e12d71f26efd4f93128d6a32dcc916460",
+      "requestsSha256": "062ec5aea086659c9e1d82c74703b1d8ac2c9f914a794238e9272505fc2168e3"
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "sympy__sympy-15976.traj.json",
+      "requests": 33,
+      "sourceSha256": "f2122dea0a0e58171c014b420a9b4ec4d7fc648ecf0ddcafa733701a0e934d3e",
+      "requestsSha256": "6036a9f1d559b8a1fb444d549a69b5a7df6e3eb83d4837c147deb45cc6107b62"
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "sympy__sympy-17630.traj.json",
+      "requests": 47,
+      "sourceSha256": "5cfc20d49131e695ccc58cbf44f41b12e82f109d1d9d4fe09d0e4843479ba4a4",
+      "requestsSha256": "275451f240f5c9c1b9b597a9a03f4f612c4e8ec4cb7c893c66bcb9177b7b5e0c"
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "sympy__sympy-19637.traj.json",
+      "requests": 30,
+      "sourceSha256": "681facd9c80277dc18cafca34c1e02d80d04a1b5b6859f51b57693b3e969d794",
+      "requestsSha256": "96d4cb730906c415479d913c49a3217d4cece563ab9306523a345e6aa6517f77"
+    },
+    {
+      "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+      "file": "sympy__sympy-20801.traj.json",
+      "requests": 51,
+      "sourceSha256": "d9ba93be98cff1fac94aa0e8f57aacad25de316f377ac046b97aa58b7fd36451",
+      "requestsSha256": "673934e6b1598924b5b49e59737b670d2f8107d52febf41e96b999580fbefc18"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "astropy__astropy-7166.traj.json",
+      "requests": 29,
+      "sourceSha256": "79947f2cb007581223cdc931663b300a2bbee85920378a423d075c7faf73dee6",
+      "requestsSha256": "e387905f0441fef2ecc48ea842cd4307d5594f2e3a8e4c4752cc41d60e020a63"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-11276.traj.json",
+      "requests": 31,
+      "sourceSha256": "7ab0a85e722e9a69dbd1e29109d40ec8f9d6639056c266b60888260267584ed4",
+      "requestsSha256": "9cbc8b1743081f2002be680bd853f8fb2c1382855f7d6c1d38c27f75bd885652"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-12050.traj.json",
+      "requests": 15,
+      "sourceSha256": "db07a8a70a56d40af836e54d2224b3fa12ff3cb0f5090d2fbc18905e15b097b4",
+      "requestsSha256": "5912079d3317b2851e715806822259a91e1ce324dbaf61c80886ca16cde73d81"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-12708.traj.json",
+      "requests": 25,
+      "sourceSha256": "c2e7a01b59f833882cccda3dae32ea3bfba9d944048f06a1a9a7df60c5c7bf30",
+      "requestsSha256": "b6fa537b248e0917d9be1338792a680984c8143aed248378dd9eeaad466f79da"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-13417.traj.json",
+      "requests": 34,
+      "sourceSha256": "d7b98fce8ff0d04f7e957f75fbfa5ff0ff6131794ba9a08f33cccd2f52b6dcf5",
+      "requestsSha256": "33de06fbd053ea39292305b5a3405b8ea0a960665470d754026f396b4266ee56"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-13512.traj.json",
+      "requests": 37,
+      "sourceSha256": "c8dd9be461b5d3aea3754e3c8208f9ac383ee020df8f9c3e70b062b93e588a99",
+      "requestsSha256": "d5772db8540970aae35790e5232e3861931e8b9ef847b4f14dae083fc6f3c996"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-13568.traj.json",
+      "requests": 24,
+      "sourceSha256": "5c232cfb820f28c072020a3ef632a9d7fe025f1b3713227a2d203efe2a5781be",
+      "requestsSha256": "91d016e3175de838ee056f2253134075888fa2e69725630de22b6ad7655d2137"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-14725.traj.json",
+      "requests": 46,
+      "sourceSha256": "c8fd6c6d144b810f2f58e197747f47cf2b07290768c92168ebaec812e5d61283",
+      "requestsSha256": "6e2901854892181547f884730eb1f710da8eca0183b58434184135e137179526"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-14792.traj.json",
+      "requests": 48,
+      "sourceSha256": "9ae52d99e3ec46dcc23099c548a3762b0c1df747ec06cfd6b4aa649a6cb94ab2",
+      "requestsSha256": "d27c4d1af511a491fbbf7da96f658464a667cc23bd85974d9c3d6dee01f060b4"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-14999.traj.json",
+      "requests": 52,
+      "sourceSha256": "6f8b579af76b93b54cb4d7ed92912d6fa9099f913f59d596e7ac39f36667436a",
+      "requestsSha256": "4375609ed9a6706a491062a656aa3bab0ea3f8413cdda9fa93d86e712dae77e0"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-15037.traj.json",
+      "requests": 53,
+      "sourceSha256": "c0b9e1cc59237c50296837610012f737e275159af5c124ade9a3fa64fc3997da",
+      "requestsSha256": "fab5336fcdce2f1a43f9ee052231274fc3105335f2aa89f5b8da554f3d2dec09"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-15268.traj.json",
+      "requests": 51,
+      "sourceSha256": "07db6fcfba5cdc03c27bc1bfedc40050dd39e86c49a5e1f8e88e799b60e013ed",
+      "requestsSha256": "9500fedeb2a9758f9aac7442510dcd9223b04cced582a0db21d8896b8e3616aa"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-15277.traj.json",
+      "requests": 33,
+      "sourceSha256": "60e8cdfb6a1eb21e272283520580c9f274d464c08351b8abaa38bdc15f802b50",
+      "requestsSha256": "5b92256fe1a20242197dc9342c510607a8920dfaad4d4f89daf671b56fbe344f"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-15695.traj.json",
+      "requests": 52,
+      "sourceSha256": "3d249aa047501a47b098c51d0b67c34f78de5fcd68eb4b345a152323299274fd",
+      "requestsSha256": "c09cf526e5e1ed93fb2ccba4662fa04e75e02e19ca82183eb4a1e94771b7bfba"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-15957.traj.json",
+      "requests": 45,
+      "sourceSha256": "cb420fa3de45f0c09fcc55855e7bd249848edfeb5b2cd9d1e15921cdb9514078",
+      "requestsSha256": "eafb2e23abd795ff4e9dbadf8649f0dd3e308689d1239010601e8a33211b47d8"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-16136.traj.json",
+      "requests": 26,
+      "sourceSha256": "b5c342d8d4286660201c6e4df49c2629d8dd1648e275f40295d1608abfffcb98",
+      "requestsSha256": "43af3fdcea9ea32e97514252b4976b2168078c8b3e8766d371d875b4cebd7f67"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-16485.traj.json",
+      "requests": 18,
+      "sourceSha256": "35b6f7ad29e9cca401075d2b94e24dc353273acc9f6240a4210d009ac6e3bdc1",
+      "requestsSha256": "46ae7e199ab664bc53039d1aa108475c500719d7ac2c7e4ad90cddaf128e008d"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-16502.traj.json",
+      "requests": 33,
+      "sourceSha256": "3d1c192e1f567f69bc053d0e8d0709746f8d6a69687a0e54907fbec2c1a0cdad",
+      "requestsSha256": "fa06d110b7d2a34476f08f103cda64374340aa4571326020cf2e09905a4c17e2"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-16662.traj.json",
+      "requests": 28,
+      "sourceSha256": "bce09b72ef0979d35923152e50b60043acd3b922254a18adb0c44e0d1f6a27f0",
+      "requestsSha256": "03db75207ca86580bd5281b0969daf3e5e63cc5d4e05f1aa925adcf6bdd8fc9e"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-16819.traj.json",
+      "requests": 95,
+      "sourceSha256": "02562535b3b0638710f124e44ae09a9704e3592ace0e4db8790b27ca04e9c6f8",
+      "requestsSha256": "c916cbb02f9723d3d347d064ef45fce6854353c78400f642a0c24e034e2fc5fe"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "django__django-16950.traj.json",
+      "requests": 53,
+      "sourceSha256": "eef439bb199a743aa350b6460c555a36a52e475af6a7ef78158f63dafa3d957f",
+      "requestsSha256": "be6a126a161e2bd71903bd0af7d6a58ae26fe9e16ecad64f3d7e2176d72843c3"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "matplotlib__matplotlib-20676.traj.json",
+      "requests": 32,
+      "sourceSha256": "b64e0a95285f9b8cc01ede124add9bad91a1a78462b5eeba3a88903d8e9bfffd",
+      "requestsSha256": "aff316bd13328b3652e138d5425a6dba7c3b13888dce70764d545b7c0751c940"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "psf__requests-2931.traj.json",
+      "requests": 36,
+      "sourceSha256": "9a36522490d07d50414072ba2e0aadb1f46e8eb7398133635813dc085e403bfa",
+      "requestsSha256": "206d0f18ce7cd2cbf9ebb9bd76e9cbc41bd61b5bf641d8fe4681a350d61b7d86"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "psf__requests-5414.traj.json",
+      "requests": 65,
+      "sourceSha256": "62cf31da960c706cd522922c06687089ff76b1d004b1a644662b8f70e9b3e945",
+      "requestsSha256": "c5676acf1968d981af6b9e9f3ce4a707375c3be7415eedfb05b2748afd4a2ae9"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "pydata__xarray-3677.traj.json",
+      "requests": 24,
+      "sourceSha256": "95554bb44b5127e8097ff1b0d3e98cc874827c6a1caf3bc25ba3f4027fc817a7",
+      "requestsSha256": "0a6818a87b6e65d2462b429fd40a4f12238f555a0c1ae1295b1cbde375609b00"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "pydata__xarray-6599.traj.json",
+      "requests": 83,
+      "sourceSha256": "f4be4e500dfabb18ede50637b375633b9c1b1286e550a23f912e8c6e55eaef96",
+      "requestsSha256": "5f055d3bcacb7c202dff808e29c0a2b92160c55c8514be416e642532a811fb0c"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "pytest-dev__pytest-6202.traj.json",
+      "requests": 34,
+      "sourceSha256": "571848f8c81390de944cb1706df4e58882cc681c4ad736375759e43e4d6bc1bc",
+      "requestsSha256": "5c96c971880c427b55e81fd7decc8a5b67949be7cdc11b3b725096531fb2ede4"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "scikit-learn__scikit-learn-25973.traj.json",
+      "requests": 39,
+      "sourceSha256": "afb7b9f3d50cc0537638b863c6cce0b4a0ce7c521acc1c6c25751ba39c6200d7",
+      "requestsSha256": "e4078cfd24f65d2e58d1a8b8110945d24b33122066c83a44748d31155020ce1d"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "sphinx-doc__sphinx-10435.traj.json",
+      "requests": 30,
+      "sourceSha256": "0db4dabbca79c5e1785cb7d3c841c932ce406189836e75e9cd9a5e83a72591ec",
+      "requestsSha256": "d0c36761bb2433f4f58a2731fd365b0d55c93f084cbca61775570445e5ae738a"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "sphinx-doc__sphinx-7590.traj.json",
+      "requests": 50,
+      "sourceSha256": "6d576914a9ea5289572af39d6e725588e319d7f7b30e89ce5daffdc7ffee34e2",
+      "requestsSha256": "61e84cbd023a344335d629bef1c1d9b7d5652b1af2df7aee62b75c4099aa60d0"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "sphinx-doc__sphinx-8265.traj.json",
+      "requests": 40,
+      "sourceSha256": "f1ae9d2661244313ab84bb12185c7d1e04dbf55d1c92c32e635cfb5ccba8d773",
+      "requestsSha256": "eaa478fe2b845437f6222bff27d06cb8625897f0ef39381977b8894de62ce962"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "sphinx-doc__sphinx-8269.traj.json",
+      "requests": 13,
+      "sourceSha256": "c46653d220b47a3cbbf0c496097d4138ec0c7974c60007d13989aba4851fa22e",
+      "requestsSha256": "7fce5849f83ccec08fbcade9aa7db204a9323b40c2465ec43b3f3094bb407050"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "sphinx-doc__sphinx-8551.traj.json",
+      "requests": 59,
+      "sourceSha256": "55d51af26efd0d7d8f6b4019dd17240e889c0f85a098dc0752f0dc3789248269",
+      "requestsSha256": "781aafbea41ae5962a9057de73d349dc2cdd1b3a8035be3922ad4dbdffe0f344"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "sphinx-doc__sphinx-8595.traj.json",
+      "requests": 45,
+      "sourceSha256": "4252edf3fdbf0ed06877275ade103d3c4b63a77cbc2b53399f3b2260ec112c77",
+      "requestsSha256": "266fc744ea5d1785e102c29a84da3702a8804aa3b55bac7ab6a748229b752f44"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "sphinx-doc__sphinx-9281.traj.json",
+      "requests": 38,
+      "sourceSha256": "4b42e44fbc90604f46a2a4ab37fa8c824686830bd505a4a7e535c3c2c957ca33",
+      "requestsSha256": "f6cdc43bc4d565d6753dc363cec4c8911102d85e2aad6e67ca411b38ea1f81e4"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "sympy__sympy-19040.traj.json",
+      "requests": 50,
+      "sourceSha256": "cfa237a01108b181b4297e7ba0bfa04590ee691330f3673cd8d2d34643f9b9fb",
+      "requestsSha256": "0edb87abd6d63c2a3ece9421db99aa237fc4f9da9b697242878881d6b1780527"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "sympy__sympy-21596.traj.json",
+      "requests": 52,
+      "sourceSha256": "dccb929735f1e318dd50c23530248350b00d6ee43761b0056a5b6de67147a28b",
+      "requestsSha256": "e22532495aae8d02cd88b46eadd0d3b578af4e8ecb1411521a40718b2dfa1445"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "sympy__sympy-21847.traj.json",
+      "requests": 14,
+      "sourceSha256": "e6aca62b302282806aba0265dbf22489cd0e27ad298a06be625a6874105daecb",
+      "requestsSha256": "63e01c868ef0497c2a58359331273e5b32b3ae178bba2e4b262845894ad9c185"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "sympy__sympy-24066.traj.json",
+      "requests": 24,
+      "sourceSha256": "3d4e20ccf8b1bd4d5278dd9a61be34b4eac92f6ca4db731316cdf6acbd632abd",
+      "requestsSha256": "5ec8083611cfd0d2d3b9190a0f34a319d59cb10c3e6c3ca2b481116d3ac118f8"
+    },
+    {
+      "entry": "20251124_mini-v1.16.0_claude-opus-4-5-20251101",
+      "file": "sympy__sympy-24661.traj.json",
+      "requests": 36,
+      "sourceSha256": "9b88a57f3d89dcce827cb2eb32f688f1f6210195c7be31f9a80ef8370c0a7f97",
+      "requestsSha256": "c5629125f5a63fbecd58056ef192597d117aefe4a5d55cd53831544b4fce9fe8"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "astropy__astropy-7671.traj.json",
+      "requests": 50,
+      "sourceSha256": "413be4fb29b48c166e6e11872b166896989c8082d6d69dcc67ed8b68d3bb59a5",
+      "requestsSha256": "de83b43618c05ef54401662bea79b981de69cec8be0df8e6d42b27eb6e2c8942"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "astropy__astropy-8707.traj.json",
+      "requests": 60,
+      "sourceSha256": "b03b20da05ffbc9f9ca7bbb82844e7148574551b69d465f1d4d15f0cfb5e8904",
+      "requestsSha256": "d4f4ed717f41e796b0cf87861cbff83545f3d1d13b6ea6aced5222af404eac18"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-11138.traj.json",
+      "requests": 87,
+      "sourceSha256": "9b1636d796b533df32daf360891abef9299f7f1fdbc1cdbb6a5066f8a7359da0",
+      "requestsSha256": "feb72106a57d8bb529012d9aa2b40b271ec0b60ce285dd222069e4838b48444e"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-11206.traj.json",
+      "requests": 43,
+      "sourceSha256": "689f31d3d9341f9178efa99e65eadc7476972cef5200ec233e825b301afb27f8",
+      "requestsSha256": "008d55694298a4a650d33e3614f0c8649c462ca7b37bd824dc7b3e2063f2902f"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-11400.traj.json",
+      "requests": 63,
+      "sourceSha256": "a95e4646d4730e8f9e2df1b45c7092e84d10d0ee63265107110a0cc95d1dfbbd",
+      "requestsSha256": "5b740b4a7014a8e6eee7a838bd3e1831d29e2fc7f9325f6db68123dd10801f84"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-11728.traj.json",
+      "requests": 39,
+      "sourceSha256": "d582dfdc71d464e7037353e36d1b870a1bca58bd7966c1678d102d36587b06ea",
+      "requestsSha256": "c8bb4d4b73dd00c6ec42f6b17cc3c022fffb9eecf016370706bd0074aec77f8c"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-11749.traj.json",
+      "requests": 69,
+      "sourceSha256": "f0b69413133847260f783b573e4f8992e08a78e58fda79c7df7b9600027fa186",
+      "requestsSha256": "838688ade29dfddde8ff925bdccb59573db3dc246ead02458ae822c615bbf7c1"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-12325.traj.json",
+      "requests": 89,
+      "sourceSha256": "4142dd73f00a03e42f2bd5e54d9daf683f46dfe14650460e257d202a216046fe",
+      "requestsSha256": "e3a82c47e1995e0485e682887eee6cc1774a3f8a40c98ed461988b79db6b5f89"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-12406.traj.json",
+      "requests": 109,
+      "sourceSha256": "d10ec97d252f97ca49180e598b0ac0b4bdee3402706682634e69320fda55e638",
+      "requestsSha256": "3c1b911d2721df993d79438272ff3d180cbbbe78b5b8785de93972ed8228fc91"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-13012.traj.json",
+      "requests": 69,
+      "sourceSha256": "ef7f105a8cb6a5511bcf8a0b89af90719d4ba30aa19fa374a93583557dd0ec20",
+      "requestsSha256": "e47e1d5521a961104519cb3dc68f88c698027a1e9e04599864ccc833c5ab08d0"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-13109.traj.json",
+      "requests": 48,
+      "sourceSha256": "e1557c5a7fb54ceb0560e0a996de2a2e4ede189334f46232c5c00e8b0c3357d4",
+      "requestsSha256": "04a56b3841187569c600d082d7895030a16e0f0f21eda90ae27959755b59affd"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-13344.traj.json",
+      "requests": 78,
+      "sourceSha256": "0259af220ee524b48d83a9bebe6d8379552ec748e84bf312e489ac3f325e411d",
+      "requestsSha256": "716ca51ed848a9f7b54c439b3c6746b7e34d42cac29df11c8d24abb75a9bfc54"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-13820.traj.json",
+      "requests": 49,
+      "sourceSha256": "92beb78adc7847584ea4d8d197a0161bf9d8fdfaf3fd47fe42f34e7117b6b578",
+      "requestsSha256": "76c98cdf45fb9ade3e625256977a60833e4729573554ffdafd9f36075bf56a43"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-13821.traj.json",
+      "requests": 50,
+      "sourceSha256": "67b9a83caecf5b25ffd3fabdbce6ae731f79267c0b64016ed76d9e8d0b333915",
+      "requestsSha256": "04dcfc281f59319cd65188d929e64a558556cd67a8196f51c2e82378df2815c9"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-14608.traj.json",
+      "requests": 78,
+      "sourceSha256": "ed01ff8d83f4c1e4d91e9dcaa2e1d5998e57de437fbf8820b8d6d833fb7d2da1",
+      "requestsSha256": "a7eff3e55990f5c3e4d61cf4cf26534d5fd48a2cc7696df1cc1a57b2f85b44b5"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-14915.traj.json",
+      "requests": 37,
+      "sourceSha256": "d0c8250531895be70e51a985951265d044c6ba975ab13495f75758c9d0554098",
+      "requestsSha256": "fbc0f4fe4f6b38228e2d55fef38487c256e73c81b646f247e955405e823d68e4"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-15161.traj.json",
+      "requests": 86,
+      "sourceSha256": "9e775206d09bde5b918000a0187dcacdec96f4563d3ce7369c4fbe1ef0c9d19d",
+      "requestsSha256": "bf6ec071cd1b2ea39e43cc88608326507fe18a3f30628d252ddd2952f8f5824c"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-15561.traj.json",
+      "requests": 74,
+      "sourceSha256": "2468451d4a90b2e4d58c719021b4b3cc22e9ea84bc615673233ba5505e722f32",
+      "requestsSha256": "74763e1decc6a17268f1cb44724e939ee5b7eddeb0118cc39872c62c5d273d72"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-15629.traj.json",
+      "requests": 112,
+      "sourceSha256": "5ade5c4127c37d3a1760e973bd9ba111f8fcace8685df51b44f1eb64f33bc275",
+      "requestsSha256": "20ed95e493ed5b92ab422b28011033e60973873bb37ab68ee35b9039bb4b0110"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-16315.traj.json",
+      "requests": 77,
+      "sourceSha256": "6be8bbca4f8b076c76731de027e40f856ad62b916a36e4b403a6f08fd9771eca",
+      "requestsSha256": "992c69385bab057cac3a70388e33c4f12b73df1880e9b27c2169dc5da0268fb1"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-16631.traj.json",
+      "requests": 74,
+      "sourceSha256": "2fcfb41ba46c763a47e48fbafb24902f039c5f815376820577662c5ac27c782f",
+      "requestsSha256": "5c651339401ea59dedee7f6d7c8402f00b8bb1ff1d7aea44a8fc059087f1a1e0"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-16801.traj.json",
+      "requests": 45,
+      "sourceSha256": "8b0486d0f7ded070c75c8f0f4612febbc7a2e971eed13def281fafb435cf6738",
+      "requestsSha256": "364b43e67626334b52b35a5e75c7180b3dca80458998a8a24dfc651feba8106b"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "django__django-16819.traj.json",
+      "requests": 71,
+      "sourceSha256": "49141c98223ce51cf8694a82f3757d8a5b6dae751410960fc67f1816be199b81",
+      "requestsSha256": "c2456f75d50a588ebcdf2cf49536222866f6aa66e0e1b60096e1cce7d92dc80c"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "matplotlib__matplotlib-13989.traj.json",
+      "requests": 37,
+      "sourceSha256": "05246f15021251e94207cc14fcb11cfc32a9842cff75431fb426e1155c34b2d3",
+      "requestsSha256": "9a3213c5d902174ddffa47723c2f8cbef4744e459eb7c0bc837c273ef069c805"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "matplotlib__matplotlib-20488.traj.json",
+      "requests": 74,
+      "sourceSha256": "26f554a22bcc2a60a65c3f8837a0319de050cba662da905613231d274f8c6926",
+      "requestsSha256": "63272a48c424fcabd67c78608af1712904e2c4381673696a857f481e841dd755"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "matplotlib__matplotlib-24637.traj.json",
+      "requests": 68,
+      "sourceSha256": "cb3337d747cf0614391d174e56164fed474ddfd5f2c127c1723d6d2faa3805dc",
+      "requestsSha256": "60eba3bb3f49ea1084316d2057a5431f3882380a6d69d7ddcf426ea450a46c98"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "matplotlib__matplotlib-25311.traj.json",
+      "requests": 95,
+      "sourceSha256": "e5f414fbaaea2654cfc945c41ae55d5420daca5ad865f9379e22545c32e148f0",
+      "requestsSha256": "688fa8681a5693d8883ae3eefe909d9877875856c0391ab46981bc8f78041d8e"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "matplotlib__matplotlib-25332.traj.json",
+      "requests": 55,
+      "sourceSha256": "3bf6f356d64917f95358f3fb05c68f902d99eec63e944e71ec8f5e26815725fe",
+      "requestsSha256": "4679004968492676383a58cc2559da428259a4ce9c856f8c34ad4ffa19d03173"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "matplotlib__matplotlib-25775.traj.json",
+      "requests": 124,
+      "sourceSha256": "35230775b191fa448c721c1ed4e17ead8cd9f67f17533624c842a7be4d6f55ac",
+      "requestsSha256": "a14e2349e3c0b870d3ee1c285ff89b9268516e4fd63000487a100b1e137bfedc"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "matplotlib__matplotlib-26291.traj.json",
+      "requests": 70,
+      "sourceSha256": "5890beb1b96be0a2cbfbfc44c289c1de86ff902f45084cd3631dad6f2d8da625",
+      "requestsSha256": "0cf0c599f2641a670f66d933e26b01b77f1dbbc06ed64e1043c1b28d2d1bdf99"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "pydata__xarray-6938.traj.json",
+      "requests": 69,
+      "sourceSha256": "df8ce6b48aedc9f0e18088bacdab974cba26e659a4e0dec34bc80ff35f2eaaba",
+      "requestsSha256": "4c8ac9fddfc5257c2e1a151490096adb88fca5c19994c0fbff51a1116ad9b4fe"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "pytest-dev__pytest-5840.traj.json",
+      "requests": 66,
+      "sourceSha256": "87a3975c764297f6b94da9f9fbba67124b65d2d6c6e8d848ab0d55e738c7086d",
+      "requestsSha256": "de951c816269c0c36601279978bd5ace887aaa20f442d6f377ab8e6d3f6b0038"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "scikit-learn__scikit-learn-14053.traj.json",
+      "requests": 40,
+      "sourceSha256": "dd155609e0eb59a086091d5950aa6883764e3371a4f26b117daed8b2a10e2287",
+      "requestsSha256": "7dfe9d1e040133959611388166df8d6b3b2f50ecb80b09b090515634de3ff39c"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "scikit-learn__scikit-learn-14496.traj.json",
+      "requests": 33,
+      "sourceSha256": "89901f47616f234beee22f51adfc457674f99872815b32172f37188e9d2132e5",
+      "requestsSha256": "e4bb0e02f1d0c6adc44049a1cc40a169cf25b53cbda8616ac6ee5b52ddc9a9b0"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "sphinx-doc__sphinx-8035.traj.json",
+      "requests": 111,
+      "sourceSha256": "1d8643a377b9a6320443c0a02480d039ccf3111333b4d21129c935ed09fec4a7",
+      "requestsSha256": "b6e99bff108d17189e2d47af379d4556aa4b39d6a74fb989a74174752a1891eb"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "sphinx-doc__sphinx-8265.traj.json",
+      "requests": 66,
+      "sourceSha256": "178519ceba64c5139163cf0f2cfae5592e3a1fc8f919248c214d6e51b53b6ae0",
+      "requestsSha256": "15c9833a1a41efd162a928e20fe9a2069c5aa6f012482c1911bda4732451128c"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "sphinx-doc__sphinx-8721.traj.json",
+      "requests": 55,
+      "sourceSha256": "1be01484761bf4541f9beec2b0df736f77704117c59656deb1c571506684a1b2",
+      "requestsSha256": "1778de7d7d97260c3e04652e537d7e1563a467c8141a288167852a49320b5f49"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "sphinx-doc__sphinx-9281.traj.json",
+      "requests": 88,
+      "sourceSha256": "0f21c5d93c0ec4547384ea552b37de37f8f8373cb443ef44a1e7bd3953cde6dc",
+      "requestsSha256": "da6bdd884c486139fd01738530f9e7dc604ece090403ba6efd15fc68c85ee36a"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "sympy__sympy-13877.traj.json",
+      "requests": 84,
+      "sourceSha256": "74f138894cb73da0f01056a3c43ea39d1da728e4a83b0e4279e23c05628da455",
+      "requestsSha256": "4a53701737cab60f703554f26d06f5b16335ab48da4bb610150f2f4525ef3f0a"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+      "file": "sympy__sympy-16886.traj.json",
+      "requests": 18,
+      "sourceSha256": "538fc6fd8ddb8bc3d3006cab80f5b67dc7abe0f099278bc28b6e58c8d3dc8f16",
+      "requestsSha256": "170142636d74abd28b5a4949401eb2a4ce312be2152bb62b1c29d4aecd7420b1"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "astropy__astropy-7166.traj.json",
+      "requests": 23,
+      "sourceSha256": "0651be26066923c7eeb700ebe8a3758321e19fca839fd054e8d65271c9badff9",
+      "requestsSha256": "f4f643ae0bcfca305d50a5a427c9ee952f1d79a9b9ca628a4129c1da7334fea7"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "astropy__astropy-8707.traj.json",
+      "requests": 35,
+      "sourceSha256": "de57f93ca75c1a3ce218123988b0581e9ab5bc5b91eb440ee050f7c13fd1256b",
+      "requestsSha256": "38afe3969f20e93f7b88be240863b33200944625a479ff955e1a5a80a2758083"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "django__django-11095.traj.json",
+      "requests": 16,
+      "sourceSha256": "c800885366759cbfb8c9055b46fb0af0d76c44d66f0d4c3ca94bdf45d80e7991",
+      "requestsSha256": "1b0d380aa91190a3efc1b0ca284d4a556d2b6ab8f55c2f8c2485f59a1b4b49e3"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "django__django-11119.traj.json",
+      "requests": 18,
+      "sourceSha256": "b6215dfd3cd67a1ae6d190b9bb1ee0873679bb7a372ece043a8a1406c6b46cf3",
+      "requestsSha256": "6b7de4ecd3712288b0726ace3d741258af1557d6fcb5c6bbe3d4669d2972ea09"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "django__django-11265.traj.json",
+      "requests": 75,
+      "sourceSha256": "aeff85914c2ea125d0703c0be6ac2542e9b7bd7b64a1929fd739e8317907734a",
+      "requestsSha256": "8d5c29c0396b79bd2450cf3b43b4d663dd34d2d35fb9f8ab5d67b41df6f0b99f"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "django__django-11451.traj.json",
+      "requests": 16,
+      "sourceSha256": "c6fb98b7a724bb835b232e1e9e6bae2813822a53c165b8ccc8f03a52b56fee86",
+      "requestsSha256": "806e7ba615eaacc9c54f36363c74e1f53e20dfa4eb2dde13dbb31aced43e1c8d"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "django__django-11490.traj.json",
+      "requests": 48,
+      "sourceSha256": "9f72c81668bd2f9b2beabc9c8de317fbe3bae27a925874c116a9d8b63a660d2b",
+      "requestsSha256": "33767e25848f8dd4485e3a78106a6c18f6e3817eeee8d8b8a72ac471be214837"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "django__django-11728.traj.json",
+      "requests": 25,
+      "sourceSha256": "2b164d48e7b2027bdae40fcc25096dca5dd615d55714e72727dfe462ff8e1eb2",
+      "requestsSha256": "86bfdf8bce1e65db88c5c276c03b8aa562b231bc74ae683b486d0b7b4a144858"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "django__django-12209.traj.json",
+      "requests": 63,
+      "sourceSha256": "59b12bdcb43268e0354ef8836f4d82d42aae472ad73a28a16c124c5f12aa792d",
+      "requestsSha256": "9afb2873566675de03e2662771e39fe0ff16091d08db09850dd49de0a7f316bd"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "django__django-12708.traj.json",
+      "requests": 56,
+      "sourceSha256": "5dc949b2686e699c717adbfb40d3b1304f4f99ccd145321720b2a01b18b8f98f",
+      "requestsSha256": "74adf1e23429d569d197feb48d4d209e9038152ecd704213a64c6d33b1bdd47c"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "django__django-14631.traj.json",
+      "requests": 67,
+      "sourceSha256": "a7a5d328953c6d43debdb9d8b30c70e79834392e99f1666e299307bead41e2ec",
+      "requestsSha256": "daf5e6dcdbc02c959158a8542b231edb34e24b0f8e9b7394b33039bc1a8a41c5"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "django__django-15103.traj.json",
+      "requests": 19,
+      "sourceSha256": "4c8cbf12b51a67cdbcefe638659a9769a7e96699ccf907f0791ee5d047ea8aa5",
+      "requestsSha256": "14c2803049d29abd1f753c4e7e8a2cc822031c077cb0e71d41286bb5933bf1cf"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "django__django-15569.traj.json",
+      "requests": 13,
+      "sourceSha256": "cc2716436317a6aa3a9a60f37299d2e9590ab47e1e8272984a73be5aa232d337",
+      "requestsSha256": "d756dc59275739310f713510961af5be9e88a1572b27ace8d92b312dec15d270"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "django__django-15957.traj.json",
+      "requests": 80,
+      "sourceSha256": "94914454f72fd31afc28356359bd99f82aca6ef89baca894773cbb1a2243baeb",
+      "requestsSha256": "37d5dd45e42e8a8e018a12c05d41fa3b90a825bf3b7a5982ba783df8fba01b13"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "django__django-16136.traj.json",
+      "requests": 19,
+      "sourceSha256": "84b250d9c647b1a0e861d73988f8e70b881774161ba9f9d75be84ec9eefce500",
+      "requestsSha256": "f79a8b69cd2b8d826a00983d145338eb80b8b390b2c2544143686bf95c4e0022"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "django__django-16569.traj.json",
+      "requests": 12,
+      "sourceSha256": "830c647ae44e2fdd42796ac2ba912ca8282f6ec64fcd835758cc4fb0317b8e41",
+      "requestsSha256": "afd568078784dbfc9fcbfeaad0354e2922faf7750ae7cfe077acbdcfffcf6745"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "django__django-16938.traj.json",
+      "requests": 23,
+      "sourceSha256": "91a3bc1d3f50d4db557baf92af7b678656235cb01379b006a8da17bd7fc56fde",
+      "requestsSha256": "4bcfd4d74f2e3528e8e6816afc3e427f45bdfd644ac4d5b1a988e4ba9a5c161b"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "django__django-7530.traj.json",
+      "requests": 25,
+      "sourceSha256": "a0a108bb3d2c022e6fecf135eaa98434467890e06ac390ab376b1605322f4fe0",
+      "requestsSha256": "dbf380b301c40359fdd5905fc5899d6c474637b769a1cfea3830afc00f7cabef"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "matplotlib__matplotlib-14623.traj.json",
+      "requests": 63,
+      "sourceSha256": "47801c3524b13234454ae1a7a55e1c2080dab77b00cddfc6e3e9279281ec51a7",
+      "requestsSha256": "335917b29f22a7056b68fa71f801a9079b9a42f8e34da5d5538a73f7e4191196"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "matplotlib__matplotlib-22719.traj.json",
+      "requests": 20,
+      "sourceSha256": "fbd461a41db131c0bb4563ac9c7c079fe5660c62c7d567b201a1e30903eaeca5",
+      "requestsSha256": "cea603911db53501c66b840c6bd1fac070b96bdd0e3034a8835eebd9001852be"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "matplotlib__matplotlib-25960.traj.json",
+      "requests": 34,
+      "sourceSha256": "2d49ca5f0d27355b42f99f11d6a58b5da8f6423df392d71a02c3d4f2a36d7d5a",
+      "requestsSha256": "cb2375d07c511ddfbe82297dfccb1db8129bbe495a33afaf82632df93849bb23"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "pydata__xarray-4629.traj.json",
+      "requests": 15,
+      "sourceSha256": "e2b5f20b349d6d947e6ffcb8d42ddcaf5e1f6ef915e479fb69dd623a004ca162",
+      "requestsSha256": "cbfdb9842ac2d104c64bbb1e264729ebc38e583691d0e0bc57b33920daec2fa8"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "pytest-dev__pytest-10081.traj.json",
+      "requests": 27,
+      "sourceSha256": "cbc5eca19cd1ddbc367c064f0f4c65c635f4237203bfc7ce0f4a85d8a48e45ba",
+      "requestsSha256": "37a3ea333e321c68b72eea6758aafbc4c590a89d7bb14dc0f6085e73027b4170"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "pytest-dev__pytest-6202.traj.json",
+      "requests": 29,
+      "sourceSha256": "1e6087be35e96f68b7885626bb53457ede4d738e170c11dca3334c5380a40cd0",
+      "requestsSha256": "1bb66f6e8f971d961de306f3427313913ee3c83922ec56c575735fd4b9502a43"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "pytest-dev__pytest-7521.traj.json",
+      "requests": 24,
+      "sourceSha256": "1b44191349088ce1af5601c4e52477c6dac8d05ebde739d9ad81fdb42b12090b",
+      "requestsSha256": "07734eaccd4d3740217f69091205692481000c736c08b91b414f2aaed4848488"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "pytest-dev__pytest-7571.traj.json",
+      "requests": 29,
+      "sourceSha256": "22f14723b53aa4b05cb0f6bf52f812a7f6c37453dbed9074ff52bf70d1ce9e1f",
+      "requestsSha256": "f97162dbac94093ff68debb1163580a4f6ebcbe9067f4dc2bb1cb7448eb6ea30"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "scikit-learn__scikit-learn-14053.traj.json",
+      "requests": 26,
+      "sourceSha256": "4e8855162a659ee4092fb4f95163ae9f313a499134f92599237b8a8cafbc650e",
+      "requestsSha256": "d9c5844372ee0af5e46391026ab8f86f924e7cf0934e9dbfa40e49e2a86486ed"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "scikit-learn__scikit-learn-15100.traj.json",
+      "requests": 15,
+      "sourceSha256": "73045083e713f2a97ad75c2f61dd720c6f69f069433f517d69f78d45cb76bc9b",
+      "requestsSha256": "9ec37f028b8ba09e199b86271a56d3cbafb22f2a4a668f773b8c5c3d947f6b8d"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "scikit-learn__scikit-learn-26194.traj.json",
+      "requests": 34,
+      "sourceSha256": "984a1641b46179c638c8087cf29a767c35b0c4b5f27a16b44b517fbd6acb98d2",
+      "requestsSha256": "1322cdf7dcf11123116797c10c978bf7eeb404eb323bdf042c4f6edc089b2adb"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "sphinx-doc__sphinx-10466.traj.json",
+      "requests": 20,
+      "sourceSha256": "eb8581b09c9ff7f5908c722c865cdcd48f8517fb6c3e459b827c22efc5098aba",
+      "requestsSha256": "d02bb4253640e3acb298c91922d5c414309b1c3db7775bc7c3e27256e245dfca"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "sphinx-doc__sphinx-11510.traj.json",
+      "requests": 83,
+      "sourceSha256": "b3441b55da2f546fd0ccf5fedfa90b890c22d56b41e1a604cf750106bf89edd9",
+      "requestsSha256": "a3f5acfa47b09f2ebdcf260847aab574f018445f9fa5e778deaa7aefb48cacfc"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "sphinx-doc__sphinx-8551.traj.json",
+      "requests": 41,
+      "sourceSha256": "77493c4bfc4c224a826cb1230de2a3de6debd3c51cfeec5758e978bfae94ecd0",
+      "requestsSha256": "6fd48c9fe7999198f3a8df2c11d9b05c4f05f84c2548863bba73755bb1668e01"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "sphinx-doc__sphinx-9258.traj.json",
+      "requests": 23,
+      "sourceSha256": "e070ba15d322fd52ae3a41e1d3435efd68100597b9b64391dee73d09ad5f2db9",
+      "requestsSha256": "113fa337e15b0962671af269c9ad4218c8f0fa02f2d316f9810d14f918406257"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "sympy__sympy-12419.traj.json",
+      "requests": 53,
+      "sourceSha256": "2c207763dc76cc0b6f56d8c83cdfbbb50c14bde98fb5c0453a761cfd18484414",
+      "requestsSha256": "c0032c431c6bd8c1107a33d5519cc61c2819a2de6e21fdbd01c290adaa68b6be"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "sympy__sympy-13877.traj.json",
+      "requests": 24,
+      "sourceSha256": "c343ec3e33e840e0b880c915671e5c0d595c731333e1f5175d74c07b11e9874d",
+      "requestsSha256": "1a0f199f02eb124e606558156f49f3847a5db77abbd97efae34a2011e0ae6eae"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "sympy__sympy-14976.traj.json",
+      "requests": 50,
+      "sourceSha256": "f0100363785af218c67444939069d2290e8a6e9ec4d2cf6ad4b2721cc9b71bad",
+      "requestsSha256": "81229c3e198ae7dca1ea30f1f30167154ec7c2e37fbe4520770a9ee4b419f87c"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "sympy__sympy-15345.traj.json",
+      "requests": 26,
+      "sourceSha256": "17c5278392385b31f4e7883a0dcf2b664cf4fce02a60157a288dd65bdbb17a5e",
+      "requestsSha256": "a07ed52999f671b5ca811bdf43f74071909b6b149a00b2b07746282ab29820fe"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "sympy__sympy-17318.traj.json",
+      "requests": 28,
+      "sourceSha256": "49105a3bc52fdfb7f1f22b7d8b78e3f227fb276b0e4b6f080e24f78952a2910b",
+      "requestsSha256": "1c55d7415cbc86a249f1ba9b8910c54919d92b4820b770483c638564689f54ef"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "sympy__sympy-20154.traj.json",
+      "requests": 24,
+      "sourceSha256": "8015f1de00db3d4313e17877481b3bfdc96c5af3cde3924b5b011f4f3971be7f",
+      "requestsSha256": "6f84d4dad7818463b548814eacca1048ec1bb75a9f604902205b0f46b7471abd"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-opus-high",
+      "file": "sympy__sympy-21847.traj.json",
+      "requests": 23,
+      "sourceSha256": "1a29eaff44ac793bb9dc28a4af210ef79759c34304327a2d772ace7464ca2034",
+      "requestsSha256": "501c7950c444c52f1126c42824db4b3a89fde151b4df16f872e0760712c51320"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "astropy__astropy-13453.traj.json",
+      "requests": 60,
+      "sourceSha256": "633dd18d145fbdfa13272aa2e0677e5b0fa73d0694ead6fd70ba714d2d09c284",
+      "requestsSha256": "96110c96999f8e2240136111b9ef17d1e2f14af148a34dd03b20f13d74d26637"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "astropy__astropy-14539.traj.json",
+      "requests": 40,
+      "sourceSha256": "e785b8d376bc0154769ab6655fa9b424fc491812038ca5d9ce140ff7bb9783b5",
+      "requestsSha256": "dfe1174529fd92fafd87481ea6ab961ee5aa5e1c7a1f830d5d65b8d9761d436b"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "django__django-11138.traj.json",
+      "requests": 62,
+      "sourceSha256": "ac330f672c7c93b2c5b620294edb089d61e92bb77519fe503e5bfc6dd6cd7fb3",
+      "requestsSha256": "dedb0b556e91ad720dfc60e3abb9366b6bc01a4960face314f1ed6e9bfb3d381"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "django__django-11211.traj.json",
+      "requests": 57,
+      "sourceSha256": "4be1437185bc01a661fe61fb7e4cdd232ffef7e22864cd8d0aa76380bede19bb",
+      "requestsSha256": "049984631aa7119b602f2d7675321a762be6885ee1107cb8fca0f237ee431467"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "django__django-11265.traj.json",
+      "requests": 46,
+      "sourceSha256": "d0bf65d824fa0f1f13b40d475e03bfe28f05c60ca78b9cd16cf0e6f1b1d2499f",
+      "requestsSha256": "f8d32de4d492d7c5af44cf1757d5fc499d947ae28b9dd655426060b80a9a0818"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "django__django-11333.traj.json",
+      "requests": 56,
+      "sourceSha256": "31207655ac0a51db571aba2d8df30d5e7149baa5ac1730153da7975d832ae1d5",
+      "requestsSha256": "37bba17f146ce44c91a68dd590d2404a1a0ab54dfe6e32fed7c46a2bd7631ccb"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "django__django-12276.traj.json",
+      "requests": 38,
+      "sourceSha256": "43733c92e4c4999887986a27f48da170c3b876d657781e77ccf69d73f2239d08",
+      "requestsSha256": "d73dd1e04a5d341157239f26efa4b905dee035ba03c061473dba655a5d1330a1"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "django__django-13568.traj.json",
+      "requests": 40,
+      "sourceSha256": "27d2f6a67d591b467f09dab2cc2c305ef6180fd8715586edec9548013a32a9cd",
+      "requestsSha256": "155ec8489d1975f1fb1cf1d8f6d9b3b6553280f618514f821f992a79fb00fb2b"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "django__django-13807.traj.json",
+      "requests": 44,
+      "sourceSha256": "1046ed5c692d8e31f18e2ac07c07a3fa445422a6a326b10e5a7b3d1f0d2e7084",
+      "requestsSha256": "9f87b6ac8fc2c22a8f98956cbb15192a85b884aa9822ba8fd07f22b63bf68661"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "django__django-13810.traj.json",
+      "requests": 59,
+      "sourceSha256": "74db576ad488a7f811b2eb859d8256c271e00ffb336ba416a3a987d91d6dbe04",
+      "requestsSha256": "57a8255e8f8e52b1820c94f731b4cb32cdb300fd23f509696d4b41a50ab8200e"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "django__django-14017.traj.json",
+      "requests": 50,
+      "sourceSha256": "3877a8869e68fda38a29d6035bd5ab915f163f9bfba8badf7027265f87fbc6bb",
+      "requestsSha256": "b54fc835fa325a60acfe46e03989fb0e98a33db7c9432ff228fb556d143f88be"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "django__django-14349.traj.json",
+      "requests": 36,
+      "sourceSha256": "e74e538846e74431eae700d52dda8181d7a3542c5e1d18601cfd7a59e34efa79",
+      "requestsSha256": "9ff8c61a313fb61145b3f01985567788136b60d706a5279e36d0f942c2078c40"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "django__django-14404.traj.json",
+      "requests": 60,
+      "sourceSha256": "afa7ea27f0c8cdc471befa07ae9db3b9073eb0465b2ab2a8760bd32e9f84fcfd",
+      "requestsSha256": "46030d2efd6eb98770a14d30155f6c0a755f2eacc1bc0b6372ccadac3c739e69"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "django__django-14559.traj.json",
+      "requests": 31,
+      "sourceSha256": "000e268e9e1360f81a265a62431347239ada7576d18894330c5caf183de2b8c1",
+      "requestsSha256": "be128566b557c895e7d9651b44b881607e54400d5af032f5a3c84213ef155870"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "django__django-14672.traj.json",
+      "requests": 34,
+      "sourceSha256": "d65832ace33ff952f44f87854dac960c7309f8ce8fdf4704adbf7f1c8ddd8567",
+      "requestsSha256": "e90a345fe03686b1c0d2429d589bfd03eb7d4a2efda6f517ef537c412f97d1ff"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "django__django-15930.traj.json",
+      "requests": 48,
+      "sourceSha256": "1dd45874f6aa357505f8c0abdb1b58e00a70861117634371cd766b78ebf2fecc",
+      "requestsSha256": "d38cfab51f08868c845f1affaa2ef5ec8a47fefb911f03d203d0f1c24312a004"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "django__django-16256.traj.json",
+      "requests": 46,
+      "sourceSha256": "5913ac64f4e0965d535eb2d0f3998983570107773593c9cbfe2f25c8cfb110df",
+      "requestsSha256": "4b37bb15bd51b68356bb573516b20f07f1441187705431fdfe8076662d9a6d2b"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "django__django-7530.traj.json",
+      "requests": 52,
+      "sourceSha256": "a088adbda48809888086ca1912bb02bd7f99c3f36533817c47f010c134f483c3",
+      "requestsSha256": "ba2b7b0f862ec66b27e32f84a156a28a744c1044abc21d7a014af190497a9df4"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "matplotlib__matplotlib-20488.traj.json",
+      "requests": 58,
+      "sourceSha256": "12a3cc84889c5d50c202971892dcb265ef034f10d229557000fe74bb4df82dfc",
+      "requestsSha256": "96aaace48eedd4fca9e7a2540a58abf218f7948cf177b279a6393643e781b1c0"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "matplotlib__matplotlib-20859.traj.json",
+      "requests": 17,
+      "sourceSha256": "b8d29c93a816b1289500b23edb522f905aa9a6b3221b7eac338cffcdbc910d47",
+      "requestsSha256": "f2970ce7e731e5430122268b8cd1576accbdbad7b1c9b44448684022bdc8dc36"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "matplotlib__matplotlib-23476.traj.json",
+      "requests": 48,
+      "sourceSha256": "9d76ff2f89893a6ddaa598263b7bdc68fad6cf2b98ae1ea57e31c4075d4000df",
+      "requestsSha256": "ce465f965c8f0f517c719d48ac2bceb7299f185816b583a4a7f7fb8eba3271d8"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "matplotlib__matplotlib-24970.traj.json",
+      "requests": 42,
+      "sourceSha256": "67c1e245cd1db17281a45fe9e61de87f0e8cccc635ad4442b692458a06c9239f",
+      "requestsSha256": "87fe19f76034cd7c977242294bac11dea3281cf7b642ba0dfe99d46af2783f94"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "pydata__xarray-6938.traj.json",
+      "requests": 71,
+      "sourceSha256": "3c23307f7578afba4b0e207bad3d522396d3d4ceb388e8f4ad031932d0026bea",
+      "requestsSha256": "35620d52a269c020384a05ca4690951c3a123c239abae531d384c7c3539ed0da"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "pydata__xarray-7233.traj.json",
+      "requests": 31,
+      "sourceSha256": "7507de603e4cba3c48c49c535730929a7878a7e0bb7de4d8bcb4f9499752a178",
+      "requestsSha256": "02c57e23f248f08b58f6961dc22d8fbaacf89891f5471218dbdd15a73b95b17c"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "pytest-dev__pytest-6202.traj.json",
+      "requests": 37,
+      "sourceSha256": "88be7bc8cc11bc3dfa45dbdaf10636198f0320d820c6921772c04cf3e793d73b",
+      "requestsSha256": "26d4353e302a50a30a521333f6e414ca89ed6c84c4119bc58de9d6b513a7d30d"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "scikit-learn__scikit-learn-10908.traj.json",
+      "requests": 51,
+      "sourceSha256": "0e993a1c10a62885b43ea17f1f0356d202aebbd520b9745b8203f682d00b71b2",
+      "requestsSha256": "d695609fff0c2e818471a1aa22a569f6e4368057ea4b7951626359a4cfea13d8"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "scikit-learn__scikit-learn-12585.traj.json",
+      "requests": 27,
+      "sourceSha256": "fd1f3813708820b6ab1583fa06ed4dffc410cf03fef886c769fd90116099dfdc",
+      "requestsSha256": "5c9ff5e5b8d4f5bf53fef9bc6d383bf5f428a64249dfc9a4a6caa70872ff70ba"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "scikit-learn__scikit-learn-13779.traj.json",
+      "requests": 38,
+      "sourceSha256": "fd09c9f4e0e5837eaf103677ea18f085eb5b0ab1d855fd7cc20fd03617953931",
+      "requestsSha256": "624f9c3a2bc31f01a0ba32b5d220c04e536a1d3cfe5c9a715fae8500d86fd894"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "scikit-learn__scikit-learn-14141.traj.json",
+      "requests": 33,
+      "sourceSha256": "a4a4cad39596edcd69a9641c317d8ed44789abbc5e45fe90fb5e488ff4b24254",
+      "requestsSha256": "c6989456be2e5d89c617067eef7ec4752c2bedab88d111b118007c0eb47c0892"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "scikit-learn__scikit-learn-25747.traj.json",
+      "requests": 57,
+      "sourceSha256": "fcb2458be42fe089b3ed6abf28b61d558de46f08fd5e36add9309f033a3cf0c0",
+      "requestsSha256": "48d33aed8729c167b0c173023fc0819875085e26656fa3ab22011a30de9e54e4"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "sphinx-doc__sphinx-8120.traj.json",
+      "requests": 49,
+      "sourceSha256": "d0c78b23a738e8355f92c0a2a82bc7ceb47b1a56229247fdff7a722196bb5cef",
+      "requestsSha256": "34d578bc3f3ead4b94c57148f289986756873b198a1091796670c989cb4d85a4"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "sphinx-doc__sphinx-9658.traj.json",
+      "requests": 72,
+      "sourceSha256": "a5c57fb5f490f2fe2fea11689f4e9ae4127750c4b30929d7b6cb899f55aab4e0",
+      "requestsSha256": "e0fe6a8d55c288168ed875018b179c7eb14af98ea3eac22274033237367f6e53"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "sympy__sympy-11618.traj.json",
+      "requests": 43,
+      "sourceSha256": "ddd2365693542b4dbd7decfc64ea4d3628d1d78bbbb82fadc2ca8f1b3d995f6e",
+      "requestsSha256": "6f66999ef13d129db0adc5fb2e0feb74d6b76467fdf219c268edb0e2cf358174"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "sympy__sympy-13091.traj.json",
+      "requests": 76,
+      "sourceSha256": "91d7515b0fb1f6343774ab32a3271fe8527d656a1dd6139d675cb55d2c078d58",
+      "requestsSha256": "d3130be3087817fae57a7291c40d4835ef54bc9ecdb7a58aeb1bde065f163d49"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "sympy__sympy-14711.traj.json",
+      "requests": 41,
+      "sourceSha256": "7bc5566727939a4dc478705871ebabdc531b21e8eb133ec781207c643dd7cd9d",
+      "requestsSha256": "477331c665db4dd7534273d3e250d5a836be5d78b19552fb92aa93f550ac1c44"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "sympy__sympy-14976.traj.json",
+      "requests": 64,
+      "sourceSha256": "01e32b457aee65103d3604ee6cdb166ec4fa85f9dd351e412cfb4666a3041ff8",
+      "requestsSha256": "df9e2dfa0b4201630421c74c00c6115ab33b279b68401b84dc4e0d63399973ce"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "sympy__sympy-18199.traj.json",
+      "requests": 59,
+      "sourceSha256": "caf911598b96ebbdae8b69d637135329ff4239804ca67ae9fcb2d5acb9ea41e4",
+      "requestsSha256": "b4aa6ce66cff2cd9195dc974946bf9eeb302c56bea7d404d4d2feb4fc234954b"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "sympy__sympy-18763.traj.json",
+      "requests": 35,
+      "sourceSha256": "2394e036decb8be65a85dc0bfd106933dc7941287c9387e166a2cfd0ee282a61",
+      "requestsSha256": "645f3176885d4615c5c17fa44f562db03ecc0ede87ca951b9d3a17b25916beff"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "sympy__sympy-20428.traj.json",
+      "requests": 62,
+      "sourceSha256": "c01c1e5f425461c20f400ce53af951fd4165d1222b6a5cbc1cd060c983fd0fa8",
+      "requestsSha256": "5e6c1861f02669f0c0ebf557720892d89d9c9ff1ad90a4983558cb469621e5e3"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-5-sonnet-high",
+      "file": "sympy__sympy-23950.traj.json",
+      "requests": 56,
+      "sourceSha256": "19e74f8cca4d11d8091826897a3956b6d34d4fc98d02309c577a113cdaa7dc3d",
+      "requestsSha256": "5b4aab0df912c23f7cad1173680c383a8b7746398135f2e954f6b9a9c6efaab5"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "astropy__astropy-12907.traj.json",
+      "requests": 36,
+      "sourceSha256": "25bc166a1055f1304f44db28ba69787ff51ddaefdd693764a67e08605b017204",
+      "requestsSha256": "3d79e317da1025322a909c0a44150719736148f3b26a84caf7b05dad276f365e"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-11163.traj.json",
+      "requests": 7,
+      "sourceSha256": "aee4773d7b31e83ea3339ec6306b56a970b3f778cbca9dd828c65a1c7bd9e5bb",
+      "requestsSha256": "d5995ce2b1092a15110823ec6bd33b065afd8d8e906180b4862779428508dd53"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-11400.traj.json",
+      "requests": 29,
+      "sourceSha256": "f62a2510e7fdffd51f724a0526c952b7a37f85f1ea13c32591ce9c19fafc300b",
+      "requestsSha256": "125fb354c1999a4559edbc369440669601135a0c1baa0af918915f3836da7fb9"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-11603.traj.json",
+      "requests": 8,
+      "sourceSha256": "1e0698967241c329194fb2705534618b7c0419dd81d615c340a61751f65b6dc4",
+      "requestsSha256": "ac5eaec7ceff005c65d9c789d9d5b4b460bdc5f15117ec70fc454b396a61f85d"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-12308.traj.json",
+      "requests": 22,
+      "sourceSha256": "5448dbe51aebc258cb1f391396f3acfeff15003dda12ba23bd53de05fdca0d36",
+      "requestsSha256": "7f9aef16e3c0a66969ffc59c8b72d14740e859c89fe69e484c444d1e88921ba0"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-12741.traj.json",
+      "requests": 8,
+      "sourceSha256": "dd37de25918b85c9796960839b735c12a1f2ec13687fa1ed05cc41356d983fa6",
+      "requestsSha256": "bdbbf3d97fc03a4354554c65650eef9e132cac5751bc0329357d53ca8d048c3b"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-13279.traj.json",
+      "requests": 25,
+      "sourceSha256": "074b10cf4825878d6863848e0e344865f328969b3e10ec91b66bf8632a96429e",
+      "requestsSha256": "1b86e59e55af807d1d076b9f109e4012266a3880b4fc05a5da56c4f86eeb8113"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-13417.traj.json",
+      "requests": 28,
+      "sourceSha256": "8640abd01b03f783b098739e110d28784e161dac5c0677d22a7a363ee867a8ac",
+      "requestsSha256": "928fbf8240754c97c03bc9acea47234198f3584ae4431f7e2d56fb534c5973e4"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-13512.traj.json",
+      "requests": 13,
+      "sourceSha256": "850d9703b9470861db5a2f09fa6dac83134f359759d9bcdccbb718f32c28ea02",
+      "requestsSha256": "cf079e94d8442c93f43408e21cda22d94b46164f1dc92ea81e8e48111e239530"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-14011.traj.json",
+      "requests": 17,
+      "sourceSha256": "b9581584e0ec7e73b98d8a385e05784f7f7fc2422a22e78e9bb779a1ef3650e2",
+      "requestsSha256": "c7722dd5b58da6d43f7ca9da322a92ca4fe88e5ff4437c45cd38ddc44a560fff"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-14349.traj.json",
+      "requests": 25,
+      "sourceSha256": "cc5c7eb85c91609dcb568e321539afb4bcc7beced833092e500dce7077997799",
+      "requestsSha256": "04cc196cf818e036399f69624290f56cbb1b08e30bcc8061b518899c380c48dd"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-14351.traj.json",
+      "requests": 58,
+      "sourceSha256": "63c5f06ae8b00848013b34a6ccbc0ecb52661cc0ea89ca2553c4a7ea79d2f488",
+      "requestsSha256": "0c53e78c87ba251ed02787f841aae689d9696ba5d2b821d89f645c03616ad874"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-14376.traj.json",
+      "requests": 6,
+      "sourceSha256": "b5f907c4b9a0e9281cd938e6b06ee3d25aca1a99a01e1cbd57a8a7e3204e6ca6",
+      "requestsSha256": "06543b16eae55360f20b3448194a610af35516562aca003d3809069eff495ae1"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-14631.traj.json",
+      "requests": 32,
+      "sourceSha256": "f5a8ae26a0c451329edfcac12eb2cf7ca0275fe5e39faa7fe84a37624f60660f",
+      "requestsSha256": "a335983f13ca4f1bd54425c9ea91acabc047049c6b59c77a78988a84b36c1d11"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-14765.traj.json",
+      "requests": 12,
+      "sourceSha256": "57176c8abd502bc4ac52432d787bdc56a8ab5c5d41828447013826acdd96c391",
+      "requestsSha256": "967ad04792e55605dacddf319793bd5ae6f634c1c0f4b9d4c212390a9e22f2f4"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-14787.traj.json",
+      "requests": 16,
+      "sourceSha256": "6b44830cd9f31238dc7ad2ef94d961df01cc287b3c85011507e93802f8785cdc",
+      "requestsSha256": "3fa5db54d1206106663476e7926479d46eb6329812b9a6f85a055d477453e4d6"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-15561.traj.json",
+      "requests": 20,
+      "sourceSha256": "e503e53b4a173268936d53811926574b52521630a49c442d31ec48f76ecda69d",
+      "requestsSha256": "c1393ccc0d7e574de458d0949cdff8edcb5555d57a01eb5ab549877808cdc361"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-15741.traj.json",
+      "requests": 15,
+      "sourceSha256": "92c1ed517f18146ff75a6a59ccf9d2f3f8cc1375c85690367b16627668ee9d1a",
+      "requestsSha256": "e56b122ce4bff73862cb8354a0f32830ead8c25a8cdfaaa3aa00dbf399ee3f0f"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-15851.traj.json",
+      "requests": 15,
+      "sourceSha256": "952f411dd28d20a8fc860c1242db2755ff9fdc76deea3d9a2c7447be044808fd",
+      "requestsSha256": "e6319122faade9d72338430eac7afb81fcc8ce800d42c21fd7ec10ef91b24b55"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-16082.traj.json",
+      "requests": 13,
+      "sourceSha256": "18af9b04aed576e9a4b95d0935be751cc98713b204f190be06fdd6ce278bdf35",
+      "requestsSha256": "1cd8a16576e41952ba17f4defc515c92dfc8cf7bdd37eb40950e538ba271d5e8"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-16493.traj.json",
+      "requests": 22,
+      "sourceSha256": "1794717817f78ac4926a8645006045b83b0f39244c7dd1a0ca636331d460c2a6",
+      "requestsSha256": "20da9dccb0c339a0cc6642cb2b60f285e5d50b5e7a892281b0c85c20f7152a91"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-16502.traj.json",
+      "requests": 17,
+      "sourceSha256": "1441d83ffc22e731de234fb3bbd03b23e0693bbda6a06b85f5126f085a513c30",
+      "requestsSha256": "2d39d7945de9713564f3d415d32b97a51e4735121cc431fd1526834070bc82aa"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-16631.traj.json",
+      "requests": 24,
+      "sourceSha256": "3fd51cbacb9e0369b8258c863de1e3907c8b72fda040f0eea43e15167220a37f",
+      "requestsSha256": "66189eff41a7c992bf9f3180cbd88e6a0bc6878a3be5311d15dd1957cb758ad3"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-16642.traj.json",
+      "requests": 15,
+      "sourceSha256": "2182a2fed794b3a424115d77e60a19e1680038723ec1b594e0a50c818779e036",
+      "requestsSha256": "8ba0c27078bc0c5c69d30cc75227b0764b004cf7a1e945a094b62263c242e8db"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "django__django-16877.traj.json",
+      "requests": 28,
+      "sourceSha256": "3f43e413cc2e7190e43c8008c12828dbd60ce8e0659ef3fe5a03f4c5d8a8c65d",
+      "requestsSha256": "1881884983f62898483bcace805bb3f831f76837b5a7f55e02904e5884dad2d1"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "matplotlib__matplotlib-20859.traj.json",
+      "requests": 13,
+      "sourceSha256": "aa0fbb8977e1765b76ef13aa97e604c4000cd48e7c543c597368e2579dc56a75",
+      "requestsSha256": "9e3e387777187f72c3fbfb7a16a9613734c5500e50c1a7be152d8a9cefa2b7c4"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "psf__requests-1724.traj.json",
+      "requests": 18,
+      "sourceSha256": "18e0f74796bd01abaa2b2f68e20c821a4f81d3a8efb4e5ba005b1681cd2374ce",
+      "requestsSha256": "6c05435c530305d2099043ac83d07ac0c9dbd29aaf56235823900cd9d0f6cc3e"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "scikit-learn__scikit-learn-10844.traj.json",
+      "requests": 13,
+      "sourceSha256": "e92a9b29d540460646e326a86c01f3c3a1baf96158e1290e2a6e5b76737291d7",
+      "requestsSha256": "bc2a00ef4a5cccf692cec74f707f8d266759b9311020886e3616773416299900"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "sphinx-doc__sphinx-10466.traj.json",
+      "requests": 12,
+      "sourceSha256": "941b92ca833e7b032522e7966fd74cd251a226d24da5b0ff03d22525f7e7a82e",
+      "requestsSha256": "e52f08ea9931073a6de15cacf9ff4b6ba5bcb9d926f2904e5daf0f660a95c4aa"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "sphinx-doc__sphinx-9591.traj.json",
+      "requests": 28,
+      "sourceSha256": "55a39317ea6c219cda5fdb15992d1fd867611baf8851ee6466b065270a2d7d52",
+      "requestsSha256": "5e31bfb6362de8ffc2cc1184c91465b2c706cdb38d3372c7855827e530496a4e"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "sympy__sympy-12481.traj.json",
+      "requests": 27,
+      "sourceSha256": "33b0e77497cc293c9342b8db06fbd4640a565aaa965bf889ccd58cf606f72bb4",
+      "requestsSha256": "649556783b4f132677b4cc29d0483c75be04de3d67ce62cae691bfe8a7863672"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "sympy__sympy-13372.traj.json",
+      "requests": 21,
+      "sourceSha256": "243fc2d58e5e98d1c0646e56401160445ac5922e1eabd85a7e8622c736b82a58",
+      "requestsSha256": "c3a53a764bd7712161f7b70e5045dd22e193c6cdb4d9c4a1ea7c4b7222575506"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "sympy__sympy-15809.traj.json",
+      "requests": 16,
+      "sourceSha256": "a10b9634bf0af3e6b9fc920448a86e91b933bec0f30cec424e2e3e18c0f29308",
+      "requestsSha256": "96b7bece83057e837117b5c4b50fc9fb0967a386cab5656d15de8392366f1c9d"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "sympy__sympy-15976.traj.json",
+      "requests": 22,
+      "sourceSha256": "ca1eff6447e16af02003a08c8e8ddc671a29ee2ee3a88c0f06ae5a8518cfbacb",
+      "requestsSha256": "1ad2bff8e6b23f911b031d564a1197ea11c05a8392a3084978d012cac5b1bede"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "sympy__sympy-16450.traj.json",
+      "requests": 29,
+      "sourceSha256": "1a4d15a3f5ec69d42cfe2a678d8dfa23fdd7dfbca47884d63552752028ba7628",
+      "requestsSha256": "8823df88f67a78a7f9bdadf1091d851580645b0e8d8cc4570944f01599cf4e66"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "sympy__sympy-17655.traj.json",
+      "requests": 30,
+      "sourceSha256": "bb9d971eb807569a785f089c9bfd676cfd35bd59294f67f94eeb99250a08eceb",
+      "requestsSha256": "d603c9a7aa3666c36c272d248c67e21203d192c26c6eba019326bc900dc20248"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "sympy__sympy-18211.traj.json",
+      "requests": 19,
+      "sourceSha256": "f2cbe59081705a5c5442616179345b6ac204b3ddf8d0e1e3e7f730083546f1aa",
+      "requestsSha256": "8de6348c52510b9b2731e741bfd44526359c2d4d2774a02a9a5e7d4b3382863f"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "sympy__sympy-21847.traj.json",
+      "requests": 8,
+      "sourceSha256": "ecdf3dafeb7929128e6782c6b13e41ce1f2e39834183fe9e00a533401759f5b2",
+      "requestsSha256": "6292ae34a3f758a669fabe88c343a1941fc8ad31bd34a74490d1b6838e68f6ee"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "sympy__sympy-22080.traj.json",
+      "requests": 92,
+      "sourceSha256": "19b813b871ccd3fbb6a41db51fe0c0a4565498cceefb3eb86c4a79d87d155a42",
+      "requestsSha256": "ddd97aeedb043fb1e331ece358f4eba2ed60817b80d90149babd29cffe36fc8a"
+    },
+    {
+      "entry": "20260217_mini-v2.0.0_claude-4-6-opus",
+      "file": "sympy__sympy-22714.traj.json",
+      "requests": 16,
+      "sourceSha256": "c73faa204065ddff4e9c1ae50e6a7aa0089ae217dbbda2fb786dd4172ffe0bbe",
+      "requestsSha256": "ca4e966b7368781f24e698056a67240535bb140758a0089dd1dde4f2188a9814"
+    }
+  ]
+}

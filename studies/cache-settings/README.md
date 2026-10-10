@@ -71,6 +71,49 @@ The [phone capture](../../docs/assets/cache-settings-finding-375.png) shows the
 explanation and request-navigation controls without clipping. The existing
 cache table scrolls horizontally inside its panel at narrow widths.
 
+## Historical regression replay
+
+The [corpus receipt](corpus.json) compares this implementation with `4d2183d`
+on 240 hash-checked public Claude trajectories: 10,555 requests reconstructed
+through the pinned mini-SWE-agent versions and LiteLLM 1.104.2. Both actual
+and optimized simulation rows remained unchanged; every token partition
+conserved the estimated input. Binary hit/no-hit agreement with captured
+usage stayed at 10,431 / 10,555. These unchanged results check for regressions
+in the previously studied workflow; they do not measure improved prediction
+accuracy. Simulated cache reads remain 195,982,596 tokens versus the recorded
+205,535,739, so matching hit status does not make the token estimates exact.
+
+Use the existing [reconstruction instructions](../cache-accounting/README.md)
+and `studies/cache-accounting/reconstruct.py`, then run:
+
+```sh
+node studies/cache-accounting/compare-corpus.mjs "$CACHE_STUDY_SCRATCH" "$BASELINE_DIST" /tmp/cache-settings-corpus.json
+```
+
+This replay rechecked all original source hashes and rebuilt all request
+bodies, rather than accepting the earlier study's output. Upstream checkouts
+were `55356a3645b2aa1f92662b21461d4f20122bcea0` (v1.13.3),
+`1cd08db041bf5093484aefdc1b375df1d00a91ad` (v1.16.0), and
+`ce91a8c6449bc5a686df8f6b7ee8ca9433d893bc` (v2.0.0).
+No captured response was regenerated and no provider was contacted.
+
+## Installed package
+
+The npm tarball built from local commit `8dc5d2b` was installed outside the
+checkout and exercised on Node 20.0.0. Its replay output is byte-identical to
+[`after.json`](after.json), and its CLI JSON matches the source CLI. The
+[installed verification receipt](installed-verification.json) records package
+and output hashes plus four offline HTML browser workflows: Chromium/Firefox
+at 1440/375 pixels, with no HTTP requests, page errors, script elements or
+horizontal page overflow. This verifies the local tarball, not npm's released
+0.3.3 package.
+
+After running the installed replay and CLI, the report check is repeatable:
+
+```sh
+node studies/cache-settings/check-installed.mjs "$REPLAY_JSON" "$CLI_JSON" "$CLI_HTML" "$PACKAGE_TGZ" /tmp/cache-settings-installed.json
+```
+
 ## Scope and boundaries
 
 Cache entries retain their captured model identity as well as these settings.

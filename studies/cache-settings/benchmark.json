@@ -1,0 +1,15 @@
+{
+  "node": "24.21.0",
+  "platform": "WSL2 Linux",
+  "method": "Existing benchmark, median of 9 after one warmup; versions run sequentially. Not a general speed claim.",
+  "results": {
+    "before-4d2183d": [
+      "flagship: 24 requests, 5.7 MB  -> analyze() median 228 ms",
+      "stress:  300 requests, 12.1 MB  -> analyze() median 1598 ms"
+    ],
+    "after-8dc5d2b": [
+      "flagship: 24 requests, 5.7 MB  -> analyze() median 216 ms",
+      "stress:  300 requests, 12.1 MB  -> analyze() median 1705 ms"
+    ]
+  }
+}
