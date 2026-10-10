@@ -2,6 +2,8 @@ import type { CacheControl, CacheTtl, ParsedRequest, Segment, SegmentCategory } 
 import { asText, blockJson, isRecord } from "./json-utils.js";
 import { countTokens, type TokenCounter } from "./token-counter.js";
 import { attachPromptIdentity } from "./prompt-identity.js";
+import { isCacheableSegment, lastCacheableSegment } from "./anthropic-breakpoints.js";
+import { ContextScopeParseError } from "./parse-error.js";
 
 interface AnthropicBlock {
   type?: string;
@@ -10,9 +12,12 @@ interface AnthropicBlock {
   [key: string]: unknown;
 }
 
-function readCacheControl(block: unknown): CacheControl | undefined {
+function readCacheControl(block: unknown, location: string): CacheControl | undefined {
   const cc = isRecord(block) ? block["cache_control"] : undefined;
-  if (!isRecord(cc) || cc["type"] !== "ephemeral") return undefined;
+  if (cc === undefined || cc === null) return undefined;
+  if (!isRecord(cc) || cc["type"] !== "ephemeral" || (cc.ttl !== undefined && cc.ttl !== "5m" && cc.ttl !== "1h")) {
+    throw new ContextScopeParseError(`${location}.cache_control must use type "ephemeral" and an omitted, "5m", or "1h" TTL. Correct the marker before simulating cache use.`);
+  }
   const ttl: CacheTtl = cc.ttl === "1h" ? "1h" : "5m";
   return { type: "ephemeral", ttl };
 }
@@ -27,14 +32,32 @@ function readCacheControl(block: unknown): CacheControl | undefined {
  * blocks can't, and an empty text block can't be cached. A block that already has a marker
  * keeps it.
  */
-function applyAutomaticBreakpoint(request: Record<string, unknown>, segments: Segment[]): void {
-  const automatic = readCacheControl(request);
+function applyAutomaticBreakpoint(request: Record<string, unknown>, segments: Segment[], location: string): void {
+  const automatic = readCacheControl(request, location);
   if (!automatic) return;
-  for (let i = segments.length - 1; i >= 0; i--) {
-    const segment = segments[i]!;
-    if (segment.category === "thinking" || segment.text.length === 0) continue;
-    if (!segment.cacheControl) segment.cacheControl = { ...automatic, automatic: true };
-    return;
+  const at = lastCacheableSegment(segments);
+  if (at < 0) return;
+  const segment = segments[at]!;
+  if (segment.cacheControl && segment.cacheControl.ttl !== automatic.ttl) {
+    throw new ContextScopeParseError(`${location}: top-level cache_control and ${segment.path}.cache_control use different TTLs. Anthropic rejects this combination; use matching TTLs or remove one marker.`);
+  }
+  if (!segment.cacheControl) segment.cacheControl = { ...automatic, automatic: true };
+}
+
+function validateBreakpoints(segments: Segment[], location: string): void {
+  const marked = segments.filter((s) => s.cacheControl);
+  if (marked.length > 4) {
+    throw new ContextScopeParseError(`${location}: ${marked.length} cache breakpoints exceed Anthropic's limit of 4, including automatic caching. Remove or move a marker before simulating cache use.`);
+  }
+  let seenShort = false;
+  for (const segment of marked) {
+    if (!isCacheableSegment(segment)) {
+      throw new ContextScopeParseError(`${location}: ${segment.path}.cache_control targets thinking or empty text, which cannot carry an explicit cache marker. Move the marker to a cacheable block.`);
+    }
+    if (segment.cacheControl!.ttl === "5m") seenShort = true;
+    else if (seenShort) {
+      throw new ContextScopeParseError(`${location}: ${segment.path}.cache_control uses "1h" after a "5m" breakpoint. Anthropic requires all 1-hour markers before 5-minute markers. Correct the order before simulating cache use.`);
+    }
   }
 }
 
@@ -76,6 +99,7 @@ function otherBlockCategory(type: unknown, role: string): SegmentCategory {
 /** Parses one Anthropic Messages API request body into provider-order segments: tools -> system -> messages. */
 export function parseAnthropicRequest(raw: unknown, index: number, counter: TokenCounter = countTokens): ParsedRequest {
   const seg = (params: Parameters<typeof makeSegment>[0]): Segment => makeSegment(params, counter);
+  const location = `Request ${index + 1}`;
   const obj = (raw !== null && typeof raw === "object" ? (raw as Record<string, unknown>) : {}) as Record<
     string,
     unknown
@@ -93,7 +117,7 @@ export function parseAnthropicRequest(raw: unknown, index: number, counter: Toke
         path: `tools[${i}]`,
         text: blockJson(tool),
         raw: tool,
-        cacheControl: readCacheControl(tool),
+        cacheControl: readCacheControl(tool, `${location}.tools[${i}]`),
       }),
     );
   });
@@ -120,7 +144,7 @@ export function parseAnthropicRequest(raw: unknown, index: number, counter: Toke
           path: `system[${i}]`,
           text: isRecord(block) && typeof block["text"] === "string" ? block["text"] : blockJson(block),
           raw: block,
-          cacheControl: readCacheControl(block),
+          cacheControl: readCacheControl(block, `${location}.system[${i}]`),
         }),
       );
     });
@@ -152,6 +176,7 @@ export function parseAnthropicRequest(raw: unknown, index: number, counter: Toke
         return;
       }
       const block: AnthropicBlock = entry;
+      const cacheControl = readCacheControl(block, `${location}.${path}`);
       switch (block.type) {
         case "text":
           segments.push(
@@ -163,7 +188,7 @@ export function parseAnthropicRequest(raw: unknown, index: number, counter: Toke
               text: asText(block.text ?? ""),
               // A plain content string is not a text-block object in the source log.
               raw: typeof content === "string" ? content : block,
-              cacheControl: readCacheControl(block),
+              cacheControl,
             }),
           );
           break;
@@ -177,7 +202,7 @@ export function parseAnthropicRequest(raw: unknown, index: number, counter: Toke
               path,
               text: typeof block["thinking"] === "string" ? (block["thinking"] as string) : "[redacted thinking]",
               raw: block,
-              cacheControl: readCacheControl(block),
+              cacheControl,
             }),
           );
           break;
@@ -190,7 +215,7 @@ export function parseAnthropicRequest(raw: unknown, index: number, counter: Toke
               path,
               text: blockJson(block),
               raw: block,
-              cacheControl: readCacheControl(block),
+              cacheControl,
             }),
           );
           break;
@@ -212,7 +237,7 @@ export function parseAnthropicRequest(raw: unknown, index: number, counter: Toke
               path,
               text,
               raw: block,
-              cacheControl: readCacheControl(block),
+              cacheControl,
             }),
           );
           break;
@@ -226,7 +251,7 @@ export function parseAnthropicRequest(raw: unknown, index: number, counter: Toke
               path,
               text: blockJson(block["source"] ?? block),
               raw: block,
-              cacheControl: readCacheControl(block),
+              cacheControl,
             }),
           );
           break;
@@ -239,7 +264,7 @@ export function parseAnthropicRequest(raw: unknown, index: number, counter: Toke
               path,
               text: blockJson(block["source"] ?? block),
               raw: block,
-              cacheControl: readCacheControl(block),
+              cacheControl,
             }),
           );
           break;
@@ -252,6 +277,7 @@ export function parseAnthropicRequest(raw: unknown, index: number, counter: Toke
               path,
               text: blockJson(block),
               raw: block,
+              cacheControl,
             }),
           );
       }
@@ -259,7 +285,8 @@ export function parseAnthropicRequest(raw: unknown, index: number, counter: Toke
   });
 
   attachPromptIdentity(obj, segments, "anthropic");
-  applyAutomaticBreakpoint(obj, segments);
+  applyAutomaticBreakpoint(obj, segments, location);
+  validateBreakpoints(segments, location);
 
   const model = typeof obj["model"] === "string" ? (obj["model"] as string) : undefined;
   return { provider: "anthropic", index, model, raw, segments };

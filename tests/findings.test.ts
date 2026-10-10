@@ -106,6 +106,7 @@ describe("findings (via analyze())", () => {
       messages.push({ role: "user", content: [toolResultBlock] });
       if (rollingBreakpoint) toolResultBlock["cache_control"] = { type: "ephemeral" };
       requests.push({ model: "claude-sonnet-5", system: longSystem, messages: JSON.parse(JSON.stringify(messages)) });
+      delete toolResultBlock["cache_control"]; // move the marker; do not accumulate one per turn
     }
     return requests;
   }

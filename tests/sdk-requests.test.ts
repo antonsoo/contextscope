@@ -100,7 +100,7 @@ describe("Anthropic automatic caching (top-level cache_control)", () => {
     const alreadyMarked = parseAnthropicRequest(
       {
         model: "claude-opus-5-5",
-        cache_control: { type: "ephemeral" },
+        cache_control: { type: "ephemeral", ttl: "1h" },
         messages: [{ role: "user", content: [{ type: "text", text: "question", cache_control: { type: "ephemeral", ttl: "1h" } }] }],
       },
       0,

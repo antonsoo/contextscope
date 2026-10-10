@@ -81,7 +81,7 @@ describe("prompt structure is part of prefix evidence", () => {
 
   it("keeps shorthand text, cache-marker moves and append-only histories comparable", () => {
     const a = claude("hello");
-    const b = claude([{ type: "text", text: "hello", cache_control: { type: "ephemeral", ttl: "1h" } }]);
+    const b = { ...claude([{ type: "text", text: "hello", cache_control: { type: "ephemeral", ttl: "1h" } }]), cache_control: { type: "ephemeral", ttl: "1h" } };
     const [from, to] = pair(a, b);
     for (const normalize of [false, true]) expect(computePrefixMatch(from!, to!, normalize).matchedSegments).toBe(1);
     const result = analyze(JSON.stringify([a, { ...a, messages: [...a.messages, { role: "assistant", content: "reply" }] }]));

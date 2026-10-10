@@ -137,6 +137,7 @@ export type FindingKind =
   | "below_minimum_cacheable"
   | "duplicate_content"
   | "lookback_window_exceeded"
+  /** Kept for consumers of older reports; invalid TTL ordering now raises a parse error. */
   | "ttl_ordering"
   | "missing_tail_breakpoint"
   | "model_switch";
@@ -217,8 +218,8 @@ export interface CacheSimulation {
   actual: CacheSimStep[];
   /** The same sequence with the findings fixed: volatile values (timestamps, UUIDs, epochs)
    * normalized out of the prefix comparison, JSON keys and the tool list in a deterministic order,
-   * and - Anthropic only - an additional trailing cache_control breakpoint on every request (the
-   * "automatic caching on the growing tail" pattern). */
+   * and - Anthropic only - a cache_control breakpoint on the last cacheable block. When all four
+   * slots are used, the last existing marker moves there, preserving its TTL. */
   optimized: CacheSimStep[];
   totalActualCostUsd: number | undefined;
   totalOptimizedCostUsd: number | undefined;

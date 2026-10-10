@@ -5,8 +5,9 @@ import { parseOpenAiRequest } from "./parse-openai.js";
 import { memoizedCounter } from "./token-counter.js";
 import { JsonIntegrityError, readJson } from "./read-json.js";
 import { readReportedUsage } from "./reported-usage.js";
+import { ContextScopeParseError } from "./parse-error.js";
 
-export class ContextScopeParseError extends Error {}
+export { ContextScopeParseError } from "./parse-error.js";
 
 /** Splits raw input text into an array of request objects: a JSON array, a single JSON object, or JSONL (one JSON object per line, blank lines ignored). */
 function splitRequests(input: string): { values: unknown[]; sources: NonNullable<ParsedRequest["source"]>[]; warnings: ParseWarning[]; sourceRecords: number } {

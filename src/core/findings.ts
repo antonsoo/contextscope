@@ -4,6 +4,7 @@ import { ANTHROPIC_LOOKBACK_POSITIONS, findAnthropicModel } from "./pricing.js";
 import { containsVolatilePattern } from "./volatile.js";
 import { sameModel } from "./model-id.js";
 import { comparisonKeys } from "./prefix.js";
+import { anthropicPositions } from "./anthropic-breakpoints.js";
 
 function push(list: Finding[], f: Finding): void {
   list.push(f);
@@ -105,21 +106,6 @@ export function computeFindings(
         }
       }
 
-      // ttl_ordering: a 1h entry must appear before any 5m entries in the same request.
-      let seenShort = false;
-      for (const bp of breakpoints) {
-        if (bp.cacheControl?.ttl === "5m") seenShort = true;
-        if (bp.cacheControl?.ttl === "1h" && seenShort) {
-          push(findings, {
-            kind: "ttl_ordering",
-            severity: "error",
-            requestIndex: i,
-            title: "1-hour TTL breakpoint placed after a 5-minute one",
-            detail: `"${bp.label}" uses a 1-hour TTL but comes after a 5-minute breakpoint earlier in the request. Longer-TTL entries must appear before shorter ones, or this request is rejected.`,
-            segmentIds: [bp.id],
-          });
-        }
-      }
     }
 
     const match = matchTo.get(i);
@@ -232,31 +218,19 @@ export function computeFindings(
       // lookback_window_exceeded (approximate re-check, mirrors cache-anthropic.ts's own distance test).
       // Not for a new conversation: its first breakpoints have no earlier entry of their own to find.
       if (startsConversation) return;
-      const positions: number[] = [];
-      let pos = -1;
-      let run: string | undefined;
-      for (const s of request.segments) {
-        const isRun = s.category === "tool_call" || s.category === "tool_result";
-        if (isRun && s.category === run) {
-          // same run
-        } else {
-          pos++;
-          run = isRun ? s.category : undefined;
-        }
-        positions.push(pos);
-      }
+      const positions = anthropicPositions(request.segments);
       const boundaryPos = match.matchedSegments > 0 ? positions[match.matchedSegments - 1]! : -1;
       for (const bp of request.segments.filter((s) => s.cacheControl)) {
         const idx = request.segments.indexOf(bp);
         if (idx < match.matchedSegments) continue;
         const distance = positions[idx]! - boundaryPos;
-        if (distance > ANTHROPIC_LOOKBACK_POSITIONS) {
+        if (distance >= ANTHROPIC_LOOKBACK_POSITIONS) {
           push(findings, {
             kind: "lookback_window_exceeded",
             severity: "warning",
             requestIndex: i,
             title: "Breakpoint is outside the 20-position lookback window",
-            detail: `"${bp.label}" sits ${distance} positions past the last matching prefix boundary with request ${from + 1}. Anthropic only looks back 20 positions for a prior cache entry, so this breakpoint can never find one - add an intermediate breakpoint closer to the boundary.`,
+            detail: `"${bp.label}" sits ${distance} positions past the last matching prefix boundary with request ${from + 1}. Anthropic checks 20 positions including the breakpoint itself, so this lookup cannot reach that boundary. An intermediate breakpoint closer to it can find a cache entry there if an earlier request wrote one.`,
             segmentIds: [bp.id],
           });
         }
