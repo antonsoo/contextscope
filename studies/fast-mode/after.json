@@ -1,0 +1,888 @@
+{
+  "synthetic": true,
+  "note": "Controlled request bodies and current documented Claude API rules; estimated tokens and prices, no provider requests or observed charges.",
+  "implementationSha256": {
+    "cache-anthropic.js": "108188cafae4fdfae4fd891e8e1eafaebb91307b027771736abf3e108a50aee8",
+    "findings.js": "7c77a741c5d469f1151de1547b350d4690607d5b54a0cc1b4bbed10f57be2355"
+  },
+  "cases": [
+    {
+      "name": "marked-tools",
+      "inputSha256": "9c0a29e218a2c52f5542bc5f8702b875e8323fdfd442255134553df11006b917",
+      "expectedReads": [
+        0,
+        3414,
+        8565,
+        8565
+      ],
+      "cacheSimulation": {
+        "provider": "anthropic",
+        "model": "claude-opus-5-5",
+        "actual": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 8565,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.042825,
+            "speed": "standard",
+            "inputPriceMultiplier": 1
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 3414,
+            "writeTokens5m": 5151,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0528756,
+            "speed": "fast",
+            "inputPriceMultiplier": 2
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0017130000000000001,
+            "speed": "standard",
+            "inputPriceMultiplier": 1
+          },
+          {
+            "requestIndex": 3,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0034260000000000002,
+            "speed": "fast",
+            "inputPriceMultiplier": 2
+          }
+        ],
+        "optimized": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 8565,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.042825,
+            "speed": "standard",
+            "inputPriceMultiplier": 1
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 3414,
+            "writeTokens5m": 5151,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0528756,
+            "speed": "fast",
+            "inputPriceMultiplier": 2
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0017130000000000001,
+            "speed": "standard",
+            "inputPriceMultiplier": 1
+          },
+          {
+            "requestIndex": 3,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0034260000000000002,
+            "speed": "fast",
+            "inputPriceMultiplier": 2
+          }
+        ],
+        "totalActualCostUsd": 0.1008396,
+        "totalOptimizedCostUsd": 0.1008396
+      },
+      "prefixMatches": [
+        {
+          "from": 0,
+          "to": 1,
+          "matchedSegments": 3
+        },
+        {
+          "from": 1,
+          "to": 2,
+          "matchedSegments": 3
+        },
+        {
+          "from": 2,
+          "to": 3,
+          "matchedSegments": 3
+        }
+      ],
+      "speedFindings": [
+        {
+          "kind": "anthropic_speed",
+          "severity": "info",
+          "requestIndex": 1,
+          "title": "Fast input pricing",
+          "detail": "Fast mode uses 2x the resolved model's standard input rate, including cache reads and both write TTLs. The simulation uses current Claude API rates, not measured charges; response speed, beta headers, platform support and historical rates are not verified. The optimized scenario keeps this speed.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed_cache_scope",
+          "severity": "info",
+          "requestIndex": 1,
+          "title": "Processing speed changed",
+          "detail": "Processing speed differs between requests 1 and 2. System and message cache entries from that request cannot supply a hit, even when the visible prefix matches. Separately marked tool entries remain eligible. An earlier request at the current speed can still supply a hit. Both simulation scenarios preserve the speed setting.",
+          "segmentIds": [
+            "system[0]",
+            "messages[0].content[0]"
+          ]
+        },
+        {
+          "kind": "anthropic_speed_cache_scope",
+          "severity": "info",
+          "requestIndex": 2,
+          "title": "Processing speed changed",
+          "detail": "Processing speed differs between requests 2 and 3. System and message cache entries from that request cannot supply a hit, even when the visible prefix matches. Separately marked tool entries remain eligible. An earlier request at the current speed can still supply a hit. Both simulation scenarios preserve the speed setting.",
+          "segmentIds": [
+            "system[0]",
+            "messages[0].content[0]"
+          ]
+        },
+        {
+          "kind": "anthropic_speed",
+          "severity": "info",
+          "requestIndex": 3,
+          "title": "Fast input pricing",
+          "detail": "Fast mode uses 2x the resolved model's standard input rate, including cache reads and both write TTLs. The simulation uses current Claude API rates, not measured charges; response speed, beta headers, platform support and historical rates are not verified. The optimized scenario keeps this speed.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed_cache_scope",
+          "severity": "info",
+          "requestIndex": 3,
+          "title": "Processing speed changed",
+          "detail": "Processing speed differs between requests 3 and 4. System and message cache entries from that request cannot supply a hit, even when the visible prefix matches. Separately marked tool entries remain eligible. An earlier request at the current speed can still supply a hit. Both simulation scenarios preserve the speed setting.",
+          "segmentIds": [
+            "system[0]",
+            "messages[0].content[0]"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "system-marker-only",
+      "inputSha256": "a3ca94e2923e4acb1977863b94ea109e54d6d793c1db31db41e04c1b0a9024db",
+      "expectedReads": [
+        0,
+        0,
+        8565
+      ],
+      "cacheSimulation": {
+        "provider": "anthropic",
+        "model": "claude-opus-5-5",
+        "actual": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 8565,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.042825,
+            "speed": "standard",
+            "inputPriceMultiplier": 1
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 0,
+            "writeTokens5m": 8565,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.08565,
+            "speed": "fast",
+            "inputPriceMultiplier": 2
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0017130000000000001,
+            "speed": "standard",
+            "inputPriceMultiplier": 1
+          }
+        ],
+        "optimized": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 8565,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.042825,
+            "speed": "standard",
+            "inputPriceMultiplier": 1
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 0,
+            "writeTokens5m": 8565,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.08565,
+            "speed": "fast",
+            "inputPriceMultiplier": 2
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0017130000000000001,
+            "speed": "standard",
+            "inputPriceMultiplier": 1
+          }
+        ],
+        "totalActualCostUsd": 0.130188,
+        "totalOptimizedCostUsd": 0.130188
+      },
+      "prefixMatches": [
+        {
+          "from": 0,
+          "to": 1,
+          "matchedSegments": 3
+        },
+        {
+          "from": 1,
+          "to": 2,
+          "matchedSegments": 3
+        }
+      ],
+      "speedFindings": [
+        {
+          "kind": "anthropic_speed",
+          "severity": "info",
+          "requestIndex": 1,
+          "title": "Fast input pricing",
+          "detail": "Fast mode uses 2x the resolved model's standard input rate, including cache reads and both write TTLs. The simulation uses current Claude API rates, not measured charges; response speed, beta headers, platform support and historical rates are not verified. The optimized scenario keeps this speed.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed_cache_scope",
+          "severity": "info",
+          "requestIndex": 1,
+          "title": "Processing speed changed",
+          "detail": "Processing speed differs between requests 1 and 2. System and message cache entries from that request cannot supply a hit, even when the visible prefix matches. Separately marked tool entries remain eligible. An earlier request at the current speed can still supply a hit. Both simulation scenarios preserve the speed setting.",
+          "segmentIds": [
+            "system[0]",
+            "messages[0].content[0]"
+          ]
+        },
+        {
+          "kind": "anthropic_speed_cache_scope",
+          "severity": "info",
+          "requestIndex": 2,
+          "title": "Processing speed changed",
+          "detail": "Processing speed differs between requests 2 and 3. System and message cache entries from that request cannot supply a hit, even when the visible prefix matches. Separately marked tool entries remain eligible. An earlier request at the current speed can still supply a hit. Both simulation scenarios preserve the speed setting.",
+          "segmentIds": [
+            "system[0]",
+            "messages[0].content[0]"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mixed-ttls",
+      "inputSha256": "f964d255c2ae571b643e276fa15106e92ca25bf00c473a3f47e3428a7ebac13f",
+      "expectedReads": [
+        0,
+        3414,
+        8565
+      ],
+      "cacheSimulation": {
+        "provider": "anthropic",
+        "model": "claude-opus-5-5",
+        "actual": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 2121,
+            "writeTokens1h": 6444,
+            "uncachedTokens": 0,
+            "costUsd": 0.062157000000000004,
+            "speed": "standard",
+            "inputPriceMultiplier": 1
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 3414,
+            "writeTokens5m": 2121,
+            "writeTokens1h": 3030,
+            "uncachedTokens": 0,
+            "costUsd": 0.0710556,
+            "speed": "fast",
+            "inputPriceMultiplier": 2
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0017130000000000001,
+            "speed": "standard",
+            "inputPriceMultiplier": 1
+          }
+        ],
+        "optimized": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 2121,
+            "writeTokens1h": 6444,
+            "uncachedTokens": 0,
+            "costUsd": 0.062157000000000004,
+            "speed": "standard",
+            "inputPriceMultiplier": 1
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 3414,
+            "writeTokens5m": 2121,
+            "writeTokens1h": 3030,
+            "uncachedTokens": 0,
+            "costUsd": 0.0710556,
+            "speed": "fast",
+            "inputPriceMultiplier": 2
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0017130000000000001,
+            "speed": "standard",
+            "inputPriceMultiplier": 1
+          }
+        ],
+        "totalActualCostUsd": 0.1349256,
+        "totalOptimizedCostUsd": 0.1349256
+      },
+      "prefixMatches": [
+        {
+          "from": 0,
+          "to": 1,
+          "matchedSegments": 3
+        },
+        {
+          "from": 1,
+          "to": 2,
+          "matchedSegments": 3
+        }
+      ],
+      "speedFindings": [
+        {
+          "kind": "anthropic_speed",
+          "severity": "info",
+          "requestIndex": 1,
+          "title": "Fast input pricing",
+          "detail": "Fast mode uses 2x the resolved model's standard input rate, including cache reads and both write TTLs. The simulation uses current Claude API rates, not measured charges; response speed, beta headers, platform support and historical rates are not verified. The optimized scenario keeps this speed.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed_cache_scope",
+          "severity": "info",
+          "requestIndex": 1,
+          "title": "Processing speed changed",
+          "detail": "Processing speed differs between requests 1 and 2. System and message cache entries from that request cannot supply a hit, even when the visible prefix matches. Separately marked tool entries remain eligible. An earlier request at the current speed can still supply a hit. Both simulation scenarios preserve the speed setting.",
+          "segmentIds": [
+            "system[0]",
+            "messages[0].content[0]"
+          ]
+        },
+        {
+          "kind": "anthropic_speed_cache_scope",
+          "severity": "info",
+          "requestIndex": 2,
+          "title": "Processing speed changed",
+          "detail": "Processing speed differs between requests 2 and 3. System and message cache entries from that request cannot supply a hit, even when the visible prefix matches. Separately marked tool entries remain eligible. An earlier request at the current speed can still supply a hit. Both simulation scenarios preserve the speed setting.",
+          "segmentIds": [
+            "system[0]",
+            "messages[0].content[0]"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "opus-5",
+      "inputSha256": "4cbfc3d1387cf59ec15e604e668bb7ad2810bb3a5aab6d0d36d0efc84ad9b7f5",
+      "expectedReads": [
+        0,
+        3414,
+        8565
+      ],
+      "cacheSimulation": {
+        "provider": "anthropic",
+        "model": "claude-opus-5",
+        "actual": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 8565,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.05353125,
+            "speed": "standard",
+            "inputPriceMultiplier": 1
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 3414,
+            "writeTokens5m": 5151,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.06780150000000001,
+            "speed": "fast",
+            "inputPriceMultiplier": 2
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.004282500000000001,
+            "speed": "standard",
+            "inputPriceMultiplier": 1
+          }
+        ],
+        "optimized": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 8565,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.05353125,
+            "speed": "standard",
+            "inputPriceMultiplier": 1
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 3414,
+            "writeTokens5m": 5151,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.06780150000000001,
+            "speed": "fast",
+            "inputPriceMultiplier": 2
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.004282500000000001,
+            "speed": "standard",
+            "inputPriceMultiplier": 1
+          }
+        ],
+        "totalActualCostUsd": 0.12561525,
+        "totalOptimizedCostUsd": 0.12561525
+      },
+      "prefixMatches": [
+        {
+          "from": 0,
+          "to": 1,
+          "matchedSegments": 3
+        },
+        {
+          "from": 1,
+          "to": 2,
+          "matchedSegments": 3
+        }
+      ],
+      "speedFindings": [
+        {
+          "kind": "anthropic_speed",
+          "severity": "info",
+          "requestIndex": 1,
+          "title": "Fast input pricing",
+          "detail": "Fast mode uses 2x the resolved model's standard input rate, including cache reads and both write TTLs. The simulation uses current Claude API rates, not measured charges; response speed, beta headers, platform support and historical rates are not verified. The optimized scenario keeps this speed.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed_cache_scope",
+          "severity": "info",
+          "requestIndex": 1,
+          "title": "Processing speed changed",
+          "detail": "Processing speed differs between requests 1 and 2. System and message cache entries from that request cannot supply a hit, even when the visible prefix matches. Separately marked tool entries remain eligible. An earlier request at the current speed can still supply a hit. Both simulation scenarios preserve the speed setting.",
+          "segmentIds": [
+            "system[0]",
+            "messages[0].content[0]"
+          ]
+        },
+        {
+          "kind": "anthropic_speed_cache_scope",
+          "severity": "info",
+          "requestIndex": 2,
+          "title": "Processing speed changed",
+          "detail": "Processing speed differs between requests 2 and 3. System and message cache entries from that request cannot supply a hit, even when the visible prefix matches. Separately marked tool entries remain eligible. An earlier request at the current speed can still supply a hit. Both simulation scenarios preserve the speed setting.",
+          "segmentIds": [
+            "system[0]",
+            "messages[0].content[0]"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "opus-48",
+      "inputSha256": "ddc2109269e11f36c8d568f4790ccb0ecf2470354d29b1fab7ec55e0e1800674",
+      "expectedReads": [
+        0,
+        3414,
+        8565
+      ],
+      "cacheSimulation": {
+        "provider": "anthropic",
+        "model": "claude-opus-4-8",
+        "actual": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 8565,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.05353125,
+            "speed": "standard",
+            "inputPriceMultiplier": 1
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 3414,
+            "writeTokens5m": 5151,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.06780150000000001,
+            "speed": "fast",
+            "inputPriceMultiplier": 2
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.004282500000000001,
+            "speed": "standard",
+            "inputPriceMultiplier": 1
+          }
+        ],
+        "optimized": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 8565,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.05353125,
+            "speed": "standard",
+            "inputPriceMultiplier": 1
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 3414,
+            "writeTokens5m": 5151,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.06780150000000001,
+            "speed": "fast",
+            "inputPriceMultiplier": 2
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.004282500000000001,
+            "speed": "standard",
+            "inputPriceMultiplier": 1
+          }
+        ],
+        "totalActualCostUsd": 0.12561525,
+        "totalOptimizedCostUsd": 0.12561525
+      },
+      "prefixMatches": [
+        {
+          "from": 0,
+          "to": 1,
+          "matchedSegments": 3
+        },
+        {
+          "from": 1,
+          "to": 2,
+          "matchedSegments": 3
+        }
+      ],
+      "speedFindings": [
+        {
+          "kind": "anthropic_speed",
+          "severity": "info",
+          "requestIndex": 1,
+          "title": "Fast input pricing",
+          "detail": "Fast mode uses 2x the resolved model's standard input rate, including cache reads and both write TTLs. The simulation uses current Claude API rates, not measured charges; response speed, beta headers, platform support and historical rates are not verified. The optimized scenario keeps this speed.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed_cache_scope",
+          "severity": "info",
+          "requestIndex": 1,
+          "title": "Processing speed changed",
+          "detail": "Processing speed differs between requests 1 and 2. System and message cache entries from that request cannot supply a hit, even when the visible prefix matches. Separately marked tool entries remain eligible. An earlier request at the current speed can still supply a hit. Both simulation scenarios preserve the speed setting.",
+          "segmentIds": [
+            "system[0]",
+            "messages[0].content[0]"
+          ]
+        },
+        {
+          "kind": "anthropic_speed_cache_scope",
+          "severity": "info",
+          "requestIndex": 2,
+          "title": "Processing speed changed",
+          "detail": "Processing speed differs between requests 2 and 3. System and message cache entries from that request cannot supply a hit, even when the visible prefix matches. Separately marked tool entries remain eligible. An earlier request at the current speed can still supply a hit. Both simulation scenarios preserve the speed setting.",
+          "segmentIds": [
+            "system[0]",
+            "messages[0].content[0]"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "opus-46-fallback",
+      "inputSha256": "334621461f9e941a958e9c652498c839f1e2a0c3318156abf129db2b1553e626",
+      "expectedReads": [
+        0,
+        8565,
+        8565
+      ],
+      "cacheSimulation": {
+        "provider": "anthropic",
+        "model": "claude-opus-4-6",
+        "actual": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 8565,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.05353125,
+            "speed": "standard",
+            "inputPriceMultiplier": 1
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.004282500000000001,
+            "speed": "standard",
+            "inputPriceMultiplier": 1
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.004282500000000001,
+            "speed": "standard",
+            "inputPriceMultiplier": 1
+          }
+        ],
+        "optimized": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 8565,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.05353125,
+            "speed": "standard",
+            "inputPriceMultiplier": 1
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.004282500000000001,
+            "speed": "standard",
+            "inputPriceMultiplier": 1
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.004282500000000001,
+            "speed": "standard",
+            "inputPriceMultiplier": 1
+          }
+        ],
+        "totalActualCostUsd": 0.062096250000000006,
+        "totalOptimizedCostUsd": 0.062096250000000006
+      },
+      "prefixMatches": [
+        {
+          "from": 0,
+          "to": 1,
+          "matchedSegments": 3
+        },
+        {
+          "from": 1,
+          "to": 2,
+          "matchedSegments": 3
+        }
+      ],
+      "speedFindings": [
+        {
+          "kind": "anthropic_speed",
+          "severity": "info",
+          "requestIndex": 1,
+          "title": "Fast request modeled at standard speed",
+          "detail": "The current Claude API documents that Opus 4.6 accepts speed: fast but runs at standard speed. This simulation uses the standard cache scope and price. Request data cannot verify historical behavior or the response's actual speed.",
+          "segmentIds": []
+        }
+      ]
+    },
+    {
+      "name": "unpriced-fast",
+      "inputSha256": "b8028319650df6736475d927a18e588d9d4c45a0c65e99bc78378fd6193ce222",
+      "expectedReads": [
+        0,
+        3414,
+        8565
+      ],
+      "cacheSimulation": {
+        "provider": "anthropic",
+        "model": "claude-sonnet-4-5",
+        "actual": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 8565,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.03211875,
+            "speed": "standard",
+            "inputPriceMultiplier": 1
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 3414,
+            "writeTokens5m": 5151,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "speed": "fast"
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0025695,
+            "speed": "standard",
+            "inputPriceMultiplier": 1
+          }
+        ],
+        "optimized": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 8565,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.03211875,
+            "speed": "standard",
+            "inputPriceMultiplier": 1
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 3414,
+            "writeTokens5m": 5151,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "speed": "fast"
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0025695,
+            "speed": "standard",
+            "inputPriceMultiplier": 1
+          }
+        ]
+      },
+      "prefixMatches": [
+        {
+          "from": 0,
+          "to": 1,
+          "matchedSegments": 3
+        },
+        {
+          "from": 1,
+          "to": 2,
+          "matchedSegments": 3
+        }
+      ],
+      "speedFindings": [
+        {
+          "kind": "anthropic_speed",
+          "severity": "warning",
+          "requestIndex": 1,
+          "title": "Speed pricing unavailable",
+          "detail": "This speed/model combination has no supported fast input price in the current table. Input costs and sequence totals are unavailable; token partitions remain hypothetical. Current Claude API fast mode supports Opus 5.5, Opus 5 and Opus 4.8, with a standard-speed fallback on Opus 4.6. An unsupported request may be rejected by the provider.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed_cache_scope",
+          "severity": "info",
+          "requestIndex": 1,
+          "title": "Processing speed changed",
+          "detail": "Processing speed differs between requests 1 and 2. System and message cache entries from that request cannot supply a hit, even when the visible prefix matches. Separately marked tool entries remain eligible. An earlier request at the current speed can still supply a hit. Both simulation scenarios preserve the speed setting.",
+          "segmentIds": [
+            "system[0]",
+            "messages[0].content[0]"
+          ]
+        },
+        {
+          "kind": "anthropic_speed_cache_scope",
+          "severity": "info",
+          "requestIndex": 2,
+          "title": "Processing speed changed",
+          "detail": "Processing speed differs between requests 2 and 3. System and message cache entries from that request cannot supply a hit, even when the visible prefix matches. Separately marked tool entries remain eligible. An earlier request at the current speed can still supply a hit. Both simulation scenarios preserve the speed setting.",
+          "segmentIds": [
+            "system[0]",
+            "messages[0].content[0]"
+          ]
+        }
+      ]
+    }
+  ]
+}

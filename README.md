@@ -405,6 +405,12 @@ implement each provider's documented rules:
   but cannot reuse the other setting's message entries, even when an image
   is added after a breakpoint. Both simulation scenarios enforce this.
   [Reproduction, defaults and boundaries](studies/cache-settings/README.md).
+  Standard/fast speed changes isolate system and message entries while
+  preserving separately marked tools. Supported fast requests use current
+  premium input rates, including reads and writes; reports show the modeled
+  speed. Unrecognized rates leave costs unavailable. The current Opus 4.6
+  standard-speed fallback is explicit.
+  [Fast-mode replay and pricing boundaries](studies/fast-mode/README.md).
 - **OpenAI**: listed GPT-6 models use explicit/implicit breakpoint simulation.
   No markers in explicit mode means zero reads and writes. Lookup uses eligible
   incoming boundaries, and cache writes have their own 30-minute column and
@@ -509,7 +515,7 @@ fixed hue order, so a color always means the same category.
   simulation in this source checkout; [accounting rules](docs/cache-accounting.md).
 - **Anthropic request-setting coverage is partial.** Message caches account for
   tool choice (including parallel-tool policy) and explicit image presence.
-  Model-specific thinking/effort changes, speed changes, feature toggles that
+  Speed changes isolate system/message entries. Model-specific thinking/effort changes, feature toggles that
   alter provider-injected prompts, and images rendered from opaque documents
   are not fully modeled. Compare captured usage before treating predictions
   across those changes as evidence of a hit.

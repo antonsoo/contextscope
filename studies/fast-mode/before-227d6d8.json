@@ -1,0 +1,592 @@
+{
+  "synthetic": true,
+  "note": "Controlled request bodies and current documented Claude API rules; estimated tokens and prices, no provider requests or observed charges.",
+  "implementationSha256": {
+    "cache-anthropic.js": "2e8fdacb110622450e2f4496d2b9eddeaca64050fc1d1003aa89ed7e9a6f1ec7",
+    "findings.js": "2245d60adef9df07579e46555fc27429c4072d2cdb487311867774674ac8fb7b"
+  },
+  "cases": [
+    {
+      "name": "marked-tools",
+      "inputSha256": "9c0a29e218a2c52f5542bc5f8702b875e8323fdfd442255134553df11006b917",
+      "expectedReads": [
+        0,
+        3414,
+        8565,
+        8565
+      ],
+      "cacheSimulation": {
+        "provider": "anthropic",
+        "model": "claude-opus-5-5",
+        "actual": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 8565,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.042825
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0017130000000000001
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0017130000000000001
+          },
+          {
+            "requestIndex": 3,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0017130000000000001
+          }
+        ],
+        "optimized": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 8565,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.042825
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0017130000000000001
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0017130000000000001
+          },
+          {
+            "requestIndex": 3,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0017130000000000001
+          }
+        ],
+        "totalActualCostUsd": 0.047964,
+        "totalOptimizedCostUsd": 0.047964
+      },
+      "prefixMatches": [
+        {
+          "from": 0,
+          "to": 1,
+          "matchedSegments": 3
+        },
+        {
+          "from": 1,
+          "to": 2,
+          "matchedSegments": 3
+        },
+        {
+          "from": 2,
+          "to": 3,
+          "matchedSegments": 3
+        }
+      ],
+      "speedFindings": []
+    },
+    {
+      "name": "system-marker-only",
+      "inputSha256": "a3ca94e2923e4acb1977863b94ea109e54d6d793c1db31db41e04c1b0a9024db",
+      "expectedReads": [
+        0,
+        0,
+        8565
+      ],
+      "cacheSimulation": {
+        "provider": "anthropic",
+        "model": "claude-opus-5-5",
+        "actual": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 8565,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.042825
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0017130000000000001
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0017130000000000001
+          }
+        ],
+        "optimized": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 8565,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.042825
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0017130000000000001
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0017130000000000001
+          }
+        ],
+        "totalActualCostUsd": 0.046251,
+        "totalOptimizedCostUsd": 0.046251
+      },
+      "prefixMatches": [
+        {
+          "from": 0,
+          "to": 1,
+          "matchedSegments": 3
+        },
+        {
+          "from": 1,
+          "to": 2,
+          "matchedSegments": 3
+        }
+      ],
+      "speedFindings": []
+    },
+    {
+      "name": "mixed-ttls",
+      "inputSha256": "f964d255c2ae571b643e276fa15106e92ca25bf00c473a3f47e3428a7ebac13f",
+      "expectedReads": [
+        0,
+        3414,
+        8565
+      ],
+      "cacheSimulation": {
+        "provider": "anthropic",
+        "model": "claude-opus-5-5",
+        "actual": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 2121,
+            "writeTokens1h": 6444,
+            "uncachedTokens": 0,
+            "costUsd": 0.062157000000000004
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0017130000000000001
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0017130000000000001
+          }
+        ],
+        "optimized": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 2121,
+            "writeTokens1h": 6444,
+            "uncachedTokens": 0,
+            "costUsd": 0.062157000000000004
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0017130000000000001
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0017130000000000001
+          }
+        ],
+        "totalActualCostUsd": 0.06558300000000002,
+        "totalOptimizedCostUsd": 0.06558300000000002
+      },
+      "prefixMatches": [
+        {
+          "from": 0,
+          "to": 1,
+          "matchedSegments": 3
+        },
+        {
+          "from": 1,
+          "to": 2,
+          "matchedSegments": 3
+        }
+      ],
+      "speedFindings": []
+    },
+    {
+      "name": "opus-5",
+      "inputSha256": "4cbfc3d1387cf59ec15e604e668bb7ad2810bb3a5aab6d0d36d0efc84ad9b7f5",
+      "expectedReads": [
+        0,
+        3414,
+        8565
+      ],
+      "cacheSimulation": {
+        "provider": "anthropic",
+        "model": "claude-opus-5",
+        "actual": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 8565,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.05353125
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.004282500000000001
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.004282500000000001
+          }
+        ],
+        "optimized": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 8565,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.05353125
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.004282500000000001
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.004282500000000001
+          }
+        ],
+        "totalActualCostUsd": 0.062096250000000006,
+        "totalOptimizedCostUsd": 0.062096250000000006
+      },
+      "prefixMatches": [
+        {
+          "from": 0,
+          "to": 1,
+          "matchedSegments": 3
+        },
+        {
+          "from": 1,
+          "to": 2,
+          "matchedSegments": 3
+        }
+      ],
+      "speedFindings": []
+    },
+    {
+      "name": "opus-48",
+      "inputSha256": "ddc2109269e11f36c8d568f4790ccb0ecf2470354d29b1fab7ec55e0e1800674",
+      "expectedReads": [
+        0,
+        3414,
+        8565
+      ],
+      "cacheSimulation": {
+        "provider": "anthropic",
+        "model": "claude-opus-4-8",
+        "actual": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 8565,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.05353125
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.004282500000000001
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.004282500000000001
+          }
+        ],
+        "optimized": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 8565,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.05353125
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.004282500000000001
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.004282500000000001
+          }
+        ],
+        "totalActualCostUsd": 0.062096250000000006,
+        "totalOptimizedCostUsd": 0.062096250000000006
+      },
+      "prefixMatches": [
+        {
+          "from": 0,
+          "to": 1,
+          "matchedSegments": 3
+        },
+        {
+          "from": 1,
+          "to": 2,
+          "matchedSegments": 3
+        }
+      ],
+      "speedFindings": []
+    },
+    {
+      "name": "opus-46-fallback",
+      "inputSha256": "334621461f9e941a958e9c652498c839f1e2a0c3318156abf129db2b1553e626",
+      "expectedReads": [
+        0,
+        8565,
+        8565
+      ],
+      "cacheSimulation": {
+        "provider": "anthropic",
+        "model": "claude-opus-4-6",
+        "actual": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 8565,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.05353125
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.004282500000000001
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.004282500000000001
+          }
+        ],
+        "optimized": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 8565,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.05353125
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.004282500000000001
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.004282500000000001
+          }
+        ],
+        "totalActualCostUsd": 0.062096250000000006,
+        "totalOptimizedCostUsd": 0.062096250000000006
+      },
+      "prefixMatches": [
+        {
+          "from": 0,
+          "to": 1,
+          "matchedSegments": 3
+        },
+        {
+          "from": 1,
+          "to": 2,
+          "matchedSegments": 3
+        }
+      ],
+      "speedFindings": []
+    },
+    {
+      "name": "unpriced-fast",
+      "inputSha256": "b8028319650df6736475d927a18e588d9d4c45a0c65e99bc78378fd6193ce222",
+      "expectedReads": [
+        0,
+        3414,
+        8565
+      ],
+      "cacheSimulation": {
+        "provider": "anthropic",
+        "model": "claude-sonnet-4-5",
+        "actual": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 8565,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.03211875
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0025695
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0025695
+          }
+        ],
+        "optimized": [
+          {
+            "requestIndex": 0,
+            "readTokens": 0,
+            "writeTokens5m": 8565,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.03211875
+          },
+          {
+            "requestIndex": 1,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0025695
+          },
+          {
+            "requestIndex": 2,
+            "readTokens": 8565,
+            "writeTokens5m": 0,
+            "writeTokens1h": 0,
+            "uncachedTokens": 0,
+            "costUsd": 0.0025695
+          }
+        ],
+        "totalActualCostUsd": 0.037257750000000006,
+        "totalOptimizedCostUsd": 0.037257750000000006
+      },
+      "prefixMatches": [
+        {
+          "from": 0,
+          "to": 1,
+          "matchedSegments": 3
+        },
+        {
+          "from": 1,
+          "to": 2,
+          "matchedSegments": 3
+        }
+      ],
+      "speedFindings": []
+    }
+  ]
+}

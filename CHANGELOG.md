@@ -26,6 +26,12 @@ of public SWE-bench agent runs; see `studies/real-trajectories/`.
 
 ### Fixed
 
+- Isolate Anthropic system/message cache entries across standard/fast speed
+  changes while preserving explicitly marked tools. Apply documented fast
+  input premiums to reads, writes and uncached input; retain the current
+  Opus 4.6 standard fallback and leave unsupported rates unavailable. Show
+  modeled speed in CLI/browser/offline reports and export its multiplier.
+  Retain controlled before/after replays in `studies/fast-mode/`.
 - Isolate Anthropic message cache entries by `tool_choice` and explicit image
   presence while retaining eligible tools/system entries. The optimized
   scenario preserves those settings. Explain changes in CLI, browser and

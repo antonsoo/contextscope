@@ -7,6 +7,7 @@ import { sameModel } from "./model-id.js";
 import { comparisonKeys } from "./prefix.js";
 import { anthropicPositions } from "./anthropic-breakpoints.js";
 import { anthropicMessageCacheScope, isAnthropicMessageSegment } from "./anthropic-cache-scope.js";
+import { anthropicSpeed, anthropicSpeedKey, anthropicSpeedMultiplier } from "./anthropic-speed.js";
 
 function push(list: Finding[], f: Finding): void {
   list.push(f);
@@ -82,6 +83,20 @@ export function computeFindings(
   requests.forEach((request, i) => {
     const modelInfo = provider === "anthropic" ? findAnthropicModel(resolveModel(provider, model, [request.model]).id) : undefined;
     const cacheStep = cacheSimulation.actual[i];
+    if (provider === "anthropic" && isRecord(request.raw) && request.raw.speed !== undefined && request.raw.speed !== "standard") {
+      const speed = anthropicSpeed(request);
+      const multiplier = anthropicSpeedMultiplier(request, resolveModel(provider, model, [request.model]));
+      push(findings, {
+        kind: "anthropic_speed", severity: multiplier === undefined ? "warning" : "info", requestIndex: i,
+        title: multiplier === undefined ? "Speed pricing unavailable" : speed === "standard" ? "Fast request modeled at standard speed" : "Fast input pricing",
+        detail: multiplier === undefined
+          ? "This speed/model combination has no supported fast input price in the current table. Input costs and sequence totals are unavailable; token partitions remain hypothetical. Current Claude API fast mode supports Opus 5.5, Opus 5 and Opus 4.8, with a standard-speed fallback on Opus 4.6. An unsupported request may be rejected by the provider."
+          : speed === "standard"
+            ? "The current Claude API documents that Opus 4.6 accepts speed: fast but runs at standard speed. This simulation uses the standard cache scope and price. Request data cannot verify historical behavior or the response's actual speed."
+            : "Fast mode uses 2x the resolved model's standard input rate, including cache reads and both write TTLs. The simulation uses current Claude API rates, not measured charges; response speed, beta headers, platform support and historical rates are not verified. The optimized scenario keeps this speed.",
+        segmentIds: [],
+      });
+    }
     const modernOpenAi = provider === "openai" && (cacheStep?.cacheMode === "implicit" || cacheStep?.cacheMode === "explicit");
     if (modernOpenAi) {
       const scope = openAiCacheScope(request);
@@ -145,6 +160,14 @@ export function computeFindings(
     // A new conversation shares its predecessor's setup (tools and system prompt) and whatever
     // opening messages they have in common, not the rest of that other conversation.
     const prev = startsConversation ? setupOf(requests[from]!, match.matchedSegments) : requests[from]!;
+    if (provider === "anthropic" && anthropicSpeedKey(prev) !== anthropicSpeedKey(request)) {
+      push(findings, {
+        kind: "anthropic_speed_cache_scope", severity: "info", requestIndex: i,
+        title: "Processing speed changed",
+        detail: `Processing speed differs between requests ${from + 1} and ${i + 1}. System and message cache entries from that request cannot supply a hit, even when the visible prefix matches. Separately marked tool entries remain eligible. An earlier request at the current speed can still supply a hit. Both simulation scenarios preserve the speed setting.`,
+        segmentIds: request.segments.filter((s) => s.cacheControl && !s.path.startsWith("tools[")).map((s) => s.id),
+      });
+    }
     if (provider === "anthropic" && request.segments.some((s) => s.cacheControl && isAnthropicMessageSegment(s))) {
       const before = anthropicMessageCacheScope(prev);
       const after = anthropicMessageCacheScope(request);
@@ -152,7 +175,7 @@ export function computeFindings(
       if (changed.length > 0) push(findings, {
         kind: "anthropic_message_cache_scope", severity: "info", requestIndex: i,
         title: "Message cache settings changed",
-        detail: `${changed.join(" and ")} differs between requests ${from + 1} and ${i + 1}. Message cache entries from that request cannot be reused, even when the visible prefix matches or an image was added after its breakpoint. Stable tools and top-level system entries remain eligible. An earlier request with the current settings can still supply a hit; inspect the read/write counts. The optimized scenario preserves these settings.`,
+        detail: `${changed.join(" and ")} differs between requests ${from + 1} and ${i + 1}. Message cache entries from that request cannot be reused, even when the visible prefix matches or an image was added after its breakpoint. These changes alone preserve stable tools and top-level system entries. An earlier request with the current settings can still supply a hit; inspect the read/write counts. The optimized scenario preserves these settings.`,
         segmentIds: request.segments.filter((s) => s.cacheControl && isAnthropicMessageSegment(s)).map((s) => s.id),
       });
     }

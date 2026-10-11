@@ -134,6 +134,8 @@ export type FindingSeverity = "info" | "warning" | "error";
 
 export type FindingKind =
   | "anthropic_message_cache_scope"
+  | "anthropic_speed"
+  | "anthropic_speed_cache_scope"
   | "openai_cache_disabled"
   | "openai_cache_boundary"
   | "volatile_prefix"
@@ -207,6 +209,11 @@ export interface CacheSimStep {
   uncachedTokens: number;
   /** Estimated cost in USD for the input side of this request, using the resolved pricing. */
   costUsd: number | undefined;
+  /** Anthropic only; emitted for every row when any request specifies speed.
+   * Current modeled speed, including Opus 4.6 fallback; not observed response usage. */
+  speed?: "standard" | "fast" | "unrecognized";
+  /** Multiplier on the model's standard input rates; undefined when not priced. */
+  inputPriceMultiplier?: number | undefined;
 }
 
 /** Where the model used for pricing came from. */

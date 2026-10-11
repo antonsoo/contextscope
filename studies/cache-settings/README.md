@@ -137,8 +137,9 @@ inside the prefix still changes content identity; changing an image after a
 marker preserves the existing image-present scope. Opaque PDFs, URLs and
 provider-rendered documents cannot reveal their image content to this parser.
 
-This is partial request-setting coverage. Thinking/effort rules vary by model;
-speed and other feature flags can affect provider-injected content. Those
+This is partial request-setting coverage. [Speed changes and current premium
+input rates](../fast-mode/README.md) are now modeled separately. Thinking/effort
+rules vary by model; other feature flags can affect provider-injected content. Those
 changes are not fully modeled. Tokenization, TTL expiry, eviction, private
 rendering, server routing and request-schema validation retain their existing
 limits. The examples use a model that accepts forced tool choice; the parser

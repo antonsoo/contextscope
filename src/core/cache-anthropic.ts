@@ -4,6 +4,8 @@ import { ModelScoped } from "./model-id.js";
 import { anthropicPositions, lastCacheableSegment } from "./anthropic-breakpoints.js";
 import { ContextScopeParseError } from "./parse-error.js";
 import { anthropicMessageCacheKey, anthropicMessageCacheScope, isAnthropicMessageSegment } from "./anthropic-cache-scope.js";
+import { anthropicSpeed, anthropicSpeedKey, anthropicSpeedMultiplier } from "./anthropic-speed.js";
+import { isRecord } from "./json-utils.js";
 
 /**
  * Simulates Anthropic prompt caching across a sequence of requests.
@@ -11,10 +13,10 @@ import { anthropicMessageCacheKey, anthropicMessageCacheScope, isAnthropicMessag
  * Model (documented simplification - see README "How it works"): each
  * request's `cache_control` breakpoints (up to 4, taken in ascending
  * position order) are checked against the cache entries earlier requests
- * wrote. The cache is keyed by content, model and message settings, not by conversation: a breakpoint
+ * wrote. The cache is keyed by content, model, speed and message settings, not by conversation: a breakpoint
  * reads from an entry when (a) the entry's prefix is byte-identical to this
  * request's up to that point, whichever earlier request wrote it, (b) that
- * request ran on the same model with compatible message-cache settings, and (c) the entry lies within the
+ * request ran on the same model with compatible settings at that cache level, and (c) the entry lies within the
  * 20-position lookback window including this breakpoint (consecutive tool_use /
  * tool_result runs collapse to one position each, per Anthropic's documented
  * rule). Anything past the last valid breakpoint's coverage, or below the
@@ -50,11 +52,14 @@ export function simulateAnthropicCacheSequence(
   model: string | undefined,
   forceOptimizedBreakpoint: boolean,
 ): CacheSimStep[] {
-  const models = requests.map((request) => findAnthropicModel(resolveModel("anthropic", model, [request.model]).id));
+  const resolvedModels = requests.map((request) => resolveModel("anthropic", model, [request.model]));
+  const models = resolvedModels.map((resolved) => findAnthropicModel(resolved.id));
+  const showSpeed = requests.some((request) => isRecord(request.raw) && request.raw.speed !== undefined);
   const steps: CacheSimStep[] = [];
-  // Setup entries survive tool_choice and image-presence changes. Message entries
-  // also need that request-wide scope, even if the image comes after the marker.
-  const setupWritten = new ModelScoped();
+  // Speed changes preserve explicit tool entries but invalidate system and messages.
+  // Tool choice / image presence further partition only the message cache.
+  const toolsWritten = new ModelScoped();
+  const systemsWritten = new Map<string, ModelScoped>();
   const messagesWritten = new Map<string, ModelScoped>();
 
   requests.forEach((request, i) => {
@@ -92,10 +97,14 @@ export function simulateAnthropicCacheSequence(
 
     const positions = anthropicPositions(segments);
     // Entries of another model are never visible: a cached prefix is that model's own state.
-    const scope = anthropicMessageCacheKey(anthropicMessageCacheScope(request));
+    const speed = anthropicSpeedKey(request);
+    const scope = JSON.stringify([speed, anthropicMessageCacheKey(anthropicMessageCacheScope(request))]);
+    let systemWritten = systemsWritten.get(speed);
+    if (!systemWritten) systemsWritten.set(speed, systemWritten = new ModelScoped());
     let messageWritten = messagesWritten.get(scope);
     if (!messageWritten) messagesWritten.set(scope, messageWritten = new ModelScoped());
-    const setupCached = setupWritten.visibleTo(request.model);
+    const toolCached = toolsWritten.visibleTo(request.model);
+    const systemCached = systemWritten.visibleTo(request.model);
     const messageCached = messageWritten.visibleTo(request.model);
 
     let readTokens = 0;
@@ -105,7 +114,8 @@ export function simulateAnthropicCacheSequence(
       let readFromThis = 0;
       // The breakpoint itself is position one: distance 20 is already out of range.
       for (let at = bp.segmentIndex; at >= 0 && positions[bp.segmentIndex]! - positions[at]! < ANTHROPIC_LOOKBACK_POSITIONS; at--) {
-        const cached = isAnthropicMessageSegment(segments[at]!) ? messageCached : setupCached;
+        const segment = segments[at]!;
+        const cached = isAnthropicMessageSegment(segment) ? messageCached : segment.path.startsWith("tools[") ? toolCached : systemCached;
         if (cached.some((entries) => entries.has(path[at]!))) {
           readFromThis = cumulative[at]!;
           break;
@@ -125,12 +135,21 @@ export function simulateAnthropicCacheSequence(
     steps.push({ requestIndex: request.index, readTokens, writeTokens5m: write5m, writeTokens1h: write1h, uncachedTokens, costUsd: undefined });
 
     for (const bp of breakpoints) {
-      const mine = (isAnthropicMessageSegment(segments[bp.segmentIndex]!) ? messageWritten : setupWritten).of(request.model);
+      const segment = segments[bp.segmentIndex]!;
+      const mine = (isAnthropicMessageSegment(segment) ? messageWritten : segment.path.startsWith("tools[") ? toolsWritten : systemWritten).of(request.model);
       mine.add(path[bp.segmentIndex]!);
     }
   });
 
-  return steps.map((step, i) => ({ ...step, costUsd: anthropicStepCostUsd(step, models[i]!) }));
+  return steps.map((step, i) => {
+    const speed = anthropicSpeed(requests[i]!);
+    const multiplier = anthropicSpeedMultiplier(requests[i]!, resolvedModels[i]!);
+    return {
+      ...step,
+      ...(showSpeed ? { speed, inputPriceMultiplier: multiplier } : {}),
+      costUsd: multiplier === undefined ? undefined : anthropicStepCostUsd(step, models[i]!) * multiplier,
+    };
+  });
 }
 
 function anthropicStepCostUsd(step: CacheSimStep, modelInfo: ReturnType<typeof findAnthropicModel>): number {

@@ -44,6 +44,7 @@ export function renderTerminalReport(result: AnalysisResult, options: TerminalRe
   const n = parse.requests.length;
 
   const mixedModels = modelGroups(result).length > 1;
+  const showSpeed = cacheSimulation.actual.some((step) => step.speed !== undefined);
   const openai = cacheSimulation.provider === "openai";
   const modelNote = model.source === "option" ? "set with --model" : "per-request metadata";
   const conversationNote = result.conversations.count > 1 ? ` in ${result.conversations.count} conversations` : "";
@@ -77,10 +78,10 @@ export function renderTerminalReport(result: AnalysisResult, options: TerminalRe
   if (prefixMatches.length > 0) lines.push(...prefixSection(result, verbose), "");
 
   lines.push(bold(`Cache simulation (${cacheSimulation.provider}, ${visible(modelSummary(result))})`));
-  lines.push(dim(`  ${"request".padEnd(10)} ${"read".padStart(8)}  ${openai ? "write(30m)" : `${"write(5m)".padStart(8)}  ${"write(1h)".padStart(8)}`}  ${"uncached".padStart(9)}  ${"cost".padStart(9)}${openai ? "  mode" : ""}${mixedModels ? "  model" : ""}`));
+  lines.push(dim(`  ${"request".padEnd(10)} ${"read".padStart(8)}  ${openai ? "write(30m)" : `${"write(5m)".padStart(8)}  ${"write(1h)".padStart(8)}`}  ${"uncached".padStart(9)}  ${"cost".padStart(9)}${openai ? "  mode" : ""}${showSpeed ? "  modeled speed" : ""}${mixedModels ? "  model" : ""}`));
   const rows = cacheSimulation.actual.map(
     (step, i) =>
-      `  req ${String(i + 1).padEnd(6)} ${fmtTokens(step.readTokens).padStart(8)}  ${openai ? fmtTokens(step.writeTokens30m ?? 0).padStart(10) : `${fmtTokens(step.writeTokens5m).padStart(8)}  ${fmtTokens(step.writeTokens1h).padStart(8)}`}  ${fmtTokens(step.uncachedTokens).padStart(9)}  ${fmtUsd(step.costUsd).padStart(9)}${openai ? `  ${(step.cacheMode ?? "legacy").padEnd(8)}` : ""}${mixedModels ? `  ${visible(modelLabel(reports[i]!.model))}` : ""}`,
+      `  req ${String(i + 1).padEnd(6)} ${fmtTokens(step.readTokens).padStart(8)}  ${openai ? fmtTokens(step.writeTokens30m ?? 0).padStart(10) : `${fmtTokens(step.writeTokens5m).padStart(8)}  ${fmtTokens(step.writeTokens1h).padStart(8)}`}  ${fmtTokens(step.uncachedTokens).padStart(9)}  ${fmtUsd(step.costUsd).padStart(9)}${openai ? `  ${(step.cacheMode ?? "legacy").padEnd(8)}` : ""}${showSpeed ? `  ${step.speed ?? "standard"}` : ""}${mixedModels ? `  ${visible(modelLabel(reports[i]!.model))}` : ""}`,
   );
   if (verbose || rows.length <= CACHE_TABLE_FULL_ROWS) {
     lines.push(...rows);

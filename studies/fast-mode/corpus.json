@@ -1,0 +1,99 @@
+{
+  "baseline": "227d6d8",
+  "note": "Regression replay of previously reconstructed, SHA-256 checked public request bodies. No reconstruction or provider calls repeated. No speed settings in this corpus; unchanged predictions do not validate fast-mode behavior.",
+  "reconstructionManifestSha256": "da378619eb0633debd8ac970c5b321c625e091e54096cf1aa46c4a45dd1d22d2",
+  "fullReceiptSha256": "fe086094d90a53f944db08058084e45f3cdd58547fdc4b2ad620feb3336de625",
+  "totals": {
+    "trajectories": 240,
+    "requests": 10555,
+    "changedActualSteps": 0,
+    "changedOptimizedSteps": 0,
+    "beforeExcessSteps": 0,
+    "afterExcessSteps": 0,
+    "beforeHitAgreement": 10431,
+    "afterHitAgreement": 10431,
+    "reportedReadTokens": 205535739,
+    "beforeReadTokens": 195982596,
+    "afterReadTokens": 195982596
+  },
+  "groups": {
+    "20250929_mini-v1.13.3_sonnet-4-5-20250929": {
+      "trajectories": 40,
+      "requests": 2108,
+      "changedActualSteps": 0,
+      "changedOptimizedSteps": 0,
+      "beforeExcessSteps": 0,
+      "afterExcessSteps": 0,
+      "beforeHitAgreement": 2107,
+      "afterHitAgreement": 2107,
+      "reportedReadTokens": 38994008,
+      "beforeReadTokens": 39288949,
+      "afterReadTokens": 39288949
+    },
+    "20251124_mini-v1.16.0_claude-opus-4-5-20251101": {
+      "trajectories": 40,
+      "requests": 1592,
+      "changedActualSteps": 0,
+      "changedOptimizedSteps": 0,
+      "beforeExcessSteps": 0,
+      "afterExcessSteps": 0,
+      "beforeHitAgreement": 1576,
+      "afterHitAgreement": 1576,
+      "reportedReadTokens": 26298820,
+      "beforeReadTokens": 26712794,
+      "afterReadTokens": 26712794
+    },
+    "20260217_mini-v2.0.0_claude-4-5-haiku-high": {
+      "trajectories": 40,
+      "requests": 2710,
+      "changedActualSteps": 0,
+      "changedOptimizedSteps": 0,
+      "beforeExcessSteps": 0,
+      "afterExcessSteps": 0,
+      "beforeHitAgreement": 2660,
+      "afterHitAgreement": 2660,
+      "reportedReadTokens": 65108615,
+      "beforeReadTokens": 60944281,
+      "afterReadTokens": 60944281
+    },
+    "20260217_mini-v2.0.0_claude-4-5-opus-high": {
+      "trajectories": 40,
+      "requests": 1344,
+      "changedActualSteps": 0,
+      "changedOptimizedSteps": 0,
+      "beforeExcessSteps": 0,
+      "afterExcessSteps": 0,
+      "beforeHitAgreement": 1321,
+      "afterHitAgreement": 1321,
+      "reportedReadTokens": 28967897,
+      "beforeReadTokens": 27089171,
+      "afterReadTokens": 27089171
+    },
+    "20260217_mini-v2.0.0_claude-4-5-sonnet-high": {
+      "trajectories": 40,
+      "requests": 1926,
+      "changedActualSteps": 0,
+      "changedOptimizedSteps": 0,
+      "beforeExcessSteps": 0,
+      "afterExcessSteps": 0,
+      "beforeHitAgreement": 1925,
+      "afterHitAgreement": 1925,
+      "reportedReadTokens": 37556399,
+      "beforeReadTokens": 34440696,
+      "afterReadTokens": 34440696
+    },
+    "20260217_mini-v2.0.0_claude-4-6-opus": {
+      "trajectories": 40,
+      "requests": 875,
+      "changedActualSteps": 0,
+      "changedOptimizedSteps": 0,
+      "beforeExcessSteps": 0,
+      "afterExcessSteps": 0,
+      "beforeHitAgreement": 842,
+      "afterHitAgreement": 842,
+      "reportedReadTokens": 8610000,
+      "beforeReadTokens": 7506705,
+      "afterReadTokens": 7506705
+    }
+  }
+}

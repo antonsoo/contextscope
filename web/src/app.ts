@@ -731,6 +731,7 @@ function cachePanel(result: AnalysisResult): string {
   const sim = result.cacheSimulation;
   const openai = sim.provider === "openai";
   const mixedModels = modelGroups(result).length > 1;
+  const showSpeed = sim.actual.some((step) => step.speed !== undefined);
   const savings = sim.totalActualCostUsd !== undefined && sim.totalOptimizedCostUsd !== undefined ? sim.totalActualCostUsd - sim.totalOptimizedCostUsd : undefined;
   return `
     <section class="panel">
@@ -738,12 +739,12 @@ function cachePanel(result: AnalysisResult): string {
       ${result.usageComparison.capturedRequests ? "" : '<p class="muted">No paired response usage. These cache reads and costs are simulated.</p>'}
       <div class="table-scroll" tabindex="0" role="group" aria-label="Table, scrolls sideways">
         <table class="cache">
-          <thead><tr><th>request</th>${openai ? "<th>mode</th>" : ""}${mixedModels ? '<th class="cache-model">model</th>' : ""}<th>read</th>${openai ? "<th>write 30m</th>" : "<th>write 5m</th><th>write 1h</th>"}<th>uncached</th><th>cost</th></tr></thead>
+          <thead><tr><th>request</th>${showSpeed ? "<th>modeled speed</th>" : ""}${openai ? "<th>mode</th>" : ""}${mixedModels ? '<th class="cache-model">model</th>' : ""}<th>read</th>${openai ? "<th>write 30m</th>" : "<th>write 5m</th><th>write 1h</th>"}<th>uncached</th><th>cost</th></tr></thead>
           <tbody>
             ${sim.actual
               .map(
                 (s, i) =>
-                  `<tr><td>req ${i + 1}</td>${openai ? `<td>${esc(s.cacheMode ?? "legacy")}</td>` : ""}${mixedModels ? `<td class="cache-model">${esc(modelLabel(result.reports[i]!.model))}</td>` : ""}<td>${fmtInt(s.readTokens)}</td>${openai ? `<td>${fmtInt(s.writeTokens30m ?? 0)}</td>` : `<td>${fmtInt(s.writeTokens5m)}</td><td>${fmtInt(s.writeTokens1h)}</td>`}<td>${fmtInt(s.uncachedTokens)}</td><td>${fmtUsd(s.costUsd)}</td></tr>`,
+                  `<tr><td>req ${i + 1}</td>${showSpeed ? `<td>${esc(s.speed ?? "standard")}</td>` : ""}${openai ? `<td>${esc(s.cacheMode ?? "legacy")}</td>` : ""}${mixedModels ? `<td class="cache-model">${esc(modelLabel(result.reports[i]!.model))}</td>` : ""}<td>${fmtInt(s.readTokens)}</td>${openai ? `<td>${fmtInt(s.writeTokens30m ?? 0)}</td>` : `<td>${fmtInt(s.writeTokens5m)}</td><td>${fmtInt(s.writeTokens1h)}</td>`}<td>${fmtInt(s.uncachedTokens)}</td><td>${fmtUsd(s.costUsd)}</td></tr>`,
               )
               .join("")}
           </tbody>
