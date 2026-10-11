@@ -60,13 +60,13 @@ gpt-5.1 and gpt-5.2.
   `cached_tokens` exactly; 34% got none where it predicted a read. gpt-5.2 cached 56 to 57% of
   the predicted tokens, gpt-5.1 88%.
 
-**Reported usage is now inspectable in the source checkout.** Pair a request with
+**Reported usage is inspectable in the source checkout and live demo.** Pair a request with
 `response.usage` and the report compares captured counts with the simulation,
 preserving missing counters and the exact source fields. Verification covered
 17,425 responses from 520 hash-checked trajectories; full analysis of 2,205 OpenAI
 Chat requests exposed 712 simulated hits with a recorded zero. See the
 [reported-usage workflow](docs/reported-usage.md) and [verification study](studies/reported-usage/README.md).
-This feature is local source work, not yet in the npm package or hosted demo.
+The live demo includes this feature; npm's 0.3.3 package does not.
 
 ## Contents
 
@@ -90,7 +90,10 @@ npx @antonsoloviev/contextscope analyze your-requests.jsonl
 
 That runs the published package
 ([`@antonsoloviev/contextscope`](https://www.npmjs.com/package/@antonsoloviev/contextscope)
-on npm; the command it installs is `contextscope`). To try the bundled
+on npm; the command it installs is `contextscope`). Version 0.3.3 predates the
+reported-usage review and current cache-accounting corrections, including
+[processing-speed scopes and prices](studies/fast-mode/README.md). Those changes
+are available in the live demo and source. To use the current CLI and bundled
 examples, clone the repository:
 
 ```sh
@@ -121,18 +124,18 @@ drop a request file, paste one, or click a built-in example.
   approximation on GPT-5.1/5.2. It reports simulated cost against an optimized
   scenario, and projects the difference to 1,000 sessions shaped like yours (a
   straight multiplication, not a separate estimate).
-- **Reported usage review (source checkout).** Paired response counters stay
+- **Reported usage review (source and live demo).** Paired response counters stay
   separate from estimates. Compare input and cache-read totals over identical
   covered requests, filter simulated hits with reported zero, and inspect each
   original counter path. Missing or ambiguous totals remain unavailable.
   Browser JSON and offline HTML exports retain all requests, including those
   hidden by a filter or page. [Capture formats and limitations](docs/reported-usage.md).
-- **Cache accounting corrections (source checkout).** Several Anthropic
+- **Cache accounting corrections (source and live demo).** Several Anthropic
   breakpoints now share one disjoint read/write calculation; lookup includes
   exactly 20 positions, and the optimized scenario respects four marker slots.
   Invalid cache configurations fail with the request and field location.
   Browser JSON and offline HTML downloads also work without response usage.
-  [Reproduction and limits](docs/cache-accounting.md). These changes are unreleased.
+  [Reproduction and limits](docs/cache-accounting.md). These changes are not in npm 0.3.3.
 - **Logs of more than one conversation.** A proxy capture of an agent holds
   its main loop and, between the turns, side requests on another model; a
   gateway's log holds every user's conversation, interleaved. Each request is
