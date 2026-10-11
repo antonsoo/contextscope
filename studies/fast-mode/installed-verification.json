@@ -1,0 +1,53 @@
+{
+  "synthetic": true,
+  "sourceCommit": "5588d38",
+  "runtime": "v20.0.0",
+  "packageSha256": "9c029bc95aa29b898c5a1685e5ea8fa321782ca21abddc0e5665b55785b3771d",
+  "installedReplaySha256": "c4280fdd0553cb26c180a70e0e7919c64754d7071fc51a975efc2eeda0a53f67",
+  "cliJsonSha256": "c649771ad4ed67162a05c14ad25c14adb4d85f441d91ef8ccb014b8655c4b3b6",
+  "cliHtmlSha256": "647a057fb44649561dfe6b0dc197f996031d465b0dfd8534a17a82c94ece825b",
+  "sourceReplayEqual": true,
+  "cliSimulationAndFindingsEqual": true,
+  "browsers": [
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "networkRequests": 0,
+      "pageErrors": 0,
+      "correctRows": true,
+      "findingVisible": true,
+      "horizontalOverflow": false,
+      "scripts": 0
+    },
+    {
+      "engine": "chromium",
+      "width": 375,
+      "networkRequests": 0,
+      "pageErrors": 0,
+      "correctRows": true,
+      "findingVisible": true,
+      "horizontalOverflow": false,
+      "scripts": 0
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "networkRequests": 0,
+      "pageErrors": 0,
+      "correctRows": true,
+      "findingVisible": true,
+      "horizontalOverflow": false,
+      "scripts": 0
+    },
+    {
+      "engine": "firefox",
+      "width": 375,
+      "networkRequests": 0,
+      "pageErrors": 0,
+      "correctRows": true,
+      "findingVisible": true,
+      "horizontalOverflow": false,
+      "scripts": 0
+    }
+  ]
+}

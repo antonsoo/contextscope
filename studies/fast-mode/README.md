@@ -106,3 +106,29 @@ node studies/cache-accounting/compare-corpus.mjs "$CACHE_STUDY_SCRATCH" "$BASELI
 
 This run reused the reconstructed bodies; it did not repeat reconstruction,
 download a new corpus or request new provider responses.
+
+## Installed artifact
+
+A fresh git archive of `5588d38` passed `npm ci`, lint, both TypeScript checks,
+all **458 tests**, the core/web builds, a byte-identical seven-case replay, and
+all **86 browser workflows** on Node 26.7.0. Browser checks use Chromium and
+Firefox, production assets, desktop/mobile layouts, keyboard interaction,
+axe, offline exports and request restrictions. The screenshots above were
+opened and inspected.
+
+The npm tarball built from local `5588d38` was installed outside the checkout.
+On **Node 20.0.0**, the minimum supported release, its seven-case library replay
+is byte-identical to `after.json`. The installed CLI reads the compressed example
+and exports the same simulation and speed findings. Four offline HTML workflows
+passed in Chromium/Firefox at 1440/375 pixels, with no page errors, HTTP requests,
+script elements or page overflow. The
+[`installed receipt`](installed-verification.json) records package/output hashes
+and the actual runtime.
+
+After running the installed replay and CLI, verify their files with:
+
+```sh
+node studies/fast-mode/check-installed.mjs "$REPLAY_JSON" "$CLI_JSON" "$CLI_HTML" "$PACKAGE_TGZ" /tmp/fast-mode-installed.json
+```
+
+This verifies the locally built tarball, not npm's released 0.3.3 package.
