@@ -35,6 +35,39 @@ describe("JSON evidence integrity", () => {
     expect(() => parseInput(`{"messages":[{"content":[{"type":"tool_use","input":{"x":${number}}}]}]}`)).toThrow(/range|underflow|zero/i);
   });
 
+  it.each([
+    "9007199254740993", "-9007199254740993", "18446744073709551615",
+    "36028797018963968", "90071992547409930e-1", "0.10000000000000001",
+    "1.0000000000000001", "4.9e-324", "1.7976931348623158e308",
+  ])("refuses numeric content changed by parsing and prompt serialization: %s", (number) => {
+    expect(() => parseInput(`{"messages":[{"content":[{"type":"tool_use","input":{"x":${number}}}]}]}`))
+      .toThrow(/number at character \d+ would be rounded/);
+  });
+
+  it.each([
+    "0", "-0.000e999999999999999999999", "1.000", "10000e-4", "0.10",
+    "1E+3", "1e-7", "1.20e+21", "9007199254740992", "18446744073709552000",
+    "5e-324", "1e-323", "1.7976931348623157e308",
+  ])("accepts unchanged decimal values and equivalent spellings: %s", (number) => {
+    expect(readJson(number)).toBe(JSON.parse(number));
+  });
+
+  it("refuses rounded values inside string envelopes and JSONL rather than skipping them", () => {
+    const body = '{"model":"claude-sonnet-5","tools":[{"input_schema":{"enum":[18446744073709551615]}}],"messages":[]}';
+    expect(() => parseInput(JSON.stringify({ request_body: body }))).toThrow(/would be rounded/);
+    expect(() => parseInput(`${JSON.stringify(anthropic)}\n${body}`)).toThrow(/Line 2:.*would be rounded/);
+    expect(() => readJson('{"string":"18446744073709551615"}')).not.toThrow();
+  });
+
+  it("does not report identical prompts or cache reuse for distinct uint64 schema identifiers", () => {
+    const body = (id: string): string => `{"model":"claude-sonnet-5","tools":[{"name":"lookup","input_schema":{"type":"integer","enum":[${id}]}}],"system":[{"type":"text","text":${JSON.stringify("Stable cached instructions. ".repeat(400))},"cache_control":{"type":"ephemeral"}}],"messages":[{"role":"user","content":"Look up the allowed record."}]}`;
+    expect(() => analyze(`${body("18446744073709551614")}\n${body("18446744073709551615")}`))
+      .toThrow(/would be rounded/);
+    const supported = analyze(`${body("9007199254740992")}\n${body("9007199254740994")}`);
+    expect(supported.parse.requests[0]!.segments[0]!.text).not.toBe(supported.parse.requests[1]!.segments[0]!.text);
+    expect(supported.cacheSimulation.actual[1]!.readTokens).toBe(0);
+  });
+
   it("refuses excessive nesting with a parse error before recursive analysis", () => {
     const input = `{"model":"gpt-6-sol","input":[{"type":"reasoning","data":${"[".repeat(5000)}0${"]".repeat(5000)}}]}`;
     expect(() => analyze(input)).toThrow(ContextScopeParseError);
