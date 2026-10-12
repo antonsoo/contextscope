@@ -1,0 +1,329 @@
+{
+  "expectation": "after",
+  "assets": [
+    {
+      "path": "index.html",
+      "bytes": 2623,
+      "sha256": "3f3395a607dbd3728b6d1398ee9c6a4b3411ea2e1627a7f95962594845b095f1"
+    },
+    {
+      "path": "assets/index-DvNCOwdt.css",
+      "bytes": 31581,
+      "sha256": "e974157a11fff29ff41e055041b3ccfa6e6f40a4fa20468161ad5131142bf033"
+    },
+    {
+      "path": "assets/index-BzIi4nhK.js",
+      "bytes": 64819,
+      "sha256": "60e052d3cb2cd75e9eb96a433a75f4cd24935b1c7f58f92b33ee378e4ccee767"
+    },
+    {
+      "path": "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2",
+      "bytes": 14708,
+      "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+    },
+    {
+      "path": "assets/ibm-plex-sans-latin-IvpUvPa2.woff2",
+      "bytes": 45712,
+      "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+    },
+    {
+      "path": "assets/ibm-plex-mono-700-latin-7sUh57Bg.woff2",
+      "bytes": 14908,
+      "sha256": "4f84d86cfd060f4ded334358ff8a4c81d4db2ed5addd568359d693f44a87765a"
+    },
+    {
+      "path": "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2",
+      "bytes": 14888,
+      "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+    },
+    {
+      "path": "assets/presentation-nMMDZNmr.js",
+      "bytes": 3792,
+      "sha256": "18601be00036254ec82dc56b941b57cebc31c93b499aa7858a8fac3a05f8f039"
+    },
+    {
+      "path": "assets/analysis-worker-NvKmOo1z.js",
+      "bytes": 2098113,
+      "sha256": "3a377771ad4043ff9cfb893ac8fa37d011759d6164a2852a4f992c304a2b81f9"
+    },
+    {
+      "path": "assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2",
+      "bytes": 15620,
+      "sha256": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83"
+    }
+  ],
+  "results": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "width": 1440,
+      "name": "hidden-warning",
+      "issueTile": "1 warn",
+      "displayed": [
+        {
+          "title": "Speed pricing unavailable",
+          "severity": "warning",
+          "requestIndices": [
+            1
+          ]
+        },
+        {
+          "title": "Fast input pricing",
+          "severity": "info",
+          "requestIndices": [
+            0
+          ]
+        }
+      ],
+      "offlineJsonMatchesCli": true,
+      "offlineHtmlMatchesCliExceptGeneratedAt": true,
+      "errors": [],
+      "externalRequests": [],
+      "axeViolations": 0,
+      "screenshot": null
+    },
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "width": 1440,
+      "name": "mixed-speed",
+      "issueTile": "2 warn",
+      "displayed": [
+        {
+          "title": "Speed pricing unavailable",
+          "severity": "warning",
+          "requestIndices": [
+            2,
+            5
+          ]
+        },
+        {
+          "title": "Fast input pricing",
+          "severity": "info",
+          "requestIndices": [
+            0,
+            3
+          ]
+        },
+        {
+          "title": "Fast request modeled at standard speed",
+          "severity": "info",
+          "requestIndices": [
+            1,
+            4
+          ]
+        }
+      ],
+      "offlineJsonMatchesCli": true,
+      "offlineHtmlMatchesCliExceptGeneratedAt": true,
+      "errors": [],
+      "externalRequests": [],
+      "axeViolations": 0,
+      "screenshot": "after-chromium-1440.png"
+    },
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "width": 375,
+      "name": "hidden-warning",
+      "issueTile": "1 warn",
+      "displayed": [
+        {
+          "title": "Speed pricing unavailable",
+          "severity": "warning",
+          "requestIndices": [
+            1
+          ]
+        },
+        {
+          "title": "Fast input pricing",
+          "severity": "info",
+          "requestIndices": [
+            0
+          ]
+        }
+      ],
+      "offlineJsonMatchesCli": true,
+      "offlineHtmlMatchesCliExceptGeneratedAt": true,
+      "errors": [],
+      "externalRequests": [],
+      "axeViolations": 0,
+      "screenshot": null
+    },
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "width": 375,
+      "name": "mixed-speed",
+      "issueTile": "2 warn",
+      "displayed": [
+        {
+          "title": "Speed pricing unavailable",
+          "severity": "warning",
+          "requestIndices": [
+            2,
+            5
+          ]
+        },
+        {
+          "title": "Fast input pricing",
+          "severity": "info",
+          "requestIndices": [
+            0,
+            3
+          ]
+        },
+        {
+          "title": "Fast request modeled at standard speed",
+          "severity": "info",
+          "requestIndices": [
+            1,
+            4
+          ]
+        }
+      ],
+      "offlineJsonMatchesCli": true,
+      "offlineHtmlMatchesCliExceptGeneratedAt": true,
+      "errors": [],
+      "externalRequests": [],
+      "axeViolations": 0,
+      "screenshot": "after-chromium-375.png"
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "width": 1440,
+      "name": "hidden-warning",
+      "issueTile": "1 warn",
+      "displayed": [
+        {
+          "title": "Speed pricing unavailable",
+          "severity": "warning",
+          "requestIndices": [
+            1
+          ]
+        },
+        {
+          "title": "Fast input pricing",
+          "severity": "info",
+          "requestIndices": [
+            0
+          ]
+        }
+      ],
+      "offlineJsonMatchesCli": true,
+      "offlineHtmlMatchesCliExceptGeneratedAt": true,
+      "errors": [],
+      "externalRequests": [],
+      "axeViolations": 0,
+      "screenshot": null
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "width": 1440,
+      "name": "mixed-speed",
+      "issueTile": "2 warn",
+      "displayed": [
+        {
+          "title": "Speed pricing unavailable",
+          "severity": "warning",
+          "requestIndices": [
+            2,
+            5
+          ]
+        },
+        {
+          "title": "Fast input pricing",
+          "severity": "info",
+          "requestIndices": [
+            0,
+            3
+          ]
+        },
+        {
+          "title": "Fast request modeled at standard speed",
+          "severity": "info",
+          "requestIndices": [
+            1,
+            4
+          ]
+        }
+      ],
+      "offlineJsonMatchesCli": true,
+      "offlineHtmlMatchesCliExceptGeneratedAt": true,
+      "errors": [],
+      "externalRequests": [],
+      "axeViolations": 0,
+      "screenshot": "after-firefox-1440.png"
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "width": 375,
+      "name": "hidden-warning",
+      "issueTile": "1 warn",
+      "displayed": [
+        {
+          "title": "Speed pricing unavailable",
+          "severity": "warning",
+          "requestIndices": [
+            1
+          ]
+        },
+        {
+          "title": "Fast input pricing",
+          "severity": "info",
+          "requestIndices": [
+            0
+          ]
+        }
+      ],
+      "offlineJsonMatchesCli": true,
+      "offlineHtmlMatchesCliExceptGeneratedAt": true,
+      "errors": [],
+      "externalRequests": [],
+      "axeViolations": 0,
+      "screenshot": null
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "width": 375,
+      "name": "mixed-speed",
+      "issueTile": "2 warn",
+      "displayed": [
+        {
+          "title": "Speed pricing unavailable",
+          "severity": "warning",
+          "requestIndices": [
+            2,
+            5
+          ]
+        },
+        {
+          "title": "Fast input pricing",
+          "severity": "info",
+          "requestIndices": [
+            0,
+            3
+          ]
+        },
+        {
+          "title": "Fast request modeled at standard speed",
+          "severity": "info",
+          "requestIndices": [
+            1,
+            4
+          ]
+        }
+      ],
+      "offlineJsonMatchesCli": true,
+      "offlineHtmlMatchesCliExceptGeneratedAt": true,
+      "errors": [],
+      "externalRequests": [],
+      "axeViolations": 0,
+      "screenshot": "after-firefox-375.png"
+    }
+  ]
+}

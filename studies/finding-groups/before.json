@@ -1,0 +1,813 @@
+{
+  "expectation": "before",
+  "provenance": "synthetic; no provider calls",
+  "node": "v26.7.0",
+  "records": [
+    {
+      "name": "hidden-warning",
+      "indexes": [
+        0,
+        2
+      ],
+      "inputSha256": "c53131c1d99c0d7887c482644d90e58ea5fbf41c2d1e04b057040d865aa6b92d",
+      "jsonSha256": "c3d6ed6b93c65c2e09373b2e57b8562be2bbcf9cc30b87e31ea758df26a08415",
+      "htmlSha256": "fdf52a88039f0d4e447d72447e1f0546be25804b0cdf2db67d79ccd9e898119a",
+      "htmlWithoutGeneratedAtSha256": "8f9a1b682b48464ef4a24d2fd4d44cdc833c1b83582551067bec79a16c85d850",
+      "terminalSha256": "d43f458db2d0839c7f5af5defb101833b77099d02a199b350fc78df8d4db8101",
+      "exitCode": 2,
+      "expected": [
+        {
+          "title": "Fast input pricing",
+          "severity": "info",
+          "requestIndices": [
+            0
+          ]
+        },
+        {
+          "title": "Speed pricing unavailable",
+          "severity": "warning",
+          "requestIndices": [
+            1
+          ]
+        }
+      ],
+      "displayed": [
+        {
+          "title": "Fast input pricing",
+          "severity": "info",
+          "requestIndices": [
+            0,
+            1
+          ]
+        }
+      ],
+      "rawSpeedFindings": [
+        {
+          "kind": "anthropic_speed",
+          "severity": "info",
+          "requestIndex": 0,
+          "title": "Fast input pricing",
+          "detail": "Fast mode uses 2x the resolved model's standard input rate, including cache reads and both write TTLs. The simulation uses current Claude API rates, not measured charges; response speed, beta headers, platform support and historical rates are not verified. The optimized scenario keeps this speed.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed",
+          "severity": "warning",
+          "requestIndex": 1,
+          "title": "Speed pricing unavailable",
+          "detail": "This speed/model combination has no supported fast input price in the current table. Input costs and sequence totals are unavailable; token partitions remain hypothetical. Current Claude API fast mode supports Opus 5.5, Opus 5 and Opus 4.8, with a standard-speed fallback on Opus 4.6. An unsupported request may be rejected by the provider.",
+          "segmentIds": []
+        }
+      ]
+    },
+    {
+      "name": "mixed-speed",
+      "indexes": [
+        0,
+        1,
+        2,
+        0,
+        1,
+        2
+      ],
+      "inputSha256": "66440969f0c63712f13c2fb8bea1a4e696bdfe35431a82f27dfb355c8616da4f",
+      "jsonSha256": "5e3cdf3b04df58b784454e248eea89dc2c2edf6f52e565e9782aaa9c97f33fcb",
+      "htmlSha256": "916430b009f66e931a14d04c7c8520b79328c3f4761205a1bf816ebd2ca475af",
+      "htmlWithoutGeneratedAtSha256": "d8f4dfa779a0de59cc97e758a7f6a88017280fb4a3cb4cb21de32038277bfc69",
+      "terminalSha256": "ef5b3662f103709095926c9a5db3b44141ca118f259cde9a259738093af3316e",
+      "exitCode": 2,
+      "expected": [
+        {
+          "title": "Fast input pricing",
+          "severity": "info",
+          "requestIndices": [
+            0,
+            3
+          ]
+        },
+        {
+          "title": "Fast request modeled at standard speed",
+          "severity": "info",
+          "requestIndices": [
+            1,
+            4
+          ]
+        },
+        {
+          "title": "Speed pricing unavailable",
+          "severity": "warning",
+          "requestIndices": [
+            2,
+            5
+          ]
+        }
+      ],
+      "displayed": [
+        {
+          "title": "Fast input pricing",
+          "severity": "info",
+          "requestIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "rawSpeedFindings": [
+        {
+          "kind": "anthropic_speed",
+          "severity": "info",
+          "requestIndex": 0,
+          "title": "Fast input pricing",
+          "detail": "Fast mode uses 2x the resolved model's standard input rate, including cache reads and both write TTLs. The simulation uses current Claude API rates, not measured charges; response speed, beta headers, platform support and historical rates are not verified. The optimized scenario keeps this speed.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed",
+          "severity": "info",
+          "requestIndex": 1,
+          "title": "Fast request modeled at standard speed",
+          "detail": "The current Claude API documents that Opus 4.6 accepts speed: fast but runs at standard speed. This simulation uses the standard cache scope and price. Request data cannot verify historical behavior or the response's actual speed.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed",
+          "severity": "warning",
+          "requestIndex": 2,
+          "title": "Speed pricing unavailable",
+          "detail": "This speed/model combination has no supported fast input price in the current table. Input costs and sequence totals are unavailable; token partitions remain hypothetical. Current Claude API fast mode supports Opus 5.5, Opus 5 and Opus 4.8, with a standard-speed fallback on Opus 4.6. An unsupported request may be rejected by the provider.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed",
+          "severity": "info",
+          "requestIndex": 3,
+          "title": "Fast input pricing",
+          "detail": "Fast mode uses 2x the resolved model's standard input rate, including cache reads and both write TTLs. The simulation uses current Claude API rates, not measured charges; response speed, beta headers, platform support and historical rates are not verified. The optimized scenario keeps this speed.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed",
+          "severity": "info",
+          "requestIndex": 4,
+          "title": "Fast request modeled at standard speed",
+          "detail": "The current Claude API documents that Opus 4.6 accepts speed: fast but runs at standard speed. This simulation uses the standard cache scope and price. Request data cannot verify historical behavior or the response's actual speed.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed",
+          "severity": "warning",
+          "requestIndex": 5,
+          "title": "Speed pricing unavailable",
+          "detail": "This speed/model combination has no supported fast input price in the current table. Input costs and sequence totals are unavailable; token partitions remain hypothetical. Current Claude API fast mode supports Opus 5.5, Opus 5 and Opus 4.8, with a standard-speed fallback on Opus 4.6. An unsupported request may be rejected by the provider.",
+          "segmentIds": []
+        }
+      ]
+    },
+    {
+      "name": "order-012",
+      "indexes": [
+        0,
+        1,
+        2,
+        0,
+        1,
+        2
+      ],
+      "inputSha256": "66440969f0c63712f13c2fb8bea1a4e696bdfe35431a82f27dfb355c8616da4f",
+      "jsonSha256": "5e3cdf3b04df58b784454e248eea89dc2c2edf6f52e565e9782aaa9c97f33fcb",
+      "htmlSha256": "1f4cb89e4fbedc59cb0f01b3f5939348ef3abebc7ddd45a3fbe0719c597df4b0",
+      "htmlWithoutGeneratedAtSha256": "d8f4dfa779a0de59cc97e758a7f6a88017280fb4a3cb4cb21de32038277bfc69",
+      "terminalSha256": "46e61f7b7aa70cdeb24ab96d1541de6a515cd632ba7a10eaee75b862ba231afe",
+      "exitCode": 2,
+      "expected": [
+        {
+          "title": "Fast input pricing",
+          "severity": "info",
+          "requestIndices": [
+            0,
+            3
+          ]
+        },
+        {
+          "title": "Fast request modeled at standard speed",
+          "severity": "info",
+          "requestIndices": [
+            1,
+            4
+          ]
+        },
+        {
+          "title": "Speed pricing unavailable",
+          "severity": "warning",
+          "requestIndices": [
+            2,
+            5
+          ]
+        }
+      ],
+      "displayed": [
+        {
+          "title": "Fast input pricing",
+          "severity": "info",
+          "requestIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "rawSpeedFindings": [
+        {
+          "kind": "anthropic_speed",
+          "severity": "info",
+          "requestIndex": 0,
+          "title": "Fast input pricing",
+          "detail": "Fast mode uses 2x the resolved model's standard input rate, including cache reads and both write TTLs. The simulation uses current Claude API rates, not measured charges; response speed, beta headers, platform support and historical rates are not verified. The optimized scenario keeps this speed.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed",
+          "severity": "info",
+          "requestIndex": 1,
+          "title": "Fast request modeled at standard speed",
+          "detail": "The current Claude API documents that Opus 4.6 accepts speed: fast but runs at standard speed. This simulation uses the standard cache scope and price. Request data cannot verify historical behavior or the response's actual speed.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed",
+          "severity": "warning",
+          "requestIndex": 2,
+          "title": "Speed pricing unavailable",
+          "detail": "This speed/model combination has no supported fast input price in the current table. Input costs and sequence totals are unavailable; token partitions remain hypothetical. Current Claude API fast mode supports Opus 5.5, Opus 5 and Opus 4.8, with a standard-speed fallback on Opus 4.6. An unsupported request may be rejected by the provider.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed",
+          "severity": "info",
+          "requestIndex": 3,
+          "title": "Fast input pricing",
+          "detail": "Fast mode uses 2x the resolved model's standard input rate, including cache reads and both write TTLs. The simulation uses current Claude API rates, not measured charges; response speed, beta headers, platform support and historical rates are not verified. The optimized scenario keeps this speed.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed",
+          "severity": "info",
+          "requestIndex": 4,
+          "title": "Fast request modeled at standard speed",
+          "detail": "The current Claude API documents that Opus 4.6 accepts speed: fast but runs at standard speed. This simulation uses the standard cache scope and price. Request data cannot verify historical behavior or the response's actual speed.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed",
+          "severity": "warning",
+          "requestIndex": 5,
+          "title": "Speed pricing unavailable",
+          "detail": "This speed/model combination has no supported fast input price in the current table. Input costs and sequence totals are unavailable; token partitions remain hypothetical. Current Claude API fast mode supports Opus 5.5, Opus 5 and Opus 4.8, with a standard-speed fallback on Opus 4.6. An unsupported request may be rejected by the provider.",
+          "segmentIds": []
+        }
+      ]
+    },
+    {
+      "name": "order-021",
+      "indexes": [
+        0,
+        2,
+        1,
+        0,
+        2,
+        1
+      ],
+      "inputSha256": "ac097cd746444af3380f41f57b91830bc57ed190ffb017d505ea197157d84f67",
+      "jsonSha256": "3028711791b715c9826a81c87c2c23e7072fcc57e34b97aeb70fe334a13ae608",
+      "htmlSha256": "721e7420a742bace0865510419f816db9802d8b8ef471c877640ab71169d2819",
+      "htmlWithoutGeneratedAtSha256": "25d4d791ddf146bfb2218bcc025bd86ccf0ad51e9639af38d27ef95e71e277b6",
+      "terminalSha256": "7c1337863f1ccf9ae44ca6f6b6e396798314505da10c040a93696491f7791fd1",
+      "exitCode": 2,
+      "expected": [
+        {
+          "title": "Fast input pricing",
+          "severity": "info",
+          "requestIndices": [
+            0,
+            3
+          ]
+        },
+        {
+          "title": "Speed pricing unavailable",
+          "severity": "warning",
+          "requestIndices": [
+            1,
+            4
+          ]
+        },
+        {
+          "title": "Fast request modeled at standard speed",
+          "severity": "info",
+          "requestIndices": [
+            2,
+            5
+          ]
+        }
+      ],
+      "displayed": [
+        {
+          "title": "Fast input pricing",
+          "severity": "info",
+          "requestIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "rawSpeedFindings": [
+        {
+          "kind": "anthropic_speed",
+          "severity": "info",
+          "requestIndex": 0,
+          "title": "Fast input pricing",
+          "detail": "Fast mode uses 2x the resolved model's standard input rate, including cache reads and both write TTLs. The simulation uses current Claude API rates, not measured charges; response speed, beta headers, platform support and historical rates are not verified. The optimized scenario keeps this speed.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed",
+          "severity": "warning",
+          "requestIndex": 1,
+          "title": "Speed pricing unavailable",
+          "detail": "This speed/model combination has no supported fast input price in the current table. Input costs and sequence totals are unavailable; token partitions remain hypothetical. Current Claude API fast mode supports Opus 5.5, Opus 5 and Opus 4.8, with a standard-speed fallback on Opus 4.6. An unsupported request may be rejected by the provider.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed",
+          "severity": "info",
+          "requestIndex": 2,
+          "title": "Fast request modeled at standard speed",
+          "detail": "The current Claude API documents that Opus 4.6 accepts speed: fast but runs at standard speed. This simulation uses the standard cache scope and price. Request data cannot verify historical behavior or the response's actual speed.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed",
+          "severity": "info",
+          "requestIndex": 3,
+          "title": "Fast input pricing",
+          "detail": "Fast mode uses 2x the resolved model's standard input rate, including cache reads and both write TTLs. The simulation uses current Claude API rates, not measured charges; response speed, beta headers, platform support and historical rates are not verified. The optimized scenario keeps this speed.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed",
+          "severity": "warning",
+          "requestIndex": 4,
+          "title": "Speed pricing unavailable",
+          "detail": "This speed/model combination has no supported fast input price in the current table. Input costs and sequence totals are unavailable; token partitions remain hypothetical. Current Claude API fast mode supports Opus 5.5, Opus 5 and Opus 4.8, with a standard-speed fallback on Opus 4.6. An unsupported request may be rejected by the provider.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed",
+          "severity": "info",
+          "requestIndex": 5,
+          "title": "Fast request modeled at standard speed",
+          "detail": "The current Claude API documents that Opus 4.6 accepts speed: fast but runs at standard speed. This simulation uses the standard cache scope and price. Request data cannot verify historical behavior or the response's actual speed.",
+          "segmentIds": []
+        }
+      ]
+    },
+    {
+      "name": "order-102",
+      "indexes": [
+        1,
+        0,
+        2,
+        1,
+        0,
+        2
+      ],
+      "inputSha256": "2916a9dd1f5943c78d866320b253a5eb8d7c26869d0a2b93a3924341b970caae",
+      "jsonSha256": "c4f10b85c15f5dd0917707367762e58f75eec5d9414d05872f32c6e94392c603",
+      "htmlSha256": "f9308a7d8ffb3120d16dcd6f338611a49df44401c96a8f36decd7b7ae53509ad",
+      "htmlWithoutGeneratedAtSha256": "ef7e83339454ad64fe6692c0db24402d1403ca1b4257711a5581e12cb60771d9",
+      "terminalSha256": "0d47700eb5b4bd5bfccc5265505e302bb7e181d269dcc12c9aa15af8812865ba",
+      "exitCode": 2,
+      "expected": [
+        {
+          "title": "Fast request modeled at standard speed",
+          "severity": "info",
+          "requestIndices": [
+            0,
+            3
+          ]
+        },
+        {
+          "title": "Fast input pricing",
+          "severity": "info",
+          "requestIndices": [
+            1,
+            4
+          ]
+        },
+        {
+          "title": "Speed pricing unavailable",
+          "severity": "warning",
+          "requestIndices": [
+            2,
+            5
+          ]
+        }
+      ],
+      "displayed": [
+        {
+          "title": "Fast request modeled at standard speed",
+          "severity": "info",
+          "requestIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "rawSpeedFindings": [
+        {
+          "kind": "anthropic_speed",
+          "severity": "info",
+          "requestIndex": 0,
+          "title": "Fast request modeled at standard speed",
+          "detail": "The current Claude API documents that Opus 4.6 accepts speed: fast but runs at standard speed. This simulation uses the standard cache scope and price. Request data cannot verify historical behavior or the response's actual speed.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed",
+          "severity": "info",
+          "requestIndex": 1,
+          "title": "Fast input pricing",
+          "detail": "Fast mode uses 2x the resolved model's standard input rate, including cache reads and both write TTLs. The simulation uses current Claude API rates, not measured charges; response speed, beta headers, platform support and historical rates are not verified. The optimized scenario keeps this speed.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed",
+          "severity": "warning",
+          "requestIndex": 2,
+          "title": "Speed pricing unavailable",
+          "detail": "This speed/model combination has no supported fast input price in the current table. Input costs and sequence totals are unavailable; token partitions remain hypothetical. Current Claude API fast mode supports Opus 5.5, Opus 5 and Opus 4.8, with a standard-speed fallback on Opus 4.6. An unsupported request may be rejected by the provider.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed",
+          "severity": "info",
+          "requestIndex": 3,
+          "title": "Fast request modeled at standard speed",
+          "detail": "The current Claude API documents that Opus 4.6 accepts speed: fast but runs at standard speed. This simulation uses the standard cache scope and price. Request data cannot verify historical behavior or the response's actual speed.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed",
+          "severity": "info",
+          "requestIndex": 4,
+          "title": "Fast input pricing",
+          "detail": "Fast mode uses 2x the resolved model's standard input rate, including cache reads and both write TTLs. The simulation uses current Claude API rates, not measured charges; response speed, beta headers, platform support and historical rates are not verified. The optimized scenario keeps this speed.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed",
+          "severity": "warning",
+          "requestIndex": 5,
+          "title": "Speed pricing unavailable",
+          "detail": "This speed/model combination has no supported fast input price in the current table. Input costs and sequence totals are unavailable; token partitions remain hypothetical. Current Claude API fast mode supports Opus 5.5, Opus 5 and Opus 4.8, with a standard-speed fallback on Opus 4.6. An unsupported request may be rejected by the provider.",
+          "segmentIds": []
+        }
+      ]
+    },
+    {
+      "name": "order-120",
+      "indexes": [
+        1,
+        2,
+        0,
+        1,
+        2,
+        0
+      ],
+      "inputSha256": "5710bcc2e68a19a87e9796543b09ed85745092a8c6571549a79710339bc3d04d",
+      "jsonSha256": "8390b3bd03cd3138282e016bb610255b7e28907ca8e9493434577182fdad10bd",
+      "htmlSha256": "caa7c928ec9d8562393730f11e5b9c277c7e87b3768f4f3d9f4b0b9515994118",
+      "htmlWithoutGeneratedAtSha256": "0ea15c2ae1e1f90f1d22beb4d3343d2f8d5e21ac7d14a5c7e6f960fd5d91ae8a",
+      "terminalSha256": "e05bd53c5060c155f7079d97c9a8dfcb0eee17322638ae6a6988bdac064bf744",
+      "exitCode": 2,
+      "expected": [
+        {
+          "title": "Fast request modeled at standard speed",
+          "severity": "info",
+          "requestIndices": [
+            0,
+            3
+          ]
+        },
+        {
+          "title": "Speed pricing unavailable",
+          "severity": "warning",
+          "requestIndices": [
+            1,
+            4
+          ]
+        },
+        {
+          "title": "Fast input pricing",
+          "severity": "info",
+          "requestIndices": [
+            2,
+            5
+          ]
+        }
+      ],
+      "displayed": [
+        {
+          "title": "Fast request modeled at standard speed",
+          "severity": "info",
+          "requestIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "rawSpeedFindings": [
+        {
+          "kind": "anthropic_speed",
+          "severity": "info",
+          "requestIndex": 0,
+          "title": "Fast request modeled at standard speed",
+          "detail": "The current Claude API documents that Opus 4.6 accepts speed: fast but runs at standard speed. This simulation uses the standard cache scope and price. Request data cannot verify historical behavior or the response's actual speed.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed",
+          "severity": "warning",
+          "requestIndex": 1,
+          "title": "Speed pricing unavailable",
+          "detail": "This speed/model combination has no supported fast input price in the current table. Input costs and sequence totals are unavailable; token partitions remain hypothetical. Current Claude API fast mode supports Opus 5.5, Opus 5 and Opus 4.8, with a standard-speed fallback on Opus 4.6. An unsupported request may be rejected by the provider.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed",
+          "severity": "info",
+          "requestIndex": 2,
+          "title": "Fast input pricing",
+          "detail": "Fast mode uses 2x the resolved model's standard input rate, including cache reads and both write TTLs. The simulation uses current Claude API rates, not measured charges; response speed, beta headers, platform support and historical rates are not verified. The optimized scenario keeps this speed.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed",
+          "severity": "info",
+          "requestIndex": 3,
+          "title": "Fast request modeled at standard speed",
+          "detail": "The current Claude API documents that Opus 4.6 accepts speed: fast but runs at standard speed. This simulation uses the standard cache scope and price. Request data cannot verify historical behavior or the response's actual speed.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed",
+          "severity": "warning",
+          "requestIndex": 4,
+          "title": "Speed pricing unavailable",
+          "detail": "This speed/model combination has no supported fast input price in the current table. Input costs and sequence totals are unavailable; token partitions remain hypothetical. Current Claude API fast mode supports Opus 5.5, Opus 5 and Opus 4.8, with a standard-speed fallback on Opus 4.6. An unsupported request may be rejected by the provider.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed",
+          "severity": "info",
+          "requestIndex": 5,
+          "title": "Fast input pricing",
+          "detail": "Fast mode uses 2x the resolved model's standard input rate, including cache reads and both write TTLs. The simulation uses current Claude API rates, not measured charges; response speed, beta headers, platform support and historical rates are not verified. The optimized scenario keeps this speed.",
+          "segmentIds": []
+        }
+      ]
+    },
+    {
+      "name": "order-201",
+      "indexes": [
+        2,
+        0,
+        1,
+        2,
+        0,
+        1
+      ],
+      "inputSha256": "679f921d3e191cc4287b562a691a2a90addc20f8ec2f11a6e2b82589a50402f9",
+      "jsonSha256": "8aa5bd07e52ff3926e1f02a859ef8fa1fae053298dc432e573281f3ca0881f3e",
+      "htmlSha256": "38f555b86ad3e6dd453ee190811e417825e50824b419e8c928b5dad36dc4408c",
+      "htmlWithoutGeneratedAtSha256": "4a92bf631f1e529ad46ca17beb801bccd9c7b2f3a3b83d47b30b5dac12856ee1",
+      "terminalSha256": "b3260f4d52701c357878f263e3e01998fd5820d0158c35e120ae77c3fcb3f015",
+      "exitCode": 2,
+      "expected": [
+        {
+          "title": "Speed pricing unavailable",
+          "severity": "warning",
+          "requestIndices": [
+            0,
+            3
+          ]
+        },
+        {
+          "title": "Fast input pricing",
+          "severity": "info",
+          "requestIndices": [
+            1,
+            4
+          ]
+        },
+        {
+          "title": "Fast request modeled at standard speed",
+          "severity": "info",
+          "requestIndices": [
+            2,
+            5
+          ]
+        }
+      ],
+      "displayed": [
+        {
+          "title": "Speed pricing unavailable",
+          "severity": "warning",
+          "requestIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "rawSpeedFindings": [
+        {
+          "kind": "anthropic_speed",
+          "severity": "warning",
+          "requestIndex": 0,
+          "title": "Speed pricing unavailable",
+          "detail": "This speed/model combination has no supported fast input price in the current table. Input costs and sequence totals are unavailable; token partitions remain hypothetical. Current Claude API fast mode supports Opus 5.5, Opus 5 and Opus 4.8, with a standard-speed fallback on Opus 4.6. An unsupported request may be rejected by the provider.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed",
+          "severity": "info",
+          "requestIndex": 1,
+          "title": "Fast input pricing",
+          "detail": "Fast mode uses 2x the resolved model's standard input rate, including cache reads and both write TTLs. The simulation uses current Claude API rates, not measured charges; response speed, beta headers, platform support and historical rates are not verified. The optimized scenario keeps this speed.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed",
+          "severity": "info",
+          "requestIndex": 2,
+          "title": "Fast request modeled at standard speed",
+          "detail": "The current Claude API documents that Opus 4.6 accepts speed: fast but runs at standard speed. This simulation uses the standard cache scope and price. Request data cannot verify historical behavior or the response's actual speed.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed",
+          "severity": "warning",
+          "requestIndex": 3,
+          "title": "Speed pricing unavailable",
+          "detail": "This speed/model combination has no supported fast input price in the current table. Input costs and sequence totals are unavailable; token partitions remain hypothetical. Current Claude API fast mode supports Opus 5.5, Opus 5 and Opus 4.8, with a standard-speed fallback on Opus 4.6. An unsupported request may be rejected by the provider.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed",
+          "severity": "info",
+          "requestIndex": 4,
+          "title": "Fast input pricing",
+          "detail": "Fast mode uses 2x the resolved model's standard input rate, including cache reads and both write TTLs. The simulation uses current Claude API rates, not measured charges; response speed, beta headers, platform support and historical rates are not verified. The optimized scenario keeps this speed.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed",
+          "severity": "info",
+          "requestIndex": 5,
+          "title": "Fast request modeled at standard speed",
+          "detail": "The current Claude API documents that Opus 4.6 accepts speed: fast but runs at standard speed. This simulation uses the standard cache scope and price. Request data cannot verify historical behavior or the response's actual speed.",
+          "segmentIds": []
+        }
+      ]
+    },
+    {
+      "name": "order-210",
+      "indexes": [
+        2,
+        1,
+        0,
+        2,
+        1,
+        0
+      ],
+      "inputSha256": "213974515e3f014046762a1b6506ca006c53e1f617bc67a04ebb1b153565e626",
+      "jsonSha256": "6fbb4251d30c36034e69c17e2558929f21ab4d7592721e45b860ddd2a040fecf",
+      "htmlSha256": "fb14610d122d6a4cc2c88a22ae07f8401572118bd5e44f0e50accd68e5f7265d",
+      "htmlWithoutGeneratedAtSha256": "16b02b1f51df51f8d7e1ae3df1a48250feef882e613ded7f9bf21ac6dfdb65b4",
+      "terminalSha256": "36711754fc015a1c45ed810ebc4f89032afbd1c8f21c0cf90a4ae1c399385e94",
+      "exitCode": 2,
+      "expected": [
+        {
+          "title": "Speed pricing unavailable",
+          "severity": "warning",
+          "requestIndices": [
+            0,
+            3
+          ]
+        },
+        {
+          "title": "Fast request modeled at standard speed",
+          "severity": "info",
+          "requestIndices": [
+            1,
+            4
+          ]
+        },
+        {
+          "title": "Fast input pricing",
+          "severity": "info",
+          "requestIndices": [
+            2,
+            5
+          ]
+        }
+      ],
+      "displayed": [
+        {
+          "title": "Speed pricing unavailable",
+          "severity": "warning",
+          "requestIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "rawSpeedFindings": [
+        {
+          "kind": "anthropic_speed",
+          "severity": "warning",
+          "requestIndex": 0,
+          "title": "Speed pricing unavailable",
+          "detail": "This speed/model combination has no supported fast input price in the current table. Input costs and sequence totals are unavailable; token partitions remain hypothetical. Current Claude API fast mode supports Opus 5.5, Opus 5 and Opus 4.8, with a standard-speed fallback on Opus 4.6. An unsupported request may be rejected by the provider.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed",
+          "severity": "info",
+          "requestIndex": 1,
+          "title": "Fast request modeled at standard speed",
+          "detail": "The current Claude API documents that Opus 4.6 accepts speed: fast but runs at standard speed. This simulation uses the standard cache scope and price. Request data cannot verify historical behavior or the response's actual speed.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed",
+          "severity": "info",
+          "requestIndex": 2,
+          "title": "Fast input pricing",
+          "detail": "Fast mode uses 2x the resolved model's standard input rate, including cache reads and both write TTLs. The simulation uses current Claude API rates, not measured charges; response speed, beta headers, platform support and historical rates are not verified. The optimized scenario keeps this speed.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed",
+          "severity": "warning",
+          "requestIndex": 3,
+          "title": "Speed pricing unavailable",
+          "detail": "This speed/model combination has no supported fast input price in the current table. Input costs and sequence totals are unavailable; token partitions remain hypothetical. Current Claude API fast mode supports Opus 5.5, Opus 5 and Opus 4.8, with a standard-speed fallback on Opus 4.6. An unsupported request may be rejected by the provider.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed",
+          "severity": "info",
+          "requestIndex": 4,
+          "title": "Fast request modeled at standard speed",
+          "detail": "The current Claude API documents that Opus 4.6 accepts speed: fast but runs at standard speed. This simulation uses the standard cache scope and price. Request data cannot verify historical behavior or the response's actual speed.",
+          "segmentIds": []
+        },
+        {
+          "kind": "anthropic_speed",
+          "severity": "info",
+          "requestIndex": 5,
+          "title": "Fast input pricing",
+          "detail": "Fast mode uses 2x the resolved model's standard input rate, including cache reads and both write TTLs. The simulation uses current Claude API rates, not measured charges; response speed, beta headers, platform support and historical rates are not verified. The optimized scenario keeps this speed.",
+          "segmentIds": []
+        }
+      ]
+    }
+  ]
+}

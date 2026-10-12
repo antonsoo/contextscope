@@ -26,6 +26,13 @@ of public SWE-bench agent runs; see `studies/real-trajectories/`.
 
 ### Fixed
 
+- Keep findings with different severities or message variants in separate groups.
+  A supported fast-mode message no longer hides unavailable-pricing warnings or
+  labels a standard-speed fallback as fast pricing. Preserve repeated equivalent
+  findings and generic model-change/tool-reordering groups. Terminal, web and
+  offline HTML use the corrected grouping; raw JSON and numerical analysis are
+  unchanged. Reproduction and limits: `studies/finding-groups/`.
+
 - Analyze literal tokenizer delimiter spellings such as `<|endoftext|>` in
   messages, instructions, tool definitions and tool results as ordinary text.
   Previously the token counter threw and aborted otherwise valid OpenAI and

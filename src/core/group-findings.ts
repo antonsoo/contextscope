@@ -27,15 +27,21 @@ const GROUP_TITLE: Partial<Record<FindingKind, string>> = {
   model_switch: "Model changed mid-conversation",
 };
 
-/** Groups findings by kind and implicated segments; groups are ordered by severity, then by first occurrence. */
+/** Groups equivalent messages about the same segments; orders by severity, then first occurrence. */
 export function groupFindings(findings: readonly Finding[]): FindingGroup[] {
   const groups = new Map<string, FindingGroup>();
   for (const finding of findings) {
     // Duplicate detection already suppresses repeated evidence across requests.
     // Reused source paths can describe different text or an exact/near match;
     // merging them here would apply the first occurrence's claim to all of them.
-    const scope = finding.kind === "duplicate_content" ? `|${finding.requestIndex}` : "";
-    const key = `${finding.kind}${scope}|${[...new Set(finding.segmentIds)].sort().join(",")}`;
+    const requestScope = finding.kind === "duplicate_content" ? finding.requestIndex : null;
+    // A kind can have different meanings and severities: fast input pricing,
+    // standard-speed fallback, or unavailable pricing. None represents the others.
+    // Only known request-pair titles have a common meaning despite different text.
+    const title = GROUP_TITLE[finding.kind] ?? finding.title;
+    const key = JSON.stringify([
+      finding.kind, finding.severity, title, requestScope, [...new Set(finding.segmentIds)].sort(),
+    ]);
     const group = groups.get(key);
     if (group) {
       group.findings.push(finding);

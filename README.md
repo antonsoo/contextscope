@@ -159,6 +159,10 @@ drop a request file, paste one, or click a built-in example.
   schema key order differs"*, *"Model changed mid-conversation"*, *"prefix below
   Claude Opus 4.6's 4,096-token minimum"*, *"No cache breakpoint on the
   conversation tail"* (often the single highest-value fix for a real agent loop).
+  In the source checkout, different severities and message variants remain
+  separate: a pricing warning can no longer disappear inside an informational
+  fast-mode group. [Before/after report replay](studies/finding-groups/README.md).
+  This grouping correction is unreleased; it does not change pricing or token counts.
 - **Duplicate content detection** (5-word shingling + Jaccard similarity): the
   same file or tool output fetched more than once in one conversation.
 - **Reads the files you already have.** Anthropic Messages bodies, OpenAI Chat

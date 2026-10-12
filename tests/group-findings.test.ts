@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { describeRequestIndices, groupFindings } from "../src/core/group-findings.js";
+import { analyze } from "../src/core/analyze.js";
 import type { Finding } from "../src/core/types.js";
 
 function finding(partial: Partial<Finding> & Pick<Finding, "kind" | "requestIndex">): Finding {
@@ -7,6 +8,45 @@ function finding(partial: Partial<Finding> & Pick<Finding, "kind" | "requestInde
 }
 
 describe("groupFindings", () => {
+  it("keeps different severities separate even when their titles match", () => {
+    const groups = groupFindings([
+      finding({ kind: "anthropic_speed", severity: "info", requestIndex: 0 }),
+      finding({ kind: "anthropic_speed", severity: "warning", requestIndex: 1 }),
+      finding({ kind: "anthropic_speed", severity: "info", requestIndex: 2 }),
+    ]);
+    expect(groups.map(({ severity, requestIndices }) => ({ severity, requestIndices }))).toEqual([
+      { severity: "warning", requestIndices: [1] }, { severity: "info", requestIndices: [0, 2] },
+    ]);
+  });
+
+  it.each([
+    [0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0],
+  ])("preserves speed message meanings across request order %j %j %j", (...order) => {
+    const variants = [
+      { model: "claude-opus-5-5", speed: "fast", title: "Fast input pricing", severity: "info" },
+      { model: "claude-opus-4-6", speed: "fast", title: "Fast request modeled at standard speed", severity: "info" },
+      { model: "claude-opus-5-5", speed: "unrecognized-mode", title: "Speed pricing unavailable", severity: "warning" },
+    ];
+    const sequence = [...order, ...order];
+    const requests = sequence.map((index) => ({
+      model: variants[index]!.model, speed: variants[index]!.speed,
+      messages: [{ role: "user", content: "Synthetic grouping reproduction." }],
+    }));
+    const result = analyze(JSON.stringify(requests));
+    const original = structuredClone(result.findings);
+    const groups = groupFindings(result.findings).filter((group) => group.kind === "anthropic_speed");
+    expect(groups).toHaveLength(3);
+    expect(groups[0]!.severity).toBe("warning");
+    for (const [index, variant] of variants.entries()) {
+      const group = groups.find((item) => item.title === variant.title)!;
+      expect(group.severity).toBe(variant.severity);
+      expect(group.requestIndices).toEqual(sequence.flatMap((value, position) => value === index ? [position] : []));
+      expect(group.findings.every((item) => item.title === group.title && item.severity === group.severity)).toBe(true);
+    }
+    expect(groups.flatMap((group) => group.findings)).toHaveLength(6);
+    expect(result.findings).toEqual(original);
+  });
+
   it("collapses a finding that recurs on every request into one group", () => {
     const findings = [1, 2, 3, 4].map((i) => finding({ kind: "volatile_prefix", severity: "error", requestIndex: i, segmentIds: ["system[0]"] }));
     const [group, ...rest] = groupFindings(findings);
