@@ -1,0 +1,71 @@
+{
+  "packageSha256": "90e87062e6b42cc1325e33334ac72d6ada3a25f3e4d7d947a9a9349214726401",
+  "runtimes": [
+    "v20.0.0",
+    "v24.21.0"
+  ],
+  "runtimeChecks": [
+    {
+      "node": "v20.0.0",
+      "fullReplayEqual": true,
+      "fullCliJsonMatchesCore": true,
+      "cliHtmlMatchesBrowserExportExceptGenerationTime": true,
+      "terminalUsesReviewBudget": true,
+      "cliJsonSha256": "7809436c951fc95c505b5ef6dbcd93acd777c643b9357819a79baea9aa3d658a",
+      "cliHtmlSha256": "19e06b9d71f70717bcec25ef45e06270fddf7eaa7cece845c04c8bcecdb64dea",
+      "htmlWithoutGenerationTimeSha256": "64c5b7e329fe4baa451c1011c058b9d94d4ed5efa4a640c168ba622dbbedb31d"
+    },
+    {
+      "node": "v24.21.0",
+      "fullReplayEqual": true,
+      "fullCliJsonMatchesCore": true,
+      "cliHtmlMatchesBrowserExportExceptGenerationTime": true,
+      "terminalUsesReviewBudget": true,
+      "cliJsonSha256": "7809436c951fc95c505b5ef6dbcd93acd777c643b9357819a79baea9aa3d658a",
+      "cliHtmlSha256": "56f8822de2e1f2b4c0583f17a742cc2fffb4d9088729c0b458b0940e90aac240",
+      "htmlWithoutGenerationTimeSha256": "64c5b7e329fe4baa451c1011c058b9d94d4ed5efa4a640c168ba622dbbedb31d"
+    }
+  ],
+  "browsers": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "width": 1440,
+      "actualHtmlRendered": true,
+      "requests": [],
+      "errors": [],
+      "scripts": 0,
+      "horizontalOverflow": false
+    },
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "width": 375,
+      "actualHtmlRendered": true,
+      "requests": [],
+      "errors": [],
+      "scripts": 0,
+      "horizontalOverflow": false
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "width": 1440,
+      "actualHtmlRendered": true,
+      "requests": [],
+      "errors": [],
+      "scripts": 0,
+      "horizontalOverflow": false
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "width": 375,
+      "actualHtmlRendered": true,
+      "requests": [],
+      "errors": [],
+      "scripts": 0,
+      "horizontalOverflow": false
+    }
+  ]
+}

@@ -1,0 +1,230 @@
+{
+  "mode": "verify",
+  "inputSha256": "f72c4c1fdc1721c229e5cc1a599bf509db24a483ddb3acb527c4812e8c254691",
+  "servedAssets": [
+    {
+      "path": "assets/analysis-worker-DnxFwQUm.js",
+      "bytes": 2097613,
+      "sha256": "598f3f744188df736de42b5e03bf2fed5c4ca74655580e845927059248cebc6e"
+    },
+    {
+      "path": "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2",
+      "bytes": 14708,
+      "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+    },
+    {
+      "path": "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2",
+      "bytes": 14888,
+      "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+    },
+    {
+      "path": "assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2",
+      "bytes": 15620,
+      "sha256": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83"
+    },
+    {
+      "path": "assets/ibm-plex-mono-700-latin-7sUh57Bg.woff2",
+      "bytes": 14908,
+      "sha256": "4f84d86cfd060f4ded334358ff8a4c81d4db2ed5addd568359d693f44a87765a"
+    },
+    {
+      "path": "assets/ibm-plex-sans-latin-IvpUvPa2.woff2",
+      "bytes": 45712,
+      "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+    },
+    {
+      "path": "assets/index-DqPyGsMb.js",
+      "bytes": 64789,
+      "sha256": "c2d93cd7ad4ea377d800130ca0208b72c646f82c88a05aa51ed59127242b6649"
+    },
+    {
+      "path": "assets/index-DvNCOwdt.css",
+      "bytes": 31581,
+      "sha256": "e974157a11fff29ff41e055041b3ccfa6e6f40a4fa20468161ad5131142bf033"
+    },
+    {
+      "path": "assets/presentation-l_F1epMm.js",
+      "bytes": 3792,
+      "sha256": "449f48d9654851fd24a3ba289e95114d061a69cccef70043acc9cc3a8390270a"
+    },
+    {
+      "path": "index.html",
+      "bytes": 2623,
+      "sha256": "71b6c337bf8f79c6be87ae5ae0bf96d4f9a7290161a71c7c676543a18fadf27e"
+    }
+  ],
+  "results": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "width": 1440,
+      "serverStoppedAfterAnalysis": true,
+      "findingsText": "INFO\nSimilar text appears in 2 segments\n(request 1)\n\"message 2 tool_result\" and 1 other segment have at least 86% word-shingle similarity across every pair. Later matches contain an estimated ≈1,209 tokens to review, not proven savings. Edits, ordering and repetition can carry new information; inspect the original segments before consolidating them.",
+      "duplicates": [
+        {
+          "signature": "40340a45",
+          "members": [
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[1].content[0]",
+              "label": "message 2 tool_result",
+              "tokens": 1212
+            },
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[3].content[0]",
+              "label": "message 4 tool_result",
+              "tokens": 1209
+            }
+          ],
+          "matchKind": "near",
+          "similarity": 0.8666666666666667,
+          "estimatedReviewTokens": 1209
+        }
+      ],
+      "matchesFullCoreReport": true,
+      "jsonSha256": "7809436c951fc95c505b5ef6dbcd93acd777c643b9357819a79baea9aa3d658a",
+      "htmlSha256": "8be08b248382a5e0522bd52f60a1bc23c95edbf524c90984db9e3461ad584c72",
+      "htmlWithoutGenerationTimeSha256": "64c5b7e329fe4baa451c1011c058b9d94d4ed5efa4a640c168ba622dbbedb31d",
+      "originalHashes": [
+        "e8fc4d4bd9c513d3707b53ad638d3941c4ba6fc0140672b0a8590859f24ab1b2",
+        "8402f895d8f0bc7af08953d70150036199df7841aba35f679a04ccb80462f8cd"
+      ],
+      "overflow": 0,
+      "htmlOverflow": 0,
+      "pageErrors": [],
+      "policyViolations": [],
+      "lateRequests": [],
+      "offlineHtmlRequests": []
+    },
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "width": 375,
+      "serverStoppedAfterAnalysis": true,
+      "findingsText": "INFO\nSimilar text appears in 2 segments\n(request 1)\n\"message 2 tool_result\" and 1 other segment have at least 86% word-shingle similarity across every pair. Later matches contain an estimated ≈1,209 tokens to review, not proven savings. Edits, ordering and repetition can carry new information; inspect the original segments before consolidating them.",
+      "duplicates": [
+        {
+          "signature": "40340a45",
+          "members": [
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[1].content[0]",
+              "label": "message 2 tool_result",
+              "tokens": 1212
+            },
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[3].content[0]",
+              "label": "message 4 tool_result",
+              "tokens": 1209
+            }
+          ],
+          "matchKind": "near",
+          "similarity": 0.8666666666666667,
+          "estimatedReviewTokens": 1209
+        }
+      ],
+      "matchesFullCoreReport": true,
+      "jsonSha256": "7809436c951fc95c505b5ef6dbcd93acd777c643b9357819a79baea9aa3d658a",
+      "htmlSha256": "4d91c437c01698318744d9433d5cb4beb7926304b00ffc24623a1859f5b7e223",
+      "htmlWithoutGenerationTimeSha256": "64c5b7e329fe4baa451c1011c058b9d94d4ed5efa4a640c168ba622dbbedb31d",
+      "originalHashes": [
+        "e8fc4d4bd9c513d3707b53ad638d3941c4ba6fc0140672b0a8590859f24ab1b2",
+        "8402f895d8f0bc7af08953d70150036199df7841aba35f679a04ccb80462f8cd"
+      ],
+      "overflow": 0,
+      "htmlOverflow": 0,
+      "pageErrors": [],
+      "policyViolations": [],
+      "lateRequests": [],
+      "offlineHtmlRequests": []
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "width": 1440,
+      "serverStoppedAfterAnalysis": true,
+      "findingsText": "INFO\nSimilar text appears in 2 segments\n(request 1)\n\"message 2 tool_result\" and 1 other segment have at least 86% word-shingle similarity across every pair. Later matches contain an estimated ≈1,209 tokens to review, not proven savings. Edits, ordering and repetition can carry new information; inspect the original segments before consolidating them.",
+      "duplicates": [
+        {
+          "signature": "40340a45",
+          "members": [
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[1].content[0]",
+              "label": "message 2 tool_result",
+              "tokens": 1212
+            },
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[3].content[0]",
+              "label": "message 4 tool_result",
+              "tokens": 1209
+            }
+          ],
+          "matchKind": "near",
+          "similarity": 0.8666666666666667,
+          "estimatedReviewTokens": 1209
+        }
+      ],
+      "matchesFullCoreReport": true,
+      "jsonSha256": "7809436c951fc95c505b5ef6dbcd93acd777c643b9357819a79baea9aa3d658a",
+      "htmlSha256": "09cfd75b85aad56cb54918276299e60a26e0723bbdd584ccc2be482661f2e0c3",
+      "htmlWithoutGenerationTimeSha256": "64c5b7e329fe4baa451c1011c058b9d94d4ed5efa4a640c168ba622dbbedb31d",
+      "originalHashes": [
+        "e8fc4d4bd9c513d3707b53ad638d3941c4ba6fc0140672b0a8590859f24ab1b2",
+        "8402f895d8f0bc7af08953d70150036199df7841aba35f679a04ccb80462f8cd"
+      ],
+      "overflow": 0,
+      "htmlOverflow": 0,
+      "pageErrors": [],
+      "policyViolations": [],
+      "lateRequests": [],
+      "offlineHtmlRequests": []
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "width": 375,
+      "serverStoppedAfterAnalysis": true,
+      "findingsText": "INFO\nSimilar text appears in 2 segments\n(request 1)\n\"message 2 tool_result\" and 1 other segment have at least 86% word-shingle similarity across every pair. Later matches contain an estimated ≈1,209 tokens to review, not proven savings. Edits, ordering and repetition can carry new information; inspect the original segments before consolidating them.",
+      "duplicates": [
+        {
+          "signature": "40340a45",
+          "members": [
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[1].content[0]",
+              "label": "message 2 tool_result",
+              "tokens": 1212
+            },
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[3].content[0]",
+              "label": "message 4 tool_result",
+              "tokens": 1209
+            }
+          ],
+          "matchKind": "near",
+          "similarity": 0.8666666666666667,
+          "estimatedReviewTokens": 1209
+        }
+      ],
+      "matchesFullCoreReport": true,
+      "jsonSha256": "7809436c951fc95c505b5ef6dbcd93acd777c643b9357819a79baea9aa3d658a",
+      "htmlSha256": "bb06830f80a078cc5eee286f7d8519f4ee6e12fac3b95fb7b98f78aa2b20e3ec",
+      "htmlWithoutGenerationTimeSha256": "64c5b7e329fe4baa451c1011c058b9d94d4ed5efa4a640c168ba622dbbedb31d",
+      "originalHashes": [
+        "e8fc4d4bd9c513d3707b53ad638d3941c4ba6fc0140672b0a8590859f24ab1b2",
+        "8402f895d8f0bc7af08953d70150036199df7841aba35f679a04ccb80462f8cd"
+      ],
+      "overflow": 0,
+      "htmlOverflow": 0,
+      "pageErrors": [],
+      "policyViolations": [],
+      "lateRequests": [],
+      "offlineHtmlRequests": []
+    }
+  ]
+}

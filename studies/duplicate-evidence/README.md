@@ -36,7 +36,8 @@ Identical copies and changed repetition are controls. Repeating a phrase more
 times leaves its *set* of shingles unchanged; a 100% shingle score does
 not prove identical text. All six full-analysis cases retain identical
 non-duplicate JSON before and after, including token, cache, usage and prefix
-results. [before.json](before.json) preserves the baseline failures.
+results. [before.json](before.json) preserves the baseline failures;
+[after.json](after.json) records the independently installed repair.
 
 ## What the source now means
 
@@ -89,9 +90,13 @@ The baseline's 466 groups include five whose true minimum is below 0.85:
 | Haiku v2 / django-16819 | 3 | 88.96% | 84.42% |
 
 [corpus-before.json](corpus-before.json) preserves all 466 groups, source hashes
-and the violating member paths. The working-source replay leaves 466 groups
-with zero below-threshold pairs or misstated minimums. Group count alone is
-not an accuracy measure; the all-pair check is the relevant constraint.
+and the violating member paths. The [installed-package audit](corpus-after.json)
+leaves 466 groups with zero below-threshold pairs or misstated minimums.
+[The comparison](comparison.json) confirms 461 groups retain identical members,
+minimums, text classification and review sizes; only the five invalid groups
+change membership. There are 319 identical-text groups and 147 similar-text
+groups. Group count alone is not an accuracy measure; the all-pair check is
+the relevant constraint.
 
 ## Reproduce and inspect
 
@@ -112,7 +117,9 @@ browser JSON report with the core result. It reopens the downloaded report as
 an actual `.html` file, checks the rendered title/finding, no scripts or HTTP
 requests, no page/CSP errors, and no horizontal overflow. Both Chromium and
 Firefox run at 1440px and 375px. [browser-before.json](browser-before.json)
-retains the original false claim in all four environments.
+retains the original false claim in all four environments;
+[browser-after.json](browser-after.json) records the corrected group and raw
+downloads from the clean build.
 
 To rerun the corpus audit, first obtain the pinned sources and reconstructed
 bodies using the existing [cache reconstruction study](../cache-accounting/README.md),
@@ -123,9 +130,52 @@ node studies/duplicate-evidence/audit-corpus.mjs /path/to/built/dist /path/to/re
 node studies/duplicate-evidence/benchmark.mjs /path/to/baseline/dist /path/to/after/dist /tmp/timing.json
 ```
 
-The benchmark times only duplicate detection on 100, 500 and 1,000 identical
-synthetic settings blocks. Parsing/tokenization are outside the timed region;
-it cannot establish end-to-end latency or memory use.
+The benchmark times only duplicate detection on identical 5,089-byte synthetic
+settings blocks. [All three alternating samples](benchmark.json) are retained.
+Median milliseconds on this machine with Node 24.21.0:
+
+| Repeated segments | Baseline detector | Corrected detector |
+| --- | ---: | ---: |
+| 100 | 35.81 | 0.45 |
+| 500 | 559.87 | 1.22 |
+| 1,000 | 2,310.55 | 0.86 |
+
+Pooling equal text avoids reshaping and comparing every copy. These are short,
+noisy component timings for a favorable identical-text workload, not an overall
+speedup claim. Parsing/tokenization are outside the timed region; this does not
+measure end-to-end latency, memory, or workloads with mostly unique content.
+
+## Artifact and browser verification
+
+A fresh archive of source commit `39cc8cc3a851ce9ca257530fbaa9627e6b033ba5` passed `npm ci`, lint, type checking, 462 unit
+checks, the production build, and 90 browser workflows on Node 24.21.0.
+[artifacts.json](artifacts.json) records the build inputs, which are identical
+to the final documented source. Subsequent changes add only study
+evidence and documentation. The receipt compares 107 inputs (including the
+examples symlink and its tracked target files), 10 files served by the local
+browser harness, and all 92 installed compiled files against the clean build.
+It also hashes 32 core files unchanged from the baseline.
+
+The archive's npm tarball was installed into a separate directory, then the six
+full analyses and real CLI were run on Node **20.0.0** and **24.21.0**. Their
+complete results agree. [installed.json](installed.json) retains the tarball
+hash and full JSON/HTML comparisons. The HTML comparison excludes exactly one
+wall-clock generation timestamp; each original file hash is also retained.
+All four browser downloads agree with the installed CLI's HTML on every other
+byte. Four additional offline browser openings render the CLI's actual `.html`
+file, with no scripts, network requests, page errors, or horizontal overflow.
+
+The browser integration cases also cover exact and similar evidence at reused
+paths, cross-request inspection while another request remains selected, focus
+return, raw-download preservation, and accessibility at both widths. All four
+baseline and eight final panel screenshots were opened and visually inspected.
+
+![Corrected group with original-segment controls](../../docs/assets/duplicate-evidence/after/chromium-1440-group.png)
+
+[Phone group](../../docs/assets/duplicate-evidence/after/chromium-375-group.png),
+[original-segment inspector](../../docs/assets/duplicate-evidence/after/chromium-375-original.png),
+and [baseline claim](../../docs/assets/duplicate-evidence/before/chromium-375-group.png)
+show the actual before/after interface. These are local production-build captures.
 
 This is a source repair. The npm version remains 0.3.3; no registry release,
 release tag or hosted deployment accompanies this work.

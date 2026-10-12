@@ -1,0 +1,514 @@
+{
+  "node": "v24.21.0",
+  "mode": "verify",
+  "compiled": [
+    {
+      "path": "core/duplicates.js",
+      "sha256": "92e866783d3b134b8c8f36984878f03682cb7b10d763e480814d4b5b5836349a"
+    },
+    {
+      "path": "core/findings.js",
+      "sha256": "f33a6ed823c4d73510b6de1f0e84f6d4ca342cd3b7c2c9c1072e91414bc6b61b"
+    },
+    {
+      "path": "core/group-findings.js",
+      "sha256": "625732d654b2023ae3602e94d94f3eb20c7aae34724e2d80e737c96910c83242"
+    }
+  ],
+  "results": [
+    {
+      "name": "chained-edits",
+      "inputSha256": "f72c4c1fdc1721c229e5cc1a599bf509db24a483ddb3acb527c4812e8c254691",
+      "expected": [
+        {
+          "kind": "near",
+          "members": 2,
+          "minimum": 0.8666666666666667
+        }
+      ],
+      "duplicates": [
+        {
+          "signature": "40340a45",
+          "members": [
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[1].content[0]",
+              "label": "message 2 tool_result",
+              "tokens": 1212
+            },
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[3].content[0]",
+              "label": "message 4 tool_result",
+              "tokens": 1209
+            }
+          ],
+          "matchKind": "near",
+          "similarity": 0.8666666666666667,
+          "estimatedReviewTokens": 1209
+        }
+      ],
+      "findings": [
+        {
+          "kind": "duplicate_content",
+          "severity": "info",
+          "requestIndex": 0,
+          "title": "Similar text appears in 2 segments",
+          "detail": "\"message 2 tool_result\" and 1 other segment have at least 86% word-shingle similarity across every pair. Later matches contain an estimated ≈1,209 tokens to review, not proven savings. Edits, ordering and repetition can carry new information; inspect the original segments before consolidating them.",
+          "segmentIds": [
+            "messages[1].content[0]",
+            "messages[3].content[0]"
+          ]
+        }
+      ],
+      "displayedFindings": [
+        {
+          "kind": "duplicate_content",
+          "severity": "info",
+          "title": "Similar text appears in 2 segments",
+          "detail": "\"message 2 tool_result\" and 1 other segment have at least 86% word-shingle similarity across every pair. Later matches contain an estimated ≈1,209 tokens to review, not proven savings. Edits, ordering and repetition can carry new information; inspect the original segments before consolidating them.",
+          "requestIndices": [
+            0
+          ],
+          "findings": [
+            {
+              "kind": "duplicate_content",
+              "severity": "info",
+              "requestIndex": 0,
+              "title": "Similar text appears in 2 segments",
+              "detail": "\"message 2 tool_result\" and 1 other segment have at least 86% word-shingle similarity across every pair. Later matches contain an estimated ≈1,209 tokens to review, not proven savings. Edits, ordering and repetition can carry new information; inspect the original segments before consolidating them.",
+              "segmentIds": [
+                "messages[1].content[0]",
+                "messages[3].content[0]"
+              ]
+            }
+          ]
+        }
+      ],
+      "unchangedReportSha256": "ded1b5cc6fd5ca77d06ad6a64f622ae14827250823613da511cfb324e43c7951",
+      "fullReportSha256": "029397bb0be4e1778fc3a8ece19088760b290003b14c50c4534cf0a05afd110e"
+    },
+    {
+      "name": "exact-copies",
+      "inputSha256": "1c168c01d5cfafe370f09cf9c6d0529a5be34e702761cd35d69ff536517a02b8",
+      "expected": [
+        {
+          "kind": "exact",
+          "members": 3,
+          "minimum": 1
+        }
+      ],
+      "duplicates": [
+        {
+          "signature": "62bcded9",
+          "members": [
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[1].content[0]",
+              "label": "message 2 tool_result",
+              "tokens": 1212
+            },
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[3].content[0]",
+              "label": "message 4 tool_result",
+              "tokens": 1212
+            },
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[5].content[0]",
+              "label": "message 6 tool_result",
+              "tokens": 1212
+            }
+          ],
+          "matchKind": "exact",
+          "similarity": 1,
+          "estimatedReviewTokens": 2424
+        }
+      ],
+      "findings": [
+        {
+          "kind": "duplicate_content",
+          "severity": "info",
+          "requestIndex": 0,
+          "title": "Identical text appears in 3 segments",
+          "detail": "\"message 2 tool_result\" and 2 other segments contain identical text. Later matches contain an estimated ≈2,424 tokens to review, not proven savings. Check whether the repeated observations are needed before removing them.",
+          "segmentIds": [
+            "messages[1].content[0]",
+            "messages[3].content[0]",
+            "messages[5].content[0]"
+          ]
+        }
+      ],
+      "displayedFindings": [
+        {
+          "kind": "duplicate_content",
+          "severity": "info",
+          "title": "Identical text appears in 3 segments",
+          "detail": "\"message 2 tool_result\" and 2 other segments contain identical text. Later matches contain an estimated ≈2,424 tokens to review, not proven savings. Check whether the repeated observations are needed before removing them.",
+          "requestIndices": [
+            0
+          ],
+          "findings": [
+            {
+              "kind": "duplicate_content",
+              "severity": "info",
+              "requestIndex": 0,
+              "title": "Identical text appears in 3 segments",
+              "detail": "\"message 2 tool_result\" and 2 other segments contain identical text. Later matches contain an estimated ≈2,424 tokens to review, not proven savings. Check whether the repeated observations are needed before removing them.",
+              "segmentIds": [
+                "messages[1].content[0]",
+                "messages[3].content[0]",
+                "messages[5].content[0]"
+              ]
+            }
+          ]
+        }
+      ],
+      "unchangedReportSha256": "14b6b47879051188ef61867f27408df5f182d8345746d5f6ec378631952129c3",
+      "fullReportSha256": "8379ace0b3d9370869660f4d44b1959665740ee4c794da828f1b1031dcbdfc29"
+    },
+    {
+      "name": "changed-repetition",
+      "inputSha256": "4adeeb1844f4d999b294904a855b6ced09a82a0d47a995f9b9f3d0d475521b32",
+      "expected": [
+        {
+          "kind": "near",
+          "members": 2,
+          "minimum": 1
+        }
+      ],
+      "duplicates": [
+        {
+          "signature": "40340a45",
+          "members": [
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[1].content[0]",
+              "label": "message 2 tool_result",
+              "tokens": 170
+            },
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[3].content[0]",
+              "label": "message 4 tool_result",
+              "tokens": 339
+            }
+          ],
+          "matchKind": "near",
+          "similarity": 1,
+          "estimatedReviewTokens": 339
+        }
+      ],
+      "findings": [
+        {
+          "kind": "duplicate_content",
+          "severity": "info",
+          "requestIndex": 0,
+          "title": "Similar text appears in 2 segments",
+          "detail": "\"message 2 tool_result\" and 1 other segment have at least 100% word-shingle similarity across every pair. Later matches contain an estimated ≈339 tokens to review, not proven savings. Edits, ordering and repetition can carry new information; inspect the original segments before consolidating them.",
+          "segmentIds": [
+            "messages[1].content[0]",
+            "messages[3].content[0]"
+          ]
+        }
+      ],
+      "displayedFindings": [
+        {
+          "kind": "duplicate_content",
+          "severity": "info",
+          "title": "Similar text appears in 2 segments",
+          "detail": "\"message 2 tool_result\" and 1 other segment have at least 100% word-shingle similarity across every pair. Later matches contain an estimated ≈339 tokens to review, not proven savings. Edits, ordering and repetition can carry new information; inspect the original segments before consolidating them.",
+          "requestIndices": [
+            0
+          ],
+          "findings": [
+            {
+              "kind": "duplicate_content",
+              "severity": "info",
+              "requestIndex": 0,
+              "title": "Similar text appears in 2 segments",
+              "detail": "\"message 2 tool_result\" and 1 other segment have at least 100% word-shingle similarity across every pair. Later matches contain an estimated ≈339 tokens to review, not proven savings. Edits, ordering and repetition can carry new information; inspect the original segments before consolidating them.",
+              "segmentIds": [
+                "messages[1].content[0]",
+                "messages[3].content[0]"
+              ]
+            }
+          ]
+        }
+      ],
+      "unchangedReportSha256": "341bb81c6aab893c59bc7b152b0053cd7481ebe6cee2403cf9951b6fa277f685",
+      "fullReportSha256": "cbec4ffe21bc7027506f8dd85c6e83d3d96f814e20446328042cad14a0f7d68f"
+    },
+    {
+      "name": "short-hash-collision",
+      "inputSha256": "5cc12f484d134de5664a183b22ea17f7cb58a2b83e1c0fd59d372c2182469267",
+      "expected": [],
+      "duplicates": [],
+      "findings": [],
+      "displayedFindings": [],
+      "unchangedReportSha256": "475b9ca26025b9103b6949dc8ca16d099c35d1fa2169fad9ccffbd526e2068b7",
+      "fullReportSha256": "9b6b200ac1357442ec25dec551516c6d919e8cf4952fc32d5e6cf90a4a966f0d"
+    },
+    {
+      "name": "collision-in-separate-conversations",
+      "inputSha256": "dca1ca46894b46dd819f2865637daf100715fc5b56df7a2365057a9f6b4d3b62",
+      "expected": [
+        {
+          "kind": "exact",
+          "members": 2,
+          "minimum": 1
+        },
+        {
+          "kind": "exact",
+          "members": 2,
+          "minimum": 1
+        }
+      ],
+      "duplicates": [
+        {
+          "signature": "40340a45",
+          "members": [
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[1].content[0]",
+              "label": "message 2 tool_result",
+              "tokens": 69
+            },
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[3].content[0]",
+              "label": "message 4 tool_result",
+              "tokens": 69
+            }
+          ],
+          "matchKind": "exact",
+          "similarity": 1,
+          "estimatedReviewTokens": 69
+        },
+        {
+          "signature": "40340a45",
+          "members": [
+            {
+              "requestIndex": 1,
+              "segmentId": "messages[1].content[0]",
+              "label": "message 2 tool_result",
+              "tokens": 69
+            },
+            {
+              "requestIndex": 1,
+              "segmentId": "messages[3].content[0]",
+              "label": "message 4 tool_result",
+              "tokens": 69
+            }
+          ],
+          "matchKind": "exact",
+          "similarity": 1,
+          "estimatedReviewTokens": 69
+        }
+      ],
+      "findings": [
+        {
+          "kind": "duplicate_content",
+          "severity": "info",
+          "requestIndex": 0,
+          "title": "Identical text appears in 2 segments",
+          "detail": "\"message 2 tool_result\" and 1 other segment contain identical text. Later matches contain an estimated ≈69 tokens to review, not proven savings. Check whether the repeated observations are needed before removing them.",
+          "segmentIds": [
+            "messages[1].content[0]",
+            "messages[3].content[0]"
+          ]
+        },
+        {
+          "kind": "duplicate_content",
+          "severity": "info",
+          "requestIndex": 1,
+          "title": "Identical text appears in 2 segments",
+          "detail": "\"message 2 tool_result\" and 1 other segment contain identical text. Later matches contain an estimated ≈69 tokens to review, not proven savings. Check whether the repeated observations are needed before removing them.",
+          "segmentIds": [
+            "messages[1].content[0]",
+            "messages[3].content[0]"
+          ]
+        }
+      ],
+      "displayedFindings": [
+        {
+          "kind": "duplicate_content",
+          "severity": "info",
+          "title": "Identical text appears in 2 segments",
+          "detail": "\"message 2 tool_result\" and 1 other segment contain identical text. Later matches contain an estimated ≈69 tokens to review, not proven savings. Check whether the repeated observations are needed before removing them.",
+          "requestIndices": [
+            0
+          ],
+          "findings": [
+            {
+              "kind": "duplicate_content",
+              "severity": "info",
+              "requestIndex": 0,
+              "title": "Identical text appears in 2 segments",
+              "detail": "\"message 2 tool_result\" and 1 other segment contain identical text. Later matches contain an estimated ≈69 tokens to review, not proven savings. Check whether the repeated observations are needed before removing them.",
+              "segmentIds": [
+                "messages[1].content[0]",
+                "messages[3].content[0]"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "duplicate_content",
+          "severity": "info",
+          "title": "Identical text appears in 2 segments",
+          "detail": "\"message 2 tool_result\" and 1 other segment contain identical text. Later matches contain an estimated ≈69 tokens to review, not proven savings. Check whether the repeated observations are needed before removing them.",
+          "requestIndices": [
+            1
+          ],
+          "findings": [
+            {
+              "kind": "duplicate_content",
+              "severity": "info",
+              "requestIndex": 1,
+              "title": "Identical text appears in 2 segments",
+              "detail": "\"message 2 tool_result\" and 1 other segment contain identical text. Later matches contain an estimated ≈69 tokens to review, not proven savings. Check whether the repeated observations are needed before removing them.",
+              "segmentIds": [
+                "messages[1].content[0]",
+                "messages[3].content[0]"
+              ]
+            }
+          ]
+        }
+      ],
+      "unchangedReportSha256": "4d74eb0c9bb63359fdfba055aad75db67d97fdcfa05565045fb7bd9ffcd77bc5",
+      "fullReportSha256": "92d4715f68ced8d73946637e1cb029290951dd1e6468abdabbd799cce0795f99"
+    },
+    {
+      "name": "different-evidence-at-same-paths",
+      "inputSha256": "b266bce703395632fbdf27a9b8f720dd2eb4a0ec77e5ae8ce8101847580e31d5",
+      "expected": [
+        {
+          "kind": "near",
+          "members": 2,
+          "minimum": 0.8666666666666667
+        },
+        {
+          "kind": "exact",
+          "members": 2,
+          "minimum": 1
+        }
+      ],
+      "duplicates": [
+        {
+          "signature": "40340a45",
+          "members": [
+            {
+              "requestIndex": 1,
+              "segmentId": "messages[1].content[0]",
+              "label": "message 2 tool_result",
+              "tokens": 1212
+            },
+            {
+              "requestIndex": 1,
+              "segmentId": "messages[3].content[0]",
+              "label": "message 4 tool_result",
+              "tokens": 1209
+            }
+          ],
+          "matchKind": "near",
+          "similarity": 0.8666666666666667,
+          "estimatedReviewTokens": 1209
+        },
+        {
+          "signature": "40340a45",
+          "members": [
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[1].content[0]",
+              "label": "message 2 tool_result",
+              "tokens": 170
+            },
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[3].content[0]",
+              "label": "message 4 tool_result",
+              "tokens": 170
+            }
+          ],
+          "matchKind": "exact",
+          "similarity": 1,
+          "estimatedReviewTokens": 170
+        }
+      ],
+      "findings": [
+        {
+          "kind": "duplicate_content",
+          "severity": "info",
+          "requestIndex": 1,
+          "title": "Similar text appears in 2 segments",
+          "detail": "\"message 2 tool_result\" and 1 other segment have at least 86% word-shingle similarity across every pair. Later matches contain an estimated ≈1,209 tokens to review, not proven savings. Edits, ordering and repetition can carry new information; inspect the original segments before consolidating them.",
+          "segmentIds": [
+            "messages[1].content[0]",
+            "messages[3].content[0]"
+          ]
+        },
+        {
+          "kind": "duplicate_content",
+          "severity": "info",
+          "requestIndex": 0,
+          "title": "Identical text appears in 2 segments",
+          "detail": "\"message 2 tool_result\" and 1 other segment contain identical text. Later matches contain an estimated ≈170 tokens to review, not proven savings. Check whether the repeated observations are needed before removing them.",
+          "segmentIds": [
+            "messages[1].content[0]",
+            "messages[3].content[0]"
+          ]
+        }
+      ],
+      "displayedFindings": [
+        {
+          "kind": "duplicate_content",
+          "severity": "info",
+          "title": "Identical text appears in 2 segments",
+          "detail": "\"message 2 tool_result\" and 1 other segment contain identical text. Later matches contain an estimated ≈170 tokens to review, not proven savings. Check whether the repeated observations are needed before removing them.",
+          "requestIndices": [
+            0
+          ],
+          "findings": [
+            {
+              "kind": "duplicate_content",
+              "severity": "info",
+              "requestIndex": 0,
+              "title": "Identical text appears in 2 segments",
+              "detail": "\"message 2 tool_result\" and 1 other segment contain identical text. Later matches contain an estimated ≈170 tokens to review, not proven savings. Check whether the repeated observations are needed before removing them.",
+              "segmentIds": [
+                "messages[1].content[0]",
+                "messages[3].content[0]"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "duplicate_content",
+          "severity": "info",
+          "title": "Similar text appears in 2 segments",
+          "detail": "\"message 2 tool_result\" and 1 other segment have at least 86% word-shingle similarity across every pair. Later matches contain an estimated ≈1,209 tokens to review, not proven savings. Edits, ordering and repetition can carry new information; inspect the original segments before consolidating them.",
+          "requestIndices": [
+            1
+          ],
+          "findings": [
+            {
+              "kind": "duplicate_content",
+              "severity": "info",
+              "requestIndex": 1,
+              "title": "Similar text appears in 2 segments",
+              "detail": "\"message 2 tool_result\" and 1 other segment have at least 86% word-shingle similarity across every pair. Later matches contain an estimated ≈1,209 tokens to review, not proven savings. Edits, ordering and repetition can carry new information; inspect the original segments before consolidating them.",
+              "segmentIds": [
+                "messages[1].content[0]",
+                "messages[3].content[0]"
+              ]
+            }
+          ]
+        }
+      ],
+      "unchangedReportSha256": "e9e122c6486f8cc08f033c45d737178ee1916a6860f6d2c6e070fef815fcd367",
+      "fullReportSha256": "ff82cf3823afb129301ebb74a716131acd6e061b2eeb155fdebf151d94d05a2a"
+    }
+  ]
+}

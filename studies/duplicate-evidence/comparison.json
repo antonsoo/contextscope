@@ -1,0 +1,165 @@
+{
+  "cases": [
+    {
+      "name": "chained-edits",
+      "inputSha256": "f72c4c1fdc1721c229e5cc1a599bf509db24a483ddb3acb527c4812e8c254691",
+      "beforeMembers": [
+        3
+      ],
+      "afterMembers": [
+        2
+      ],
+      "beforeDisplayedFindings": 1,
+      "afterDisplayedFindings": 1,
+      "nonDuplicateReportIdentical": true
+    },
+    {
+      "name": "exact-copies",
+      "inputSha256": "1c168c01d5cfafe370f09cf9c6d0529a5be34e702761cd35d69ff536517a02b8",
+      "beforeMembers": [
+        3
+      ],
+      "afterMembers": [
+        3
+      ],
+      "beforeDisplayedFindings": 1,
+      "afterDisplayedFindings": 1,
+      "nonDuplicateReportIdentical": true
+    },
+    {
+      "name": "changed-repetition",
+      "inputSha256": "4adeeb1844f4d999b294904a855b6ced09a82a0d47a995f9b9f3d0d475521b32",
+      "beforeMembers": [
+        2
+      ],
+      "afterMembers": [
+        2
+      ],
+      "beforeDisplayedFindings": 1,
+      "afterDisplayedFindings": 1,
+      "nonDuplicateReportIdentical": true
+    },
+    {
+      "name": "short-hash-collision",
+      "inputSha256": "5cc12f484d134de5664a183b22ea17f7cb58a2b83e1c0fd59d372c2182469267",
+      "beforeMembers": [
+        2
+      ],
+      "afterMembers": [],
+      "beforeDisplayedFindings": 1,
+      "afterDisplayedFindings": 0,
+      "nonDuplicateReportIdentical": true
+    },
+    {
+      "name": "collision-in-separate-conversations",
+      "inputSha256": "dca1ca46894b46dd819f2865637daf100715fc5b56df7a2365057a9f6b4d3b62",
+      "beforeMembers": [
+        2
+      ],
+      "afterMembers": [
+        2,
+        2
+      ],
+      "beforeDisplayedFindings": 1,
+      "afterDisplayedFindings": 2,
+      "nonDuplicateReportIdentical": true
+    },
+    {
+      "name": "different-evidence-at-same-paths",
+      "inputSha256": "b266bce703395632fbdf27a9b8f720dd2eb4a0ec77e5ae8ce8101847580e31d5",
+      "beforeMembers": [
+        2,
+        2
+      ],
+      "afterMembers": [
+        2,
+        2
+      ],
+      "beforeDisplayedFindings": 1,
+      "afterDisplayedFindings": 2,
+      "nonDuplicateReportIdentical": true
+    }
+  ],
+  "corpus": {
+    "snapshots": 240,
+    "beforeGroups": 466,
+    "afterGroups": 466,
+    "belowThresholdBefore": 5,
+    "belowThresholdAfter": 0,
+    "unchangedGroups": 461,
+    "correctedGroups": [
+      {
+        "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+        "file": "django__django-13346.traj.json",
+        "afterMembers": [
+          "messages[44].content[0]",
+          "messages[86].content[0]"
+        ]
+      },
+      {
+        "entry": "20250929_mini-v1.13.3_sonnet-4-5-20250929",
+        "file": "matplotlib__matplotlib-24026.traj.json",
+        "afterMembers": [
+          "messages[33].content[0]",
+          "messages[84].content[0]"
+        ]
+      },
+      {
+        "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+        "file": "django__django-13012.traj.json",
+        "afterMembers": [
+          "messages[56].content[0]",
+          "messages[96].content[0]"
+        ]
+      },
+      {
+        "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+        "file": "django__django-14608.traj.json",
+        "afterMembers": [
+          "messages[122].content[0]",
+          "messages[124].content[0]",
+          "messages[138].content[0]"
+        ]
+      },
+      {
+        "entry": "20260217_mini-v2.0.0_claude-4-5-haiku-high",
+        "file": "django__django-16819.traj.json",
+        "afterMembers": [
+          "messages[14].content[0]",
+          "messages[72].content[0]"
+        ]
+      }
+    ],
+    "kinds": {
+      "exact": 319,
+      "near": 147
+    },
+    "originalAndReconstructedSourceHashesIdentical": true
+  },
+  "browsers": [
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "offlineInspectionAndDownloads": true,
+      "completeCoreReportParity": true
+    },
+    {
+      "engine": "chromium",
+      "width": 375,
+      "offlineInspectionAndDownloads": true,
+      "completeCoreReportParity": true
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "offlineInspectionAndDownloads": true,
+      "completeCoreReportParity": true
+    },
+    {
+      "engine": "firefox",
+      "width": 375,
+      "offlineInspectionAndDownloads": true,
+      "completeCoreReportParity": true
+    }
+  ]
+}

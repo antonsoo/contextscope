@@ -1,0 +1,56 @@
+{
+  "node": "v24.21.0",
+  "workload": "Synthetic identical text; findDuplicates only, parsing and tokenization excluded. Not an end-to-end latency or memory measurement.",
+  "beforeCompiledSha256": "d5b18cd584924a46c9d5fd52d4672cdf73f9f51db311f2e97e0d0715e82e9a27",
+  "afterCompiledSha256": "92e866783d3b134b8c8f36984878f03682cb7b10d763e480814d4b5b5836349a",
+  "rows": [
+    {
+      "segments": 100,
+      "textBytesPerSegment": 5089,
+      "samplesMs": {
+        "before": [
+          47.161191,
+          35.81076299999998,
+          35.57893899999999
+        ],
+        "after": [
+          0.8471569999999815,
+          0.45401199999997743,
+          0.38582099999996444
+        ]
+      }
+    },
+    {
+      "segments": 500,
+      "textBytesPerSegment": 5089,
+      "samplesMs": {
+        "before": [
+          573.001602,
+          559.8673699999999,
+          519.798937
+        ],
+        "after": [
+          1.2220319999998992,
+          0.8859009999998761,
+          1.899075000000039
+        ]
+      }
+    },
+    {
+      "segments": 1000,
+      "textBytesPerSegment": 5089,
+      "samplesMs": {
+        "before": [
+          2310.5507209999996,
+          2732.048815,
+          2180.4513039999993
+        ],
+        "after": [
+          0.7270760000001246,
+          2.3857499999994616,
+          0.85705599999892
+        ]
+      }
+    }
+  ]
+}

@@ -6,17 +6,20 @@ import { dirname, extname, resolve, sep } from "node:path";
 import { pathToFileURL } from "node:url";
 import { chromium, firefox } from "@playwright/test";
 import { cases } from "./cases.mjs";
+import { withoutGenerationTime } from "./html-content.mjs";
 const [
   root = ".",
   output = "/tmp/duplicate-browser.json",
   mode = "verify",
   screenshots,
 ] = process.argv.slice(2);
+assert.ok(["verify", "baseline"].includes(mode));
 const dist = resolve(root, "web/dist");
 const core = await import(pathToFileURL(resolve(root, "dist/core/index.js")));
 const input = JSON.stringify(cases[0].bodies[0]);
 const expected = JSON.parse(core.toJsonReport(core.analyze(input)));
 const sha = (bytes) => createHash("sha256").update(bytes).digest("hex");
+const servedAssets = new Map();
 if (screenshots) await mkdir(screenshots, { recursive: true });
 async function serve() {
   const server = createServer(async (request, response) => {
@@ -32,6 +35,7 @@ async function serve() {
     }
     try {
       const bytes = await readFile(path);
+      servedAssets.set(name, { path: name, bytes: bytes.length, sha256: sha(bytes) });
       response.writeHead(200, {
         "Content-Type":
           {
@@ -206,6 +210,7 @@ for (const [engine, type] of Object.entries({ chromium, firefox })) {
           matchesFullCoreReport: true,
           jsonSha256: sha(jsonBytes),
           htmlSha256: sha(html),
+          htmlWithoutGenerationTimeSha256: sha(withoutGenerationTime(html)),
           originalHashes,
           overflow,
           htmlOverflow,
@@ -226,7 +231,7 @@ for (const [engine, type] of Object.entries({ chromium, firefox })) {
 }
 await writeFile(
   output,
-  JSON.stringify({ mode, inputSha256: sha(input), results }, null, 2) + "\n",
+  JSON.stringify({ mode, inputSha256: sha(input), servedAssets: [...servedAssets.values()].sort((a, b) => a.path.localeCompare(b.path)), results }, null, 2) + "\n",
 );
 console.log(
   `${results.length} browser/width workflows and complete core-report comparisons passed (${mode})`,
