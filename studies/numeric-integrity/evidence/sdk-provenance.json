@@ -1,0 +1,16 @@
+{
+  "python": "3.14.7",
+  "packages": {
+    "anthropic": "1.13.0",
+    "httpx2": "2.13.1"
+  },
+  "source": "https://github.com/anthropics/anthropic-sdk-python/tree/v1.13.0",
+  "transport": "httpx2.MockTransport; socket connections forbidden",
+  "provenance": "Synthetic input, actual SDK serialization; no provider acceptance or cache measurement",
+  "identifiers": [
+    "18446744073709551614",
+    "18446744073709551615"
+  ],
+  "requestBytes": 14240,
+  "sha256": "752a2ed3033a16f4ce2e7293359be0925706b7b35b5cd68b369b0d6267dd507a"
+}

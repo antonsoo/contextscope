@@ -1,0 +1,4385 @@
+{
+  "node": "v26.7.0",
+  "mode": "baseline",
+  "cases": 1975,
+  "preserved": 1065,
+  "changed": 910,
+  "correct": 1100,
+  "mismatches": [
+    {
+      "literal": "4.9e-324",
+      "serialized": "5e-324",
+      "accepted": true
+    },
+    {
+      "literal": "1.7976931348623158e308",
+      "serialized": "1.7976931348623157e+308",
+      "accepted": true
+    },
+    {
+      "literal": "9007199254740993",
+      "serialized": "9007199254740992",
+      "accepted": true
+    },
+    {
+      "literal": "-9007199254740993",
+      "serialized": "-9007199254740992",
+      "accepted": true
+    },
+    {
+      "literal": "900719925474099300e-2",
+      "serialized": "9007199254740992",
+      "accepted": true
+    },
+    {
+      "literal": "9007199254740995",
+      "serialized": "9007199254740996",
+      "accepted": true
+    },
+    {
+      "literal": "-9007199254740995",
+      "serialized": "-9007199254740996",
+      "accepted": true
+    },
+    {
+      "literal": "900719925474099500e-2",
+      "serialized": "9007199254740996",
+      "accepted": true
+    },
+    {
+      "literal": "9007199254740997",
+      "serialized": "9007199254740996",
+      "accepted": true
+    },
+    {
+      "literal": "-9007199254740997",
+      "serialized": "-9007199254740996",
+      "accepted": true
+    },
+    {
+      "literal": "900719925474099700e-2",
+      "serialized": "9007199254740996",
+      "accepted": true
+    },
+    {
+      "literal": "9007199254740999",
+      "serialized": "9007199254741000",
+      "accepted": true
+    },
+    {
+      "literal": "-9007199254740999",
+      "serialized": "-9007199254741000",
+      "accepted": true
+    },
+    {
+      "literal": "900719925474099900e-2",
+      "serialized": "9007199254741000",
+      "accepted": true
+    },
+    {
+      "literal": "9007199254741001",
+      "serialized": "9007199254741000",
+      "accepted": true
+    },
+    {
+      "literal": "-9007199254741001",
+      "serialized": "-9007199254741000",
+      "accepted": true
+    },
+    {
+      "literal": "900719925474100100e-2",
+      "serialized": "9007199254741000",
+      "accepted": true
+    },
+    {
+      "literal": "9007199254741003",
+      "serialized": "9007199254741004",
+      "accepted": true
+    },
+    {
+      "literal": "-9007199254741003",
+      "serialized": "-9007199254741004",
+      "accepted": true
+    },
+    {
+      "literal": "900719925474100300e-2",
+      "serialized": "9007199254741004",
+      "accepted": true
+    },
+    {
+      "literal": "9007199254741005",
+      "serialized": "9007199254741004",
+      "accepted": true
+    },
+    {
+      "literal": "-9007199254741005",
+      "serialized": "-9007199254741004",
+      "accepted": true
+    },
+    {
+      "literal": "900719925474100500e-2",
+      "serialized": "9007199254741004",
+      "accepted": true
+    },
+    {
+      "literal": "9007199254741007",
+      "serialized": "9007199254741008",
+      "accepted": true
+    },
+    {
+      "literal": "-9007199254741007",
+      "serialized": "-9007199254741008",
+      "accepted": true
+    },
+    {
+      "literal": "900719925474100700e-2",
+      "serialized": "9007199254741008",
+      "accepted": true
+    },
+    {
+      "literal": "18014398509481969",
+      "serialized": "18014398509481968",
+      "accepted": true
+    },
+    {
+      "literal": "-18014398509481969",
+      "serialized": "-18014398509481968",
+      "accepted": true
+    },
+    {
+      "literal": "1801439850948196900e-2",
+      "serialized": "18014398509481968",
+      "accepted": true
+    },
+    {
+      "literal": "18014398509481971",
+      "serialized": "18014398509481972",
+      "accepted": true
+    },
+    {
+      "literal": "-18014398509481971",
+      "serialized": "-18014398509481972",
+      "accepted": true
+    },
+    {
+      "literal": "1801439850948197100e-2",
+      "serialized": "18014398509481972",
+      "accepted": true
+    },
+    {
+      "literal": "18014398509481973",
+      "serialized": "18014398509481972",
+      "accepted": true
+    },
+    {
+      "literal": "-18014398509481973",
+      "serialized": "-18014398509481972",
+      "accepted": true
+    },
+    {
+      "literal": "1801439850948197300e-2",
+      "serialized": "18014398509481972",
+      "accepted": true
+    },
+    {
+      "literal": "18014398509481975",
+      "serialized": "18014398509481976",
+      "accepted": true
+    },
+    {
+      "literal": "-18014398509481975",
+      "serialized": "-18014398509481976",
+      "accepted": true
+    },
+    {
+      "literal": "1801439850948197500e-2",
+      "serialized": "18014398509481976",
+      "accepted": true
+    },
+    {
+      "literal": "18014398509481977",
+      "serialized": "18014398509481976",
+      "accepted": true
+    },
+    {
+      "literal": "-18014398509481977",
+      "serialized": "-18014398509481976",
+      "accepted": true
+    },
+    {
+      "literal": "1801439850948197700e-2",
+      "serialized": "18014398509481976",
+      "accepted": true
+    },
+    {
+      "literal": "18014398509481979",
+      "serialized": "18014398509481980",
+      "accepted": true
+    },
+    {
+      "literal": "-18014398509481979",
+      "serialized": "-18014398509481980",
+      "accepted": true
+    },
+    {
+      "literal": "1801439850948197900e-2",
+      "serialized": "18014398509481980",
+      "accepted": true
+    },
+    {
+      "literal": "18014398509481981",
+      "serialized": "18014398509481980",
+      "accepted": true
+    },
+    {
+      "literal": "-18014398509481981",
+      "serialized": "-18014398509481980",
+      "accepted": true
+    },
+    {
+      "literal": "1801439850948198100e-2",
+      "serialized": "18014398509481980",
+      "accepted": true
+    },
+    {
+      "literal": "18014398509481983",
+      "serialized": "18014398509481984",
+      "accepted": true
+    },
+    {
+      "literal": "-18014398509481983",
+      "serialized": "-18014398509481984",
+      "accepted": true
+    },
+    {
+      "literal": "1801439850948198300e-2",
+      "serialized": "18014398509481984",
+      "accepted": true
+    },
+    {
+      "literal": "18014398509481985",
+      "serialized": "18014398509481984",
+      "accepted": true
+    },
+    {
+      "literal": "-18014398509481985",
+      "serialized": "-18014398509481984",
+      "accepted": true
+    },
+    {
+      "literal": "1801439850948198500e-2",
+      "serialized": "18014398509481984",
+      "accepted": true
+    },
+    {
+      "literal": "18014398509481986",
+      "serialized": "18014398509481984",
+      "accepted": true
+    },
+    {
+      "literal": "-18014398509481986",
+      "serialized": "-18014398509481984",
+      "accepted": true
+    },
+    {
+      "literal": "1801439850948198600e-2",
+      "serialized": "18014398509481984",
+      "accepted": true
+    },
+    {
+      "literal": "18014398509481987",
+      "serialized": "18014398509481988",
+      "accepted": true
+    },
+    {
+      "literal": "-18014398509481987",
+      "serialized": "-18014398509481988",
+      "accepted": true
+    },
+    {
+      "literal": "1801439850948198700e-2",
+      "serialized": "18014398509481988",
+      "accepted": true
+    },
+    {
+      "literal": "18014398509481989",
+      "serialized": "18014398509481988",
+      "accepted": true
+    },
+    {
+      "literal": "-18014398509481989",
+      "serialized": "-18014398509481988",
+      "accepted": true
+    },
+    {
+      "literal": "1801439850948198900e-2",
+      "serialized": "18014398509481988",
+      "accepted": true
+    },
+    {
+      "literal": "18014398509481991",
+      "serialized": "18014398509481990",
+      "accepted": true
+    },
+    {
+      "literal": "-18014398509481991",
+      "serialized": "-18014398509481990",
+      "accepted": true
+    },
+    {
+      "literal": "1801439850948199100e-2",
+      "serialized": "18014398509481990",
+      "accepted": true
+    },
+    {
+      "literal": "18014398509481992",
+      "serialized": "18014398509481990",
+      "accepted": true
+    },
+    {
+      "literal": "-18014398509481992",
+      "serialized": "-18014398509481990",
+      "accepted": true
+    },
+    {
+      "literal": "1801439850948199200e-2",
+      "serialized": "18014398509481990",
+      "accepted": true
+    },
+    {
+      "literal": "18014398509481993",
+      "serialized": "18014398509481990",
+      "accepted": true
+    },
+    {
+      "literal": "-18014398509481993",
+      "serialized": "-18014398509481990",
+      "accepted": true
+    },
+    {
+      "literal": "1801439850948199300e-2",
+      "serialized": "18014398509481990",
+      "accepted": true
+    },
+    {
+      "literal": "18014398509481994",
+      "serialized": "18014398509481990",
+      "accepted": true
+    },
+    {
+      "literal": "-18014398509481994",
+      "serialized": "-18014398509481990",
+      "accepted": true
+    },
+    {
+      "literal": "1801439850948199400e-2",
+      "serialized": "18014398509481990",
+      "accepted": true
+    },
+    {
+      "literal": "18014398509481995",
+      "serialized": "18014398509481996",
+      "accepted": true
+    },
+    {
+      "literal": "-18014398509481995",
+      "serialized": "-18014398509481996",
+      "accepted": true
+    },
+    {
+      "literal": "1801439850948199500e-2",
+      "serialized": "18014398509481996",
+      "accepted": true
+    },
+    {
+      "literal": "18014398509481997",
+      "serialized": "18014398509481996",
+      "accepted": true
+    },
+    {
+      "literal": "-18014398509481997",
+      "serialized": "-18014398509481996",
+      "accepted": true
+    },
+    {
+      "literal": "1801439850948199700e-2",
+      "serialized": "18014398509481996",
+      "accepted": true
+    },
+    {
+      "literal": "18014398509481998",
+      "serialized": "18014398509482000",
+      "accepted": true
+    },
+    {
+      "literal": "-18014398509481998",
+      "serialized": "-18014398509482000",
+      "accepted": true
+    },
+    {
+      "literal": "1801439850948199800e-2",
+      "serialized": "18014398509482000",
+      "accepted": true
+    },
+    {
+      "literal": "18014398509481999",
+      "serialized": "18014398509482000",
+      "accepted": true
+    },
+    {
+      "literal": "-18014398509481999",
+      "serialized": "-18014398509482000",
+      "accepted": true
+    },
+    {
+      "literal": "1801439850948199900e-2",
+      "serialized": "18014398509482000",
+      "accepted": true
+    },
+    {
+      "literal": "36028797018963952",
+      "serialized": "36028797018963950",
+      "accepted": true
+    },
+    {
+      "literal": "-36028797018963952",
+      "serialized": "-36028797018963950",
+      "accepted": true
+    },
+    {
+      "literal": "3602879701896395200e-2",
+      "serialized": "36028797018963950",
+      "accepted": true
+    },
+    {
+      "literal": "36028797018963953",
+      "serialized": "36028797018963950",
+      "accepted": true
+    },
+    {
+      "literal": "-36028797018963953",
+      "serialized": "-36028797018963950",
+      "accepted": true
+    },
+    {
+      "literal": "3602879701896395300e-2",
+      "serialized": "36028797018963950",
+      "accepted": true
+    },
+    {
+      "literal": "36028797018963954",
+      "serialized": "36028797018963950",
+      "accepted": true
+    },
+    {
+      "literal": "-36028797018963954",
+      "serialized": "-36028797018963950",
+      "accepted": true
+    },
+    {
+      "literal": "3602879701896395400e-2",
+      "serialized": "36028797018963950",
+      "accepted": true
+    },
+    {
+      "literal": "36028797018963955",
+      "serialized": "36028797018963956",
+      "accepted": true
+    },
+    {
+      "literal": "-36028797018963955",
+      "serialized": "-36028797018963956",
+      "accepted": true
+    },
+    {
+      "literal": "3602879701896395500e-2",
+      "serialized": "36028797018963956",
+      "accepted": true
+    },
+    {
+      "literal": "36028797018963957",
+      "serialized": "36028797018963956",
+      "accepted": true
+    },
+    {
+      "literal": "-36028797018963957",
+      "serialized": "-36028797018963956",
+      "accepted": true
+    },
+    {
+      "literal": "3602879701896395700e-2",
+      "serialized": "36028797018963956",
+      "accepted": true
+    },
+    {
+      "literal": "36028797018963958",
+      "serialized": "36028797018963960",
+      "accepted": true
+    },
+    {
+      "literal": "-36028797018963958",
+      "serialized": "-36028797018963960",
+      "accepted": true
+    },
+    {
+      "literal": "3602879701896395800e-2",
+      "serialized": "36028797018963960",
+      "accepted": true
+    },
+    {
+      "literal": "36028797018963959",
+      "serialized": "36028797018963960",
+      "accepted": true
+    },
+    {
+      "literal": "-36028797018963959",
+      "serialized": "-36028797018963960",
+      "accepted": true
+    },
+    {
+      "literal": "3602879701896395900e-2",
+      "serialized": "36028797018963960",
+      "accepted": true
+    },
+    {
+      "literal": "36028797018963961",
+      "serialized": "36028797018963960",
+      "accepted": true
+    },
+    {
+      "literal": "-36028797018963961",
+      "serialized": "-36028797018963960",
+      "accepted": true
+    },
+    {
+      "literal": "3602879701896396100e-2",
+      "serialized": "36028797018963960",
+      "accepted": true
+    },
+    {
+      "literal": "36028797018963962",
+      "serialized": "36028797018963960",
+      "accepted": true
+    },
+    {
+      "literal": "-36028797018963962",
+      "serialized": "-36028797018963960",
+      "accepted": true
+    },
+    {
+      "literal": "3602879701896396200e-2",
+      "serialized": "36028797018963960",
+      "accepted": true
+    },
+    {
+      "literal": "36028797018963963",
+      "serialized": "36028797018963964",
+      "accepted": true
+    },
+    {
+      "literal": "-36028797018963963",
+      "serialized": "-36028797018963964",
+      "accepted": true
+    },
+    {
+      "literal": "3602879701896396300e-2",
+      "serialized": "36028797018963964",
+      "accepted": true
+    },
+    {
+      "literal": "36028797018963965",
+      "serialized": "36028797018963964",
+      "accepted": true
+    },
+    {
+      "literal": "-36028797018963965",
+      "serialized": "-36028797018963964",
+      "accepted": true
+    },
+    {
+      "literal": "3602879701896396500e-2",
+      "serialized": "36028797018963964",
+      "accepted": true
+    },
+    {
+      "literal": "36028797018963966",
+      "serialized": "36028797018963970",
+      "accepted": true
+    },
+    {
+      "literal": "-36028797018963966",
+      "serialized": "-36028797018963970",
+      "accepted": true
+    },
+    {
+      "literal": "3602879701896396600e-2",
+      "serialized": "36028797018963970",
+      "accepted": true
+    },
+    {
+      "literal": "36028797018963967",
+      "serialized": "36028797018963970",
+      "accepted": true
+    },
+    {
+      "literal": "-36028797018963967",
+      "serialized": "-36028797018963970",
+      "accepted": true
+    },
+    {
+      "literal": "3602879701896396700e-2",
+      "serialized": "36028797018963970",
+      "accepted": true
+    },
+    {
+      "literal": "36028797018963968",
+      "serialized": "36028797018963970",
+      "accepted": true
+    },
+    {
+      "literal": "-36028797018963968",
+      "serialized": "-36028797018963970",
+      "accepted": true
+    },
+    {
+      "literal": "3602879701896396800e-2",
+      "serialized": "36028797018963970",
+      "accepted": true
+    },
+    {
+      "literal": "36028797018963969",
+      "serialized": "36028797018963970",
+      "accepted": true
+    },
+    {
+      "literal": "-36028797018963969",
+      "serialized": "-36028797018963970",
+      "accepted": true
+    },
+    {
+      "literal": "3602879701896396900e-2",
+      "serialized": "36028797018963970",
+      "accepted": true
+    },
+    {
+      "literal": "36028797018963971",
+      "serialized": "36028797018963970",
+      "accepted": true
+    },
+    {
+      "literal": "-36028797018963971",
+      "serialized": "-36028797018963970",
+      "accepted": true
+    },
+    {
+      "literal": "3602879701896397100e-2",
+      "serialized": "36028797018963970",
+      "accepted": true
+    },
+    {
+      "literal": "36028797018963972",
+      "serialized": "36028797018963970",
+      "accepted": true
+    },
+    {
+      "literal": "-36028797018963972",
+      "serialized": "-36028797018963970",
+      "accepted": true
+    },
+    {
+      "literal": "3602879701896397200e-2",
+      "serialized": "36028797018963970",
+      "accepted": true
+    },
+    {
+      "literal": "36028797018963973",
+      "serialized": "36028797018963976",
+      "accepted": true
+    },
+    {
+      "literal": "-36028797018963973",
+      "serialized": "-36028797018963976",
+      "accepted": true
+    },
+    {
+      "literal": "3602879701896397300e-2",
+      "serialized": "36028797018963976",
+      "accepted": true
+    },
+    {
+      "literal": "36028797018963974",
+      "serialized": "36028797018963976",
+      "accepted": true
+    },
+    {
+      "literal": "-36028797018963974",
+      "serialized": "-36028797018963976",
+      "accepted": true
+    },
+    {
+      "literal": "3602879701896397400e-2",
+      "serialized": "36028797018963976",
+      "accepted": true
+    },
+    {
+      "literal": "36028797018963975",
+      "serialized": "36028797018963976",
+      "accepted": true
+    },
+    {
+      "literal": "-36028797018963975",
+      "serialized": "-36028797018963976",
+      "accepted": true
+    },
+    {
+      "literal": "3602879701896397500e-2",
+      "serialized": "36028797018963976",
+      "accepted": true
+    },
+    {
+      "literal": "36028797018963977",
+      "serialized": "36028797018963976",
+      "accepted": true
+    },
+    {
+      "literal": "-36028797018963977",
+      "serialized": "-36028797018963976",
+      "accepted": true
+    },
+    {
+      "literal": "3602879701896397700e-2",
+      "serialized": "36028797018963976",
+      "accepted": true
+    },
+    {
+      "literal": "36028797018963978",
+      "serialized": "36028797018963976",
+      "accepted": true
+    },
+    {
+      "literal": "-36028797018963978",
+      "serialized": "-36028797018963976",
+      "accepted": true
+    },
+    {
+      "literal": "3602879701896397800e-2",
+      "serialized": "36028797018963976",
+      "accepted": true
+    },
+    {
+      "literal": "36028797018963979",
+      "serialized": "36028797018963976",
+      "accepted": true
+    },
+    {
+      "literal": "-36028797018963979",
+      "serialized": "-36028797018963976",
+      "accepted": true
+    },
+    {
+      "literal": "3602879701896397900e-2",
+      "serialized": "36028797018963976",
+      "accepted": true
+    },
+    {
+      "literal": "36028797018963981",
+      "serialized": "36028797018963980",
+      "accepted": true
+    },
+    {
+      "literal": "-36028797018963981",
+      "serialized": "-36028797018963980",
+      "accepted": true
+    },
+    {
+      "literal": "3602879701896398100e-2",
+      "serialized": "36028797018963980",
+      "accepted": true
+    },
+    {
+      "literal": "36028797018963982",
+      "serialized": "36028797018963980",
+      "accepted": true
+    },
+    {
+      "literal": "-36028797018963982",
+      "serialized": "-36028797018963980",
+      "accepted": true
+    },
+    {
+      "literal": "3602879701896398200e-2",
+      "serialized": "36028797018963980",
+      "accepted": true
+    },
+    {
+      "literal": "36028797018963983",
+      "serialized": "36028797018963980",
+      "accepted": true
+    },
+    {
+      "literal": "-36028797018963983",
+      "serialized": "-36028797018963980",
+      "accepted": true
+    },
+    {
+      "literal": "3602879701896398300e-2",
+      "serialized": "36028797018963980",
+      "accepted": true
+    },
+    {
+      "literal": "36028797018963984",
+      "serialized": "36028797018963980",
+      "accepted": true
+    },
+    {
+      "literal": "-36028797018963984",
+      "serialized": "-36028797018963980",
+      "accepted": true
+    },
+    {
+      "literal": "3602879701896398400e-2",
+      "serialized": "36028797018963980",
+      "accepted": true
+    },
+    {
+      "literal": "9223372036854775792",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "-9223372036854775792",
+      "serialized": "-9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "922337203685477579200e-2",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "9223372036854775793",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "-9223372036854775793",
+      "serialized": "-9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "922337203685477579300e-2",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "9223372036854775794",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "-9223372036854775794",
+      "serialized": "-9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "922337203685477579400e-2",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "9223372036854775795",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "-9223372036854775795",
+      "serialized": "-9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "922337203685477579500e-2",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "9223372036854775796",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "-9223372036854775796",
+      "serialized": "-9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "922337203685477579600e-2",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "9223372036854775797",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "-9223372036854775797",
+      "serialized": "-9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "922337203685477579700e-2",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "9223372036854775798",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "-9223372036854775798",
+      "serialized": "-9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "922337203685477579800e-2",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "9223372036854775799",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "-9223372036854775799",
+      "serialized": "-9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "922337203685477579900e-2",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "9223372036854775800",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "-9223372036854775800",
+      "serialized": "-9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "922337203685477580000e-2",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "9223372036854775801",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "-9223372036854775801",
+      "serialized": "-9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "922337203685477580100e-2",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "9223372036854775802",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "-9223372036854775802",
+      "serialized": "-9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "922337203685477580200e-2",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "9223372036854775803",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "-9223372036854775803",
+      "serialized": "-9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "922337203685477580300e-2",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "9223372036854775804",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "-9223372036854775804",
+      "serialized": "-9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "922337203685477580400e-2",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "9223372036854775805",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "-9223372036854775805",
+      "serialized": "-9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "922337203685477580500e-2",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "9223372036854775806",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "-9223372036854775806",
+      "serialized": "-9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "922337203685477580600e-2",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "9223372036854775807",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "-9223372036854775807",
+      "serialized": "-9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "922337203685477580700e-2",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "9223372036854775808",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "-9223372036854775808",
+      "serialized": "-9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "922337203685477580800e-2",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "9223372036854775809",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "-9223372036854775809",
+      "serialized": "-9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "922337203685477580900e-2",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "9223372036854775810",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "-9223372036854775810",
+      "serialized": "-9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "922337203685477581000e-2",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "9223372036854775811",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "-9223372036854775811",
+      "serialized": "-9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "922337203685477581100e-2",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "9223372036854775812",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "-9223372036854775812",
+      "serialized": "-9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "922337203685477581200e-2",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "9223372036854775813",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "-9223372036854775813",
+      "serialized": "-9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "922337203685477581300e-2",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "9223372036854775814",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "-9223372036854775814",
+      "serialized": "-9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "922337203685477581400e-2",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "9223372036854775815",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "-9223372036854775815",
+      "serialized": "-9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "922337203685477581500e-2",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "9223372036854775816",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "-9223372036854775816",
+      "serialized": "-9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "922337203685477581600e-2",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "9223372036854775817",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "-9223372036854775817",
+      "serialized": "-9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "922337203685477581700e-2",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "9223372036854775818",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "-9223372036854775818",
+      "serialized": "-9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "922337203685477581800e-2",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "9223372036854775819",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "-9223372036854775819",
+      "serialized": "-9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "922337203685477581900e-2",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "9223372036854775820",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "-9223372036854775820",
+      "serialized": "-9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "922337203685477582000e-2",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "9223372036854775821",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "-9223372036854775821",
+      "serialized": "-9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "922337203685477582100e-2",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "9223372036854775822",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "-9223372036854775822",
+      "serialized": "-9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "922337203685477582200e-2",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "9223372036854775823",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "-9223372036854775823",
+      "serialized": "-9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "922337203685477582300e-2",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "9223372036854775824",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "-9223372036854775824",
+      "serialized": "-9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "922337203685477582400e-2",
+      "serialized": "9223372036854776000",
+      "accepted": true
+    },
+    {
+      "literal": "18446744073709551600",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "-18446744073709551600",
+      "serialized": "-18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "1844674407370955160000e-2",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "18446744073709551601",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "-18446744073709551601",
+      "serialized": "-18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "1844674407370955160100e-2",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "18446744073709551602",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "-18446744073709551602",
+      "serialized": "-18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "1844674407370955160200e-2",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "18446744073709551603",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "-18446744073709551603",
+      "serialized": "-18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "1844674407370955160300e-2",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "18446744073709551604",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "-18446744073709551604",
+      "serialized": "-18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "1844674407370955160400e-2",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "18446744073709551605",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "-18446744073709551605",
+      "serialized": "-18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "1844674407370955160500e-2",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "18446744073709551606",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "-18446744073709551606",
+      "serialized": "-18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "1844674407370955160600e-2",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "18446744073709551607",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "-18446744073709551607",
+      "serialized": "-18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "1844674407370955160700e-2",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "18446744073709551608",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "-18446744073709551608",
+      "serialized": "-18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "1844674407370955160800e-2",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "18446744073709551609",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "-18446744073709551609",
+      "serialized": "-18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "1844674407370955160900e-2",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "18446744073709551610",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "-18446744073709551610",
+      "serialized": "-18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "1844674407370955161000e-2",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "18446744073709551611",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "-18446744073709551611",
+      "serialized": "-18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "1844674407370955161100e-2",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "18446744073709551612",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "-18446744073709551612",
+      "serialized": "-18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "1844674407370955161200e-2",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "18446744073709551613",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "-18446744073709551613",
+      "serialized": "-18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "1844674407370955161300e-2",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "18446744073709551614",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "-18446744073709551614",
+      "serialized": "-18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "1844674407370955161400e-2",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "18446744073709551615",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "-18446744073709551615",
+      "serialized": "-18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "1844674407370955161500e-2",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "18446744073709551616",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "-18446744073709551616",
+      "serialized": "-18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "1844674407370955161600e-2",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "18446744073709551617",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "-18446744073709551617",
+      "serialized": "-18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "1844674407370955161700e-2",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "18446744073709551618",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "-18446744073709551618",
+      "serialized": "-18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "1844674407370955161800e-2",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "18446744073709551619",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "-18446744073709551619",
+      "serialized": "-18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "1844674407370955161900e-2",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "18446744073709551620",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "-18446744073709551620",
+      "serialized": "-18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "1844674407370955162000e-2",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "18446744073709551621",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "-18446744073709551621",
+      "serialized": "-18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "1844674407370955162100e-2",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "18446744073709551622",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "-18446744073709551622",
+      "serialized": "-18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "1844674407370955162200e-2",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "18446744073709551623",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "-18446744073709551623",
+      "serialized": "-18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "1844674407370955162300e-2",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "18446744073709551624",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "-18446744073709551624",
+      "serialized": "-18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "1844674407370955162400e-2",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "18446744073709551625",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "-18446744073709551625",
+      "serialized": "-18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "1844674407370955162500e-2",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "18446744073709551626",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "-18446744073709551626",
+      "serialized": "-18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "1844674407370955162600e-2",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "18446744073709551627",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "-18446744073709551627",
+      "serialized": "-18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "1844674407370955162700e-2",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "18446744073709551628",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "-18446744073709551628",
+      "serialized": "-18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "1844674407370955162800e-2",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "18446744073709551629",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "-18446744073709551629",
+      "serialized": "-18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "1844674407370955162900e-2",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "18446744073709551630",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "-18446744073709551630",
+      "serialized": "-18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "1844674407370955163000e-2",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "18446744073709551631",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "-18446744073709551631",
+      "serialized": "-18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "1844674407370955163100e-2",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "18446744073709551632",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "-18446744073709551632",
+      "serialized": "-18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "1844674407370955163200e-2",
+      "serialized": "18446744073709552000",
+      "accepted": true
+    },
+    {
+      "literal": "1267650600228229401496703205360",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "-1267650600228229401496703205360",
+      "serialized": "-1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "126765060022822940149670320536000e-2",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "1267650600228229401496703205361",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "-1267650600228229401496703205361",
+      "serialized": "-1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "126765060022822940149670320536100e-2",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "1267650600228229401496703205362",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "-1267650600228229401496703205362",
+      "serialized": "-1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "126765060022822940149670320536200e-2",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "1267650600228229401496703205363",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "-1267650600228229401496703205363",
+      "serialized": "-1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "126765060022822940149670320536300e-2",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "1267650600228229401496703205364",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "-1267650600228229401496703205364",
+      "serialized": "-1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "126765060022822940149670320536400e-2",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "1267650600228229401496703205365",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "-1267650600228229401496703205365",
+      "serialized": "-1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "126765060022822940149670320536500e-2",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "1267650600228229401496703205366",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "-1267650600228229401496703205366",
+      "serialized": "-1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "126765060022822940149670320536600e-2",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "1267650600228229401496703205367",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "-1267650600228229401496703205367",
+      "serialized": "-1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "126765060022822940149670320536700e-2",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "1267650600228229401496703205368",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "-1267650600228229401496703205368",
+      "serialized": "-1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "126765060022822940149670320536800e-2",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "1267650600228229401496703205369",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "-1267650600228229401496703205369",
+      "serialized": "-1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "126765060022822940149670320536900e-2",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "1267650600228229401496703205370",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "-1267650600228229401496703205370",
+      "serialized": "-1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "126765060022822940149670320537000e-2",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "1267650600228229401496703205371",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "-1267650600228229401496703205371",
+      "serialized": "-1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "126765060022822940149670320537100e-2",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "1267650600228229401496703205372",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "-1267650600228229401496703205372",
+      "serialized": "-1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "126765060022822940149670320537200e-2",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "1267650600228229401496703205373",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "-1267650600228229401496703205373",
+      "serialized": "-1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "126765060022822940149670320537300e-2",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "1267650600228229401496703205374",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "-1267650600228229401496703205374",
+      "serialized": "-1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "126765060022822940149670320537400e-2",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "1267650600228229401496703205375",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "-1267650600228229401496703205375",
+      "serialized": "-1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "126765060022822940149670320537500e-2",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "1267650600228229401496703205376",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "-1267650600228229401496703205376",
+      "serialized": "-1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "126765060022822940149670320537600e-2",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "1267650600228229401496703205377",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "-1267650600228229401496703205377",
+      "serialized": "-1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "126765060022822940149670320537700e-2",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "1267650600228229401496703205378",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "-1267650600228229401496703205378",
+      "serialized": "-1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "126765060022822940149670320537800e-2",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "1267650600228229401496703205379",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "-1267650600228229401496703205379",
+      "serialized": "-1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "126765060022822940149670320537900e-2",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "1267650600228229401496703205380",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "-1267650600228229401496703205380",
+      "serialized": "-1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "126765060022822940149670320538000e-2",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "1267650600228229401496703205381",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "-1267650600228229401496703205381",
+      "serialized": "-1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "126765060022822940149670320538100e-2",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "1267650600228229401496703205382",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "-1267650600228229401496703205382",
+      "serialized": "-1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "126765060022822940149670320538200e-2",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "1267650600228229401496703205383",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "-1267650600228229401496703205383",
+      "serialized": "-1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "126765060022822940149670320538300e-2",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "1267650600228229401496703205384",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "-1267650600228229401496703205384",
+      "serialized": "-1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "126765060022822940149670320538400e-2",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "1267650600228229401496703205385",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "-1267650600228229401496703205385",
+      "serialized": "-1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "126765060022822940149670320538500e-2",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "1267650600228229401496703205386",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "-1267650600228229401496703205386",
+      "serialized": "-1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "126765060022822940149670320538600e-2",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "1267650600228229401496703205387",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "-1267650600228229401496703205387",
+      "serialized": "-1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "126765060022822940149670320538700e-2",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "1267650600228229401496703205388",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "-1267650600228229401496703205388",
+      "serialized": "-1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "126765060022822940149670320538800e-2",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "1267650600228229401496703205389",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "-1267650600228229401496703205389",
+      "serialized": "-1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "126765060022822940149670320538900e-2",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "1267650600228229401496703205390",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "-1267650600228229401496703205390",
+      "serialized": "-1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "126765060022822940149670320539000e-2",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "1267650600228229401496703205391",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "-1267650600228229401496703205391",
+      "serialized": "-1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "126765060022822940149670320539100e-2",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "1267650600228229401496703205392",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "-1267650600228229401496703205392",
+      "serialized": "-1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "126765060022822940149670320539200e-2",
+      "serialized": "1.2676506002282294e+30",
+      "accepted": true
+    },
+    {
+      "literal": "999043262658417554566270230e-349",
+      "serialized": "1e-322",
+      "accepted": true
+    },
+    {
+      "literal": "8960449298873099604788503727040407654191564e-176",
+      "serialized": "8.9604492988731e-134",
+      "accepted": true
+    },
+    {
+      "literal": "581458678837123715290388361390247595e-233",
+      "serialized": "5.814586788371237e-198",
+      "accepted": true
+    },
+    {
+      "literal": "9270067423742413434115405586697416477011970643168e-68",
+      "serialized": "9.270067423742413e-20",
+      "accepted": true
+    },
+    {
+      "literal": "6618811261413676391140238028553573958739e-286",
+      "serialized": "6.618811261413677e-247",
+      "accepted": true
+    },
+    {
+      "literal": "13514154530192026862e-260",
+      "serialized": "1.3514154530192028e-241",
+      "accepted": true
+    },
+    {
+      "literal": "679420580265422434712749727e-6",
+      "serialized": "679420580265422500000",
+      "accepted": true
+    },
+    {
+      "literal": "2233854814862223447582554324637971423768369981752e70",
+      "serialized": "2.2338548148622234e+118",
+      "accepted": true
+    },
+    {
+      "literal": "2937334387383915335183864767605e163",
+      "serialized": "2.937334387383915e+193",
+      "accepted": true
+    },
+    {
+      "literal": "259747763993684440e-26",
+      "serialized": "2.5974776399368446e-9",
+      "accepted": true
+    },
+    {
+      "literal": "55773152088592418848535043613e-161",
+      "serialized": "5.577315208859242e-133",
+      "accepted": true
+    },
+    {
+      "literal": "62292756774083756265980e-178",
+      "serialized": "6.229275677408375e-156",
+      "accepted": true
+    },
+    {
+      "literal": "883294022255440956725278436664906193274125021925e-267",
+      "serialized": "8.83294022255441e-220",
+      "accepted": true
+    },
+    {
+      "literal": "78936284901189555926777542e-258",
+      "serialized": "7.893628490118955e-233",
+      "accepted": true
+    },
+    {
+      "literal": "7602209995101881143911990748646e-194",
+      "serialized": "7.602209995101881e-164",
+      "accepted": true
+    },
+    {
+      "literal": "7624167601186732819642456078885e-233",
+      "serialized": "7.624167601186732e-203",
+      "accepted": true
+    },
+    {
+      "literal": "38098362942539916637866067698474135330226701177158691e66",
+      "serialized": "3.8098362942539917e+118",
+      "accepted": true
+    },
+    {
+      "literal": "788320589110403528757e-118",
+      "serialized": "7.883205891104035e-98",
+      "accepted": true
+    },
+    {
+      "literal": "4602333408555894887620511982911147840206e-92",
+      "serialized": "4.602333408555895e-53",
+      "accepted": true
+    },
+    {
+      "literal": "8678694374733334455689633e-199",
+      "serialized": "8.678694374733334e-175",
+      "accepted": true
+    },
+    {
+      "literal": "2122278854857249581115744646300910215e-334",
+      "serialized": "2.1222788548572497e-298",
+      "accepted": true
+    },
+    {
+      "literal": "912885329433381170164000694096211285847e111",
+      "serialized": "9.128853294333812e+149",
+      "accepted": true
+    },
+    {
+      "literal": "260912289096435593991535699209965661847261099200351672e-113",
+      "serialized": "2.609122890964356e-60",
+      "accepted": true
+    },
+    {
+      "literal": "98493004064552845815762927902956399465696266528626898784e60",
+      "serialized": "9.849300406455284e+115",
+      "accepted": true
+    },
+    {
+      "literal": "6148015557570719883132657305406254992593e-218",
+      "serialized": "6.1480155575707196e-179",
+      "accepted": true
+    },
+    {
+      "literal": "7866404479063262384218291026160182711500861162829715307e-133",
+      "serialized": "7.866404479063263e-79",
+      "accepted": true
+    },
+    {
+      "literal": "820455895237194584291124952019009545549e-334",
+      "serialized": "8.204558952371946e-296",
+      "accepted": true
+    },
+    {
+      "literal": "9452666041692839245e103",
+      "serialized": "9.45266604169284e+121",
+      "accepted": true
+    },
+    {
+      "literal": "6137384607504644603437826744745391909067544147e-183",
+      "serialized": "6.137384607504644e-138",
+      "accepted": true
+    },
+    {
+      "literal": "44026000407410772358312091298309608491296435395003e-329",
+      "serialized": "4.402600040741077e-280",
+      "accepted": true
+    },
+    {
+      "literal": "2394372285051739546937844426190913909443776e-111",
+      "serialized": "2.3943722850517393e-69",
+      "accepted": true
+    },
+    {
+      "literal": "533365286152625266918465039023849979060921212396438147e-224",
+      "serialized": "5.3336528615262525e-171",
+      "accepted": true
+    },
+    {
+      "literal": "2530844500582975807901149165673016027144215261078e-280",
+      "serialized": "2.5308445005829757e-232",
+      "accepted": true
+    },
+    {
+      "literal": "829709356496702073005190915613304231625225665213206e-205",
+      "serialized": "8.29709356496702e-155",
+      "accepted": true
+    },
+    {
+      "literal": "500362101385606517441261e243",
+      "serialized": "5.003621013856065e+266",
+      "accepted": true
+    },
+    {
+      "literal": "7715021118924795074152453053126779e166",
+      "serialized": "7.715021118924795e+199",
+      "accepted": true
+    },
+    {
+      "literal": "1371323812009407965e267",
+      "serialized": "1.371323812009408e+285",
+      "accepted": true
+    },
+    {
+      "literal": "617276103627884809896656285440017499117050706826424847e150",
+      "serialized": "6.172761036278848e+203",
+      "accepted": true
+    },
+    {
+      "literal": "9108778251825126197005709809e-170",
+      "serialized": "9.108778251825126e-143",
+      "accepted": true
+    },
+    {
+      "literal": "92296899261746954149650569122541270356719535586311469395e-112",
+      "serialized": "9.229689926174696e-57",
+      "accepted": true
+    },
+    {
+      "literal": "7626902977113138964172431e-241",
+      "serialized": "7.626902977113139e-217",
+      "accepted": true
+    },
+    {
+      "literal": "957842002399273799729169259222988290680832e189",
+      "serialized": "9.578420023992739e+230",
+      "accepted": true
+    },
+    {
+      "literal": "98191947750049388677383374368147019957615554136595941103075e-74",
+      "serialized": "9.81919477500494e-16",
+      "accepted": true
+    },
+    {
+      "literal": "7797174309051150873769000882562768647081e-133",
+      "serialized": "7.79717430905115e-94",
+      "accepted": true
+    },
+    {
+      "literal": "876411873494190369285852711620098092339519385756e170",
+      "serialized": "8.764118734941903e+217",
+      "accepted": true
+    },
+    {
+      "literal": "3756687874947768262126277473831298486e-214",
+      "serialized": "3.756687874947768e-178",
+      "accepted": true
+    },
+    {
+      "literal": "852230596750174555512821586363e43",
+      "serialized": "8.522305967501745e+72",
+      "accepted": true
+    },
+    {
+      "literal": "7453389626412752339059578810776143392478961684e-213",
+      "serialized": "7.453389626412753e-168",
+      "accepted": true
+    },
+    {
+      "literal": "70326842988973329507077004096042243e-42",
+      "serialized": "7.032684298897333e-8",
+      "accepted": true
+    },
+    {
+      "literal": "315980481811959938796311068275405515656897691489051292925e243",
+      "serialized": "3.1598048181195994e+299",
+      "accepted": true
+    },
+    {
+      "literal": "980425820886499895647497294490742740970243222112867e-77",
+      "serialized": "9.804258208864999e-27",
+      "accepted": true
+    },
+    {
+      "literal": "9442873330605701845505523095633410e-188",
+      "serialized": "9.442873330605701e-155",
+      "accepted": true
+    },
+    {
+      "literal": "35912668062778048335981826981233527954328995782e57",
+      "serialized": "3.591266806277805e+103",
+      "accepted": true
+    },
+    {
+      "literal": "400350961839223660118221287533596312e182",
+      "serialized": "4.0035096183922364e+217",
+      "accepted": true
+    },
+    {
+      "literal": "14100786765897434911736877028347579463e18",
+      "serialized": "1.4100786765897435e+55",
+      "accepted": true
+    },
+    {
+      "literal": "68822828005447794983027265018778614001130673e-287",
+      "serialized": "6.88228280054478e-244",
+      "accepted": true
+    },
+    {
+      "literal": "74249411087536562688326e110",
+      "serialized": "7.424941108753657e+132",
+      "accepted": true
+    },
+    {
+      "literal": "504005555698806242666518782301153295375340108328977403e-6",
+      "serialized": "5.040055556988063e+47",
+      "accepted": true
+    },
+    {
+      "literal": "5433584010566093731577098775186860494379638002249e207",
+      "serialized": "5.433584010566094e+255",
+      "accepted": true
+    },
+    {
+      "literal": "27381691385949529e251",
+      "serialized": "2.738169138594953e+267",
+      "accepted": true
+    },
+    {
+      "literal": "1288708200333227018e-110",
+      "serialized": "1.288708200333227e-92",
+      "accepted": true
+    },
+    {
+      "literal": "5708443944113450571481177107451e-208",
+      "serialized": "5.70844394411345e-178",
+      "accepted": true
+    },
+    {
+      "literal": "4040819428151350991e112",
+      "serialized": "4.040819428151351e+130",
+      "accepted": true
+    },
+    {
+      "literal": "961161435770462947899077051091855713e204",
+      "serialized": "9.611614357704629e+239",
+      "accepted": true
+    },
+    {
+      "literal": "55496775829578830282416e61",
+      "serialized": "5.549677582957882e+83",
+      "accepted": true
+    },
+    {
+      "literal": "7843798475427581383468310922731770708495005562305209962e-268",
+      "serialized": "7.843798475427582e-214",
+      "accepted": true
+    },
+    {
+      "literal": "8408010000323025699178969130e93",
+      "serialized": "8.408010000323026e+120",
+      "accepted": true
+    },
+    {
+      "literal": "254216395305135027583e286",
+      "serialized": "2.5421639530513502e+306",
+      "accepted": true
+    },
+    {
+      "literal": "5475329724163752361e-199",
+      "serialized": "5.475329724163752e-181",
+      "accepted": true
+    },
+    {
+      "literal": "484462025816121630364256503e273",
+      "serialized": "4.844620258161216e+299",
+      "accepted": true
+    },
+    {
+      "literal": "8375188373067023553427087940513237304280742393e-255",
+      "serialized": "8.375188373067023e-210",
+      "accepted": true
+    },
+    {
+      "literal": "689029530984245085e218",
+      "serialized": "6.890295309842451e+235",
+      "accepted": true
+    },
+    {
+      "literal": "730111659278274290350754160869711647444349131005e219",
+      "serialized": "7.301116592782742e+266",
+      "accepted": true
+    },
+    {
+      "literal": "2799016297278508537060938312146021108386e-299",
+      "serialized": "2.7990162972785085e-260",
+      "accepted": true
+    },
+    {
+      "literal": "84957746209363006719022928916281683244267162e-292",
+      "serialized": "8.495774620936301e-249",
+      "accepted": true
+    },
+    {
+      "literal": "563787062128260632421129723711950299403132594795966e111",
+      "serialized": "5.637870621282606e+161",
+      "accepted": true
+    },
+    {
+      "literal": "93026047589005096883521163e-95",
+      "serialized": "9.302604758900509e-70",
+      "accepted": true
+    },
+    {
+      "literal": "74999937834791657621e-213",
+      "serialized": "7.499993783479166e-194",
+      "accepted": true
+    },
+    {
+      "literal": "766488525102626822261626e59",
+      "serialized": "7.664885251026269e+82",
+      "accepted": true
+    },
+    {
+      "literal": "47279671124128040376654757612382705654526923e-230",
+      "serialized": "4.727967112412804e-187",
+      "accepted": true
+    },
+    {
+      "literal": "63198695117450721829110235768996371894957304037506e-88",
+      "serialized": "6.319869511745073e-39",
+      "accepted": true
+    },
+    {
+      "literal": "34875918994059811170e-25",
+      "serialized": "0.000003487591899405981",
+      "accepted": true
+    },
+    {
+      "literal": "440610420114201635e-192",
+      "serialized": "4.4061042011420166e-175",
+      "accepted": true
+    },
+    {
+      "literal": "62460210584086785848111500710184461984e-178",
+      "serialized": "6.246021058408678e-141",
+      "accepted": true
+    },
+    {
+      "literal": "56369134538328488354165175143668287364278771270252e112",
+      "serialized": "5.636913453832849e+161",
+      "accepted": true
+    },
+    {
+      "literal": "26079758106446e-329",
+      "serialized": "2.6079758e-316",
+      "accepted": true
+    },
+    {
+      "literal": "79902906752276133e88",
+      "serialized": "7.990290675227614e+104",
+      "accepted": true
+    },
+    {
+      "literal": "363166313173775811629608664274795781349e-66",
+      "serialized": "3.6316631317377583e-28",
+      "accepted": true
+    },
+    {
+      "literal": "94325711522346058863024358553253e-56",
+      "serialized": "9.432571152234606e-25",
+      "accepted": true
+    },
+    {
+      "literal": "370149178282444338672113e-236",
+      "serialized": "3.7014917828244436e-213",
+      "accepted": true
+    },
+    {
+      "literal": "11846457251446380330211820158335568173793914966993e-125",
+      "serialized": "1.1846457251446381e-76",
+      "accepted": true
+    },
+    {
+      "literal": "432983020022375782349604552e-39",
+      "serialized": "4.329830200223758e-13",
+      "accepted": true
+    },
+    {
+      "literal": "554195508607123849565496897589146940621454105944680414685e-229",
+      "serialized": "5.541955086071239e-173",
+      "accepted": true
+    },
+    {
+      "literal": "9343369232528805020395278767965657769485992363292e-159",
+      "serialized": "9.343369232528806e-111",
+      "accepted": true
+    },
+    {
+      "literal": "97869306881333173899049843404458047734e217",
+      "serialized": "9.786930688133318e+254",
+      "accepted": true
+    },
+    {
+      "literal": "917695564481762791278590274852319958141734036e205",
+      "serialized": "9.176955644817628e+249",
+      "accepted": true
+    },
+    {
+      "literal": "2235723455649784069079308363775309966049807073736633e120",
+      "serialized": "2.235723455649784e+171",
+      "accepted": true
+    },
+    {
+      "literal": "1150472447180634452780261331e-49",
+      "serialized": "1.1504724471806344e-22",
+      "accepted": true
+    },
+    {
+      "literal": "449576218145746732512782541024323521505e-285",
+      "serialized": "4.495762181457467e-247",
+      "accepted": true
+    },
+    {
+      "literal": "20136825937158891057292e123",
+      "serialized": "2.013682593715889e+145",
+      "accepted": true
+    },
+    {
+      "literal": "21472674936780363990e-192",
+      "serialized": "2.1472674936780365e-173",
+      "accepted": true
+    },
+    {
+      "literal": "8178312759856559108026985602711e-92",
+      "serialized": "8.17831275985656e-62",
+      "accepted": true
+    },
+    {
+      "literal": "67773051434983329232e-224",
+      "serialized": "6.7773051434983325e-205",
+      "accepted": true
+    },
+    {
+      "literal": "43858440152607225550518840757204174436193555633578723088982e-118",
+      "serialized": "4.3858440152607225e-60",
+      "accepted": true
+    },
+    {
+      "literal": "9583743321143036517654739004994714022491973e-259",
+      "serialized": "9.583743321143036e-217",
+      "accepted": true
+    },
+    {
+      "literal": "9196948449063960146634099658383225922182305131498297822e27",
+      "serialized": "9.19694844906396e+81",
+      "accepted": true
+    },
+    {
+      "literal": "3004925328092086439587452862586396035741e123",
+      "serialized": "3.0049253280920863e+162",
+      "accepted": true
+    },
+    {
+      "literal": "53042493439258705410472816321e-70",
+      "serialized": "5.3042493439258704e-42",
+      "accepted": true
+    },
+    {
+      "literal": "648020121079840847495926603498698391106602670976124e83",
+      "serialized": "6.480201210798409e+133",
+      "accepted": true
+    },
+    {
+      "literal": "5182543849073556207891879e-295",
+      "serialized": "5.182543849073556e-271",
+      "accepted": true
+    },
+    {
+      "literal": "216438212612582426044302738291e-228",
+      "serialized": "2.164382126125824e-199",
+      "accepted": true
+    },
+    {
+      "literal": "100669417613245073579182881810459332170e130",
+      "serialized": "1.0066941761324507e+168",
+      "accepted": true
+    },
+    {
+      "literal": "230857261581658797586663933058151706501197501597813780920e75",
+      "serialized": "2.308572615816588e+131",
+      "accepted": true
+    },
+    {
+      "literal": "4589264473174040188233013729211387688756321194927953616e249",
+      "serialized": "4.58926447317404e+303",
+      "accepted": true
+    },
+    {
+      "literal": "67455510459933548645794976232045378317e-171",
+      "serialized": "6.745551045993355e-134",
+      "accepted": true
+    },
+    {
+      "literal": "952648788697690308554733e-179",
+      "serialized": "9.526487886976904e-156",
+      "accepted": true
+    },
+    {
+      "literal": "806333951828046954477802806016138e-60",
+      "serialized": "8.063339518280469e-28",
+      "accepted": true
+    },
+    {
+      "literal": "494682228628454507417814749664482e-202",
+      "serialized": "4.946822286284545e-170",
+      "accepted": true
+    },
+    {
+      "literal": "475031008842696301564875e-31",
+      "serialized": "4.750310088426963e-8",
+      "accepted": true
+    },
+    {
+      "literal": "64370156736648325577e-91",
+      "serialized": "6.437015673664832e-72",
+      "accepted": true
+    },
+    {
+      "literal": "478795672073644054405346857406402771314671090e-123",
+      "serialized": "4.7879567207364406e-79",
+      "accepted": true
+    },
+    {
+      "literal": "63126668596681650837633914559965119749372410273736550e-84",
+      "serialized": "6.312666859668165e-32",
+      "accepted": true
+    },
+    {
+      "literal": "49094819872219536120156801040082481350450175378381e-105",
+      "serialized": "4.909481987221953e-56",
+      "accepted": true
+    },
+    {
+      "literal": "77139923284246888846043295720521767740303839731707e188",
+      "serialized": "7.713992328424689e+237",
+      "accepted": true
+    },
+    {
+      "literal": "629473420523062189035736878277145608112544e-186",
+      "serialized": "6.2947342052306216e-145",
+      "accepted": true
+    },
+    {
+      "literal": "302280742290543893529351919928026207297e-21",
+      "serialized": "302280742290543900",
+      "accepted": true
+    },
+    {
+      "literal": "212265538239093799664760293144e210",
+      "serialized": "2.122655382390938e+239",
+      "accepted": true
+    },
+    {
+      "literal": "184185624001685964888664914827917200441223728621258e-24",
+      "serialized": "1.8418562400168596e+26",
+      "accepted": true
+    },
+    {
+      "literal": "3945205319330128228e172",
+      "serialized": "3.945205319330128e+190",
+      "accepted": true
+    },
+    {
+      "literal": "96429830857825399959109549509811674728900810166105642e-193",
+      "serialized": "9.64298308578254e-141",
+      "accepted": true
+    },
+    {
+      "literal": "932916617231146680872825160896144154633309025e187",
+      "serialized": "9.329166172311467e+231",
+      "accepted": true
+    },
+    {
+      "literal": "63799493665620537431903505340e72",
+      "serialized": "6.379949366562054e+100",
+      "accepted": true
+    },
+    {
+      "literal": "363438672532089423462043228e-7",
+      "serialized": "36343867253208940000",
+      "accepted": true
+    },
+    {
+      "literal": "9251431691431065250040514557709e-318",
+      "serialized": "9.251431691431065e-288",
+      "accepted": true
+    },
+    {
+      "literal": "6100978636563608368421901061248622e222",
+      "serialized": "6.100978636563608e+255",
+      "accepted": true
+    },
+    {
+      "literal": "57186741221164962327683031777468461763279e169",
+      "serialized": "5.718674122116496e+209",
+      "accepted": true
+    },
+    {
+      "literal": "42619131935973017296517446106555135750998134e4",
+      "serialized": "4.261913193597302e+47",
+      "accepted": true
+    },
+    {
+      "literal": "124626310734521783e-280",
+      "serialized": "1.2462631073452177e-263",
+      "accepted": true
+    },
+    {
+      "literal": "82931104244221799243885725530352889228372980031695848e-350",
+      "serialized": "8.29311042442218e-298",
+      "accepted": true
+    },
+    {
+      "literal": "31218006187062436593734111112856425558182104903891570396e-345",
+      "serialized": "3.121800618706244e-290",
+      "accepted": true
+    },
+    {
+      "literal": "1862677459431491664061537711807047170880467e208",
+      "serialized": "1.8626774594314917e+250",
+      "accepted": true
+    },
+    {
+      "literal": "644790635032206623978608513230406800853685859616e41",
+      "serialized": "6.447906350322066e+88",
+      "accepted": true
+    },
+    {
+      "literal": "891702098598496740578094458460571457290742405217788343e134",
+      "serialized": "8.917020985984968e+187",
+      "accepted": true
+    },
+    {
+      "literal": "85194032276289659e-160",
+      "serialized": "8.519403227628966e-144",
+      "accepted": true
+    },
+    {
+      "literal": "88529358495254367e-264",
+      "serialized": "8.852935849525437e-248",
+      "accepted": true
+    },
+    {
+      "literal": "4535802274236977425e-66",
+      "serialized": "4.5358022742369773e-48",
+      "accepted": true
+    },
+    {
+      "literal": "82660534946140652002697514606611216453407569861920e180",
+      "serialized": "8.266053494614065e+229",
+      "accepted": true
+    },
+    {
+      "literal": "7646222155137767278919715249111549823901382646739e-350",
+      "serialized": "7.646222155137768e-302",
+      "accepted": true
+    },
+    {
+      "literal": "506047423369793215e-145",
+      "serialized": "5.060474233697932e-128",
+      "accepted": true
+    },
+    {
+      "literal": "4724207493232725023878510e-299",
+      "serialized": "4.724207493232725e-275",
+      "accepted": true
+    },
+    {
+      "literal": "43209025136827476120796029216851128538150055e-84",
+      "serialized": "4.3209025136827477e-41",
+      "accepted": true
+    },
+    {
+      "literal": "64277610616036282310375744797260584172e-148",
+      "serialized": "6.427761061603628e-111",
+      "accepted": true
+    },
+    {
+      "literal": "79501790205694865436820968137160052907673e34",
+      "serialized": "7.950179020569487e+74",
+      "accepted": true
+    },
+    {
+      "literal": "8036575293582181932393438693521490789425483377588e-345",
+      "serialized": "8.036575293582182e-297",
+      "accepted": true
+    },
+    {
+      "literal": "7919564855776523078472332662385851887471758e84",
+      "serialized": "7.919564855776523e+126",
+      "accepted": true
+    },
+    {
+      "literal": "652758857124177395454721245174041924206e-341",
+      "serialized": "6.527588571241774e-303",
+      "accepted": true
+    },
+    {
+      "literal": "3999903682587876954425396665797611856128562964e-177",
+      "serialized": "3.9999036825878767e-132",
+      "accepted": true
+    },
+    {
+      "literal": "46836565343429021860e79",
+      "serialized": "4.683656534342902e+98",
+      "accepted": true
+    },
+    {
+      "literal": "6618813650515355309692640442260146957753714567130e-226",
+      "serialized": "6.618813650515355e-178",
+      "accepted": true
+    },
+    {
+      "literal": "82247380148671306423196277746146354e-343",
+      "serialized": "8.22473801486713e-309",
+      "accepted": true
+    },
+    {
+      "literal": "29207763335949380481699050349397097e-192",
+      "serialized": "2.920776333594938e-158",
+      "accepted": true
+    },
+    {
+      "literal": "6202451367157797018763542931724e-87",
+      "serialized": "6.202451367157797e-57",
+      "accepted": true
+    },
+    {
+      "literal": "378590421004054280597866099645936873668407750e-175",
+      "serialized": "3.785904210040543e-131",
+      "accepted": true
+    },
+    {
+      "literal": "2145377841776593651e187",
+      "serialized": "2.1453778417765935e+205",
+      "accepted": true
+    },
+    {
+      "literal": "576894925673541982598339568445322938941051e179",
+      "serialized": "5.76894925673542e+220",
+      "accepted": true
+    },
+    {
+      "literal": "34729390272984684491471e-210",
+      "serialized": "3.4729390272984686e-188",
+      "accepted": true
+    },
+    {
+      "literal": "670104247264649033006278472774705561904119391253e202",
+      "serialized": "6.70104247264649e+249",
+      "accepted": true
+    },
+    {
+      "literal": "45669322334895839102e-145",
+      "serialized": "4.566932233489584e-126",
+      "accepted": true
+    },
+    {
+      "literal": "39102669990325016433504791407605890655e-218",
+      "serialized": "3.910266999032502e-181",
+      "accepted": true
+    },
+    {
+      "literal": "31763751572478776543013160391006211572626e-133",
+      "serialized": "3.1763751572478776e-93",
+      "accepted": true
+    },
+    {
+      "literal": "9404e-325",
+      "serialized": "9.4e-322",
+      "accepted": true
+    },
+    {
+      "literal": "40419593720374682701085029488675108384620072911620e-128",
+      "serialized": "4.0419593720374685e-79",
+      "accepted": true
+    },
+    {
+      "literal": "147023893235503146e-38",
+      "serialized": "1.4702389323550315e-21",
+      "accepted": true
+    },
+    {
+      "literal": "455173288796751798565e184",
+      "serialized": "4.551732887967518e+204",
+      "accepted": true
+    },
+    {
+      "literal": "65353087670753234937998e-342",
+      "serialized": "6.5355e-320",
+      "accepted": true
+    },
+    {
+      "literal": "45975461676800614739957364923240050175458921026173e-13",
+      "serialized": "4.597546167680061e+36",
+      "accepted": true
+    },
+    {
+      "literal": "57640650305059897478116e-19",
+      "serialized": "5764.06503050599",
+      "accepted": true
+    },
+    {
+      "literal": "9654691887374241779675157172433830177361e-62",
+      "serialized": "9.654691887374242e-23",
+      "accepted": true
+    },
+    {
+      "literal": "758535710684204210372970872879900480224979713493064962e-343",
+      "serialized": "7.585357106842042e-290",
+      "accepted": true
+    },
+    {
+      "literal": "3089031194834479803213089e98",
+      "serialized": "3.0890311948344797e+122",
+      "accepted": true
+    },
+    {
+      "literal": "9998391696707844800569276080676288392030336901e217",
+      "serialized": "9.998391696707845e+262",
+      "accepted": true
+    },
+    {
+      "literal": "790663027953064429578485245621361058e-344",
+      "serialized": "7.906630279530646e-309",
+      "accepted": true
+    },
+    {
+      "literal": "414137224186856074130461704761022894912364252728703629787e-162",
+      "serialized": "4.141372241868561e-106",
+      "accepted": true
+    },
+    {
+      "literal": "959259337387485275281495147281711001173732210884e228",
+      "serialized": "9.592593373874852e+275",
+      "accepted": true
+    },
+    {
+      "literal": "1508923221083463418618485068402600581e-248",
+      "serialized": "1.5089232210834634e-212",
+      "accepted": true
+    },
+    {
+      "literal": "61741708978264575787949695930578687604880539245050006526e-97",
+      "serialized": "6.174170897826458e-42",
+      "accepted": true
+    },
+    {
+      "literal": "3593504496782465671448301325835379079966341e45",
+      "serialized": "3.5935044967824657e+87",
+      "accepted": true
+    },
+    {
+      "literal": "187982555141271448825384266781356484319621725543107903979e113",
+      "serialized": "1.8798255514127146e+169",
+      "accepted": true
+    },
+    {
+      "literal": "33342275828492202e-261",
+      "serialized": "3.33422758284922e-245",
+      "accepted": true
+    },
+    {
+      "literal": "879687734661185628e-63",
+      "serialized": "8.796877346611857e-46",
+      "accepted": true
+    },
+    {
+      "literal": "505261690068384288749621526747827411447500255550453891395e-16",
+      "serialized": "5.052616900683843e+40",
+      "accepted": true
+    },
+    {
+      "literal": "9718539365408745855522246620910540164519399e55",
+      "serialized": "9.718539365408746e+97",
+      "accepted": true
+    },
+    {
+      "literal": "5280993030356236563327071e-138",
+      "serialized": "5.280993030356237e-114",
+      "accepted": true
+    },
+    {
+      "literal": "1985432887360912801330e-103",
+      "serialized": "1.9854328873609127e-82",
+      "accepted": true
+    },
+    {
+      "literal": "2199273268973653201336857307847361e271",
+      "serialized": "2.199273268973653e+304",
+      "accepted": true
+    },
+    {
+      "literal": "971048965300462512683544823620429840304129e116",
+      "serialized": "9.710489653004626e+157",
+      "accepted": true
+    },
+    {
+      "literal": "3325066001151718832384366471089519477133e-334",
+      "serialized": "3.325066001151719e-295",
+      "accepted": true
+    },
+    {
+      "literal": "2793914889233858394584e-125",
+      "serialized": "2.7939148892338584e-104",
+      "accepted": true
+    },
+    {
+      "literal": "22743703878366887695070e16",
+      "serialized": "2.274370387836689e+38",
+      "accepted": true
+    },
+    {
+      "literal": "36419075157155545298098833199073032857287403631e-327",
+      "serialized": "3.6419075157155546e-281",
+      "accepted": true
+    },
+    {
+      "literal": "6843064317823620953939948927986767568607e1",
+      "serialized": "6.843064317823621e+40",
+      "accepted": true
+    },
+    {
+      "literal": "134968174605172786721496981267e180",
+      "serialized": "1.3496817460517279e+209",
+      "accepted": true
+    },
+    {
+      "literal": "60664242748267191846640317685440755423563709360009e213",
+      "serialized": "6.066424274826719e+262",
+      "accepted": true
+    },
+    {
+      "literal": "598535696880746753510698806667e-74",
+      "serialized": "5.985356968807467e-45",
+      "accepted": true
+    },
+    {
+      "literal": "88096205343599681292859780260371805522027171645e-30",
+      "serialized": "88096205343599680",
+      "accepted": true
+    },
+    {
+      "literal": "967645255667283070775503107663463107e-78",
+      "serialized": "9.67645255667283e-43",
+      "accepted": true
+    },
+    {
+      "literal": "434634007207717118595920524190218674139205534356671833e183",
+      "serialized": "4.346340072077171e+236",
+      "accepted": true
+    },
+    {
+      "literal": "6805798387361825838468579293989272714599352e-290",
+      "serialized": "6.805798387361826e-248",
+      "accepted": true
+    },
+    {
+      "literal": "710854468667366424311e70",
+      "serialized": "7.108544686673664e+90",
+      "accepted": true
+    },
+    {
+      "literal": "302661598572598273717152520614194470440740939250e122",
+      "serialized": "3.0266159857259827e+169",
+      "accepted": true
+    },
+    {
+      "literal": "357383604885072018409764934032e-117",
+      "serialized": "3.57383604885072e-88",
+      "accepted": true
+    },
+    {
+      "literal": "4146349523099381058326247057225e-10",
+      "serialized": "414634952309938100000",
+      "accepted": true
+    },
+    {
+      "literal": "44209959601144682230171138239222109097e65",
+      "serialized": "4.420995960114468e+102",
+      "accepted": true
+    },
+    {
+      "literal": "90183860812079988333327534122804553e234",
+      "serialized": "9.018386081208e+268",
+      "accepted": true
+    },
+    {
+      "literal": "60881922415046093053716627068112109495091e193",
+      "serialized": "6.0881922415046095e+233",
+      "accepted": true
+    },
+    {
+      "literal": "45341085020349305376468343091011165235312596934620355e156",
+      "serialized": "4.53410850203493e+208",
+      "accepted": true
+    },
+    {
+      "literal": "940136353103928104353003812835663233324035049671741953e118",
+      "serialized": "9.401363531039281e+171",
+      "accepted": true
+    },
+    {
+      "literal": "499489638560191472566053924219763461652779301e187",
+      "serialized": "4.9948963856019145e+231",
+      "accepted": true
+    },
+    {
+      "literal": "122522796381773634894717463380339894e-28",
+      "serialized": "12252279.638177363",
+      "accepted": true
+    },
+    {
+      "literal": "3013895896018948991e-160",
+      "serialized": "3.013895896018949e-142",
+      "accepted": true
+    },
+    {
+      "literal": "48884401924957398625981494858469280e-185",
+      "serialized": "4.8884401924957397e-151",
+      "accepted": true
+    },
+    {
+      "literal": "55089594449026189635033372782590939780244558471625e29",
+      "serialized": "5.508959444902619e+78",
+      "accepted": true
+    },
+    {
+      "literal": "470032248984593053999172474e-174",
+      "serialized": "4.700322489845931e-148",
+      "accepted": true
+    },
+    {
+      "literal": "44179387588222577824985464983969e209",
+      "serialized": "4.4179387588222575e+240",
+      "accepted": true
+    },
+    {
+      "literal": "257596017927851004186e-199",
+      "serialized": "2.57596017927851e-179",
+      "accepted": true
+    },
+    {
+      "literal": "439890233975538254989643301542e208",
+      "serialized": "4.398902339755382e+237",
+      "accepted": true
+    },
+    {
+      "literal": "16581694385929826805176466452800005792218864654818315467705e121",
+      "serialized": "1.6581694385929828e+179",
+      "accepted": true
+    },
+    {
+      "literal": "422360101112144041701825457564220869853873439682474e-274",
+      "serialized": "4.2236010111214406e-224",
+      "accepted": true
+    },
+    {
+      "literal": "5499500647985841783508741049639e37",
+      "serialized": "5.499500647985842e+67",
+      "accepted": true
+    },
+    {
+      "literal": "3794697746300189438e112",
+      "serialized": "3.7946977463001895e+130",
+      "accepted": true
+    },
+    {
+      "literal": "7485875746392682777031267788877748384e212",
+      "serialized": "7.485875746392683e+248",
+      "accepted": true
+    },
+    {
+      "literal": "8626703380050758142884125815075221018608137235233672902e56",
+      "serialized": "8.626703380050758e+110",
+      "accepted": true
+    },
+    {
+      "literal": "677761821635315287886358e-336",
+      "serialized": "6.77761821637e-313",
+      "accepted": true
+    },
+    {
+      "literal": "6289398595148881593015099154825672189847e-178",
+      "serialized": "6.289398595148881e-139",
+      "accepted": true
+    },
+    {
+      "literal": "23778496546321080309829980373e-40",
+      "serialized": "2.377849654632108e-12",
+      "accepted": true
+    },
+    {
+      "literal": "597952838074673256949716487288548853843402320919831163039e-60",
+      "serialized": "0.0005979528380746733",
+      "accepted": true
+    },
+    {
+      "literal": "9915877934206623560920936905047517792045104998935760032916e-123",
+      "serialized": "9.915877934206625e-66",
+      "accepted": true
+    },
+    {
+      "literal": "937568402343219349508047248580383070886848535349439e170",
+      "serialized": "9.375684023432193e+220",
+      "accepted": true
+    },
+    {
+      "literal": "67779065832020532481303312423761413981406565009963154990e112",
+      "serialized": "6.777906583202053e+167",
+      "accepted": true
+    },
+    {
+      "literal": "6886568708142275507e-192",
+      "serialized": "6.886568708142276e-174",
+      "accepted": true
+    },
+    {
+      "literal": "816618862485209731398676901088193320570442767169e162",
+      "serialized": "8.166188624852098e+209",
+      "accepted": true
+    },
+    {
+      "literal": "48890314517361971421230825081441029188592e-181",
+      "serialized": "4.889031451736197e-141",
+      "accepted": true
+    },
+    {
+      "literal": "6180697353797830343717468150426181868745055919e-200",
+      "serialized": "6.18069735379783e-155",
+      "accepted": true
+    },
+    {
+      "literal": "7871017596072408591e9",
+      "serialized": "7.871017596072409e+27",
+      "accepted": true
+    },
+    {
+      "literal": "340493020644755724860898468646765300505678042e144",
+      "serialized": "3.4049302064475575e+188",
+      "accepted": true
+    },
+    {
+      "literal": "7358905029513757453846899225708061e240",
+      "serialized": "7.358905029513757e+273",
+      "accepted": true
+    },
+    {
+      "literal": "1421865931055976115012197177831e243",
+      "serialized": "1.4218659310559762e+273",
+      "accepted": true
+    },
+    {
+      "literal": "187230744725413381073003370834847252581776659254769e-118",
+      "serialized": "1.8723074472541336e-68",
+      "accepted": true
+    },
+    {
+      "literal": "3334513494699645342204385927271195863514607e-159",
+      "serialized": "3.3345134946996456e-117",
+      "accepted": true
+    },
+    {
+      "literal": "180314259108895488423032451590808348847643e-296",
+      "serialized": "1.803142591088955e-255",
+      "accepted": true
+    },
+    {
+      "literal": "909536144995826051403e-202",
+      "serialized": "9.09536144995826e-182",
+      "accepted": true
+    },
+    {
+      "literal": "1879445909587702383206736014319055286244405930670e213",
+      "serialized": "1.8794459095877023e+261",
+      "accepted": true
+    },
+    {
+      "literal": "4520604607954461669740112797360119841856759594309132934698e70",
+      "serialized": "4.5206046079544615e+127",
+      "accepted": true
+    },
+    {
+      "literal": "6451408516755453585982651766397798442591869502084477347e-158",
+      "serialized": "6.451408516755454e-104",
+      "accepted": true
+    },
+    {
+      "literal": "3234374625637737193020609660e213",
+      "serialized": "3.2343746256377373e+240",
+      "accepted": true
+    },
+    {
+      "literal": "2768699329272057477e97",
+      "serialized": "2.7686993292720575e+115",
+      "accepted": true
+    },
+    {
+      "literal": "613255720657336000353e-8",
+      "serialized": "6132557206573.36",
+      "accepted": true
+    },
+    {
+      "literal": "23686571876087807401408869728798089150330e102",
+      "serialized": "2.3686571876087806e+142",
+      "accepted": true
+    },
+    {
+      "literal": "183337463101220724355641009503803784138e-279",
+      "serialized": "1.833374631012207e-241",
+      "accepted": true
+    },
+    {
+      "literal": "26607014397894013486e205",
+      "serialized": "2.660701439789401e+224",
+      "accepted": true
+    },
+    {
+      "literal": "3962071675958362282976268537930268e142",
+      "serialized": "3.9620716759583624e+175",
+      "accepted": true
+    },
+    {
+      "literal": "17974488131903871656540173940e154",
+      "serialized": "1.797448813190387e+182",
+      "accepted": true
+    },
+    {
+      "literal": "802887259404263491988006288594003207536115151922e-235",
+      "serialized": "8.028872594042635e-188",
+      "accepted": true
+    },
+    {
+      "literal": "5426191466563449999080600614882371749435888525530e-284",
+      "serialized": "5.42619146656345e-236",
+      "accepted": true
+    },
+    {
+      "literal": "828742618390967138187332080081824420993761168593584899e-264",
+      "serialized": "8.287426183909672e-211",
+      "accepted": true
+    },
+    {
+      "literal": "3289771958215335030498664282768442e109",
+      "serialized": "3.289771958215335e+142",
+      "accepted": true
+    },
+    {
+      "literal": "268845471708524084175e-187",
+      "serialized": "2.6884547170852407e-167",
+      "accepted": true
+    },
+    {
+      "literal": "136704554222811965620924431e28",
+      "serialized": "1.3670455422281197e+54",
+      "accepted": true
+    },
+    {
+      "literal": "96859625820190923528353973055839849447147e-92",
+      "serialized": "9.685962582019093e-52",
+      "accepted": true
+    },
+    {
+      "literal": "599347541903408553e-327",
+      "serialized": "5.9934754190341e-310",
+      "accepted": true
+    },
+    {
+      "literal": "841770084407508735085214154880804950227983e83",
+      "serialized": "8.417700844075088e+124",
+      "accepted": true
+    },
+    {
+      "literal": "3804901293932460247308586109182589976456997644899984314955e-254",
+      "serialized": "3.80490129393246e-197",
+      "accepted": true
+    },
+    {
+      "literal": "282456061544251222913863295161322974588757633e183",
+      "serialized": "2.8245606154425124e+227",
+      "accepted": true
+    },
+    {
+      "literal": "58354564910623987928080465753370054307664234940362019618e-45",
+      "serialized": "58354564910.623985",
+      "accepted": true
+    },
+    {
+      "literal": "629491364369110133082696461271870530652729290190378e-134",
+      "serialized": "6.294913643691101e-84",
+      "accepted": true
+    },
+    {
+      "literal": "1595774440419344255222357231138749169554397906966111e16",
+      "serialized": "1.595774440419344e+67",
+      "accepted": true
+    },
+    {
+      "literal": "9744019633215723981619042319594594385e-160",
+      "serialized": "9.744019633215723e-124",
+      "accepted": true
+    },
+    {
+      "literal": "94307880080795537564214319010154547156765780804584535353723e-78",
+      "serialized": "9.430788008079554e-20",
+      "accepted": true
+    },
+    {
+      "literal": "3902079648513856664507006204777135078837e-204",
+      "serialized": "3.9020796485138564e-165",
+      "accepted": true
+    },
+    {
+      "literal": "54038146250523953935955785830896492335441246e71",
+      "serialized": "5.403814625052396e+114",
+      "accepted": true
+    },
+    {
+      "literal": "6808790100802140210370000866402355901656424469535376e-254",
+      "serialized": "6.80879010080214e-203",
+      "accepted": true
+    },
+    {
+      "literal": "3189852272567572036e-298",
+      "serialized": "3.189852272567572e-280",
+      "accepted": true
+    },
+    {
+      "literal": "563081708304465242e-166",
+      "serialized": "5.6308170830446525e-149",
+      "accepted": true
+    },
+    {
+      "literal": "859269867954799627157868776258280e149",
+      "serialized": "8.592698679547997e+181",
+      "accepted": true
+    },
+    {
+      "literal": "52500132259823660668151209685595431e-163",
+      "serialized": "5.250013225982366e-129",
+      "accepted": true
+    },
+    {
+      "literal": "73394049649535771604967676e-264",
+      "serialized": "7.339404964953577e-239",
+      "accepted": true
+    },
+    {
+      "literal": "9236962827418587337718374902843655701551446343e97",
+      "serialized": "9.236962827418587e+142",
+      "accepted": true
+    },
+    {
+      "literal": "36359932135287699837508989605e-52",
+      "serialized": "3.63599321352877e-24",
+      "accepted": true
+    },
+    {
+      "literal": "612571350045090013449351476858335095080717760344575028995e-114",
+      "serialized": "6.1257135004509e-58",
+      "accepted": true
+    },
+    {
+      "literal": "285783326539167812780676729920057919770314730963e125",
+      "serialized": "2.8578332653916782e+172",
+      "accepted": true
+    },
+    {
+      "literal": "784195928920657737676782554597106323721e-191",
+      "serialized": "7.841959289206577e-153",
+      "accepted": true
+    },
+    {
+      "literal": "8247776110218328382612452293228e-138",
+      "serialized": "8.247776110218328e-108",
+      "accepted": true
+    },
+    {
+      "literal": "74616160281767898653098288184154326486043827347070496e97",
+      "serialized": "7.4616160281767895e+149",
+      "accepted": true
+    },
+    {
+      "literal": "2593686864590e-326",
+      "serialized": "2.593686865e-314",
+      "accepted": true
+    },
+    {
+      "literal": "1532567549255542547131850013529499600019364149864710562980e131",
+      "serialized": "1.5325675492555426e+188",
+      "accepted": true
+    },
+    {
+      "literal": "699215070987613340524373e-129",
+      "serialized": "6.992150709876134e-106",
+      "accepted": true
+    },
+    {
+      "literal": "34571741382027073202405513001931929652716095243e-24",
+      "serialized": "3.457174138202707e+22",
+      "accepted": true
+    },
+    {
+      "literal": "900167844198764602240209277766647894233054412078175e-44",
+      "serialized": "9001678.441987647",
+      "accepted": true
+    },
+    {
+      "literal": "4077719521611039522054476958595843943e89",
+      "serialized": "4.07771952161104e+125",
+      "accepted": true
+    },
+    {
+      "literal": "3628667676954410647202911710642576948453434397981272777e8",
+      "serialized": "3.6286676769544107e+62",
+      "accepted": true
+    },
+    {
+      "literal": "33185882757561052805262666984524290471845133e80",
+      "serialized": "3.318588275756105e+123",
+      "accepted": true
+    },
+    {
+      "literal": "5438418287469894178068608279890076398368081678535577931e180",
+      "serialized": "5.438418287469894e+234",
+      "accepted": true
+    },
+    {
+      "literal": "1062420789055601940e-99",
+      "serialized": "1.0624207890556019e-81",
+      "accepted": true
+    },
+    {
+      "literal": "487837258750678938720374976778037e-29",
+      "serialized": "4878.372587506789",
+      "accepted": true
+    },
+    {
+      "literal": "542823687582918487073974436492337010116037553527e107",
+      "serialized": "5.428236875829184e+154",
+      "accepted": true
+    },
+    {
+      "literal": "96403180879983798236e10",
+      "serialized": "9.64031808799838e+29",
+      "accepted": true
+    },
+    {
+      "literal": "2815568372035919351787321640609048539453138129e181",
+      "serialized": "2.815568372035919e+226",
+      "accepted": true
+    },
+    {
+      "literal": "252491478667473737151676444934444684730465541758836373520e-95",
+      "serialized": "2.5249147866747373e-39",
+      "accepted": true
+    },
+    {
+      "literal": "766047922029673605379291373022511479620153864694859534e142",
+      "serialized": "7.660479220296736e+195",
+      "accepted": true
+    },
+    {
+      "literal": "2552629441899929853452753664382794895578263538e-191",
+      "serialized": "2.55262944189993e-146",
+      "accepted": true
+    },
+    {
+      "literal": "13239121868865245312719435230057042293589533758217115255e-262",
+      "serialized": "1.3239121868865246e-207",
+      "accepted": true
+    },
+    {
+      "literal": "32253308915863863350752170063432698826295981369245e-35",
+      "serialized": "322533089158638.6",
+      "accepted": true
+    },
+    {
+      "literal": "431762359167186231836e-101",
+      "serialized": "4.317623591671862e-81",
+      "accepted": true
+    },
+    {
+      "literal": "6457323574813438196e-13",
+      "serialized": "645732.3574813438",
+      "accepted": true
+    },
+    {
+      "literal": "1816119084499277141900703387113979435687e-47",
+      "serialized": "1.816119084499277e-8",
+      "accepted": true
+    },
+    {
+      "literal": "94067836538260092159705434005719323252289e226",
+      "serialized": "9.406783653826009e+266",
+      "accepted": true
+    },
+    {
+      "literal": "127854562726173012627e-162",
+      "serialized": "1.2785456272617301e-142",
+      "accepted": true
+    },
+    {
+      "literal": "5254642200259857190249776608804296798941276952954996737440e-232",
+      "serialized": "5.254642200259857e-175",
+      "accepted": true
+    },
+    {
+      "literal": "89856372896770033868902641170455836442742843e172",
+      "serialized": "8.985637289677003e+215",
+      "accepted": true
+    },
+    {
+      "literal": "7940538814383418512333229818513658597e-135",
+      "serialized": "7.940538814383419e-99",
+      "accepted": true
+    },
+    {
+      "literal": "28715559654780122829708257528457001031965028493e-258",
+      "serialized": "2.8715559654780124e-212",
+      "accepted": true
+    },
+    {
+      "literal": "404903906502810311282e216",
+      "serialized": "4.0490390650281033e+236",
+      "accepted": true
+    },
+    {
+      "literal": "773379566589463718607961883080162838184195489422427e-336",
+      "serialized": "7.733795665894637e-286",
+      "accepted": true
+    },
+    {
+      "literal": "15324342934139784732102131092987858559932144e248",
+      "serialized": "1.5324342934139785e+291",
+      "accepted": true
+    },
+    {
+      "literal": "9528210329538510364315496576e-338",
+      "serialized": "9.5282103295386e-311",
+      "accepted": true
+    },
+    {
+      "literal": "1167875637303016017e-269",
+      "serialized": "1.167875637303016e-251",
+      "accepted": true
+    },
+    {
+      "literal": "575863466236392168596915651611060e-126",
+      "serialized": "5.758634662363921e-94",
+      "accepted": true
+    },
+    {
+      "literal": "60055498044921160017017908310523882751191839377e-242",
+      "serialized": "6.005549804492116e-196",
+      "accepted": true
+    },
+    {
+      "literal": "4797802424417204334705357e-74",
+      "serialized": "4.797802424417204e-50",
+      "accepted": true
+    },
+    {
+      "literal": "28144079660336657409354148871656165305915241356055e136",
+      "serialized": "2.814407966033666e+185",
+      "accepted": true
+    },
+    {
+      "literal": "48948074127736494741939954184832818761832456e-289",
+      "serialized": "4.894807412773649e-246",
+      "accepted": true
+    },
+    {
+      "literal": "93621724421169238023170543969784211500156696e10",
+      "serialized": "9.362172442116924e+53",
+      "accepted": true
+    },
+    {
+      "literal": "167573432940467419344806200598330465e-222",
+      "serialized": "1.6757343294046743e-187",
+      "accepted": true
+    },
+    {
+      "literal": "32465310827382858349683074729615982074775778697721319294e198",
+      "serialized": "3.246531082738286e+253",
+      "accepted": true
+    },
+    {
+      "literal": "10787716822460693820582392281192121979075244e-162",
+      "serialized": "1.0787716822460694e-119",
+      "accepted": true
+    },
+    {
+      "literal": "3308489465949928394456895088904658252629583687e155",
+      "serialized": "3.3084894659499285e+200",
+      "accepted": true
+    },
+    {
+      "literal": "58455013311181054269793925e-265",
+      "serialized": "5.845501331118106e-240",
+      "accepted": true
+    },
+    {
+      "literal": "8191039429007646596163042808233401047180e-92",
+      "serialized": "8.191039429007646e-53",
+      "accepted": true
+    },
+    {
+      "literal": "64361922352107387e-28",
+      "serialized": "6.4361922352107384e-12",
+      "accepted": true
+    },
+    {
+      "literal": "3927003458247732918503501899352732148286701741e60",
+      "serialized": "3.927003458247733e+105",
+      "accepted": true
+    },
+    {
+      "literal": "60754345253723568572238725e-135",
+      "serialized": "6.075434525372357e-110",
+      "accepted": true
+    },
+    {
+      "literal": "4835223453150020814824e-84",
+      "serialized": "4.835223453150021e-63",
+      "accepted": true
+    },
+    {
+      "literal": "369350711311173205622803216e214",
+      "serialized": "3.693507113111732e+240",
+      "accepted": true
+    },
+    {
+      "literal": "95517749571587206669464022258182898e232",
+      "serialized": "9.551774957158721e+266",
+      "accepted": true
+    },
+    {
+      "literal": "44458397338180165447244330288309346073483703865e-68",
+      "serialized": "4.445839733818017e-22",
+      "accepted": true
+    },
+    {
+      "literal": "657578767494514912323634152512758763e75",
+      "serialized": "6.57578767494515e+110",
+      "accepted": true
+    },
+    {
+      "literal": "4038641948787351619483e-27",
+      "serialized": "0.000004038641948787352",
+      "accepted": true
+    },
+    {
+      "literal": "89529490920684950261839591729980523869641918912124107886e-234",
+      "serialized": "8.952949092068495e-179",
+      "accepted": true
+    },
+    {
+      "literal": "5960316279288462706629312121167e-304",
+      "serialized": "5.960316279288463e-274",
+      "accepted": true
+    },
+    {
+      "literal": "9215319543423898399389747620882e-284",
+      "serialized": "9.215319543423898e-254",
+      "accepted": true
+    },
+    {
+      "literal": "97786453173397873773111147937915836088149666517498136900791e-199",
+      "serialized": "9.778645317339787e-141",
+      "accepted": true
+    },
+    {
+      "literal": "3580401669350523299546033e-124",
+      "serialized": "3.5804016693505234e-100",
+      "accepted": true
+    },
+    {
+      "literal": "1399080327116185824e-37",
+      "serialized": "1.399080327116186e-19",
+      "accepted": true
+    },
+    {
+      "literal": "943468161088558683401e170",
+      "serialized": "9.434681610885588e+190",
+      "accepted": true
+    },
+    {
+      "literal": "690674101019967136524506617573019e238",
+      "serialized": "6.9067410101996715e+270",
+      "accepted": true
+    },
+    {
+      "literal": "5307318183985904886115397368e-83",
+      "serialized": "5.307318183985905e-56",
+      "accepted": true
+    },
+    {
+      "literal": "96842709649775922023801683363086484373874296736548864e-134",
+      "serialized": "9.684270964977593e-82",
+      "accepted": true
+    },
+    {
+      "literal": "3845999779996321336219644e-263",
+      "serialized": "3.845999779996321e-239",
+      "accepted": true
+    },
+    {
+      "literal": "93510715060714711805845970630545232e-175",
+      "serialized": "9.351071506071471e-141",
+      "accepted": true
+    },
+    {
+      "literal": "16957002623977952435770376273829205e-7",
+      "serialized": "1.6957002623977953e+27",
+      "accepted": true
+    },
+    {
+      "literal": "195834790631101837294139730090993593443205150e130",
+      "serialized": "1.9583479063110185e+174",
+      "accepted": true
+    },
+    {
+      "literal": "4699644108051787205665877449162539742564137079e224",
+      "serialized": "4.699644108051787e+269",
+      "accepted": true
+    },
+    {
+      "literal": "6668787011220457046152205e-49",
+      "serialized": "6.668787011220457e-25",
+      "accepted": true
+    },
+    {
+      "literal": "95820247572266403709987680456984540201014861776084e42",
+      "serialized": "9.58202475722664e+91",
+      "accepted": true
+    },
+    {
+      "literal": "53350595912002075167025322670739483002758224503993258230999e-276",
+      "serialized": "5.335059591200208e-218",
+      "accepted": true
+    },
+    {
+      "literal": "46742639338846125026757040e7",
+      "serialized": "4.674263933884613e+32",
+      "accepted": true
+    },
+    {
+      "literal": "67789054791532838676772775e-164",
+      "serialized": "6.778905479153284e-139",
+      "accepted": true
+    },
+    {
+      "literal": "896042689526394789866541419658e-69",
+      "serialized": "8.960426895263947e-40",
+      "accepted": true
+    },
+    {
+      "literal": "83260083077689442367422e-344",
+      "serialized": "8.35e-322",
+      "accepted": true
+    },
+    {
+      "literal": "108755242321361871437737731872900416090591604253438353929e-205",
+      "serialized": "1.0875524232136188e-149",
+      "accepted": true
+    },
+    {
+      "literal": "2110742863442778755821e-325",
+      "serialized": "2.1107428634427787e-304",
+      "accepted": true
+    },
+    {
+      "literal": "41830133935350214467575649375486130700042325433591503293e157",
+      "serialized": "4.1830133935350215e+212",
+      "accepted": true
+    },
+    {
+      "literal": "493167425662638228843e23",
+      "serialized": "4.931674256626382e+43",
+      "accepted": true
+    },
+    {
+      "literal": "4298394422295324203110668571452943431e21",
+      "serialized": "4.298394422295324e+57",
+      "accepted": true
+    },
+    {
+      "literal": "5923508626030291844503410974618750469239217119540851224e-198",
+      "serialized": "5.923508626030291e-144",
+      "accepted": true
+    },
+    {
+      "literal": "2385931892190518485523767690282e-35",
+      "serialized": "0.000023859318921905184",
+      "accepted": true
+    },
+    {
+      "literal": "5913817486928812096992246175097136083770476525196990138812e-350",
+      "serialized": "5.913817486928813e-293",
+      "accepted": true
+    },
+    {
+      "literal": "99993832642245578395067567681091e265",
+      "serialized": "9.999383264224558e+296",
+      "accepted": true
+    },
+    {
+      "literal": "86151227195778352540637231301e-167",
+      "serialized": "8.615122719577836e-139",
+      "accepted": true
+    },
+    {
+      "literal": "85968292797120878680624498e191",
+      "serialized": "8.596829279712087e+216",
+      "accepted": true
+    },
+    {
+      "literal": "4932647159866053727482108e-268",
+      "serialized": "4.932647159866054e-244",
+      "accepted": true
+    },
+    {
+      "literal": "93790332237840344275109756369384122653095350e-120",
+      "serialized": "9.379033223784035e-77",
+      "accepted": true
+    },
+    {
+      "literal": "47303923335344186927300297616472516362e-179",
+      "serialized": "4.7303923335344184e-142",
+      "accepted": true
+    },
+    {
+      "literal": "572986981072684441750495777691505e-96",
+      "serialized": "5.729869810726844e-64",
+      "accepted": true
+    },
+    {
+      "literal": "1156239096810446480943107238505943958451280942077641515e-139",
+      "serialized": "1.1562390968104464e-85",
+      "accepted": true
+    },
+    {
+      "literal": "277797539602094955204987977480519068956563978e3",
+      "serialized": "2.7779753960209495e+47",
+      "accepted": true
+    },
+    {
+      "literal": "912973772087676095528647121440500880030725962743125e-228",
+      "serialized": "9.12973772087676e-178",
+      "accepted": true
+    },
+    {
+      "literal": "6208029664310352584999507973536835146422594495e33",
+      "serialized": "6.2080296643103525e+78",
+      "accepted": true
+    },
+    {
+      "literal": "45310756171979565308514483730e-342",
+      "serialized": "4.531075617e-314",
+      "accepted": true
+    },
+    {
+      "literal": "506739064670487630086848709427612956780424606946804067335e-25",
+      "serialized": "5.0673906467048765e+31",
+      "accepted": true
+    },
+    {
+      "literal": "10214109769318204246030472580661049411673643652893337e-53",
+      "serialized": "0.10214109769318204",
+      "accepted": true
+    },
+    {
+      "literal": "58331517056100430925026242195465401423888883140e-106",
+      "serialized": "5.833151705610043e-60",
+      "accepted": true
+    },
+    {
+      "literal": "209071861172242631740352797015252502376544e-321",
+      "serialized": "2.0907186117224263e-280",
+      "accepted": true
+    },
+    {
+      "literal": "8455683547126495473499e-31",
+      "serialized": "8.455683547126496e-10",
+      "accepted": true
+    },
+    {
+      "literal": "5580922579803348641300356775e15",
+      "serialized": "5.580922579803348e+42",
+      "accepted": true
+    },
+    {
+      "literal": "2964197131175172770872085778534769478e18",
+      "serialized": "2.964197131175173e+54",
+      "accepted": true
+    },
+    {
+      "literal": "4606667409819127942087619006468e-16",
+      "serialized": "460666740981912.8",
+      "accepted": true
+    },
+    {
+      "literal": "9340746128167813406551085535936e-71",
+      "serialized": "9.340746128167814e-41",
+      "accepted": true
+    },
+    {
+      "literal": "8640892650678974481573103e-11",
+      "serialized": "86408926506789.75",
+      "accepted": true
+    },
+    {
+      "literal": "2816432251199213760990206223260524695e209",
+      "serialized": "2.816432251199214e+245",
+      "accepted": true
+    },
+    {
+      "literal": "34409563079349110601450444843059771561704e-259",
+      "serialized": "3.440956307934911e-219",
+      "accepted": true
+    },
+    {
+      "literal": "4553883496904709993406785789685047745520930829e-38",
+      "serialized": "45538834.9690471",
+      "accepted": true
+    },
+    {
+      "literal": "43532000998264410387e-40",
+      "serialized": "4.353200099826441e-21",
+      "accepted": true
+    },
+    {
+      "literal": "87864919775037148454551734494920284218681921770061428e-122",
+      "serialized": "8.786491977503715e-70",
+      "accepted": true
+    },
+    {
+      "literal": "87170276859100193358126389142685615699e-53",
+      "serialized": "8.71702768591002e-16",
+      "accepted": true
+    },
+    {
+      "literal": "4090799491222208503866794875e280",
+      "serialized": "4.0907994912222086e+307",
+      "accepted": true
+    },
+    {
+      "literal": "8622951626011058314808891369582152810045145709e71",
+      "serialized": "8.622951626011058e+116",
+      "accepted": true
+    },
+    {
+      "literal": "31172154242937469636118622410923500e-168",
+      "serialized": "3.117215424293747e-134",
+      "accepted": true
+    },
+    {
+      "literal": "605654576296011124186707859544177243970533186318537573260e-63",
+      "serialized": "6.056545762960111e-7",
+      "accepted": true
+    },
+    {
+      "literal": "7940677565318490950069170e-71",
+      "serialized": "7.940677565318491e-47",
+      "accepted": true
+    },
+    {
+      "literal": "50588365707799499305834e-317",
+      "serialized": "5.05883657077995e-295",
+      "accepted": true
+    }
+  ]
+}

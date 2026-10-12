@@ -1,0 +1,9 @@
+{
+  "node": "v24.21.0",
+  "mode": "verify",
+  "cases": 1975,
+  "preserved": 1065,
+  "changed": 910,
+  "correct": 1975,
+  "mismatches": []
+}

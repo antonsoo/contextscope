@@ -26,6 +26,13 @@ of public SWE-bench agent runs; see `studies/real-trajectories/`.
 
 ### Fixed
 
+- Reject JSON numbers whose mathematical value changes during parsing and prompt
+  serialization. Distinct uint64 tool-schema IDs previously became identical
+  prompt segments and produced a false modeled cache hit. Equivalent decimal
+  spellings remain supported; unsupported precision fails before analysis,
+  including inside metadata, JSONL and string request envelopes. Retain the
+  SDK capture, independent Decimal comparison, and installed/browser evidence
+  in `studies/numeric-integrity/`. Source only; no release or demo deployment.
 - Require every pair in a duplicate-content group to meet the similarity
   threshold. Successive edits no longer form one supposedly interchangeable
   group through transitive matches. Compare actual shingle strings so short

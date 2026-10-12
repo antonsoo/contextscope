@@ -1,0 +1,450 @@
+{
+  "node": "v26.7.0",
+  "mode": "verify",
+  "servedAssets": [
+    {
+      "path": "assets/analysis-worker-LOnAsar_.js",
+      "bytes": 2098069,
+      "sha256": "d7e0d778ca146b8c57f6641a7bb13887b5b145fcd0a152fe352899e5c44f4f1f"
+    },
+    {
+      "path": "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2",
+      "bytes": 14708,
+      "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+    },
+    {
+      "path": "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2",
+      "bytes": 14888,
+      "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+    },
+    {
+      "path": "assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2",
+      "bytes": 15620,
+      "sha256": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83"
+    },
+    {
+      "path": "assets/ibm-plex-mono-700-latin-7sUh57Bg.woff2",
+      "bytes": 14908,
+      "sha256": "4f84d86cfd060f4ded334358ff8a4c81d4db2ed5addd568359d693f44a87765a"
+    },
+    {
+      "path": "assets/ibm-plex-sans-latin-IvpUvPa2.woff2",
+      "bytes": 45712,
+      "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+    },
+    {
+      "path": "assets/index-Bg84irM5.js",
+      "bytes": 64789,
+      "sha256": "ce2c98875e9c1e8bd72a387ce5b0634965530e2c4abd14b03929248217b99779"
+    },
+    {
+      "path": "assets/index-DvNCOwdt.css",
+      "bytes": 31581,
+      "sha256": "e974157a11fff29ff41e055041b3ccfa6e6f40a4fa20468161ad5131142bf033"
+    },
+    {
+      "path": "assets/presentation-BO_VKn4P.js",
+      "bytes": 3792,
+      "sha256": "f6c3f33d1d673095c4e617bb06b17f6bf632e1b18078ef7ad95f5a668fb06add"
+    },
+    {
+      "path": "index.html",
+      "bytes": 2623,
+      "sha256": "3a65af5e1db02314dccac58329acd7dc2536f6447a94bd60f1cd32fffa36b17d"
+    }
+  ],
+  "results": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "width": 1440,
+      "checks": [
+        {
+          "name": "sdk-jsonl",
+          "rejected": true,
+          "error": "Could not analyze this input: Line 1: JSON number at character 7069 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "sdk-array",
+          "rejected": true,
+          "error": "Could not analyze this input: JSON number at character 7070 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "body-object",
+          "rejected": true,
+          "error": "Could not analyze this input: JSON number at character 7077 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "body-string",
+          "rejected": true,
+          "error": "Could not analyze this input: JSON number at character 7069 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "second-jsonl-line",
+          "rejected": true,
+          "error": "Could not analyze this input: Line 2: JSON number at character 7069 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "precise-decimal",
+          "rejected": true,
+          "error": "Could not analyze this input: Line 2: JSON number at character 7069 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "binary-exact-serialization-changes",
+          "rejected": true,
+          "error": "Could not analyze this input: JSON number at character 7069 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "openai-schema",
+          "rejected": true,
+          "error": "Could not analyze this input: JSON number at character 162 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "metadata",
+          "rejected": true,
+          "error": "Could not analyze this input: JSON number at character 7131 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "distinct-supported-integers",
+          "rejected": false,
+          "error": null,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "equivalent-decimal-spellings",
+          "rejected": false,
+          "error": null,
+          "reportSha256": "7ad2d4439a73f6a7d544448132555b483ae6ede53cad04801b2e9414572ca21f"
+        },
+        {
+          "name": "distinct-string-identifiers",
+          "rejected": false,
+          "error": null,
+          "reportSha256": "ceb1537e04b5a6c46a1a3239607de8f440aea94f9cd1bf40b7366878d70be50f"
+        },
+        {
+          "name": "sdk-gzip",
+          "rejected": true,
+          "error": "Could not analyze this input: Line 1: JSON number at character 7069 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "ceb1537e04b5a6c46a1a3239607de8f440aea94f9cd1bf40b7366878d70be50f"
+        }
+      ],
+      "pastedStringEnvelopeRejected": true,
+      "errors": [],
+      "requestsAfterLoad": []
+    },
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "width": 375,
+      "checks": [
+        {
+          "name": "sdk-jsonl",
+          "rejected": true,
+          "error": "Could not analyze this input: Line 1: JSON number at character 7069 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "sdk-array",
+          "rejected": true,
+          "error": "Could not analyze this input: JSON number at character 7070 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "body-object",
+          "rejected": true,
+          "error": "Could not analyze this input: JSON number at character 7077 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "body-string",
+          "rejected": true,
+          "error": "Could not analyze this input: JSON number at character 7069 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "second-jsonl-line",
+          "rejected": true,
+          "error": "Could not analyze this input: Line 2: JSON number at character 7069 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "precise-decimal",
+          "rejected": true,
+          "error": "Could not analyze this input: Line 2: JSON number at character 7069 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "binary-exact-serialization-changes",
+          "rejected": true,
+          "error": "Could not analyze this input: JSON number at character 7069 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "openai-schema",
+          "rejected": true,
+          "error": "Could not analyze this input: JSON number at character 162 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "metadata",
+          "rejected": true,
+          "error": "Could not analyze this input: JSON number at character 7131 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "distinct-supported-integers",
+          "rejected": false,
+          "error": null,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "equivalent-decimal-spellings",
+          "rejected": false,
+          "error": null,
+          "reportSha256": "7ad2d4439a73f6a7d544448132555b483ae6ede53cad04801b2e9414572ca21f"
+        },
+        {
+          "name": "distinct-string-identifiers",
+          "rejected": false,
+          "error": null,
+          "reportSha256": "ceb1537e04b5a6c46a1a3239607de8f440aea94f9cd1bf40b7366878d70be50f"
+        },
+        {
+          "name": "sdk-gzip",
+          "rejected": true,
+          "error": "Could not analyze this input: Line 1: JSON number at character 7069 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "ceb1537e04b5a6c46a1a3239607de8f440aea94f9cd1bf40b7366878d70be50f"
+        }
+      ],
+      "pastedStringEnvelopeRejected": true,
+      "errors": [],
+      "requestsAfterLoad": []
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "width": 1440,
+      "checks": [
+        {
+          "name": "sdk-jsonl",
+          "rejected": true,
+          "error": "Could not analyze this input: Line 1: JSON number at character 7069 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "sdk-array",
+          "rejected": true,
+          "error": "Could not analyze this input: JSON number at character 7070 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "body-object",
+          "rejected": true,
+          "error": "Could not analyze this input: JSON number at character 7077 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "body-string",
+          "rejected": true,
+          "error": "Could not analyze this input: JSON number at character 7069 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "second-jsonl-line",
+          "rejected": true,
+          "error": "Could not analyze this input: Line 2: JSON number at character 7069 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "precise-decimal",
+          "rejected": true,
+          "error": "Could not analyze this input: Line 2: JSON number at character 7069 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "binary-exact-serialization-changes",
+          "rejected": true,
+          "error": "Could not analyze this input: JSON number at character 7069 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "openai-schema",
+          "rejected": true,
+          "error": "Could not analyze this input: JSON number at character 162 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "metadata",
+          "rejected": true,
+          "error": "Could not analyze this input: JSON number at character 7131 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "distinct-supported-integers",
+          "rejected": false,
+          "error": null,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "equivalent-decimal-spellings",
+          "rejected": false,
+          "error": null,
+          "reportSha256": "7ad2d4439a73f6a7d544448132555b483ae6ede53cad04801b2e9414572ca21f"
+        },
+        {
+          "name": "distinct-string-identifiers",
+          "rejected": false,
+          "error": null,
+          "reportSha256": "ceb1537e04b5a6c46a1a3239607de8f440aea94f9cd1bf40b7366878d70be50f"
+        },
+        {
+          "name": "sdk-gzip",
+          "rejected": true,
+          "error": "Could not analyze this input: Line 1: JSON number at character 7069 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "ceb1537e04b5a6c46a1a3239607de8f440aea94f9cd1bf40b7366878d70be50f"
+        }
+      ],
+      "pastedStringEnvelopeRejected": true,
+      "errors": [],
+      "requestsAfterLoad": []
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "width": 375,
+      "checks": [
+        {
+          "name": "sdk-jsonl",
+          "rejected": true,
+          "error": "Could not analyze this input: Line 1: JSON number at character 7069 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "sdk-array",
+          "rejected": true,
+          "error": "Could not analyze this input: JSON number at character 7070 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "body-object",
+          "rejected": true,
+          "error": "Could not analyze this input: JSON number at character 7077 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "body-string",
+          "rejected": true,
+          "error": "Could not analyze this input: JSON number at character 7069 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "second-jsonl-line",
+          "rejected": true,
+          "error": "Could not analyze this input: Line 2: JSON number at character 7069 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "precise-decimal",
+          "rejected": true,
+          "error": "Could not analyze this input: Line 2: JSON number at character 7069 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "binary-exact-serialization-changes",
+          "rejected": true,
+          "error": "Could not analyze this input: JSON number at character 7069 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "openai-schema",
+          "rejected": true,
+          "error": "Could not analyze this input: JSON number at character 162 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "metadata",
+          "rejected": true,
+          "error": "Could not analyze this input: JSON number at character 7131 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "distinct-supported-integers",
+          "rejected": false,
+          "error": null,
+          "reportSha256": "d56bb2c709295b4b1eeb694b093e5c2309e7e39159c119d9ff71aacc84492c21"
+        },
+        {
+          "name": "equivalent-decimal-spellings",
+          "rejected": false,
+          "error": null,
+          "reportSha256": "7ad2d4439a73f6a7d544448132555b483ae6ede53cad04801b2e9414572ca21f"
+        },
+        {
+          "name": "distinct-string-identifiers",
+          "rejected": false,
+          "error": null,
+          "reportSha256": "ceb1537e04b5a6c46a1a3239607de8f440aea94f9cd1bf40b7366878d70be50f"
+        },
+        {
+          "name": "sdk-gzip",
+          "rejected": true,
+          "error": "Could not analyze this input: Line 1: JSON number at character 7069 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+          "previousReportPreserved": true,
+          "reportSha256": "ceb1537e04b5a6c46a1a3239607de8f440aea94f9cd1bf40b7366878d70be50f"
+        }
+      ],
+      "pastedStringEnvelopeRejected": true,
+      "errors": [],
+      "requestsAfterLoad": []
+    }
+  ]
+}

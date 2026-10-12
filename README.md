@@ -289,9 +289,17 @@ Strong evidence for both providers requires separate analyses; an explicit
 format override remains available, with warnings and incomplete status for
 mismatches. Repeated plain-text messages cannot outweigh a provider signal.
 
-Duplicate JSON fields (including escaped equivalent keys), numbers that overflow
-or turn a nonzero value into zero,
-and nesting beyond 128 containers are rejected. Malformed JSONL syntax is
+Duplicate JSON fields (including escaped equivalent keys), numbers whose value
+changes when parsed and serialized, and nesting beyond 128 containers are
+rejected. The numeric check includes overflow, underflow and precision loss:
+distinct 64-bit IDs must not silently become the same tool-schema value and
+produce a false cache match. Equivalent decimal spellings such as `1.0` and
+`1e0` remain supported. This check covers the whole record, including metadata
+and JSON-encoded request bodies; it rejects unsupported precision rather than
+providing arbitrary-precision analysis. See the
+[SDK reproduction and Decimal cross-check](studies/numeric-integrity/README.md).
+This precision guard is in source; npm 0.3.3 and the hosted demo have not been
+updated with it. Malformed JSONL syntax is
 retained as a visible coverage gap: `parse.complete` is false,
 `parse.sourceRecords` includes skipped nonblank lines, and `parse.skippedRecords`
 counts malformed lines plus records with no analyzable segments. Any configured

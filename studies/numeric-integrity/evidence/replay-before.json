@@ -1,0 +1,445 @@
+{
+  "node": "v26.7.0",
+  "mode": "baseline",
+  "results": [
+    {
+      "name": "sdk-jsonl",
+      "inputSha256": "f1b20bb2144bbd029434a6eb78ff562c178721ccec933b83cff1cecb268e3efa",
+      "expectedRejection": true,
+      "accepted": true,
+      "complete": true,
+      "firstSegments": [
+        "{\"name\":\"lookup\",\"description\":\"Look up the exact record identifier.\",\"input_schema\":{\"type\":\"object\",\"properties\":{\"recordId\":{\"type\":\"integer\",\"enum\":[18446744073709552000]}},\"required\":[\"recordId\"]}}",
+        "{\"name\":\"lookup\",\"description\":\"Look up the exact record identifier.\",\"input_schema\":{\"type\":\"object\",\"properties\":{\"recordId\":{\"type\":\"integer\",\"enum\":[18446744073709552000]}},\"required\":[\"recordId\"]}}"
+      ],
+      "prefixMatches": [
+        {
+          "fromIndex": 0,
+          "toIndex": 1,
+          "relation": "continues",
+          "matchedSegments": 3,
+          "matchedOpenaiTokens": 1255,
+          "matchedClaudeTokensEstimate": 2112,
+          "diff": [
+            {
+              "type": "context",
+              "text": "[tools] tool: lookup — {\"name\":\"lookup\",\"description\":\"Look up the exact record identifier.\",\"input_sch…"
+            },
+            {
+              "type": "context",
+              "text": "[system] system block 1 — You are a meticulous, detail-oriented coding assistant. You are a meticulous, de…"
+            },
+            {
+              "type": "context",
+              "text": "[user] message 1 (user) text — Look up the allowed record."
+            }
+          ]
+        }
+      ],
+      "readTokens": [
+        0,
+        2104
+      ],
+      "reportSha256": "4098bd32605dc4c5c660751245882d16fa2632f9d80e9ced9bacc0289e7159a9",
+      "cli": {
+        "status": 0,
+        "reportWritten": true,
+        "stderr": ""
+      }
+    },
+    {
+      "name": "sdk-array",
+      "inputSha256": "fec45c219cc8dac95ee9ff29b7fd3846d99058951c5aeaba5680d784462811df",
+      "expectedRejection": true,
+      "accepted": true,
+      "complete": true,
+      "firstSegments": [
+        "{\"name\":\"lookup\",\"description\":\"Look up the exact record identifier.\",\"input_schema\":{\"type\":\"object\",\"properties\":{\"recordId\":{\"type\":\"integer\",\"enum\":[18446744073709552000]}},\"required\":[\"recordId\"]}}",
+        "{\"name\":\"lookup\",\"description\":\"Look up the exact record identifier.\",\"input_schema\":{\"type\":\"object\",\"properties\":{\"recordId\":{\"type\":\"integer\",\"enum\":[18446744073709552000]}},\"required\":[\"recordId\"]}}"
+      ],
+      "prefixMatches": [
+        {
+          "fromIndex": 0,
+          "toIndex": 1,
+          "relation": "continues",
+          "matchedSegments": 3,
+          "matchedOpenaiTokens": 1255,
+          "matchedClaudeTokensEstimate": 2112,
+          "diff": [
+            {
+              "type": "context",
+              "text": "[tools] tool: lookup — {\"name\":\"lookup\",\"description\":\"Look up the exact record identifier.\",\"input_sch…"
+            },
+            {
+              "type": "context",
+              "text": "[system] system block 1 — You are a meticulous, detail-oriented coding assistant. You are a meticulous, de…"
+            },
+            {
+              "type": "context",
+              "text": "[user] message 1 (user) text — Look up the allowed record."
+            }
+          ]
+        }
+      ],
+      "readTokens": [
+        0,
+        2104
+      ],
+      "reportSha256": "e6d078027e67ce37a09f2c918792118c67d71570f2429344eaa825489e3fda01",
+      "cli": {
+        "status": 0,
+        "reportWritten": true,
+        "stderr": ""
+      }
+    },
+    {
+      "name": "body-object",
+      "inputSha256": "9c6dcfde0f8ad490ef80031b17c1b78ab71c28df9bd93a693181cd627248b2b3",
+      "expectedRejection": true,
+      "accepted": true,
+      "complete": true,
+      "firstSegments": [
+        "{\"name\":\"lookup\",\"description\":\"Look up the exact record identifier.\",\"input_schema\":{\"type\":\"object\",\"properties\":{\"recordId\":{\"type\":\"integer\",\"enum\":[18446744073709552000]}},\"required\":[\"recordId\"]}}"
+      ],
+      "prefixMatches": [],
+      "readTokens": [
+        0
+      ],
+      "reportSha256": "a6584ece6f33db327f413ec5f6a6e0f0e186475e40dc85d070ecb9260de124c5",
+      "cli": {
+        "status": 0,
+        "reportWritten": true,
+        "stderr": ""
+      }
+    },
+    {
+      "name": "body-string",
+      "inputSha256": "0d9e4622c1d89d4d95909c59b202b33101ebbdcf8b269ed63ddd9fb4ad64f4dc",
+      "expectedRejection": true,
+      "accepted": true,
+      "complete": true,
+      "firstSegments": [
+        "{\"name\":\"lookup\",\"description\":\"Look up the exact record identifier.\",\"input_schema\":{\"type\":\"object\",\"properties\":{\"recordId\":{\"type\":\"integer\",\"enum\":[18446744073709552000]}},\"required\":[\"recordId\"]}}"
+      ],
+      "prefixMatches": [],
+      "readTokens": [
+        0
+      ],
+      "reportSha256": "d0382524b5557b70908d7b103da20c11483407ab16202f34191c4267231d5e7d",
+      "cli": {
+        "status": 0,
+        "reportWritten": true,
+        "stderr": ""
+      }
+    },
+    {
+      "name": "second-jsonl-line",
+      "inputSha256": "642e6aec32d06660f3131010b218657cae6d30191937b4b2e9d78c575fc55ecb",
+      "expectedRejection": true,
+      "accepted": true,
+      "complete": true,
+      "firstSegments": [
+        "{\"name\":\"lookup\",\"description\":\"Look up the exact record identifier.\",\"input_schema\":{\"type\":\"object\",\"properties\":{\"recordId\":{\"type\":\"integer\",\"enum\":[1]}},\"required\":[\"recordId\"]}}",
+        "{\"name\":\"lookup\",\"description\":\"Look up the exact record identifier.\",\"input_schema\":{\"type\":\"object\",\"properties\":{\"recordId\":{\"type\":\"integer\",\"enum\":[18446744073709552000]}},\"required\":[\"recordId\"]}}"
+      ],
+      "prefixMatches": [
+        {
+          "fromIndex": 0,
+          "toIndex": 1,
+          "relation": "continues",
+          "matchedSegments": 0,
+          "matchedOpenaiTokens": 0,
+          "matchedClaudeTokensEstimate": 0,
+          "divergedAt": {
+            "fromSegmentId": "tools[0]",
+            "toSegmentId": "tools[0]"
+          },
+          "diff": [
+            {
+              "type": "remove",
+              "text": "[tools] tool: lookup — {\"name\":\"lookup\",\"description\":\"Look up the exact record identifier.\",\"input_sch…"
+            },
+            {
+              "type": "add",
+              "text": "[tools] tool: lookup — {\"name\":\"lookup\",\"description\":\"Look up the exact record identifier.\",\"input_sch…"
+            },
+            {
+              "type": "context",
+              "text": "[system] system block 1 — You are a meticulous, detail-oriented coding assistant. You are a meticulous, de…"
+            },
+            {
+              "type": "context",
+              "text": "[user] message 1 (user) text — Look up the allowed record."
+            }
+          ]
+        }
+      ],
+      "readTokens": [
+        0,
+        0
+      ],
+      "reportSha256": "50c00e42a27f3ede36d3f7b604400e8885e9645c9c26916f8d4e86a32a9eadb6",
+      "cli": {
+        "status": 0,
+        "reportWritten": true,
+        "stderr": ""
+      }
+    },
+    {
+      "name": "precise-decimal",
+      "inputSha256": "d7a3ad9d99d1eab17b98551fdf19e85df8a77626918e35e6e113a7b89626f056",
+      "expectedRejection": true,
+      "accepted": true,
+      "complete": true,
+      "firstSegments": [
+        "{\"name\":\"lookup\",\"description\":\"Look up the exact record identifier.\",\"input_schema\":{\"type\":\"object\",\"properties\":{\"recordId\":{\"type\":\"integer\",\"enum\":[0.1]}},\"required\":[\"recordId\"]}}",
+        "{\"name\":\"lookup\",\"description\":\"Look up the exact record identifier.\",\"input_schema\":{\"type\":\"object\",\"properties\":{\"recordId\":{\"type\":\"integer\",\"enum\":[0.1]}},\"required\":[\"recordId\"]}}"
+      ],
+      "prefixMatches": [
+        {
+          "fromIndex": 0,
+          "toIndex": 1,
+          "relation": "continues",
+          "matchedSegments": 3,
+          "matchedOpenaiTokens": 1251,
+          "matchedClaudeTokensEstimate": 2108,
+          "diff": [
+            {
+              "type": "context",
+              "text": "[tools] tool: lookup — {\"name\":\"lookup\",\"description\":\"Look up the exact record identifier.\",\"input_sch…"
+            },
+            {
+              "type": "context",
+              "text": "[system] system block 1 — You are a meticulous, detail-oriented coding assistant. You are a meticulous, de…"
+            },
+            {
+              "type": "context",
+              "text": "[user] message 1 (user) text — Look up the allowed record."
+            }
+          ]
+        }
+      ],
+      "readTokens": [
+        0,
+        2100
+      ],
+      "reportSha256": "09ddfbfe4b02708f79c482fe51d281c0e443091774d629ea8e06657a240c6a56",
+      "cli": {
+        "status": 0,
+        "reportWritten": true,
+        "stderr": ""
+      }
+    },
+    {
+      "name": "binary-exact-serialization-changes",
+      "inputSha256": "be82f077779f4c46b5f8f0cebb97cb7a435584ff18ea76b6c2876cbf53ea32b2",
+      "expectedRejection": true,
+      "accepted": true,
+      "complete": true,
+      "firstSegments": [
+        "{\"name\":\"lookup\",\"description\":\"Look up the exact record identifier.\",\"input_schema\":{\"type\":\"object\",\"properties\":{\"recordId\":{\"type\":\"integer\",\"enum\":[36028797018963970]}},\"required\":[\"recordId\"]}}"
+      ],
+      "prefixMatches": [],
+      "readTokens": [
+        0
+      ],
+      "reportSha256": "09f77288a9311d73135824f4c1550c86836bf79f30f6c7f47bbc2097368f7c4b",
+      "cli": {
+        "status": 0,
+        "reportWritten": true,
+        "stderr": ""
+      }
+    },
+    {
+      "name": "openai-schema",
+      "inputSha256": "f2f00bffaa78fc1e3defec47a2c6e8a3233858ec3dbfaea413da4a31fd691a8d",
+      "expectedRejection": true,
+      "accepted": true,
+      "complete": true,
+      "firstSegments": [
+        "{\"type\":\"function\",\"name\":\"lookup\",\"parameters\":{\"type\":\"object\",\"properties\":{\"id\":{\"enum\":[18446744073709552000]}}}}"
+      ],
+      "prefixMatches": [],
+      "readTokens": [
+        0
+      ],
+      "reportSha256": "42753607275b3708f9c436e4c5c503ea1c542a146d045b01779756adb5155e25",
+      "cli": {
+        "status": 0,
+        "reportWritten": true,
+        "stderr": ""
+      }
+    },
+    {
+      "name": "metadata",
+      "inputSha256": "d942f3f169c57ede748c9b1b8081c5c1d240968f2c2b354e5a6a17ff6965f18a",
+      "expectedRejection": true,
+      "accepted": true,
+      "complete": true,
+      "firstSegments": [
+        "{\"name\":\"lookup\",\"description\":\"Look up the exact record identifier.\",\"input_schema\":{\"type\":\"object\",\"properties\":{\"recordId\":{\"type\":\"integer\",\"enum\":[1]}},\"required\":[\"recordId\"]}}"
+      ],
+      "prefixMatches": [],
+      "readTokens": [
+        0
+      ],
+      "reportSha256": "e8d3c252c2ca58f72a53b97523e3a4a62f126a63fa48e6ee25de11a3f23197d4",
+      "cli": {
+        "status": 0,
+        "reportWritten": true,
+        "stderr": ""
+      }
+    },
+    {
+      "name": "distinct-supported-integers",
+      "inputSha256": "cc16c9be14b229324398598a80f2ac76cd95ebffe7e8e55be69f926ca8ac9be0",
+      "expectedRejection": false,
+      "accepted": true,
+      "complete": true,
+      "firstSegments": [
+        "{\"name\":\"lookup\",\"description\":\"Look up the exact record identifier.\",\"input_schema\":{\"type\":\"object\",\"properties\":{\"recordId\":{\"type\":\"integer\",\"enum\":[9007199254740992]}},\"required\":[\"recordId\"]}}",
+        "{\"name\":\"lookup\",\"description\":\"Look up the exact record identifier.\",\"input_schema\":{\"type\":\"object\",\"properties\":{\"recordId\":{\"type\":\"integer\",\"enum\":[9007199254740994]}},\"required\":[\"recordId\"]}}"
+      ],
+      "prefixMatches": [
+        {
+          "fromIndex": 0,
+          "toIndex": 1,
+          "relation": "continues",
+          "matchedSegments": 0,
+          "matchedOpenaiTokens": 0,
+          "matchedClaudeTokensEstimate": 0,
+          "divergedAt": {
+            "fromSegmentId": "tools[0]",
+            "toSegmentId": "tools[0]"
+          },
+          "diff": [
+            {
+              "type": "remove",
+              "text": "[tools] tool: lookup — {\"name\":\"lookup\",\"description\":\"Look up the exact record identifier.\",\"input_sch…"
+            },
+            {
+              "type": "add",
+              "text": "[tools] tool: lookup — {\"name\":\"lookup\",\"description\":\"Look up the exact record identifier.\",\"input_sch…"
+            },
+            {
+              "type": "context",
+              "text": "[system] system block 1 — You are a meticulous, detail-oriented coding assistant. You are a meticulous, de…"
+            },
+            {
+              "type": "context",
+              "text": "[user] message 1 (user) text — Look up the allowed record."
+            }
+          ]
+        }
+      ],
+      "readTokens": [
+        0,
+        0
+      ],
+      "reportSha256": "506ecedd42c7efa1aa2a8d4366853b719db947b69c3ce1741c289b97db396c1a",
+      "cli": {
+        "status": 0,
+        "reportWritten": true,
+        "stderr": ""
+      }
+    },
+    {
+      "name": "equivalent-decimal-spellings",
+      "inputSha256": "57788a461e47200b2ba28cc20a3d3532c84c9c3e0a73498201716f97e3237a25",
+      "expectedRejection": false,
+      "accepted": true,
+      "complete": true,
+      "firstSegments": [
+        "{\"name\":\"lookup\",\"description\":\"Look up the exact record identifier.\",\"input_schema\":{\"type\":\"object\",\"properties\":{\"recordId\":{\"type\":\"integer\",\"enum\":[1000]}},\"required\":[\"recordId\"]}}",
+        "{\"name\":\"lookup\",\"description\":\"Look up the exact record identifier.\",\"input_schema\":{\"type\":\"object\",\"properties\":{\"recordId\":{\"type\":\"integer\",\"enum\":[1000]}},\"required\":[\"recordId\"]}}"
+      ],
+      "prefixMatches": [
+        {
+          "fromIndex": 0,
+          "toIndex": 1,
+          "relation": "continues",
+          "matchedSegments": 3,
+          "matchedOpenaiTokens": 1250,
+          "matchedClaudeTokensEstimate": 2108,
+          "diff": [
+            {
+              "type": "context",
+              "text": "[tools] tool: lookup — {\"name\":\"lookup\",\"description\":\"Look up the exact record identifier.\",\"input_sch…"
+            },
+            {
+              "type": "context",
+              "text": "[system] system block 1 — You are a meticulous, detail-oriented coding assistant. You are a meticulous, de…"
+            },
+            {
+              "type": "context",
+              "text": "[user] message 1 (user) text — Look up the allowed record."
+            }
+          ]
+        }
+      ],
+      "readTokens": [
+        0,
+        2100
+      ],
+      "reportSha256": "6f0fff5115018819e8ea72a2fc3e8d573b660a8d4eafe56efacbb0481f677639",
+      "cli": {
+        "status": 0,
+        "reportWritten": true,
+        "stderr": ""
+      }
+    },
+    {
+      "name": "distinct-string-identifiers",
+      "inputSha256": "4100eb386d4942a1d55b9d010611853213cfee7d182a5eb8f22a06de8bc065af",
+      "expectedRejection": false,
+      "accepted": true,
+      "complete": true,
+      "firstSegments": [
+        "{\"name\":\"lookup\",\"description\":\"Look up the exact record identifier.\",\"input_schema\":{\"type\":\"object\",\"properties\":{\"recordId\":{\"type\":\"integer\",\"enum\":[\"18446744073709551614\"]}},\"required\":[\"recordId\"]}}",
+        "{\"name\":\"lookup\",\"description\":\"Look up the exact record identifier.\",\"input_schema\":{\"type\":\"object\",\"properties\":{\"recordId\":{\"type\":\"integer\",\"enum\":[\"18446744073709551615\"]}},\"required\":[\"recordId\"]}}"
+      ],
+      "prefixMatches": [
+        {
+          "fromIndex": 0,
+          "toIndex": 1,
+          "relation": "continues",
+          "matchedSegments": 0,
+          "matchedOpenaiTokens": 0,
+          "matchedClaudeTokensEstimate": 0,
+          "divergedAt": {
+            "fromSegmentId": "tools[0]",
+            "toSegmentId": "tools[0]"
+          },
+          "diff": [
+            {
+              "type": "remove",
+              "text": "[tools] tool: lookup — {\"name\":\"lookup\",\"description\":\"Look up the exact record identifier.\",\"input_sch…"
+            },
+            {
+              "type": "add",
+              "text": "[tools] tool: lookup — {\"name\":\"lookup\",\"description\":\"Look up the exact record identifier.\",\"input_sch…"
+            },
+            {
+              "type": "context",
+              "text": "[system] system block 1 — You are a meticulous, detail-oriented coding assistant. You are a meticulous, de…"
+            },
+            {
+              "type": "context",
+              "text": "[user] message 1 (user) text — Look up the allowed record."
+            }
+          ]
+        }
+      ],
+      "readTokens": [
+        0,
+        0
+      ],
+      "reportSha256": "23f6db59cf0389971d59152815bd2e21eb1636525df98cc97cf41d473d3e9af6",
+      "cli": {
+        "status": 0,
+        "reportWritten": true,
+        "stderr": ""
+      }
+    }
+  ]
+}

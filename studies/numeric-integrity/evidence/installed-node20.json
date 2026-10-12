@@ -1,0 +1,265 @@
+{
+  "node": "v20.0.0",
+  "mode": "verify",
+  "results": [
+    {
+      "name": "sdk-jsonl",
+      "inputSha256": "f1b20bb2144bbd029434a6eb78ff562c178721ccec933b83cff1cecb268e3efa",
+      "expectedRejection": true,
+      "accepted": false,
+      "error": "Line 1: JSON number at character 7069 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+      "cli": {
+        "status": 1,
+        "reportWritten": false,
+        "stderr": "Could not analyze \"[scratch]/sdk-jsonl.jsonl\": Line 1: JSON number at character 7069 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.\n"
+      }
+    },
+    {
+      "name": "sdk-array",
+      "inputSha256": "fec45c219cc8dac95ee9ff29b7fd3846d99058951c5aeaba5680d784462811df",
+      "expectedRejection": true,
+      "accepted": false,
+      "error": "JSON number at character 7070 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+      "cli": {
+        "status": 1,
+        "reportWritten": false,
+        "stderr": "Could not analyze \"[scratch]/sdk-array.jsonl\": JSON number at character 7070 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.\n"
+      }
+    },
+    {
+      "name": "body-object",
+      "inputSha256": "9c6dcfde0f8ad490ef80031b17c1b78ab71c28df9bd93a693181cd627248b2b3",
+      "expectedRejection": true,
+      "accepted": false,
+      "error": "JSON number at character 7077 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+      "cli": {
+        "status": 1,
+        "reportWritten": false,
+        "stderr": "Could not analyze \"[scratch]/body-object.jsonl\": JSON number at character 7077 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.\n"
+      }
+    },
+    {
+      "name": "body-string",
+      "inputSha256": "0d9e4622c1d89d4d95909c59b202b33101ebbdcf8b269ed63ddd9fb4ad64f4dc",
+      "expectedRejection": true,
+      "accepted": false,
+      "error": "JSON number at character 7069 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+      "cli": {
+        "status": 1,
+        "reportWritten": false,
+        "stderr": "Could not analyze \"[scratch]/body-string.jsonl\": JSON number at character 7069 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.\n"
+      }
+    },
+    {
+      "name": "second-jsonl-line",
+      "inputSha256": "642e6aec32d06660f3131010b218657cae6d30191937b4b2e9d78c575fc55ecb",
+      "expectedRejection": true,
+      "accepted": false,
+      "error": "Line 2: JSON number at character 7069 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+      "cli": {
+        "status": 1,
+        "reportWritten": false,
+        "stderr": "Could not analyze \"[scratch]/second-jsonl-line.jsonl\": Line 2: JSON number at character 7069 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.\n"
+      }
+    },
+    {
+      "name": "precise-decimal",
+      "inputSha256": "d7a3ad9d99d1eab17b98551fdf19e85df8a77626918e35e6e113a7b89626f056",
+      "expectedRejection": true,
+      "accepted": false,
+      "error": "Line 2: JSON number at character 7069 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+      "cli": {
+        "status": 1,
+        "reportWritten": false,
+        "stderr": "Could not analyze \"[scratch]/precise-decimal.jsonl\": Line 2: JSON number at character 7069 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.\n"
+      }
+    },
+    {
+      "name": "binary-exact-serialization-changes",
+      "inputSha256": "be82f077779f4c46b5f8f0cebb97cb7a435584ff18ea76b6c2876cbf53ea32b2",
+      "expectedRejection": true,
+      "accepted": false,
+      "error": "JSON number at character 7069 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+      "cli": {
+        "status": 1,
+        "reportWritten": false,
+        "stderr": "Could not analyze \"[scratch]/binary-exact-serialization-changes.jsonl\": JSON number at character 7069 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.\n"
+      }
+    },
+    {
+      "name": "openai-schema",
+      "inputSha256": "f2f00bffaa78fc1e3defec47a2c6e8a3233858ec3dbfaea413da4a31fd691a8d",
+      "expectedRejection": true,
+      "accepted": false,
+      "error": "JSON number at character 162 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+      "cli": {
+        "status": 1,
+        "reportWritten": false,
+        "stderr": "Could not analyze \"[scratch]/openai-schema.jsonl\": JSON number at character 162 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.\n"
+      }
+    },
+    {
+      "name": "metadata",
+      "inputSha256": "d942f3f169c57ede748c9b1b8081c5c1d240968f2c2b354e5a6a17ff6965f18a",
+      "expectedRejection": true,
+      "accepted": false,
+      "error": "JSON number at character 7131 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+      "cli": {
+        "status": 1,
+        "reportWritten": false,
+        "stderr": "Could not analyze \"[scratch]/metadata.jsonl\": JSON number at character 7131 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.\n"
+      }
+    },
+    {
+      "name": "distinct-supported-integers",
+      "inputSha256": "cc16c9be14b229324398598a80f2ac76cd95ebffe7e8e55be69f926ca8ac9be0",
+      "expectedRejection": false,
+      "accepted": true,
+      "complete": true,
+      "firstSegments": [
+        "{\"name\":\"lookup\",\"description\":\"Look up the exact record identifier.\",\"input_schema\":{\"type\":\"object\",\"properties\":{\"recordId\":{\"type\":\"integer\",\"enum\":[9007199254740992]}},\"required\":[\"recordId\"]}}",
+        "{\"name\":\"lookup\",\"description\":\"Look up the exact record identifier.\",\"input_schema\":{\"type\":\"object\",\"properties\":{\"recordId\":{\"type\":\"integer\",\"enum\":[9007199254740994]}},\"required\":[\"recordId\"]}}"
+      ],
+      "prefixMatches": [
+        {
+          "fromIndex": 0,
+          "toIndex": 1,
+          "relation": "continues",
+          "matchedSegments": 0,
+          "matchedOpenaiTokens": 0,
+          "matchedClaudeTokensEstimate": 0,
+          "divergedAt": {
+            "fromSegmentId": "tools[0]",
+            "toSegmentId": "tools[0]"
+          },
+          "diff": [
+            {
+              "type": "remove",
+              "text": "[tools] tool: lookup — {\"name\":\"lookup\",\"description\":\"Look up the exact record identifier.\",\"input_sch…"
+            },
+            {
+              "type": "add",
+              "text": "[tools] tool: lookup — {\"name\":\"lookup\",\"description\":\"Look up the exact record identifier.\",\"input_sch…"
+            },
+            {
+              "type": "context",
+              "text": "[system] system block 1 — You are a meticulous, detail-oriented coding assistant. You are a meticulous, de…"
+            },
+            {
+              "type": "context",
+              "text": "[user] message 1 (user) text — Look up the allowed record."
+            }
+          ]
+        }
+      ],
+      "readTokens": [
+        0,
+        0
+      ],
+      "reportSha256": "506ecedd42c7efa1aa2a8d4366853b719db947b69c3ce1741c289b97db396c1a",
+      "cli": {
+        "status": 0,
+        "reportWritten": true,
+        "stderr": ""
+      }
+    },
+    {
+      "name": "equivalent-decimal-spellings",
+      "inputSha256": "57788a461e47200b2ba28cc20a3d3532c84c9c3e0a73498201716f97e3237a25",
+      "expectedRejection": false,
+      "accepted": true,
+      "complete": true,
+      "firstSegments": [
+        "{\"name\":\"lookup\",\"description\":\"Look up the exact record identifier.\",\"input_schema\":{\"type\":\"object\",\"properties\":{\"recordId\":{\"type\":\"integer\",\"enum\":[1000]}},\"required\":[\"recordId\"]}}",
+        "{\"name\":\"lookup\",\"description\":\"Look up the exact record identifier.\",\"input_schema\":{\"type\":\"object\",\"properties\":{\"recordId\":{\"type\":\"integer\",\"enum\":[1000]}},\"required\":[\"recordId\"]}}"
+      ],
+      "prefixMatches": [
+        {
+          "fromIndex": 0,
+          "toIndex": 1,
+          "relation": "continues",
+          "matchedSegments": 3,
+          "matchedOpenaiTokens": 1250,
+          "matchedClaudeTokensEstimate": 2108,
+          "diff": [
+            {
+              "type": "context",
+              "text": "[tools] tool: lookup — {\"name\":\"lookup\",\"description\":\"Look up the exact record identifier.\",\"input_sch…"
+            },
+            {
+              "type": "context",
+              "text": "[system] system block 1 — You are a meticulous, detail-oriented coding assistant. You are a meticulous, de…"
+            },
+            {
+              "type": "context",
+              "text": "[user] message 1 (user) text — Look up the allowed record."
+            }
+          ]
+        }
+      ],
+      "readTokens": [
+        0,
+        2100
+      ],
+      "reportSha256": "6f0fff5115018819e8ea72a2fc3e8d573b660a8d4eafe56efacbb0481f677639",
+      "cli": {
+        "status": 0,
+        "reportWritten": true,
+        "stderr": ""
+      }
+    },
+    {
+      "name": "distinct-string-identifiers",
+      "inputSha256": "4100eb386d4942a1d55b9d010611853213cfee7d182a5eb8f22a06de8bc065af",
+      "expectedRejection": false,
+      "accepted": true,
+      "complete": true,
+      "firstSegments": [
+        "{\"name\":\"lookup\",\"description\":\"Look up the exact record identifier.\",\"input_schema\":{\"type\":\"object\",\"properties\":{\"recordId\":{\"type\":\"integer\",\"enum\":[\"18446744073709551614\"]}},\"required\":[\"recordId\"]}}",
+        "{\"name\":\"lookup\",\"description\":\"Look up the exact record identifier.\",\"input_schema\":{\"type\":\"object\",\"properties\":{\"recordId\":{\"type\":\"integer\",\"enum\":[\"18446744073709551615\"]}},\"required\":[\"recordId\"]}}"
+      ],
+      "prefixMatches": [
+        {
+          "fromIndex": 0,
+          "toIndex": 1,
+          "relation": "continues",
+          "matchedSegments": 0,
+          "matchedOpenaiTokens": 0,
+          "matchedClaudeTokensEstimate": 0,
+          "divergedAt": {
+            "fromSegmentId": "tools[0]",
+            "toSegmentId": "tools[0]"
+          },
+          "diff": [
+            {
+              "type": "remove",
+              "text": "[tools] tool: lookup — {\"name\":\"lookup\",\"description\":\"Look up the exact record identifier.\",\"input_sch…"
+            },
+            {
+              "type": "add",
+              "text": "[tools] tool: lookup — {\"name\":\"lookup\",\"description\":\"Look up the exact record identifier.\",\"input_sch…"
+            },
+            {
+              "type": "context",
+              "text": "[system] system block 1 — You are a meticulous, detail-oriented coding assistant. You are a meticulous, de…"
+            },
+            {
+              "type": "context",
+              "text": "[user] message 1 (user) text — Look up the allowed record."
+            }
+          ]
+        }
+      ],
+      "readTokens": [
+        0,
+        0
+      ],
+      "reportSha256": "23f6db59cf0389971d59152815bd2e21eb1636525df98cc97cf41d473d3e9af6",
+      "cli": {
+        "status": 0,
+        "reportWritten": true,
+        "stderr": ""
+      }
+    }
+  ]
+}

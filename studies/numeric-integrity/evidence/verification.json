@@ -1,0 +1,51 @@
+{
+  "sourceCommit": "16488ec1968a43c2452d1568a31bae5be1e91e62",
+  "node": "24.21.0",
+  "npm": "12.0.1",
+  "unitTests": 486,
+  "browserScenarios": 90,
+  "commands": [
+    {
+      "command": "npm ci",
+      "exitStatus": 0,
+      "logBytes": 330,
+      "logSha256": "fc32983f51d0ffb79670ee7e89a3400747177b03ed12757e5e3154a062ef03d6"
+    },
+    {
+      "command": "npm run lint",
+      "exitStatus": 0,
+      "logBytes": 78,
+      "logSha256": "7d759107193f1253093f82acb0858619861371ea869660e7cc49464cdc11bba0"
+    },
+    {
+      "command": "npm run typecheck",
+      "exitStatus": 0,
+      "logBytes": 141,
+      "logSha256": "065f57db2f0de0df20f19d94151ae88ff01ac1c4c117dfd29507a338675f8589"
+    },
+    {
+      "command": "npm test",
+      "exitStatus": 0,
+      "logBytes": 487,
+      "logSha256": "da77df545f8d38660e817826c47c5909a4a14f0aa9ba4e4839f9ae78d0439975"
+    },
+    {
+      "command": "npm run build",
+      "exitStatus": 0,
+      "logBytes": 2857,
+      "logSha256": "2f6776ec38a6320e29808dbfe32f9387787a0009d00a037c941cfdeda360d5ea"
+    },
+    {
+      "command": "npm run test:browser",
+      "exitStatus": 0,
+      "logBytes": 14725,
+      "logSha256": "c5a3de08bcb5bb14565681a69823905a04eef76ae513b1d846c2718c6deee871"
+    }
+  ],
+  "screenshotsInspected": 8,
+  "installedRuntimes": [
+    "20.0.0",
+    "24.21.0"
+  ],
+  "scope": "Clean archive, installed tarball and offline local browsers; no provider calls, registry release or hosted deployment"
+}
