@@ -1,0 +1,90 @@
+{
+  "implementationCommit": "08e77a3a7f2fd2611987d2c7a62e0a127bfeb935",
+  "baselineCommit": "71f3a1a02d6975f395b38a499b9a3881a6123a1b",
+  "scope": "Source and local artifact verification; no npm release, tag, or hosted deployment",
+  "nativeOracle": {
+    "package": "tiktoken",
+    "version": "0.12.0",
+    "encoding": "o200k_base",
+    "method": "encode_ordinary",
+    "directTexts": 54,
+    "segmentTexts": 120,
+    "allCountsAgree": true,
+    "chatFramingTokensExcludedFromTextOracle": 5
+  },
+  "before": {
+    "validLibraryAndCliAccepted": 12,
+    "validCases": 62,
+    "validBrowserImportsAndPastes": 0
+  },
+  "after": {
+    "validLibraryAndCliAccepted": 62,
+    "validCases": 62,
+    "validBrowserImportsAndPastes": 64,
+    "invalidCliControlsRejected": 2,
+    "invalidBrowserControlsRejected": 8
+  },
+  "clean": {
+    "node": "v24.21.0",
+    "npm": "12.0.1",
+    "lint": "passed",
+    "typecheck": "passed",
+    "unitTests": 497,
+    "unitFiles": 39,
+    "build": "passed",
+    "logSha256": "2178f3cc070699ed50326c4039c9315ac40ae7d511e8bfb958274d7ed713c837"
+  },
+  "installed": [
+    {
+      "node": "v20.0.0",
+      "gptTokenizer": "4.0.0",
+      "validCasesAccepted": 62,
+      "rejectedControls": 2,
+      "checkedTextSegments": 120,
+      "ordinaryTextProbes": 54,
+      "allRowsMatchSource": true,
+      "replaySha256": "15efc97b01747d8e04ed54d057aec0a66212d363982e7a31dd414760153c6724"
+    },
+    {
+      "node": "v24.21.0",
+      "gptTokenizer": "4.0.0",
+      "validCasesAccepted": 62,
+      "rejectedControls": 2,
+      "checkedTextSegments": 120,
+      "ordinaryTextProbes": 54,
+      "allRowsMatchSource": true,
+      "replaySha256": "4ca92f3542b69787a14fa5129279e2c88a9476e292daef78b6fc1b059681d241"
+    }
+  ],
+  "installedBinReportsIdentical": true,
+  "installedBinReportSha256": "02e41c8b1e17d0512a2e9a929c39a5393581ecf32a13c6b73f1301ea345f50f4",
+  "browser": {
+    "existingScenarios": 90,
+    "existingLogSha256": "0c48c0c62ef10228adf8e09db401a79d0b18c7c2002924fe05a11d7e6ef6c067",
+    "targetedViewports": 4,
+    "targetedUploads": 68,
+    "targetedFreshPastes": 4,
+    "targetedDownloads": 72,
+    "screenshotsViewed": 4,
+    "offlineRequests": 0,
+    "servedAssets": 31,
+    "regressionScreenshotsViewed": 32
+  },
+  "compatibility": {
+    "trajectories": 240,
+    "requests": 10555,
+    "examples": 11,
+    "allCompleteReportsIdentical": true
+  },
+  "artifacts": {
+    "archive": {
+      "path": "antonsoloviev-contextscope-0.3.3.tgz",
+      "bytes": 95749,
+      "sha256": "04ce1b6361b164a02a6540146735b386414c1c8a299d7dddcdbb94bc2f23bb4d"
+    },
+    "sourceInputs": 159,
+    "buildFiles": 180,
+    "packageFiles": 95,
+    "allBytesEqual": true
+  }
+}

@@ -1,0 +1,2555 @@
+{
+  "node": "v24.21.0",
+  "mode": "verify",
+  "cases": 64,
+  "accepted": 62,
+  "validCases": 62,
+  "expectedOutcomes": 64,
+  "direct": [
+    {
+      "index": 0,
+      "tokens": 7
+    },
+    {
+      "index": 1,
+      "tokens": 9
+    },
+    {
+      "index": 2,
+      "tokens": 11
+    },
+    {
+      "index": 3,
+      "tokens": 6
+    },
+    {
+      "index": 4,
+      "tokens": 8
+    },
+    {
+      "index": 5,
+      "tokens": 10
+    },
+    {
+      "index": 6,
+      "tokens": 6
+    },
+    {
+      "index": 7,
+      "tokens": 8
+    },
+    {
+      "index": 8,
+      "tokens": 10
+    },
+    {
+      "index": 9,
+      "tokens": 6
+    },
+    {
+      "index": 10,
+      "tokens": 8
+    },
+    {
+      "index": 11,
+      "tokens": 10
+    },
+    {
+      "index": 12,
+      "tokens": 6
+    },
+    {
+      "index": 13,
+      "tokens": 8
+    },
+    {
+      "index": 14,
+      "tokens": 10
+    },
+    {
+      "index": 15,
+      "tokens": 6
+    },
+    {
+      "index": 16,
+      "tokens": 8
+    },
+    {
+      "index": 17,
+      "tokens": 10
+    },
+    {
+      "index": 18,
+      "tokens": 6
+    },
+    {
+      "index": 19,
+      "tokens": 8
+    },
+    {
+      "index": 20,
+      "tokens": 10
+    },
+    {
+      "index": 21,
+      "tokens": 7
+    },
+    {
+      "index": 22,
+      "tokens": 9
+    },
+    {
+      "index": 23,
+      "tokens": 11
+    },
+    {
+      "index": 24,
+      "tokens": 7
+    },
+    {
+      "index": 25,
+      "tokens": 9
+    },
+    {
+      "index": 26,
+      "tokens": 11
+    },
+    {
+      "index": 27,
+      "tokens": 5
+    },
+    {
+      "index": 28,
+      "tokens": 7
+    },
+    {
+      "index": 29,
+      "tokens": 9
+    },
+    {
+      "index": 30,
+      "tokens": 5
+    },
+    {
+      "index": 31,
+      "tokens": 7
+    },
+    {
+      "index": 32,
+      "tokens": 9
+    },
+    {
+      "index": 33,
+      "tokens": 5
+    },
+    {
+      "index": 34,
+      "tokens": 7
+    },
+    {
+      "index": 35,
+      "tokens": 9
+    },
+    {
+      "index": 36,
+      "tokens": 5
+    },
+    {
+      "index": 37,
+      "tokens": 7
+    },
+    {
+      "index": 38,
+      "tokens": 9
+    },
+    {
+      "index": 39,
+      "tokens": 5
+    },
+    {
+      "index": 40,
+      "tokens": 7
+    },
+    {
+      "index": 41,
+      "tokens": 9
+    },
+    {
+      "index": 42,
+      "tokens": 6
+    },
+    {
+      "index": 43,
+      "tokens": 8
+    },
+    {
+      "index": 44,
+      "tokens": 10
+    },
+    {
+      "index": 45,
+      "tokens": 5
+    },
+    {
+      "index": 46,
+      "tokens": 7
+    },
+    {
+      "index": 47,
+      "tokens": 9
+    },
+    {
+      "index": 48,
+      "tokens": 100
+    },
+    {
+      "index": 49,
+      "tokens": 23
+    },
+    {
+      "index": 50,
+      "tokens": 3943
+    },
+    {
+      "index": 51,
+      "tokens": 1212
+    },
+    {
+      "index": 52,
+      "tokens": 9
+    },
+    {
+      "index": 53,
+      "tokens": 1537
+    }
+  ],
+  "checkedSegments": 120,
+  "oracle": {
+    "tiktoken": "0.12.0",
+    "encoding": "o200k_base",
+    "mode": "encode_ordinary",
+    "rows": [
+      {
+        "textSha256": "3d0c1cf596181258a003e9f95c836c765d44353532e67c70d7dff48b05f64840",
+        "tokens": 7,
+        "tokenIdsSha256": "26667435586a3682b21574dee2d76a9ff0f5ec5cbccedd053da0d10b46f4a103"
+      },
+      {
+        "textSha256": "16a2502473e809ed65eb775a16f2c807fd29e0bc807d9d9aff30ab11c746ceaa",
+        "tokens": 9,
+        "tokenIdsSha256": "f69d804ecb2709141e0f3750e562ad44f16462f4b396e0b03c9bb6d2a8cee78b"
+      },
+      {
+        "textSha256": "25d0136ca80c75146a06a9a0c93ef5874e939d1e37e41d9c4e8e26a93724f816",
+        "tokens": 11,
+        "tokenIdsSha256": "b1c26e0a96f5017762188cbe3b922ce34fefcc3a0c5be3d7388f33ae3535ea3a"
+      },
+      {
+        "textSha256": "8c00540d5fc243426fd2577bf91c4129fedba827ffbd022e32193837c85aa999",
+        "tokens": 6,
+        "tokenIdsSha256": "52f4175982ab6189ffb3b8c97a6e0ec11707b1ea96e4eea8ae04463ee82776c2"
+      },
+      {
+        "textSha256": "882731100c077816d610f55bad86022c29aa609e9ce735a340b2814618553a6d",
+        "tokens": 8,
+        "tokenIdsSha256": "b6501b2cb7ed5fe094e31e37caf5c4ac1ec64b250afd109a493ea068b8748acc"
+      },
+      {
+        "textSha256": "ac2e3aedbc590743192152e9d98f909cddb1b5b41af5b39df825c999749c7a9b",
+        "tokens": 10,
+        "tokenIdsSha256": "69e5f44f43cc22f1720bac41e2db77cb86f8593e4091e866bbfff4b912f25c8d"
+      },
+      {
+        "textSha256": "4c9c94a3deed5b314039b02010b5f74c8ce8138f992334e7ec7955e5e5369a98",
+        "tokens": 6,
+        "tokenIdsSha256": "827ccdeafdfa4a7e2e79a4e421c26e5b8bc6f31435221179d894e0e5e454b743"
+      },
+      {
+        "textSha256": "e6e55a760295bdcc18d091db67665dd4da49174a04f078011c4fe2d7637a251d",
+        "tokens": 8,
+        "tokenIdsSha256": "530fe7eedd44ae0c49152123361cabc3025ccdf6434c81d6f9b48e798d53ad7b"
+      },
+      {
+        "textSha256": "c6a8405ba97897f935a094fbb24f49ac0786b669da6429e75a39ab2d67e68627",
+        "tokens": 10,
+        "tokenIdsSha256": "8ec3846190e889c266324eab93b92fe47cf11da60a55c82141eb8ffa0fbbc5cc"
+      },
+      {
+        "textSha256": "ef6818354522c4c572bd82e83fc1152058178bd35a84a51427dbf6442a31b406",
+        "tokens": 6,
+        "tokenIdsSha256": "76587e0a934b1777fc17a20a54d39640f9ee5e7a01d033d850217f95a6356776"
+      },
+      {
+        "textSha256": "82c9ae41f185e4f4c9b2d1435f9b804fde385579c8ab8946fd8816c9949b3135",
+        "tokens": 8,
+        "tokenIdsSha256": "fd9cc6ab365e9167d31885b95d25374d05d75de8c5e1ce8348b3ba1ac4ef1d4e"
+      },
+      {
+        "textSha256": "799454d30fdf32d315442ee6d24219d1120337983cb4ee4341de60b1e9f5544f",
+        "tokens": 10,
+        "tokenIdsSha256": "0906dc86557ec36ec56b8068dfbccb676aa7c6dabd5127fd3450ec5854bc006e"
+      },
+      {
+        "textSha256": "17a9ea43212df48ca4fca436c080e1e35cded043b9197b44a4bd53fbb04f3193",
+        "tokens": 6,
+        "tokenIdsSha256": "d6618206315d299a7553f59f84a58230ef2fc58d6f79ff418ae15ff647a60bc1"
+      },
+      {
+        "textSha256": "bf6f349ef1ac7d74b0b08c65a9f7beedc84d9c79b1b8e3f6d44a480a141b5d79",
+        "tokens": 8,
+        "tokenIdsSha256": "30af48aa4400d85554cd58397ba23b99f0bd0f9cc605045dee5bdd8aeda0998d"
+      },
+      {
+        "textSha256": "af99c00a61d739f49d0e75d935bd484d3a32081d1e6010698f609e7d26cfc377",
+        "tokens": 10,
+        "tokenIdsSha256": "7e57bb2b4052e006113d8ca1036c9d3ad8d18c38a7baad88112f336dc597d2da"
+      },
+      {
+        "textSha256": "d6b60b51acc9448b15da9cb03f644d0ec8c410e37735817f39e15764aa75a37f",
+        "tokens": 6,
+        "tokenIdsSha256": "85ce8cef0ba252367b13e41f774e85ce7471678dede735794dda65e2490f3597"
+      },
+      {
+        "textSha256": "278fc111730f9c7af22453bf785ecdb0b96192b31f1b6819c896dbe0b95f0a40",
+        "tokens": 8,
+        "tokenIdsSha256": "7abd800bb943d44426d29b3ccdc886d6228a5e678bf1e4dab8160aa883e5826f"
+      },
+      {
+        "textSha256": "565a25664332cb97e697531a66b3d33301d266298e0416d1935db6164951b3d7",
+        "tokens": 10,
+        "tokenIdsSha256": "0197532d018e1846d9055be7c1c54d549cc9877dae4eea166fa84e48950adf4f"
+      },
+      {
+        "textSha256": "bc751ab68f112e4c88408df6a9c2bc0e08cbd06056524ade4034426a7a927dcf",
+        "tokens": 6,
+        "tokenIdsSha256": "1e604052dbaf30d83940a7525bde618eac27ae46b2072c7910095ca0d90fd8c2"
+      },
+      {
+        "textSha256": "d8eb320384960f57d58f749c9ffec6d13230955baf1a36154b8892283ed0c514",
+        "tokens": 8,
+        "tokenIdsSha256": "231564cc93b9e649c2de5d6b85e87d1a92dd1d2284f3762c3463d836d819fe2a"
+      },
+      {
+        "textSha256": "a61e8e2f2181ca01535363f25ab1e563d61bc880447dc004eeb65998231f7d87",
+        "tokens": 10,
+        "tokenIdsSha256": "0f3e711e891db11493147ae53e9ffe9db570c2b695c7a50106629c4f639f7107"
+      },
+      {
+        "textSha256": "e7bcaa0c385148b29715b047339897aa0e82a619e5c18d5a256a955f2ec62da6",
+        "tokens": 7,
+        "tokenIdsSha256": "2ac64d84dac701d34cfd84a84221ed179c912e9f75edd07bd94ea17d2172ecee"
+      },
+      {
+        "textSha256": "b4e39e33d25f13a942892d09049c726674f9244dbccb2e72b1f9c065cfed539c",
+        "tokens": 9,
+        "tokenIdsSha256": "f2d11351de8934c419db76d98ce27d73114e9d0dcdd681b63d8f3200c1db2091"
+      },
+      {
+        "textSha256": "fbe0521edde89be6ea5d5ff73d1fb8f179fdf3dc1812f7dd456fb4d892b37be5",
+        "tokens": 11,
+        "tokenIdsSha256": "2c54c4fbe0f490457bb6a337a512fa3a5e28ca16a173df959e408e12a0e60e20"
+      },
+      {
+        "textSha256": "56b784287c70c5d7b87c94ab601ccf0a6e6813e47903e4979918b743173bf568",
+        "tokens": 7,
+        "tokenIdsSha256": "4583cada803f8bb2d6f1534f05cb9fe92a6f715fe75c4698808a741db06d6828"
+      },
+      {
+        "textSha256": "e504ee36f5419395bf4679edf9754f24671895e99c8b9c74500f334129df63cb",
+        "tokens": 9,
+        "tokenIdsSha256": "7414bd1a6d5fa8bb1b134765dfbc30e42812ccb715dbf0f5dd529bb2e5cd5f14"
+      },
+      {
+        "textSha256": "cf1863642c86357d9996fb47000b48244cb3abf2b1732bf81fb069db618af92a",
+        "tokens": 11,
+        "tokenIdsSha256": "ba4d97e21f034eb029794fb4e24447b29edd717f3696d35fa68259779ee6231e"
+      },
+      {
+        "textSha256": "1c23b5b5ae4b73fcd77376bf8206e1d86fdef76834983470f9c5f67117432340",
+        "tokens": 5,
+        "tokenIdsSha256": "25cf305e0c25cdb7847a0ff5d71e1d68310739a4bf42c28458910ab7566994ea"
+      },
+      {
+        "textSha256": "92b16fadef65983037ab5e05aabc5e0e5e1c528aceb7554d0e8812edc0e34351",
+        "tokens": 7,
+        "tokenIdsSha256": "b609162e3c5d503ba545297abeed1d1b7227ae96b02619669551c490169f72cf"
+      },
+      {
+        "textSha256": "f25f24868bd42fe2b374be4c840e206d83c65cb60b7ea7f5d2c04b38ae0d3c5f",
+        "tokens": 9,
+        "tokenIdsSha256": "593fa4f4bac521ba65c8fe4af3e2c5829b6942774c0641530b63423cdb01926e"
+      },
+      {
+        "textSha256": "781e46f8a217055aa3d3bc0b85c7a51a572974c3f675231cf014f4ea98e64d16",
+        "tokens": 5,
+        "tokenIdsSha256": "5c93b993b9bf7ef316034ee2385390a3eb3d5ac3f7380466bb7d13f4b6bbe64f"
+      },
+      {
+        "textSha256": "7b32d257083fc27fbe65a1b86156d22435deea5681dc245c580047fef6eb6c6b",
+        "tokens": 7,
+        "tokenIdsSha256": "1e6aff9f4213635a4078154d38b2eecacf8a2cebfded45bbf130f6ea27872842"
+      },
+      {
+        "textSha256": "ac423822ed329d6f76c1a85ffdf8d4a68a746c79d72e322ee812bf1ce62723a2",
+        "tokens": 9,
+        "tokenIdsSha256": "1392c96c1d89bd3fecf1353fe79a452040ddb0e55ba5e97f035763dfaeb0b6cc"
+      },
+      {
+        "textSha256": "a6d17b37f420862f99d3bf111ebf194c71a48f531586e0bc571cc74cf4453c33",
+        "tokens": 5,
+        "tokenIdsSha256": "daca3628741ca914a9f7ba8b2f2905509c2451d81d414cc3660fc0d6fb4fed1b"
+      },
+      {
+        "textSha256": "01ed4177ac38e61cf8020bf09b38491de58acca23cbef6c0ef07d1ac9ec7c40e",
+        "tokens": 7,
+        "tokenIdsSha256": "1c3358ea7ece837dd6808e2bdf1b16f5f7cd31000ecad28bc589165ee4b2013e"
+      },
+      {
+        "textSha256": "2ced13630a38ca06008c5d0f94a17c0ef11d9e87babab8d330002d89e45fc234",
+        "tokens": 9,
+        "tokenIdsSha256": "c175a5c51ef7a4bf588b85c4c3c9c6283d7c8921bbbd32cbfc353b40dda2d633"
+      },
+      {
+        "textSha256": "fb8e034ca4548adb72c9f096874d71007180f71d61a3a2f7668a41b2890dc25e",
+        "tokens": 5,
+        "tokenIdsSha256": "94b914f50153137f451735dbb051489b5aba3dc375ecee6734126ee22eeec41d"
+      },
+      {
+        "textSha256": "0f7b29caf11c820f2eb8cfacce695c381bed54ae662c1869a22c001d14031324",
+        "tokens": 7,
+        "tokenIdsSha256": "b9aee7cb36ca4cb8a09f4172c7aa52e3e1be019f405514ca5b97d992bdbd5d9b"
+      },
+      {
+        "textSha256": "7a308fa56a65bdf2f9a287140ce263e3407de217ffd335321fb58aab34dbbadf",
+        "tokens": 9,
+        "tokenIdsSha256": "d8874335b95ce1162ff53f2b83116be1a9bf14c1c8ca3f706c04fd6974082d10"
+      },
+      {
+        "textSha256": "673325dbba8f541bcf84956d0f825593fded0bae44676c3c74f8fcf267114735",
+        "tokens": 5,
+        "tokenIdsSha256": "096c7ca9c13905e804d343746e21192e1ccfa7facb08911650d18fc4fd93cdf5"
+      },
+      {
+        "textSha256": "52efe1dbf2db75db5c18de90bf9936048ff02166a578b8c677e1b2848b3ff074",
+        "tokens": 7,
+        "tokenIdsSha256": "fa2092deb3396f8ba43406af5af62d0bbba3eda0a5579ef34ff00de7d001e7f0"
+      },
+      {
+        "textSha256": "0a61cc756644ad41880b9b9f8347024da4f94a6a77bc91c2e1d5b5d2d68f3995",
+        "tokens": 9,
+        "tokenIdsSha256": "df049c98e4ae4a743454ca18540eacc19f26012cc5f9de9d5303e936ba0480c2"
+      },
+      {
+        "textSha256": "eae37a898ea554e6f84239e083193da132d5d5eb0960530440b124e013605ce7",
+        "tokens": 6,
+        "tokenIdsSha256": "e61af979775703eab7e69e34f0119133a0383def72736669c38f472462270751"
+      },
+      {
+        "textSha256": "647f0583f9258a0911d93c3fa9af0940cb456f12d08a97d9ded39d55f63f2636",
+        "tokens": 8,
+        "tokenIdsSha256": "6ddf62f0af891a27d5a438ca5b5c19ca1d117998b4c7920e1092617010796340"
+      },
+      {
+        "textSha256": "4bfb1d19d9ec9b1f5e66c8e4ebefe0e85012f0644dd9eeb6e0377da2ff3e5478",
+        "tokens": 10,
+        "tokenIdsSha256": "8be15f202be52517429688bcd129c5ed10af053fe052e02ccad409de718ba73f"
+      },
+      {
+        "textSha256": "f79ea099a5b6163cd3c7a1e991d882aba0aece6db3482e81b846d66644d85604",
+        "tokens": 5,
+        "tokenIdsSha256": "94017a0ba549383fc49aea6c59fc0636d1d61069a30366a9f9fc64488b6acf2e"
+      },
+      {
+        "textSha256": "455690d20c75b98a95d9f04b1f7d3813ddbd82848695facd5922e625386d5f59",
+        "tokens": 7,
+        "tokenIdsSha256": "67a2d0a6f27e060151f801150549d3c6256e3f0e786325bd153ac0865eff6579"
+      },
+      {
+        "textSha256": "990e76d3f81b170a393a6002b9cd1a5092f09df12191101da3b180232fba3bfe",
+        "tokens": 9,
+        "tokenIdsSha256": "5f2ea518ceb8bc0517ac431d439968676752d37535716600d72e3bd282ad7117"
+      },
+      {
+        "textSha256": "6675359bfbd4e238af1deff7bdd7407d1b692d0345595af17cb6c78b26c43237",
+        "tokens": 100,
+        "tokenIdsSha256": "304fc782208dca85faacd707064e0281061aafbb6a37c65defefbbed699e2d04"
+      },
+      {
+        "textSha256": "0b0cf3ced8fac0bee85b4f0c9ac0f5f8779f90994fc85af43130db14b3542bd0",
+        "tokens": 23,
+        "tokenIdsSha256": "e13ba991e950c6da5deb9e84dbf467ef17dc98d93844f333df5225f075988e00"
+      },
+      {
+        "textSha256": "3c136f06b05992855dc329216dfa1fa5b6718cccd3d79f658262de8f871f45f0",
+        "tokens": 3943,
+        "tokenIdsSha256": "a57a86ee9493730e4a1da94035360bd7fc966e751284bbf851cf6f1ef1678125"
+      },
+      {
+        "textSha256": "a9dbc47fb0304b98cc9a0c4642b9292473f96652c89c1f1d78f420613535f1e5",
+        "tokens": 1212,
+        "tokenIdsSha256": "1e43c39c899309c14ff6aa12883b8dc6305186894d488fc0a3f9d611c55a0259"
+      },
+      {
+        "textSha256": "71d9311d541611c3c2aa85536199e00d16aaf54d0a13e463fc3e2aefa77a2118",
+        "tokens": 9,
+        "tokenIdsSha256": "8ed6c55b1ef78b44ea17510fea6e9bc66aa950be9f34cff102b8fac08ee43031"
+      },
+      {
+        "textSha256": "ab4cd2084c717fcbe7eb2fdd6298fef6edcd9731809ecfb07a8a0618f6d1f384",
+        "tokens": 1537,
+        "tokenIdsSha256": "59742a2a55639e2ef4d9b235db58de9c851a189c0f102d93d41ae062c965a7e1"
+      },
+      {
+        "textSha256": "6675359bfbd4e238af1deff7bdd7407d1b692d0345595af17cb6c78b26c43237",
+        "tokens": 100,
+        "tokenIdsSha256": "304fc782208dca85faacd707064e0281061aafbb6a37c65defefbbed699e2d04"
+      },
+      {
+        "textSha256": "6675359bfbd4e238af1deff7bdd7407d1b692d0345595af17cb6c78b26c43237",
+        "tokens": 100,
+        "tokenIdsSha256": "304fc782208dca85faacd707064e0281061aafbb6a37c65defefbbed699e2d04"
+      },
+      {
+        "textSha256": "99dd304d9aa4f54c0a4343fd7221196c1bb62954adc8795369792a174797cbac",
+        "tokens": 2,
+        "tokenIdsSha256": "55c867b7ef37c8e481dd67967a53886b31d6edc513b878a09ad73ddc7a3556a8"
+      },
+      {
+        "textSha256": "9f985cf842153a4d4a02a103b9861dbe2fbc523dec780c60183a65da25f54cec",
+        "tokens": 4,
+        "tokenIdsSha256": "129a71ade06555f2efd2c81265ef2247c8ef93b4fdbbde388c28f8919968b3a5"
+      },
+      {
+        "textSha256": "d1fb67d484d864fb1b6e8c07c7a777108fd1cef9f050b34a8d4fac8dc229b108",
+        "tokens": 28,
+        "tokenIdsSha256": "6ed6ab40e95a4935c4d6e03b62e08f5bf28bd20e8f2472e84c3c67f79fa40e4a"
+      },
+      {
+        "textSha256": "6675359bfbd4e238af1deff7bdd7407d1b692d0345595af17cb6c78b26c43237",
+        "tokens": 100,
+        "tokenIdsSha256": "304fc782208dca85faacd707064e0281061aafbb6a37c65defefbbed699e2d04"
+      },
+      {
+        "textSha256": "2c9968bf3e56a9ed2ecee4d33e1dad9929c1b7af3c3158c1ffd687a4ebb29963",
+        "tokens": 131,
+        "tokenIdsSha256": "1bc94cf6ff7bb5eb6bd752d2cada2d16b23079ce6d44d8cb46dc05eb1b91b9d4"
+      },
+      {
+        "textSha256": "99dd304d9aa4f54c0a4343fd7221196c1bb62954adc8795369792a174797cbac",
+        "tokens": 2,
+        "tokenIdsSha256": "55c867b7ef37c8e481dd67967a53886b31d6edc513b878a09ad73ddc7a3556a8"
+      },
+      {
+        "textSha256": "6675359bfbd4e238af1deff7bdd7407d1b692d0345595af17cb6c78b26c43237",
+        "tokens": 100,
+        "tokenIdsSha256": "304fc782208dca85faacd707064e0281061aafbb6a37c65defefbbed699e2d04"
+      },
+      {
+        "textSha256": "6675359bfbd4e238af1deff7bdd7407d1b692d0345595af17cb6c78b26c43237",
+        "tokens": 100,
+        "tokenIdsSha256": "304fc782208dca85faacd707064e0281061aafbb6a37c65defefbbed699e2d04"
+      },
+      {
+        "textSha256": "99dd304d9aa4f54c0a4343fd7221196c1bb62954adc8795369792a174797cbac",
+        "tokens": 2,
+        "tokenIdsSha256": "55c867b7ef37c8e481dd67967a53886b31d6edc513b878a09ad73ddc7a3556a8"
+      },
+      {
+        "textSha256": "86452dd342fca28d9c83830cc0715a241695756c01df962009f35e58024ced32",
+        "tokens": 28,
+        "tokenIdsSha256": "02864adae9574e862f76ec31874d573436acf452006a6bef8bd8a1cc87b766d8"
+      },
+      {
+        "textSha256": "6675359bfbd4e238af1deff7bdd7407d1b692d0345595af17cb6c78b26c43237",
+        "tokens": 100,
+        "tokenIdsSha256": "304fc782208dca85faacd707064e0281061aafbb6a37c65defefbbed699e2d04"
+      },
+      {
+        "textSha256": "3a1ce98b2b68e8752d897d12138f3036acc69e9ff57536f32f8d2de0410a05d4",
+        "tokens": 128,
+        "tokenIdsSha256": "d8f0b5ab384a2653b162adff94f0c70a32f6a659370598903b20c074cf8d97d1"
+      },
+      {
+        "textSha256": "99dd304d9aa4f54c0a4343fd7221196c1bb62954adc8795369792a174797cbac",
+        "tokens": 2,
+        "tokenIdsSha256": "55c867b7ef37c8e481dd67967a53886b31d6edc513b878a09ad73ddc7a3556a8"
+      },
+      {
+        "textSha256": "6675359bfbd4e238af1deff7bdd7407d1b692d0345595af17cb6c78b26c43237",
+        "tokens": 100,
+        "tokenIdsSha256": "304fc782208dca85faacd707064e0281061aafbb6a37c65defefbbed699e2d04"
+      },
+      {
+        "textSha256": "6675359bfbd4e238af1deff7bdd7407d1b692d0345595af17cb6c78b26c43237",
+        "tokens": 100,
+        "tokenIdsSha256": "304fc782208dca85faacd707064e0281061aafbb6a37c65defefbbed699e2d04"
+      },
+      {
+        "textSha256": "99dd304d9aa4f54c0a4343fd7221196c1bb62954adc8795369792a174797cbac",
+        "tokens": 2,
+        "tokenIdsSha256": "55c867b7ef37c8e481dd67967a53886b31d6edc513b878a09ad73ddc7a3556a8"
+      },
+      {
+        "textSha256": "9f985cf842153a4d4a02a103b9861dbe2fbc523dec780c60183a65da25f54cec",
+        "tokens": 4,
+        "tokenIdsSha256": "129a71ade06555f2efd2c81265ef2247c8ef93b4fdbbde388c28f8919968b3a5"
+      },
+      {
+        "textSha256": "30f92f5f045487759bfc3034a3c2749220e0a19a92b9acfd1b41bc2f35f0eb4a",
+        "tokens": 24,
+        "tokenIdsSha256": "3bc9f02f2523beb4ce42efa5061bd1f613a924093d43d1d0c7181e92ba723c98"
+      },
+      {
+        "textSha256": "6675359bfbd4e238af1deff7bdd7407d1b692d0345595af17cb6c78b26c43237",
+        "tokens": 100,
+        "tokenIdsSha256": "304fc782208dca85faacd707064e0281061aafbb6a37c65defefbbed699e2d04"
+      },
+      {
+        "textSha256": "2f8c7998c37e28976ef577aa3245d7fcdb76b9aa327ffe2bfee0359cd9e2c524",
+        "tokens": 121,
+        "tokenIdsSha256": "b352d9d4d5b1ef0bafdb48a3d28623e1bb74f824a27eebeab517869ce46b52cd"
+      },
+      {
+        "textSha256": "99dd304d9aa4f54c0a4343fd7221196c1bb62954adc8795369792a174797cbac",
+        "tokens": 2,
+        "tokenIdsSha256": "55c867b7ef37c8e481dd67967a53886b31d6edc513b878a09ad73ddc7a3556a8"
+      },
+      {
+        "textSha256": "0b0cf3ced8fac0bee85b4f0c9ac0f5f8779f90994fc85af43130db14b3542bd0",
+        "tokens": 23,
+        "tokenIdsSha256": "e13ba991e950c6da5deb9e84dbf467ef17dc98d93844f333df5225f075988e00"
+      },
+      {
+        "textSha256": "0b0cf3ced8fac0bee85b4f0c9ac0f5f8779f90994fc85af43130db14b3542bd0",
+        "tokens": 23,
+        "tokenIdsSha256": "e13ba991e950c6da5deb9e84dbf467ef17dc98d93844f333df5225f075988e00"
+      },
+      {
+        "textSha256": "99dd304d9aa4f54c0a4343fd7221196c1bb62954adc8795369792a174797cbac",
+        "tokens": 2,
+        "tokenIdsSha256": "55c867b7ef37c8e481dd67967a53886b31d6edc513b878a09ad73ddc7a3556a8"
+      },
+      {
+        "textSha256": "9f985cf842153a4d4a02a103b9861dbe2fbc523dec780c60183a65da25f54cec",
+        "tokens": 4,
+        "tokenIdsSha256": "129a71ade06555f2efd2c81265ef2247c8ef93b4fdbbde388c28f8919968b3a5"
+      },
+      {
+        "textSha256": "d1fb67d484d864fb1b6e8c07c7a777108fd1cef9f050b34a8d4fac8dc229b108",
+        "tokens": 28,
+        "tokenIdsSha256": "6ed6ab40e95a4935c4d6e03b62e08f5bf28bd20e8f2472e84c3c67f79fa40e4a"
+      },
+      {
+        "textSha256": "0b0cf3ced8fac0bee85b4f0c9ac0f5f8779f90994fc85af43130db14b3542bd0",
+        "tokens": 23,
+        "tokenIdsSha256": "e13ba991e950c6da5deb9e84dbf467ef17dc98d93844f333df5225f075988e00"
+      },
+      {
+        "textSha256": "1c73675b0f0a13cc8d3f0ae2f8004f8a0ea73be5001c4c30561f8dcf5a32d639",
+        "tokens": 56,
+        "tokenIdsSha256": "1aec705ea3cf25fb7b99c1fb5e0965122cbead6889f51af4da0746d59011ae25"
+      },
+      {
+        "textSha256": "99dd304d9aa4f54c0a4343fd7221196c1bb62954adc8795369792a174797cbac",
+        "tokens": 2,
+        "tokenIdsSha256": "55c867b7ef37c8e481dd67967a53886b31d6edc513b878a09ad73ddc7a3556a8"
+      },
+      {
+        "textSha256": "0b0cf3ced8fac0bee85b4f0c9ac0f5f8779f90994fc85af43130db14b3542bd0",
+        "tokens": 23,
+        "tokenIdsSha256": "e13ba991e950c6da5deb9e84dbf467ef17dc98d93844f333df5225f075988e00"
+      },
+      {
+        "textSha256": "0b0cf3ced8fac0bee85b4f0c9ac0f5f8779f90994fc85af43130db14b3542bd0",
+        "tokens": 23,
+        "tokenIdsSha256": "e13ba991e950c6da5deb9e84dbf467ef17dc98d93844f333df5225f075988e00"
+      },
+      {
+        "textSha256": "99dd304d9aa4f54c0a4343fd7221196c1bb62954adc8795369792a174797cbac",
+        "tokens": 2,
+        "tokenIdsSha256": "55c867b7ef37c8e481dd67967a53886b31d6edc513b878a09ad73ddc7a3556a8"
+      },
+      {
+        "textSha256": "86452dd342fca28d9c83830cc0715a241695756c01df962009f35e58024ced32",
+        "tokens": 28,
+        "tokenIdsSha256": "02864adae9574e862f76ec31874d573436acf452006a6bef8bd8a1cc87b766d8"
+      },
+      {
+        "textSha256": "0b0cf3ced8fac0bee85b4f0c9ac0f5f8779f90994fc85af43130db14b3542bd0",
+        "tokens": 23,
+        "tokenIdsSha256": "e13ba991e950c6da5deb9e84dbf467ef17dc98d93844f333df5225f075988e00"
+      },
+      {
+        "textSha256": "765037dd84419aa5e6303fd10eed3d1c311fb576c7e8db4c60971081f9bcf342",
+        "tokens": 53,
+        "tokenIdsSha256": "2032c19f49cb8be39cd7b3537a6a92cf934e583f02e02668d5d3e4063afaa2c4"
+      },
+      {
+        "textSha256": "99dd304d9aa4f54c0a4343fd7221196c1bb62954adc8795369792a174797cbac",
+        "tokens": 2,
+        "tokenIdsSha256": "55c867b7ef37c8e481dd67967a53886b31d6edc513b878a09ad73ddc7a3556a8"
+      },
+      {
+        "textSha256": "0b0cf3ced8fac0bee85b4f0c9ac0f5f8779f90994fc85af43130db14b3542bd0",
+        "tokens": 23,
+        "tokenIdsSha256": "e13ba991e950c6da5deb9e84dbf467ef17dc98d93844f333df5225f075988e00"
+      },
+      {
+        "textSha256": "0b0cf3ced8fac0bee85b4f0c9ac0f5f8779f90994fc85af43130db14b3542bd0",
+        "tokens": 23,
+        "tokenIdsSha256": "e13ba991e950c6da5deb9e84dbf467ef17dc98d93844f333df5225f075988e00"
+      },
+      {
+        "textSha256": "99dd304d9aa4f54c0a4343fd7221196c1bb62954adc8795369792a174797cbac",
+        "tokens": 2,
+        "tokenIdsSha256": "55c867b7ef37c8e481dd67967a53886b31d6edc513b878a09ad73ddc7a3556a8"
+      },
+      {
+        "textSha256": "9f985cf842153a4d4a02a103b9861dbe2fbc523dec780c60183a65da25f54cec",
+        "tokens": 4,
+        "tokenIdsSha256": "129a71ade06555f2efd2c81265ef2247c8ef93b4fdbbde388c28f8919968b3a5"
+      },
+      {
+        "textSha256": "30f92f5f045487759bfc3034a3c2749220e0a19a92b9acfd1b41bc2f35f0eb4a",
+        "tokens": 24,
+        "tokenIdsSha256": "3bc9f02f2523beb4ce42efa5061bd1f613a924093d43d1d0c7181e92ba723c98"
+      },
+      {
+        "textSha256": "0b0cf3ced8fac0bee85b4f0c9ac0f5f8779f90994fc85af43130db14b3542bd0",
+        "tokens": 23,
+        "tokenIdsSha256": "e13ba991e950c6da5deb9e84dbf467ef17dc98d93844f333df5225f075988e00"
+      },
+      {
+        "textSha256": "003f1d0dfc74073fcd6bab7cdb5926a6d126be6d46a82f6067b05118e71fd2aa",
+        "tokens": 46,
+        "tokenIdsSha256": "4885110c5f6dafface12f6273239ce52b400f31cd6aee4eecbc244088ca4e0d7"
+      },
+      {
+        "textSha256": "99dd304d9aa4f54c0a4343fd7221196c1bb62954adc8795369792a174797cbac",
+        "tokens": 2,
+        "tokenIdsSha256": "55c867b7ef37c8e481dd67967a53886b31d6edc513b878a09ad73ddc7a3556a8"
+      },
+      {
+        "textSha256": "3c136f06b05992855dc329216dfa1fa5b6718cccd3d79f658262de8f871f45f0",
+        "tokens": 3943,
+        "tokenIdsSha256": "a57a86ee9493730e4a1da94035360bd7fc966e751284bbf851cf6f1ef1678125"
+      },
+      {
+        "textSha256": "3c136f06b05992855dc329216dfa1fa5b6718cccd3d79f658262de8f871f45f0",
+        "tokens": 3943,
+        "tokenIdsSha256": "a57a86ee9493730e4a1da94035360bd7fc966e751284bbf851cf6f1ef1678125"
+      },
+      {
+        "textSha256": "99dd304d9aa4f54c0a4343fd7221196c1bb62954adc8795369792a174797cbac",
+        "tokens": 2,
+        "tokenIdsSha256": "55c867b7ef37c8e481dd67967a53886b31d6edc513b878a09ad73ddc7a3556a8"
+      },
+      {
+        "textSha256": "9f985cf842153a4d4a02a103b9861dbe2fbc523dec780c60183a65da25f54cec",
+        "tokens": 4,
+        "tokenIdsSha256": "129a71ade06555f2efd2c81265ef2247c8ef93b4fdbbde388c28f8919968b3a5"
+      },
+      {
+        "textSha256": "d1fb67d484d864fb1b6e8c07c7a777108fd1cef9f050b34a8d4fac8dc229b108",
+        "tokens": 28,
+        "tokenIdsSha256": "6ed6ab40e95a4935c4d6e03b62e08f5bf28bd20e8f2472e84c3c67f79fa40e4a"
+      },
+      {
+        "textSha256": "3c136f06b05992855dc329216dfa1fa5b6718cccd3d79f658262de8f871f45f0",
+        "tokens": 3943,
+        "tokenIdsSha256": "a57a86ee9493730e4a1da94035360bd7fc966e751284bbf851cf6f1ef1678125"
+      },
+      {
+        "textSha256": "f6924f87b25a0891722fa662877220a2ab463fb078f567ee39b5c94d4fe6e67f",
+        "tokens": 4580,
+        "tokenIdsSha256": "7b67274c13666b849ac50bbcb5f3350c5a4a2d989d8b22542d6d470275f31099"
+      },
+      {
+        "textSha256": "99dd304d9aa4f54c0a4343fd7221196c1bb62954adc8795369792a174797cbac",
+        "tokens": 2,
+        "tokenIdsSha256": "55c867b7ef37c8e481dd67967a53886b31d6edc513b878a09ad73ddc7a3556a8"
+      },
+      {
+        "textSha256": "3c136f06b05992855dc329216dfa1fa5b6718cccd3d79f658262de8f871f45f0",
+        "tokens": 3943,
+        "tokenIdsSha256": "a57a86ee9493730e4a1da94035360bd7fc966e751284bbf851cf6f1ef1678125"
+      },
+      {
+        "textSha256": "3c136f06b05992855dc329216dfa1fa5b6718cccd3d79f658262de8f871f45f0",
+        "tokens": 3943,
+        "tokenIdsSha256": "a57a86ee9493730e4a1da94035360bd7fc966e751284bbf851cf6f1ef1678125"
+      },
+      {
+        "textSha256": "99dd304d9aa4f54c0a4343fd7221196c1bb62954adc8795369792a174797cbac",
+        "tokens": 2,
+        "tokenIdsSha256": "55c867b7ef37c8e481dd67967a53886b31d6edc513b878a09ad73ddc7a3556a8"
+      },
+      {
+        "textSha256": "86452dd342fca28d9c83830cc0715a241695756c01df962009f35e58024ced32",
+        "tokens": 28,
+        "tokenIdsSha256": "02864adae9574e862f76ec31874d573436acf452006a6bef8bd8a1cc87b766d8"
+      },
+      {
+        "textSha256": "3c136f06b05992855dc329216dfa1fa5b6718cccd3d79f658262de8f871f45f0",
+        "tokens": 3943,
+        "tokenIdsSha256": "a57a86ee9493730e4a1da94035360bd7fc966e751284bbf851cf6f1ef1678125"
+      },
+      {
+        "textSha256": "853b10cb653868388a917762848a6d9df0ae53b272f058a92e8731459973aa36",
+        "tokens": 4577,
+        "tokenIdsSha256": "4ae76ce3c651b637e808a16fb7c4b68c9abb89a30248f999726a1b4dc4645751"
+      },
+      {
+        "textSha256": "99dd304d9aa4f54c0a4343fd7221196c1bb62954adc8795369792a174797cbac",
+        "tokens": 2,
+        "tokenIdsSha256": "55c867b7ef37c8e481dd67967a53886b31d6edc513b878a09ad73ddc7a3556a8"
+      },
+      {
+        "textSha256": "3c136f06b05992855dc329216dfa1fa5b6718cccd3d79f658262de8f871f45f0",
+        "tokens": 3943,
+        "tokenIdsSha256": "a57a86ee9493730e4a1da94035360bd7fc966e751284bbf851cf6f1ef1678125"
+      },
+      {
+        "textSha256": "3c136f06b05992855dc329216dfa1fa5b6718cccd3d79f658262de8f871f45f0",
+        "tokens": 3943,
+        "tokenIdsSha256": "a57a86ee9493730e4a1da94035360bd7fc966e751284bbf851cf6f1ef1678125"
+      },
+      {
+        "textSha256": "99dd304d9aa4f54c0a4343fd7221196c1bb62954adc8795369792a174797cbac",
+        "tokens": 2,
+        "tokenIdsSha256": "55c867b7ef37c8e481dd67967a53886b31d6edc513b878a09ad73ddc7a3556a8"
+      },
+      {
+        "textSha256": "9f985cf842153a4d4a02a103b9861dbe2fbc523dec780c60183a65da25f54cec",
+        "tokens": 4,
+        "tokenIdsSha256": "129a71ade06555f2efd2c81265ef2247c8ef93b4fdbbde388c28f8919968b3a5"
+      },
+      {
+        "textSha256": "30f92f5f045487759bfc3034a3c2749220e0a19a92b9acfd1b41bc2f35f0eb4a",
+        "tokens": 24,
+        "tokenIdsSha256": "3bc9f02f2523beb4ce42efa5061bd1f613a924093d43d1d0c7181e92ba723c98"
+      },
+      {
+        "textSha256": "3c136f06b05992855dc329216dfa1fa5b6718cccd3d79f658262de8f871f45f0",
+        "tokens": 3943,
+        "tokenIdsSha256": "a57a86ee9493730e4a1da94035360bd7fc966e751284bbf851cf6f1ef1678125"
+      },
+      {
+        "textSha256": "1c6d88ec968a5a626709661b02c70320325ab88de705cb465e8143a4a3726ce5",
+        "tokens": 4570,
+        "tokenIdsSha256": "c9243f04fba606a290083b91c91b7ffa704b0b095b953284807984a586fd5be6"
+      },
+      {
+        "textSha256": "99dd304d9aa4f54c0a4343fd7221196c1bb62954adc8795369792a174797cbac",
+        "tokens": 2,
+        "tokenIdsSha256": "55c867b7ef37c8e481dd67967a53886b31d6edc513b878a09ad73ddc7a3556a8"
+      },
+      {
+        "textSha256": "a9dbc47fb0304b98cc9a0c4642b9292473f96652c89c1f1d78f420613535f1e5",
+        "tokens": 1212,
+        "tokenIdsSha256": "1e43c39c899309c14ff6aa12883b8dc6305186894d488fc0a3f9d611c55a0259"
+      },
+      {
+        "textSha256": "a9dbc47fb0304b98cc9a0c4642b9292473f96652c89c1f1d78f420613535f1e5",
+        "tokens": 1212,
+        "tokenIdsSha256": "1e43c39c899309c14ff6aa12883b8dc6305186894d488fc0a3f9d611c55a0259"
+      },
+      {
+        "textSha256": "99dd304d9aa4f54c0a4343fd7221196c1bb62954adc8795369792a174797cbac",
+        "tokens": 2,
+        "tokenIdsSha256": "55c867b7ef37c8e481dd67967a53886b31d6edc513b878a09ad73ddc7a3556a8"
+      },
+      {
+        "textSha256": "9f985cf842153a4d4a02a103b9861dbe2fbc523dec780c60183a65da25f54cec",
+        "tokens": 4,
+        "tokenIdsSha256": "129a71ade06555f2efd2c81265ef2247c8ef93b4fdbbde388c28f8919968b3a5"
+      },
+      {
+        "textSha256": "d1fb67d484d864fb1b6e8c07c7a777108fd1cef9f050b34a8d4fac8dc229b108",
+        "tokens": 28,
+        "tokenIdsSha256": "6ed6ab40e95a4935c4d6e03b62e08f5bf28bd20e8f2472e84c3c67f79fa40e4a"
+      },
+      {
+        "textSha256": "a9dbc47fb0304b98cc9a0c4642b9292473f96652c89c1f1d78f420613535f1e5",
+        "tokens": 1212,
+        "tokenIdsSha256": "1e43c39c899309c14ff6aa12883b8dc6305186894d488fc0a3f9d611c55a0259"
+      },
+      {
+        "textSha256": "166565a6b346ff426869bb66254f4b7107209f0c17fbbde613a902b3a619fc5f",
+        "tokens": 1416,
+        "tokenIdsSha256": "e94701cd10f92641a67b42f411c7c42ddcfc7898a405170995b1a4ee362521a8"
+      },
+      {
+        "textSha256": "99dd304d9aa4f54c0a4343fd7221196c1bb62954adc8795369792a174797cbac",
+        "tokens": 2,
+        "tokenIdsSha256": "55c867b7ef37c8e481dd67967a53886b31d6edc513b878a09ad73ddc7a3556a8"
+      },
+      {
+        "textSha256": "a9dbc47fb0304b98cc9a0c4642b9292473f96652c89c1f1d78f420613535f1e5",
+        "tokens": 1212,
+        "tokenIdsSha256": "1e43c39c899309c14ff6aa12883b8dc6305186894d488fc0a3f9d611c55a0259"
+      },
+      {
+        "textSha256": "a9dbc47fb0304b98cc9a0c4642b9292473f96652c89c1f1d78f420613535f1e5",
+        "tokens": 1212,
+        "tokenIdsSha256": "1e43c39c899309c14ff6aa12883b8dc6305186894d488fc0a3f9d611c55a0259"
+      },
+      {
+        "textSha256": "99dd304d9aa4f54c0a4343fd7221196c1bb62954adc8795369792a174797cbac",
+        "tokens": 2,
+        "tokenIdsSha256": "55c867b7ef37c8e481dd67967a53886b31d6edc513b878a09ad73ddc7a3556a8"
+      },
+      {
+        "textSha256": "86452dd342fca28d9c83830cc0715a241695756c01df962009f35e58024ced32",
+        "tokens": 28,
+        "tokenIdsSha256": "02864adae9574e862f76ec31874d573436acf452006a6bef8bd8a1cc87b766d8"
+      },
+      {
+        "textSha256": "a9dbc47fb0304b98cc9a0c4642b9292473f96652c89c1f1d78f420613535f1e5",
+        "tokens": 1212,
+        "tokenIdsSha256": "1e43c39c899309c14ff6aa12883b8dc6305186894d488fc0a3f9d611c55a0259"
+      },
+      {
+        "textSha256": "6d3c40499ddf40bf5e28b1a794743c58963bc73516e75b3b4406f2fbcf009e7a",
+        "tokens": 1413,
+        "tokenIdsSha256": "1a2c980441e82e66071b93c6ae8194d9ba01336ba947dbded1ab08b0580c4a34"
+      },
+      {
+        "textSha256": "99dd304d9aa4f54c0a4343fd7221196c1bb62954adc8795369792a174797cbac",
+        "tokens": 2,
+        "tokenIdsSha256": "55c867b7ef37c8e481dd67967a53886b31d6edc513b878a09ad73ddc7a3556a8"
+      },
+      {
+        "textSha256": "a9dbc47fb0304b98cc9a0c4642b9292473f96652c89c1f1d78f420613535f1e5",
+        "tokens": 1212,
+        "tokenIdsSha256": "1e43c39c899309c14ff6aa12883b8dc6305186894d488fc0a3f9d611c55a0259"
+      },
+      {
+        "textSha256": "a9dbc47fb0304b98cc9a0c4642b9292473f96652c89c1f1d78f420613535f1e5",
+        "tokens": 1212,
+        "tokenIdsSha256": "1e43c39c899309c14ff6aa12883b8dc6305186894d488fc0a3f9d611c55a0259"
+      },
+      {
+        "textSha256": "99dd304d9aa4f54c0a4343fd7221196c1bb62954adc8795369792a174797cbac",
+        "tokens": 2,
+        "tokenIdsSha256": "55c867b7ef37c8e481dd67967a53886b31d6edc513b878a09ad73ddc7a3556a8"
+      },
+      {
+        "textSha256": "9f985cf842153a4d4a02a103b9861dbe2fbc523dec780c60183a65da25f54cec",
+        "tokens": 4,
+        "tokenIdsSha256": "129a71ade06555f2efd2c81265ef2247c8ef93b4fdbbde388c28f8919968b3a5"
+      },
+      {
+        "textSha256": "30f92f5f045487759bfc3034a3c2749220e0a19a92b9acfd1b41bc2f35f0eb4a",
+        "tokens": 24,
+        "tokenIdsSha256": "3bc9f02f2523beb4ce42efa5061bd1f613a924093d43d1d0c7181e92ba723c98"
+      },
+      {
+        "textSha256": "a9dbc47fb0304b98cc9a0c4642b9292473f96652c89c1f1d78f420613535f1e5",
+        "tokens": 1212,
+        "tokenIdsSha256": "1e43c39c899309c14ff6aa12883b8dc6305186894d488fc0a3f9d611c55a0259"
+      },
+      {
+        "textSha256": "f9ca7a835d38421a1511e94a1d13f6645b7f2111b85ff2fee7df6ed8aff8e7de",
+        "tokens": 1406,
+        "tokenIdsSha256": "65985510d852fd4a4814a7548af0504537cce6a214b8444df2d7a426ee5b0203"
+      },
+      {
+        "textSha256": "99dd304d9aa4f54c0a4343fd7221196c1bb62954adc8795369792a174797cbac",
+        "tokens": 2,
+        "tokenIdsSha256": "55c867b7ef37c8e481dd67967a53886b31d6edc513b878a09ad73ddc7a3556a8"
+      },
+      {
+        "textSha256": "71d9311d541611c3c2aa85536199e00d16aaf54d0a13e463fc3e2aefa77a2118",
+        "tokens": 9,
+        "tokenIdsSha256": "8ed6c55b1ef78b44ea17510fea6e9bc66aa950be9f34cff102b8fac08ee43031"
+      },
+      {
+        "textSha256": "71d9311d541611c3c2aa85536199e00d16aaf54d0a13e463fc3e2aefa77a2118",
+        "tokens": 9,
+        "tokenIdsSha256": "8ed6c55b1ef78b44ea17510fea6e9bc66aa950be9f34cff102b8fac08ee43031"
+      },
+      {
+        "textSha256": "99dd304d9aa4f54c0a4343fd7221196c1bb62954adc8795369792a174797cbac",
+        "tokens": 2,
+        "tokenIdsSha256": "55c867b7ef37c8e481dd67967a53886b31d6edc513b878a09ad73ddc7a3556a8"
+      },
+      {
+        "textSha256": "9f985cf842153a4d4a02a103b9861dbe2fbc523dec780c60183a65da25f54cec",
+        "tokens": 4,
+        "tokenIdsSha256": "129a71ade06555f2efd2c81265ef2247c8ef93b4fdbbde388c28f8919968b3a5"
+      },
+      {
+        "textSha256": "d1fb67d484d864fb1b6e8c07c7a777108fd1cef9f050b34a8d4fac8dc229b108",
+        "tokens": 28,
+        "tokenIdsSha256": "6ed6ab40e95a4935c4d6e03b62e08f5bf28bd20e8f2472e84c3c67f79fa40e4a"
+      },
+      {
+        "textSha256": "71d9311d541611c3c2aa85536199e00d16aaf54d0a13e463fc3e2aefa77a2118",
+        "tokens": 9,
+        "tokenIdsSha256": "8ed6c55b1ef78b44ea17510fea6e9bc66aa950be9f34cff102b8fac08ee43031"
+      },
+      {
+        "textSha256": "94ea97955746a8fc08d5bd16cd171c209f9c3302b1f236cca0f312cb4f617e4c",
+        "tokens": 41,
+        "tokenIdsSha256": "b18c25f90217e02d616f51f5177e754af8e8d2c86c1148f40fde27500f4c9dca"
+      },
+      {
+        "textSha256": "99dd304d9aa4f54c0a4343fd7221196c1bb62954adc8795369792a174797cbac",
+        "tokens": 2,
+        "tokenIdsSha256": "55c867b7ef37c8e481dd67967a53886b31d6edc513b878a09ad73ddc7a3556a8"
+      },
+      {
+        "textSha256": "71d9311d541611c3c2aa85536199e00d16aaf54d0a13e463fc3e2aefa77a2118",
+        "tokens": 9,
+        "tokenIdsSha256": "8ed6c55b1ef78b44ea17510fea6e9bc66aa950be9f34cff102b8fac08ee43031"
+      },
+      {
+        "textSha256": "71d9311d541611c3c2aa85536199e00d16aaf54d0a13e463fc3e2aefa77a2118",
+        "tokens": 9,
+        "tokenIdsSha256": "8ed6c55b1ef78b44ea17510fea6e9bc66aa950be9f34cff102b8fac08ee43031"
+      },
+      {
+        "textSha256": "99dd304d9aa4f54c0a4343fd7221196c1bb62954adc8795369792a174797cbac",
+        "tokens": 2,
+        "tokenIdsSha256": "55c867b7ef37c8e481dd67967a53886b31d6edc513b878a09ad73ddc7a3556a8"
+      },
+      {
+        "textSha256": "86452dd342fca28d9c83830cc0715a241695756c01df962009f35e58024ced32",
+        "tokens": 28,
+        "tokenIdsSha256": "02864adae9574e862f76ec31874d573436acf452006a6bef8bd8a1cc87b766d8"
+      },
+      {
+        "textSha256": "71d9311d541611c3c2aa85536199e00d16aaf54d0a13e463fc3e2aefa77a2118",
+        "tokens": 9,
+        "tokenIdsSha256": "8ed6c55b1ef78b44ea17510fea6e9bc66aa950be9f34cff102b8fac08ee43031"
+      },
+      {
+        "textSha256": "9c980ce157ba584412657b885996584d400596f5c164bfc6adbee09f62105006",
+        "tokens": 38,
+        "tokenIdsSha256": "e558b64cfce088b2625377b2a9ba60671b8575c4e782229998c421920adbbc25"
+      },
+      {
+        "textSha256": "99dd304d9aa4f54c0a4343fd7221196c1bb62954adc8795369792a174797cbac",
+        "tokens": 2,
+        "tokenIdsSha256": "55c867b7ef37c8e481dd67967a53886b31d6edc513b878a09ad73ddc7a3556a8"
+      },
+      {
+        "textSha256": "71d9311d541611c3c2aa85536199e00d16aaf54d0a13e463fc3e2aefa77a2118",
+        "tokens": 9,
+        "tokenIdsSha256": "8ed6c55b1ef78b44ea17510fea6e9bc66aa950be9f34cff102b8fac08ee43031"
+      },
+      {
+        "textSha256": "71d9311d541611c3c2aa85536199e00d16aaf54d0a13e463fc3e2aefa77a2118",
+        "tokens": 9,
+        "tokenIdsSha256": "8ed6c55b1ef78b44ea17510fea6e9bc66aa950be9f34cff102b8fac08ee43031"
+      },
+      {
+        "textSha256": "99dd304d9aa4f54c0a4343fd7221196c1bb62954adc8795369792a174797cbac",
+        "tokens": 2,
+        "tokenIdsSha256": "55c867b7ef37c8e481dd67967a53886b31d6edc513b878a09ad73ddc7a3556a8"
+      },
+      {
+        "textSha256": "9f985cf842153a4d4a02a103b9861dbe2fbc523dec780c60183a65da25f54cec",
+        "tokens": 4,
+        "tokenIdsSha256": "129a71ade06555f2efd2c81265ef2247c8ef93b4fdbbde388c28f8919968b3a5"
+      },
+      {
+        "textSha256": "30f92f5f045487759bfc3034a3c2749220e0a19a92b9acfd1b41bc2f35f0eb4a",
+        "tokens": 24,
+        "tokenIdsSha256": "3bc9f02f2523beb4ce42efa5061bd1f613a924093d43d1d0c7181e92ba723c98"
+      },
+      {
+        "textSha256": "71d9311d541611c3c2aa85536199e00d16aaf54d0a13e463fc3e2aefa77a2118",
+        "tokens": 9,
+        "tokenIdsSha256": "8ed6c55b1ef78b44ea17510fea6e9bc66aa950be9f34cff102b8fac08ee43031"
+      },
+      {
+        "textSha256": "8af06784b9d02781039a5d1ad9caffd941ab697e6f01e61c8e687b48331c4fbe",
+        "tokens": 31,
+        "tokenIdsSha256": "a774f14def5b6efab06800c14a293a50ee81da08a5cc4bf3196690a184cf2c03"
+      },
+      {
+        "textSha256": "99dd304d9aa4f54c0a4343fd7221196c1bb62954adc8795369792a174797cbac",
+        "tokens": 2,
+        "tokenIdsSha256": "55c867b7ef37c8e481dd67967a53886b31d6edc513b878a09ad73ddc7a3556a8"
+      },
+      {
+        "textSha256": "ab4cd2084c717fcbe7eb2fdd6298fef6edcd9731809ecfb07a8a0618f6d1f384",
+        "tokens": 1537,
+        "tokenIdsSha256": "59742a2a55639e2ef4d9b235db58de9c851a189c0f102d93d41ae062c965a7e1"
+      },
+      {
+        "textSha256": "2d8bd7d9bb5f85ba643f0110d50cb506a1fe439e769a22503193ea6046bb87f7",
+        "tokens": 2,
+        "tokenIdsSha256": "601b9c5f0e87efa858d79f2dfaaeb462e9517b099e652b810cb13e42de5d15b0"
+      },
+      {
+        "textSha256": "ab4cd2084c717fcbe7eb2fdd6298fef6edcd9731809ecfb07a8a0618f6d1f384",
+        "tokens": 1537,
+        "tokenIdsSha256": "59742a2a55639e2ef4d9b235db58de9c851a189c0f102d93d41ae062c965a7e1"
+      },
+      {
+        "textSha256": "9646c1eccdd6c11961b8d0c6fd9398d86bcb32d9afaf1b247d89d1a6ad76d64a",
+        "tokens": 2,
+        "tokenIdsSha256": "b855b33c3859267706a0f32ff37f398d1f04e78ae1b4a9f9b16adec9cd64f93a"
+      },
+      {
+        "textSha256": "3d0c1cf596181258a003e9f95c836c765d44353532e67c70d7dff48b05f64840",
+        "tokens": 7,
+        "tokenIdsSha256": "26667435586a3682b21574dee2d76a9ff0f5ec5cbccedd053da0d10b46f4a103"
+      }
+    ]
+  },
+  "rows": [
+    {
+      "name": "markers-chat-user",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "7f23c5a0146869e7d82b355fc0ee419a2b16d16bcb91ddd72afa2138b3dc0bae",
+      "sourceRecords": 1,
+      "reportSha256": "02e41c8b1e17d0512a2e9a929c39a5393581ecf32a13c6b73f1301ea345f50f4",
+      "segmentTextSha256": "23f13305b35d56ecbf51979ff7d680dac49d09a7af7f741b10b1c645b3618350",
+      "tokens": [
+        [
+          105
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "markers-chat-system",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "fc9ec32e9bce109d771fbb4a547c4f0f0cffe21f8fb44370ac09dfaf24bfd483",
+      "sourceRecords": 1,
+      "reportSha256": "919bf1c2bbe93892aa105d960ec4ec5d2930fff8761e76591bbc359033a3d80f",
+      "segmentTextSha256": "17473cc101e8c52d6499bc69f278d6297e1bcae65815204415dd1cf886dd5786",
+      "tokens": [
+        [
+          105,
+          7
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "markers-chat-tool",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "cd9ccd9a99651dab6671de32b1fb858b17f6833ea4d51671cb88de0adf1c3e1e",
+      "sourceRecords": 1,
+      "reportSha256": "58cc01e8351f369f71e33ec9947c5fdf10a1b8009c51cccee6722f93512e9bdf",
+      "segmentTextSha256": "982250ef3ec8ce382acdd8a2731899b7b05f77aa6929026a5e565d0b9f10d273",
+      "tokens": [
+        [
+          9,
+          28,
+          105
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "markers-chat-schema",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "0ed61d18a5f9292edf301d66b852fc8415774b1e8f37cee71dd6caf0b47fa2b9",
+      "sourceRecords": 1,
+      "reportSha256": "4db60ef78d1d61c596f9d7db5c60aebb21b73495deea7f8f627c80cb6cccabcf",
+      "segmentTextSha256": "e9bc1def61a50c8e6da452394181157cda57b6c4a5dc8e9801d3d4523baa1d4c",
+      "tokens": [
+        [
+          131,
+          7
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "markers-responses-input",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "cea32299be228c2e1e7b10125668552b329fae12f56d5e0afa38faa8905c6b0c",
+      "sourceRecords": 1,
+      "reportSha256": "5d30165332450499be85b2c763113ce1146084645aeb0f09a3e1a805d6dc7105",
+      "segmentTextSha256": "23f13305b35d56ecbf51979ff7d680dac49d09a7af7f741b10b1c645b3618350",
+      "tokens": [
+        [
+          100
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "markers-responses-instructions",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "f7a58ac0c00a7e1b91ecb3d7265a426fdc225c285a896ce3a9c1535012897b66",
+      "sourceRecords": 1,
+      "reportSha256": "d19fbbcb8681d60fce9fd4807a922e960ec9ffefbb834d15a01b23ec5ffe3272",
+      "segmentTextSha256": "17473cc101e8c52d6499bc69f278d6297e1bcae65815204415dd1cf886dd5786",
+      "tokens": [
+        [
+          100,
+          2
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "markers-responses-tool",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "e2af987b3f86aa9d3a2a9f8ff76c99bba81c3a823580160370707db665aabd84",
+      "sourceRecords": 1,
+      "reportSha256": "bc8eb424a02a4d4d0b0bccaf46b456c10a49088d521843f5b316326cee3f4474",
+      "segmentTextSha256": "6d99a680c6cfe7da4a5bfd1a73db36db4f745a6bc5285ea9410510e0f97bf8cf",
+      "tokens": [
+        [
+          28,
+          100
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "markers-responses-schema",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "b661ef64c3874bd392f899aaccb6432de9554f3a3b1cf127bfd7d00eb7d8abd1",
+      "sourceRecords": 1,
+      "reportSha256": "f6e219af198b86055b251cb40850cc231a721d5533c47c8f8aeeed86dc5e6b3e",
+      "segmentTextSha256": "e45d87c910622cd5531b39688f7cf7566be79063668d4952a123198b7b275a13",
+      "tokens": [
+        [
+          128,
+          2
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "markers-anthropic-user",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "592b1b1d1f4e70274aa0a13bc1a93966cc2919e153d2d90e2196ddf0c2f9bef9",
+      "sourceRecords": 1,
+      "reportSha256": "20a40cd051101e99d15b3df5ff69ec98cd8f1121a6ca2ced64c3967ea05de871",
+      "segmentTextSha256": "23f13305b35d56ecbf51979ff7d680dac49d09a7af7f741b10b1c645b3618350",
+      "tokens": [
+        [
+          100
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "markers-anthropic-system",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "382686a3133d2dd8292e8211b2d6ba5e62ed49553f169fee8eaa0714389be6e5",
+      "sourceRecords": 1,
+      "reportSha256": "09d1c56994bbae30d34532b1c67bf4d7e07024412abb9009a94e2102565d103d",
+      "segmentTextSha256": "17473cc101e8c52d6499bc69f278d6297e1bcae65815204415dd1cf886dd5786",
+      "tokens": [
+        [
+          100,
+          2
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "markers-anthropic-tool",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "a4d914ba06a7950757c954ae448363ac06da7b19abe1846216634ca703b5944a",
+      "sourceRecords": 1,
+      "reportSha256": "313a76bb82bc9313f126b399bf3aa6bfca4d39bf8759653ed780b9509ba0c1c7",
+      "segmentTextSha256": "5d1a0f7e5f10f52b8f472e84ee2a942a3d3fd0928409a2dd7a80a447ea5a05af",
+      "tokens": [
+        [
+          4,
+          24,
+          100
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "markers-anthropic-schema",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "aca194f80a24abc782c09e3583a7ced2dcb0002a724a18180a2826391ecafc4a",
+      "sourceRecords": 1,
+      "reportSha256": "148726f35a024eeb899deed55089dc761adb70a8b87e5f7271fdb50c32d57478",
+      "segmentTextSha256": "68635effaf5309402b92df20bb1a2a4ef5dbd0d0a80eeadf54b51d02b0ea9a18",
+      "tokens": [
+        [
+          121,
+          2
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "unicode-chat-user",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "72dac0eb04649f7e7beec39b30b9757e98b1227062bf4c07b56c174b93d639e6",
+      "sourceRecords": 1,
+      "reportSha256": "850921e6d27512dd16abe237c6a963352dcdd773d7e5035db3ca0fe1afbbcf40",
+      "segmentTextSha256": "bda2682d69f6d72a34d21e864f8e396e5f1d7e6ca408ddc3d284e74a36a0bced",
+      "tokens": [
+        [
+          28
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "unicode-chat-system",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "1db69a09f883f0c33f2d576c2528a3c1631b8c96fec1dcbb0701e5b07323f19a",
+      "sourceRecords": 1,
+      "reportSha256": "77e8e93e5058a66f630d57c449775f113d261023fce9058a1e0b65dce2e40085",
+      "segmentTextSha256": "8ac97e3940fa3a374a9f3cf4ca44ecdcbc4416495518e28694dac6d960266558",
+      "tokens": [
+        [
+          28,
+          7
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "unicode-chat-tool",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "08eaba6b365526b4fd78130ce31a0879de7accc3882a70b260cbc573007a1a01",
+      "sourceRecords": 1,
+      "reportSha256": "22533882946d3ac90bbd6bbb0b6c1f05b432bc53045aacf397e8661c1996cd74",
+      "segmentTextSha256": "125aca6cb498750d0bb1e50cd68cf17f5b7d1c49e202169c956b5d3bfe6b1010",
+      "tokens": [
+        [
+          9,
+          28,
+          28
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "unicode-chat-schema",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "6844af948667edf785c48ff67c1e748df482ab83ff9b163057ba393c6300ea52",
+      "sourceRecords": 1,
+      "reportSha256": "00bd6098425da46c0e425495c8c8a5e4e23f368779f1c8b885e18b7047121f8b",
+      "segmentTextSha256": "a35e38486d367ab0952705aeff3d223340cd44cd99a924fc81edf49d6624654f",
+      "tokens": [
+        [
+          56,
+          7
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "unicode-responses-input",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "10e196cf7beebb91e2d2d6e1415f2906214357dc7824ffb74791b12ffa32a83c",
+      "sourceRecords": 1,
+      "reportSha256": "8a99cffa0d49b2ba1aebab03b0a5fb4de93c644284cd5823d6ba8ef392dcd9c6",
+      "segmentTextSha256": "bda2682d69f6d72a34d21e864f8e396e5f1d7e6ca408ddc3d284e74a36a0bced",
+      "tokens": [
+        [
+          23
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "unicode-responses-instructions",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "dc99281ac4cc4f5f19d7ce7b3ea85b0e8d75c274aa5065a3a8b76ace172bad95",
+      "sourceRecords": 1,
+      "reportSha256": "5218dc1fc705f18fab4d2c0dfc36b3c4bd2107e84b10ad67fcab95f2ca617eec",
+      "segmentTextSha256": "8ac97e3940fa3a374a9f3cf4ca44ecdcbc4416495518e28694dac6d960266558",
+      "tokens": [
+        [
+          23,
+          2
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "unicode-responses-tool",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "4315eb4434cb249dc3db8bdbd9139a3ab12b6d5c75087d7b8fb066d2b6d7fa6e",
+      "sourceRecords": 1,
+      "reportSha256": "08ca954776dbe3a705bb2e18409ff47b47e558a5e40f62f68fbd8b29437da92a",
+      "segmentTextSha256": "2ce9b75538c72f61d359eee88cd390e5ae7481530a1bb6ca33079a8ce86838c2",
+      "tokens": [
+        [
+          28,
+          23
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "unicode-responses-schema",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "b169da0c6ce64bf2dd91e11f744107454fbb53cb215e389f250fb0c591c7b9f3",
+      "sourceRecords": 1,
+      "reportSha256": "e74f10549250e215bae7d074c2fe2e7b60b900cc9b73dbe19da8d6b802b57e74",
+      "segmentTextSha256": "2c0484ac98c1445c2f02da64b097c99b45affd17602422661b4549bab5c73cad",
+      "tokens": [
+        [
+          53,
+          2
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "unicode-anthropic-user",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "1c18c4a26e57357b789c0ed2567bcca1aedcf4fa35abe5e00d45db74450495d0",
+      "sourceRecords": 1,
+      "reportSha256": "08a0417754f37871c3bf6240e36022dafd95b918ec625660d5ddd5de0f8d812f",
+      "segmentTextSha256": "bda2682d69f6d72a34d21e864f8e396e5f1d7e6ca408ddc3d284e74a36a0bced",
+      "tokens": [
+        [
+          23
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "unicode-anthropic-system",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "6b4997e7cc4311e4712fa418476754d64a156f172cac5065c82dce7a7aacecfb",
+      "sourceRecords": 1,
+      "reportSha256": "b0b92a6b0853ba123e62053de9d9167b854e5435ed0adf247037cf494655d116",
+      "segmentTextSha256": "8ac97e3940fa3a374a9f3cf4ca44ecdcbc4416495518e28694dac6d960266558",
+      "tokens": [
+        [
+          23,
+          2
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "unicode-anthropic-tool",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "1935dacc70bf67aec528436656366c7a27d9e787ae57e9719996d738be02a609",
+      "sourceRecords": 1,
+      "reportSha256": "ef3638108da942439a907c577a50ff40509a2c8790e5b32b318b0eacc9fa75c9",
+      "segmentTextSha256": "07888765a11e2cccb687fd51e89d8142bd6a8977c45b6aa42b8beb13ccdd823e",
+      "tokens": [
+        [
+          4,
+          24,
+          23
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "unicode-anthropic-schema",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "9f43c494153c241e3ae929b7cd0d09f838337d0c6297cd2bc8a6c8df9ccbae3c",
+      "sourceRecords": 1,
+      "reportSha256": "aafbb3ea6410765a30bb106136407df2a4d669e1fd3b39146de990315a97562a",
+      "segmentTextSha256": "7edf5693933cf182b6d67eb9e0a9111067a183e07907e5531596169e78d37a23",
+      "tokens": [
+        [
+          46,
+          2
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "tiktoken-chat-user",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "10c5123babc37b4b7663ba9a6f9458d1dd92cc0689b6f1b9c211c7f6d7b7c335",
+      "sourceRecords": 1,
+      "reportSha256": "f098065c9ba3b4e6ad392261d71642987313f8602ac88486e8f9adebf9a1c35f",
+      "segmentTextSha256": "332af1f48b8b9fb34c3984b4aa442806ee075ff5c2dfe84fcf0fbc907f70b59f",
+      "tokens": [
+        [
+          3948
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "tiktoken-chat-system",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "548862e7cb03e4a658e303af351eabbcbceb687771b409345980be81ad4ebccd",
+      "sourceRecords": 1,
+      "reportSha256": "cc6656035956cfe751ebea6f51be8f2bd5b0052bc2ce4933361a09e8fd2751b8",
+      "segmentTextSha256": "e0775d57a668f7dc39e07071c508d80d0497dd661b0229c7f698bb14c1f25f91",
+      "tokens": [
+        [
+          3948,
+          7
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "tiktoken-chat-tool",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "8a51a1dd47b2e666aee472de5ab8c35cd56b376d523199a9f7209f2f52898b6a",
+      "sourceRecords": 1,
+      "reportSha256": "33607bddb17d5592f638bb2f963da4a68e41c8ca340223831d57bbdf70d9184a",
+      "segmentTextSha256": "9dcdb4e090eb2d1c090570eac50e16739d05e25ad13d0acfb9f7b0f1fe00fa2a",
+      "tokens": [
+        [
+          9,
+          28,
+          3948
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "tiktoken-chat-schema",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "5b1ea59e7a67c8db01499dbd6b834f194480c5a8dbad5a97b319a9b3449fe335",
+      "sourceRecords": 1,
+      "reportSha256": "75d7b96106e54b01e0c0ee5a63b2ea1108847e09f2e44c62d51bf7c1417bb521",
+      "segmentTextSha256": "dc9fbb8e003f47768021a84f297c0dabdcd4b57f35e44b10b05b399d06f0de25",
+      "tokens": [
+        [
+          4580,
+          7
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "tiktoken-responses-input",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "be068326560f078671a8576c54b3d6572e9a72252300a76f0791d642d0f2bc0a",
+      "sourceRecords": 1,
+      "reportSha256": "c642e12bc130414a38323eb3f6e3de1a8150392ee9d1578e8b2aa3dc18b4cc89",
+      "segmentTextSha256": "332af1f48b8b9fb34c3984b4aa442806ee075ff5c2dfe84fcf0fbc907f70b59f",
+      "tokens": [
+        [
+          3943
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "tiktoken-responses-instructions",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "e0542070703f66a74d290b429c865ed296df37e6bc59a4608de22831de1191a8",
+      "sourceRecords": 1,
+      "reportSha256": "cb2c87998ca1103079e014473c0310e72481a64976cf40752ea980f00eae3caa",
+      "segmentTextSha256": "e0775d57a668f7dc39e07071c508d80d0497dd661b0229c7f698bb14c1f25f91",
+      "tokens": [
+        [
+          3943,
+          2
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "tiktoken-responses-tool",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "60c53c2e06a0797484276a40ebb3ab4e8da55ae42a07ad6ab7e420b09240ec9f",
+      "sourceRecords": 1,
+      "reportSha256": "4bde0712153dbcf6cd674249e7bac307c238b241b0da3f4db594e1d12c4ca14f",
+      "segmentTextSha256": "3249c8ab6294bdd19bf35632ef4920b7962426622d95afc290c4472cf1493163",
+      "tokens": [
+        [
+          28,
+          3943
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "tiktoken-responses-schema",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "9e765f57b261cc8c02e6dc9f70e0301feb532ac51dd692319fab619bad95aec7",
+      "sourceRecords": 1,
+      "reportSha256": "edb8b50d0dc90e42c6eafd8f23881e4cb7f0a4ebf8bb3277b18ec4992a651557",
+      "segmentTextSha256": "ba2087c3dcb646929632e9c89c43e78c4736104f8fa6c60dd7ee7896d20c992a",
+      "tokens": [
+        [
+          4577,
+          2
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "tiktoken-anthropic-user",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "b56729d82da7807a454b7255e2072fc0dac25a5afe640af245ffa23529e9e851",
+      "sourceRecords": 1,
+      "reportSha256": "03ab4ed5e5192d1e04dbd276f0e520ca2fbd2762bd8b141271a34c3d310023c2",
+      "segmentTextSha256": "332af1f48b8b9fb34c3984b4aa442806ee075ff5c2dfe84fcf0fbc907f70b59f",
+      "tokens": [
+        [
+          3943
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "tiktoken-anthropic-system",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "d654743650dbda66d49ae0ab9a161969d6d9fc62f0705973faaa00e9049fcb0d",
+      "sourceRecords": 1,
+      "reportSha256": "9788acf654b77f638b2bbe722097fe124b8b07873fdc7b217562f580143ee37a",
+      "segmentTextSha256": "e0775d57a668f7dc39e07071c508d80d0497dd661b0229c7f698bb14c1f25f91",
+      "tokens": [
+        [
+          3943,
+          2
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "tiktoken-anthropic-tool",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "e3da7f5425c8ea798a3ef30bbba91811f9d1e174e925450b600ec6bb198ef696",
+      "sourceRecords": 1,
+      "reportSha256": "1b669a782d5d7b7d98546c7cf33a3b5a23bdcb020f20300f81f4ccf58eddf146",
+      "segmentTextSha256": "f80f44b70c26bb063b18bb78ab394b21f2050dd717d0f06adcba91b82da015a2",
+      "tokens": [
+        [
+          4,
+          24,
+          3943
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "tiktoken-anthropic-schema",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "ccfa739d77e05eb5069bba930d1d48eaa926e4f2eca7f2ccc99f5894526ac75a",
+      "sourceRecords": 1,
+      "reportSha256": "6fea4288333e7789efb01cc81b2b9496cdc7bb3221202b38f121730748d464c6",
+      "segmentTextSha256": "fa6db7b032b6e820a587f67f369ac0c317f7728f56d03cf7a87d7e7c300f0faa",
+      "tokens": [
+        [
+          4570,
+          2
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "transformers-chat-user",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "a9d710292fbb9e2a9d03ba4578d18ea88398320999c77cd98af1dea5dfae5ac3",
+      "sourceRecords": 1,
+      "reportSha256": "9a64e5115f3851b6534670ffa68e219faa4e47e32f5141a2ad008caadaa3e726",
+      "segmentTextSha256": "620ce6da0a59dd1363f9e52c7c30534dbb987d5757d66a4e4c0e6b6dd6431abb",
+      "tokens": [
+        [
+          1217
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "transformers-chat-system",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "5857bdeb27a904fdb80e84253fb07117d700c77f0221f584653cda9eb51fc448",
+      "sourceRecords": 1,
+      "reportSha256": "b60210a93ef551fd1b9480284acd63f6bfe90ff98840e8b5449c5bb88b9e33b7",
+      "segmentTextSha256": "20eedd884cdbb2616303a7798fb61d1995afa5997907ebfd3bc1c10fcabe1419",
+      "tokens": [
+        [
+          1217,
+          7
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "transformers-chat-tool",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "4e5cbd9cd4dbf51bccb018521e04daa1605c8e23b89bfc5eed8c44cff1abcdd0",
+      "sourceRecords": 1,
+      "reportSha256": "6ad6c75ee6d0df68fc5ad523f83d2d55630bf442faf871088251c967bf5674a7",
+      "segmentTextSha256": "bf7b31eef12ee88f674b71caef1b1b6976d671f216e324857a9ed406fce0b992",
+      "tokens": [
+        [
+          9,
+          28,
+          1217
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "transformers-chat-schema",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "72a1b6b4d7a0b7949b26bbca7f3637c84f2d88bbcd70f0a4617858f6ced923e1",
+      "sourceRecords": 1,
+      "reportSha256": "a08d0ebe795ff9012dc5b7d5bf10b1c40c06e3f74037accc231dfa25c125b56c",
+      "segmentTextSha256": "1a7ae847b9f2e98f50dc91cdef0ef6b76032696aff46513fd5eeb3c9d879d47d",
+      "tokens": [
+        [
+          1416,
+          7
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "transformers-responses-input",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "3fe8075c55dac471a8537140d160bef23b63cbb11181590f60597f4eced89a54",
+      "sourceRecords": 1,
+      "reportSha256": "febc53ea2ba381577a1920c6fbc700e08d2bcc0e49eaa48c23d44cb91231c9ad",
+      "segmentTextSha256": "620ce6da0a59dd1363f9e52c7c30534dbb987d5757d66a4e4c0e6b6dd6431abb",
+      "tokens": [
+        [
+          1212
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "transformers-responses-instructions",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "59204bca1bd03b5dec7e176cf328c309e8f8f5d33759feb772c9bf3b748b1d3f",
+      "sourceRecords": 1,
+      "reportSha256": "51b456b4b64aac371c778c4d40253ab83b5a2f177c3f90c54362bf7969f08469",
+      "segmentTextSha256": "20eedd884cdbb2616303a7798fb61d1995afa5997907ebfd3bc1c10fcabe1419",
+      "tokens": [
+        [
+          1212,
+          2
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "transformers-responses-tool",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "235f536bb9e66a186d326901e0905f351f89b651d806d1c6c597fd35f7de3a12",
+      "sourceRecords": 1,
+      "reportSha256": "85922c1dba99f26ec62d979002082dc52b0b07cbd951c0b437a65d793150a44e",
+      "segmentTextSha256": "4ed547066d85734b4326345ad0dc75b51223fe45a5add502109387f2d350cb6b",
+      "tokens": [
+        [
+          28,
+          1212
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "transformers-responses-schema",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "277838ad45c5f70b7ad70a3b7af5562a7037c34eb8fb44ed606c9e361d41bd55",
+      "sourceRecords": 1,
+      "reportSha256": "0481ff44fc9fb7714098ad9e6cfc1dbf683f1dc7bef178b72b94778b4b8c59ed",
+      "segmentTextSha256": "d2b65cc70892e29e6afcd085c64d409df8d838ea071b4f430b3997212f5c969f",
+      "tokens": [
+        [
+          1413,
+          2
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "transformers-anthropic-user",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "5f7fc243bdb2adb0fec05edd1f8a924dda207ffd9b7d93dbe97d43c123194383",
+      "sourceRecords": 1,
+      "reportSha256": "8cd25fa33f478b900f99da76b8d31fc0bd570364a8a6163fc4c2ab7585a784f4",
+      "segmentTextSha256": "620ce6da0a59dd1363f9e52c7c30534dbb987d5757d66a4e4c0e6b6dd6431abb",
+      "tokens": [
+        [
+          1212
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "transformers-anthropic-system",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "cb6d2d1b9493e78dfcb9183adf3fa5f889043cbe3ca0f89e99605e28a7a203c0",
+      "sourceRecords": 1,
+      "reportSha256": "01a59e1a78cdbd3db78752ad12e8c7f58e1a033d166c1bd45ab3344753474505",
+      "segmentTextSha256": "20eedd884cdbb2616303a7798fb61d1995afa5997907ebfd3bc1c10fcabe1419",
+      "tokens": [
+        [
+          1212,
+          2
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "transformers-anthropic-tool",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "af11cdcf8785322829f17c404e65b8348e083d90a624aaefdf8bceb61c523798",
+      "sourceRecords": 1,
+      "reportSha256": "bb74f98f188ba08708ce7b3f477f1367c6f595046bbc7546c6b61e96f9e06834",
+      "segmentTextSha256": "e73dc210b1008cc668c6a3c92c98d3b74cf91566bd6a5a6dc194512b5ffe765b",
+      "tokens": [
+        [
+          4,
+          24,
+          1212
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "transformers-anthropic-schema",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "b06dc4ebb5b8fd306d99b11286ae86120a6791cf1a575c0d2b2ca6d273de06d3",
+      "sourceRecords": 1,
+      "reportSha256": "cb08353806abc2f40aeeb661a69a1b74f4fea1fb97ca5efbbde03cd1beb3a09a",
+      "segmentTextSha256": "c056b94fa48a2ba47034b9b6b4150bb412242d8d989ec385d4543d8d3eac9225",
+      "tokens": [
+        [
+          1406,
+          2
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "ordinary-chat-user",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "2ef81fe717c1925d0b13d3701958961a311728b79072296f1bceb5137df86196",
+      "sourceRecords": 1,
+      "reportSha256": "51e2eb7eb8999f4ca7cc10fd141f97e1f201ff5edb6a7b438f22f74d4116c00b",
+      "segmentTextSha256": "e40967b77cc8e43415882e3ecbd7f50091767dbb623ac596772e4ca4bece03b4",
+      "tokens": [
+        [
+          14
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "ordinary-chat-system",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "4559a5e5a589cae7333c51ee6417fc546a125d41fd452928875225ca66bd720e",
+      "sourceRecords": 1,
+      "reportSha256": "c45b41e2276ce61aeb7b729f0dfcdf2154f25fd551c4f9d51d388ffbdf3d806c",
+      "segmentTextSha256": "0ee0a06f0b711b9e1e4c98ab56ffd7eee3f16a0ef7c8c00094052bd623eaeea0",
+      "tokens": [
+        [
+          14,
+          7
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "ordinary-chat-tool",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "83f2703a11366d37c6628ed0baccfd6bdf05f9c5ffea5dc0ff452e5f5da419ac",
+      "sourceRecords": 1,
+      "reportSha256": "ff6192ac5daaa5838c032b26fef863de9db13c5f7ab1decd30693289ba021bf5",
+      "segmentTextSha256": "953fa7fce18458760552459e52fb9dadc9c60d20c0b8add62dc5bb88dbc95ec6",
+      "tokens": [
+        [
+          9,
+          28,
+          14
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "ordinary-chat-schema",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "c41c1616b094f17972a776b0844ca6286e60d251a61e70f0a3f639c220636994",
+      "sourceRecords": 1,
+      "reportSha256": "e9df26340e9d06b966162d1a225be7d981071abba175529806fcf272312fa2a1",
+      "segmentTextSha256": "a1bbf15a0e7223ab3f48f179c3a3f5d3434a1f5ec5bb3798e82aa4b8dbc63450",
+      "tokens": [
+        [
+          41,
+          7
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "ordinary-responses-input",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "7cdd6a45436955c3926f4dedc2f1e7f6b933a847fe8b8a4e1449873dd241da79",
+      "sourceRecords": 1,
+      "reportSha256": "ba5f170f8a7803085a89b57c0cb43653b91d4a877196652ce9ee1d18a1460954",
+      "segmentTextSha256": "e40967b77cc8e43415882e3ecbd7f50091767dbb623ac596772e4ca4bece03b4",
+      "tokens": [
+        [
+          9
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "ordinary-responses-instructions",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "90658be9598c48347ad92f6c64be69d91d835ef345ee5f74e05dd3a163cd02be",
+      "sourceRecords": 1,
+      "reportSha256": "2912d6dd6c5bba763860c93bc34c321fda2088d30a49745bb7ce43ac2f090784",
+      "segmentTextSha256": "0ee0a06f0b711b9e1e4c98ab56ffd7eee3f16a0ef7c8c00094052bd623eaeea0",
+      "tokens": [
+        [
+          9,
+          2
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "ordinary-responses-tool",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "bc3bedfe64a8ca2b75d1ed27e4aa90b8b0f7ae9221695a693ca54162b8fea543",
+      "sourceRecords": 1,
+      "reportSha256": "afa29e4518bd3ed93845e964c86018d241e4b080709aa823398b6bbfd02017d5",
+      "segmentTextSha256": "00dc27f5f0af1032ee4cc7a2f7f0d7336712e41caecafd115d7e6e06c1481049",
+      "tokens": [
+        [
+          28,
+          9
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "ordinary-responses-schema",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "bda6711fb2f2d4a35a9c0c887f643417b0ee7a71a5d1caf05a0808d1f0cfd0fc",
+      "sourceRecords": 1,
+      "reportSha256": "3e4641335d8e563724d4fcd5bb330cabb38ef839f7492b8eb4d2f5c958cafc52",
+      "segmentTextSha256": "57dc189b9f9763d965e476c14e4c319045766b37657a17c1222251f63abce3c4",
+      "tokens": [
+        [
+          38,
+          2
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "ordinary-anthropic-user",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "98abf359e120e4d34145484fa9110051694aeb51b5079d61b814a2ff6608f960",
+      "sourceRecords": 1,
+      "reportSha256": "7c6907569b11d7d84c090085efe674ecf517a6f02d72ddce8d663fad49f99bed",
+      "segmentTextSha256": "e40967b77cc8e43415882e3ecbd7f50091767dbb623ac596772e4ca4bece03b4",
+      "tokens": [
+        [
+          9
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "ordinary-anthropic-system",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "9f58e8197cc4cb4f4008aafebef3242ef04e229880df0217682e666262fa05ad",
+      "sourceRecords": 1,
+      "reportSha256": "db04100cbf27208994ac004aa6829195601ab1a8c0572cc3b6f09edd0efc8e70",
+      "segmentTextSha256": "0ee0a06f0b711b9e1e4c98ab56ffd7eee3f16a0ef7c8c00094052bd623eaeea0",
+      "tokens": [
+        [
+          9,
+          2
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "ordinary-anthropic-tool",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "373306f71dd2dbad0ee38204b252323486c09a53cb577002ee43f6bed5805a44",
+      "sourceRecords": 1,
+      "reportSha256": "48ad83e95539922368c94a66c9364c3c59b8de7831ff1d63eef160475e2f3ad5",
+      "segmentTextSha256": "17ed237918b8200f35941aabb15bda4d220c00848b47d0acd25ef3b5812a3494",
+      "tokens": [
+        [
+          4,
+          24,
+          9
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "ordinary-anthropic-schema",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "d94efeba94b3e0acd94fab8ba3e2ac72fc61d2bfafcba879732a840303287c14",
+      "sourceRecords": 1,
+      "reportSha256": "5582e992c11e68eb5aed31ab315174b56d71101865c40d5b8877210df01a3dca",
+      "segmentTextSha256": "4c4bb6857c903200e6f2968526f8d49e1f28bc64dc11ccf69912b3719b171806",
+      "tokens": [
+        [
+          31,
+          2
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "cache-threshold",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "19084bdc81595b786672ae0390048bcb1675a6c3b33a490105a2f39720d6eb1b",
+      "sourceRecords": 2,
+      "reportSha256": "546d7216626fec3094ca726699ff28a97de5de8d01e2636b9c5d2a8722a580da",
+      "segmentTextSha256": "8c8d869d5877cc8f185d3ce98c1ef69e54a2b94f178d7b24f482d95413e587d0",
+      "tokens": [
+        [
+          1542,
+          7
+        ],
+        [
+          1542,
+          7
+        ]
+      ],
+      "readTokens": [
+        0,
+        1536
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "batch-envelope",
+      "expectedRejection": false,
+      "accepted": true,
+      "inputSha256": "3616809ba4c511ae777f20dcff6de1e087ca02fe26f42f9e6b1f7fec04ad451c",
+      "sourceRecords": 1,
+      "reportSha256": "c6ad7e9f9b08f411fcb865f946a0fdfce8da6ff1e9ec5177faaeb62764ef5100",
+      "segmentTextSha256": "f38f32179ac7024cab41876171dc87174837a31b7d1642137692eb1a0582ecd8",
+      "tokens": [
+        [
+          12
+        ]
+      ],
+      "readTokens": [
+        0
+      ],
+      "cli": {
+        "status": 0,
+        "json": true,
+        "html": true
+      }
+    },
+    {
+      "name": "broken-json",
+      "expectedRejection": true,
+      "accepted": false,
+      "error": "No valid JSON objects found (input is neither valid JSON nor valid JSONL).",
+      "inputSha256": "56575558d3c7c815fa238ab3c18780bb15a7d5320bb58af7f7c1959c12ab8f73",
+      "cli": {
+        "status": 1,
+        "json": false,
+        "html": false
+      }
+    },
+    {
+      "name": "rounded-number",
+      "expectedRejection": true,
+      "accepted": false,
+      "error": "JSON number at character 63 would be rounded during analysis. Contextscope cannot analyze this record without changing its numeric content.",
+      "inputSha256": "2c10dd6cb17fc5c618479eafbecc572e5df9daaf530ff587701c2d7e789abd9f",
+      "cli": {
+        "status": 1,
+        "json": false,
+        "html": false
+      }
+    }
+  ]
+}
