@@ -1,0 +1,60 @@
+{
+  "implementationCommit": "1cbf8c995a02c5e423e3b1078b6bc2fa6b567d60",
+  "archiveEntriesMatch": 406,
+  "package": {
+    "filename": "antonsoloviev-contextscope-0.3.3.tgz",
+    "bytes": 95960,
+    "sha256": "a725d5d6be3755716bc3fc2b13cb455bd35adb7b77e5cb59776689dcba34be6c",
+    "distFilesMatch": 92
+  },
+  "installed": [
+    {
+      "node": "v20.0.0",
+      "publicExports": true,
+      "cliSequencesMatch": 8,
+      "rawJsonReportsMatch": 8,
+      "htmlReportsMatchExceptGeneratedAt": 8,
+      "terminalReportsMatch": 8,
+      "warningGateExit": 2
+    },
+    {
+      "node": "v24.21.0",
+      "publicExports": true,
+      "cliSequencesMatch": 8,
+      "rawJsonReportsMatch": 8,
+      "htmlReportsMatchExceptGeneratedAt": 8,
+      "terminalReportsMatch": 8,
+      "warningGateExit": 2
+    }
+  ],
+  "cleanBuildMatchesBrowserTestedAssets": 10,
+  "cleanChecks": {
+    "node": "24.21.0",
+    "unitTests": 504,
+    "browserWorkflows": 92,
+    "lint": "passed",
+    "typecheck": "passed",
+    "build": "passed",
+    "regressionScreenshotsInspected": 32,
+    "changeScreenshotsInspected": 5,
+    "commands": [
+      "npm ci",
+      "npm run lint",
+      "npm run typecheck",
+      "npm test",
+      "npm run build",
+      "npm pack --ignore-scripts --json",
+      "npm run test:browser"
+    ],
+    "logSha256": {
+      "clean-install.log": "fc32983f51d0ffb79670ee7e89a3400747177b03ed12757e5e3154a062ef03d6",
+      "clean-lint.log": "7d759107193f1253093f82acb0858619861371ea869660e7cc49464cdc11bba0",
+      "clean-typecheck.log": "065f57db2f0de0df20f19d94151ae88ff01ac1c4c117dfd29507a338675f8589",
+      "clean-tests.log": "1da7c4a172b259c935b0caf554a4f5ecc8a0b55f00f7f39485b9307035869640",
+      "clean-build.log": "17e4fd1ca1400695d58290f9258ad0fba3c88ef00dfb296e5c0221acf132ebbc",
+      "clean-browser.log": "2e8ce9c4ba36212118ef13ee0b21c1ae374cb0992fd3ab74ba925b0bc67e06e1",
+      "package-install.log": "65c731cd02e19c79f6f5a3e84a4dd64a49acd6c47d2ee551d7cc9da191e8c96c"
+    }
+  },
+  "scope": "Source and local package only; no registry release or hosted deployment."
+}

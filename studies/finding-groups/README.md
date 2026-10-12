@@ -98,5 +98,22 @@ against the existing manifest. These ordinary inputs do not contain the mixed
 message variants in the synthetic counterexample, so this is compatibility
 evidence, not a measurement of the defect's prevalence in production.
 
+## Clean checkout and installed package
+
+The [verification receipt](verification.json) covers a fresh archive of
+`1cbf8c9`: 406 entries, including the public-example symlink, match their Git
+objects. Node 24.21.0 passes lint, type checking, 504 unit tests, both builds and
+92 browser workflows. The 32 regression screenshots were inspected in addition
+to the five images retained here. The clean web build matches all ten assets
+used in the dedicated browser replay.
+
+The 95,960-byte npm tarball installs into a separate directory. All 92 compiled
+package files match the clean build. Node 20.0.0 and Node 24.21.0 both exercise
+the public package exports and all eight CLI sequences: terminal and JSON
+reports match exactly; HTML matches apart from its generated-at timestamp.
+Every warning gate still exits 2. The tarball hash is recorded in the receipt.
+The following documentation commit adds this receipt without changing the
+tested implementation.
+
 This correction remains unreleased. Package version 0.3.3 and the hosted demo
 are unchanged; no package release or deployment is part of this work.
