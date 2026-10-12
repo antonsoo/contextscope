@@ -1,0 +1,2 @@
+# Independent native ordinary-text oracle; no model API calls.
+tiktoken==0.12.0

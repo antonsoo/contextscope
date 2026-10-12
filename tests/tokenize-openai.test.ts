@@ -28,6 +28,22 @@ describe("countOpenaiTokens (exact, o200k_base)", () => {
     15000,
   );
 
+  it.each([
+    "<|endoftext|>",
+    "<|fim_prefix|><|fim_middle|><|fim_suffix|>",
+    "<|endofprompt|>",
+    'config = {"eos_token": "<|endoftext|>"}',
+    "説明: <|endoftext|> は文字列です。 🎉",
+    "<|endoftext|>".repeat(256),
+  ])("counts delimiter spellings as ordinary text: %s", (text) => {
+    expect(countOpenaiTokens(text)).toBe(oracle.encode(text, [], []).length);
+  });
+
+  it("does not collapse a literal end marker into a single control token", () => {
+    expect(countOpenaiTokens("<|endoftext|>")).toBe(7);
+    expect(countOpenaiTokens("<|endoftext|>".repeat(256))).toBe(1537);
+  });
+
   it("is monotonically non-decreasing as text grows", () => {
     const base = "The context window keeps growing with every tool call. ";
     let prev = 0;

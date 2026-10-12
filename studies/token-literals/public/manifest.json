@@ -1,0 +1,42 @@
+[
+  {
+    "repository": "openai/tiktoken",
+    "commit": "4e71bbe0c078468e00fefbf94b39849389f346e5",
+    "source": "tiktoken/core.py",
+    "url": "https://raw.githubusercontent.com/openai/tiktoken/4e71bbe0c078468e00fefbf94b39849389f346e5/tiktoken/core.py",
+    "file": "tiktoken-core.py.txt",
+    "bytes": 17601,
+    "sha256": "3c136f06b05992855dc329216dfa1fa5b6718cccd3d79f658262de8f871f45f0",
+    "license": false
+  },
+  {
+    "repository": "openai/tiktoken",
+    "commit": "4e71bbe0c078468e00fefbf94b39849389f346e5",
+    "source": "LICENSE",
+    "url": "https://raw.githubusercontent.com/openai/tiktoken/4e71bbe0c078468e00fefbf94b39849389f346e5/LICENSE",
+    "file": "tiktoken-LICENSE.txt",
+    "bytes": 1078,
+    "sha256": "418cb499b436128d653d79941333a5437b7be2ea9213dcc2f04d15d5d2c51d86",
+    "license": true
+  },
+  {
+    "repository": "huggingface/transformers",
+    "commit": "2fa1fdd5b27ae54bdcee0516848c7963393a5f5c",
+    "source": "src/transformers/models/gpt2/tokenization_gpt2.py",
+    "url": "https://raw.githubusercontent.com/huggingface/transformers/2fa1fdd5b27ae54bdcee0516848c7963393a5f5c/src/transformers/models/gpt2/tokenization_gpt2.py",
+    "file": "transformers-tokenization_gpt2.py.txt",
+    "bytes": 5370,
+    "sha256": "a9dbc47fb0304b98cc9a0c4642b9292473f96652c89c1f1d78f420613535f1e5",
+    "license": false
+  },
+  {
+    "repository": "huggingface/transformers",
+    "commit": "2fa1fdd5b27ae54bdcee0516848c7963393a5f5c",
+    "source": "LICENSE",
+    "url": "https://raw.githubusercontent.com/huggingface/transformers/2fa1fdd5b27ae54bdcee0516848c7963393a5f5c/LICENSE",
+    "file": "transformers-LICENSE.txt",
+    "bytes": 11418,
+    "sha256": "77fd4710def9ec3c0f6225800e0235f15a425abd4a8b03559127fcd782612049",
+    "license": true
+  }
+]

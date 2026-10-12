@@ -325,6 +325,13 @@ the agent transcripts in [the real-trajectory study](studies/real-trajectories/R
 distinct segment text is tokenized once per analysis: the flagship session has
 1,259 segments but only 109 distinct ones.
 
+**Literal tokenizer spellings (source checkout).** Strings such as
+`<|endoftext|>` in a prompt, tokenizer configuration or tool result are counted
+as ordinary text. They no longer abort the analysis or become control tokens.
+[Native-tokenizer checks and complete CLI/browser replays](studies/token-literals/README.md)
+retain the before/after behavior and distinguish text counts from framing and
+provider billing. The published package and hosted demo are unchanged.
+
 **Calibration.** The CLI's optional `--calibrate` flag sends the largest
 Anthropic request to `POST /v1/messages/count_tokens`, using the API key you
 provide. This is the only network operation in the CLI. In the web app,
@@ -507,8 +514,8 @@ fixed hue order, so a color always means the same category.
   request's average keep some error.
 - **OpenAI token counts are exact** for the o200k_base encoding, cross-checked
   in `tests/tokenize-openai.test.ts` against `js-tiktoken`, an independently
-  maintained pure-JS tokenizer, on 9 varied samples (prose, code, JSON,
-  non-English text, emoji, repeated text); all match exactly. A model that uses
+  maintained pure-JS tokenizer, on prose, code, JSON,
+  non-English text, emoji, repeated text and literal delimiter spellings; all match exactly. A model that uses
   a different encoding still gets the o200k_base count. Chat Completions
   messages with plain-string content carry 5 framing tokens each in this
   checkout, the amount gpt-5.1 and gpt-5.2 reported for 2,205 requests with no

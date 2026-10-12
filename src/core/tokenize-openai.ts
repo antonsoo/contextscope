@@ -8,5 +8,7 @@ import { encode } from "gpt-tokenizer/encoding/o200k_base";
 
 export function countOpenaiTokens(text: string): number {
   if (text.length === 0) return 0;
-  return encode(text).length;
+  // Segments contain logged text, not a tokenizer control-token stream. Literal
+  // delimiter spellings must use ordinary BPE pieces (and must not throw).
+  return encode(text, { disallowedSpecial: new Set() }).length;
 }

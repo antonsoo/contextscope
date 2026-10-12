@@ -26,6 +26,14 @@ of public SWE-bench agent runs; see `studies/real-trajectories/`.
 
 ### Fixed
 
+- Analyze literal tokenizer delimiter spellings such as `<|endoftext|>` in
+  messages, instructions, tool definitions and tool results as ordinary text.
+  Previously the token counter threw and aborted otherwise valid OpenAI and
+  Anthropic logs. Do not interpret those strings as special control tokens.
+  Preserve text, framing adjustments and existing malformed-input rejection.
+  Native ordinary-text token counts, public-source fixtures, complete report
+  replay and CLI/browser evidence are retained in `studies/token-literals`.
+
 - Reject JSON numbers whose mathematical value changes during parsing and prompt
   serialization. Distinct uint64 tool-schema IDs previously became identical
   prompt segments and produced a false modeled cache hit. Equivalent decimal
