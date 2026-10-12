@@ -304,12 +304,16 @@ export interface UsageComparison {
 }
 
 export interface DuplicateGroup {
-  /** Representative shingle-set signature (for debugging/tests, not displayed). */
+  /** Short member-location signature for debugging, never used to prove identity. */
   signature: string;
-  /** Segments (across all requests) judged near-duplicates of each other. */
+  /** Matched segments within one request, in source order. */
   members: { requestIndex: number; segmentId: string; label: string; tokens: number }[];
+  /** Exact means identical text; near means word-shingle similarity only. */
+  matchKind: "exact" | "near";
+  /** Minimum five-word-shingle Jaccard similarity across every pair of members. */
   similarity: number;
-  estimatedWastedTokens: number;
+  /** Claude-estimated tokens in members after the first, not established removable tokens. */
+  estimatedReviewTokens: number;
 }
 
 export interface AnalysisOptions {

@@ -291,7 +291,7 @@ describe("repeated content", () => {
     expect(followed.duplicates).toEqual(alone.duplicates);
     expect(kinds(followed).filter((k) => k === "duplicate_content")).toHaveLength(1);
     const between = withSideRequests(session);
-    expect(run(between.lines).duplicates.map((group) => group.estimatedWastedTokens)).toEqual(alone.duplicates.map((group) => group.estimatedWastedTokens));
+    expect(run(between.lines).duplicates.map((group) => group.estimatedReviewTokens)).toEqual(alone.duplicates.map((group) => group.estimatedReviewTokens));
   });
 
   it("is reported once when every conversation repeats the same thing in the same place", () => {

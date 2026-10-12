@@ -24,6 +24,16 @@ describe("groupFindings", () => {
     expect(groups).toHaveLength(2);
   });
 
+  it("does not apply an exact-duplicate claim to similar text at the same paths in another request", () => {
+    const segmentIds = ["messages[1].content[0]", "messages[3].content[0]"];
+    const groups = groupFindings([
+      finding({ kind: "duplicate_content", requestIndex: 0, segmentIds, title: "Identical text appears in 2 segments" }),
+      finding({ kind: "duplicate_content", requestIndex: 1, segmentIds, title: "Similar text appears in 2 segments" }),
+    ]);
+    expect(groups.map(group => group.title)).toEqual(["Identical text appears in 2 segments", "Similar text appears in 2 segments"]);
+    expect(groups.map(group => group.requestIndices)).toEqual([[0], [1]]);
+  });
+
   it("orders groups by severity, then first occurrence", () => {
     const groups = groupFindings([
       finding({ kind: "duplicate_content", severity: "info", requestIndex: 0 }),

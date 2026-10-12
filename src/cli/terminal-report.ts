@@ -126,7 +126,7 @@ export function renderTerminalReport(result: AnalysisResult, options: TerminalRe
   if (duplicates.length > 0) {
     lines.push(bold(`Duplicate content (${duplicates.length} group${duplicates.length === 1 ? "" : "s"})`));
     for (const group of duplicates) {
-      lines.push(`  ${group.members.length}× "${visible(group.members[0]!.label)}" — ≈${fmtTokens(group.estimatedWastedTokens)} wasted tokens`);
+      lines.push(`  ${group.members.length}× "${visible(group.members[0]!.label)}" — ${group.matchKind === "exact" ? "identical text" : `at least ${Math.floor(group.similarity * 100)}% word-shingle similarity`}; ≈${fmtTokens(group.estimatedReviewTokens)} tokens in later matches to review`);
     }
     lines.push("");
   }

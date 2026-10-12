@@ -65,7 +65,7 @@ export function renderHtmlReport(result: AnalysisResult): string {
     .join("");
 
   const duplicateRows = duplicates
-    .map((g) => `<li>${g.members.length}× "${esc(g.members[0]!.label)}" — ≈${g.estimatedWastedTokens.toLocaleString("en-US")} wasted tokens (similarity ${(g.similarity * 100).toFixed(0)}%)</li>`)
+    .map((g) => `<li>${g.members.length}× "${esc(g.members[0]!.label)}" — ${g.matchKind === "exact" ? "identical text" : `at least ${Math.floor(g.similarity * 100)}% word-shingle similarity`}; ≈${g.estimatedReviewTokens.toLocaleString("en-US")} tokens in later matches to review</li>`)
     .join("");
 
   const savings =

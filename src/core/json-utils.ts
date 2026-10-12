@@ -92,8 +92,8 @@ export function keyOrderFingerprint(value: unknown, prefix = ""): string[] {
   return out;
 }
 
-/** A short, stable hash (FNV-1a, 32-bit, hex) for content-based dedup/shingling. No crypto
- * dependency needed - this is for grouping identical/near-identical text, not security. */
+/** A short, stable debugging signature (FNV-1a, 32-bit, hex).
+ * Collisions are possible; never use it to establish content identity. */
 export function fnv1a(text: string): string {
   let hash = 0x811c9dc5;
   for (let i = 0; i < text.length; i++) {

@@ -475,6 +475,7 @@ function renderContent(): void {
   wireSegmentsTable(report);
   if (result.parse.requests.length > 1) wireSequencePanel(result);
   wireFindings(result);
+  wireDuplicates(result);
   wireCalibrate(result);
   if (result.usageComparison.capturedRequests) mountUsageReview($("#usage-review"), result, state.selectedRequest, usageView, selectRequest);
   mountReportExports($("#report-exports"), result);
@@ -839,13 +840,27 @@ function duplicatesPanel(result: AnalysisResult): string {
       <div class="dup-list">
         ${result.duplicates
           .map(
-            (g) =>
-              `<div class="dup-row"><span>${g.members.length}× "${esc(truncate(g.members[0]!.label, 50))}" <span style="color:var(--text-faint)">(similarity ${(g.similarity * 100).toFixed(0)}%)</span></span><span class="waste">≈${fmtInt(g.estimatedWastedTokens)} wasted tok</span></div>`,
+            (g, groupIndex) =>
+              `<details><summary class="dup-row"><span>${g.members.length}× "${esc(truncate(g.members[0]!.label, 50))}" <span style="color:var(--text-faint)">(${g.matchKind === "exact" ? "identical text" : `at least ${Math.floor(g.similarity * 100)}% word-shingle similarity`})</span></span><span class="review-size">≈${fmtInt(g.estimatedReviewTokens)} tok in later matches to review</span><span class="dup-action">Inspect original segments</span></summary>
+                <div class="dup-members">${g.members.slice(0, 20).map((m, memberIndex) => `<button type="button" class="occ" data-duplicate="${groupIndex}" data-member="${memberIndex}">Inspect req ${m.requestIndex + 1}: ${esc(m.label)}</button>`).join("")}</div>
+                ${g.members.length > 20 ? `<p class="hint">Showing the first 20 of ${g.members.length} matches. The JSON report includes every member and its source path.</p>` : ""}
+              </details>`,
           )
           .join("")}
       </div>
     </section>
   `;
+}
+
+function wireDuplicates(result: AnalysisResult): void {
+  $all("[data-duplicate]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const member = result.duplicates[Number(button.dataset["duplicate"])]?.members[Number(button.dataset["member"])];
+      if (!member) return;
+      const segment = result.reports[member.requestIndex]?.segments.find((s) => s.id === member.segmentId);
+      if (segment) openInspector(segment, member.requestIndex);
+    });
+  });
 }
 
 // ---------------------------------------------------------------------------
@@ -901,12 +916,13 @@ function wireCalibrate(result: AnalysisResult): void {
 // inspector drawer
 // ---------------------------------------------------------------------------
 
-function openInspector(segment: Segment): void {
+function openInspector(segment: Segment, requestIndex = state.selectedRequest): void {
   $("#drawer-title").textContent = segment.label;
   const textPreview = segment.charLength > INSPECTOR_TEXT_LIMIT;
   const rawPretty = textPreview ? segment.text : typeof segment.raw === "string" ? segment.raw : JSON.stringify(segment.raw, null, 2);
   $("#drawer-body").innerHTML = `
     <dl>
+      <dt>request</dt><dd>${requestIndex + 1}</dd>
       <dt>category</dt><dd>${CATEGORY_LABEL[segment.category]}</dd>
       <dt>path</dt><dd>${esc(segment.path)}</dd>
       <dt>chars</dt><dd>${fmtInt(segment.charLength)}</dd>

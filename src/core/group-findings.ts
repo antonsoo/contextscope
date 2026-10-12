@@ -31,7 +31,11 @@ const GROUP_TITLE: Partial<Record<FindingKind, string>> = {
 export function groupFindings(findings: readonly Finding[]): FindingGroup[] {
   const groups = new Map<string, FindingGroup>();
   for (const finding of findings) {
-    const key = `${finding.kind}|${[...new Set(finding.segmentIds)].sort().join(",")}`;
+    // Duplicate detection already suppresses repeated evidence across requests.
+    // Reused source paths can describe different text or an exact/near match;
+    // merging them here would apply the first occurrence's claim to all of them.
+    const scope = finding.kind === "duplicate_content" ? `|${finding.requestIndex}` : "";
+    const key = `${finding.kind}${scope}|${[...new Set(finding.segmentIds)].sort().join(",")}`;
     const group = groups.get(key);
     if (group) {
       group.findings.push(finding);

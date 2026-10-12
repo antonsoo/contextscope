@@ -827,7 +827,8 @@ table.cache td {
   text-decoration-color: var(--text-faint);
 }
 .finding .fhead:focus-visible,
-.finding .occ:focus-visible {
+.finding .occ:focus-visible,
+.dup-row:focus-visible {
   outline: 2px solid var(--cat-system);
   outline-offset: 2px;
 }
@@ -837,7 +838,8 @@ table.cache td {
   gap: 4px;
   margin-top: 8px;
 }
-.finding .occ {
+.finding .occ,
+.dup-members .occ {
   padding: 1px 7px;
   border: 1px solid var(--border-strong);
   border-radius: 999px;
@@ -848,6 +850,7 @@ table.cache td {
   cursor: pointer;
 }
 .finding .occ:hover,
+.dup-members .occ:hover,
 .finding .occ.active {
   border-color: var(--cat-system);
   color: var(--text);
@@ -889,16 +892,27 @@ table.cache td {
 }
 .dup-row {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 10px;
   padding: 8px 10px;
   border: 1px solid var(--border);
   border-radius: 6px;
+  cursor: pointer;
 }
-.dup-row .waste {
+.dup-action {
+  color: var(--text-muted);
+  text-decoration: underline;
+}
+.dup-row .review-size {
   font-family: var(--font-mono);
-  color: var(--status-warning);
-  white-space: nowrap;
+  color: var(--text-muted);
+}
+.dup-members {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px;
 }
 
 /* calibration */

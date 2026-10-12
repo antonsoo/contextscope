@@ -274,7 +274,7 @@ test("findings remain separate and occurrence navigation returns focus after ins
   await expect(page.getByRole("tab", { selected: true })).toContainText("req 3");
   await expect(page.locator('[data-pair="1"]')).toHaveAttribute("aria-pressed", "true");
   await expect(occurrence).toBeFocused();
-  const duplicate = page.locator(".fhead").filter({ hasText: /The same ~[\d.]+k-token content appears 3 times/ });
+  const duplicate = page.locator(".fhead").filter({ hasText: /Identical text appears in 3 segments/ });
   await duplicate.click();
   await expect(page.getByRole("tab", { selected: true })).toContainText("req 4");
   await expect(page.getByRole("dialog")).toBeVisible();
@@ -282,6 +282,65 @@ test("findings remain separate and occurrence navigation returns focus after ins
   await expect(duplicate).toBeFocused();
   await scan(page);
 });
+
+for (const width of [1440, 375]) {
+  test(`edited duplicate groups retain inspectable originals and honest offline exports at ${width}px`, async ({ page, context }) => {
+    await page.setViewportSize({ width, height: 900 });
+    const texts = [0, 1, 2].map(stage => Array.from({ length: 200 }, (_, i) =>
+      `record_${String(i).padStart(3, "0")}=${(stage >= 1 && i >= 50 && i < 60) || (stage >= 2 && i >= 100 && i < 110) ? "updated" : "original"}`,
+    ).join("\n"));
+    const messages = texts.flatMap((text, i) => [
+      { role: "assistant", content: [{ type: "tool_use", id: `call_${i}`, name: "read_file", input: {} }] },
+      { role: "user", content: [{ type: "tool_result", tool_use_id: `call_${i}`, content: text }] },
+    ]);
+    await load(page, { model: "claude-sonnet-4-5", messages });
+    await context.setOffline(true);
+    await expect(page.locator(".fhead").filter({ hasText: "Similar text appears in 2 segments" })).toBeVisible();
+    await expect(page.locator(".dup-list details")).toHaveCount(1);
+    await page.locator(".dup-list summary").focus();
+    await page.keyboard.press("Enter");
+    for (const i of [0, 1]) {
+      const button = page.getByRole("button", { name: `Inspect req 1: message ${2 + i * 2} tool_result`, exact: true });
+      await button.focus();
+      await page.keyboard.press("Enter");
+      await expect(page.getByRole("dialog")).toContainText(`record_050=${i === 0 ? "original" : "updated"}`);
+      const pending = page.waitForEvent("download");
+      await page.getByRole("button", { name: "download original raw JSON" }).click();
+      const download = await pending;
+      expect(JSON.parse(await readFile((await download.path())!, "utf8"))).toEqual(messages[i * 2 + 1]!.content[0]);
+      await page.keyboard.press("Escape");
+      await expect(button).toBeFocused();
+    }
+    const pendingJson = page.waitForEvent("download");
+    await page.getByRole("button", { name: "Download full JSON report" }).click();
+    const json = JSON.parse(await readFile((await (await pendingJson).path())!, "utf8"));
+    expect(json.duplicates[0].matchKind).toBe("near");
+    expect(json.duplicates[0].members).toHaveLength(2);
+    expect(json.duplicates[0].similarity).toBeCloseTo(182 / 210, 14);
+    expect(json.duplicates[0].estimatedReviewTokens).toBe(json.duplicates[0].members[1].tokens);
+    expect(json.duplicates[0]).not.toHaveProperty("estimatedWastedTokens");
+    const pendingHtml = page.waitForEvent("download");
+    await page.getByRole("button", { name: "Download offline HTML report" }).click();
+    const html = await readFile((await (await pendingHtml).path())!, "utf8");
+    expect(html).toContain("Similar text appears in 2 segments");
+    expect(html).toContain("not proven savings");
+    expect(html).not.toContain("record_050");
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    await scan(page);
+    const exactText = "one two three four five six ".repeat(20);
+    const first = { model: "claude-sonnet-4-5", messages: [{ role: "user", content: exactText }, { role: "user", content: exactText }] };
+    const second = { model: "claude-sonnet-4-5", messages: [{ role: "user", content: texts[0] }, { role: "user", content: texts[1] }] };
+    await page.locator("#file-input").setInputFiles({ name: "separate-conversations.json", mimeType: "application/json", buffer: Buffer.from(JSON.stringify([first, second])) });
+    await expect(page.locator("#load-status")).toBeHidden();
+    await expect(page.locator(".fhead").filter({ hasText: "Identical text appears in 2 segments" })).toHaveCount(1);
+    await expect(page.locator(".fhead").filter({ hasText: "Similar text appears in 2 segments" })).toHaveCount(1);
+    for (const summary of await page.locator(".dup-list summary").all()) await summary.click();
+    await page.locator('[data-duplicate="1"][data-member="0"]').click();
+    await expect(page.locator("#drawer-body dt").filter({ hasText: /^request$/ }).locator("+ dd")).toHaveText("1");
+    await expect(page.getByRole("dialog")).toContainText(exactText.trim());
+    await page.keyboard.press("Escape");
+  });
+}
 
 test("prefix bars render the shared fraction and use the selected provider's tokens", async ({ page }) => {
   await page.getByRole("button", { name: /OpenAI: tools reordered/ }).click();

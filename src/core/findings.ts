@@ -307,8 +307,8 @@ export function computeFindings(
       kind: "duplicate_content",
       severity: "info",
       requestIndex: first.requestIndex,
-      title: `The same ~${Math.round(first.tokens / 100) / 10}k-token content appears ${group.members.length} times`,
-      detail: `"${first.label}" and ${group.members.length - 1} other segment${group.members.length > 2 ? "s" : ""} are near-duplicates (similarity ${(group.similarity * 100).toFixed(0)}%), wasting an estimated ≈${group.estimatedWastedTokens.toLocaleString("en-US")} tokens. Consider caching or referencing this content once instead of repeating it inline.`,
+      title: `${group.matchKind === "exact" ? "Identical text" : "Similar text"} appears in ${group.members.length} segments`,
+      detail: `"${first.label}" and ${group.members.length - 1} other segment${group.members.length > 2 ? "s" : ""} ${group.matchKind === "exact" ? "contain identical text" : `have at least ${Math.floor(group.similarity * 100)}% word-shingle similarity across every pair`}. Later matches contain an estimated ≈${group.estimatedReviewTokens.toLocaleString("en-US")} tokens to review, not proven savings. ${group.matchKind === "exact" ? "Check whether the repeated observations are needed before removing them." : "Edits, ordering and repetition can carry new information; inspect the original segments before consolidating them."}`,
       segmentIds: group.members.map((m) => m.segmentId),
     });
   }

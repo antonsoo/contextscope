@@ -26,6 +26,21 @@ of public SWE-bench agent runs; see `studies/real-trajectories/`.
 
 ### Fixed
 
+- Require every pair in a duplicate-content group to meet the similarity
+  threshold. Successive edits no longer form one supposedly interchangeable
+  group through transitive matches. Compare actual shingle strings so short
+  hash collisions cannot create matches or suppress separate conversations.
+- Distinguish identical text from similar edits in findings, CLI, browser and
+  offline reports. Keep different duplicate evidence at the same source paths
+  in separate finding groups. Browser groups expose original segment inspection
+  and downloads; lists over 20 members retain all members in the JSON report.
+- Source library/JSON contract: replace `DuplicateGroup.estimatedWastedTokens`
+  with `estimatedReviewTokens` (the sum of later members' Claude estimates),
+  add `matchKind: "exact" | "near"`, and make `similarity` the minimum over all
+  pairs. Consumers of the source report must update that field access. These
+  counts do not establish safe removals or savings. Retained evidence is in
+  `studies/duplicate-evidence/`; no registry release accompanies this change.
+
 - Isolate Anthropic system/message cache entries across standard/fast speed
   changes while preserving explicitly marked tools. Apply documented fast
   input premiums to reads, writes and uncached input; retain the current

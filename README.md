@@ -438,13 +438,27 @@ here. A `cache_control` marker itself is never part of the comparison: a
 rolling breakpoint moves every turn without changing the cached content. The
 dollar difference is the "potential savings" figure.
 
-**Duplicate detection.** 5-word shingles hashed with FNV-1a, grouped by Jaccard
-similarity ≥ 0.85 (union-find), scoped to the *last* request of each
-conversation. In an agent loop every later request resends the whole
-conversation, so comparing across requests would flag every earlier turn as a
-duplicate of itself. The last request already contains the full accumulated
-context, so scanning it alone still catches the real case: the same file or
-tool output fetched more than once in one conversation.
+**Duplicate detection (current source).** Every pair in a group must have
+five-word-shingle Jaccard similarity of at least 0.85. Similarity is not
+transitive: two successive edits cannot establish that the first and last
+versions are interchangeable. The greedy partition follows source order and
+does not enumerate every possible match. Actual strings establish identity;
+identical text is pooled before comparison, and the short debug signature is
+never used as proof of equality.
+
+Groups distinguish identical analyzed text from similar text, report the true
+minimum pairwise similarity, and let you inspect the original members. A 100%
+shingle match can still change repetition or ordering. `estimatedReviewTokens`
+counts Claude-estimated tokens in members after the first; it replaces the
+unsupported `estimatedWastedTokens` claim in the source library/JSON contract.
+It is a review budget, not established removable content or cost savings.
+[Counterexamples, public-history audit and verification](studies/duplicate-evidence/README.md)
+are retained. These changes are not in npm's 0.3.3 release.
+
+Detection remains scoped to terminal requests of each inferred conversation.
+In an agent loop every later request resends its history, so comparing across
+requests would flag earlier turns as duplicates of themselves. The final
+request retains repeated reads inside its accumulated context.
 
 **Findings.** A fixed set of rule-based checks over the parsed sequence, the
 prefix diffs and the duplicate groups (`src/core/findings.ts`), not an LLM

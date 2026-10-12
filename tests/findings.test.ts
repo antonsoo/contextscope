@@ -80,7 +80,8 @@ describe("findings (via analyze())", () => {
     const result = analyze(JSON.stringify([{ model: "claude-sonnet-5", messages }]));
     expect(kinds(result)).toContain("duplicate_content");
     const finding = result.findings.find((f) => f.kind === "duplicate_content")!;
-    expect(finding.title).toMatch(/appears 3 times/);
+    expect(finding.title).toBe("Identical text appears in 3 segments");
+    expect(finding.detail).toContain("not proven savings");
   });
 
   it("produces no findings for a well-behaved, fully-cached, deduplicated sequence", () => {

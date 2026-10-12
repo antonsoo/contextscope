@@ -1,0 +1,182 @@
+{
+  "mode": "baseline",
+  "inputSha256": "f72c4c1fdc1721c229e5cc1a599bf509db24a483ddb3acb527c4812e8c254691",
+  "results": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "width": 1440,
+      "serverStoppedAfterAnalysis": true,
+      "findingsText": "INFO\nThe same ~1.2k-token content appears 3 times\n(request 1)\n\"message 2 tool_result\" and 2 other segments are near-duplicates (similarity 87%), wasting an estimated ≈2,418 tokens. Consider caching or referencing this content once instead of repeating it inline.",
+      "duplicates": [
+        {
+          "signature": "62bcded9",
+          "members": [
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[1].content[0]",
+              "label": "message 2 tool_result",
+              "tokens": 1212
+            },
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[3].content[0]",
+              "label": "message 4 tool_result",
+              "tokens": 1209
+            },
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[5].content[0]",
+              "label": "message 6 tool_result",
+              "tokens": 1206
+            }
+          ],
+          "similarity": 0.8666666666666667,
+          "estimatedWastedTokens": 2418
+        }
+      ],
+      "matchesFullCoreReport": true,
+      "jsonSha256": "b78040b781066dada37259f6c0c1b31b59a935965320c635e3b0a2007c3aa915",
+      "htmlSha256": "0e6bc8009426c42a99188d63bb275ec817b029de18665f045eed506db77ed494",
+      "originalHashes": [],
+      "overflow": 0,
+      "htmlOverflow": 0,
+      "pageErrors": [],
+      "policyViolations": [],
+      "lateRequests": [],
+      "offlineHtmlRequests": []
+    },
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "width": 375,
+      "serverStoppedAfterAnalysis": true,
+      "findingsText": "INFO\nThe same ~1.2k-token content appears 3 times\n(request 1)\n\"message 2 tool_result\" and 2 other segments are near-duplicates (similarity 87%), wasting an estimated ≈2,418 tokens. Consider caching or referencing this content once instead of repeating it inline.",
+      "duplicates": [
+        {
+          "signature": "62bcded9",
+          "members": [
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[1].content[0]",
+              "label": "message 2 tool_result",
+              "tokens": 1212
+            },
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[3].content[0]",
+              "label": "message 4 tool_result",
+              "tokens": 1209
+            },
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[5].content[0]",
+              "label": "message 6 tool_result",
+              "tokens": 1206
+            }
+          ],
+          "similarity": 0.8666666666666667,
+          "estimatedWastedTokens": 2418
+        }
+      ],
+      "matchesFullCoreReport": true,
+      "jsonSha256": "b78040b781066dada37259f6c0c1b31b59a935965320c635e3b0a2007c3aa915",
+      "htmlSha256": "0ca521774704bb354b3b8e614031a3d603b51425473fba3bf7e406423c9fb2bd",
+      "originalHashes": [],
+      "overflow": 0,
+      "htmlOverflow": 0,
+      "pageErrors": [],
+      "policyViolations": [],
+      "lateRequests": [],
+      "offlineHtmlRequests": []
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "width": 1440,
+      "serverStoppedAfterAnalysis": true,
+      "findingsText": "INFO\nThe same ~1.2k-token content appears 3 times\n(request 1)\n\"message 2 tool_result\" and 2 other segments are near-duplicates (similarity 87%), wasting an estimated ≈2,418 tokens. Consider caching or referencing this content once instead of repeating it inline.",
+      "duplicates": [
+        {
+          "signature": "62bcded9",
+          "members": [
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[1].content[0]",
+              "label": "message 2 tool_result",
+              "tokens": 1212
+            },
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[3].content[0]",
+              "label": "message 4 tool_result",
+              "tokens": 1209
+            },
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[5].content[0]",
+              "label": "message 6 tool_result",
+              "tokens": 1206
+            }
+          ],
+          "similarity": 0.8666666666666667,
+          "estimatedWastedTokens": 2418
+        }
+      ],
+      "matchesFullCoreReport": true,
+      "jsonSha256": "b78040b781066dada37259f6c0c1b31b59a935965320c635e3b0a2007c3aa915",
+      "htmlSha256": "ebe36e04c6ecb9ec7681eecb6e7d1850a1284c3c958716761797672a9ffa603f",
+      "originalHashes": [],
+      "overflow": 0,
+      "htmlOverflow": 0,
+      "pageErrors": [],
+      "policyViolations": [],
+      "lateRequests": [],
+      "offlineHtmlRequests": []
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "width": 375,
+      "serverStoppedAfterAnalysis": true,
+      "findingsText": "INFO\nThe same ~1.2k-token content appears 3 times\n(request 1)\n\"message 2 tool_result\" and 2 other segments are near-duplicates (similarity 87%), wasting an estimated ≈2,418 tokens. Consider caching or referencing this content once instead of repeating it inline.",
+      "duplicates": [
+        {
+          "signature": "62bcded9",
+          "members": [
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[1].content[0]",
+              "label": "message 2 tool_result",
+              "tokens": 1212
+            },
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[3].content[0]",
+              "label": "message 4 tool_result",
+              "tokens": 1209
+            },
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[5].content[0]",
+              "label": "message 6 tool_result",
+              "tokens": 1206
+            }
+          ],
+          "similarity": 0.8666666666666667,
+          "estimatedWastedTokens": 2418
+        }
+      ],
+      "matchesFullCoreReport": true,
+      "jsonSha256": "b78040b781066dada37259f6c0c1b31b59a935965320c635e3b0a2007c3aa915",
+      "htmlSha256": "700d5999e542290f35b3e9406b433b3a69927d327e7465f6b62fdccbe55a96d8",
+      "originalHashes": [],
+      "overflow": 0,
+      "htmlOverflow": 0,
+      "pageErrors": [],
+      "policyViolations": [],
+      "lateRequests": [],
+      "offlineHtmlRequests": []
+    }
+  ]
+}

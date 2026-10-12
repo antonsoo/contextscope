@@ -1,0 +1,508 @@
+{
+  "node": "v26.7.0",
+  "mode": "baseline",
+  "compiled": [
+    {
+      "path": "core/duplicates.js",
+      "sha256": "d5b18cd584924a46c9d5fd52d4672cdf73f9f51db311f2e97e0d0715e82e9a27"
+    },
+    {
+      "path": "core/findings.js",
+      "sha256": "7c77a741c5d469f1151de1547b350d4690607d5b54a0cc1b4bbed10f57be2355"
+    },
+    {
+      "path": "core/group-findings.js",
+      "sha256": "83e6f3ceb9ae8dc1c4838e7faf63db3ce15df487b6b40cf64019a0ea951eb19d"
+    }
+  ],
+  "results": [
+    {
+      "name": "chained-edits",
+      "inputSha256": "f72c4c1fdc1721c229e5cc1a599bf509db24a483ddb3acb527c4812e8c254691",
+      "expected": [
+        {
+          "kind": "near",
+          "members": 2,
+          "minimum": 0.8666666666666667
+        }
+      ],
+      "duplicates": [
+        {
+          "signature": "62bcded9",
+          "members": [
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[1].content[0]",
+              "label": "message 2 tool_result",
+              "tokens": 1212
+            },
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[3].content[0]",
+              "label": "message 4 tool_result",
+              "tokens": 1209
+            },
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[5].content[0]",
+              "label": "message 6 tool_result",
+              "tokens": 1206
+            }
+          ],
+          "similarity": 0.8666666666666667,
+          "estimatedWastedTokens": 2418
+        }
+      ],
+      "findings": [
+        {
+          "kind": "duplicate_content",
+          "severity": "info",
+          "requestIndex": 0,
+          "title": "The same ~1.2k-token content appears 3 times",
+          "detail": "\"message 2 tool_result\" and 2 other segments are near-duplicates (similarity 87%), wasting an estimated ≈2,418 tokens. Consider caching or referencing this content once instead of repeating it inline.",
+          "segmentIds": [
+            "messages[1].content[0]",
+            "messages[3].content[0]",
+            "messages[5].content[0]"
+          ]
+        }
+      ],
+      "displayedFindings": [
+        {
+          "kind": "duplicate_content",
+          "severity": "info",
+          "title": "The same ~1.2k-token content appears 3 times",
+          "detail": "\"message 2 tool_result\" and 2 other segments are near-duplicates (similarity 87%), wasting an estimated ≈2,418 tokens. Consider caching or referencing this content once instead of repeating it inline.",
+          "requestIndices": [
+            0
+          ],
+          "findings": [
+            {
+              "kind": "duplicate_content",
+              "severity": "info",
+              "requestIndex": 0,
+              "title": "The same ~1.2k-token content appears 3 times",
+              "detail": "\"message 2 tool_result\" and 2 other segments are near-duplicates (similarity 87%), wasting an estimated ≈2,418 tokens. Consider caching or referencing this content once instead of repeating it inline.",
+              "segmentIds": [
+                "messages[1].content[0]",
+                "messages[3].content[0]",
+                "messages[5].content[0]"
+              ]
+            }
+          ]
+        }
+      ],
+      "unchangedReportSha256": "ded1b5cc6fd5ca77d06ad6a64f622ae14827250823613da511cfb324e43c7951",
+      "fullReportSha256": "cc1da215aabe1e8f21e8cd9f29f11841c5c4fedf16547d24ad791c23aaa0156d"
+    },
+    {
+      "name": "exact-copies",
+      "inputSha256": "1c168c01d5cfafe370f09cf9c6d0529a5be34e702761cd35d69ff536517a02b8",
+      "expected": [
+        {
+          "kind": "exact",
+          "members": 3,
+          "minimum": 1
+        }
+      ],
+      "duplicates": [
+        {
+          "signature": "62bcded9",
+          "members": [
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[1].content[0]",
+              "label": "message 2 tool_result",
+              "tokens": 1212
+            },
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[3].content[0]",
+              "label": "message 4 tool_result",
+              "tokens": 1212
+            },
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[5].content[0]",
+              "label": "message 6 tool_result",
+              "tokens": 1212
+            }
+          ],
+          "similarity": 1,
+          "estimatedWastedTokens": 2424
+        }
+      ],
+      "findings": [
+        {
+          "kind": "duplicate_content",
+          "severity": "info",
+          "requestIndex": 0,
+          "title": "The same ~1.2k-token content appears 3 times",
+          "detail": "\"message 2 tool_result\" and 2 other segments are near-duplicates (similarity 100%), wasting an estimated ≈2,424 tokens. Consider caching or referencing this content once instead of repeating it inline.",
+          "segmentIds": [
+            "messages[1].content[0]",
+            "messages[3].content[0]",
+            "messages[5].content[0]"
+          ]
+        }
+      ],
+      "displayedFindings": [
+        {
+          "kind": "duplicate_content",
+          "severity": "info",
+          "title": "The same ~1.2k-token content appears 3 times",
+          "detail": "\"message 2 tool_result\" and 2 other segments are near-duplicates (similarity 100%), wasting an estimated ≈2,424 tokens. Consider caching or referencing this content once instead of repeating it inline.",
+          "requestIndices": [
+            0
+          ],
+          "findings": [
+            {
+              "kind": "duplicate_content",
+              "severity": "info",
+              "requestIndex": 0,
+              "title": "The same ~1.2k-token content appears 3 times",
+              "detail": "\"message 2 tool_result\" and 2 other segments are near-duplicates (similarity 100%), wasting an estimated ≈2,424 tokens. Consider caching or referencing this content once instead of repeating it inline.",
+              "segmentIds": [
+                "messages[1].content[0]",
+                "messages[3].content[0]",
+                "messages[5].content[0]"
+              ]
+            }
+          ]
+        }
+      ],
+      "unchangedReportSha256": "14b6b47879051188ef61867f27408df5f182d8345746d5f6ec378631952129c3",
+      "fullReportSha256": "8605b73e9c1b66a8fa93380892daf5d8fe5865043ba449755442ecc8547b4432"
+    },
+    {
+      "name": "changed-repetition",
+      "inputSha256": "4adeeb1844f4d999b294904a855b6ced09a82a0d47a995f9b9f3d0d475521b32",
+      "expected": [
+        {
+          "kind": "near",
+          "members": 2,
+          "minimum": 1
+        }
+      ],
+      "duplicates": [
+        {
+          "signature": "40340a45",
+          "members": [
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[1].content[0]",
+              "label": "message 2 tool_result",
+              "tokens": 170
+            },
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[3].content[0]",
+              "label": "message 4 tool_result",
+              "tokens": 339
+            }
+          ],
+          "similarity": 1,
+          "estimatedWastedTokens": 255
+        }
+      ],
+      "findings": [
+        {
+          "kind": "duplicate_content",
+          "severity": "info",
+          "requestIndex": 0,
+          "title": "The same ~0.2k-token content appears 2 times",
+          "detail": "\"message 2 tool_result\" and 1 other segment are near-duplicates (similarity 100%), wasting an estimated ≈255 tokens. Consider caching or referencing this content once instead of repeating it inline.",
+          "segmentIds": [
+            "messages[1].content[0]",
+            "messages[3].content[0]"
+          ]
+        }
+      ],
+      "displayedFindings": [
+        {
+          "kind": "duplicate_content",
+          "severity": "info",
+          "title": "The same ~0.2k-token content appears 2 times",
+          "detail": "\"message 2 tool_result\" and 1 other segment are near-duplicates (similarity 100%), wasting an estimated ≈255 tokens. Consider caching or referencing this content once instead of repeating it inline.",
+          "requestIndices": [
+            0
+          ],
+          "findings": [
+            {
+              "kind": "duplicate_content",
+              "severity": "info",
+              "requestIndex": 0,
+              "title": "The same ~0.2k-token content appears 2 times",
+              "detail": "\"message 2 tool_result\" and 1 other segment are near-duplicates (similarity 100%), wasting an estimated ≈255 tokens. Consider caching or referencing this content once instead of repeating it inline.",
+              "segmentIds": [
+                "messages[1].content[0]",
+                "messages[3].content[0]"
+              ]
+            }
+          ]
+        }
+      ],
+      "unchangedReportSha256": "341bb81c6aab893c59bc7b152b0053cd7481ebe6cee2403cf9951b6fa277f685",
+      "fullReportSha256": "dab047888e8f1483b3038c25d5ff4737ba0111cfeaa5078d038e74851e831257"
+    },
+    {
+      "name": "short-hash-collision",
+      "inputSha256": "5cc12f484d134de5664a183b22ea17f7cb58a2b83e1c0fd59d372c2182469267",
+      "expected": [],
+      "duplicates": [
+        {
+          "signature": "40340a45",
+          "members": [
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[1].content[0]",
+              "label": "message 2 tool_result",
+              "tokens": 69
+            },
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[3].content[0]",
+              "label": "message 4 tool_result",
+              "tokens": 69
+            }
+          ],
+          "similarity": 1,
+          "estimatedWastedTokens": 69
+        }
+      ],
+      "findings": [
+        {
+          "kind": "duplicate_content",
+          "severity": "info",
+          "requestIndex": 0,
+          "title": "The same ~0.1k-token content appears 2 times",
+          "detail": "\"message 2 tool_result\" and 1 other segment are near-duplicates (similarity 100%), wasting an estimated ≈69 tokens. Consider caching or referencing this content once instead of repeating it inline.",
+          "segmentIds": [
+            "messages[1].content[0]",
+            "messages[3].content[0]"
+          ]
+        }
+      ],
+      "displayedFindings": [
+        {
+          "kind": "duplicate_content",
+          "severity": "info",
+          "title": "The same ~0.1k-token content appears 2 times",
+          "detail": "\"message 2 tool_result\" and 1 other segment are near-duplicates (similarity 100%), wasting an estimated ≈69 tokens. Consider caching or referencing this content once instead of repeating it inline.",
+          "requestIndices": [
+            0
+          ],
+          "findings": [
+            {
+              "kind": "duplicate_content",
+              "severity": "info",
+              "requestIndex": 0,
+              "title": "The same ~0.1k-token content appears 2 times",
+              "detail": "\"message 2 tool_result\" and 1 other segment are near-duplicates (similarity 100%), wasting an estimated ≈69 tokens. Consider caching or referencing this content once instead of repeating it inline.",
+              "segmentIds": [
+                "messages[1].content[0]",
+                "messages[3].content[0]"
+              ]
+            }
+          ]
+        }
+      ],
+      "unchangedReportSha256": "475b9ca26025b9103b6949dc8ca16d099c35d1fa2169fad9ccffbd526e2068b7",
+      "fullReportSha256": "5eb295a85077f0d1d13cd234fd3338b1c84fb71646ce0783f0b4f7057f71315a"
+    },
+    {
+      "name": "collision-in-separate-conversations",
+      "inputSha256": "dca1ca46894b46dd819f2865637daf100715fc5b56df7a2365057a9f6b4d3b62",
+      "expected": [
+        {
+          "kind": "exact",
+          "members": 2,
+          "minimum": 1
+        },
+        {
+          "kind": "exact",
+          "members": 2,
+          "minimum": 1
+        }
+      ],
+      "duplicates": [
+        {
+          "signature": "40340a45",
+          "members": [
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[1].content[0]",
+              "label": "message 2 tool_result",
+              "tokens": 69
+            },
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[3].content[0]",
+              "label": "message 4 tool_result",
+              "tokens": 69
+            }
+          ],
+          "similarity": 1,
+          "estimatedWastedTokens": 69
+        }
+      ],
+      "findings": [
+        {
+          "kind": "duplicate_content",
+          "severity": "info",
+          "requestIndex": 0,
+          "title": "The same ~0.1k-token content appears 2 times",
+          "detail": "\"message 2 tool_result\" and 1 other segment are near-duplicates (similarity 100%), wasting an estimated ≈69 tokens. Consider caching or referencing this content once instead of repeating it inline.",
+          "segmentIds": [
+            "messages[1].content[0]",
+            "messages[3].content[0]"
+          ]
+        }
+      ],
+      "displayedFindings": [
+        {
+          "kind": "duplicate_content",
+          "severity": "info",
+          "title": "The same ~0.1k-token content appears 2 times",
+          "detail": "\"message 2 tool_result\" and 1 other segment are near-duplicates (similarity 100%), wasting an estimated ≈69 tokens. Consider caching or referencing this content once instead of repeating it inline.",
+          "requestIndices": [
+            0
+          ],
+          "findings": [
+            {
+              "kind": "duplicate_content",
+              "severity": "info",
+              "requestIndex": 0,
+              "title": "The same ~0.1k-token content appears 2 times",
+              "detail": "\"message 2 tool_result\" and 1 other segment are near-duplicates (similarity 100%), wasting an estimated ≈69 tokens. Consider caching or referencing this content once instead of repeating it inline.",
+              "segmentIds": [
+                "messages[1].content[0]",
+                "messages[3].content[0]"
+              ]
+            }
+          ]
+        }
+      ],
+      "unchangedReportSha256": "4d74eb0c9bb63359fdfba055aad75db67d97fdcfa05565045fb7bd9ffcd77bc5",
+      "fullReportSha256": "6b1134acc4ad2d42c4c721af13780389a0e798400420b791a4ff9ad152bd4190"
+    },
+    {
+      "name": "different-evidence-at-same-paths",
+      "inputSha256": "b266bce703395632fbdf27a9b8f720dd2eb4a0ec77e5ae8ce8101847580e31d5",
+      "expected": [
+        {
+          "kind": "near",
+          "members": 2,
+          "minimum": 0.8666666666666667
+        },
+        {
+          "kind": "exact",
+          "members": 2,
+          "minimum": 1
+        }
+      ],
+      "duplicates": [
+        {
+          "signature": "40340a45",
+          "members": [
+            {
+              "requestIndex": 1,
+              "segmentId": "messages[1].content[0]",
+              "label": "message 2 tool_result",
+              "tokens": 1212
+            },
+            {
+              "requestIndex": 1,
+              "segmentId": "messages[3].content[0]",
+              "label": "message 4 tool_result",
+              "tokens": 1209
+            }
+          ],
+          "similarity": 0.8666666666666667,
+          "estimatedWastedTokens": 1211
+        },
+        {
+          "signature": "40340a45",
+          "members": [
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[1].content[0]",
+              "label": "message 2 tool_result",
+              "tokens": 170
+            },
+            {
+              "requestIndex": 0,
+              "segmentId": "messages[3].content[0]",
+              "label": "message 4 tool_result",
+              "tokens": 170
+            }
+          ],
+          "similarity": 1,
+          "estimatedWastedTokens": 170
+        }
+      ],
+      "findings": [
+        {
+          "kind": "duplicate_content",
+          "severity": "info",
+          "requestIndex": 1,
+          "title": "The same ~1.2k-token content appears 2 times",
+          "detail": "\"message 2 tool_result\" and 1 other segment are near-duplicates (similarity 87%), wasting an estimated ≈1,211 tokens. Consider caching or referencing this content once instead of repeating it inline.",
+          "segmentIds": [
+            "messages[1].content[0]",
+            "messages[3].content[0]"
+          ]
+        },
+        {
+          "kind": "duplicate_content",
+          "severity": "info",
+          "requestIndex": 0,
+          "title": "The same ~0.2k-token content appears 2 times",
+          "detail": "\"message 2 tool_result\" and 1 other segment are near-duplicates (similarity 100%), wasting an estimated ≈170 tokens. Consider caching or referencing this content once instead of repeating it inline.",
+          "segmentIds": [
+            "messages[1].content[0]",
+            "messages[3].content[0]"
+          ]
+        }
+      ],
+      "displayedFindings": [
+        {
+          "kind": "duplicate_content",
+          "severity": "info",
+          "title": "The same ~1.2k-token content appears 2 times",
+          "detail": "\"message 2 tool_result\" and 1 other segment are near-duplicates (similarity 87%), wasting an estimated ≈1,211 tokens. Consider caching or referencing this content once instead of repeating it inline.",
+          "requestIndices": [
+            0,
+            1
+          ],
+          "findings": [
+            {
+              "kind": "duplicate_content",
+              "severity": "info",
+              "requestIndex": 1,
+              "title": "The same ~1.2k-token content appears 2 times",
+              "detail": "\"message 2 tool_result\" and 1 other segment are near-duplicates (similarity 87%), wasting an estimated ≈1,211 tokens. Consider caching or referencing this content once instead of repeating it inline.",
+              "segmentIds": [
+                "messages[1].content[0]",
+                "messages[3].content[0]"
+              ]
+            },
+            {
+              "kind": "duplicate_content",
+              "severity": "info",
+              "requestIndex": 0,
+              "title": "The same ~0.2k-token content appears 2 times",
+              "detail": "\"message 2 tool_result\" and 1 other segment are near-duplicates (similarity 100%), wasting an estimated ≈170 tokens. Consider caching or referencing this content once instead of repeating it inline.",
+              "segmentIds": [
+                "messages[1].content[0]",
+                "messages[3].content[0]"
+              ]
+            }
+          ]
+        }
+      ],
+      "unchangedReportSha256": "e9e122c6486f8cc08f033c45d737178ee1916a6860f6d2c6e070fef815fcd367",
+      "fullReportSha256": "3c61303e885ba2b8726ad12717ee42e7927486cc646b46152c031db4a598bd76"
+    }
+  ]
+}
