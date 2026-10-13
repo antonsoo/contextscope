@@ -1,0 +1,21 @@
+{
+  "mode": "before",
+  "limitBytes": 7000,
+  "exit": 1,
+  "osError": "EFBIG",
+  "inputPreserved": true,
+  "reports": {
+    "report.html": {
+      "preserved": false,
+      "bytes": 5931,
+      "sha256": "4e096a54815e484dcced675442c60676d4c06771b91991fffc8a05e14a3c6a5f"
+    },
+    "report.json": {
+      "preserved": false,
+      "bytes": 7000,
+      "sha256": "26688883c1af2867b04af84756f0b4e62ef7aa8c2cf5558aed6cb2a7b97ace78"
+    }
+  },
+  "temporaryFiles": 0,
+  "friendlyError": false
+}

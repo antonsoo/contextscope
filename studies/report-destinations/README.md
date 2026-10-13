@@ -33,6 +33,14 @@ a failed replacement leaves that destination intact. Tests inject those
 failures and check temporary-file cleanup. Existing ordinary reports can still
 be replaced. New/replaced report files use mode 0600 on POSIX.
 
+The [real write-failure replay](write-failure.py) separately gives only the
+child process a 7,000-byte POSIX per-file limit. HTML fits; JSON receives the
+operating system's `EFBIG` error. [Before](write-before.json), HTML was replaced
+and JSON was truncated to 7,000 bytes. [After](write-after.json), both previous
+reports and the request capture remain byte-identical, no temporary files
+remain, and the CLI exits 1 with a short error instead of a stack trace. This
+does not fill a disk or change limits for the invoking shell.
+
 Each rename is atomic, but the two renames are not a joint transaction: failure
 of the second rename can leave the first report updated. The guard is not a
 lock against concurrent filesystem changes, does not promise whole-machine
@@ -54,7 +62,33 @@ different new directory. An installed package's `dist/cli/index.js` can be
 passed directly; the script invokes the current Node executable from the
 disposable case directory.
 
+On POSIX systems, replay the operating-system failure with another new directory:
+
+```sh
+python3 studies/report-destinations/write-failure.py /tmp/contextscope-write-failure dist/cli/index.js
+```
+
 The safe JSON report is byte-identical before and after. HTML is identical
 after normalizing only its single generation timestamp. The receipts retain
 both raw and normalized hashes. Analysis, report content and CI gate meanings
 are unchanged.
+
+## Clean build and installed package
+
+Implementation `11132ba4c9da9878e6af3398fc6d60d6d555d488` was archived to a new
+directory. Under Node 24.21.0, fresh `npm ci`, lint, type checking, all 523 tests,
+core/web builds, all 92 existing Chromium/Firefox workflows and `npm pack`
+passed. All 413 tracked archive files remained unchanged. The CLI receipt
+screenshot above was inspected. No report or browser rendering code changed.
+
+The 97,466-byte package archive was then installed into two new directories,
+without running its lifecycle scripts. Both Node **20.0.0** and **24.21.0**
+passed the twelve destination checks, safe report replacement and the real
+POSIX write-failure replay. All **94** installed `dist` files match the clean
+build. Installed JSON matches the source byte for byte; installed HTML matches
+after the same single-timestamp normalization. Raw hashes are retained in
+[verification.json](verification.json).
+
+Package SHA-256:
+`5e049678b86c08a7de79661fd2f4c535f39cc4a1ba07c6631206a3f819f74694`.
+This verifies the local packed artifact; the npm version remains 0.3.3.
