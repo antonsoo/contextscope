@@ -1,0 +1,75 @@
+[
+  {
+    "case": "sparse-100",
+    "inputBytes": 369468,
+    "beforeMedianMs": 107.55325800000014,
+    "afterMedianMs": 61.095507999999995,
+    "speedup": 1.7604118783986566,
+    "outputSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "groups": 0,
+    "groupMembers": [],
+    "allOutputsIdentical": true
+  },
+  {
+    "case": "sparse-500",
+    "inputBytes": 1891068,
+    "beforeMedianMs": 5152.5971819999995,
+    "afterMedianMs": 375.56310699999995,
+    "speedup": 13.719657458260404,
+    "outputSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "groups": 0,
+    "groupMembers": [],
+    "allOutputsIdentical": true
+  },
+  {
+    "case": "sparse-2000",
+    "inputBytes": 7697068,
+    "beforeMedianMs": 67408.970882,
+    "afterMedianMs": 2689.3429810000002,
+    "speedup": 25.06521903611371,
+    "outputSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "groups": 0,
+    "groupMembers": [],
+    "allOutputsIdentical": true
+  },
+  {
+    "case": "mixed-2000",
+    "inputBytes": 7698198,
+    "beforeMedianMs": 36446.114450999994,
+    "afterMedianMs": 2242.9480610000005,
+    "speedup": 16.24920125647082,
+    "outputSha256": "730500fab9b9a41514db424a15af7100b033027e9aa185d80a2458091fe59933",
+    "groups": 2,
+    "groupMembers": [
+      2,
+      2
+    ],
+    "allOutputsIdentical": true
+  },
+  {
+    "case": "exact-2000",
+    "inputBytes": 7208068,
+    "beforeMedianMs": 3.570038000000011,
+    "afterMedianMs": 2.802371999999991,
+    "speedup": 1.273934367029082,
+    "outputSha256": "4b91965602224ec04a8307188515d3d929d142abfaf75b0a6c1eb3677e812cfc",
+    "groups": 1,
+    "groupMembers": [
+      2000
+    ],
+    "allOutputsIdentical": true
+  },
+  {
+    "case": "dense-250",
+    "inputBytes": 1331708,
+    "beforeMedianMs": 217.21087599999998,
+    "afterMedianMs": 167.464639,
+    "speedup": 1.297055171151684,
+    "outputSha256": "07ff7f8ef9e2658146017c5a0427f13e34d0691a5847f2afaaabaa86ee5e3720",
+    "groups": 1,
+    "groupMembers": [
+      250
+    ],
+    "allOutputsIdentical": true
+  }
+]

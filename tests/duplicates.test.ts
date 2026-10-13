@@ -56,8 +56,13 @@ describe("findDuplicates", () => {
     ).join("\n"));
     // Each edit replaces 14 of 196 distinct five-word shingles. The disjoint
     // first-to-last edits share 168/224 = 75%; adjacent versions share 182/210.
-    for (const order of [[0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0]]) {
-      const request = reqWithToolResults(order.map(i => snapshots[i]!));
+    // Exercise both the small-history scan and the indexed path. Distinct long
+    // single words have no matching shingles and must not affect this partition.
+    for (const padding of [0, 80]) for (const order of [[0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0]]) {
+      const request = reqWithToolResults([
+        ...order.map(i => snapshots[i]!),
+        ...Array.from({ length: padding }, (_, i) => `unrelated_${i}_${"x".repeat(200)}`),
+      ]);
       const groups = findDuplicates([request]);
       expect(groups).toHaveLength(1);
       expect(groups[0]!.members).toHaveLength(2);
@@ -66,6 +71,19 @@ describe("findDuplicates", () => {
       const sourceIndices = groups[0]!.members.map(m => order[(Number(m.segmentId.match(/messages\[(\d+)\]/)![1]) - 1) / 2]);
       expect(sourceIndices).toContain(1);
     }
+  });
+
+  it("retains a match exactly at 0.85 when filtering a long history", () => {
+    const words = Array.from({ length: 23 }, (_, i) => `original_token_${i}`);
+    const a = words.join(" "); // 19 shingles
+    const b = ["replacement_token", ...words.slice(1, 22)].join(" "); // 18; intersection 17, union 20
+    const padding = Array.from({ length: 80 }, (_, i) => `distinct_${i}_${"z".repeat(200)}`);
+    const groups = findDuplicates([reqWithToolResults([a, ...padding, b])]);
+    expect(groups).toHaveLength(1);
+    expect(groups[0]!.similarity).toBe(0.85);
+    expect(groups[0]!.members.map(m => m.segmentId)).toEqual([
+      "messages[1].content[0]", "messages[163].content[0]",
+    ]);
   });
 
   it("distinguishes identical text from perfect shingle overlap with changed repetition", () => {

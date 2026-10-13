@@ -487,6 +487,13 @@ In an agent loop every later request resends its history, so comparing across
 requests would flag earlier turns as duplicates of themselves. The final
 request retains repeated reads inside its accumulated context.
 
+Large histories use an exact candidate filter before the complete-link checks.
+On a constructed 2,000-block history, duplicate review fell from 67.41 to 2.69
+seconds on Node 24.21.0; all 466 groups in the 240 public terminal snapshots
+stayed identical. The temporary index uses extra memory, and dense comparisons
+can remain quadratic. [Measurements, algorithm and limits](studies/duplicate-scaling/README.md)
+are retained; this optimization is not in npm's 0.3.3 release.
+
 **Findings.** A fixed set of rule-based checks over the parsed sequence, the
 prefix diffs and the duplicate groups (`src/core/findings.ts`), not an LLM
 judgment, so the same input always produces the same findings. Most are

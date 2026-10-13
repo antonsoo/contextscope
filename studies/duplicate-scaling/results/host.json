@@ -1,0 +1,7 @@
+{
+  "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "cpu": "AMD Ryzen 7 7800X3D 8-Core Processor",
+  "availableCpus": 14,
+  "node": "v24.21.0",
+  "method": "Fresh process per version/case; three repetitions per process. Alternate version order across cases. No other study checks run concurrently. Duplicate review includes shingling and candidate indexing, excludes parsing/tokenization. Peak RSS is whole process, including imports, inputs and repeated runs."
+}

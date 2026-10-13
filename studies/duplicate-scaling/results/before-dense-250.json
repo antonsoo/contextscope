@@ -1,0 +1,20 @@
+{
+  "name": "dense-250",
+  "constructed": true,
+  "node": "v24.21.0",
+  "inputBytes": 1331708,
+  "inputSha256": "cf5b4879a26b06fedefa0ab4662033dbe447a9c894e1653f0f4f6c20be83b376",
+  "blocks": 250,
+  "samplesMs": [
+    218.13091199999997,
+    190.19159700000006,
+    217.21087599999998
+  ],
+  "medianMs": 217.21087599999998,
+  "processPeakRssKiB": 165288,
+  "groups": 1,
+  "groupMembers": [
+    250
+  ],
+  "outputSha256": "07ff7f8ef9e2658146017c5a0427f13e34d0691a5847f2afaaabaa86ee5e3720"
+}

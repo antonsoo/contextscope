@@ -1,0 +1,113 @@
+{
+  "node": "v24.21.0",
+  "timing": "One end-to-end CLI run per constructed case, including process startup and both reports; not a statistical timing estimate.",
+  "results": [
+    {
+      "name": "sparse-100",
+      "inputBytes": 369468,
+      "inputSha256": "8f8103717deed1cdcd61342fb1fe41f65ebfb2dcfa5678fd26ac9ee1916ae998",
+      "milliseconds": 359.0953,
+      "exitCode": 0,
+      "jsonSha256": "07bea8af9f4ba5deb9a9e774e2f65b0c2bd79b44a740515f7b5bc6c4add235d2",
+      "htmlSha256": "6f6770965571e95a763ba4fb863fe96b85a3f184cd93226efe90e5124cbb4f9c",
+      "htmlWithoutGeneratedAtSha256": "427395e09264ac6ad5e708c625676906e712986d7ce5dc079ea9f99dcb84b98e",
+      "groups": [],
+      "stderr": ""
+    },
+    {
+      "name": "sparse-500",
+      "inputBytes": 1891068,
+      "inputSha256": "5dbd1473a3e865414628f161905d18a0dd6923b85caa36df8d92a3e707c26523",
+      "milliseconds": 1510.11838,
+      "exitCode": 0,
+      "jsonSha256": "76442d57ef5dc24dee513aa2cfe194cc7418999a278fcc59612b8082dfdefdab",
+      "htmlSha256": "02a8093b2d8e4ce564a0773ff65dfc0ebdb5ef45324d48f9976bc56d115390aa",
+      "htmlWithoutGeneratedAtSha256": "05b4b2a2400f3e1f49ea45c9bb9d0c83e702394bb82f1150a04f0516f6528f66",
+      "groups": [],
+      "stderr": ""
+    },
+    {
+      "name": "sparse-2000",
+      "inputBytes": 7697068,
+      "inputSha256": "0862ea3f16191ce06407cd3cfe1e8a6eb7db6f5936fea3995f62777f896c3b01",
+      "milliseconds": 34099.397210999996,
+      "exitCode": 0,
+      "jsonSha256": "c43cbbbc1042e511184c0ecbb4a5f74578b5eeefb7f7d50781829051450fd263",
+      "htmlSha256": "f15b71ce5962f099099ec3965091b9a85e32fc67783d6517fcfa90e094060a12",
+      "htmlWithoutGeneratedAtSha256": "f868fe3c2e18052ed2d26ee5ab0ee624d618b0aceedc0ed427ae8678505da79a",
+      "groups": [],
+      "stderr": ""
+    },
+    {
+      "name": "mixed-2000",
+      "inputBytes": 7698198,
+      "inputSha256": "4beedc978401c2807fc16249a6647266534b9c82bed9b538b22670d55fe5f6a5",
+      "milliseconds": 31595.028696999994,
+      "exitCode": 0,
+      "jsonSha256": "9e54942249f2f2de0a6477236511c5e3cd3b3c2b0465afde591a174cfcb8ffa3",
+      "htmlSha256": "38fb6e6e1e62a32ee327d998a95c85ce74351f1d2658c28605882617f8fd7def",
+      "htmlWithoutGeneratedAtSha256": "5d9c73ec3eeb97249f746af3c65f0ae5aa9e1959376a5ccfa8ae8ebb702590ef",
+      "groups": [
+        {
+          "signature": "f98e0491",
+          "matchKind": "near",
+          "similarity": 0.8666666666666667,
+          "estimatedReviewTokens": 1212,
+          "memberCount": 2,
+          "membersSha256": "52fd40ad142a4115a39865f1b7a543aa5d08aa207878071b2cf351863e0b27f4"
+        },
+        {
+          "signature": "8282ffe9",
+          "matchKind": "exact",
+          "similarity": 1,
+          "estimatedReviewTokens": 1100,
+          "memberCount": 2,
+          "membersSha256": "d692b52bef14d810cace779321da2d42bd44f615102a747d9e5ebd7be018c1e0"
+        }
+      ],
+      "stderr": ""
+    },
+    {
+      "name": "exact-2000",
+      "inputBytes": 7208068,
+      "inputSha256": "540652389e21000ae9710e811879f091ba83b9310e82ff48122f905c7fe13f39",
+      "milliseconds": 469.8085890000075,
+      "exitCode": 0,
+      "jsonSha256": "347773463f630e643ce4ee40fb34050f8c6936441720e723bae0d1ac95550999",
+      "htmlSha256": "4adfafaadb19f8f680b0ab6d02550dc03cb988eaa3b7c43cd2b93ac133b945d8",
+      "htmlWithoutGeneratedAtSha256": "294606bb4f2be6a5aa31c7ff704fc10493c341daf059ad26dfc643bb7d7ce737",
+      "groups": [
+        {
+          "signature": "f85f0405",
+          "matchKind": "exact",
+          "similarity": 1,
+          "estimatedReviewTokens": 2136931,
+          "memberCount": 2000,
+          "membersSha256": "792b221285ceb331d50bebf1d67a643defc2d9b10bb85ecd7aea8620eb938e2f"
+        }
+      ],
+      "stderr": ""
+    },
+    {
+      "name": "dense-250",
+      "inputBytes": 1331708,
+      "inputSha256": "cf5b4879a26b06fedefa0ab4662033dbe447a9c894e1653f0f4f6c20be83b376",
+      "milliseconds": 468.18350700000883,
+      "exitCode": 0,
+      "jsonSha256": "4f5e80f6ac85cefd6eb2fe942698369541fcc07d3dc1eed6f880e93225ebb003",
+      "htmlSha256": "4de5bc56c4d4ac0cf2f4abc4f6a1bd307062f947a03fa5c7fd9f72b6547b9c32",
+      "htmlWithoutGeneratedAtSha256": "7c742c623ac279d87eace4970562f6b95b622e403fd3670fe3ae9d773a430c6a",
+      "groups": [
+        {
+          "signature": "34e5ec06",
+          "matchKind": "near",
+          "similarity": 0.98989898989899,
+          "estimatedReviewTokens": 399894,
+          "memberCount": 250,
+          "membersSha256": "4631866b61efed41c474b1b482c9494a4b86bafb9c45d2acbc65c7166d9cbeab"
+        }
+      ],
+      "stderr": ""
+    }
+  ]
+}

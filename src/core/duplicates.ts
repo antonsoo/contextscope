@@ -35,6 +35,48 @@ interface Cluster {
   minimum: number;
 }
 
+/** Necessary-match filter, not an approximate similarity score. */
+class ClusterCandidates {
+  private readonly frequency = new Map<string, number>();
+  private readonly postings = new Map<string, number[]>();
+
+  constructor(contents: Iterable<Content>) {
+    for (const content of contents) for (const gram of content.shingles) {
+      this.frequency.set(gram, (this.frequency.get(gram) ?? 0) + 1);
+    }
+  }
+
+  prefix(grams: Set<string>): string[] {
+    // One total order for this request; rare shingles first keep common prose
+    // out of the index where possible. Lexical ties must NOT use per-text order.
+    const sorted = [...grams].sort((a, b) =>
+      this.frequency.get(a)! - this.frequency.get(b)! || (a < b ? -1 : a > b ? 1 : 0));
+    // A matching pair must share a prefix shingle: otherwise its first shared
+    // shingle is past one prefix, leaving too few shared elements for Jaccard
+    // >= t. floor (rather than ceil) keeps an extra element at nonintegral
+    // thresholds, conservatively avoiding floating-point boundary exclusions.
+    return sorted.slice(0, grams.size - Math.floor(SIMILARITY_THRESHOLD * grams.size) + 1);
+  }
+
+  candidates(prefix: string[], clusters: Cluster[]): Cluster[] {
+    const ids = new Set<number>();
+    for (const gram of prefix) for (const id of this.postings.get(gram) ?? []) ids.add(id);
+    // Preserve the first-compatible-cluster rule, independently of index order.
+    return [...ids].sort((a, b) => a - b).map(id => clusters[id]!);
+  }
+
+  add(prefix: string[], clusterId: number): void {
+    // Only index the first content of each cluster. Joining a complete-link
+    // cluster necessarily requires matching that representative; every member
+    // is still checked below before accepting the candidate.
+    for (const gram of prefix) {
+      const ids = this.postings.get(gram);
+      if (ids) ids.push(clusterId);
+      else this.postings.set(gram, [clusterId]);
+    }
+  }
+}
+
 /**
  * Inspect terminal requests of conversations, not copies of their shared history.
  * Groups are a deterministic, greedy complete-link partition: every pair must
@@ -71,9 +113,13 @@ export function findDuplicates(requests: ParsedRequest[], within: number[] = req
     });
 
     const clusters: Cluster[] = [];
+    // Small histories don't warrant building and sorting an index.
+    const candidateIndex = unique.size >= 64 ? new ClusterCandidates(unique.values()) : undefined;
     for (const content of unique.values()) {
+      const prefix = candidateIndex?.prefix(content.shingles);
+      const candidates = prefix ? candidateIndex!.candidates(prefix, clusters) : clusters;
       let joined = false;
-      for (const cluster of clusters) {
+      for (const cluster of candidates) {
         let minimum = cluster.minimum;
         const compatible = cluster.contents.every((other) => {
           const score = similarity(content.shingles, other.shingles);
@@ -86,7 +132,10 @@ export function findDuplicates(requests: ParsedRequest[], within: number[] = req
         joined = true;
         break;
       }
-      if (!joined) clusters.push({ contents: [content], minimum: 1 });
+      if (!joined) {
+        if (prefix) candidateIndex!.add(prefix, clusters.length);
+        clusters.push({ contents: [content], minimum: 1 });
+      }
     }
 
     for (const cluster of clusters) {

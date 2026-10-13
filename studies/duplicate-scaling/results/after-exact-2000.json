@@ -1,0 +1,20 @@
+{
+  "name": "exact-2000",
+  "constructed": true,
+  "node": "v24.21.0",
+  "inputBytes": 7208068,
+  "inputSha256": "540652389e21000ae9710e811879f091ba83b9310e82ff48122f905c7fe13f39",
+  "blocks": 2000,
+  "samplesMs": [
+    4.045464999999979,
+    2.802371999999991,
+    2.673204999999996
+  ],
+  "medianMs": 2.802371999999991,
+  "processPeakRssKiB": 140224,
+  "groups": 1,
+  "groupMembers": [
+    2000
+  ],
+  "outputSha256": "4b91965602224ec04a8307188515d3d929d142abfaf75b0a6c1eb3677e812cfc"
+}

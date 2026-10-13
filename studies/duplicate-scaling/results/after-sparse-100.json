@@ -1,0 +1,18 @@
+{
+  "name": "sparse-100",
+  "constructed": true,
+  "node": "v24.21.0",
+  "inputBytes": 369468,
+  "inputSha256": "8f8103717deed1cdcd61342fb1fe41f65ebfb2dcfa5678fd26ac9ee1916ae998",
+  "blocks": 100,
+  "samplesMs": [
+    108.44612699999999,
+    61.095507999999995,
+    41.02033299999994
+  ],
+  "medianMs": 61.095507999999995,
+  "processPeakRssKiB": 146624,
+  "groups": 0,
+  "groupMembers": [],
+  "outputSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+}
