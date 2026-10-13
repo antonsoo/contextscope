@@ -1,4 +1,4 @@
-import type { AnalysisResult, Provider, RequestTokenReport, Segment } from "@core/types.js";
+import type { AnalysisResult, DuplicateGroup, Provider, RequestTokenReport, Segment } from "@core/types.js";
 import type { CalibrationResult, FindingGroup } from "@core/index.js";
 import { squarify } from "./lib/treemap.js";
 import { BUILT_IN_EXAMPLES } from "./lib/examples.js";
@@ -11,6 +11,7 @@ import { INSPECTOR_TEXT_LIMIT, SEGMENT_PAGE_SIZE, TREEMAP_SEGMENT_LIMIT, treemap
 import { mountUsageReview, type UsageView } from "./usage-review.js";
 import { modelGroups, modelLabel, modelNotes, modelSummary } from "@core/model-summary.js";
 import { mountReportExports } from "./report-exports.js";
+import { mountTextComparison } from "./text-comparison.js";
 
 const usageView: UsageView = { filter: "all", page: 0 };
 
@@ -110,6 +111,7 @@ function shellHtml(): string {
       <footer class="app-footer">
         contextscope is local-first: analysis runs in your browser, nothing is uploaded. Claude token counts are estimates (≈) - see
         <a href="https://github.com/antonsoo/contextscope#accuracy-and-limitations" target="_blank" rel="noopener">accuracy and limitations</a>.
+        Text comparisons use <a href="${import.meta.env.BASE_URL}jsdiff-LICENSE.txt" target="_blank" rel="noopener">jsdiff (BSD-3-Clause)</a>.
       </footer>
     </div>
 
@@ -229,7 +231,7 @@ function wireTopbar(): void {
   // so Chromium does not hand Tab off to the browser chrome at the end of this drawer.
   drawer.addEventListener("keydown", (event) => {
     if (event.key !== "Tab") return;
-    const stops = $all('button, [tabindex="0"]', drawer);
+    const stops = $all('button, input, [tabindex="0"]', drawer);
     const first = stops[0];
     const last = stops[stops.length - 1];
     if (event.shiftKey && document.activeElement === first) {
@@ -833,6 +835,13 @@ function wireFindings(result: AnalysisResult): void {
 // duplicates panel
 // ---------------------------------------------------------------------------
 
+function duplicateMember(member: DuplicateGroup["members"][number], groupIndex: number, memberIndex: number): string {
+  const name = `req ${member.requestIndex + 1}: ${member.label} (${member.segmentId})`;
+  return `<div class="dup-member"><div class="dup-member-source"><span>Request ${member.requestIndex + 1}${memberIndex === 0 ? " / first match" : ""}: ${esc(member.label)}</span><code>${esc(member.segmentId)}</code></div>
+    <div class="dup-member-actions"><button type="button" class="occ" data-duplicate="${groupIndex}" data-member="${memberIndex}" aria-label="Inspect ${esc(name)}">Inspect original</button>
+    ${memberIndex > 0 ? `<button type="button" class="occ" data-compare-group="${groupIndex}" data-compare-member="${memberIndex}" aria-label="Compare ${esc(name)} with first match">Compare with first</button>` : ""}</div></div>`;
+}
+
 function duplicatesPanel(result: AnalysisResult): string {
   return `
     <section class="panel">
@@ -842,7 +851,7 @@ function duplicatesPanel(result: AnalysisResult): string {
           .map(
             (g, groupIndex) =>
               `<details><summary class="dup-row"><span>${g.members.length}× "${esc(truncate(g.members[0]!.label, 50))}" <span style="color:var(--text-faint)">(${g.matchKind === "exact" ? "identical text" : `at least ${Math.floor(g.similarity * 100)}% word-shingle similarity`})</span></span><span class="review-size">≈${fmtInt(g.estimatedReviewTokens)} tok in later matches to review</span><span class="dup-action">Inspect original segments</span></summary>
-                <div class="dup-members">${g.members.slice(0, 20).map((m, memberIndex) => `<button type="button" class="occ" data-duplicate="${groupIndex}" data-member="${memberIndex}">Inspect req ${m.requestIndex + 1}: ${esc(m.label)}</button>`).join("")}</div>
+                <div class="dup-members">${g.members.slice(0, 20).map((m, memberIndex) => duplicateMember(m, groupIndex, memberIndex)).join("")}</div>
                 ${g.members.length > 20 ? `<p class="hint">Showing the first 20 of ${g.members.length} matches. The JSON report includes every member and its source path.</p>` : ""}
               </details>`,
           )
@@ -859,6 +868,21 @@ function wireDuplicates(result: AnalysisResult): void {
       if (!member) return;
       const segment = result.reports[member.requestIndex]?.segments.find((s) => s.id === member.segmentId);
       if (segment) openInspector(segment, member.requestIndex);
+    });
+  });
+  $all("[data-compare-group]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const group = result.duplicates[Number(button.dataset["compareGroup"])];
+      const first = group?.members[0], second = group?.members[Number(button.dataset["compareMember"])];
+      if (!first || !second) return;
+      const firstSegment = result.reports[first.requestIndex]?.segments.find(s => s.id === first.segmentId);
+      const secondSegment = result.reports[second.requestIndex]?.segments.find(s => s.id === second.segmentId);
+      if (!firstSegment || !secondSegment) return;
+      $("#drawer").classList.add("comparison-drawer");
+      $("#drawer-title").textContent = "Text comparison";
+      $("#drawer-body").setAttribute("aria-label", "Text comparison details");
+      mountTextComparison($("#drawer-body"), { segment: firstSegment, requestIndex: first.requestIndex }, { segment: secondSegment, requestIndex: second.requestIndex });
+      showDrawer();
     });
   });
 }
@@ -917,6 +941,8 @@ function wireCalibrate(result: AnalysisResult): void {
 // ---------------------------------------------------------------------------
 
 function openInspector(segment: Segment, requestIndex = state.selectedRequest): void {
+  $("#drawer").classList.remove("comparison-drawer");
+  $("#drawer-body").setAttribute("aria-label", "Segment details");
   $("#drawer-title").textContent = segment.label;
   const textPreview = segment.charLength > INSPECTOR_TEXT_LIMIT;
   const rawPretty = textPreview ? segment.text : typeof segment.raw === "string" ? segment.raw : JSON.stringify(segment.raw, null, 2);
@@ -942,6 +968,10 @@ function openInspector(segment: Segment, requestIndex = state.selectedRequest): 
     anchor.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   });
+  showDrawer();
+}
+
+function showDrawer(): void {
   const drawer = $("#drawer") as HTMLDialogElement;
   if (!drawer.open) {
     drawerOpener = document.activeElement;
@@ -957,6 +987,8 @@ function closeDrawer(): void {
   if (drawer.open) drawer.close();
   $("#drawer-title").textContent = "segment";
   $("#drawer-body").replaceChildren();
+  drawer.classList.remove("comparison-drawer");
+  $("#drawer-body").setAttribute("aria-label", "Segment details");
   if (drawerOpener instanceof HTMLElement && drawerOpener.isConnected) drawerOpener.focus();
   drawerOpener = null;
 }

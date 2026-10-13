@@ -56,6 +56,13 @@ export const BUILT_IN_EXAMPLES: BuiltInExample[] = [
     load: (signal) => loadAsset("anthropic-agent-cache-fixed.jsonl.gz", signal),
   },
   {
+    id: "edited-repeats",
+    label: "Similar file reads: inspect the edits",
+    description: "Three synthetic configuration snapshots. Compare the matching pair's changed lines; similarity does not establish that either read is removable.",
+    approxSizeMb: 0.014,
+    load: (signal) => loadAsset("anthropic-edited-repeats.json", signal),
+  },
+  {
     id: "duplicate-tool-results",
     label: "Duplicate content: same file read 3 times",
     description: "Synthetic session where an agent re-reads an unchanged file three times in one conversation.",

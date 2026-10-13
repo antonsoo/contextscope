@@ -1,0 +1,45 @@
+{
+  "constructed": true,
+  "results": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "width": 1440,
+      "names": [
+        "Inspect req 1: message 1 (user) text",
+        "Inspect req 1: message 1 (user) text"
+      ],
+      "comparisonActions": 0
+    },
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "width": 375,
+      "names": [
+        "Inspect req 1: message 1 (user) text",
+        "Inspect req 1: message 1 (user) text"
+      ],
+      "comparisonActions": 0
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "width": 1440,
+      "names": [
+        "Inspect req 1: message 1 (user) text",
+        "Inspect req 1: message 1 (user) text"
+      ],
+      "comparisonActions": 0
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "width": 375,
+      "names": [
+        "Inspect req 1: message 1 (user) text",
+        "Inspect req 1: message 1 (user) text"
+      ],
+      "comparisonActions": 0
+    }
+  ]
+}

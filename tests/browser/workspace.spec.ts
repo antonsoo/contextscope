@@ -300,7 +300,7 @@ for (const width of [1440, 375]) {
     await page.locator(".dup-list summary").focus();
     await page.keyboard.press("Enter");
     for (const i of [0, 1]) {
-      const button = page.getByRole("button", { name: `Inspect req 1: message ${2 + i * 2} tool_result`, exact: true });
+      const button = page.getByRole("button", { name: `Inspect req 1: message ${2 + i * 2} tool_result (messages[${1 + i * 2}].content[0])`, exact: true });
       await button.focus();
       await page.keyboard.press("Enter");
       await expect(page.getByRole("dialog")).toContainText(`record_050=${i === 0 ? "original" : "updated"}`);

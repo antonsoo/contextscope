@@ -983,6 +983,34 @@ table.cache td {
 #segment-range { color: var(--text-muted); font-size: 12px; flex: 1 1 260px; }
 
 /* inspector drawer */
+.dup-member { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; width: 100%; padding: 8px 0; }
+.dup-member-source { flex: 1 1 230px; min-width: 0; display: grid; gap: 4px; font-size: 12px; }
+.dup-member-source code { color: var(--text-muted); overflow-wrap: anywhere; font-size: 11px; }
+.dup-member-actions { display: flex; flex-wrap: wrap; gap: 6px; }
+.dup-member-actions .occ { min-height: 32px; padding: 4px 9px; font-size: 11px; }
+.drawer.comparison-drawer { width: min(840px, 100%); }
+.comparison-intro, .comparison-summary { font-size: 13px; line-height: 1.5; }
+.comparison-sources { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.comparison-source { border: 1px solid var(--border); border-radius: var(--radius); padding: 10px; min-width: 0; }
+.comparison-source h4 { margin: 0 0 6px; font-size: 13px; }
+.comparison-source p { margin: 4px 0; font-size: 12px; overflow-wrap: anywhere; }
+.comparison-source code { display: block; font-size: 11px; overflow-wrap: anywhere; }
+.comparison-downloads { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.comparison-downloads .btn { font-size: 11px; padding: 5px 8px; }
+.comparison-escapes { display: flex; align-items: center; gap: 8px; font-size: 12px; }
+.comparison-diff { border: 1px solid var(--border-strong); border-radius: var(--radius); overflow: auto; max-height: 60vh; font-family: var(--font-mono); font-size: 11px; line-height: 1.6; }
+.comparison-row { display: grid; grid-template-columns: 3.5em 3.5em 1.5em minmax(0, 1fr); padding: 2px 6px; }
+.comparison-row code { white-space: pre-wrap; overflow-wrap: anywhere; min-width: 0; unicode-bidi: plaintext; }
+.comparison-line-number { color: var(--text-muted); text-align: right; padding-right: 8px; user-select: none; }
+.comparison-marker { font-weight: bold; }
+.comparison-row.removed { background: color-mix(in srgb, var(--status-critical) 12%, var(--bg-raised)); }
+.comparison-row.added { background: color-mix(in srgb, var(--status-good) 12%, var(--bg-raised)); }
+.comparison-row.omitted { display: block; color: var(--text-muted); padding: 6px 12px; background: var(--bg-inset); }
+.comparison-ending { color: var(--text-muted); font-size: 10px; white-space: normal; }
+@media (max-width: 600px) {
+  .comparison-sources { grid-template-columns: 1fr; }
+  .comparison-row { grid-template-columns: 2.8em 2.8em 1.2em minmax(0, 1fr); padding: 2px 4px; }
+}
 .drawer {
   position: fixed;
   inset: 0 0 0 auto;

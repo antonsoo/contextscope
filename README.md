@@ -482,6 +482,14 @@ It is a review budget, not established removable content or cost savings.
 [Counterexamples, public-history audit and verification](studies/duplicate-evidence/README.md)
 are retained. These changes are not in npm's 0.3.3 release.
 
+The source browser now compares each displayed later member with the first,
+showing literal changed lines, both source positions and complete text/JSON
+downloads. Choose **Similar file reads: inspect the edits** to try the existing
+configuration example. Whitespace and line endings remain significant; large
+comparisons show an explicit limit instead of a partial verdict.
+[Workflow, bounds and retained evidence](studies/text-comparison/README.md).
+This browser feature has not been deployed to the live demo.
+
 Detection remains scoped to terminal requests of each inferred conversation.
 In an agent loop every later request resends its history, so comparing across
 requests would flag earlier turns as duplicates of themselves. The final
