@@ -88,6 +88,55 @@ index memory. Exact repeats already used pooling and remain inexpensive.
   single checked generation timestamp. CLI times include startup, tokenization,
   all analyses and both reports, with one observation per case.
 
+## Clean package and offline browser verification
+
+[verification.json](results/verification.json) records a clean Git archive of
+implementation `b8383d42861d0bf51d3f209a5961f8846bc35b35`, fresh locked
+installation, lint, both type checks, 524 tests in 40 files, production builds
+and the packed artifact. All 444 tracked entries, including the examples
+symlink target, still match the implementation commit after those checks.
+
+The 98,387-byte tarball has SHA-256
+`23dcc5007e689d3cbaf5654c1e1357beea0bd11444e5baed5848a86d2f01b7d7`.
+Fresh installs on Node 20.0.0 and 24.21.0 each preserve all 94 compiled files,
+all six complete CLI reports, all 240 reference partitions, and the mixed
+history benchmark output. The installed CLI receipts and single-run benchmark
+observations are retained alongside the source measurements.
+
+The clean production build was exercised offline in Chromium 153 and Firefox
+155 at both widths below. These are single observed full imports, including
+file loading, worker analysis and rendering, rather than benchmark medians:
+
+| Browser | Width | Baseline import | Changed import |
+| --- | ---: | ---: | ---: |
+| Chromium | 1440 | 14.85 s | 3.75 s |
+| Chromium | 375 | 13.83 s | 3.04 s |
+| Firefox | 1440 | 30.10 s | 2.84 s |
+| Firefox | 375 | 28.63 s | 2.86 s |
+
+[Before](results/browser-before.json) and [after](results/browser-after.json)
+record the same 7,698,198-byte mixed input, browser versions and asset hashes.
+Browsers disconnect after warming application code and bundled fonts, before
+the measured import. Every served asset was byte-compared with the build.
+All four workflows inspect and download an original member, restore keyboard
+focus, export JSON/HTML equal to the installed CLI (except HTML generation
+time), and open the script-free HTML offline. There are no page errors,
+unexpected network requests, horizontal overflow or axe violations.
+Four additional small-history browser workflows preserve the earlier edit-chain
+behavior and full core-report comparisons.
+
+All eight before/after captures were visually inspected. The retained
+[Chromium phone](../../docs/assets/duplicate-scaling/chromium-375.png),
+[Chromium desktop](../../docs/assets/duplicate-scaling/chromium-1440.png),
+[Firefox phone](../../docs/assets/duplicate-scaling/firefox-375.png) and
+[Firefox desktop](../../docs/assets/duplicate-scaling/firefox-1440.png) panels
+remain readable and show the same two groups and review budgets.
+
+The receipt also records harness corrections for warming Firefox's font faces,
+npm 12's package-keyed JSON output, and comparing a tracked symbolic link's target
+bytes. None changed application code or the artifact; completed clean checks
+were retained when resuming package verification.
+
 ## Reproduce
 
 From a built checkout, use these same scripts with each build's `dist` directory:

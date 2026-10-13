@@ -1,0 +1,19 @@
+{
+  "name": "mixed-2000",
+  "constructed": true,
+  "node": "v24.21.0",
+  "inputBytes": 7698198,
+  "inputSha256": "4beedc978401c2807fc16249a6647266534b9c82bed9b538b22670d55fe5f6a5",
+  "blocks": 2000,
+  "samplesMs": [
+    1557.874741
+  ],
+  "medianMs": 1557.874741,
+  "processPeakRssKiB": 385408,
+  "groups": 2,
+  "groupMembers": [
+    2,
+    2
+  ],
+  "outputSha256": "730500fab9b9a41514db424a15af7100b033027e9aa185d80a2458091fe59933"
+}

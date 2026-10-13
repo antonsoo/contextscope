@@ -1,0 +1,264 @@
+{
+  "sourceCommit": "b8383d42861d0bf51d3f209a5961f8846bc35b35",
+  "sourceArchiveSha256": "5ae8a8a0c73abb17ca3cac0f1504a97c0a675e514c0165b5bfb5abaa8810c852",
+  "checks": [
+    {
+      "name": "clean-install",
+      "command": [
+        "npm",
+        "ci"
+      ],
+      "exitCode": 0,
+      "logSha256": "8dd38135dac84f2985ecfadf451b868b996e07ad8009429b8b3ff499d68d90b6"
+    },
+    {
+      "name": "clean-lint",
+      "command": [
+        "npm",
+        "run",
+        "lint"
+      ],
+      "exitCode": 0,
+      "logSha256": "7d759107193f1253093f82acb0858619861371ea869660e7cc49464cdc11bba0"
+    },
+    {
+      "name": "clean-typecheck",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "logSha256": "065f57db2f0de0df20f19d94151ae88ff01ac1c4c117dfd29507a338675f8589"
+    },
+    {
+      "name": "clean-tests",
+      "command": [
+        "npm",
+        "test"
+      ],
+      "exitCode": 0,
+      "logSha256": "049b16a0e6b35102efb64f3afc29438c2b47a9f7a4a080fbaf6bbae8fbfad505"
+    },
+    {
+      "name": "clean-build",
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "exitCode": 0,
+      "logSha256": "9b016475b7d8e6d69b662a3c78db6ecae90a45b920963cbe548b5b9a61fba0a5"
+    },
+    {
+      "name": "clean-pack",
+      "command": [
+        "npm",
+        "pack",
+        "--json",
+        "--pack-destination",
+        "/tmp/claude-1000/contextscope-duplicate-scaling"
+      ],
+      "exitCode": 0,
+      "logSha256": "259f1b96483c4af497f31cbbd861048bd55efe40d4ee67906f4965efa951fbe8"
+    },
+    {
+      "name": "node20-install",
+      "command": [
+        "npm",
+        "install",
+        "--prefix",
+        "/tmp/claude-1000/contextscope-duplicate-scaling/installed-node20",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund",
+        "/tmp/claude-1000/contextscope-duplicate-scaling/antonsoloviev-contextscope-0.3.3.tgz"
+      ],
+      "exitCode": 0,
+      "logSha256": "0084a2467ddcb7209a9d3143448e657c43875f2b05b5c0c5e89ed25ab6b9a3dd"
+    },
+    {
+      "name": "node20-replay",
+      "command": [
+        "/tmp/claude-1000/ghostchars-atomic-repair/node20/node_modules/node-linux-x64/bin/node",
+        "/home/antonsoloviev/work/projects/showcases/contextscope/studies/duplicate-scaling/replay.mjs",
+        "/tmp/claude-1000/contextscope-duplicate-scaling/installed-node20/node_modules/@antonsoloviev/contextscope/dist",
+        "/tmp/claude-1000/contextscope-duplicate-scaling/cli-node20",
+        "/home/antonsoloviev/work/projects/showcases/contextscope/studies/duplicate-scaling/results/cli-node20.json"
+      ],
+      "exitCode": 0,
+      "logSha256": "b14885225f3980a8b107ac24114aac65793e02446bfda5549f996630997a7ea7"
+    },
+    {
+      "name": "node20-oracle",
+      "command": [
+        "/tmp/claude-1000/ghostchars-atomic-repair/node20/node_modules/node-linux-x64/bin/node",
+        "/home/antonsoloviev/work/projects/showcases/contextscope/studies/duplicate-scaling/oracle.mjs",
+        "/tmp/claude-1000/contextscope-duplicate-scaling/installed-node20/node_modules/@antonsoloviev/contextscope/dist",
+        "/tmp/claude-1000/contextscope-duplicate-scaling/oracle-node20.json"
+      ],
+      "exitCode": 0,
+      "logSha256": "fc8260508c81ef0abe1775e0c61f294b3c2fbb454c0b6d0133dfbd732d62dc00"
+    },
+    {
+      "name": "node20-benchmark",
+      "command": [
+        "/tmp/claude-1000/ghostchars-atomic-repair/node20/node_modules/node-linux-x64/bin/node",
+        "/home/antonsoloviev/work/projects/showcases/contextscope/studies/duplicate-scaling/benchmark.mjs",
+        "/tmp/claude-1000/contextscope-duplicate-scaling/installed-node20/node_modules/@antonsoloviev/contextscope/dist",
+        "mixed-2000",
+        "/home/antonsoloviev/work/projects/showcases/contextscope/studies/duplicate-scaling/results/benchmark-node20.json",
+        "1"
+      ],
+      "exitCode": 0,
+      "logSha256": "efb6e023cdcdb6e4b7392ed6576e5080f9323985eaa94e29bae3cdd0a5db7247"
+    },
+    {
+      "name": "node24-install",
+      "command": [
+        "npm",
+        "install",
+        "--prefix",
+        "/tmp/claude-1000/contextscope-duplicate-scaling/installed-node24",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund",
+        "/tmp/claude-1000/contextscope-duplicate-scaling/antonsoloviev-contextscope-0.3.3.tgz"
+      ],
+      "exitCode": 0,
+      "logSha256": "0084a2467ddcb7209a9d3143448e657c43875f2b05b5c0c5e89ed25ab6b9a3dd"
+    },
+    {
+      "name": "node24-replay",
+      "command": [
+        "/tmp/claude-1000/stutterscope-frame-gaps/node24/node_modules/node-linux-x64/bin/node",
+        "/home/antonsoloviev/work/projects/showcases/contextscope/studies/duplicate-scaling/replay.mjs",
+        "/tmp/claude-1000/contextscope-duplicate-scaling/installed-node24/node_modules/@antonsoloviev/contextscope/dist",
+        "/tmp/claude-1000/contextscope-duplicate-scaling/cli-node24",
+        "/home/antonsoloviev/work/projects/showcases/contextscope/studies/duplicate-scaling/results/cli-node24.json"
+      ],
+      "exitCode": 0,
+      "logSha256": "fb4aa4c3bea0193ccb6cd218f2cce92e749549ab17edec21543fa1caa46fb034"
+    },
+    {
+      "name": "node24-oracle",
+      "command": [
+        "/tmp/claude-1000/stutterscope-frame-gaps/node24/node_modules/node-linux-x64/bin/node",
+        "/home/antonsoloviev/work/projects/showcases/contextscope/studies/duplicate-scaling/oracle.mjs",
+        "/tmp/claude-1000/contextscope-duplicate-scaling/installed-node24/node_modules/@antonsoloviev/contextscope/dist",
+        "/tmp/claude-1000/contextscope-duplicate-scaling/oracle-node24.json"
+      ],
+      "exitCode": 0,
+      "logSha256": "fc8260508c81ef0abe1775e0c61f294b3c2fbb454c0b6d0133dfbd732d62dc00"
+    },
+    {
+      "name": "node24-benchmark",
+      "command": [
+        "/tmp/claude-1000/stutterscope-frame-gaps/node24/node_modules/node-linux-x64/bin/node",
+        "/home/antonsoloviev/work/projects/showcases/contextscope/studies/duplicate-scaling/benchmark.mjs",
+        "/tmp/claude-1000/contextscope-duplicate-scaling/installed-node24/node_modules/@antonsoloviev/contextscope/dist",
+        "mixed-2000",
+        "/home/antonsoloviev/work/projects/showcases/contextscope/studies/duplicate-scaling/results/benchmark-node24.json",
+        "1"
+      ],
+      "exitCode": 0,
+      "logSha256": "99160cfcff3712ca4a00ecb2f74c130723d3aec43833d7604f8dee33d60d6385"
+    },
+    {
+      "name": "browser-after",
+      "command": [
+        "/tmp/claude-1000/stutterscope-frame-gaps/node24/node_modules/node-linux-x64/bin/node",
+        "/home/antonsoloviev/work/projects/showcases/contextscope/studies/duplicate-scaling/browser.mjs",
+        "/tmp/claude-1000/contextscope-duplicate-scaling/clean-b8383d4",
+        "/tmp/claude-1000/contextscope-duplicate-scaling/cli-node24",
+        "/home/antonsoloviev/work/projects/showcases/contextscope/studies/duplicate-scaling/results/browser-after.json",
+        "/tmp/claude-1000/contextscope-duplicate-scaling/screens-after"
+      ],
+      "exitCode": 0,
+      "logSha256": "f3250a4001db215e0178d2ce13d3a906dbba5a14ee254d0e33f2f508887e28d3"
+    },
+    {
+      "name": "small-history-browser",
+      "command": [
+        "/tmp/claude-1000/stutterscope-frame-gaps/node24/node_modules/node-linux-x64/bin/node",
+        "/tmp/claude-1000/contextscope-duplicate-scaling/clean-b8383d4/studies/duplicate-evidence/browser.mjs",
+        "/tmp/claude-1000/contextscope-duplicate-scaling/clean-b8383d4",
+        "/tmp/claude-1000/contextscope-duplicate-scaling/small-history-browser.json",
+        "verify"
+      ],
+      "exitCode": 0,
+      "logSha256": "39712653e517cbf0e887e97bc6d8409733b6d57bf003b39c0faf3d8f5ecc6cc4"
+    }
+  ],
+  "installed": [
+    {
+      "runtime": "v20.0.0",
+      "distFilesMatchCleanBuild": 94,
+      "cliCasesAllReportsMatch": 6,
+      "oracleCases": 240,
+      "oracleAllOutputsMatch": true,
+      "mixedBenchmarkOutputMatches": true
+    },
+    {
+      "runtime": "v24.21.0",
+      "distFilesMatchCleanBuild": 94,
+      "cliCasesAllReportsMatch": 6,
+      "oracleCases": 240,
+      "oracleAllOutputsMatch": true,
+      "mixedBenchmarkOutputMatches": true
+    }
+  ],
+  "package": {
+    "file": "antonsoloviev-contextscope-0.3.3.tgz",
+    "bytes": 98387,
+    "sha256": "23dcc5007e689d3cbaf5654c1e1357beea0bd11444e5baed5848a86d2f01b7d7"
+  },
+  "trackedEntriesMatchCommit": 444,
+  "browser": {
+    "largeHistories": true,
+    "smallHistoryReceiptSha256": "3d36acd63e335ebd483c6af9067d2351978ea19e1173665b81a4cc4da7f794b4",
+    "largeHistoryWorkflows": 4,
+    "smallHistoryWorkflows": 4,
+    "baselineLargeHistoryWorkflows": 4
+  },
+  "complete": true,
+  "unitTests": {
+    "files": 40,
+    "passed": 524
+  },
+  "harnessCorrections": [
+    "The initial baseline browser attempt warmed currently used fonts only. Firefox requested an additional bundled font after disconnection. The harness now loads all bundled font faces before disconnecting; all four baseline workflows were repeated successfully. No application change.",
+    "npm 12 pack --json returns a package-keyed object after lifecycle output, not the older array. The verifier was corrected and resumed after the already successful clean checks and pack.",
+    "Tracked-entry comparison now compares a symbolic link target with its Git blob instead of trying to read the linked examples directory as a regular file. The checks and package were retained without rerunning."
+  ],
+  "screenshots": [
+    {
+      "path": "docs/assets/duplicate-scaling/chromium-1440.png",
+      "sha256": "fa9990f4de989046ef47714089bf05c940d6470431b2166697497c7778a0c28d",
+      "beforeSha256": "fa9990f4de989046ef47714089bf05c940d6470431b2166697497c7778a0c28d",
+      "beforeAndAfterBytesIdentical": true,
+      "bothInspected": true
+    },
+    {
+      "path": "docs/assets/duplicate-scaling/chromium-375.png",
+      "sha256": "d315581d4200eab6bb032322f2d694d0e2f3da2b6c98e18f5fe78a57c9b5810b",
+      "beforeSha256": "d315581d4200eab6bb032322f2d694d0e2f3da2b6c98e18f5fe78a57c9b5810b",
+      "beforeAndAfterBytesIdentical": true,
+      "bothInspected": true
+    },
+    {
+      "path": "docs/assets/duplicate-scaling/firefox-1440.png",
+      "sha256": "d2b6fef1c6a4e09ed1a8adfd1bf9aed6b37e14e1b8db73d661271977afd00880",
+      "beforeSha256": "d2b6fef1c6a4e09ed1a8adfd1bf9aed6b37e14e1b8db73d661271977afd00880",
+      "beforeAndAfterBytesIdentical": true,
+      "bothInspected": true
+    },
+    {
+      "path": "docs/assets/duplicate-scaling/firefox-375.png",
+      "sha256": "add3622576ef1d07dd6e61171c05f7ec434438a663d7eaa54167bdf9161acbbc",
+      "beforeSha256": "add3622576ef1d07dd6e61171c05f7ec434438a663d7eaa54167bdf9161acbbc",
+      "beforeAndAfterBytesIdentical": true,
+      "bothInspected": true
+    }
+  ]
+}
