@@ -1,0 +1,129 @@
+{
+  "node": "v24.21.0",
+  "mode": "after",
+  "fixture": "tests/fixtures/sdk/openai-cache-tool-output.jsonl.gz",
+  "fixtureSha256": "83a33b7aff80eef0c38eb4bb5244e91b391782c256bdebfdfb34a2ae7dc2d5ba",
+  "cases": [
+    {
+      "format": "json",
+      "alias": "direct",
+      "exit": 1,
+      "inputBytes": 394,
+      "afterBytes": 394,
+      "inputSha256": "83a33b7aff80eef0c38eb4bb5244e91b391782c256bdebfdfb34a2ae7dc2d5ba",
+      "afterSha256": "83a33b7aff80eef0c38eb4bb5244e91b391782c256bdebfdfb34a2ae7dc2d5ba",
+      "inputPreserved": true,
+      "stderr": "Could not prepare report files: JSON output and input must use distinct files, including file aliases.\n"
+    },
+    {
+      "format": "json",
+      "alias": "symlink",
+      "exit": 1,
+      "inputBytes": 394,
+      "afterBytes": 394,
+      "inputSha256": "83a33b7aff80eef0c38eb4bb5244e91b391782c256bdebfdfb34a2ae7dc2d5ba",
+      "afterSha256": "83a33b7aff80eef0c38eb4bb5244e91b391782c256bdebfdfb34a2ae7dc2d5ba",
+      "inputPreserved": true,
+      "stderr": "Could not prepare report files: JSON output must not be a symbolic link: alias\n"
+    },
+    {
+      "format": "json",
+      "alias": "hardlink",
+      "exit": 1,
+      "inputBytes": 394,
+      "afterBytes": 394,
+      "inputSha256": "83a33b7aff80eef0c38eb4bb5244e91b391782c256bdebfdfb34a2ae7dc2d5ba",
+      "afterSha256": "83a33b7aff80eef0c38eb4bb5244e91b391782c256bdebfdfb34a2ae7dc2d5ba",
+      "inputPreserved": true,
+      "stderr": "Could not prepare report files: JSON output and input must use distinct files, including file aliases.\n"
+    },
+    {
+      "format": "json",
+      "alias": "parent-symlink",
+      "exit": 1,
+      "inputBytes": 394,
+      "afterBytes": 394,
+      "inputSha256": "83a33b7aff80eef0c38eb4bb5244e91b391782c256bdebfdfb34a2ae7dc2d5ba",
+      "afterSha256": "83a33b7aff80eef0c38eb4bb5244e91b391782c256bdebfdfb34a2ae7dc2d5ba",
+      "inputPreserved": true,
+      "stderr": "Could not prepare report files: JSON output and input must use distinct files, including file aliases.\n"
+    },
+    {
+      "format": "html",
+      "alias": "direct",
+      "exit": 1,
+      "inputBytes": 394,
+      "afterBytes": 394,
+      "inputSha256": "83a33b7aff80eef0c38eb4bb5244e91b391782c256bdebfdfb34a2ae7dc2d5ba",
+      "afterSha256": "83a33b7aff80eef0c38eb4bb5244e91b391782c256bdebfdfb34a2ae7dc2d5ba",
+      "inputPreserved": true,
+      "stderr": "Could not prepare report files: HTML output and input must use distinct files, including file aliases.\n"
+    },
+    {
+      "format": "html",
+      "alias": "symlink",
+      "exit": 1,
+      "inputBytes": 394,
+      "afterBytes": 394,
+      "inputSha256": "83a33b7aff80eef0c38eb4bb5244e91b391782c256bdebfdfb34a2ae7dc2d5ba",
+      "afterSha256": "83a33b7aff80eef0c38eb4bb5244e91b391782c256bdebfdfb34a2ae7dc2d5ba",
+      "inputPreserved": true,
+      "stderr": "Could not prepare report files: HTML output must not be a symbolic link: alias\n"
+    },
+    {
+      "format": "html",
+      "alias": "hardlink",
+      "exit": 1,
+      "inputBytes": 394,
+      "afterBytes": 394,
+      "inputSha256": "83a33b7aff80eef0c38eb4bb5244e91b391782c256bdebfdfb34a2ae7dc2d5ba",
+      "afterSha256": "83a33b7aff80eef0c38eb4bb5244e91b391782c256bdebfdfb34a2ae7dc2d5ba",
+      "inputPreserved": true,
+      "stderr": "Could not prepare report files: HTML output and input must use distinct files, including file aliases.\n"
+    },
+    {
+      "format": "html",
+      "alias": "parent-symlink",
+      "exit": 1,
+      "inputBytes": 394,
+      "afterBytes": 394,
+      "inputSha256": "83a33b7aff80eef0c38eb4bb5244e91b391782c256bdebfdfb34a2ae7dc2d5ba",
+      "afterSha256": "83a33b7aff80eef0c38eb4bb5244e91b391782c256bdebfdfb34a2ae7dc2d5ba",
+      "inputPreserved": true,
+      "stderr": "Could not prepare report files: HTML output and input must use distinct files, including file aliases.\n"
+    },
+    {
+      "collision": "new",
+      "exit": 1,
+      "outputExists": false,
+      "stderr": "Could not prepare report files: JSON output and HTML must use distinct files, including file aliases.\n"
+    },
+    {
+      "collision": "existing",
+      "exit": 1,
+      "outputExists": true,
+      "stderr": "Could not prepare report files: JSON output and HTML must use distinct files, including file aliases.\n"
+    },
+    {
+      "collision": "hardlink",
+      "exit": 1,
+      "outputExists": true,
+      "stderr": "Could not prepare report files: JSON output and HTML must use distinct files, including file aliases.\n"
+    },
+    {
+      "collision": "parent-symlink",
+      "exit": 1,
+      "outputExists": true,
+      "stderr": "Could not prepare report files: JSON output and HTML must use distinct files, including file aliases.\n"
+    }
+  ],
+  "safe": {
+    "exit": 0,
+    "requests": 3,
+    "jsonSha256": "a9db6470b6f0ef93b0e26018b5ef377f51e1e4e67f56b5b31f362fafb617dd77",
+    "htmlSha256": "cd4792a48f71e0ca29260b660d39c9da6d607db8700441b30355f7d4212f5481",
+    "htmlWithoutGenerationTimeSha256": "a11d15e5e5763bfcabe9d9020ba98654defc55e3456e5971c44a8f422d699924",
+    "inputPreserved": true,
+    "temporaryFiles": 0
+  }
+}

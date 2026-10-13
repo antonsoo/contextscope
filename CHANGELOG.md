@@ -26,6 +26,13 @@ of public SWE-bench agent runs; see `studies/real-trajectories/`.
 
 ### Fixed
 
+- Protect request logs from `--html` and `--json` report destinations, including
+  file aliases, and reject colliding report paths before analysis/calibration.
+  Stage both reports before replacing either; each replacement is atomic with
+  private file permissions. Refuse symlink/non-file destinations and report
+  write failures without a stack trace. Before/after SDK-capture replay is in
+  `studies/report-destinations/`. Source only; no npm release or deployment.
+
 - Keep findings with different severities or message variants in separate groups.
   A supported fast-mode message no longer hides unavailable-pricing warnings or
   labels a standard-speed fallback as fast pricing. Preserve repeated equivalent

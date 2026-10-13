@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import { writeFileSync } from "node:fs";
 import { analyze, countRequestTokens, parseInput, resolveModel, type AnalysisResult, type CalibrationResult, type FindingSeverity } from "../core/index.js";
 import { parseArgs, type CliArgs } from "./args.js";
 import { VERSION } from "./version.js";
@@ -8,6 +7,7 @@ import { renderHtmlReport } from "./html-report.js";
 import { readInputFile } from "./read-input.js";
 import { toJsonReport } from "./json-report.js";
 import { bold, red, visible } from "./ansi.js";
+import { validateReportPaths, writeReports, type ReportPath, type ReportFile } from "./write-reports.js";
 
 const HELP = `contextscope — see what's in your LLM context window
 
@@ -81,6 +81,16 @@ async function main(): Promise<void> {
   if (opts.command !== "analyze") fail(`Unknown command "${opts.command}". Only \`analyze\` is supported.`, true);
   if (!opts.file) fail("Missing input file.", true);
 
+  const reportPaths: ReportPath[] = [
+    ...(opts.html ? [{ label: "HTML" as const, path: opts.html }] : []),
+    ...(opts.json ? [{ label: "JSON" as const, path: opts.json }] : []),
+  ];
+  try {
+    validateReportPaths(opts.file, reportPaths);
+  } catch (err) {
+    fail(`Could not prepare report files: ${(err as Error).message}`);
+  }
+
   let input: string;
   try {
     input = readInputFile(opts.file);
@@ -106,13 +116,14 @@ async function main(): Promise<void> {
 
   process.stdout.write(renderTerminalReport(result, { verbose: opts.verbose, calibration }) + "\n");
 
-  if (opts.html) {
-    writeFileSync(opts.html, renderHtmlReport(result));
-    process.stdout.write(bold(`\nHTML report written to ${opts.html}\n`));
-  }
-  if (opts.json) {
-    writeFileSync(opts.json, toJsonReport(result));
-    process.stdout.write(bold(`JSON result written to ${opts.json}\n`));
+  try {
+    const reports: ReportFile[] = reportPaths.map((report) => ({ ...report,
+      text: report.label === "HTML" ? renderHtmlReport(result) : toJsonReport(result),
+    }));
+    writeReports(opts.file, reports);
+    for (const report of reports) process.stdout.write(bold(`${report.label} report written to ${visible(report.path)}\n`));
+  } catch (err) {
+    fail(`Could not write reports: ${(err as Error).message}`);
   }
 
   if (opts.failOn !== undefined) {

@@ -206,6 +206,14 @@ invalid, a usage aggregate overflows, or a finding meets the threshold.
 Missing optional response usage alone does not fail a gate. Gzipped input is detected by
 extension or, failing that, by gzip magic bytes.
 
+In the source checkout, report paths must be distinct from the input and from
+each other, including hard links and symlinked parent directories. Output
+symlinks are refused. Both reports are staged before replacing either file;
+each replacement is atomic and uses private permissions (0600 on POSIX).
+Invalid destinations and write failures exit 1. See the
+[captured overwrite and corrected workflow](studies/report-destinations/README.md).
+Shell redirection and concurrent filesystem changes are outside this guard.
+
 Real output on `examples/anthropic-agent-cache-bust.jsonl.gz`, a synthetic
 24-turn, ~79,000-token coding-agent session where a timestamp inside the system
 prompt busts the cache on every turn:

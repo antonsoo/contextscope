@@ -1,0 +1,129 @@
+{
+  "node": "v24.21.0",
+  "mode": "before",
+  "fixture": "tests/fixtures/sdk/openai-cache-tool-output.jsonl.gz",
+  "fixtureSha256": "83a33b7aff80eef0c38eb4bb5244e91b391782c256bdebfdfb34a2ae7dc2d5ba",
+  "cases": [
+    {
+      "format": "json",
+      "alias": "direct",
+      "exit": 0,
+      "inputBytes": 394,
+      "afterBytes": 12579,
+      "inputSha256": "83a33b7aff80eef0c38eb4bb5244e91b391782c256bdebfdfb34a2ae7dc2d5ba",
+      "afterSha256": "a9db6470b6f0ef93b0e26018b5ef377f51e1e4e67f56b5b31f362fafb617dd77",
+      "inputPreserved": false,
+      "stderr": ""
+    },
+    {
+      "format": "json",
+      "alias": "symlink",
+      "exit": 0,
+      "inputBytes": 394,
+      "afterBytes": 12579,
+      "inputSha256": "83a33b7aff80eef0c38eb4bb5244e91b391782c256bdebfdfb34a2ae7dc2d5ba",
+      "afterSha256": "a9db6470b6f0ef93b0e26018b5ef377f51e1e4e67f56b5b31f362fafb617dd77",
+      "inputPreserved": false,
+      "stderr": ""
+    },
+    {
+      "format": "json",
+      "alias": "hardlink",
+      "exit": 0,
+      "inputBytes": 394,
+      "afterBytes": 12579,
+      "inputSha256": "83a33b7aff80eef0c38eb4bb5244e91b391782c256bdebfdfb34a2ae7dc2d5ba",
+      "afterSha256": "a9db6470b6f0ef93b0e26018b5ef377f51e1e4e67f56b5b31f362fafb617dd77",
+      "inputPreserved": false,
+      "stderr": ""
+    },
+    {
+      "format": "json",
+      "alias": "parent-symlink",
+      "exit": 0,
+      "inputBytes": 394,
+      "afterBytes": 12579,
+      "inputSha256": "83a33b7aff80eef0c38eb4bb5244e91b391782c256bdebfdfb34a2ae7dc2d5ba",
+      "afterSha256": "a9db6470b6f0ef93b0e26018b5ef377f51e1e4e67f56b5b31f362fafb617dd77",
+      "inputPreserved": false,
+      "stderr": ""
+    },
+    {
+      "format": "html",
+      "alias": "direct",
+      "exit": 0,
+      "inputBytes": 394,
+      "afterBytes": 5931,
+      "inputSha256": "83a33b7aff80eef0c38eb4bb5244e91b391782c256bdebfdfb34a2ae7dc2d5ba",
+      "afterSha256": "1fe71da1fb20e76209cbc52243373c2256aa36cb1481b787bc7734e0b2e670af",
+      "inputPreserved": false,
+      "stderr": ""
+    },
+    {
+      "format": "html",
+      "alias": "symlink",
+      "exit": 0,
+      "inputBytes": 394,
+      "afterBytes": 5931,
+      "inputSha256": "83a33b7aff80eef0c38eb4bb5244e91b391782c256bdebfdfb34a2ae7dc2d5ba",
+      "afterSha256": "a8f11dc9837ecf90ad3121033b9ca53828f92661bd796f02893a07d3eb36e789",
+      "inputPreserved": false,
+      "stderr": ""
+    },
+    {
+      "format": "html",
+      "alias": "hardlink",
+      "exit": 0,
+      "inputBytes": 394,
+      "afterBytes": 5931,
+      "inputSha256": "83a33b7aff80eef0c38eb4bb5244e91b391782c256bdebfdfb34a2ae7dc2d5ba",
+      "afterSha256": "cb5fa588c304baebc6043ec547b9d75215468ef32c8092f40927211a1141202c",
+      "inputPreserved": false,
+      "stderr": ""
+    },
+    {
+      "format": "html",
+      "alias": "parent-symlink",
+      "exit": 0,
+      "inputBytes": 394,
+      "afterBytes": 5931,
+      "inputSha256": "83a33b7aff80eef0c38eb4bb5244e91b391782c256bdebfdfb34a2ae7dc2d5ba",
+      "afterSha256": "951954669b96af34aefe62eafa21043d86a9feee492825a3b1ddd7c01f2c94c1",
+      "inputPreserved": false,
+      "stderr": ""
+    },
+    {
+      "collision": "new",
+      "exit": 0,
+      "outputExists": true,
+      "stderr": ""
+    },
+    {
+      "collision": "existing",
+      "exit": 0,
+      "outputExists": true,
+      "stderr": ""
+    },
+    {
+      "collision": "hardlink",
+      "exit": 0,
+      "outputExists": true,
+      "stderr": ""
+    },
+    {
+      "collision": "parent-symlink",
+      "exit": 0,
+      "outputExists": true,
+      "stderr": ""
+    }
+  ],
+  "safe": {
+    "exit": 0,
+    "requests": 3,
+    "jsonSha256": "a9db6470b6f0ef93b0e26018b5ef377f51e1e4e67f56b5b31f362fafb617dd77",
+    "htmlSha256": "610af4e93a4efb73c3581e059575accc26e991820aa854b0aa93c6a2847ddcb2",
+    "htmlWithoutGenerationTimeSha256": "a11d15e5e5763bfcabe9d9020ba98654defc55e3456e5971c44a8f422d699924",
+    "inputPreserved": true,
+    "temporaryFiles": 0
+  }
+}
