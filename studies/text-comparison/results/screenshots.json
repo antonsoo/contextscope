@@ -1,0 +1,86 @@
+[
+  {
+    "path": "docs/assets/text-comparison/before-chromium-1440.png",
+    "bytes": 13794,
+    "sha256": "3e66d9e6a00ccb2bf6f02c07ef68f19a1ca06ef16ad6ab866b4bda1021af9fc0",
+    "viewed": true,
+    "build": "e835a2fb626d6d5b513f7569ce0a07c9d20e4e1f"
+  },
+  {
+    "path": "docs/assets/text-comparison/before-chromium-375.png",
+    "bytes": 13462,
+    "sha256": "57abc60113f67ad95772848dcb760c56c0ee51568a573f4b5fb4ec21a12f6e55",
+    "viewed": true,
+    "build": "e835a2fb626d6d5b513f7569ce0a07c9d20e4e1f"
+  },
+  {
+    "path": "docs/assets/text-comparison/before-firefox-1440.png",
+    "bytes": 19718,
+    "sha256": "bc325cc946dcd4b1828a7ef30f660f8354937b417188bcc330a3e02c766b2cf3",
+    "viewed": true,
+    "build": "e835a2fb626d6d5b513f7569ce0a07c9d20e4e1f"
+  },
+  {
+    "path": "docs/assets/text-comparison/before-firefox-375.png",
+    "bytes": 19866,
+    "sha256": "712791c9cac6ded52b566e0715671ee05c52b9cedecdcd0236bbd4a7741d31d4",
+    "viewed": true,
+    "build": "e835a2fb626d6d5b513f7569ce0a07c9d20e4e1f"
+  },
+  {
+    "path": "docs/assets/text-comparison/chromium-1440-comparison.png",
+    "bytes": 67077,
+    "sha256": "dc52a8d06299f8515a5801829244954da4d74f423e1e7bb38c1f4ff01344ec22",
+    "viewed": true,
+    "build": "9728b73bdb2c0116d3dd47a9965ed4d7e04a6e5b"
+  },
+  {
+    "path": "docs/assets/text-comparison/chromium-1440-sources.png",
+    "bytes": 24764,
+    "sha256": "6188de3c37b22132237141cfecad749a012ad65540dd262f2e2af7052f62f19c",
+    "viewed": true,
+    "build": "9728b73bdb2c0116d3dd47a9965ed4d7e04a6e5b"
+  },
+  {
+    "path": "docs/assets/text-comparison/chromium-375-comparison.png",
+    "bytes": 53783,
+    "sha256": "410c73ff6f4d3e6024f9b34d83491eebfce4b32ffa59423eb224ba9bd3ce07bd",
+    "viewed": true,
+    "build": "9728b73bdb2c0116d3dd47a9965ed4d7e04a6e5b"
+  },
+  {
+    "path": "docs/assets/text-comparison/chromium-375-sources.png",
+    "bytes": 23750,
+    "sha256": "fc844bd901b860bb08d1f90637b0776c5f5a1b41026597f4a57d8287834d0de4",
+    "viewed": true,
+    "build": "9728b73bdb2c0116d3dd47a9965ed4d7e04a6e5b"
+  },
+  {
+    "path": "docs/assets/text-comparison/firefox-1440-comparison.png",
+    "bytes": 96842,
+    "sha256": "d2731ee324ee914f893d117ed078913cf1fb8a39cfa6d623cd5b9fbbd8fb91e0",
+    "viewed": true,
+    "build": "9728b73bdb2c0116d3dd47a9965ed4d7e04a6e5b"
+  },
+  {
+    "path": "docs/assets/text-comparison/firefox-1440-sources.png",
+    "bytes": 30878,
+    "sha256": "643fa8ef9d3b0d14b073122e4b2a9fa6bc8f3040715fd2d861dc005c182e514a",
+    "viewed": true,
+    "build": "9728b73bdb2c0116d3dd47a9965ed4d7e04a6e5b"
+  },
+  {
+    "path": "docs/assets/text-comparison/firefox-375-comparison.png",
+    "bytes": 84779,
+    "sha256": "9f869ec5d8f1b5bf6efc2f90fb90b9ee780ce67bc6050c4b93bc0b006556a5d5",
+    "viewed": true,
+    "build": "9728b73bdb2c0116d3dd47a9965ed4d7e04a6e5b"
+  },
+  {
+    "path": "docs/assets/text-comparison/firefox-375-sources.png",
+    "bytes": 30634,
+    "sha256": "302ff72bec9c6341bbb1199c2987d31794b7f71fe8ed9259b0a236e91fe1c2e2",
+    "viewed": true,
+    "build": "9728b73bdb2c0116d3dd47a9965ed4d7e04a6e5b"
+  }
+]

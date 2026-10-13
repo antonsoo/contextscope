@@ -1,0 +1,68 @@
+{
+  "node": "v20.0.0",
+  "results": [
+    {
+      "name": "edits",
+      "inputBytes": 9699,
+      "inputSha256": "e10092332119383bc4e7886b4c96ba25cd4f4918b2e242cfedcbed10a571c470",
+      "exitCode": 0,
+      "jsonSha256": "d2da117d5fc247e8a62aad7c17a411a55dda6c407ee33bd98854aa63e1054856",
+      "htmlWithoutGeneratedAtSha256": "a5ee00dee275666af85578828cf9b45191d636ad87dc3135a9aea55b95859cd0",
+      "stderr": ""
+    },
+    {
+      "name": "exact",
+      "inputBytes": 9700,
+      "inputSha256": "516a61f282b09d9057b91f89621261664aeea608cfbab5dd4adfab1390a2f3fc",
+      "exitCode": 0,
+      "jsonSha256": "7c84b6a47352e3d9e79fe5c93f72594e98f9a3dbc0b08458abb2c54a16446eea",
+      "htmlWithoutGeneratedAtSha256": "5abbcbef4e59920405d5fc986bf5adefa2bccefe1613b6abc3405b5897e3cd9d",
+      "stderr": ""
+    },
+    {
+      "name": "whitespace",
+      "inputBytes": 9706,
+      "inputSha256": "29f1e647a039251d0f475a68adbedef386880ad787ad3799578a129a70f1d9ef",
+      "exitCode": 0,
+      "jsonSha256": "8893d9be31f45a1d4aa17f3dd013e1b4581f7b191bfe8596b27ff0df1890a5a9",
+      "htmlWithoutGeneratedAtSha256": "0f03b0a26610734c3047bf4c2ba7365cd2eaabbe5d7be90c87a7cabe7d9a3a7a",
+      "stderr": ""
+    },
+    {
+      "name": "html",
+      "inputBytes": 9793,
+      "inputSha256": "262922faef6142f573d38e2d33c1fccd555526fd23ab7d001cc2e6378a433e91",
+      "exitCode": 0,
+      "jsonSha256": "50d2b1257af771d316e82b9b1a5074b7e6fc005e359f9491eaf0cddede1b8c60",
+      "htmlWithoutGeneratedAtSha256": "d568b3fab3e435438fdba295697743bd8697fe6af40fb69405c16dd05e8ee3b6",
+      "stderr": ""
+    },
+    {
+      "name": "large",
+      "inputBytes": 958020,
+      "inputSha256": "ca802a36307e89ed52e4857a6385d69d87cda1ed274a28f77c8487c724cd2dab",
+      "exitCode": 0,
+      "jsonSha256": "c35a18e087de3aa4326d066bc88a9d5bdf49dfdf4fd241af94576491004ff029",
+      "htmlWithoutGeneratedAtSha256": "6df5ae81a0fa58e0e719a3a608bf5c00b3b9c6e60c2acadbb7a468fd044b0327",
+      "stderr": ""
+    },
+    {
+      "name": "surrogate",
+      "inputBytes": 9716,
+      "inputSha256": "8f71fd1575dedf81dbc02f491224b64b487e7c9619f62af8d0d8b09118fb8274",
+      "exitCode": 0,
+      "jsonSha256": "2ffba2a15a60947dd3cc8c5d7cbb61e5d5912d43dd94341778b7f5c5900c726b",
+      "htmlWithoutGeneratedAtSha256": "80bdc5c3713b11e6289bfac764792fb70d78d49a488a0f5e837ebb899ae307d1",
+      "stderr": ""
+    },
+    {
+      "name": "crossRequest",
+      "inputBytes": 9848,
+      "inputSha256": "f66d7767ee03fb196f2abab3a40338498b906a946b8d5344247c329766138aa7",
+      "exitCode": 0,
+      "jsonSha256": "d25403ec93789e44fb0f651e2bd0d94ce6a681eba429b0fa796aaedb9a8bb594",
+      "htmlWithoutGeneratedAtSha256": "c131f3f29438848bd183d175a3a757d5a13b52b4b8f5d0d8c4640fe817472b7b",
+      "stderr": ""
+    }
+  ]
+}

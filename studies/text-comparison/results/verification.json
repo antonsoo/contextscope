@@ -1,0 +1,291 @@
+{
+  "sourceCommit": "9728b73bdb2c0116d3dd47a9965ed4d7e04a6e5b",
+  "checks": [
+    {
+      "name": "clean-install",
+      "command": [
+        "npm",
+        "ci"
+      ],
+      "exitCode": 0,
+      "logSha256": "12c1565c6782186675947ef60069f468f538455e31c8a7b23047cbca9298d91e"
+    },
+    {
+      "name": "clean-lint",
+      "command": [
+        "npm",
+        "run",
+        "lint"
+      ],
+      "exitCode": 0,
+      "logSha256": "7d759107193f1253093f82acb0858619861371ea869660e7cc49464cdc11bba0"
+    },
+    {
+      "name": "clean-typecheck",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "logSha256": "065f57db2f0de0df20f19d94151ae88ff01ac1c4c117dfd29507a338675f8589"
+    },
+    {
+      "name": "clean-tests",
+      "command": [
+        "npm",
+        "test"
+      ],
+      "exitCode": 0,
+      "logSha256": "6517c797c8fd1bf3143b6b3a7556002ff5d44a897307d1ba1e453cd7d5fb38cb"
+    },
+    {
+      "name": "clean-build",
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "exitCode": 0,
+      "logSha256": "5850b96fad1548c3de9f185c0f1cfa4973b9c0ff5d4b34e306552551c890f06f"
+    },
+    {
+      "name": "cli-clean",
+      "command": [
+        "<node24>",
+        "<clean>/studies/text-comparison/replay.mjs",
+        "<clean>/dist",
+        "<scratch>/cli-clean",
+        "<checkout>/studies/text-comparison/results/cli-clean.json"
+      ],
+      "exitCode": 0,
+      "logSha256": "fc40db780b78b311f8be7a80ca9c138f515076f1b438bb35aa196cb079707706"
+    },
+    {
+      "name": "clean-pack",
+      "command": [
+        "npm",
+        "pack",
+        "--json",
+        "--pack-destination",
+        "<scratch>"
+      ],
+      "exitCode": 0,
+      "logSha256": "1e215554bd822e80212d8942913be32b9c63ed963cb4266b01c248384f83ed89"
+    },
+    {
+      "name": "node20-install",
+      "command": [
+        "npm",
+        "install",
+        "--prefix",
+        "<scratch>/installed-node20",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund",
+        "<scratch>/antonsoloviev-contextscope-0.3.3.tgz"
+      ],
+      "exitCode": 0,
+      "logSha256": "65c731cd02e19c79f6f5a3e84a4dd64a49acd6c47d2ee551d7cc9da191e8c96c"
+    },
+    {
+      "name": "node20-cli",
+      "command": [
+        "<node20>",
+        "<clean>/studies/text-comparison/replay.mjs",
+        "<scratch>/installed-node20/node_modules/@antonsoloviev/contextscope/dist",
+        "<scratch>/cli-node20",
+        "<checkout>/studies/text-comparison/results/cli-node20.json"
+      ],
+      "exitCode": 0,
+      "logSha256": "fc40db780b78b311f8be7a80ca9c138f515076f1b438bb35aa196cb079707706"
+    },
+    {
+      "name": "node24-install",
+      "command": [
+        "npm",
+        "install",
+        "--prefix",
+        "<scratch>/installed-node24",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund",
+        "<scratch>/antonsoloviev-contextscope-0.3.3.tgz"
+      ],
+      "exitCode": 0,
+      "logSha256": "65c731cd02e19c79f6f5a3e84a4dd64a49acd6c47d2ee551d7cc9da191e8c96c"
+    },
+    {
+      "name": "node24-cli",
+      "command": [
+        "<node24>",
+        "<clean>/studies/text-comparison/replay.mjs",
+        "<scratch>/installed-node24/node_modules/@antonsoloviev/contextscope/dist",
+        "<scratch>/cli-node24",
+        "<checkout>/studies/text-comparison/results/cli-node24.json"
+      ],
+      "exitCode": 0,
+      "logSha256": "fc40db780b78b311f8be7a80ca9c138f515076f1b438bb35aa196cb079707706"
+    },
+    {
+      "name": "oracle-clean",
+      "command": [
+        "<node24>",
+        "<clean>/studies/text-comparison/oracle.mjs",
+        "<clean>",
+        "<public-reconstruction>",
+        "<checkout>/studies/text-comparison/results/oracle-clean.json"
+      ],
+      "exitCode": 0,
+      "logSha256": "b9d8a1a6f5b213930bc6c914e374d71b2b179540349a0d5bba77d06925a6beda"
+    },
+    {
+      "name": "browser-ci",
+      "command": [
+        "<node24>",
+        "node_modules/@playwright/test/cli.js",
+        "test",
+        "tests/browser/workspace.spec.ts",
+        "tests/browser/text-comparison.spec.ts"
+      ],
+      "exitCode": 0,
+      "logSha256": "1d5dcad2903f3dd096188093cd15590c9a2d1aae882b3a36d62028186c0a3a76"
+    },
+    {
+      "name": "browser-chromium-1440",
+      "command": [
+        "<node24>",
+        "<clean>/studies/text-comparison/browser.mjs",
+        "<clean>",
+        "<checkout>/studies/text-comparison/results/browser-chromium-1440.json",
+        "<scratch>/screens-clean",
+        "chromium",
+        "1440"
+      ],
+      "exitCode": 0,
+      "logSha256": "2831ba1f649829fc3fbfdd476595e270e3a1f7463b38175b58047a6fc9a2fa72"
+    },
+    {
+      "name": "browser-chromium-375",
+      "command": [
+        "<node24>",
+        "<clean>/studies/text-comparison/browser.mjs",
+        "<clean>",
+        "<checkout>/studies/text-comparison/results/browser-chromium-375.json",
+        "<scratch>/screens-clean",
+        "chromium",
+        "375"
+      ],
+      "exitCode": 0,
+      "logSha256": "b248ddd102d2f032097e3650b48b3d81b35df22ce5551b8f57b05b6c79f8c116"
+    },
+    {
+      "name": "browser-firefox-1440",
+      "command": [
+        "<node24>",
+        "<clean>/studies/text-comparison/browser.mjs",
+        "<clean>",
+        "<checkout>/studies/text-comparison/results/browser-firefox-1440.json",
+        "<scratch>/screens-clean",
+        "firefox",
+        "1440"
+      ],
+      "exitCode": 0,
+      "logSha256": "6a200950c2ba5209ae4e6f8b2d40feea00cac68b8a0b094c2978e709af0bbd20"
+    },
+    {
+      "name": "browser-firefox-375",
+      "command": [
+        "<node24>",
+        "<clean>/studies/text-comparison/browser.mjs",
+        "<clean>",
+        "<checkout>/studies/text-comparison/results/browser-firefox-375.json",
+        "<scratch>/screens-clean",
+        "firefox",
+        "375"
+      ],
+      "exitCode": 0,
+      "logSha256": "4e6e3e34124f4a888405be6ae0eb1bb1f511eaa8534908ccb16bdd0852158bff"
+    }
+  ],
+  "installed": [
+    {
+      "runtime": "v20.0.0",
+      "compiledFilesMatchBaselineAndCleanBuild": 94,
+      "cliCasesAllReportsMatch": 7,
+      "diffAbsentFromProductionDependencies": true
+    },
+    {
+      "runtime": "v24.21.0",
+      "compiledFilesMatchBaselineAndCleanBuild": 94,
+      "cliCasesAllReportsMatch": 7,
+      "diffAbsentFromProductionDependencies": true
+    }
+  ],
+  "sourceArchiveSha256": "6e125f563f2da37a0ed603baacef3fbacd2b7cbb8eda313268c5bfa6e4649fc0",
+  "trackedEntriesMatchCommit": 467,
+  "allCompiledFilesMatchBaseline": 141,
+  "bundledLicenseMatchesDependency": true,
+  "package": {
+    "file": "antonsoloviev-contextscope-0.3.3.tgz",
+    "bytes": 98574,
+    "sha256": "e502f1b0c5f6b9ccf76e3044717d83cb891a745a8986f5c7aec579aed320be51"
+  },
+  "browser": {
+    "workflows": 28,
+    "receipts": [
+      {
+        "receipt": "browser-chromium-1440.json",
+        "sha256": "e57cfb8bbeba759fc3829c37c6b815abd3a12b0136f04ac0efef7e27a60fbf7c",
+        "workflows": 7,
+        "assetsMatchCleanBuild": 33
+      },
+      {
+        "receipt": "browser-chromium-375.json",
+        "sha256": "3e1745916805ab6f4a2177500f1829fc7fafddfa171a07bdae86d8ade2bd3f27",
+        "workflows": 7,
+        "assetsMatchCleanBuild": 33
+      },
+      {
+        "receipt": "browser-firefox-1440.json",
+        "sha256": "bd8ec9bef2d9cbefb08f0e5291aa8f4ecb4c6bea2226b01d12b01aa90069b432",
+        "workflows": 7,
+        "assetsMatchCleanBuild": 33
+      },
+      {
+        "receipt": "browser-firefox-375.json",
+        "sha256": "533a031cd4f252efe6bac216e5b4aa68539d7996aa60b030c02e6bad9945ea47",
+        "workflows": 7,
+        "assetsMatchCleanBuild": 33
+      }
+    ],
+    "screenshots": "screenshots.json",
+    "allScreenshotsViewed": true,
+    "note": "Both bundled example and fonts loaded before disconnecting. All seven imports and reviews run offline. Open timings include browser automation and rendering; not performance benchmarks."
+  },
+  "unitTests": {
+    "files": 41,
+    "passed": 538
+  },
+  "workspaceBrowserTests": {
+    "passed": 74,
+    "engines": [
+      "Chromium 153.0.8010.12",
+      "Firefox 155.0"
+    ]
+  },
+  "oracle": {
+    "receipt": "oracle-clean.json",
+    "sha256": "bfd9bdcdbfc7e5eae5ca1d32bc6f81ec54fa5de6629fbc489d2bcb86ed9be5b1",
+    "generated": 400,
+    "totals": {
+      "snapshots": 240,
+      "groups": 466,
+      "pairs": 599,
+      "identical": 433,
+      "diff": 166,
+      "limited": 0
+    }
+  },
+  "complete": true
+}
