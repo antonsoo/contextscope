@@ -1,0 +1,2 @@
+npm notice run @antonsoloviev/contextscope@0.3.3 lint
+npm notice run eslint .

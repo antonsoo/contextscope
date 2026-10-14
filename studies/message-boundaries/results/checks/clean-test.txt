@@ -1,0 +1,14 @@
+npm notice run @antonsoloviev/contextscope@0.3.3 test
+npm notice run vitest run
+
+ RUN  v5.0.1 <work>/clean
+
+
+ Test Files  42 passed (42)
+      Tests  556 passed (556)
+   Start at  22:37:54
+   Duration  15.59s (tests 75%, import 22%, transform 3%)
+
+    Isolate  42 workers spawned · ~70ms startup each (spawn + environment, per file)
+             at least ~1.39s faster with isolate: false — reuses workers across files instead of one per file
+

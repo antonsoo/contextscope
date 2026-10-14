@@ -88,6 +88,21 @@ after disconnection; [the log](results/checks/browser-first-attempt.txt) records
 that failed no-request assertion. No font-loading product fix is claimed, and
 this study does not establish that a first offline inspection has every font.
 
+## Clean and installed verification
+
+The [verification receipt](results/verification.json) identifies the fresh
+source archive that passed locked installation, lint, both type checks,
+556 unit checks, both builds and all 98 Chromium/Firefox browser checks.
+The [normalized command logs](results/checks/) retain those observations.
+
+All 97 files in the packed `0.3.3` archive match the clean build and the
+installation, with [per-file hashes](results/package-files.json). The 16
+CLI/library workflows passed through that installation on
+[Node 26.7.0](results/installed-node26.json) and
+[Node 20.20.2](results/installed-node20.json), within the supported Node 20
+major version. All served browser-study assets match the fresh web build.
+These are local builds and installations, not an npm release.
+
 ## Scope
 
 The correction changes source segmentation and resulting token estimates,

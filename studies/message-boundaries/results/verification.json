@@ -1,0 +1,72 @@
+{
+  "baselineCommit": "8171750bc36135a284eea97bdeeb128bcee33b0f",
+  "codeAndCleanArchiveCommit": "2b43fee61b7cae28c0da0a9f3d7e4256403c118c",
+  "cleanChecks": {
+    "install": "npm ci",
+    "lint": "npm run lint",
+    "typecheck": "npm run typecheck",
+    "unit": {
+      "command": "npm test",
+      "passed": 556
+    },
+    "build": "npm run build",
+    "browser": {
+      "command": "npm run test:browser",
+      "passed": 98
+    }
+  },
+  "sdk": {
+    "openai": "3.23.0",
+    "python": "3.12.12"
+  },
+  "replay": {
+    "cases": 16,
+    "newSdkMockWorkflows": 12,
+    "unmodifiedExistingSdkFixtures": 4,
+    "baselineDisagreements": 12,
+    "correctedDisagreements": 0,
+    "existingSdkFixtureReportsByteIdenticalBeforeAfter": true,
+    "independentRefusalTextTokenizer": "js-tiktoken o200k_base"
+  },
+  "installed": [
+    {
+      "node": "v26.7.0",
+      "cases": 16,
+      "disagreements": 0
+    },
+    {
+      "node": "v20.20.2",
+      "cases": 16,
+      "disagreements": 0
+    }
+  ],
+  "package": {
+    "file": "antonsoloviev-contextscope-0.3.3.tgz",
+    "version": "0.3.3",
+    "bytes": 99069,
+    "sha256": "d10b323c7dda3a182031b7607f86fa62448c635e9781d29cc22436692deb4544",
+    "files": 97,
+    "allArchiveAndInstalledFilesMatchCleanBuild": true,
+    "inventory": "package-files.json"
+  },
+  "browserStudy": {
+    "engines": [
+      "chromium 153.0.8010.12",
+      "firefox 155.0"
+    ],
+    "widths": [
+      1440,
+      375
+    ],
+    "sdkWorkflowsPerCapture": 6,
+    "correctedSourceRetentionAgreements": 24,
+    "baselineSourceRetentionAgreements": 0,
+    "originalMessageDownloadsMatchSource": true,
+    "offlineHtmlReadRowsMatchDownloads": true,
+    "servedAssetsMatchCleanBuild": true,
+    "servedAssetCount": 10,
+    "screenshotsVisuallyInspected": 8,
+    "offlineSetup": "Application code and Latin font faces warmed before disconnecting. The first attempt after an ordinary analysis requested one not-yet-used same-origin font; its failed assertion is retained. No font-loading product fix claimed."
+  },
+  "boundary": "Synthetic SDK/mock transport histories and locally built/installed package; no provider acceptance, API token usage, observed caching, npm release, tag or hosted deployment claimed."
+}

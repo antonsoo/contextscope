@@ -1,0 +1,21 @@
+npm notice run @antonsoloviev/contextscope@0.3.3 npx
+npm notice run 'playwright' test tests/browser/message-boundaries.spec.ts
+[WebServer] (node:553574) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 4 tests using 2 workers
+
+(node:553611) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:553612) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [chromium] › tests/browser/message-boundaries.spec.ts:10:34 › SDK refusal and empty turns survive offline inspection and report exports at 375px (4.0s)
+  ✓  2 [chromium] › tests/browser/message-boundaries.spec.ts:10:34 › SDK refusal and empty turns survive offline inspection and report exports at 1440px (4.1s)
+(node:553968) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:553975) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  3 [firefox] › tests/browser/message-boundaries.spec.ts:10:34 › SDK refusal and empty turns survive offline inspection and report exports at 375px (6.4s)
+  ✓  4 [firefox] › tests/browser/message-boundaries.spec.ts:10:34 › SDK refusal and empty turns survive offline inspection and report exports at 1440px (6.4s)
+
+  4 passed (12.9s)

@@ -1,0 +1,11 @@
+npm notice run @antonsoloviev/contextscope@0.3.3 prepare
+npm notice run npm run build:core
+npm notice run @antonsoloviev/contextscope@0.3.3 build:core
+npm notice run tsc -p tsconfig.json
+
+added 142 packages, and audited 143 packages in 4s
+
+41 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities

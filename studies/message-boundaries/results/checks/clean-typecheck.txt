@@ -1,0 +1,2 @@
+npm notice run @antonsoloviev/contextscope@0.3.3 typecheck
+npm notice run tsc -p tsconfig.json --noEmit && tsc -p web/tsconfig.json --noEmit
