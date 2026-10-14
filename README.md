@@ -31,6 +31,15 @@ Only application code is retained for starting fresh workers; each analysis
 still releases its worker and tokenizer caches. Reloading the page or opening
 a built-in example that has not been downloaded can require a connection.
 
+**Refusal-only and empty history turns are retained in source.** A captured
+OpenAI SDK history with a changed assistant refusal previously looked identical:
+the parser dropped the whole turn and predicted reuse of all 2,625 modeled
+tokens. The corrected parser keeps the refusal, stops the prefix before that
+turn, and preserves empty-message roles and participant identity. The same
+records remain inspectable through original-source downloads and report exports.
+[SDK captures, before/after replay and limits](studies/message-boundaries/README.md).
+This is a source correction; no npm release or hosted deployment is claimed.
+
 ## On real agent trajectories
 
 The first measurement of contextscope against what a provider reported, not against

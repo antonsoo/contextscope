@@ -26,6 +26,14 @@ of public SWE-bench agent runs; see `studies/real-trajectories/`.
 
 ### Fixed
 
+- Retain OpenAI Chat assistant refusal fields and empty supplied message content
+  before prefix, thread and cache analysis. Preserve empty Responses message
+  units, input and instructions too; count refusal-part text rather than its
+  JSON wrapper. Empty string Chat content keeps the existing framing charge;
+  structural empty units do not invent text or renderer tokens. Changed roles,
+  participant names and output phases can no longer disappear from histories.
+  SDK/mock-transport and installed/browser evidence: `studies/message-boundaries/`.
+
 - Protect request logs from `--html` and `--json` report destinations, including
   file aliases, and reject colliding report paths before analysis/calibration.
   Stage both reports before replacing either; each replacement is atomic with

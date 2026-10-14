@@ -6,6 +6,7 @@ import { attachPromptIdentity } from "./prompt-identity.js";
 interface OpenAiContentPart {
   type?: string;
   text?: string;
+  refusal?: string;
   image_url?: unknown;
   [key: string]: unknown;
 }
@@ -84,9 +85,10 @@ export function parseOpenAiRequest(raw: unknown, index: number, counter: TokenCo
     const role = typeof message["role"] === "string" ? message["role"] : "user";
     const category = roleCategory(role);
     const content = message["content"];
+    const start = segments.length;
 
     if (typeof content === "string" || content === undefined || content === null) {
-      if (typeof content === "string" && content.length > 0) {
+      if (typeof content === "string") {
         const segment = seg({
           id: `messages[${mi}].content`,
           category,
@@ -110,6 +112,8 @@ export function parseOpenAiRequest(raw: unknown, index: number, counter: TokenCo
           segments.push(
             seg({ id: path, category, label: `message ${mi + 1} (${role}) text`, path, text: asText(part.text ?? ""), raw: part }),
           );
+        } else if (part.type === "refusal" && typeof part.refusal === "string") {
+          segments.push(seg({ id: path, category, label: `message ${mi + 1} (${role}) refusal`, path, text: part.refusal, raw: part }));
         } else if (part.type === "image_url") {
           segments.push(
             seg({ id: path, category: "image", label: `message ${mi + 1} image`, path, text: blockJson(part.image_url), raw: part }),
@@ -124,6 +128,12 @@ export function parseOpenAiRequest(raw: unknown, index: number, counter: TokenCo
       // A number or an object where the content should be: still part of what was sent.
       const path = `messages[${mi}].content`;
       segments.push(seg({ id: path, category, label: `message ${mi + 1} (${role}) malformed content`, path, text: blockJson(content), raw: message }));
+    }
+
+    const refusal = message["refusal"];
+    if (refusal !== undefined && refusal !== null) {
+      const path = `messages[${mi}].refusal`;
+      segments.push(seg({ id: path, category, label: `message ${mi + 1} (${role}) refusal`, path, text: asText(refusal), raw: message }));
     }
 
     // assistant tool calls
@@ -157,6 +167,14 @@ export function parseOpenAiRequest(raw: unknown, index: number, counter: TokenCo
         }),
       );
     }
+
+    // An empty/null content record still carries role and participant identity.
+    // Keep a zero-text unit when no text or call represented this message;
+    // dropping it would make later history reusable across a changed boundary.
+    if (segments.length === start && "content" in message) {
+      const path = `messages[${mi}].content`;
+      segments.push(seg({ id: path, category, label: `message ${mi + 1} (${role}) empty content`, path, text: "", raw: message }));
+    }
   });
 
   attachPromptIdentity(obj, segments, "openai");
@@ -171,7 +189,7 @@ function roleCategory(role: string): SegmentCategory {
 /** Responses API: `instructions` then each `input` item, in order. */
 function parseResponsesBody(obj: Record<string, unknown>, seg: (params: SegmentParams) => Segment): Segment[] {
   const segments: Segment[] = [];
-  if (typeof obj["instructions"] === "string" && obj["instructions"].length > 0) {
+  if (typeof obj["instructions"] === "string") {
     segments.push(seg({ id: "instructions", category: "system", label: "instructions", path: "instructions", text: obj["instructions"], raw: obj["instructions"] }));
   } else if (obj["instructions"] !== undefined && obj["instructions"] !== null && typeof obj["instructions"] !== "string") {
     segments.push(seg({ id: "instructions", category: "system", label: "instructions (malformed)", path: "instructions", text: blockJson(obj["instructions"]), raw: obj["instructions"] }));
@@ -179,7 +197,7 @@ function parseResponsesBody(obj: Record<string, unknown>, seg: (params: SegmentP
 
   const input = obj["input"];
   if (typeof input === "string") {
-    if (input.length > 0) segments.push(seg({ id: "input", category: "user", label: "input (user) text", path: "input", text: input, raw: input }));
+    segments.push(seg({ id: "input", category: "user", label: "input (user) text", path: "input", text: input, raw: input }));
     return segments;
   }
   if (!Array.isArray(input)) {
@@ -200,8 +218,9 @@ function parseResponsesBody(obj: Record<string, unknown>, seg: (params: SegmentP
         const role = typeof item["role"] === "string" ? (item["role"] as string) : "user";
         const category = roleCategory(role);
         const content = item["content"];
+        const start = segments.length;
         if (typeof content === "string") {
-          if (content.length > 0) segments.push(seg({ id: path, category, label: `item ${ii + 1} (${role}) text`, path: `${path}.content`, text: content, raw: item }));
+          segments.push(seg({ id: path, category, label: `item ${ii + 1} (${role}) text`, path: `${path}.content`, text: content, raw: item }));
         } else if (Array.isArray(content)) {
           (content as unknown[]).forEach((entry, pi) => {
             const partPath = `${path}.content[${pi}]`;
@@ -213,6 +232,8 @@ function parseResponsesBody(obj: Record<string, unknown>, seg: (params: SegmentP
             const partType = typeof part.type === "string" ? part.type : "content";
             if ((partType === "input_text" || partType === "output_text" || partType === "text") && typeof part.text === "string") {
               segments.push(seg({ id: partPath, category, label: `item ${ii + 1} (${role}) text`, path: partPath, text: part.text, raw: part }));
+            } else if (partType === "refusal" && typeof part.refusal === "string") {
+              segments.push(seg({ id: partPath, category, label: `item ${ii + 1} (${role}) refusal`, path: partPath, text: part.refusal, raw: part }));
             } else if (partType === "input_image") {
               segments.push(seg({ id: partPath, category: "image", label: `item ${ii + 1} image`, path: partPath, text: blockJson(part), raw: part }));
             } else {
@@ -221,6 +242,9 @@ function parseResponsesBody(obj: Record<string, unknown>, seg: (params: SegmentP
           });
         } else if (content !== undefined && content !== null) {
           segments.push(seg({ id: path, category, label: `item ${ii + 1} (${role}) malformed content`, path: `${path}.content`, text: blockJson(content), raw: item }));
+        }
+        if (segments.length === start && "content" in item) {
+          segments.push(seg({ id: path, category, label: `item ${ii + 1} (${role}) empty content`, path: `${path}.content`, text: "", raw: item }));
         }
         break;
       }

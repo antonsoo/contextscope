@@ -1,0 +1,394 @@
+{
+  "node": "v26.7.0",
+  "mode": "verify",
+  "servedAssets": [
+    {
+      "path": "assets/analysis-worker-CWzVlWNx.js",
+      "bytes": 2099516,
+      "sha256": "74431f8267c2058da187719156e510211503c78d605906141d92d9da1486aefe"
+    },
+    {
+      "path": "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2",
+      "bytes": 14708,
+      "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+    },
+    {
+      "path": "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2",
+      "bytes": 14888,
+      "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+    },
+    {
+      "path": "assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2",
+      "bytes": 15620,
+      "sha256": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83"
+    },
+    {
+      "path": "assets/ibm-plex-mono-700-latin-7sUh57Bg.woff2",
+      "bytes": 14908,
+      "sha256": "4f84d86cfd060f4ded334358ff8a4c81d4db2ed5addd568359d693f44a87765a"
+    },
+    {
+      "path": "assets/ibm-plex-sans-latin-IvpUvPa2.woff2",
+      "bytes": 45712,
+      "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+    },
+    {
+      "path": "assets/index-CVO5V7Un.css",
+      "bytes": 33744,
+      "sha256": "60c46bc7d43bbdaa94f2f84b4a49d63fe61ae44d40f536f815032190461b71ae"
+    },
+    {
+      "path": "assets/index-ItN1EEyJ.js",
+      "bytes": 79983,
+      "sha256": "dca2f94e7781dc0c6b52b3929817282be16e74de3661c1b66363530b9f43722b"
+    },
+    {
+      "path": "assets/presentation-C4kQ5e5K.js",
+      "bytes": 3792,
+      "sha256": "f4b36af022bd9b71fcc5de969d30ab64c73ae765d049f6aff398fac634874e9c"
+    },
+    {
+      "path": "index.html",
+      "bytes": 2623,
+      "sha256": "143c75db525c55af76af6492d68e895cae95aa04e5556c011800444b782a0ec4"
+    }
+  ],
+  "captures": [
+    {
+      "engine": "chromium",
+      "browser": "153.0.8010.12",
+      "width": 1440,
+      "rows": [
+        {
+          "id": "chat-refusal-changed",
+          "inputSha256": "08eb52b12c4dec6870d60b721ed98bb3854fe8cb5c0d90584999a260e7c436a2",
+          "matchedSegments": 2,
+          "sourceUnitPresent": true,
+          "originalRawDownloadMatches": true,
+          "readTokens": 0,
+          "reportSha256": "0a2217afb7454eed52948aae1e98a2352439e244ef24b44a4d1e67ae4f39c5de",
+          "offlineHtmlSha256": "c49819119d728581d561b809a153ed16a0bd4b2d134f80b97c6a99c484441ff0",
+          "offlineHtmlReadMatches": true,
+          "agrees": true
+        },
+        {
+          "id": "chat-refusal-identical",
+          "inputSha256": "0fd6955b086d961977f58911430378d2697cc248f285c4714218f667482a4cab",
+          "matchedSegments": 4,
+          "sourceUnitPresent": true,
+          "originalRawDownloadMatches": true,
+          "readTokens": 2992,
+          "reportSha256": "4791bf9c00de1f1a7e84d9cd2ce5165649c6334e12721d43ec0609c5a0020c00",
+          "offlineHtmlSha256": "edf124351fab5cfa5b0733247df079030deb173f7d3328c3b409043edefe559c",
+          "offlineHtmlReadMatches": true,
+          "agrees": true
+        },
+        {
+          "id": "chat-empty-role",
+          "inputSha256": "b2acfdc34c7c23473d4bed062b29fbb3ee3e59fa4604510a0cafa2646beaf018",
+          "matchedSegments": 2,
+          "sourceUnitPresent": true,
+          "originalRawDownloadMatches": true,
+          "readTokens": 0,
+          "reportSha256": "0d3e8b40ed996286abd547a4a30e5326034fc081eae704e1e082ff8664b6cb86",
+          "offlineHtmlSha256": "aeba30ee7f706085d4096def5161e61a2362acdf24d5d47a7ef8019f9ee3fba3",
+          "offlineHtmlReadMatches": true,
+          "agrees": true
+        },
+        {
+          "id": "responses-empty-role",
+          "inputSha256": "76c4b26f1dfd0899ece5286df1d14c69cfc53f4e24a99a60080242f275397442",
+          "matchedSegments": 2,
+          "sourceUnitPresent": true,
+          "originalRawDownloadMatches": true,
+          "readTokens": 0,
+          "reportSha256": "6ad59ef5ef50c05ab4d9709857d0ceb84ed851056abe5e446288546dbf1c4296",
+          "offlineHtmlSha256": "890023b1bb60224ad1531d665376f82f59b46b4b496b71358ad4db9d88109016",
+          "offlineHtmlReadMatches": true,
+          "agrees": true
+        },
+        {
+          "id": "responses-empty-identical",
+          "inputSha256": "d96573d9dd63ba0d2b67c5d91606186b76b45e22d15b370c2a5bcd2c235bb7fe",
+          "matchedSegments": 4,
+          "sourceUnitPresent": true,
+          "originalRawDownloadMatches": true,
+          "readTokens": 2610,
+          "reportSha256": "c0e2748f772ff6a7e625f7bf73a717828c0b16ad423cbca8616a883c3eb3c883",
+          "offlineHtmlSha256": "8ff51746da257201e39429f47bbff0fcf662143ead415aa8d238376dcd1a3a60",
+          "offlineHtmlReadMatches": true,
+          "agrees": true
+        },
+        {
+          "id": "responses-empty-output-phase",
+          "inputSha256": "e75817e13610e9edfaeaacd0214ac3c36be6221b4511fabf6697e457707c6eba",
+          "matchedSegments": 2,
+          "sourceUnitPresent": true,
+          "originalRawDownloadMatches": true,
+          "readTokens": 0,
+          "reportSha256": "c364ebcf4c9095e568a6cebe2aef77288596ac94bc8702e1be0af06b981e63d6",
+          "offlineHtmlSha256": "7b36194e5b9c0895965ebf162576f840eca5fd9719e7dd32ae293fec1ff2d9de",
+          "offlineHtmlReadMatches": true,
+          "agrees": true
+        }
+      ],
+      "screenshot": "chromium-1440.png",
+      "errors": [],
+      "violations": [],
+      "requestsAfterOffline": [],
+      "overflow": 0
+    },
+    {
+      "engine": "chromium",
+      "browser": "153.0.8010.12",
+      "width": 375,
+      "rows": [
+        {
+          "id": "chat-refusal-changed",
+          "inputSha256": "08eb52b12c4dec6870d60b721ed98bb3854fe8cb5c0d90584999a260e7c436a2",
+          "matchedSegments": 2,
+          "sourceUnitPresent": true,
+          "originalRawDownloadMatches": true,
+          "readTokens": 0,
+          "reportSha256": "0a2217afb7454eed52948aae1e98a2352439e244ef24b44a4d1e67ae4f39c5de",
+          "offlineHtmlSha256": "99255fc3aea79cd881f9340268bd61fe83e67ae209b453e947c3bd08ecc90243",
+          "offlineHtmlReadMatches": true,
+          "agrees": true
+        },
+        {
+          "id": "chat-refusal-identical",
+          "inputSha256": "0fd6955b086d961977f58911430378d2697cc248f285c4714218f667482a4cab",
+          "matchedSegments": 4,
+          "sourceUnitPresent": true,
+          "originalRawDownloadMatches": true,
+          "readTokens": 2992,
+          "reportSha256": "4791bf9c00de1f1a7e84d9cd2ce5165649c6334e12721d43ec0609c5a0020c00",
+          "offlineHtmlSha256": "6a73db8b29162fc7075e01dfad2c48b33f5180039cd121722fb003ef2720bdc1",
+          "offlineHtmlReadMatches": true,
+          "agrees": true
+        },
+        {
+          "id": "chat-empty-role",
+          "inputSha256": "b2acfdc34c7c23473d4bed062b29fbb3ee3e59fa4604510a0cafa2646beaf018",
+          "matchedSegments": 2,
+          "sourceUnitPresent": true,
+          "originalRawDownloadMatches": true,
+          "readTokens": 0,
+          "reportSha256": "0d3e8b40ed996286abd547a4a30e5326034fc081eae704e1e082ff8664b6cb86",
+          "offlineHtmlSha256": "d7cf32edc5d8f7939ba06bc604cdb7ee97b42498894e4c8e116b823eb3d24f34",
+          "offlineHtmlReadMatches": true,
+          "agrees": true
+        },
+        {
+          "id": "responses-empty-role",
+          "inputSha256": "76c4b26f1dfd0899ece5286df1d14c69cfc53f4e24a99a60080242f275397442",
+          "matchedSegments": 2,
+          "sourceUnitPresent": true,
+          "originalRawDownloadMatches": true,
+          "readTokens": 0,
+          "reportSha256": "6ad59ef5ef50c05ab4d9709857d0ceb84ed851056abe5e446288546dbf1c4296",
+          "offlineHtmlSha256": "2b8f75623e252bce8f1524d6fb728e9c66c59eda83ad5acf4a40a63cb675b88d",
+          "offlineHtmlReadMatches": true,
+          "agrees": true
+        },
+        {
+          "id": "responses-empty-identical",
+          "inputSha256": "d96573d9dd63ba0d2b67c5d91606186b76b45e22d15b370c2a5bcd2c235bb7fe",
+          "matchedSegments": 4,
+          "sourceUnitPresent": true,
+          "originalRawDownloadMatches": true,
+          "readTokens": 2610,
+          "reportSha256": "c0e2748f772ff6a7e625f7bf73a717828c0b16ad423cbca8616a883c3eb3c883",
+          "offlineHtmlSha256": "2f9041b2a8d2f795e65ec5787c57e419c08a4f72f9086ab9c441a850cd008aa3",
+          "offlineHtmlReadMatches": true,
+          "agrees": true
+        },
+        {
+          "id": "responses-empty-output-phase",
+          "inputSha256": "e75817e13610e9edfaeaacd0214ac3c36be6221b4511fabf6697e457707c6eba",
+          "matchedSegments": 2,
+          "sourceUnitPresent": true,
+          "originalRawDownloadMatches": true,
+          "readTokens": 0,
+          "reportSha256": "c364ebcf4c9095e568a6cebe2aef77288596ac94bc8702e1be0af06b981e63d6",
+          "offlineHtmlSha256": "4e66a28143b9068a92d8a76ddf8027f04aad243400b57475d458f59a97d58dac",
+          "offlineHtmlReadMatches": true,
+          "agrees": true
+        }
+      ],
+      "screenshot": "chromium-375.png",
+      "errors": [],
+      "violations": [],
+      "requestsAfterOffline": [],
+      "overflow": 0
+    },
+    {
+      "engine": "firefox",
+      "browser": "155.0",
+      "width": 1440,
+      "rows": [
+        {
+          "id": "chat-refusal-changed",
+          "inputSha256": "08eb52b12c4dec6870d60b721ed98bb3854fe8cb5c0d90584999a260e7c436a2",
+          "matchedSegments": 2,
+          "sourceUnitPresent": true,
+          "originalRawDownloadMatches": true,
+          "readTokens": 0,
+          "reportSha256": "0a2217afb7454eed52948aae1e98a2352439e244ef24b44a4d1e67ae4f39c5de",
+          "offlineHtmlSha256": "da99dcddc9dbea2c06260056f2cdde173bdd67bbddf0cffd9a885c47ea060b1f",
+          "offlineHtmlReadMatches": true,
+          "agrees": true
+        },
+        {
+          "id": "chat-refusal-identical",
+          "inputSha256": "0fd6955b086d961977f58911430378d2697cc248f285c4714218f667482a4cab",
+          "matchedSegments": 4,
+          "sourceUnitPresent": true,
+          "originalRawDownloadMatches": true,
+          "readTokens": 2992,
+          "reportSha256": "4791bf9c00de1f1a7e84d9cd2ce5165649c6334e12721d43ec0609c5a0020c00",
+          "offlineHtmlSha256": "1603fa8ecd6b67be906057d77e5c3cd121d83724aacd1518403f853800ab6282",
+          "offlineHtmlReadMatches": true,
+          "agrees": true
+        },
+        {
+          "id": "chat-empty-role",
+          "inputSha256": "b2acfdc34c7c23473d4bed062b29fbb3ee3e59fa4604510a0cafa2646beaf018",
+          "matchedSegments": 2,
+          "sourceUnitPresent": true,
+          "originalRawDownloadMatches": true,
+          "readTokens": 0,
+          "reportSha256": "0d3e8b40ed996286abd547a4a30e5326034fc081eae704e1e082ff8664b6cb86",
+          "offlineHtmlSha256": "6651c6432832b8a6863f270ab94757042ed4d7010fce8c5367b84e51f235ec91",
+          "offlineHtmlReadMatches": true,
+          "agrees": true
+        },
+        {
+          "id": "responses-empty-role",
+          "inputSha256": "76c4b26f1dfd0899ece5286df1d14c69cfc53f4e24a99a60080242f275397442",
+          "matchedSegments": 2,
+          "sourceUnitPresent": true,
+          "originalRawDownloadMatches": true,
+          "readTokens": 0,
+          "reportSha256": "6ad59ef5ef50c05ab4d9709857d0ceb84ed851056abe5e446288546dbf1c4296",
+          "offlineHtmlSha256": "56c9a997a27bf771ab63b699438186ebed432e25906245befd6751faf436f4e1",
+          "offlineHtmlReadMatches": true,
+          "agrees": true
+        },
+        {
+          "id": "responses-empty-identical",
+          "inputSha256": "d96573d9dd63ba0d2b67c5d91606186b76b45e22d15b370c2a5bcd2c235bb7fe",
+          "matchedSegments": 4,
+          "sourceUnitPresent": true,
+          "originalRawDownloadMatches": true,
+          "readTokens": 2610,
+          "reportSha256": "c0e2748f772ff6a7e625f7bf73a717828c0b16ad423cbca8616a883c3eb3c883",
+          "offlineHtmlSha256": "8b410e24263be7b2c88831165b537d13de370c1f8e282e023217199146f58f22",
+          "offlineHtmlReadMatches": true,
+          "agrees": true
+        },
+        {
+          "id": "responses-empty-output-phase",
+          "inputSha256": "e75817e13610e9edfaeaacd0214ac3c36be6221b4511fabf6697e457707c6eba",
+          "matchedSegments": 2,
+          "sourceUnitPresent": true,
+          "originalRawDownloadMatches": true,
+          "readTokens": 0,
+          "reportSha256": "c364ebcf4c9095e568a6cebe2aef77288596ac94bc8702e1be0af06b981e63d6",
+          "offlineHtmlSha256": "a9b3e08ff9acb6f6676aed170d2691d67b2d32824a5ea5d43db94fbae30a50ba",
+          "offlineHtmlReadMatches": true,
+          "agrees": true
+        }
+      ],
+      "screenshot": "firefox-1440.png",
+      "errors": [],
+      "violations": [],
+      "requestsAfterOffline": [],
+      "overflow": 0
+    },
+    {
+      "engine": "firefox",
+      "browser": "155.0",
+      "width": 375,
+      "rows": [
+        {
+          "id": "chat-refusal-changed",
+          "inputSha256": "08eb52b12c4dec6870d60b721ed98bb3854fe8cb5c0d90584999a260e7c436a2",
+          "matchedSegments": 2,
+          "sourceUnitPresent": true,
+          "originalRawDownloadMatches": true,
+          "readTokens": 0,
+          "reportSha256": "0a2217afb7454eed52948aae1e98a2352439e244ef24b44a4d1e67ae4f39c5de",
+          "offlineHtmlSha256": "5418bc6754a5d018f57f97735faa6196503a53744a05e23a10df0c608186182e",
+          "offlineHtmlReadMatches": true,
+          "agrees": true
+        },
+        {
+          "id": "chat-refusal-identical",
+          "inputSha256": "0fd6955b086d961977f58911430378d2697cc248f285c4714218f667482a4cab",
+          "matchedSegments": 4,
+          "sourceUnitPresent": true,
+          "originalRawDownloadMatches": true,
+          "readTokens": 2992,
+          "reportSha256": "4791bf9c00de1f1a7e84d9cd2ce5165649c6334e12721d43ec0609c5a0020c00",
+          "offlineHtmlSha256": "e7dc79cb7aba66e5b6792d16ef83da16c1191583f9f7f429d3ebc243e6e821a2",
+          "offlineHtmlReadMatches": true,
+          "agrees": true
+        },
+        {
+          "id": "chat-empty-role",
+          "inputSha256": "b2acfdc34c7c23473d4bed062b29fbb3ee3e59fa4604510a0cafa2646beaf018",
+          "matchedSegments": 2,
+          "sourceUnitPresent": true,
+          "originalRawDownloadMatches": true,
+          "readTokens": 0,
+          "reportSha256": "0d3e8b40ed996286abd547a4a30e5326034fc081eae704e1e082ff8664b6cb86",
+          "offlineHtmlSha256": "c41c88f5124318098dda33fa27c7af691d879a85285d5b378217a6f4d1e09805",
+          "offlineHtmlReadMatches": true,
+          "agrees": true
+        },
+        {
+          "id": "responses-empty-role",
+          "inputSha256": "76c4b26f1dfd0899ece5286df1d14c69cfc53f4e24a99a60080242f275397442",
+          "matchedSegments": 2,
+          "sourceUnitPresent": true,
+          "originalRawDownloadMatches": true,
+          "readTokens": 0,
+          "reportSha256": "6ad59ef5ef50c05ab4d9709857d0ceb84ed851056abe5e446288546dbf1c4296",
+          "offlineHtmlSha256": "00f7d0f668f151175f68eb372a1f3d95c9cae4d6f2701d8da3a6741af0ff8f19",
+          "offlineHtmlReadMatches": true,
+          "agrees": true
+        },
+        {
+          "id": "responses-empty-identical",
+          "inputSha256": "d96573d9dd63ba0d2b67c5d91606186b76b45e22d15b370c2a5bcd2c235bb7fe",
+          "matchedSegments": 4,
+          "sourceUnitPresent": true,
+          "originalRawDownloadMatches": true,
+          "readTokens": 2610,
+          "reportSha256": "c0e2748f772ff6a7e625f7bf73a717828c0b16ad423cbca8616a883c3eb3c883",
+          "offlineHtmlSha256": "675314e655e15e357a4f8698347642dc3e80404f7e750d6535b3509859022c1e",
+          "offlineHtmlReadMatches": true,
+          "agrees": true
+        },
+        {
+          "id": "responses-empty-output-phase",
+          "inputSha256": "e75817e13610e9edfaeaacd0214ac3c36be6221b4511fabf6697e457707c6eba",
+          "matchedSegments": 2,
+          "sourceUnitPresent": true,
+          "originalRawDownloadMatches": true,
+          "readTokens": 0,
+          "reportSha256": "c364ebcf4c9095e568a6cebe2aef77288596ac94bc8702e1be0af06b981e63d6",
+          "offlineHtmlSha256": "4e836c153636bf1e3e74a8ee8ca2c1a93389d6d9a328a22bd73e1a146170ef54",
+          "offlineHtmlReadMatches": true,
+          "agrees": true
+        }
+      ],
+      "screenshot": "firefox-375.png",
+      "errors": [],
+      "violations": [],
+      "requestsAfterOffline": [],
+      "overflow": 0
+    }
+  ]
+}

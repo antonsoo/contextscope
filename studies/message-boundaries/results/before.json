@@ -1,0 +1,633 @@
+{
+  "node": "v26.7.0",
+  "mode": "baseline",
+  "sdk": {
+    "openai": "3.23.0",
+    "python": "3.12.12"
+  },
+  "population": "Synthetic histories captured through the actual SDK over a mocked HTTP transport; no inference, reported token usage or provider cache observations",
+  "count": 16,
+  "disagreements": 12,
+  "cases": [
+    {
+      "id": "chat-refusal-changed",
+      "nativeSdkCapture": true,
+      "provenance": "Parsed SDK assistant message from a controlled refusal reply; second history edited only when labelled changed",
+      "inputSha256": "08eb52b12c4dec6870d60b721ed98bb3854fe8cb5c0d90584999a260e7c436a2",
+      "rawSha256": "7e8cd01ac1c264ac613436e6978e8e65c68183816bbb29e5a914c5f16f8f4c56",
+      "expected": {
+        "requiredSegmentPath": "messages[2].refusal",
+        "matchedSegments": 2,
+        "changed": true
+      },
+      "observed": {
+        "complete": true,
+        "warnings": [],
+        "sourcePaths": [
+          [
+            "messages[0].content",
+            "messages[1].content",
+            "messages[3].content"
+          ],
+          [
+            "messages[0].content",
+            "messages[1].content",
+            "messages[3].content"
+          ]
+        ],
+        "matchedSegments": 3,
+        "secondSegments": 3,
+        "matchedOpenaiTokens": 2625,
+        "readTokens": [
+          0,
+          2625
+        ],
+        "textCounts": [],
+        "sourceUnit": null
+      },
+      "cli": {
+        "exitCode": 0,
+        "stdout": "contextscope — openai · 2 requests (auto-detected)\npriced as GPT-6 Sol (per-request metadata)\n  OpenAI breakpoint caching: 30-minute writes cost 1.25 times ordinary input. Reads require an\n  eligible matching boundary. GPT-6 input/cache rates double above 272,000 modeled input tokens.\n  Prices assume Standard processing. Cache keys and changed renderer settings are isolated; expiry\n  and hidden provider tokens are not modeled.\n\nNo paired response usage. Cache reads and costs below are simulations.\n\nLargest request: 1 of 2 · GPT-6 Sol  ≈3,953 Claude tokens · 2,625 OpenAI (o200k_base) tokens · 0.3% of context window\n  ████████████████████ system             3,939 ≈tok  (1 segment)\n  ░░░░░░░░░░░░░░░░░░░░ user text             14 ≈tok  (2 segments)\n  (every request's breakdown: --verbose)\n\nPrefix match across the sequence\n  all 1 consecutive pair only append to the previous request\n\nCache simulation (openai, GPT-6 Sol)\n  request        read  write(30m)   uncached       cost  mode\n  req 1             0       2,625          0    $0.0066  implicit\n  req 2         2,625           0          0    $0.0005  implicit\n  total simulated cost: $0.0071\n  total optimized cost: $0.0071  (content normalized; OpenAI markers unchanged)\n\nNo supported cache or duplicate-content issues detected. This does not verify live cache hits.\nJSON report written to <work>/chat-refusal-changed-report.json\n",
+        "stderr": "",
+        "reportSha256": "d47daa23813b7db91853ef9db54d7057f2a45a00c8d04bfbd7468d32dfe5d98a",
+        "inputUnchanged": true
+      },
+      "agrees": false
+    },
+    {
+      "id": "chat-refusal-identical",
+      "nativeSdkCapture": true,
+      "provenance": "Parsed SDK assistant message from a controlled refusal reply; second history edited only when labelled changed",
+      "inputSha256": "0fd6955b086d961977f58911430378d2697cc248f285c4714218f667482a4cab",
+      "rawSha256": "dfd23a81054118c195b3c6b9fce2d65e33e712e2f248444046bdaf0b96d08317",
+      "expected": {
+        "requiredSegmentPath": "messages[2].refusal",
+        "matchedSegments": 4,
+        "changed": false
+      },
+      "observed": {
+        "complete": true,
+        "warnings": [],
+        "sourcePaths": [
+          [
+            "messages[0].content",
+            "messages[1].content",
+            "messages[3].content"
+          ],
+          [
+            "messages[0].content",
+            "messages[1].content",
+            "messages[3].content"
+          ]
+        ],
+        "matchedSegments": 3,
+        "secondSegments": 3,
+        "matchedOpenaiTokens": 2625,
+        "readTokens": [
+          0,
+          2625
+        ],
+        "textCounts": [],
+        "sourceUnit": null
+      },
+      "cli": {
+        "exitCode": 0,
+        "stdout": "contextscope — openai · 2 requests (auto-detected)\npriced as GPT-6 Sol (per-request metadata)\n  OpenAI breakpoint caching: 30-minute writes cost 1.25 times ordinary input. Reads require an\n  eligible matching boundary. GPT-6 input/cache rates double above 272,000 modeled input tokens.\n  Prices assume Standard processing. Cache keys and changed renderer settings are isolated; expiry\n  and hidden provider tokens are not modeled.\n\nNo paired response usage. Cache reads and costs below are simulations.\n\nLargest request: 1 of 2 · GPT-6 Sol  ≈3,953 Claude tokens · 2,625 OpenAI (o200k_base) tokens · 0.3% of context window\n  ████████████████████ system             3,939 ≈tok  (1 segment)\n  ░░░░░░░░░░░░░░░░░░░░ user text             14 ≈tok  (2 segments)\n  (every request's breakdown: --verbose)\n\nPrefix match across the sequence\n  all 1 consecutive pair only append to the previous request\n\nCache simulation (openai, GPT-6 Sol)\n  request        read  write(30m)   uncached       cost  mode\n  req 1             0       2,625          0    $0.0066  implicit\n  req 2         2,625           0          0    $0.0005  implicit\n  total simulated cost: $0.0071\n  total optimized cost: $0.0071  (content normalized; OpenAI markers unchanged)\n\nNo supported cache or duplicate-content issues detected. This does not verify live cache hits.\nJSON report written to <work>/chat-refusal-identical-report.json\n",
+        "stderr": "",
+        "reportSha256": "d47daa23813b7db91853ef9db54d7057f2a45a00c8d04bfbd7468d32dfe5d98a",
+        "inputUnchanged": true
+      },
+      "agrees": false
+    },
+    {
+      "id": "chat-empty-role",
+      "nativeSdkCapture": true,
+      "provenance": "Controlled application history",
+      "inputSha256": "b2acfdc34c7c23473d4bed062b29fbb3ee3e59fa4604510a0cafa2646beaf018",
+      "rawSha256": "def52047029cbea62270286223b1d197cb971e4015c9feffd03e4d203ab22f33",
+      "expected": {
+        "requiredSegmentPath": "messages[2].content",
+        "matchedSegments": 2,
+        "changed": true
+      },
+      "observed": {
+        "complete": true,
+        "warnings": [],
+        "sourcePaths": [
+          [
+            "messages[0].content",
+            "messages[1].content",
+            "messages[3].content"
+          ],
+          [
+            "messages[0].content",
+            "messages[1].content",
+            "messages[3].content"
+          ]
+        ],
+        "matchedSegments": 3,
+        "secondSegments": 3,
+        "matchedOpenaiTokens": 2625,
+        "readTokens": [
+          0,
+          2625
+        ],
+        "textCounts": [],
+        "sourceUnit": null
+      },
+      "cli": {
+        "exitCode": 0,
+        "stdout": "contextscope — openai · 2 requests (auto-detected)\npriced as GPT-6 Sol (per-request metadata)\n  OpenAI breakpoint caching: 30-minute writes cost 1.25 times ordinary input. Reads require an\n  eligible matching boundary. GPT-6 input/cache rates double above 272,000 modeled input tokens.\n  Prices assume Standard processing. Cache keys and changed renderer settings are isolated; expiry\n  and hidden provider tokens are not modeled.\n\nNo paired response usage. Cache reads and costs below are simulations.\n\nLargest request: 1 of 2 · GPT-6 Sol  ≈3,953 Claude tokens · 2,625 OpenAI (o200k_base) tokens · 0.3% of context window\n  ████████████████████ system             3,939 ≈tok  (1 segment)\n  ░░░░░░░░░░░░░░░░░░░░ user text             14 ≈tok  (2 segments)\n  (every request's breakdown: --verbose)\n\nPrefix match across the sequence\n  all 1 consecutive pair only append to the previous request\n\nCache simulation (openai, GPT-6 Sol)\n  request        read  write(30m)   uncached       cost  mode\n  req 1             0       2,625          0    $0.0066  implicit\n  req 2         2,625           0          0    $0.0005  implicit\n  total simulated cost: $0.0071\n  total optimized cost: $0.0071  (content normalized; OpenAI markers unchanged)\n\nNo supported cache or duplicate-content issues detected. This does not verify live cache hits.\nJSON report written to <work>/chat-empty-role-report.json\n",
+        "stderr": "",
+        "reportSha256": "d47daa23813b7db91853ef9db54d7057f2a45a00c8d04bfbd7468d32dfe5d98a",
+        "inputUnchanged": true
+      },
+      "agrees": false
+    },
+    {
+      "id": "chat-empty-name",
+      "nativeSdkCapture": true,
+      "provenance": "Controlled application history",
+      "inputSha256": "55e8fd9f3581cc11d2e888f3d489bf60b7a118d8d1e71a380d372160f738bc36",
+      "rawSha256": "62886453f4f7e70410ad9b1748bce9529ba5ab7e143827e511a848d4fe0e21a3",
+      "expected": {
+        "requiredSegmentPath": "messages[2].content",
+        "matchedSegments": 2,
+        "changed": true
+      },
+      "observed": {
+        "complete": true,
+        "warnings": [],
+        "sourcePaths": [
+          [
+            "messages[0].content",
+            "messages[1].content",
+            "messages[3].content"
+          ],
+          [
+            "messages[0].content",
+            "messages[1].content",
+            "messages[3].content"
+          ]
+        ],
+        "matchedSegments": 3,
+        "secondSegments": 3,
+        "matchedOpenaiTokens": 2625,
+        "readTokens": [
+          0,
+          2625
+        ],
+        "textCounts": [],
+        "sourceUnit": null
+      },
+      "cli": {
+        "exitCode": 0,
+        "stdout": "contextscope — openai · 2 requests (auto-detected)\npriced as GPT-6 Sol (per-request metadata)\n  OpenAI breakpoint caching: 30-minute writes cost 1.25 times ordinary input. Reads require an\n  eligible matching boundary. GPT-6 input/cache rates double above 272,000 modeled input tokens.\n  Prices assume Standard processing. Cache keys and changed renderer settings are isolated; expiry\n  and hidden provider tokens are not modeled.\n\nNo paired response usage. Cache reads and costs below are simulations.\n\nLargest request: 1 of 2 · GPT-6 Sol  ≈3,953 Claude tokens · 2,625 OpenAI (o200k_base) tokens · 0.3% of context window\n  ████████████████████ system             3,939 ≈tok  (1 segment)\n  ░░░░░░░░░░░░░░░░░░░░ user text             14 ≈tok  (2 segments)\n  (every request's breakdown: --verbose)\n\nPrefix match across the sequence\n  all 1 consecutive pair only append to the previous request\n\nCache simulation (openai, GPT-6 Sol)\n  request        read  write(30m)   uncached       cost  mode\n  req 1             0       2,625          0    $0.0066  implicit\n  req 2         2,625           0          0    $0.0005  implicit\n  total simulated cost: $0.0071\n  total optimized cost: $0.0071  (content normalized; OpenAI markers unchanged)\n\nNo supported cache or duplicate-content issues detected. This does not verify live cache hits.\nJSON report written to <work>/chat-empty-name-report.json\n",
+        "stderr": "",
+        "reportSha256": "d47daa23813b7db91853ef9db54d7057f2a45a00c8d04bfbd7468d32dfe5d98a",
+        "inputUnchanged": true
+      },
+      "agrees": false
+    },
+    {
+      "id": "chat-empty-array",
+      "nativeSdkCapture": true,
+      "provenance": "Defensive empty-array control; SDK serialization alone does not prove server acceptance",
+      "inputSha256": "3e1f61b14c77f58877e21b0b7f31f79faa4baf28ab23f6d3fa32b24efbe20945",
+      "rawSha256": "6aeb58ffc35d19664ecf14679961435527b2608ba79183b692ae8bd80f5ffd31",
+      "expected": {
+        "requiredSegmentPath": "messages[2].content",
+        "matchedSegments": 2,
+        "changed": true
+      },
+      "observed": {
+        "complete": true,
+        "warnings": [],
+        "sourcePaths": [
+          [
+            "messages[0].content",
+            "messages[1].content",
+            "messages[3].content"
+          ],
+          [
+            "messages[0].content",
+            "messages[1].content",
+            "messages[3].content"
+          ]
+        ],
+        "matchedSegments": 3,
+        "secondSegments": 3,
+        "matchedOpenaiTokens": 2625,
+        "readTokens": [
+          0,
+          2625
+        ],
+        "textCounts": [],
+        "sourceUnit": null
+      },
+      "cli": {
+        "exitCode": 0,
+        "stdout": "contextscope — openai · 2 requests (auto-detected)\npriced as GPT-6 Sol (per-request metadata)\n  OpenAI breakpoint caching: 30-minute writes cost 1.25 times ordinary input. Reads require an\n  eligible matching boundary. GPT-6 input/cache rates double above 272,000 modeled input tokens.\n  Prices assume Standard processing. Cache keys and changed renderer settings are isolated; expiry\n  and hidden provider tokens are not modeled.\n\nNo paired response usage. Cache reads and costs below are simulations.\n\nLargest request: 1 of 2 · GPT-6 Sol  ≈3,953 Claude tokens · 2,625 OpenAI (o200k_base) tokens · 0.3% of context window\n  ████████████████████ system             3,939 ≈tok  (1 segment)\n  ░░░░░░░░░░░░░░░░░░░░ user text             14 ≈tok  (2 segments)\n  (every request's breakdown: --verbose)\n\nPrefix match across the sequence\n  all 1 consecutive pair only append to the previous request\n\nCache simulation (openai, GPT-6 Sol)\n  request        read  write(30m)   uncached       cost  mode\n  req 1             0       2,625          0    $0.0066  implicit\n  req 2         2,625           0          0    $0.0005  implicit\n  total simulated cost: $0.0071\n  total optimized cost: $0.0071  (content normalized; OpenAI markers unchanged)\n\nNo supported cache or duplicate-content issues detected. This does not verify live cache hits.\nJSON report written to <work>/chat-empty-array-report.json\n",
+        "stderr": "",
+        "reportSha256": "d47daa23813b7db91853ef9db54d7057f2a45a00c8d04bfbd7468d32dfe5d98a",
+        "inputUnchanged": true
+      },
+      "agrees": false
+    },
+    {
+      "id": "chat-refusal-part",
+      "nativeSdkCapture": true,
+      "provenance": "Controlled application history",
+      "inputSha256": "bdc976f212a84db44841be56deb3bfbaed6e438e3a5e29fcb029e2384bd217bb",
+      "rawSha256": "2db3f82fccd454eb99a756e14420525960c41d56f727310ea0d2a36e8fa2647b",
+      "expected": {
+        "requiredSegmentPath": "messages[2].content[0]",
+        "matchedSegments": 2,
+        "changed": true
+      },
+      "observed": {
+        "complete": true,
+        "warnings": [],
+        "sourcePaths": [
+          [
+            "messages[0].content",
+            "messages[1].content",
+            "messages[2].content[0]",
+            "messages[3].content"
+          ],
+          [
+            "messages[0].content",
+            "messages[1].content",
+            "messages[2].content[0]",
+            "messages[3].content"
+          ]
+        ],
+        "matchedSegments": 2,
+        "secondSegments": 4,
+        "matchedOpenaiTokens": 2615,
+        "readTokens": [
+          0,
+          0
+        ],
+        "textCounts": [
+          {
+            "path": "messages[2].content[0]",
+            "actual": 376,
+            "independentTextCount": 367,
+            "textUnchanged": false
+          },
+          {
+            "path": "messages[2].content[0]",
+            "actual": 496,
+            "independentTextCount": 487,
+            "textUnchanged": false
+          }
+        ],
+        "sourceUnit": {
+          "path": "messages[2].content[0]",
+          "textSha256": "fb69244122297896bdbc6dd529540e0e4a80b9c4f9d41eaa168010760a03eefd",
+          "textChars": 3066,
+          "openaiTokens": 496
+        }
+      },
+      "cli": {
+        "exitCode": 0,
+        "stdout": "contextscope — openai · 2 requests (auto-detected)\npriced as GPT-6 Sol (per-request metadata)\n  OpenAI breakpoint caching: 30-minute writes cost 1.25 times ordinary input. Reads require an\n  eligible matching boundary. GPT-6 input/cache rates double above 272,000 modeled input tokens.\n  Prices assume Standard processing. Cache keys and changed renderer settings are isolated; expiry\n  and hidden provider tokens are not modeled.\n\nNo paired response usage. Cache reads and costs below are simulations.\n\nLargest request: 2 of 2 · GPT-6 Sol  ≈4,882 Claude tokens · 3,121 OpenAI (o200k_base) tokens · 0.3% of context window\n  ████████████████░░░░ system             3,939 ≈tok  (1 segment)\n  ░░░░░░░░░░░░░░░░░░░░ user text             14 ≈tok  (2 segments)\n  ████░░░░░░░░░░░░░░░░ assistant text       929 ≈tok  (1 segment)\n  (every request's breakdown: --verbose)\n\nPrefix match across the sequence\n  1 of 1 pair rewrite content already sent, starting at \"message 3 (assistant) refusal\" (req 1 → 2)\n  0 of 1 only append to the previous request\n\nCache simulation (openai, GPT-6 Sol)\n  request        read  write(30m)   uncached       cost  mode\n  req 1             0       3,001          0    $0.0075  implicit\n  req 2             0       3,121          0    $0.0078  implicit\n  total simulated cost: $0.0153\n  total optimized cost: $0.0153  (content normalized; OpenAI markers unchanged)\n\nFindings (1 issue)\n  [warning] Shared text has no reusable cache boundary (request 2)\n      Request 2 shares 2,615 modeled prefix tokens with request 1, but none of its eligible lookup\n      boundaries finds a cached endpoint. Matching text alone is insufficient. Keep earlier message\n      endings intact, or mark the end of the stable content explicitly in both requests. An\n      explicit-only request checks its explicit boundaries; implicit lookup also has a message\n      lookback limit.\nJSON report written to <work>/chat-refusal-part-report.json\n",
+        "stderr": "",
+        "reportSha256": "d84afe2d204233c9ea8c775a738ce136bf5ecbc967e20d4adb8c5646d0d86f7a",
+        "inputUnchanged": true
+      },
+      "agrees": false
+    },
+    {
+      "id": "chat-empty-identical",
+      "nativeSdkCapture": true,
+      "provenance": "Controlled application history",
+      "inputSha256": "597b1cf42368a4084f97939c350f9fd03aa524ba206098472d9bcc5d746e301b",
+      "rawSha256": "069c2ce75441b9b43c2776d198948bacb3a6b31f267f4f136909bd8577a2489b",
+      "expected": {
+        "requiredSegmentPath": "messages[2].content",
+        "matchedSegments": 4,
+        "changed": false
+      },
+      "observed": {
+        "complete": true,
+        "warnings": [],
+        "sourcePaths": [
+          [
+            "messages[0].content",
+            "messages[1].content",
+            "messages[3].content"
+          ],
+          [
+            "messages[0].content",
+            "messages[1].content",
+            "messages[3].content"
+          ]
+        ],
+        "matchedSegments": 3,
+        "secondSegments": 3,
+        "matchedOpenaiTokens": 2625,
+        "readTokens": [
+          0,
+          2625
+        ],
+        "textCounts": [],
+        "sourceUnit": null
+      },
+      "cli": {
+        "exitCode": 0,
+        "stdout": "contextscope — openai · 2 requests (auto-detected)\npriced as GPT-6 Sol (per-request metadata)\n  OpenAI breakpoint caching: 30-minute writes cost 1.25 times ordinary input. Reads require an\n  eligible matching boundary. GPT-6 input/cache rates double above 272,000 modeled input tokens.\n  Prices assume Standard processing. Cache keys and changed renderer settings are isolated; expiry\n  and hidden provider tokens are not modeled.\n\nNo paired response usage. Cache reads and costs below are simulations.\n\nLargest request: 1 of 2 · GPT-6 Sol  ≈3,953 Claude tokens · 2,625 OpenAI (o200k_base) tokens · 0.3% of context window\n  ████████████████████ system             3,939 ≈tok  (1 segment)\n  ░░░░░░░░░░░░░░░░░░░░ user text             14 ≈tok  (2 segments)\n  (every request's breakdown: --verbose)\n\nPrefix match across the sequence\n  all 1 consecutive pair only append to the previous request\n\nCache simulation (openai, GPT-6 Sol)\n  request        read  write(30m)   uncached       cost  mode\n  req 1             0       2,625          0    $0.0066  implicit\n  req 2         2,625           0          0    $0.0005  implicit\n  total simulated cost: $0.0071\n  total optimized cost: $0.0071  (content normalized; OpenAI markers unchanged)\n\nNo supported cache or duplicate-content issues detected. This does not verify live cache hits.\nJSON report written to <work>/chat-empty-identical-report.json\n",
+        "stderr": "",
+        "reportSha256": "d47daa23813b7db91853ef9db54d7057f2a45a00c8d04bfbd7468d32dfe5d98a",
+        "inputUnchanged": true
+      },
+      "agrees": false
+    },
+    {
+      "id": "chat-empty-insert",
+      "nativeSdkCapture": true,
+      "provenance": "Controlled application history",
+      "inputSha256": "155d400b3bcca384f570a4bed40ba6bd3b7407795d251e8a44e6da9fd7529ba8",
+      "rawSha256": "c22a7bf11759ae80131d0d81b041bd40e2f0e674002cc2d2495de10033322881",
+      "expected": {
+        "requiredSegmentPath": "messages[2].content",
+        "matchedSegments": 2,
+        "changed": true
+      },
+      "observed": {
+        "complete": true,
+        "warnings": [],
+        "sourcePaths": [
+          [
+            "messages[0].content",
+            "messages[1].content",
+            "messages[2].content"
+          ],
+          [
+            "messages[0].content",
+            "messages[1].content",
+            "messages[3].content"
+          ]
+        ],
+        "matchedSegments": 3,
+        "secondSegments": 3,
+        "matchedOpenaiTokens": 2625,
+        "readTokens": [
+          0,
+          2625
+        ],
+        "textCounts": [],
+        "sourceUnit": null
+      },
+      "cli": {
+        "exitCode": 0,
+        "stdout": "contextscope — openai · 2 requests (auto-detected)\npriced as GPT-6 Sol (per-request metadata)\n  OpenAI breakpoint caching: 30-minute writes cost 1.25 times ordinary input. Reads require an\n  eligible matching boundary. GPT-6 input/cache rates double above 272,000 modeled input tokens.\n  Prices assume Standard processing. Cache keys and changed renderer settings are isolated; expiry\n  and hidden provider tokens are not modeled.\n\nNo paired response usage. Cache reads and costs below are simulations.\n\nLargest request: 1 of 2 · GPT-6 Sol  ≈3,953 Claude tokens · 2,625 OpenAI (o200k_base) tokens · 0.3% of context window\n  ████████████████████ system             3,939 ≈tok  (1 segment)\n  ░░░░░░░░░░░░░░░░░░░░ user text             14 ≈tok  (2 segments)\n  (every request's breakdown: --verbose)\n\nPrefix match across the sequence\n  all 1 consecutive pair only append to the previous request\n\nCache simulation (openai, GPT-6 Sol)\n  request        read  write(30m)   uncached       cost  mode\n  req 1             0       2,625          0    $0.0066  implicit\n  req 2         2,625           0          0    $0.0005  implicit\n  total simulated cost: $0.0071\n  total optimized cost: $0.0071  (content normalized; OpenAI markers unchanged)\n\nNo supported cache or duplicate-content issues detected. This does not verify live cache hits.\nJSON report written to <work>/chat-empty-insert-report.json\n",
+        "stderr": "",
+        "reportSha256": "46b58d89157cd1831380041a5b6486ab4608384e098c1c86a1fc49ce9068cc7d",
+        "inputUnchanged": true
+      },
+      "agrees": false
+    },
+    {
+      "id": "responses-empty-role",
+      "nativeSdkCapture": true,
+      "provenance": "Controlled application history",
+      "inputSha256": "76c4b26f1dfd0899ece5286df1d14c69cfc53f4e24a99a60080242f275397442",
+      "rawSha256": "14a25954f038467aa7253551214104a584cda462f6817ddf4874cff91fcfa31d",
+      "expected": {
+        "requiredSegmentPath": "input[1].content",
+        "matchedSegments": 2,
+        "changed": true
+      },
+      "observed": {
+        "complete": true,
+        "warnings": [],
+        "sourcePaths": [
+          [
+            "instructions",
+            "input[0].content",
+            "input[2].content"
+          ],
+          [
+            "instructions",
+            "input[0].content",
+            "input[2].content"
+          ]
+        ],
+        "matchedSegments": 3,
+        "secondSegments": 3,
+        "matchedOpenaiTokens": 2610,
+        "readTokens": [
+          0,
+          2610
+        ],
+        "textCounts": [],
+        "sourceUnit": null
+      },
+      "cli": {
+        "exitCode": 0,
+        "stdout": "contextscope — openai · 2 requests (auto-detected)\npriced as GPT-6 Sol (per-request metadata)\n  OpenAI breakpoint caching: 30-minute writes cost 1.25 times ordinary input. Reads require an\n  eligible matching boundary. GPT-6 input/cache rates double above 272,000 modeled input tokens.\n  Prices assume Standard processing. Cache keys and changed renderer settings are isolated; expiry\n  and hidden provider tokens are not modeled.\n\nNo paired response usage. Cache reads and costs below are simulations.\n\nLargest request: 1 of 2 · GPT-6 Sol  ≈3,953 Claude tokens · 2,610 OpenAI (o200k_base) tokens · 0.2% of context window\n  ████████████████████ system             3,939 ≈tok  (1 segment)\n  ░░░░░░░░░░░░░░░░░░░░ user text             14 ≈tok  (2 segments)\n  (every request's breakdown: --verbose)\n\nPrefix match across the sequence\n  all 1 consecutive pair only append to the previous request\n\nCache simulation (openai, GPT-6 Sol)\n  request        read  write(30m)   uncached       cost  mode\n  req 1             0       2,610          0    $0.0065  implicit\n  req 2         2,610           0          0    $0.0005  implicit\n  total simulated cost: $0.0070\n  total optimized cost: $0.0070  (content normalized; OpenAI markers unchanged)\n\nNo supported cache or duplicate-content issues detected. This does not verify live cache hits.\nJSON report written to <work>/responses-empty-role-report.json\n",
+        "stderr": "",
+        "reportSha256": "649d97d8c6f55c55793bf60942262abc43e9f6ba6aa1e800a9fc50850234a706",
+        "inputUnchanged": true
+      },
+      "agrees": false
+    },
+    {
+      "id": "responses-empty-identical",
+      "nativeSdkCapture": true,
+      "provenance": "Controlled application history",
+      "inputSha256": "d96573d9dd63ba0d2b67c5d91606186b76b45e22d15b370c2a5bcd2c235bb7fe",
+      "rawSha256": "741d77a40f197e2d01ee840f89d51d690c6a29aa0f31e01aa9f6317f3808a768",
+      "expected": {
+        "requiredSegmentPath": "input[1].content",
+        "matchedSegments": 4,
+        "changed": false
+      },
+      "observed": {
+        "complete": true,
+        "warnings": [],
+        "sourcePaths": [
+          [
+            "instructions",
+            "input[0].content",
+            "input[2].content"
+          ],
+          [
+            "instructions",
+            "input[0].content",
+            "input[2].content"
+          ]
+        ],
+        "matchedSegments": 3,
+        "secondSegments": 3,
+        "matchedOpenaiTokens": 2610,
+        "readTokens": [
+          0,
+          2610
+        ],
+        "textCounts": [],
+        "sourceUnit": null
+      },
+      "cli": {
+        "exitCode": 0,
+        "stdout": "contextscope — openai · 2 requests (auto-detected)\npriced as GPT-6 Sol (per-request metadata)\n  OpenAI breakpoint caching: 30-minute writes cost 1.25 times ordinary input. Reads require an\n  eligible matching boundary. GPT-6 input/cache rates double above 272,000 modeled input tokens.\n  Prices assume Standard processing. Cache keys and changed renderer settings are isolated; expiry\n  and hidden provider tokens are not modeled.\n\nNo paired response usage. Cache reads and costs below are simulations.\n\nLargest request: 1 of 2 · GPT-6 Sol  ≈3,953 Claude tokens · 2,610 OpenAI (o200k_base) tokens · 0.2% of context window\n  ████████████████████ system             3,939 ≈tok  (1 segment)\n  ░░░░░░░░░░░░░░░░░░░░ user text             14 ≈tok  (2 segments)\n  (every request's breakdown: --verbose)\n\nPrefix match across the sequence\n  all 1 consecutive pair only append to the previous request\n\nCache simulation (openai, GPT-6 Sol)\n  request        read  write(30m)   uncached       cost  mode\n  req 1             0       2,610          0    $0.0065  implicit\n  req 2         2,610           0          0    $0.0005  implicit\n  total simulated cost: $0.0070\n  total optimized cost: $0.0070  (content normalized; OpenAI markers unchanged)\n\nNo supported cache or duplicate-content issues detected. This does not verify live cache hits.\nJSON report written to <work>/responses-empty-identical-report.json\n",
+        "stderr": "",
+        "reportSha256": "649d97d8c6f55c55793bf60942262abc43e9f6ba6aa1e800a9fc50850234a706",
+        "inputUnchanged": true
+      },
+      "agrees": false
+    },
+    {
+      "id": "responses-empty-insert",
+      "nativeSdkCapture": true,
+      "provenance": "Controlled application history",
+      "inputSha256": "022e457e2aaa5d76f584102c69c36975c9e8f5de25f0cd4429a830b3e4d3ba5a",
+      "rawSha256": "de38d3be79ef2e3e395de7b9122d0b77086ccabe547b91fd7337b924c4a0398c",
+      "expected": {
+        "requiredSegmentPath": "input[1].content",
+        "matchedSegments": 2,
+        "changed": true
+      },
+      "observed": {
+        "complete": true,
+        "warnings": [],
+        "sourcePaths": [
+          [
+            "instructions",
+            "input[0].content",
+            "input[1].content"
+          ],
+          [
+            "instructions",
+            "input[0].content",
+            "input[2].content"
+          ]
+        ],
+        "matchedSegments": 3,
+        "secondSegments": 3,
+        "matchedOpenaiTokens": 2610,
+        "readTokens": [
+          0,
+          2610
+        ],
+        "textCounts": [],
+        "sourceUnit": null
+      },
+      "cli": {
+        "exitCode": 0,
+        "stdout": "contextscope — openai · 2 requests (auto-detected)\npriced as GPT-6 Sol (per-request metadata)\n  OpenAI breakpoint caching: 30-minute writes cost 1.25 times ordinary input. Reads require an\n  eligible matching boundary. GPT-6 input/cache rates double above 272,000 modeled input tokens.\n  Prices assume Standard processing. Cache keys and changed renderer settings are isolated; expiry\n  and hidden provider tokens are not modeled.\n\nNo paired response usage. Cache reads and costs below are simulations.\n\nLargest request: 1 of 2 · GPT-6 Sol  ≈3,953 Claude tokens · 2,610 OpenAI (o200k_base) tokens · 0.2% of context window\n  ████████████████████ system             3,939 ≈tok  (1 segment)\n  ░░░░░░░░░░░░░░░░░░░░ user text             14 ≈tok  (2 segments)\n  (every request's breakdown: --verbose)\n\nPrefix match across the sequence\n  all 1 consecutive pair only append to the previous request\n\nCache simulation (openai, GPT-6 Sol)\n  request        read  write(30m)   uncached       cost  mode\n  req 1             0       2,610          0    $0.0065  implicit\n  req 2         2,610           0          0    $0.0005  implicit\n  total simulated cost: $0.0070\n  total optimized cost: $0.0070  (content normalized; OpenAI markers unchanged)\n\nNo supported cache or duplicate-content issues detected. This does not verify live cache hits.\nJSON report written to <work>/responses-empty-insert-report.json\n",
+        "stderr": "",
+        "reportSha256": "00de5f9b887b82ce15986e41d983eec676ec2cf15e7a371d4e4e1b45b6e074c0",
+        "inputUnchanged": true
+      },
+      "agrees": false
+    },
+    {
+      "id": "responses-empty-output-phase",
+      "nativeSdkCapture": true,
+      "provenance": "Parsed SDK output message from a controlled empty-array reply; only phase edited. Not a claim that a live provider emits empty output messages",
+      "inputSha256": "e75817e13610e9edfaeaacd0214ac3c36be6221b4511fabf6697e457707c6eba",
+      "rawSha256": "82ed005fb69de23d68cc111f8401af872d70098b5d1192c6b1003b028c58784c",
+      "expected": {
+        "requiredSegmentPath": "input[1].content",
+        "matchedSegments": 2,
+        "changed": true
+      },
+      "observed": {
+        "complete": true,
+        "warnings": [],
+        "sourcePaths": [
+          [
+            "instructions",
+            "input[0].content",
+            "input[2].content"
+          ],
+          [
+            "instructions",
+            "input[0].content",
+            "input[2].content"
+          ]
+        ],
+        "matchedSegments": 3,
+        "secondSegments": 3,
+        "matchedOpenaiTokens": 2610,
+        "readTokens": [
+          0,
+          2610
+        ],
+        "textCounts": [],
+        "sourceUnit": null
+      },
+      "cli": {
+        "exitCode": 0,
+        "stdout": "contextscope — openai · 2 requests (auto-detected)\npriced as GPT-6 Sol (per-request metadata)\n  OpenAI breakpoint caching: 30-minute writes cost 1.25 times ordinary input. Reads require an\n  eligible matching boundary. GPT-6 input/cache rates double above 272,000 modeled input tokens.\n  Prices assume Standard processing. Cache keys and changed renderer settings are isolated; expiry\n  and hidden provider tokens are not modeled.\n\nNo paired response usage. Cache reads and costs below are simulations.\n\nLargest request: 1 of 2 · GPT-6 Sol  ≈3,953 Claude tokens · 2,610 OpenAI (o200k_base) tokens · 0.2% of context window\n  ████████████████████ system             3,939 ≈tok  (1 segment)\n  ░░░░░░░░░░░░░░░░░░░░ user text             14 ≈tok  (2 segments)\n  (every request's breakdown: --verbose)\n\nPrefix match across the sequence\n  all 1 consecutive pair only append to the previous request\n\nCache simulation (openai, GPT-6 Sol)\n  request        read  write(30m)   uncached       cost  mode\n  req 1             0       2,610          0    $0.0065  implicit\n  req 2         2,610           0          0    $0.0005  implicit\n  total simulated cost: $0.0070\n  total optimized cost: $0.0070  (content normalized; OpenAI markers unchanged)\n\nNo supported cache or duplicate-content issues detected. This does not verify live cache hits.\nJSON report written to <work>/responses-empty-output-phase-report.json\n",
+        "stderr": "",
+        "reportSha256": "649d97d8c6f55c55793bf60942262abc43e9f6ba6aa1e800a9fc50850234a706",
+        "inputUnchanged": true
+      },
+      "agrees": false
+    },
+    {
+      "id": "native-anthropic-automatic-caching.jsonl.gz",
+      "unmodifiedExistingSdkFixture": true,
+      "inputSha256": "22c2b65e339d903cadbae8c6155663a39a919e9bc07f7cd636dd33203668b45f",
+      "requests": 8,
+      "complete": true,
+      "cli": {
+        "exitCode": 0,
+        "stdout": "contextscope — anthropic · 8 requests (auto-detected)\npriced as Claude Opus 5.5 (per-request metadata)\n\nNo paired response usage. Cache reads and costs below are simulations.\n\nLargest request: 8 of 8 · Claude Opus 5.5  ≈13,392 Claude tokens · 9,772 OpenAI (o200k_base) tokens · 1.3% of context window\n  █████████████░░░░░░░ system             8,967 ≈tok  (1 segment)\n  ██░░░░░░░░░░░░░░░░░░ tools              1,357 ≈tok  (5 segments)\n  ░░░░░░░░░░░░░░░░░░░░ user text             16 ≈tok  (1 segment)\n  ░░░░░░░░░░░░░░░░░░░░ assistant text        28 ≈tok  (7 segments)\n  ░░░░░░░░░░░░░░░░░░░░ tool calls           238 ≈tok  (7 segments)\n  ████░░░░░░░░░░░░░░░░ tool results       2,786 ≈tok  (7 segments)\n  (every request's breakdown: --verbose)\n\nPrefix match across the sequence\n  all 7 consecutive pairs only append to the previous request\n\nCache simulation (anthropic, Claude Opus 5.5)\n  request        read  write(5m)  write(1h)   uncached       cost\n  req 1             0    10,340         0          0    $0.0517\n  req 2        10,340       436         0          0    $0.0042\n  req 3        10,776       436         0          0    $0.0043\n  req 4        11,212       436         0          0    $0.0044\n  req 5        11,648       436         0          0    $0.0045\n  req 6        12,084       436         0          0    $0.0046\n  req 7        12,520       436         0          0    $0.0047\n  req 8        12,956       436         0          0    $0.0048\n  total simulated cost: $0.0833\n  total optimized cost: $0.0833  (content normalized; tail breakpoint added, or last marker moved if four slots are used)\n\nNo supported cache or duplicate-content issues detected. This does not verify live cache hits.\nJSON report written to <work>/native-anthropic-automatic-caching.jsonl.gz-report.json\n",
+        "stderr": "",
+        "reportSha256": "a9c25705b8c14d0ac83b4c2e0bc6b04781820b2a66bc56d1d04f8f0d0299da27",
+        "inputUnchanged": true
+      },
+      "agrees": true
+    },
+    {
+      "id": "native-anthropic-tail-breakpoint.jsonl.gz",
+      "unmodifiedExistingSdkFixture": true,
+      "inputSha256": "e26d711c7c580d3198d3682cecae36ba03266a1975cc614b6978cc03256c32f1",
+      "requests": 8,
+      "complete": true,
+      "cli": {
+        "exitCode": 0,
+        "stdout": "contextscope — anthropic · 8 requests (auto-detected)\npriced as Claude Opus 5.5 (per-request metadata)\n\nNo paired response usage. Cache reads and costs below are simulations.\n\nLargest request: 8 of 8 · Claude Opus 5.5  ≈13,392 Claude tokens · 9,772 OpenAI (o200k_base) tokens · 1.3% of context window\n  █████████████░░░░░░░ system             8,967 ≈tok  (1 segment)\n  ██░░░░░░░░░░░░░░░░░░ tools              1,357 ≈tok  (5 segments)\n  ░░░░░░░░░░░░░░░░░░░░ user text             16 ≈tok  (1 segment)\n  ░░░░░░░░░░░░░░░░░░░░ assistant text        28 ≈tok  (7 segments)\n  ░░░░░░░░░░░░░░░░░░░░ tool calls           238 ≈tok  (7 segments)\n  ████░░░░░░░░░░░░░░░░ tool results       2,786 ≈tok  (7 segments)\n  (every request's breakdown: --verbose)\n\nPrefix match across the sequence\n  all 7 consecutive pairs only append to the previous request\n\nCache simulation (anthropic, Claude Opus 5.5)\n  request        read  write(5m)  write(1h)   uncached       cost\n  req 1             0    10,340         0          0    $0.0517\n  req 2        10,340       436         0          0    $0.0042\n  req 3        10,776       436         0          0    $0.0043\n  req 4        11,212       436         0          0    $0.0044\n  req 5        11,648       436         0          0    $0.0045\n  req 6        12,084       436         0          0    $0.0046\n  req 7        12,520       436         0          0    $0.0047\n  req 8        12,956       436         0          0    $0.0048\n  total simulated cost: $0.0833\n  total optimized cost: $0.0833  (content normalized; tail breakpoint added, or last marker moved if four slots are used)\n\nNo supported cache or duplicate-content issues detected. This does not verify live cache hits.\nJSON report written to <work>/native-anthropic-tail-breakpoint.jsonl.gz-report.json\n",
+        "stderr": "",
+        "reportSha256": "a6637335ac5880cd45c78d29c5f5576cb992536cb95e9fdbec31a39581f4bc88",
+        "inputUnchanged": true
+      },
+      "agrees": true
+    },
+    {
+      "id": "native-openai-cache-tool-output.jsonl.gz",
+      "unmodifiedExistingSdkFixture": true,
+      "inputSha256": "83a33b7aff80eef0c38eb4bb5244e91b391782c256bdebfdfb34a2ae7dc2d5ba",
+      "requests": 3,
+      "complete": true,
+      "cli": {
+        "exitCode": 0,
+        "stdout": "contextscope — openai · 3 requests in 2 conversations (auto-detected)\npriced as GPT-6 Sol (per-request metadata)\n  OpenAI breakpoint caching: 30-minute writes cost 1.25 times ordinary input. Reads require an\n  eligible matching boundary. GPT-6 input/cache rates double above 272,000 modeled input tokens.\n  Prices assume Standard processing. Cache keys and changed renderer settings are isolated; expiry\n  and hidden provider tokens are not modeled.\n\nNo paired response usage. Cache reads and costs below are simulations.\n\nLargest request: 1 of 3 · GPT-6 Sol  ≈4,154 Claude tokens · 2,424 OpenAI (o200k_base) tokens · 0.2% of context window\n  ░░░░░░░░░░░░░░░░░░░░ tool calls            31 ≈tok  (1 segment)\n  ████████████████████ tool results       4,123 ≈tok  (2 segments)\n  (every request's breakdown: --verbose)\n\nPrefix match across the sequence\n  2 conversations in this file; each request is compared with the request it continues\n  1 of 2 pair rewrite content already sent, starting at \"item 2 function_call_output part 2\" (req 1 → 2)\n  0 of 1 follow-up request only append to the request they continue\n  1 request starts a new conversation on a setup already sent\n\nCache simulation (openai, GPT-6 Sol)\n  request        read  write(30m)   uncached       cost  mode\n  req 1             0       2,423          1    $0.0061  explicit\n  req 2         2,423           0          1    $0.0005  explicit\n  req 3             0       2,423          1    $0.0061  explicit\n  total simulated cost: $0.0126\n  total optimized cost: $0.0126  (content normalized; OpenAI markers unchanged)\n\nNo supported cache or duplicate-content issues detected. This does not verify live cache hits.\nJSON report written to <work>/native-openai-cache-tool-output.jsonl.gz-report.json\n",
+        "stderr": "",
+        "reportSha256": "a9db6470b6f0ef93b0e26018b5ef377f51e1e4e67f56b5b31f362fafb617dd77",
+        "inputUnchanged": true
+      },
+      "agrees": true
+    },
+    {
+      "id": "native-openai-previous-response.jsonl.gz",
+      "unmodifiedExistingSdkFixture": true,
+      "inputSha256": "7f70d5dc81055b7f4e6842cf9b5ad1d0bcbe340be57625b1a2f63bad43ba4bc5",
+      "requests": 6,
+      "complete": true,
+      "cli": {
+        "exitCode": 0,
+        "stdout": "contextscope — openai · 6 requests in 6 conversations (auto-detected)\npriced as GPT-6 Sol (per-request metadata)\n  OpenAI breakpoint caching: 30-minute writes cost 1.25 times ordinary input. Reads require an\n  eligible matching boundary. GPT-6 input/cache rates double above 272,000 modeled input tokens.\n  Prices assume Standard processing. Cache keys and changed renderer settings are isolated; expiry\n  and hidden provider tokens are not modeled.\n\nNo paired response usage. Cache reads and costs below are simulations.\n\nLargest request: 1 of 6 · GPT-6 Sol  ≈8,977 Claude tokens · 6,783 OpenAI (o200k_base) tokens · 0.6% of context window\n  ████████████████████ system             8,967 ≈tok  (1 segment)\n  ░░░░░░░░░░░░░░░░░░░░ user text             10 ≈tok  (1 segment)\n  (every request's breakdown: --verbose)\n\nPrefix match across the sequence\n  6 conversations in this file; each request is compared with the request it continues\n  5 requests start a new conversation on a setup already sent\n\nCache simulation (openai, GPT-6 Sol)\n  request        read  write(30m)   uncached       cost  mode\n  req 1             0       6,783          0    $0.0170  implicit\n  req 2             0       6,783          0    $0.0170  implicit\n  req 3             0       6,783          0    $0.0170  implicit\n  req 4             0       6,783          0    $0.0170  implicit\n  req 5             0       6,783          0    $0.0170  implicit\n  req 6             0       6,783          0    $0.0170  implicit\n  total simulated cost: $0.1017\n  total optimized cost: $0.1017  (content normalized; OpenAI markers unchanged)\n\nFindings (1 issue) from 5 findings across the sequence\n  [warning] Shared text has no reusable cache boundary (requests 2–6, 5×)\n      Request 2 shares 6,772 modeled prefix tokens with request 1, but none of its eligible lookup\n      boundaries finds a cached endpoint. Matching text alone is insufficient. Keep earlier message\n      endings intact, or mark the end of the stable content explicitly in both requests. An\n      explicit-only request checks its explicit boundaries; implicit lookup also has a message\n      lookback limit.\n\n1 parse warning:\n  Requests 2–6 continue a stored response or conversation (previous_response_id, conversation), so their earlier turns live on OpenAI's servers, not in this file. Counts and the cache simulation cover only what each request itself carries.\nJSON report written to <work>/native-openai-previous-response.jsonl.gz-report.json\n",
+        "stderr": "",
+        "reportSha256": "c3d49dd55fe0aacd0a3ae81a1258d2f902148d7a5d3336ef3bab6fb9bf8196ba",
+        "inputUnchanged": true
+      },
+      "agrees": true
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
++ [
++   'http://127.0.0.1:44867/contextscope/assets/ibm-plex-sans-latin-IvpUvPa2.woff2'
++ ]
+- []
+
+    at file://<checkout>/studies/message-boundaries/browser.mjs:111:82 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: [
+    'http://127.0.0.1:44867/contextscope/assets/ibm-plex-sans-latin-IvpUvPa2.woff2'
+  ],
+  expected: [],
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v26.7.0
