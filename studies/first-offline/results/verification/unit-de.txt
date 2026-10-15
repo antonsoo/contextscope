@@ -1,0 +1,16 @@
+
+> @antonsoloviev/contextscope@0.3.3 test
+> vitest run --maxWorkers=2
+
+
+ RUN  v5.0.1 /tmp/claude-1000/contextscope-offline-verify/clean-final
+
+
+ Test Files  42 passed (42)
+      Tests  556 passed (556)
+   Start at  19:20:31
+   Duration  16.70s (tests 76%, import 21%, transform 3%)
+
+    Isolate  42 workers spawned · ~72ms startup each (spawn + environment, per file)
+             at least ~1.45s faster with isolate: false — reuses workers across files instead of one per file
+

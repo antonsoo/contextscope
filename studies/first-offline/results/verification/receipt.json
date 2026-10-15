@@ -1,0 +1,135 @@
+{
+  "sourceCommit": "43bafcd98e912b171d2a564c3925f892907d1d88",
+  "cleanArchiveFiles": 588,
+  "archiveFilesUnmodifiedAfterChecks": true,
+  "node": "24.21.0",
+  "workingStudyNode": "26.7.0",
+  "npm": "11.19.0",
+  "checks": [
+    {
+      "label": "install",
+      "command": [
+        "npm",
+        "ci"
+      ],
+      "env": {},
+      "exit": 0,
+      "expectedExit": 0,
+      "seconds": 4.306,
+      "logBytes": 282,
+      "logSha256": "689d3c4c498b1684fcaf9536304ccb42ac8d98d9b1f8853a2fde330a27e8f52d"
+    },
+    {
+      "label": "lint",
+      "command": [
+        "npm",
+        "run",
+        "lint"
+      ],
+      "env": {},
+      "exit": 0,
+      "expectedExit": 0,
+      "seconds": 2.45,
+      "logBytes": 54,
+      "logSha256": "6265dc879361014db2afdb1f3f30e4d6b9f5e91fb75427d22933a0b1e41a86f4"
+    },
+    {
+      "label": "types",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "env": {},
+      "exit": 0,
+      "expectedExit": 0,
+      "seconds": 2.102,
+      "logBytes": 117,
+      "logSha256": "b5a881850bc63df5c4f6af35485b099960f7efdbf30c99c322f2a6b4806be7d5"
+    },
+    {
+      "label": "unit",
+      "command": [
+        "npm",
+        "test",
+        "--",
+        "--maxWorkers=2"
+      ],
+      "env": {},
+      "exit": 0,
+      "expectedExit": 0,
+      "seconds": 16.91,
+      "logBytes": 482,
+      "logSha256": "36fc2dc0d68ff8cef2ba139289649d6abcef2f6161a2f17ed4a0c0617dc46c16"
+    },
+    {
+      "label": "unit-de",
+      "command": [
+        "npm",
+        "test",
+        "--",
+        "--maxWorkers=2"
+      ],
+      "env": {
+        "LC_ALL": "de_DE.UTF-8",
+        "LANG": "de_DE.UTF-8"
+      },
+      "exit": 0,
+      "expectedExit": 0,
+      "seconds": 17.037,
+      "logBytes": 482,
+      "logSha256": "52ef1be17168fc9ac2e6c3f5418b71648a044ff9000348a599d45764bf49bafe"
+    },
+    {
+      "label": "build",
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "env": {},
+      "exit": 0,
+      "expectedExit": 0,
+      "seconds": 2.5,
+      "logBytes": 2691,
+      "logSha256": "b740b654002b44162fdf29a9b66d60a3e3f7f8ffc2061372d74606edbbeaf517"
+    },
+    {
+      "label": "browser",
+      "command": [
+        "npm",
+        "run",
+        "test:browser"
+      ],
+      "env": {},
+      "exit": 0,
+      "expectedExit": 0,
+      "seconds": 149.469,
+      "logBytes": 16048,
+      "logSha256": "a4ee7edf960ca2a7b84ddc6393ea388bfc9d12acda48b0b361e5fe7ba80560e1"
+    },
+    {
+      "label": "retained-evidence",
+      "command": [
+        "python3",
+        "studies/first-offline/verify.py"
+      ],
+      "env": {},
+      "exit": 0,
+      "expectedExit": 0,
+      "seconds": 0.03,
+      "logBytes": 135,
+      "logSha256": "1f7bc1deee593ac6a886fb51afa970f972a13e729e8fb25a550b96976a40b5aa"
+    }
+  ],
+  "unitTests": 556,
+  "unitFiles": 42,
+  "browserTests": 98,
+  "generatedCoreFilesByteEqualToOriginal": 141,
+  "productionWebFilesByteEqualToNode26Study": 42,
+  "packageFilesMatchCleanBuildAndInstall": 97,
+  "packageRuntimeDeclarationsByteEqualToOriginal": 94,
+  "installedNode20NativeHistoryMatchesBaselineCli": true,
+  "packagePublished": false,
+  "manualHostedDeploymentPerformed": false
+}

@@ -117,9 +117,20 @@ implementation of loading.
 
 All **141** generated CLI/library runtime, declaration and source-map files
 remain byte-identical to the baseline ([manifest](results/core-unchanged.json)).
-This is a browser change; it adds no package or CLI capability. Clean-checkout
-verification is recorded separately in `results/verification/` when complete.
-No registry release or hosted deployment accompanies this source record.
+This is a browser change; it adds no package or CLI capability. A clean 588-file
+archive of source `43bafcd98e912b171d2a564c3925f892907d1d88` passed `npm ci`, lint,
+typecheck, all 556 unit checks in default and German locales, the production build,
+all 98 browser checks and the retained-evidence verifier on Node 24.21.0. Archive
+files stayed unchanged. Its web build is byte-identical to the Node 26.7.0 build
+served in this study. [Commands, full logs and file manifests](results/verification/receipt.json)
+record those checks.
+
+The local packed artifact's 97 files match the clean build and a separate
+installation. Its 94 shipped runtime/declaration files match the original
+unchanged CLI/library; an actual installed Node 20.0.0 analysis of the native
+refusal history equals the baseline report. [Package receipt](results/verification/package.json)
+retains hashes and sizes. No registry release or hosted deployment accompanies
+this source record.
 
 ## Screenshots
 

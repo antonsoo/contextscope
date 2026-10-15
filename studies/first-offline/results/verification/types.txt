@@ -1,0 +1,4 @@
+
+> @antonsoloviev/contextscope@0.3.3 typecheck
+> tsc -p tsconfig.json --noEmit && tsc -p web/tsconfig.json --noEmit
+
