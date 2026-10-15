@@ -132,6 +132,14 @@ refusal history equals the baseline report. [Package receipt](results/verificati
 retains hashes and sizes. No registry release or hosted deployment accompanies
 this source record.
 
+Source `e73f00794caf2fb9dba69f41a99f6cb3331d70ec` is public on `main`. An
+independent remote-head read and pinned raw downloads verified all **77** files
+changed since the baseline, byte for byte against the committed local files.
+The [public-source receipt](results/public-source.json) records those hashes and
+URLs. A chunked Git HTTP transfer preserved the original commits without a force
+push or temporary remote branch; the server confirmed unpack and ref update.
+This verifies source publication, not a registry release or hosted build.
+
 ## Screenshots
 
 All twelve real screenshots were opened and inspected. The existing mono-led
