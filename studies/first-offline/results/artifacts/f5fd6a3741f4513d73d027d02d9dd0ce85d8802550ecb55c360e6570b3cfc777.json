@@ -1,0 +1,389 @@
+{
+  "parse": {
+    "format": "openai",
+    "complete": true,
+    "sourceRecords": 2,
+    "skippedRecords": 0,
+    "autoDetected": true,
+    "requests": [
+      {
+        "provider": "openai",
+        "index": 0,
+        "model": "gpt-6-sol",
+        "source": {
+          "recordIndex": 0,
+          "line": 1
+        },
+        "segments": [
+          {
+            "id": "instructions",
+            "category": "system",
+            "label": "instructions",
+            "path": "instructions",
+            "openaiTokens": 2601,
+            "claudeTokensEstimate": 3939,
+            "charLength": 13000
+          },
+          {
+            "id": "input[0]",
+            "category": "user",
+            "label": "item 1 (user) text",
+            "path": "input[0].content",
+            "openaiTokens": 4,
+            "claudeTokensEstimate": 5,
+            "charLength": 18
+          },
+          {
+            "id": "input[1]",
+            "category": "assistant",
+            "label": "item 2 (assistant) empty content",
+            "path": "input[1].content",
+            "openaiTokens": 0,
+            "claudeTokensEstimate": 0,
+            "charLength": 0
+          },
+          {
+            "id": "input[2]",
+            "category": "user",
+            "label": "item 3 (user) text",
+            "path": "input[2].content",
+            "openaiTokens": 5,
+            "claudeTokensEstimate": 9,
+            "charLength": 29
+          }
+        ]
+      },
+      {
+        "provider": "openai",
+        "index": 1,
+        "model": "gpt-6-sol",
+        "source": {
+          "recordIndex": 1,
+          "line": 2
+        },
+        "segments": [
+          {
+            "id": "instructions",
+            "category": "system",
+            "label": "instructions",
+            "path": "instructions",
+            "openaiTokens": 2601,
+            "claudeTokensEstimate": 3939,
+            "charLength": 13000
+          },
+          {
+            "id": "input[0]",
+            "category": "user",
+            "label": "item 1 (user) text",
+            "path": "input[0].content",
+            "openaiTokens": 4,
+            "claudeTokensEstimate": 5,
+            "charLength": 18
+          },
+          {
+            "id": "input[1]",
+            "category": "assistant",
+            "label": "item 2 (assistant) empty content",
+            "path": "input[1].content",
+            "openaiTokens": 0,
+            "claudeTokensEstimate": 0,
+            "charLength": 0
+          },
+          {
+            "id": "input[2]",
+            "category": "user",
+            "label": "item 3 (user) text",
+            "path": "input[2].content",
+            "openaiTokens": 5,
+            "claudeTokensEstimate": 9,
+            "charLength": 29
+          }
+        ]
+      }
+    ],
+    "warnings": []
+  },
+  "model": {
+    "id": "gpt-6-sol",
+    "displayName": "GPT-6 Sol",
+    "source": "request"
+  },
+  "claudeTokenScale": 1,
+  "reports": [
+    {
+      "requestIndex": 0,
+      "model": {
+        "id": "gpt-6-sol",
+        "displayName": "GPT-6 Sol",
+        "source": "request"
+      },
+      "totals": {
+        "openaiTokens": 2610,
+        "claudeTokensEstimate": 3953
+      },
+      "byCategory": [
+        {
+          "category": "system",
+          "segmentCount": 1,
+          "openaiTokens": 2601,
+          "claudeTokensEstimate": 3939
+        },
+        {
+          "category": "user",
+          "segmentCount": 2,
+          "openaiTokens": 9,
+          "claudeTokensEstimate": 14
+        },
+        {
+          "category": "assistant",
+          "segmentCount": 1,
+          "openaiTokens": 0,
+          "claudeTokensEstimate": 0
+        }
+      ],
+      "segments": [
+        {
+          "id": "instructions",
+          "category": "system",
+          "label": "instructions",
+          "path": "instructions",
+          "openaiTokens": 2601,
+          "claudeTokensEstimate": 3939,
+          "charLength": 13000
+        },
+        {
+          "id": "input[0]",
+          "category": "user",
+          "label": "item 1 (user) text",
+          "path": "input[0].content",
+          "openaiTokens": 4,
+          "claudeTokensEstimate": 5,
+          "charLength": 18
+        },
+        {
+          "id": "input[1]",
+          "category": "assistant",
+          "label": "item 2 (assistant) empty content",
+          "path": "input[1].content",
+          "openaiTokens": 0,
+          "claudeTokensEstimate": 0,
+          "charLength": 0
+        },
+        {
+          "id": "input[2]",
+          "category": "user",
+          "label": "item 3 (user) text",
+          "path": "input[2].content",
+          "openaiTokens": 5,
+          "claudeTokensEstimate": 9,
+          "charLength": 29
+        }
+      ],
+      "contextWindow": 1050000,
+      "percentOfContextWindow": 0.0024857142857142855
+    },
+    {
+      "requestIndex": 1,
+      "model": {
+        "id": "gpt-6-sol",
+        "displayName": "GPT-6 Sol",
+        "source": "request"
+      },
+      "totals": {
+        "openaiTokens": 2610,
+        "claudeTokensEstimate": 3953
+      },
+      "byCategory": [
+        {
+          "category": "system",
+          "segmentCount": 1,
+          "openaiTokens": 2601,
+          "claudeTokensEstimate": 3939
+        },
+        {
+          "category": "user",
+          "segmentCount": 2,
+          "openaiTokens": 9,
+          "claudeTokensEstimate": 14
+        },
+        {
+          "category": "assistant",
+          "segmentCount": 1,
+          "openaiTokens": 0,
+          "claudeTokensEstimate": 0
+        }
+      ],
+      "segments": [
+        {
+          "id": "instructions",
+          "category": "system",
+          "label": "instructions",
+          "path": "instructions",
+          "openaiTokens": 2601,
+          "claudeTokensEstimate": 3939,
+          "charLength": 13000
+        },
+        {
+          "id": "input[0]",
+          "category": "user",
+          "label": "item 1 (user) text",
+          "path": "input[0].content",
+          "openaiTokens": 4,
+          "claudeTokensEstimate": 5,
+          "charLength": 18
+        },
+        {
+          "id": "input[1]",
+          "category": "assistant",
+          "label": "item 2 (assistant) empty content",
+          "path": "input[1].content",
+          "openaiTokens": 0,
+          "claudeTokensEstimate": 0,
+          "charLength": 0
+        },
+        {
+          "id": "input[2]",
+          "category": "user",
+          "label": "item 3 (user) text",
+          "path": "input[2].content",
+          "openaiTokens": 5,
+          "claudeTokensEstimate": 9,
+          "charLength": 29
+        }
+      ],
+      "contextWindow": 1050000,
+      "percentOfContextWindow": 0.0024857142857142855
+    }
+  ],
+  "prefixMatches": [
+    {
+      "fromIndex": 0,
+      "toIndex": 1,
+      "relation": "rewrites",
+      "matchedSegments": 2,
+      "matchedOpenaiTokens": 2605,
+      "matchedClaudeTokensEstimate": 3944,
+      "divergedAt": {
+        "fromSegmentId": "input[1]",
+        "toSegmentId": "input[1]"
+      }
+    }
+  ],
+  "conversations": {
+    "count": 1,
+    "byRequest": [
+      0,
+      0
+    ]
+  },
+  "cacheSimulation": {
+    "provider": "openai",
+    "model": "gpt-6-sol",
+    "actual": [
+      {
+        "requestIndex": 0,
+        "readTokens": 0,
+        "writeTokens5m": 0,
+        "writeTokens1h": 0,
+        "writeTokens30m": 2610,
+        "cacheMode": "implicit",
+        "uncachedTokens": 0,
+        "costUsd": 0.006525
+      },
+      {
+        "requestIndex": 1,
+        "readTokens": 0,
+        "writeTokens5m": 0,
+        "writeTokens1h": 0,
+        "writeTokens30m": 2610,
+        "cacheMode": "implicit",
+        "uncachedTokens": 0,
+        "costUsd": 0.006525
+      }
+    ],
+    "optimized": [
+      {
+        "requestIndex": 0,
+        "readTokens": 0,
+        "writeTokens5m": 0,
+        "writeTokens1h": 0,
+        "writeTokens30m": 2610,
+        "cacheMode": "implicit",
+        "uncachedTokens": 0,
+        "costUsd": 0.006525
+      },
+      {
+        "requestIndex": 1,
+        "readTokens": 0,
+        "writeTokens5m": 0,
+        "writeTokens1h": 0,
+        "writeTokens30m": 2610,
+        "cacheMode": "implicit",
+        "uncachedTokens": 0,
+        "costUsd": 0.006525
+      }
+    ],
+    "totalActualCostUsd": 0.01305,
+    "totalOptimizedCostUsd": 0.01305
+  },
+  "usageComparison": {
+    "rows": [
+      {
+        "requestIndex": 0,
+        "estimatedInputTokens": 2610,
+        "simulatedReadTokens": 0,
+        "reportedInputTokens": null,
+        "reportedReadTokens": null,
+        "reportedWriteTokens": null,
+        "inputDeltaTokens": null,
+        "readDeltaTokens": null,
+        "readOutcome": "unavailable"
+      },
+      {
+        "requestIndex": 1,
+        "estimatedInputTokens": 2610,
+        "simulatedReadTokens": 0,
+        "reportedInputTokens": null,
+        "reportedReadTokens": null,
+        "reportedWriteTokens": null,
+        "inputDeltaTokens": null,
+        "readDeltaTokens": null,
+        "readOutcome": "unavailable"
+      }
+    ],
+    "capturedRequests": 0,
+    "uncomparedRequestIndices": [],
+    "invalidRequestIndices": [],
+    "input": {
+      "requestIndices": [],
+      "reportedTokens": null,
+      "simulatedTokens": null,
+      "deltaTokens": null
+    },
+    "cacheRead": {
+      "requestIndices": [],
+      "reportedTokens": null,
+      "simulatedTokens": null,
+      "deltaTokens": null
+    },
+    "readOutcomes": {
+      "both_zero": 0,
+      "both_positive": 0,
+      "simulated_hit_reported_zero": 0,
+      "reported_hit_simulated_zero": 0,
+      "unavailable": 2
+    },
+    "issues": []
+  },
+  "findings": [
+    {
+      "kind": "openai_cache_boundary",
+      "severity": "warning",
+      "requestIndex": 1,
+      "title": "Shared text has no reusable cache boundary",
+      "detail": "Request 2 shares 2,605 modeled prefix tokens with request 1, but none of its eligible lookup boundaries finds a cached endpoint. Matching text alone is insufficient. Keep earlier message endings intact, or mark the end of the stable content explicitly in both requests. An explicit-only request checks its explicit boundaries; implicit lookup also has a message lookback limit.",
+      "segmentIds": []
+    }
+  ],
+  "duplicates": []
+}

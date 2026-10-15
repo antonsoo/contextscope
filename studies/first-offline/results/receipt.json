@@ -1,0 +1,3463 @@
+{
+  "baselineSource": "7782eb5951d10f502fbf63f0daeee8186fc54d90",
+  "sdk": {
+    "openai": "3.23.0",
+    "python": "3.12.12"
+  },
+  "fixtures": {
+    "chat-refusal-changed": {
+      "file": "../message-boundaries/fixtures/chat-refusal-changed.jsonl.gz",
+      "gzipSha256": "08eb52b12c4dec6870d60b721ed98bb3854fe8cb5c0d90584999a260e7c436a2",
+      "rawSha256": "7e8cd01ac1c264ac613436e6978e8e65c68183816bbb29e5a914c5f16f8f4c56"
+    },
+    "responses-empty-role": {
+      "file": "../message-boundaries/fixtures/responses-empty-role.jsonl.gz",
+      "gzipSha256": "76c4b26f1dfd0899ece5286df1d14c69cfc53f4e24a99a60080242f275397442",
+      "rawSha256": "14a25954f038467aa7253551214104a584cda462f6817ddf4874cff91fcfa31d"
+    },
+    "chat-empty-role": {
+      "file": "../message-boundaries/fixtures/chat-empty-role.jsonl.gz",
+      "gzipSha256": "b2acfdc34c7c23473d4bed062b29fbb3ee3e59fa4604510a0cafa2646beaf018",
+      "rawSha256": "def52047029cbea62270286223b1d197cb971e4015c9feffd03e4d203ab22f33"
+    },
+    "responses-empty-output-phase": {
+      "file": "../message-boundaries/fixtures/responses-empty-output-phase.jsonl.gz",
+      "gzipSha256": "e75817e13610e9edfaeaacd0214ac3c36be6221b4511fabf6697e457707c6eba",
+      "rawSha256": "82ed005fb69de23d68cc111f8401af872d70098b5d1192c6b1003b028c58784c"
+    }
+  },
+  "sourcePopulation": "Synthetic histories captured through the actual SDK over a mocked HTTP transport; no inference, reported token usage or provider cache observations",
+  "controls": {
+    "chat-refusal-changed": {
+      "expected": {
+        "parse": {
+          "format": "openai",
+          "complete": true,
+          "sourceRecords": 2,
+          "skippedRecords": 0,
+          "autoDetected": true,
+          "requests": [
+            {
+              "provider": "openai",
+              "index": 0,
+              "model": "gpt-6-sol",
+              "source": {
+                "recordIndex": 0,
+                "line": 1
+              },
+              "segments": [
+                {
+                  "id": "messages[0].content",
+                  "category": "system",
+                  "label": "message 1 (developer) text",
+                  "path": "messages[0].content",
+                  "openaiTokens": 2606,
+                  "claudeTokensEstimate": 3939,
+                  "charLength": 13000
+                },
+                {
+                  "id": "messages[1].content",
+                  "category": "user",
+                  "label": "message 2 (user) text",
+                  "path": "messages[1].content",
+                  "openaiTokens": 9,
+                  "claudeTokensEstimate": 5,
+                  "charLength": 18
+                },
+                {
+                  "id": "messages[2].refusal",
+                  "category": "assistant",
+                  "label": "message 3 (assistant) refusal",
+                  "path": "messages[2].refusal",
+                  "openaiTokens": 367,
+                  "claudeTokensEstimate": 557,
+                  "charLength": 1837
+                },
+                {
+                  "id": "messages[3].content",
+                  "category": "user",
+                  "label": "message 4 (user) text",
+                  "path": "messages[3].content",
+                  "openaiTokens": 10,
+                  "claudeTokensEstimate": 9,
+                  "charLength": 29
+                }
+              ]
+            },
+            {
+              "provider": "openai",
+              "index": 1,
+              "model": "gpt-6-sol",
+              "source": {
+                "recordIndex": 1,
+                "line": 2
+              },
+              "segments": [
+                {
+                  "id": "messages[0].content",
+                  "category": "system",
+                  "label": "message 1 (developer) text",
+                  "path": "messages[0].content",
+                  "openaiTokens": 2606,
+                  "claudeTokensEstimate": 3939,
+                  "charLength": 13000
+                },
+                {
+                  "id": "messages[1].content",
+                  "category": "user",
+                  "label": "message 2 (user) text",
+                  "path": "messages[1].content",
+                  "openaiTokens": 9,
+                  "claudeTokensEstimate": 5,
+                  "charLength": 18
+                },
+                {
+                  "id": "messages[2].refusal",
+                  "category": "assistant",
+                  "label": "message 3 (assistant) refusal",
+                  "path": "messages[2].refusal",
+                  "openaiTokens": 487,
+                  "claudeTokensEstimate": 920,
+                  "charLength": 3035
+                },
+                {
+                  "id": "messages[3].content",
+                  "category": "user",
+                  "label": "message 4 (user) text",
+                  "path": "messages[3].content",
+                  "openaiTokens": 10,
+                  "claudeTokensEstimate": 9,
+                  "charLength": 29
+                }
+              ]
+            }
+          ],
+          "warnings": []
+        },
+        "model": {
+          "id": "gpt-6-sol",
+          "displayName": "GPT-6 Sol",
+          "source": "request"
+        },
+        "claudeTokenScale": 1,
+        "reports": [
+          {
+            "requestIndex": 0,
+            "model": {
+              "id": "gpt-6-sol",
+              "displayName": "GPT-6 Sol",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 2992,
+              "claudeTokensEstimate": 4510
+            },
+            "byCategory": [
+              {
+                "category": "system",
+                "segmentCount": 1,
+                "openaiTokens": 2606,
+                "claudeTokensEstimate": 3939
+              },
+              {
+                "category": "user",
+                "segmentCount": 2,
+                "openaiTokens": 19,
+                "claudeTokensEstimate": 14
+              },
+              {
+                "category": "assistant",
+                "segmentCount": 1,
+                "openaiTokens": 367,
+                "claudeTokensEstimate": 557
+              }
+            ],
+            "segments": [
+              {
+                "id": "messages[0].content",
+                "category": "system",
+                "label": "message 1 (developer) text",
+                "path": "messages[0].content",
+                "openaiTokens": 2606,
+                "claudeTokensEstimate": 3939,
+                "charLength": 13000
+              },
+              {
+                "id": "messages[1].content",
+                "category": "user",
+                "label": "message 2 (user) text",
+                "path": "messages[1].content",
+                "openaiTokens": 9,
+                "claudeTokensEstimate": 5,
+                "charLength": 18
+              },
+              {
+                "id": "messages[2].refusal",
+                "category": "assistant",
+                "label": "message 3 (assistant) refusal",
+                "path": "messages[2].refusal",
+                "openaiTokens": 367,
+                "claudeTokensEstimate": 557,
+                "charLength": 1837
+              },
+              {
+                "id": "messages[3].content",
+                "category": "user",
+                "label": "message 4 (user) text",
+                "path": "messages[3].content",
+                "openaiTokens": 10,
+                "claudeTokensEstimate": 9,
+                "charLength": 29
+              }
+            ],
+            "contextWindow": 1050000,
+            "percentOfContextWindow": 0.0028495238095238096
+          },
+          {
+            "requestIndex": 1,
+            "model": {
+              "id": "gpt-6-sol",
+              "displayName": "GPT-6 Sol",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 3112,
+              "claudeTokensEstimate": 4873
+            },
+            "byCategory": [
+              {
+                "category": "system",
+                "segmentCount": 1,
+                "openaiTokens": 2606,
+                "claudeTokensEstimate": 3939
+              },
+              {
+                "category": "user",
+                "segmentCount": 2,
+                "openaiTokens": 19,
+                "claudeTokensEstimate": 14
+              },
+              {
+                "category": "assistant",
+                "segmentCount": 1,
+                "openaiTokens": 487,
+                "claudeTokensEstimate": 920
+              }
+            ],
+            "segments": [
+              {
+                "id": "messages[0].content",
+                "category": "system",
+                "label": "message 1 (developer) text",
+                "path": "messages[0].content",
+                "openaiTokens": 2606,
+                "claudeTokensEstimate": 3939,
+                "charLength": 13000
+              },
+              {
+                "id": "messages[1].content",
+                "category": "user",
+                "label": "message 2 (user) text",
+                "path": "messages[1].content",
+                "openaiTokens": 9,
+                "claudeTokensEstimate": 5,
+                "charLength": 18
+              },
+              {
+                "id": "messages[2].refusal",
+                "category": "assistant",
+                "label": "message 3 (assistant) refusal",
+                "path": "messages[2].refusal",
+                "openaiTokens": 487,
+                "claudeTokensEstimate": 920,
+                "charLength": 3035
+              },
+              {
+                "id": "messages[3].content",
+                "category": "user",
+                "label": "message 4 (user) text",
+                "path": "messages[3].content",
+                "openaiTokens": 10,
+                "claudeTokensEstimate": 9,
+                "charLength": 29
+              }
+            ],
+            "contextWindow": 1050000,
+            "percentOfContextWindow": 0.002963809523809524
+          }
+        ],
+        "prefixMatches": [
+          {
+            "fromIndex": 0,
+            "toIndex": 1,
+            "relation": "rewrites",
+            "matchedSegments": 2,
+            "matchedOpenaiTokens": 2615,
+            "matchedClaudeTokensEstimate": 3944,
+            "divergedAt": {
+              "fromSegmentId": "messages[2].refusal",
+              "toSegmentId": "messages[2].refusal"
+            }
+          }
+        ],
+        "conversations": {
+          "count": 1,
+          "byRequest": [
+            0,
+            0
+          ]
+        },
+        "cacheSimulation": {
+          "provider": "openai",
+          "model": "gpt-6-sol",
+          "actual": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "writeTokens30m": 2992,
+              "cacheMode": "implicit",
+              "uncachedTokens": 0,
+              "costUsd": 0.00748
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "writeTokens30m": 3112,
+              "cacheMode": "implicit",
+              "uncachedTokens": 0,
+              "costUsd": 0.00778
+            }
+          ],
+          "optimized": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "writeTokens30m": 2992,
+              "cacheMode": "implicit",
+              "uncachedTokens": 0,
+              "costUsd": 0.00748
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "writeTokens30m": 3112,
+              "cacheMode": "implicit",
+              "uncachedTokens": 0,
+              "costUsd": 0.00778
+            }
+          ],
+          "totalActualCostUsd": 0.01526,
+          "totalOptimizedCostUsd": 0.01526
+        },
+        "usageComparison": {
+          "rows": [
+            {
+              "requestIndex": 0,
+              "estimatedInputTokens": 2992,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            },
+            {
+              "requestIndex": 1,
+              "estimatedInputTokens": 3112,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            }
+          ],
+          "capturedRequests": 0,
+          "uncomparedRequestIndices": [],
+          "invalidRequestIndices": [],
+          "input": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "cacheRead": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "readOutcomes": {
+            "both_zero": 0,
+            "both_positive": 0,
+            "simulated_hit_reported_zero": 0,
+            "reported_hit_simulated_zero": 0,
+            "unavailable": 2
+          },
+          "issues": []
+        },
+        "findings": [
+          {
+            "kind": "openai_cache_boundary",
+            "severity": "warning",
+            "requestIndex": 1,
+            "title": "Shared text has no reusable cache boundary",
+            "detail": "Request 2 shares 2,615 modeled prefix tokens with request 1, but none of its eligible lookup boundaries finds a cached endpoint. Matching text alone is insufficient. Keep earlier message endings intact, or mark the end of the stable content explicitly in both requests. An explicit-only request checks its explicit boundaries; implicit lookup also has a message lookback limit.",
+            "segmentIds": []
+          }
+        ],
+        "duplicates": []
+      },
+      "console": {
+        "exit": 0,
+        "stdout": "contextscope — openai · 2 requests (auto-detected)\npriced as GPT-6 Sol (per-request metadata)\n  OpenAI breakpoint caching: 30-minute writes cost 1.25 times ordinary input. Reads require an\n  eligible matching boundary. GPT-6 input/cache rates double above 272,000 modeled input tokens.\n  Prices assume Standard processing. Cache keys and changed renderer settings are isolated; expiry\n  and hidden provider tokens are not modeled.\n\nNo paired response usage. Cache reads and costs below are simulations.\n\nLargest request: 2 of 2 · GPT-6 Sol  ≈4,873 Claude tokens · 3,112 OpenAI (o200k_base) tokens · 0.3% of context window\n  ████████████████░░░░ system             3,939 ≈tok  (1 segment)\n  ░░░░░░░░░░░░░░░░░░░░ user text             14 ≈tok  (2 segments)\n  ████░░░░░░░░░░░░░░░░ assistant text       920 ≈tok  (1 segment)\n  (every request's breakdown: --verbose)\n\nPrefix match across the sequence\n  1 of 1 pair rewrite content already sent, starting at \"message 3 (assistant) refusal\" (req 1 → 2)\n  0 of 1 only append to the previous request\n\nCache simulation (openai, GPT-6 Sol)\n  request        read  write(30m)   uncached       cost  mode\n  req 1             0       2,992          0    $0.0075  implicit\n  req 2             0       3,112          0    $0.0078  implicit\n  total simulated cost: $0.0153\n  total optimized cost: $0.0153  (content normalized; OpenAI markers unchanged)\n\nFindings (1 issue)\n  [warning] Shared text has no reusable cache boundary (request 2)\n      Request 2 shares 2,615 modeled prefix tokens with request 1, but none of its eligible lookup\n      boundaries finds a cached endpoint. Matching text alone is insufficient. Keep earlier message\n      endings intact, or mark the end of the stable content explicitly in both requests. An\n      explicit-only request checks its explicit boundaries; implicit lookup also has a message\n      lookback limit.\nJSON report written to /tmp/contextscope-offline-oracle-lB3Rby/chat-refusal-changed.json\n",
+        "stderr": ""
+      },
+      "input": {
+        "gzipSha256": "08eb52b12c4dec6870d60b721ed98bb3854fe8cb5c0d90584999a260e7c436a2",
+        "rawSha256": "7e8cd01ac1c264ac613436e6978e8e65c68183816bbb29e5a914c5f16f8f4c56"
+      }
+    },
+    "responses-empty-role": {
+      "expected": {
+        "parse": {
+          "format": "openai",
+          "complete": true,
+          "sourceRecords": 2,
+          "skippedRecords": 0,
+          "autoDetected": true,
+          "requests": [
+            {
+              "provider": "openai",
+              "index": 0,
+              "model": "gpt-6-sol",
+              "source": {
+                "recordIndex": 0,
+                "line": 1
+              },
+              "segments": [
+                {
+                  "id": "instructions",
+                  "category": "system",
+                  "label": "instructions",
+                  "path": "instructions",
+                  "openaiTokens": 2601,
+                  "claudeTokensEstimate": 3939,
+                  "charLength": 13000
+                },
+                {
+                  "id": "input[0]",
+                  "category": "user",
+                  "label": "item 1 (user) text",
+                  "path": "input[0].content",
+                  "openaiTokens": 4,
+                  "claudeTokensEstimate": 5,
+                  "charLength": 18
+                },
+                {
+                  "id": "input[1]",
+                  "category": "user",
+                  "label": "item 2 (user) text",
+                  "path": "input[1].content",
+                  "openaiTokens": 0,
+                  "claudeTokensEstimate": 0,
+                  "charLength": 0
+                },
+                {
+                  "id": "input[2]",
+                  "category": "user",
+                  "label": "item 3 (user) text",
+                  "path": "input[2].content",
+                  "openaiTokens": 5,
+                  "claudeTokensEstimate": 9,
+                  "charLength": 29
+                }
+              ]
+            },
+            {
+              "provider": "openai",
+              "index": 1,
+              "model": "gpt-6-sol",
+              "source": {
+                "recordIndex": 1,
+                "line": 2
+              },
+              "segments": [
+                {
+                  "id": "instructions",
+                  "category": "system",
+                  "label": "instructions",
+                  "path": "instructions",
+                  "openaiTokens": 2601,
+                  "claudeTokensEstimate": 3939,
+                  "charLength": 13000
+                },
+                {
+                  "id": "input[0]",
+                  "category": "user",
+                  "label": "item 1 (user) text",
+                  "path": "input[0].content",
+                  "openaiTokens": 4,
+                  "claudeTokensEstimate": 5,
+                  "charLength": 18
+                },
+                {
+                  "id": "input[1]",
+                  "category": "assistant",
+                  "label": "item 2 (assistant) text",
+                  "path": "input[1].content",
+                  "openaiTokens": 0,
+                  "claudeTokensEstimate": 0,
+                  "charLength": 0
+                },
+                {
+                  "id": "input[2]",
+                  "category": "user",
+                  "label": "item 3 (user) text",
+                  "path": "input[2].content",
+                  "openaiTokens": 5,
+                  "claudeTokensEstimate": 9,
+                  "charLength": 29
+                }
+              ]
+            }
+          ],
+          "warnings": []
+        },
+        "model": {
+          "id": "gpt-6-sol",
+          "displayName": "GPT-6 Sol",
+          "source": "request"
+        },
+        "claudeTokenScale": 1,
+        "reports": [
+          {
+            "requestIndex": 0,
+            "model": {
+              "id": "gpt-6-sol",
+              "displayName": "GPT-6 Sol",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 2610,
+              "claudeTokensEstimate": 3953
+            },
+            "byCategory": [
+              {
+                "category": "system",
+                "segmentCount": 1,
+                "openaiTokens": 2601,
+                "claudeTokensEstimate": 3939
+              },
+              {
+                "category": "user",
+                "segmentCount": 3,
+                "openaiTokens": 9,
+                "claudeTokensEstimate": 14
+              }
+            ],
+            "segments": [
+              {
+                "id": "instructions",
+                "category": "system",
+                "label": "instructions",
+                "path": "instructions",
+                "openaiTokens": 2601,
+                "claudeTokensEstimate": 3939,
+                "charLength": 13000
+              },
+              {
+                "id": "input[0]",
+                "category": "user",
+                "label": "item 1 (user) text",
+                "path": "input[0].content",
+                "openaiTokens": 4,
+                "claudeTokensEstimate": 5,
+                "charLength": 18
+              },
+              {
+                "id": "input[1]",
+                "category": "user",
+                "label": "item 2 (user) text",
+                "path": "input[1].content",
+                "openaiTokens": 0,
+                "claudeTokensEstimate": 0,
+                "charLength": 0
+              },
+              {
+                "id": "input[2]",
+                "category": "user",
+                "label": "item 3 (user) text",
+                "path": "input[2].content",
+                "openaiTokens": 5,
+                "claudeTokensEstimate": 9,
+                "charLength": 29
+              }
+            ],
+            "contextWindow": 1050000,
+            "percentOfContextWindow": 0.0024857142857142855
+          },
+          {
+            "requestIndex": 1,
+            "model": {
+              "id": "gpt-6-sol",
+              "displayName": "GPT-6 Sol",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 2610,
+              "claudeTokensEstimate": 3953
+            },
+            "byCategory": [
+              {
+                "category": "system",
+                "segmentCount": 1,
+                "openaiTokens": 2601,
+                "claudeTokensEstimate": 3939
+              },
+              {
+                "category": "user",
+                "segmentCount": 2,
+                "openaiTokens": 9,
+                "claudeTokensEstimate": 14
+              },
+              {
+                "category": "assistant",
+                "segmentCount": 1,
+                "openaiTokens": 0,
+                "claudeTokensEstimate": 0
+              }
+            ],
+            "segments": [
+              {
+                "id": "instructions",
+                "category": "system",
+                "label": "instructions",
+                "path": "instructions",
+                "openaiTokens": 2601,
+                "claudeTokensEstimate": 3939,
+                "charLength": 13000
+              },
+              {
+                "id": "input[0]",
+                "category": "user",
+                "label": "item 1 (user) text",
+                "path": "input[0].content",
+                "openaiTokens": 4,
+                "claudeTokensEstimate": 5,
+                "charLength": 18
+              },
+              {
+                "id": "input[1]",
+                "category": "assistant",
+                "label": "item 2 (assistant) text",
+                "path": "input[1].content",
+                "openaiTokens": 0,
+                "claudeTokensEstimate": 0,
+                "charLength": 0
+              },
+              {
+                "id": "input[2]",
+                "category": "user",
+                "label": "item 3 (user) text",
+                "path": "input[2].content",
+                "openaiTokens": 5,
+                "claudeTokensEstimate": 9,
+                "charLength": 29
+              }
+            ],
+            "contextWindow": 1050000,
+            "percentOfContextWindow": 0.0024857142857142855
+          }
+        ],
+        "prefixMatches": [
+          {
+            "fromIndex": 0,
+            "toIndex": 1,
+            "relation": "rewrites",
+            "matchedSegments": 2,
+            "matchedOpenaiTokens": 2605,
+            "matchedClaudeTokensEstimate": 3944,
+            "divergedAt": {
+              "fromSegmentId": "input[1]",
+              "toSegmentId": "input[1]"
+            }
+          }
+        ],
+        "conversations": {
+          "count": 1,
+          "byRequest": [
+            0,
+            0
+          ]
+        },
+        "cacheSimulation": {
+          "provider": "openai",
+          "model": "gpt-6-sol",
+          "actual": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "writeTokens30m": 2610,
+              "cacheMode": "implicit",
+              "uncachedTokens": 0,
+              "costUsd": 0.006525
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "writeTokens30m": 2610,
+              "cacheMode": "implicit",
+              "uncachedTokens": 0,
+              "costUsd": 0.006525
+            }
+          ],
+          "optimized": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "writeTokens30m": 2610,
+              "cacheMode": "implicit",
+              "uncachedTokens": 0,
+              "costUsd": 0.006525
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "writeTokens30m": 2610,
+              "cacheMode": "implicit",
+              "uncachedTokens": 0,
+              "costUsd": 0.006525
+            }
+          ],
+          "totalActualCostUsd": 0.01305,
+          "totalOptimizedCostUsd": 0.01305
+        },
+        "usageComparison": {
+          "rows": [
+            {
+              "requestIndex": 0,
+              "estimatedInputTokens": 2610,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            },
+            {
+              "requestIndex": 1,
+              "estimatedInputTokens": 2610,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            }
+          ],
+          "capturedRequests": 0,
+          "uncomparedRequestIndices": [],
+          "invalidRequestIndices": [],
+          "input": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "cacheRead": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "readOutcomes": {
+            "both_zero": 0,
+            "both_positive": 0,
+            "simulated_hit_reported_zero": 0,
+            "reported_hit_simulated_zero": 0,
+            "unavailable": 2
+          },
+          "issues": []
+        },
+        "findings": [
+          {
+            "kind": "openai_cache_boundary",
+            "severity": "warning",
+            "requestIndex": 1,
+            "title": "Shared text has no reusable cache boundary",
+            "detail": "Request 2 shares 2,605 modeled prefix tokens with request 1, but none of its eligible lookup boundaries finds a cached endpoint. Matching text alone is insufficient. Keep earlier message endings intact, or mark the end of the stable content explicitly in both requests. An explicit-only request checks its explicit boundaries; implicit lookup also has a message lookback limit.",
+            "segmentIds": []
+          }
+        ],
+        "duplicates": []
+      },
+      "console": {
+        "exit": 0,
+        "stdout": "contextscope — openai · 2 requests (auto-detected)\npriced as GPT-6 Sol (per-request metadata)\n  OpenAI breakpoint caching: 30-minute writes cost 1.25 times ordinary input. Reads require an\n  eligible matching boundary. GPT-6 input/cache rates double above 272,000 modeled input tokens.\n  Prices assume Standard processing. Cache keys and changed renderer settings are isolated; expiry\n  and hidden provider tokens are not modeled.\n\nNo paired response usage. Cache reads and costs below are simulations.\n\nLargest request: 1 of 2 · GPT-6 Sol  ≈3,953 Claude tokens · 2,610 OpenAI (o200k_base) tokens · 0.2% of context window\n  ████████████████████ system             3,939 ≈tok  (1 segment)\n  ░░░░░░░░░░░░░░░░░░░░ user text             14 ≈tok  (3 segments)\n  (every request's breakdown: --verbose)\n\nPrefix match across the sequence\n  1 of 1 pair rewrite content already sent, starting at \"item 2 (user) text\" (req 1 → 2)\n  0 of 1 only append to the previous request\n\nCache simulation (openai, GPT-6 Sol)\n  request        read  write(30m)   uncached       cost  mode\n  req 1             0       2,610          0    $0.0065  implicit\n  req 2             0       2,610          0    $0.0065  implicit\n  total simulated cost: $0.0131\n  total optimized cost: $0.0131  (content normalized; OpenAI markers unchanged)\n\nFindings (1 issue)\n  [warning] Shared text has no reusable cache boundary (request 2)\n      Request 2 shares 2,605 modeled prefix tokens with request 1, but none of its eligible lookup\n      boundaries finds a cached endpoint. Matching text alone is insufficient. Keep earlier message\n      endings intact, or mark the end of the stable content explicitly in both requests. An\n      explicit-only request checks its explicit boundaries; implicit lookup also has a message\n      lookback limit.\nJSON report written to /tmp/contextscope-offline-oracle-lB3Rby/responses-empty-role.json\n",
+        "stderr": ""
+      },
+      "input": {
+        "gzipSha256": "76c4b26f1dfd0899ece5286df1d14c69cfc53f4e24a99a60080242f275397442",
+        "rawSha256": "14a25954f038467aa7253551214104a584cda462f6817ddf4874cff91fcfa31d"
+      }
+    },
+    "chat-empty-role": {
+      "expected": {
+        "parse": {
+          "format": "openai",
+          "complete": true,
+          "sourceRecords": 2,
+          "skippedRecords": 0,
+          "autoDetected": true,
+          "requests": [
+            {
+              "provider": "openai",
+              "index": 0,
+              "model": "gpt-6-sol",
+              "source": {
+                "recordIndex": 0,
+                "line": 1
+              },
+              "segments": [
+                {
+                  "id": "messages[0].content",
+                  "category": "system",
+                  "label": "message 1 (developer) text",
+                  "path": "messages[0].content",
+                  "openaiTokens": 2606,
+                  "claudeTokensEstimate": 3939,
+                  "charLength": 13000
+                },
+                {
+                  "id": "messages[1].content",
+                  "category": "user",
+                  "label": "message 2 (user) text",
+                  "path": "messages[1].content",
+                  "openaiTokens": 9,
+                  "claudeTokensEstimate": 5,
+                  "charLength": 18
+                },
+                {
+                  "id": "messages[2].content",
+                  "category": "user",
+                  "label": "message 3 (user) text",
+                  "path": "messages[2].content",
+                  "openaiTokens": 5,
+                  "claudeTokensEstimate": 0,
+                  "charLength": 0
+                },
+                {
+                  "id": "messages[3].content",
+                  "category": "user",
+                  "label": "message 4 (user) text",
+                  "path": "messages[3].content",
+                  "openaiTokens": 10,
+                  "claudeTokensEstimate": 9,
+                  "charLength": 29
+                }
+              ]
+            },
+            {
+              "provider": "openai",
+              "index": 1,
+              "model": "gpt-6-sol",
+              "source": {
+                "recordIndex": 1,
+                "line": 2
+              },
+              "segments": [
+                {
+                  "id": "messages[0].content",
+                  "category": "system",
+                  "label": "message 1 (developer) text",
+                  "path": "messages[0].content",
+                  "openaiTokens": 2606,
+                  "claudeTokensEstimate": 3939,
+                  "charLength": 13000
+                },
+                {
+                  "id": "messages[1].content",
+                  "category": "user",
+                  "label": "message 2 (user) text",
+                  "path": "messages[1].content",
+                  "openaiTokens": 9,
+                  "claudeTokensEstimate": 5,
+                  "charLength": 18
+                },
+                {
+                  "id": "messages[2].content",
+                  "category": "assistant",
+                  "label": "message 3 (assistant) text",
+                  "path": "messages[2].content",
+                  "openaiTokens": 5,
+                  "claudeTokensEstimate": 0,
+                  "charLength": 0
+                },
+                {
+                  "id": "messages[3].content",
+                  "category": "user",
+                  "label": "message 4 (user) text",
+                  "path": "messages[3].content",
+                  "openaiTokens": 10,
+                  "claudeTokensEstimate": 9,
+                  "charLength": 29
+                }
+              ]
+            }
+          ],
+          "warnings": []
+        },
+        "model": {
+          "id": "gpt-6-sol",
+          "displayName": "GPT-6 Sol",
+          "source": "request"
+        },
+        "claudeTokenScale": 1,
+        "reports": [
+          {
+            "requestIndex": 0,
+            "model": {
+              "id": "gpt-6-sol",
+              "displayName": "GPT-6 Sol",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 2630,
+              "claudeTokensEstimate": 3953
+            },
+            "byCategory": [
+              {
+                "category": "system",
+                "segmentCount": 1,
+                "openaiTokens": 2606,
+                "claudeTokensEstimate": 3939
+              },
+              {
+                "category": "user",
+                "segmentCount": 3,
+                "openaiTokens": 24,
+                "claudeTokensEstimate": 14
+              }
+            ],
+            "segments": [
+              {
+                "id": "messages[0].content",
+                "category": "system",
+                "label": "message 1 (developer) text",
+                "path": "messages[0].content",
+                "openaiTokens": 2606,
+                "claudeTokensEstimate": 3939,
+                "charLength": 13000
+              },
+              {
+                "id": "messages[1].content",
+                "category": "user",
+                "label": "message 2 (user) text",
+                "path": "messages[1].content",
+                "openaiTokens": 9,
+                "claudeTokensEstimate": 5,
+                "charLength": 18
+              },
+              {
+                "id": "messages[2].content",
+                "category": "user",
+                "label": "message 3 (user) text",
+                "path": "messages[2].content",
+                "openaiTokens": 5,
+                "claudeTokensEstimate": 0,
+                "charLength": 0
+              },
+              {
+                "id": "messages[3].content",
+                "category": "user",
+                "label": "message 4 (user) text",
+                "path": "messages[3].content",
+                "openaiTokens": 10,
+                "claudeTokensEstimate": 9,
+                "charLength": 29
+              }
+            ],
+            "contextWindow": 1050000,
+            "percentOfContextWindow": 0.0025047619047619046
+          },
+          {
+            "requestIndex": 1,
+            "model": {
+              "id": "gpt-6-sol",
+              "displayName": "GPT-6 Sol",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 2630,
+              "claudeTokensEstimate": 3953
+            },
+            "byCategory": [
+              {
+                "category": "system",
+                "segmentCount": 1,
+                "openaiTokens": 2606,
+                "claudeTokensEstimate": 3939
+              },
+              {
+                "category": "user",
+                "segmentCount": 2,
+                "openaiTokens": 19,
+                "claudeTokensEstimate": 14
+              },
+              {
+                "category": "assistant",
+                "segmentCount": 1,
+                "openaiTokens": 5,
+                "claudeTokensEstimate": 0
+              }
+            ],
+            "segments": [
+              {
+                "id": "messages[0].content",
+                "category": "system",
+                "label": "message 1 (developer) text",
+                "path": "messages[0].content",
+                "openaiTokens": 2606,
+                "claudeTokensEstimate": 3939,
+                "charLength": 13000
+              },
+              {
+                "id": "messages[1].content",
+                "category": "user",
+                "label": "message 2 (user) text",
+                "path": "messages[1].content",
+                "openaiTokens": 9,
+                "claudeTokensEstimate": 5,
+                "charLength": 18
+              },
+              {
+                "id": "messages[2].content",
+                "category": "assistant",
+                "label": "message 3 (assistant) text",
+                "path": "messages[2].content",
+                "openaiTokens": 5,
+                "claudeTokensEstimate": 0,
+                "charLength": 0
+              },
+              {
+                "id": "messages[3].content",
+                "category": "user",
+                "label": "message 4 (user) text",
+                "path": "messages[3].content",
+                "openaiTokens": 10,
+                "claudeTokensEstimate": 9,
+                "charLength": 29
+              }
+            ],
+            "contextWindow": 1050000,
+            "percentOfContextWindow": 0.0025047619047619046
+          }
+        ],
+        "prefixMatches": [
+          {
+            "fromIndex": 0,
+            "toIndex": 1,
+            "relation": "rewrites",
+            "matchedSegments": 2,
+            "matchedOpenaiTokens": 2615,
+            "matchedClaudeTokensEstimate": 3944,
+            "divergedAt": {
+              "fromSegmentId": "messages[2].content",
+              "toSegmentId": "messages[2].content"
+            }
+          }
+        ],
+        "conversations": {
+          "count": 1,
+          "byRequest": [
+            0,
+            0
+          ]
+        },
+        "cacheSimulation": {
+          "provider": "openai",
+          "model": "gpt-6-sol",
+          "actual": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "writeTokens30m": 2630,
+              "cacheMode": "implicit",
+              "uncachedTokens": 0,
+              "costUsd": 0.006575
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "writeTokens30m": 2630,
+              "cacheMode": "implicit",
+              "uncachedTokens": 0,
+              "costUsd": 0.006575
+            }
+          ],
+          "optimized": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "writeTokens30m": 2630,
+              "cacheMode": "implicit",
+              "uncachedTokens": 0,
+              "costUsd": 0.006575
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "writeTokens30m": 2630,
+              "cacheMode": "implicit",
+              "uncachedTokens": 0,
+              "costUsd": 0.006575
+            }
+          ],
+          "totalActualCostUsd": 0.01315,
+          "totalOptimizedCostUsd": 0.01315
+        },
+        "usageComparison": {
+          "rows": [
+            {
+              "requestIndex": 0,
+              "estimatedInputTokens": 2630,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            },
+            {
+              "requestIndex": 1,
+              "estimatedInputTokens": 2630,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            }
+          ],
+          "capturedRequests": 0,
+          "uncomparedRequestIndices": [],
+          "invalidRequestIndices": [],
+          "input": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "cacheRead": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "readOutcomes": {
+            "both_zero": 0,
+            "both_positive": 0,
+            "simulated_hit_reported_zero": 0,
+            "reported_hit_simulated_zero": 0,
+            "unavailable": 2
+          },
+          "issues": []
+        },
+        "findings": [
+          {
+            "kind": "openai_cache_boundary",
+            "severity": "warning",
+            "requestIndex": 1,
+            "title": "Shared text has no reusable cache boundary",
+            "detail": "Request 2 shares 2,615 modeled prefix tokens with request 1, but none of its eligible lookup boundaries finds a cached endpoint. Matching text alone is insufficient. Keep earlier message endings intact, or mark the end of the stable content explicitly in both requests. An explicit-only request checks its explicit boundaries; implicit lookup also has a message lookback limit.",
+            "segmentIds": []
+          }
+        ],
+        "duplicates": []
+      },
+      "console": {
+        "exit": 0,
+        "stdout": "contextscope — openai · 2 requests (auto-detected)\npriced as GPT-6 Sol (per-request metadata)\n  OpenAI breakpoint caching: 30-minute writes cost 1.25 times ordinary input. Reads require an\n  eligible matching boundary. GPT-6 input/cache rates double above 272,000 modeled input tokens.\n  Prices assume Standard processing. Cache keys and changed renderer settings are isolated; expiry\n  and hidden provider tokens are not modeled.\n\nNo paired response usage. Cache reads and costs below are simulations.\n\nLargest request: 1 of 2 · GPT-6 Sol  ≈3,953 Claude tokens · 2,630 OpenAI (o200k_base) tokens · 0.3% of context window\n  ████████████████████ system             3,939 ≈tok  (1 segment)\n  ░░░░░░░░░░░░░░░░░░░░ user text             14 ≈tok  (3 segments)\n  (every request's breakdown: --verbose)\n\nPrefix match across the sequence\n  1 of 1 pair rewrite content already sent, starting at \"message 3 (user) text\" (req 1 → 2)\n  0 of 1 only append to the previous request\n\nCache simulation (openai, GPT-6 Sol)\n  request        read  write(30m)   uncached       cost  mode\n  req 1             0       2,630          0    $0.0066  implicit\n  req 2             0       2,630          0    $0.0066  implicit\n  total simulated cost: $0.0132\n  total optimized cost: $0.0132  (content normalized; OpenAI markers unchanged)\n\nFindings (1 issue)\n  [warning] Shared text has no reusable cache boundary (request 2)\n      Request 2 shares 2,615 modeled prefix tokens with request 1, but none of its eligible lookup\n      boundaries finds a cached endpoint. Matching text alone is insufficient. Keep earlier message\n      endings intact, or mark the end of the stable content explicitly in both requests. An\n      explicit-only request checks its explicit boundaries; implicit lookup also has a message\n      lookback limit.\nJSON report written to /tmp/contextscope-offline-oracle-lB3Rby/chat-empty-role.json\n",
+        "stderr": ""
+      },
+      "input": {
+        "gzipSha256": "b2acfdc34c7c23473d4bed062b29fbb3ee3e59fa4604510a0cafa2646beaf018",
+        "rawSha256": "def52047029cbea62270286223b1d197cb971e4015c9feffd03e4d203ab22f33"
+      }
+    },
+    "responses-empty-output-phase": {
+      "expected": {
+        "parse": {
+          "format": "openai",
+          "complete": true,
+          "sourceRecords": 2,
+          "skippedRecords": 0,
+          "autoDetected": true,
+          "requests": [
+            {
+              "provider": "openai",
+              "index": 0,
+              "model": "gpt-6-sol",
+              "source": {
+                "recordIndex": 0,
+                "line": 1
+              },
+              "segments": [
+                {
+                  "id": "instructions",
+                  "category": "system",
+                  "label": "instructions",
+                  "path": "instructions",
+                  "openaiTokens": 2601,
+                  "claudeTokensEstimate": 3939,
+                  "charLength": 13000
+                },
+                {
+                  "id": "input[0]",
+                  "category": "user",
+                  "label": "item 1 (user) text",
+                  "path": "input[0].content",
+                  "openaiTokens": 4,
+                  "claudeTokensEstimate": 5,
+                  "charLength": 18
+                },
+                {
+                  "id": "input[1]",
+                  "category": "assistant",
+                  "label": "item 2 (assistant) empty content",
+                  "path": "input[1].content",
+                  "openaiTokens": 0,
+                  "claudeTokensEstimate": 0,
+                  "charLength": 0
+                },
+                {
+                  "id": "input[2]",
+                  "category": "user",
+                  "label": "item 3 (user) text",
+                  "path": "input[2].content",
+                  "openaiTokens": 5,
+                  "claudeTokensEstimate": 9,
+                  "charLength": 29
+                }
+              ]
+            },
+            {
+              "provider": "openai",
+              "index": 1,
+              "model": "gpt-6-sol",
+              "source": {
+                "recordIndex": 1,
+                "line": 2
+              },
+              "segments": [
+                {
+                  "id": "instructions",
+                  "category": "system",
+                  "label": "instructions",
+                  "path": "instructions",
+                  "openaiTokens": 2601,
+                  "claudeTokensEstimate": 3939,
+                  "charLength": 13000
+                },
+                {
+                  "id": "input[0]",
+                  "category": "user",
+                  "label": "item 1 (user) text",
+                  "path": "input[0].content",
+                  "openaiTokens": 4,
+                  "claudeTokensEstimate": 5,
+                  "charLength": 18
+                },
+                {
+                  "id": "input[1]",
+                  "category": "assistant",
+                  "label": "item 2 (assistant) empty content",
+                  "path": "input[1].content",
+                  "openaiTokens": 0,
+                  "claudeTokensEstimate": 0,
+                  "charLength": 0
+                },
+                {
+                  "id": "input[2]",
+                  "category": "user",
+                  "label": "item 3 (user) text",
+                  "path": "input[2].content",
+                  "openaiTokens": 5,
+                  "claudeTokensEstimate": 9,
+                  "charLength": 29
+                }
+              ]
+            }
+          ],
+          "warnings": []
+        },
+        "model": {
+          "id": "gpt-6-sol",
+          "displayName": "GPT-6 Sol",
+          "source": "request"
+        },
+        "claudeTokenScale": 1,
+        "reports": [
+          {
+            "requestIndex": 0,
+            "model": {
+              "id": "gpt-6-sol",
+              "displayName": "GPT-6 Sol",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 2610,
+              "claudeTokensEstimate": 3953
+            },
+            "byCategory": [
+              {
+                "category": "system",
+                "segmentCount": 1,
+                "openaiTokens": 2601,
+                "claudeTokensEstimate": 3939
+              },
+              {
+                "category": "user",
+                "segmentCount": 2,
+                "openaiTokens": 9,
+                "claudeTokensEstimate": 14
+              },
+              {
+                "category": "assistant",
+                "segmentCount": 1,
+                "openaiTokens": 0,
+                "claudeTokensEstimate": 0
+              }
+            ],
+            "segments": [
+              {
+                "id": "instructions",
+                "category": "system",
+                "label": "instructions",
+                "path": "instructions",
+                "openaiTokens": 2601,
+                "claudeTokensEstimate": 3939,
+                "charLength": 13000
+              },
+              {
+                "id": "input[0]",
+                "category": "user",
+                "label": "item 1 (user) text",
+                "path": "input[0].content",
+                "openaiTokens": 4,
+                "claudeTokensEstimate": 5,
+                "charLength": 18
+              },
+              {
+                "id": "input[1]",
+                "category": "assistant",
+                "label": "item 2 (assistant) empty content",
+                "path": "input[1].content",
+                "openaiTokens": 0,
+                "claudeTokensEstimate": 0,
+                "charLength": 0
+              },
+              {
+                "id": "input[2]",
+                "category": "user",
+                "label": "item 3 (user) text",
+                "path": "input[2].content",
+                "openaiTokens": 5,
+                "claudeTokensEstimate": 9,
+                "charLength": 29
+              }
+            ],
+            "contextWindow": 1050000,
+            "percentOfContextWindow": 0.0024857142857142855
+          },
+          {
+            "requestIndex": 1,
+            "model": {
+              "id": "gpt-6-sol",
+              "displayName": "GPT-6 Sol",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 2610,
+              "claudeTokensEstimate": 3953
+            },
+            "byCategory": [
+              {
+                "category": "system",
+                "segmentCount": 1,
+                "openaiTokens": 2601,
+                "claudeTokensEstimate": 3939
+              },
+              {
+                "category": "user",
+                "segmentCount": 2,
+                "openaiTokens": 9,
+                "claudeTokensEstimate": 14
+              },
+              {
+                "category": "assistant",
+                "segmentCount": 1,
+                "openaiTokens": 0,
+                "claudeTokensEstimate": 0
+              }
+            ],
+            "segments": [
+              {
+                "id": "instructions",
+                "category": "system",
+                "label": "instructions",
+                "path": "instructions",
+                "openaiTokens": 2601,
+                "claudeTokensEstimate": 3939,
+                "charLength": 13000
+              },
+              {
+                "id": "input[0]",
+                "category": "user",
+                "label": "item 1 (user) text",
+                "path": "input[0].content",
+                "openaiTokens": 4,
+                "claudeTokensEstimate": 5,
+                "charLength": 18
+              },
+              {
+                "id": "input[1]",
+                "category": "assistant",
+                "label": "item 2 (assistant) empty content",
+                "path": "input[1].content",
+                "openaiTokens": 0,
+                "claudeTokensEstimate": 0,
+                "charLength": 0
+              },
+              {
+                "id": "input[2]",
+                "category": "user",
+                "label": "item 3 (user) text",
+                "path": "input[2].content",
+                "openaiTokens": 5,
+                "claudeTokensEstimate": 9,
+                "charLength": 29
+              }
+            ],
+            "contextWindow": 1050000,
+            "percentOfContextWindow": 0.0024857142857142855
+          }
+        ],
+        "prefixMatches": [
+          {
+            "fromIndex": 0,
+            "toIndex": 1,
+            "relation": "rewrites",
+            "matchedSegments": 2,
+            "matchedOpenaiTokens": 2605,
+            "matchedClaudeTokensEstimate": 3944,
+            "divergedAt": {
+              "fromSegmentId": "input[1]",
+              "toSegmentId": "input[1]"
+            }
+          }
+        ],
+        "conversations": {
+          "count": 1,
+          "byRequest": [
+            0,
+            0
+          ]
+        },
+        "cacheSimulation": {
+          "provider": "openai",
+          "model": "gpt-6-sol",
+          "actual": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "writeTokens30m": 2610,
+              "cacheMode": "implicit",
+              "uncachedTokens": 0,
+              "costUsd": 0.006525
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "writeTokens30m": 2610,
+              "cacheMode": "implicit",
+              "uncachedTokens": 0,
+              "costUsd": 0.006525
+            }
+          ],
+          "optimized": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "writeTokens30m": 2610,
+              "cacheMode": "implicit",
+              "uncachedTokens": 0,
+              "costUsd": 0.006525
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "writeTokens30m": 2610,
+              "cacheMode": "implicit",
+              "uncachedTokens": 0,
+              "costUsd": 0.006525
+            }
+          ],
+          "totalActualCostUsd": 0.01305,
+          "totalOptimizedCostUsd": 0.01305
+        },
+        "usageComparison": {
+          "rows": [
+            {
+              "requestIndex": 0,
+              "estimatedInputTokens": 2610,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            },
+            {
+              "requestIndex": 1,
+              "estimatedInputTokens": 2610,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            }
+          ],
+          "capturedRequests": 0,
+          "uncomparedRequestIndices": [],
+          "invalidRequestIndices": [],
+          "input": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "cacheRead": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "readOutcomes": {
+            "both_zero": 0,
+            "both_positive": 0,
+            "simulated_hit_reported_zero": 0,
+            "reported_hit_simulated_zero": 0,
+            "unavailable": 2
+          },
+          "issues": []
+        },
+        "findings": [
+          {
+            "kind": "openai_cache_boundary",
+            "severity": "warning",
+            "requestIndex": 1,
+            "title": "Shared text has no reusable cache boundary",
+            "detail": "Request 2 shares 2,605 modeled prefix tokens with request 1, but none of its eligible lookup boundaries finds a cached endpoint. Matching text alone is insufficient. Keep earlier message endings intact, or mark the end of the stable content explicitly in both requests. An explicit-only request checks its explicit boundaries; implicit lookup also has a message lookback limit.",
+            "segmentIds": []
+          }
+        ],
+        "duplicates": []
+      },
+      "console": {
+        "exit": 0,
+        "stdout": "contextscope — openai · 2 requests (auto-detected)\npriced as GPT-6 Sol (per-request metadata)\n  OpenAI breakpoint caching: 30-minute writes cost 1.25 times ordinary input. Reads require an\n  eligible matching boundary. GPT-6 input/cache rates double above 272,000 modeled input tokens.\n  Prices assume Standard processing. Cache keys and changed renderer settings are isolated; expiry\n  and hidden provider tokens are not modeled.\n\nNo paired response usage. Cache reads and costs below are simulations.\n\nLargest request: 1 of 2 · GPT-6 Sol  ≈3,953 Claude tokens · 2,610 OpenAI (o200k_base) tokens · 0.2% of context window\n  ████████████████████ system             3,939 ≈tok  (1 segment)\n  ░░░░░░░░░░░░░░░░░░░░ user text             14 ≈tok  (2 segments)\n  ░░░░░░░░░░░░░░░░░░░░ assistant text         0 ≈tok  (1 segment)\n  (every request's breakdown: --verbose)\n\nPrefix match across the sequence\n  1 of 1 pair rewrite content already sent, starting at \"item 2 (assistant) empty content\" (req 1 → 2)\n  0 of 1 only append to the previous request\n\nCache simulation (openai, GPT-6 Sol)\n  request        read  write(30m)   uncached       cost  mode\n  req 1             0       2,610          0    $0.0065  implicit\n  req 2             0       2,610          0    $0.0065  implicit\n  total simulated cost: $0.0131\n  total optimized cost: $0.0131  (content normalized; OpenAI markers unchanged)\n\nFindings (1 issue)\n  [warning] Shared text has no reusable cache boundary (request 2)\n      Request 2 shares 2,605 modeled prefix tokens with request 1, but none of its eligible lookup\n      boundaries finds a cached endpoint. Matching text alone is insufficient. Keep earlier message\n      endings intact, or mark the end of the stable content explicitly in both requests. An\n      explicit-only request checks its explicit boundaries; implicit lookup also has a message\n      lookback limit.\nJSON report written to /tmp/contextscope-offline-oracle-lB3Rby/responses-empty-output-phase.json\n",
+        "stderr": ""
+      },
+      "input": {
+        "gzipSha256": "e75817e13610e9edfaeaacd0214ac3c36be6221b4511fabf6697e457707c6eba",
+        "rawSha256": "82ed005fb69de23d68cc111f8401af872d70098b5d1192c6b1003b028c58784c"
+      }
+    }
+  },
+  "records": [
+    {
+      "phase": "before",
+      "engine": "chromium",
+      "width": 1440,
+      "id": "chat-refusal-changed",
+      "json": {
+        "file": "artifacts/856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d.json",
+        "bytes": 10520,
+        "sha256": "856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d"
+      },
+      "html": {
+        "file": "artifacts/ed25ab24569eb37db28a54f58c7c4736503ed1363c1b0797aa262c7aaab01cf3.html",
+        "bytes": 5811,
+        "sha256": "ed25ab24569eb37db28a54f58c7c4736503ed1363c1b0797aa262c7aaab01cf3"
+      },
+      "original": {
+        "file": "artifacts/c9477e3a498e5dc9c8d69e1bd5dd0eb0b82a88c20143f058d60e90ff8cfa7fce.json",
+        "bytes": 3096,
+        "sha256": "c9477e3a498e5dc9c8d69e1bd5dd0eb0b82a88c20143f058d60e90ff8cfa7fce"
+      },
+      "matchesBaselineCli": true
+    },
+    {
+      "phase": "before",
+      "engine": "chromium",
+      "width": 1440,
+      "id": "responses-empty-role",
+      "json": {
+        "file": "artifacts/2bdbee204e2e26427b18355afc03aedbd5d8e8457303ef1365761956e80d71ea.json",
+        "bytes": 9963,
+        "sha256": "2bdbee204e2e26427b18355afc03aedbd5d8e8457303ef1365761956e80d71ea"
+      },
+      "html": {
+        "file": "artifacts/825e623bab3f115b32e072ed3df5463ab227f34ab7fcbf96695483a630c66053.html",
+        "bytes": 5689,
+        "sha256": "825e623bab3f115b32e072ed3df5463ab227f34ab7fcbf96695483a630c66053"
+      },
+      "matchesBaselineCli": true
+    },
+    {
+      "phase": "before",
+      "engine": "chromium",
+      "width": 1440,
+      "id": "chat-empty-role",
+      "json": {
+        "file": "artifacts/9d31712f9fb7a62359d0b7ee3a5c264d892b36ab91256185916b430e07de3507.json",
+        "bytes": 10307,
+        "sha256": "9d31712f9fb7a62359d0b7ee3a5c264d892b36ab91256185916b430e07de3507"
+      },
+      "html": {
+        "file": "artifacts/e8296e007d4356e5f0bbfbe04edf75d9ba0c17f2f67898593851faa5f8d1eeb2.html",
+        "bytes": 5691,
+        "sha256": "e8296e007d4356e5f0bbfbe04edf75d9ba0c17f2f67898593851faa5f8d1eeb2"
+      },
+      "matchesBaselineCli": true
+    },
+    {
+      "phase": "before",
+      "engine": "chromium",
+      "width": 1440,
+      "id": "responses-empty-output-phase",
+      "json": {
+        "file": "artifacts/f5fd6a3741f4513d73d027d02d9dd0ce85d8802550ecb55c360e6570b3cfc777.json",
+        "bytes": 10169,
+        "sha256": "f5fd6a3741f4513d73d027d02d9dd0ce85d8802550ecb55c360e6570b3cfc777"
+      },
+      "html": {
+        "file": "artifacts/509046058295257587a138e17cb124c8e21ef8073ac6c2da38bda21f1da25636.html",
+        "bytes": 5801,
+        "sha256": "509046058295257587a138e17cb124c8e21ef8073ac6c2da38bda21f1da25636"
+      },
+      "matchesBaselineCli": true
+    },
+    {
+      "phase": "before",
+      "engine": "chromium",
+      "width": 375,
+      "id": "chat-refusal-changed",
+      "json": {
+        "file": "artifacts/856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d.json",
+        "bytes": 10520,
+        "sha256": "856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d"
+      },
+      "html": {
+        "file": "artifacts/9faad6de8b30518bfa39b335e149e2f93ef745ad5b66c91f980d42f8c325fdcd.html",
+        "bytes": 5811,
+        "sha256": "9faad6de8b30518bfa39b335e149e2f93ef745ad5b66c91f980d42f8c325fdcd"
+      },
+      "original": {
+        "file": "artifacts/c9477e3a498e5dc9c8d69e1bd5dd0eb0b82a88c20143f058d60e90ff8cfa7fce.json",
+        "bytes": 3096,
+        "sha256": "c9477e3a498e5dc9c8d69e1bd5dd0eb0b82a88c20143f058d60e90ff8cfa7fce"
+      },
+      "matchesBaselineCli": true
+    },
+    {
+      "phase": "before",
+      "engine": "chromium",
+      "width": 375,
+      "id": "responses-empty-role",
+      "json": {
+        "file": "artifacts/2bdbee204e2e26427b18355afc03aedbd5d8e8457303ef1365761956e80d71ea.json",
+        "bytes": 9963,
+        "sha256": "2bdbee204e2e26427b18355afc03aedbd5d8e8457303ef1365761956e80d71ea"
+      },
+      "html": {
+        "file": "artifacts/ff0f054caed719096115f24a226f7f4b10fff0402a314c15724336caa154cc79.html",
+        "bytes": 5689,
+        "sha256": "ff0f054caed719096115f24a226f7f4b10fff0402a314c15724336caa154cc79"
+      },
+      "matchesBaselineCli": true
+    },
+    {
+      "phase": "before",
+      "engine": "chromium",
+      "width": 375,
+      "id": "chat-empty-role",
+      "json": {
+        "file": "artifacts/9d31712f9fb7a62359d0b7ee3a5c264d892b36ab91256185916b430e07de3507.json",
+        "bytes": 10307,
+        "sha256": "9d31712f9fb7a62359d0b7ee3a5c264d892b36ab91256185916b430e07de3507"
+      },
+      "html": {
+        "file": "artifacts/328ae95725b63b328cba0f528d7b7ba2804e468a9ce843b5fda2e89f9c68ccb8.html",
+        "bytes": 5691,
+        "sha256": "328ae95725b63b328cba0f528d7b7ba2804e468a9ce843b5fda2e89f9c68ccb8"
+      },
+      "matchesBaselineCli": true
+    },
+    {
+      "phase": "before",
+      "engine": "chromium",
+      "width": 375,
+      "id": "responses-empty-output-phase",
+      "json": {
+        "file": "artifacts/f5fd6a3741f4513d73d027d02d9dd0ce85d8802550ecb55c360e6570b3cfc777.json",
+        "bytes": 10169,
+        "sha256": "f5fd6a3741f4513d73d027d02d9dd0ce85d8802550ecb55c360e6570b3cfc777"
+      },
+      "html": {
+        "file": "artifacts/b5bfeac2ee109651ed1f0d53266eef0f13defad63b8160965970cc82d3cd6c8b.html",
+        "bytes": 5801,
+        "sha256": "b5bfeac2ee109651ed1f0d53266eef0f13defad63b8160965970cc82d3cd6c8b"
+      },
+      "matchesBaselineCli": true
+    },
+    {
+      "phase": "before",
+      "engine": "firefox",
+      "width": 1440,
+      "id": "chat-refusal-changed",
+      "json": {
+        "file": "artifacts/856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d.json",
+        "bytes": 10520,
+        "sha256": "856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d"
+      },
+      "html": {
+        "file": "artifacts/382d8aef073d196c931d17a4fa2837ac254246805e44a59c7c0849aba3accb16.html",
+        "bytes": 5811,
+        "sha256": "382d8aef073d196c931d17a4fa2837ac254246805e44a59c7c0849aba3accb16"
+      },
+      "original": {
+        "file": "artifacts/c9477e3a498e5dc9c8d69e1bd5dd0eb0b82a88c20143f058d60e90ff8cfa7fce.json",
+        "bytes": 3096,
+        "sha256": "c9477e3a498e5dc9c8d69e1bd5dd0eb0b82a88c20143f058d60e90ff8cfa7fce"
+      },
+      "matchesBaselineCli": true
+    },
+    {
+      "phase": "before",
+      "engine": "firefox",
+      "width": 1440,
+      "id": "responses-empty-role",
+      "json": {
+        "file": "artifacts/2bdbee204e2e26427b18355afc03aedbd5d8e8457303ef1365761956e80d71ea.json",
+        "bytes": 9963,
+        "sha256": "2bdbee204e2e26427b18355afc03aedbd5d8e8457303ef1365761956e80d71ea"
+      },
+      "html": {
+        "file": "artifacts/b7114df8fe36d89975f96dc731aa84953af40e049a90f688ef463f93c41a8cc3.html",
+        "bytes": 5689,
+        "sha256": "b7114df8fe36d89975f96dc731aa84953af40e049a90f688ef463f93c41a8cc3"
+      },
+      "matchesBaselineCli": true
+    },
+    {
+      "phase": "before",
+      "engine": "firefox",
+      "width": 1440,
+      "id": "chat-empty-role",
+      "json": {
+        "file": "artifacts/9d31712f9fb7a62359d0b7ee3a5c264d892b36ab91256185916b430e07de3507.json",
+        "bytes": 10307,
+        "sha256": "9d31712f9fb7a62359d0b7ee3a5c264d892b36ab91256185916b430e07de3507"
+      },
+      "html": {
+        "file": "artifacts/cfdca629256666e40d4616d06122def3d3830252f663ad7d4185106a27a9f10f.html",
+        "bytes": 5691,
+        "sha256": "cfdca629256666e40d4616d06122def3d3830252f663ad7d4185106a27a9f10f"
+      },
+      "matchesBaselineCli": true
+    },
+    {
+      "phase": "before",
+      "engine": "firefox",
+      "width": 1440,
+      "id": "responses-empty-output-phase",
+      "json": {
+        "file": "artifacts/f5fd6a3741f4513d73d027d02d9dd0ce85d8802550ecb55c360e6570b3cfc777.json",
+        "bytes": 10169,
+        "sha256": "f5fd6a3741f4513d73d027d02d9dd0ce85d8802550ecb55c360e6570b3cfc777"
+      },
+      "html": {
+        "file": "artifacts/2a6c71348e8866df8bacdbe84f992b5101232fcd7e28cf72240d105ba661d293.html",
+        "bytes": 5801,
+        "sha256": "2a6c71348e8866df8bacdbe84f992b5101232fcd7e28cf72240d105ba661d293"
+      },
+      "matchesBaselineCli": true
+    },
+    {
+      "phase": "before",
+      "engine": "firefox",
+      "width": 375,
+      "id": "chat-refusal-changed",
+      "json": {
+        "file": "artifacts/856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d.json",
+        "bytes": 10520,
+        "sha256": "856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d"
+      },
+      "html": {
+        "file": "artifacts/51fee25fdfd3647b1b9f05527d7c41883ceb33037c5e9ceb102db38a5627949b.html",
+        "bytes": 5811,
+        "sha256": "51fee25fdfd3647b1b9f05527d7c41883ceb33037c5e9ceb102db38a5627949b"
+      },
+      "original": {
+        "file": "artifacts/c9477e3a498e5dc9c8d69e1bd5dd0eb0b82a88c20143f058d60e90ff8cfa7fce.json",
+        "bytes": 3096,
+        "sha256": "c9477e3a498e5dc9c8d69e1bd5dd0eb0b82a88c20143f058d60e90ff8cfa7fce"
+      },
+      "matchesBaselineCli": true
+    },
+    {
+      "phase": "before",
+      "engine": "firefox",
+      "width": 375,
+      "id": "responses-empty-role",
+      "json": {
+        "file": "artifacts/2bdbee204e2e26427b18355afc03aedbd5d8e8457303ef1365761956e80d71ea.json",
+        "bytes": 9963,
+        "sha256": "2bdbee204e2e26427b18355afc03aedbd5d8e8457303ef1365761956e80d71ea"
+      },
+      "html": {
+        "file": "artifacts/430f866eb832027db62bbaf07a8e2507d7f5d3f47525dacf67055331457949c4.html",
+        "bytes": 5689,
+        "sha256": "430f866eb832027db62bbaf07a8e2507d7f5d3f47525dacf67055331457949c4"
+      },
+      "matchesBaselineCli": true
+    },
+    {
+      "phase": "before",
+      "engine": "firefox",
+      "width": 375,
+      "id": "chat-empty-role",
+      "json": {
+        "file": "artifacts/9d31712f9fb7a62359d0b7ee3a5c264d892b36ab91256185916b430e07de3507.json",
+        "bytes": 10307,
+        "sha256": "9d31712f9fb7a62359d0b7ee3a5c264d892b36ab91256185916b430e07de3507"
+      },
+      "html": {
+        "file": "artifacts/163cc321c885041378d8f89e82b2b026afc49f941249335017d632648772f222.html",
+        "bytes": 5691,
+        "sha256": "163cc321c885041378d8f89e82b2b026afc49f941249335017d632648772f222"
+      },
+      "matchesBaselineCli": true
+    },
+    {
+      "phase": "before",
+      "engine": "firefox",
+      "width": 375,
+      "id": "responses-empty-output-phase",
+      "json": {
+        "file": "artifacts/f5fd6a3741f4513d73d027d02d9dd0ce85d8802550ecb55c360e6570b3cfc777.json",
+        "bytes": 10169,
+        "sha256": "f5fd6a3741f4513d73d027d02d9dd0ce85d8802550ecb55c360e6570b3cfc777"
+      },
+      "html": {
+        "file": "artifacts/520d35a5a1cbe3a5707979b2fafdeba335e278b134f8d6a6cf06abcd2c327b09.html",
+        "bytes": 5801,
+        "sha256": "520d35a5a1cbe3a5707979b2fafdeba335e278b134f8d6a6cf06abcd2c327b09"
+      },
+      "matchesBaselineCli": true
+    },
+    {
+      "phase": "after",
+      "engine": "chromium",
+      "width": 1440,
+      "id": "chat-refusal-changed",
+      "json": {
+        "file": "artifacts/856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d.json",
+        "bytes": 10520,
+        "sha256": "856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d"
+      },
+      "html": {
+        "file": "artifacts/dcc31eb3a34acb3b43d3c246663878b88b8cc1332e5d6ccd36a1c044654437f5.html",
+        "bytes": 5811,
+        "sha256": "dcc31eb3a34acb3b43d3c246663878b88b8cc1332e5d6ccd36a1c044654437f5"
+      },
+      "original": {
+        "file": "artifacts/c9477e3a498e5dc9c8d69e1bd5dd0eb0b82a88c20143f058d60e90ff8cfa7fce.json",
+        "bytes": 3096,
+        "sha256": "c9477e3a498e5dc9c8d69e1bd5dd0eb0b82a88c20143f058d60e90ff8cfa7fce"
+      },
+      "matchesBaselineCli": true
+    },
+    {
+      "phase": "after",
+      "engine": "chromium",
+      "width": 1440,
+      "id": "responses-empty-role",
+      "json": {
+        "file": "artifacts/2bdbee204e2e26427b18355afc03aedbd5d8e8457303ef1365761956e80d71ea.json",
+        "bytes": 9963,
+        "sha256": "2bdbee204e2e26427b18355afc03aedbd5d8e8457303ef1365761956e80d71ea"
+      },
+      "html": {
+        "file": "artifacts/df1f45d1127f06bca44920b1c02716a0b5b0a9b60fffe943785e3b4af7cef3ef.html",
+        "bytes": 5689,
+        "sha256": "df1f45d1127f06bca44920b1c02716a0b5b0a9b60fffe943785e3b4af7cef3ef"
+      },
+      "matchesBaselineCli": true
+    },
+    {
+      "phase": "after",
+      "engine": "chromium",
+      "width": 1440,
+      "id": "chat-empty-role",
+      "json": {
+        "file": "artifacts/9d31712f9fb7a62359d0b7ee3a5c264d892b36ab91256185916b430e07de3507.json",
+        "bytes": 10307,
+        "sha256": "9d31712f9fb7a62359d0b7ee3a5c264d892b36ab91256185916b430e07de3507"
+      },
+      "html": {
+        "file": "artifacts/45033c023d35a3a3d1956d1961c9a79c1a7350becb3db76e53c00cc73052239f.html",
+        "bytes": 5691,
+        "sha256": "45033c023d35a3a3d1956d1961c9a79c1a7350becb3db76e53c00cc73052239f"
+      },
+      "matchesBaselineCli": true
+    },
+    {
+      "phase": "after",
+      "engine": "chromium",
+      "width": 1440,
+      "id": "responses-empty-output-phase",
+      "json": {
+        "file": "artifacts/f5fd6a3741f4513d73d027d02d9dd0ce85d8802550ecb55c360e6570b3cfc777.json",
+        "bytes": 10169,
+        "sha256": "f5fd6a3741f4513d73d027d02d9dd0ce85d8802550ecb55c360e6570b3cfc777"
+      },
+      "html": {
+        "file": "artifacts/824bbf364b48b207582a3799c1877dc6a1ccdd29c48cdc3e34c20e692bb2ae5b.html",
+        "bytes": 5801,
+        "sha256": "824bbf364b48b207582a3799c1877dc6a1ccdd29c48cdc3e34c20e692bb2ae5b"
+      },
+      "matchesBaselineCli": true
+    },
+    {
+      "phase": "after",
+      "engine": "chromium",
+      "width": 375,
+      "id": "chat-refusal-changed",
+      "json": {
+        "file": "artifacts/856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d.json",
+        "bytes": 10520,
+        "sha256": "856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d"
+      },
+      "html": {
+        "file": "artifacts/dd32a14e0fdb52d18bc3f475105284681599715e048c155dad2af619235b1678.html",
+        "bytes": 5811,
+        "sha256": "dd32a14e0fdb52d18bc3f475105284681599715e048c155dad2af619235b1678"
+      },
+      "original": {
+        "file": "artifacts/c9477e3a498e5dc9c8d69e1bd5dd0eb0b82a88c20143f058d60e90ff8cfa7fce.json",
+        "bytes": 3096,
+        "sha256": "c9477e3a498e5dc9c8d69e1bd5dd0eb0b82a88c20143f058d60e90ff8cfa7fce"
+      },
+      "matchesBaselineCli": true
+    },
+    {
+      "phase": "after",
+      "engine": "chromium",
+      "width": 375,
+      "id": "responses-empty-role",
+      "json": {
+        "file": "artifacts/2bdbee204e2e26427b18355afc03aedbd5d8e8457303ef1365761956e80d71ea.json",
+        "bytes": 9963,
+        "sha256": "2bdbee204e2e26427b18355afc03aedbd5d8e8457303ef1365761956e80d71ea"
+      },
+      "html": {
+        "file": "artifacts/457143350cdc1cb928a75b7831c58122ddc36870e39ada191c97841e8ecc93be.html",
+        "bytes": 5689,
+        "sha256": "457143350cdc1cb928a75b7831c58122ddc36870e39ada191c97841e8ecc93be"
+      },
+      "matchesBaselineCli": true
+    },
+    {
+      "phase": "after",
+      "engine": "chromium",
+      "width": 375,
+      "id": "chat-empty-role",
+      "json": {
+        "file": "artifacts/9d31712f9fb7a62359d0b7ee3a5c264d892b36ab91256185916b430e07de3507.json",
+        "bytes": 10307,
+        "sha256": "9d31712f9fb7a62359d0b7ee3a5c264d892b36ab91256185916b430e07de3507"
+      },
+      "html": {
+        "file": "artifacts/6c9870ac85749eb3923b83fd87e7c9acb633e0f4e38dbf3a59d98ce6301a3202.html",
+        "bytes": 5691,
+        "sha256": "6c9870ac85749eb3923b83fd87e7c9acb633e0f4e38dbf3a59d98ce6301a3202"
+      },
+      "matchesBaselineCli": true
+    },
+    {
+      "phase": "after",
+      "engine": "chromium",
+      "width": 375,
+      "id": "responses-empty-output-phase",
+      "json": {
+        "file": "artifacts/f5fd6a3741f4513d73d027d02d9dd0ce85d8802550ecb55c360e6570b3cfc777.json",
+        "bytes": 10169,
+        "sha256": "f5fd6a3741f4513d73d027d02d9dd0ce85d8802550ecb55c360e6570b3cfc777"
+      },
+      "html": {
+        "file": "artifacts/8ff09346b2f61de38ca966f83da450917ffa781642d57d4bee7af875b4e9fd24.html",
+        "bytes": 5801,
+        "sha256": "8ff09346b2f61de38ca966f83da450917ffa781642d57d4bee7af875b4e9fd24"
+      },
+      "matchesBaselineCli": true
+    },
+    {
+      "phase": "after",
+      "engine": "firefox",
+      "width": 1440,
+      "id": "chat-refusal-changed",
+      "json": {
+        "file": "artifacts/856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d.json",
+        "bytes": 10520,
+        "sha256": "856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d"
+      },
+      "html": {
+        "file": "artifacts/f358516f3d48e29f44c006014647630606fade191be93922bd2591341257009b.html",
+        "bytes": 5811,
+        "sha256": "f358516f3d48e29f44c006014647630606fade191be93922bd2591341257009b"
+      },
+      "original": {
+        "file": "artifacts/c9477e3a498e5dc9c8d69e1bd5dd0eb0b82a88c20143f058d60e90ff8cfa7fce.json",
+        "bytes": 3096,
+        "sha256": "c9477e3a498e5dc9c8d69e1bd5dd0eb0b82a88c20143f058d60e90ff8cfa7fce"
+      },
+      "matchesBaselineCli": true
+    },
+    {
+      "phase": "after",
+      "engine": "firefox",
+      "width": 1440,
+      "id": "responses-empty-role",
+      "json": {
+        "file": "artifacts/2bdbee204e2e26427b18355afc03aedbd5d8e8457303ef1365761956e80d71ea.json",
+        "bytes": 9963,
+        "sha256": "2bdbee204e2e26427b18355afc03aedbd5d8e8457303ef1365761956e80d71ea"
+      },
+      "html": {
+        "file": "artifacts/e1134989c381dd261ac107481f0c2aef800d4d187d08f4118a14773067256a2a.html",
+        "bytes": 5689,
+        "sha256": "e1134989c381dd261ac107481f0c2aef800d4d187d08f4118a14773067256a2a"
+      },
+      "matchesBaselineCli": true
+    },
+    {
+      "phase": "after",
+      "engine": "firefox",
+      "width": 1440,
+      "id": "chat-empty-role",
+      "json": {
+        "file": "artifacts/9d31712f9fb7a62359d0b7ee3a5c264d892b36ab91256185916b430e07de3507.json",
+        "bytes": 10307,
+        "sha256": "9d31712f9fb7a62359d0b7ee3a5c264d892b36ab91256185916b430e07de3507"
+      },
+      "html": {
+        "file": "artifacts/6df296146b22e462acc290244c830b595a3b9a494fc6cf7acb411ba446ced550.html",
+        "bytes": 5691,
+        "sha256": "6df296146b22e462acc290244c830b595a3b9a494fc6cf7acb411ba446ced550"
+      },
+      "matchesBaselineCli": true
+    },
+    {
+      "phase": "after",
+      "engine": "firefox",
+      "width": 1440,
+      "id": "responses-empty-output-phase",
+      "json": {
+        "file": "artifacts/f5fd6a3741f4513d73d027d02d9dd0ce85d8802550ecb55c360e6570b3cfc777.json",
+        "bytes": 10169,
+        "sha256": "f5fd6a3741f4513d73d027d02d9dd0ce85d8802550ecb55c360e6570b3cfc777"
+      },
+      "html": {
+        "file": "artifacts/787774aa037e0312b53f78fadacf28c73d273e5684794719b5aef39df24a1aa4.html",
+        "bytes": 5801,
+        "sha256": "787774aa037e0312b53f78fadacf28c73d273e5684794719b5aef39df24a1aa4"
+      },
+      "matchesBaselineCli": true
+    },
+    {
+      "phase": "after",
+      "engine": "firefox",
+      "width": 375,
+      "id": "chat-refusal-changed",
+      "json": {
+        "file": "artifacts/856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d.json",
+        "bytes": 10520,
+        "sha256": "856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d"
+      },
+      "html": {
+        "file": "artifacts/423882824a3b5422df0bd600f044027993f6aecaef083fb6323753e81e34cd7b.html",
+        "bytes": 5811,
+        "sha256": "423882824a3b5422df0bd600f044027993f6aecaef083fb6323753e81e34cd7b"
+      },
+      "original": {
+        "file": "artifacts/c9477e3a498e5dc9c8d69e1bd5dd0eb0b82a88c20143f058d60e90ff8cfa7fce.json",
+        "bytes": 3096,
+        "sha256": "c9477e3a498e5dc9c8d69e1bd5dd0eb0b82a88c20143f058d60e90ff8cfa7fce"
+      },
+      "matchesBaselineCli": true
+    },
+    {
+      "phase": "after",
+      "engine": "firefox",
+      "width": 375,
+      "id": "responses-empty-role",
+      "json": {
+        "file": "artifacts/2bdbee204e2e26427b18355afc03aedbd5d8e8457303ef1365761956e80d71ea.json",
+        "bytes": 9963,
+        "sha256": "2bdbee204e2e26427b18355afc03aedbd5d8e8457303ef1365761956e80d71ea"
+      },
+      "html": {
+        "file": "artifacts/90995349f5490c981019f0fb4bdc70e55c361b01a70b806707253d436d69df48.html",
+        "bytes": 5689,
+        "sha256": "90995349f5490c981019f0fb4bdc70e55c361b01a70b806707253d436d69df48"
+      },
+      "matchesBaselineCli": true
+    },
+    {
+      "phase": "after",
+      "engine": "firefox",
+      "width": 375,
+      "id": "chat-empty-role",
+      "json": {
+        "file": "artifacts/9d31712f9fb7a62359d0b7ee3a5c264d892b36ab91256185916b430e07de3507.json",
+        "bytes": 10307,
+        "sha256": "9d31712f9fb7a62359d0b7ee3a5c264d892b36ab91256185916b430e07de3507"
+      },
+      "html": {
+        "file": "artifacts/dee617b42ac4096eaf51e6f5b9f1646d66a96bafb5aeec92f3d851e417ddfaf7.html",
+        "bytes": 5691,
+        "sha256": "dee617b42ac4096eaf51e6f5b9f1646d66a96bafb5aeec92f3d851e417ddfaf7"
+      },
+      "matchesBaselineCli": true
+    },
+    {
+      "phase": "after",
+      "engine": "firefox",
+      "width": 375,
+      "id": "responses-empty-output-phase",
+      "json": {
+        "file": "artifacts/f5fd6a3741f4513d73d027d02d9dd0ce85d8802550ecb55c360e6570b3cfc777.json",
+        "bytes": 10169,
+        "sha256": "f5fd6a3741f4513d73d027d02d9dd0ce85d8802550ecb55c360e6570b3cfc777"
+      },
+      "html": {
+        "file": "artifacts/16fb151efe7016b83f0969fba11a3c2c677bd843d981417bc668b2b27fabc316.html",
+        "bytes": 5801,
+        "sha256": "16fb151efe7016b83f0969fba11a3c2c677bd843d981417bc668b2b27fabc316"
+      },
+      "matchesBaselineCli": true
+    }
+  ],
+  "views": [
+    {
+      "phase": "before",
+      "engine": "chromium",
+      "width": 1440,
+      "browser": "153.0.8010.12",
+      "readyMs": 81,
+      "startup": {
+        "created": 0,
+        "terminated": 0,
+        "active": 0,
+        "posts": 0,
+        "ready": 0,
+        "started": 0,
+        "urls": 0,
+        "revoked": 0
+      },
+      "initialAssets": {
+        "index.html": {
+          "bytes": 2623,
+          "sha256": "143c75db525c55af76af6492d68e895cae95aa04e5556c011800444b782a0ec4"
+        },
+        "assets/index-CVO5V7Un.css": {
+          "bytes": 33744,
+          "sha256": "60c46bc7d43bbdaa94f2f84b4a49d63fe61ae44d40f536f815032190461b71ae"
+        },
+        "assets/index-ItN1EEyJ.js": {
+          "bytes": 79983,
+          "sha256": "dca2f94e7781dc0c6b52b3929817282be16e74de3661c1b66363530b9f43722b"
+        },
+        "assets/ibm-plex-sans-latin-IvpUvPa2.woff2": {
+          "bytes": 45712,
+          "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+        },
+        "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2": {
+          "bytes": 14708,
+          "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+        },
+        "assets/ibm-plex-mono-700-latin-7sUh57Bg.woff2": {
+          "bytes": 14908,
+          "sha256": "4f84d86cfd060f4ded334358ff8a4c81d4db2ed5addd568359d693f44a87765a"
+        },
+        "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2": {
+          "bytes": 14888,
+          "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+        }
+      },
+      "cold": {
+        "error": "Could not analyze this input: Failed to fetch dynamically imported module: http://127.0.0.1:46321/contextscope/assets/presentation-C4kQ5e5K.js",
+        "shown": false
+      },
+      "onlineRetry": {
+        "error": "Could not analyze this input: Failed to fetch dynamically imported module: http://127.0.0.1:46321/contextscope/assets/presentation-C4kQ5e5K.js",
+        "shown": false
+      },
+      "audit": {
+        "created": 5,
+        "terminated": 5,
+        "active": 0,
+        "posts": 5,
+        "ready": 0,
+        "started": 5,
+        "urls": 5,
+        "revoked": 5
+      },
+      "served": {
+        "index.html": {
+          "bytes": 2623,
+          "sha256": "143c75db525c55af76af6492d68e895cae95aa04e5556c011800444b782a0ec4"
+        },
+        "assets/index-ItN1EEyJ.js": {
+          "bytes": 79983,
+          "sha256": "dca2f94e7781dc0c6b52b3929817282be16e74de3661c1b66363530b9f43722b"
+        },
+        "assets/index-CVO5V7Un.css": {
+          "bytes": 33744,
+          "sha256": "60c46bc7d43bbdaa94f2f84b4a49d63fe61ae44d40f536f815032190461b71ae"
+        },
+        "assets/ibm-plex-sans-latin-IvpUvPa2.woff2": {
+          "bytes": 45712,
+          "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+        },
+        "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2": {
+          "bytes": 14708,
+          "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+        },
+        "assets/ibm-plex-mono-700-latin-7sUh57Bg.woff2": {
+          "bytes": 14908,
+          "sha256": "4f84d86cfd060f4ded334358ff8a4c81d4db2ed5addd568359d693f44a87765a"
+        },
+        "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2": {
+          "bytes": 14888,
+          "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+        },
+        "assets/presentation-C4kQ5e5K.js": {
+          "bytes": 3792,
+          "sha256": "f4b36af022bd9b71fcc5de969d30ab64c73ae765d049f6aff398fac634874e9c"
+        },
+        "assets/analysis-worker-CWzVlWNx.js": {
+          "bytes": 2099516,
+          "sha256": "74431f8267c2058da187719156e510211503c78d605906141d92d9da1486aefe"
+        },
+        "assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2": {
+          "bytes": 15620,
+          "sha256": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83"
+        }
+      },
+      "received": {
+        "index.html": {
+          "bytes": 2623,
+          "sha256": "143c75db525c55af76af6492d68e895cae95aa04e5556c011800444b782a0ec4"
+        },
+        "assets/index-CVO5V7Un.css": {
+          "bytes": 33744,
+          "sha256": "60c46bc7d43bbdaa94f2f84b4a49d63fe61ae44d40f536f815032190461b71ae"
+        },
+        "assets/index-ItN1EEyJ.js": {
+          "bytes": 79983,
+          "sha256": "dca2f94e7781dc0c6b52b3929817282be16e74de3661c1b66363530b9f43722b"
+        },
+        "assets/ibm-plex-sans-latin-IvpUvPa2.woff2": {
+          "bytes": 45712,
+          "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+        },
+        "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2": {
+          "bytes": 14708,
+          "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+        },
+        "assets/ibm-plex-mono-700-latin-7sUh57Bg.woff2": {
+          "bytes": 14908,
+          "sha256": "4f84d86cfd060f4ded334358ff8a4c81d4db2ed5addd568359d693f44a87765a"
+        },
+        "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2": {
+          "bytes": 14888,
+          "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+        },
+        "assets/presentation-C4kQ5e5K.js": {
+          "bytes": 3792,
+          "sha256": "f4b36af022bd9b71fcc5de969d30ab64c73ae765d049f6aff398fac634874e9c"
+        },
+        "assets/analysis-worker-CWzVlWNx.js": {
+          "bytes": 2099516,
+          "sha256": "74431f8267c2058da187719156e510211503c78d605906141d92d9da1486aefe"
+        },
+        "assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2": {
+          "bytes": 15620,
+          "sha256": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83"
+        }
+      },
+      "failedRequests": [
+        "loopback/contextscope/assets/presentation-C4kQ5e5K.js"
+      ],
+      "lateRequests": [
+        "loopback/contextscope/assets/presentation-C4kQ5e5K.js"
+      ],
+      "externalRequests": [],
+      "pageErrors": [],
+      "policyViolations": [],
+      "axeViolations": [],
+      "overflow": false
+    },
+    {
+      "phase": "before",
+      "engine": "chromium",
+      "width": 375,
+      "browser": "153.0.8010.12",
+      "readyMs": 77,
+      "startup": {
+        "created": 0,
+        "terminated": 0,
+        "active": 0,
+        "posts": 0,
+        "ready": 0,
+        "started": 0,
+        "urls": 0,
+        "revoked": 0
+      },
+      "initialAssets": {
+        "index.html": {
+          "bytes": 2623,
+          "sha256": "143c75db525c55af76af6492d68e895cae95aa04e5556c011800444b782a0ec4"
+        },
+        "assets/index-CVO5V7Un.css": {
+          "bytes": 33744,
+          "sha256": "60c46bc7d43bbdaa94f2f84b4a49d63fe61ae44d40f536f815032190461b71ae"
+        },
+        "assets/index-ItN1EEyJ.js": {
+          "bytes": 79983,
+          "sha256": "dca2f94e7781dc0c6b52b3929817282be16e74de3661c1b66363530b9f43722b"
+        },
+        "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2": {
+          "bytes": 14708,
+          "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+        },
+        "assets/ibm-plex-sans-latin-IvpUvPa2.woff2": {
+          "bytes": 45712,
+          "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+        },
+        "assets/ibm-plex-mono-700-latin-7sUh57Bg.woff2": {
+          "bytes": 14908,
+          "sha256": "4f84d86cfd060f4ded334358ff8a4c81d4db2ed5addd568359d693f44a87765a"
+        },
+        "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2": {
+          "bytes": 14888,
+          "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+        }
+      },
+      "cold": {
+        "error": "Could not analyze this input: Failed to fetch dynamically imported module: http://127.0.0.1:44663/contextscope/assets/presentation-C4kQ5e5K.js",
+        "shown": false
+      },
+      "onlineRetry": {
+        "error": "Could not analyze this input: Failed to fetch dynamically imported module: http://127.0.0.1:44663/contextscope/assets/presentation-C4kQ5e5K.js",
+        "shown": false
+      },
+      "audit": {
+        "created": 5,
+        "terminated": 5,
+        "active": 0,
+        "posts": 5,
+        "ready": 0,
+        "started": 5,
+        "urls": 5,
+        "revoked": 5
+      },
+      "served": {
+        "index.html": {
+          "bytes": 2623,
+          "sha256": "143c75db525c55af76af6492d68e895cae95aa04e5556c011800444b782a0ec4"
+        },
+        "assets/index-ItN1EEyJ.js": {
+          "bytes": 79983,
+          "sha256": "dca2f94e7781dc0c6b52b3929817282be16e74de3661c1b66363530b9f43722b"
+        },
+        "assets/index-CVO5V7Un.css": {
+          "bytes": 33744,
+          "sha256": "60c46bc7d43bbdaa94f2f84b4a49d63fe61ae44d40f536f815032190461b71ae"
+        },
+        "assets/ibm-plex-sans-latin-IvpUvPa2.woff2": {
+          "bytes": 45712,
+          "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+        },
+        "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2": {
+          "bytes": 14708,
+          "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+        },
+        "assets/ibm-plex-mono-700-latin-7sUh57Bg.woff2": {
+          "bytes": 14908,
+          "sha256": "4f84d86cfd060f4ded334358ff8a4c81d4db2ed5addd568359d693f44a87765a"
+        },
+        "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2": {
+          "bytes": 14888,
+          "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+        },
+        "assets/presentation-C4kQ5e5K.js": {
+          "bytes": 3792,
+          "sha256": "f4b36af022bd9b71fcc5de969d30ab64c73ae765d049f6aff398fac634874e9c"
+        },
+        "assets/analysis-worker-CWzVlWNx.js": {
+          "bytes": 2099516,
+          "sha256": "74431f8267c2058da187719156e510211503c78d605906141d92d9da1486aefe"
+        },
+        "assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2": {
+          "bytes": 15620,
+          "sha256": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83"
+        }
+      },
+      "received": {
+        "index.html": {
+          "bytes": 2623,
+          "sha256": "143c75db525c55af76af6492d68e895cae95aa04e5556c011800444b782a0ec4"
+        },
+        "assets/index-CVO5V7Un.css": {
+          "bytes": 33744,
+          "sha256": "60c46bc7d43bbdaa94f2f84b4a49d63fe61ae44d40f536f815032190461b71ae"
+        },
+        "assets/index-ItN1EEyJ.js": {
+          "bytes": 79983,
+          "sha256": "dca2f94e7781dc0c6b52b3929817282be16e74de3661c1b66363530b9f43722b"
+        },
+        "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2": {
+          "bytes": 14708,
+          "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+        },
+        "assets/ibm-plex-sans-latin-IvpUvPa2.woff2": {
+          "bytes": 45712,
+          "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+        },
+        "assets/ibm-plex-mono-700-latin-7sUh57Bg.woff2": {
+          "bytes": 14908,
+          "sha256": "4f84d86cfd060f4ded334358ff8a4c81d4db2ed5addd568359d693f44a87765a"
+        },
+        "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2": {
+          "bytes": 14888,
+          "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+        },
+        "assets/presentation-C4kQ5e5K.js": {
+          "bytes": 3792,
+          "sha256": "f4b36af022bd9b71fcc5de969d30ab64c73ae765d049f6aff398fac634874e9c"
+        },
+        "assets/analysis-worker-CWzVlWNx.js": {
+          "bytes": 2099516,
+          "sha256": "74431f8267c2058da187719156e510211503c78d605906141d92d9da1486aefe"
+        },
+        "assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2": {
+          "bytes": 15620,
+          "sha256": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83"
+        }
+      },
+      "failedRequests": [
+        "loopback/contextscope/assets/presentation-C4kQ5e5K.js"
+      ],
+      "lateRequests": [
+        "loopback/contextscope/assets/presentation-C4kQ5e5K.js"
+      ],
+      "externalRequests": [],
+      "pageErrors": [],
+      "policyViolations": [],
+      "axeViolations": [],
+      "overflow": false
+    },
+    {
+      "phase": "before",
+      "engine": "firefox",
+      "width": 1440,
+      "browser": "155.0",
+      "readyMs": 341,
+      "startup": {
+        "created": 0,
+        "terminated": 0,
+        "active": 0,
+        "posts": 0,
+        "ready": 0,
+        "started": 0,
+        "urls": 0,
+        "revoked": 0
+      },
+      "initialAssets": {
+        "index.html": {
+          "bytes": 2623,
+          "sha256": "143c75db525c55af76af6492d68e895cae95aa04e5556c011800444b782a0ec4"
+        },
+        "assets/index-ItN1EEyJ.js": {
+          "bytes": 79983,
+          "sha256": "dca2f94e7781dc0c6b52b3929817282be16e74de3661c1b66363530b9f43722b"
+        },
+        "assets/index-CVO5V7Un.css": {
+          "bytes": 33744,
+          "sha256": "60c46bc7d43bbdaa94f2f84b4a49d63fe61ae44d40f536f815032190461b71ae"
+        },
+        "assets/ibm-plex-sans-latin-IvpUvPa2.woff2": {
+          "bytes": 45712,
+          "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+        },
+        "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2": {
+          "bytes": 14888,
+          "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+        },
+        "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2": {
+          "bytes": 14708,
+          "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+        },
+        "assets/ibm-plex-mono-700-latin-7sUh57Bg.woff2": {
+          "bytes": 14908,
+          "sha256": "4f84d86cfd060f4ded334358ff8a4c81d4db2ed5addd568359d693f44a87765a"
+        }
+      },
+      "cold": {
+        "error": "Could not analyze this input: error loading dynamically imported module: http://127.0.0.1:46455/contextscope/assets/presentation-C4kQ5e5K.js",
+        "shown": false
+      },
+      "onlineRetry": {
+        "error": "",
+        "shown": true
+      },
+      "audit": {
+        "created": 5,
+        "terminated": 5,
+        "active": 0,
+        "posts": 5,
+        "ready": 0,
+        "started": 5,
+        "urls": 5,
+        "revoked": 5
+      },
+      "served": {
+        "index.html": {
+          "bytes": 2623,
+          "sha256": "143c75db525c55af76af6492d68e895cae95aa04e5556c011800444b782a0ec4"
+        },
+        "assets/index-ItN1EEyJ.js": {
+          "bytes": 79983,
+          "sha256": "dca2f94e7781dc0c6b52b3929817282be16e74de3661c1b66363530b9f43722b"
+        },
+        "assets/index-CVO5V7Un.css": {
+          "bytes": 33744,
+          "sha256": "60c46bc7d43bbdaa94f2f84b4a49d63fe61ae44d40f536f815032190461b71ae"
+        },
+        "assets/ibm-plex-sans-latin-IvpUvPa2.woff2": {
+          "bytes": 45712,
+          "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+        },
+        "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2": {
+          "bytes": 14888,
+          "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+        },
+        "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2": {
+          "bytes": 14708,
+          "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+        },
+        "assets/ibm-plex-mono-700-latin-7sUh57Bg.woff2": {
+          "bytes": 14908,
+          "sha256": "4f84d86cfd060f4ded334358ff8a4c81d4db2ed5addd568359d693f44a87765a"
+        },
+        "assets/presentation-C4kQ5e5K.js": {
+          "bytes": 3792,
+          "sha256": "f4b36af022bd9b71fcc5de969d30ab64c73ae765d049f6aff398fac634874e9c"
+        },
+        "assets/analysis-worker-CWzVlWNx.js": {
+          "bytes": 2099516,
+          "sha256": "74431f8267c2058da187719156e510211503c78d605906141d92d9da1486aefe"
+        },
+        "assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2": {
+          "bytes": 15620,
+          "sha256": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83"
+        }
+      },
+      "received": {
+        "index.html": {
+          "bytes": 2623,
+          "sha256": "143c75db525c55af76af6492d68e895cae95aa04e5556c011800444b782a0ec4"
+        },
+        "assets/index-ItN1EEyJ.js": {
+          "bytes": 79983,
+          "sha256": "dca2f94e7781dc0c6b52b3929817282be16e74de3661c1b66363530b9f43722b"
+        },
+        "assets/index-CVO5V7Un.css": {
+          "bytes": 33744,
+          "sha256": "60c46bc7d43bbdaa94f2f84b4a49d63fe61ae44d40f536f815032190461b71ae"
+        },
+        "assets/ibm-plex-sans-latin-IvpUvPa2.woff2": {
+          "bytes": 45712,
+          "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+        },
+        "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2": {
+          "bytes": 14888,
+          "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+        },
+        "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2": {
+          "bytes": 14708,
+          "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+        },
+        "assets/ibm-plex-mono-700-latin-7sUh57Bg.woff2": {
+          "bytes": 14908,
+          "sha256": "4f84d86cfd060f4ded334358ff8a4c81d4db2ed5addd568359d693f44a87765a"
+        },
+        "assets/presentation-C4kQ5e5K.js": {
+          "bytes": 3792,
+          "sha256": "f4b36af022bd9b71fcc5de969d30ab64c73ae765d049f6aff398fac634874e9c"
+        },
+        "assets/analysis-worker-CWzVlWNx.js": {
+          "bytes": 2099516,
+          "sha256": "74431f8267c2058da187719156e510211503c78d605906141d92d9da1486aefe"
+        },
+        "assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2": {
+          "bytes": 15620,
+          "sha256": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83"
+        }
+      },
+      "failedRequests": [
+        "loopback/contextscope/assets/presentation-C4kQ5e5K.js"
+      ],
+      "lateRequests": [
+        "loopback/contextscope/assets/presentation-C4kQ5e5K.js"
+      ],
+      "externalRequests": [],
+      "pageErrors": [],
+      "policyViolations": [],
+      "axeViolations": [],
+      "overflow": false
+    },
+    {
+      "phase": "before",
+      "engine": "firefox",
+      "width": 375,
+      "browser": "155.0",
+      "readyMs": 85,
+      "startup": {
+        "created": 0,
+        "terminated": 0,
+        "active": 0,
+        "posts": 0,
+        "ready": 0,
+        "started": 0,
+        "urls": 0,
+        "revoked": 0
+      },
+      "initialAssets": {
+        "index.html": {
+          "bytes": 2623,
+          "sha256": "143c75db525c55af76af6492d68e895cae95aa04e5556c011800444b782a0ec4"
+        },
+        "assets/index-CVO5V7Un.css": {
+          "bytes": 33744,
+          "sha256": "60c46bc7d43bbdaa94f2f84b4a49d63fe61ae44d40f536f815032190461b71ae"
+        },
+        "assets/index-ItN1EEyJ.js": {
+          "bytes": 79983,
+          "sha256": "dca2f94e7781dc0c6b52b3929817282be16e74de3661c1b66363530b9f43722b"
+        },
+        "assets/ibm-plex-sans-latin-IvpUvPa2.woff2": {
+          "bytes": 45712,
+          "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+        },
+        "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2": {
+          "bytes": 14708,
+          "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+        },
+        "assets/ibm-plex-mono-700-latin-7sUh57Bg.woff2": {
+          "bytes": 14908,
+          "sha256": "4f84d86cfd060f4ded334358ff8a4c81d4db2ed5addd568359d693f44a87765a"
+        },
+        "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2": {
+          "bytes": 14888,
+          "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+        }
+      },
+      "cold": {
+        "error": "Could not analyze this input: error loading dynamically imported module: http://127.0.0.1:45193/contextscope/assets/presentation-C4kQ5e5K.js",
+        "shown": false
+      },
+      "onlineRetry": {
+        "error": "",
+        "shown": true
+      },
+      "audit": {
+        "created": 5,
+        "terminated": 5,
+        "active": 0,
+        "posts": 5,
+        "ready": 0,
+        "started": 5,
+        "urls": 5,
+        "revoked": 5
+      },
+      "served": {
+        "index.html": {
+          "bytes": 2623,
+          "sha256": "143c75db525c55af76af6492d68e895cae95aa04e5556c011800444b782a0ec4"
+        },
+        "assets/index-ItN1EEyJ.js": {
+          "bytes": 79983,
+          "sha256": "dca2f94e7781dc0c6b52b3929817282be16e74de3661c1b66363530b9f43722b"
+        },
+        "assets/index-CVO5V7Un.css": {
+          "bytes": 33744,
+          "sha256": "60c46bc7d43bbdaa94f2f84b4a49d63fe61ae44d40f536f815032190461b71ae"
+        },
+        "assets/ibm-plex-sans-latin-IvpUvPa2.woff2": {
+          "bytes": 45712,
+          "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+        },
+        "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2": {
+          "bytes": 14708,
+          "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+        },
+        "assets/ibm-plex-mono-700-latin-7sUh57Bg.woff2": {
+          "bytes": 14908,
+          "sha256": "4f84d86cfd060f4ded334358ff8a4c81d4db2ed5addd568359d693f44a87765a"
+        },
+        "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2": {
+          "bytes": 14888,
+          "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+        },
+        "assets/presentation-C4kQ5e5K.js": {
+          "bytes": 3792,
+          "sha256": "f4b36af022bd9b71fcc5de969d30ab64c73ae765d049f6aff398fac634874e9c"
+        },
+        "assets/analysis-worker-CWzVlWNx.js": {
+          "bytes": 2099516,
+          "sha256": "74431f8267c2058da187719156e510211503c78d605906141d92d9da1486aefe"
+        },
+        "assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2": {
+          "bytes": 15620,
+          "sha256": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83"
+        }
+      },
+      "received": {
+        "index.html": {
+          "bytes": 2623,
+          "sha256": "143c75db525c55af76af6492d68e895cae95aa04e5556c011800444b782a0ec4"
+        },
+        "assets/index-CVO5V7Un.css": {
+          "bytes": 33744,
+          "sha256": "60c46bc7d43bbdaa94f2f84b4a49d63fe61ae44d40f536f815032190461b71ae"
+        },
+        "assets/index-ItN1EEyJ.js": {
+          "bytes": 79983,
+          "sha256": "dca2f94e7781dc0c6b52b3929817282be16e74de3661c1b66363530b9f43722b"
+        },
+        "assets/ibm-plex-sans-latin-IvpUvPa2.woff2": {
+          "bytes": 45712,
+          "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+        },
+        "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2": {
+          "bytes": 14708,
+          "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+        },
+        "assets/ibm-plex-mono-700-latin-7sUh57Bg.woff2": {
+          "bytes": 14908,
+          "sha256": "4f84d86cfd060f4ded334358ff8a4c81d4db2ed5addd568359d693f44a87765a"
+        },
+        "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2": {
+          "bytes": 14888,
+          "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+        },
+        "assets/presentation-C4kQ5e5K.js": {
+          "bytes": 3792,
+          "sha256": "f4b36af022bd9b71fcc5de969d30ab64c73ae765d049f6aff398fac634874e9c"
+        },
+        "assets/analysis-worker-CWzVlWNx.js": {
+          "bytes": 2099516,
+          "sha256": "74431f8267c2058da187719156e510211503c78d605906141d92d9da1486aefe"
+        },
+        "assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2": {
+          "bytes": 15620,
+          "sha256": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83"
+        }
+      },
+      "failedRequests": [
+        "loopback/contextscope/assets/presentation-C4kQ5e5K.js"
+      ],
+      "lateRequests": [
+        "loopback/contextscope/assets/presentation-C4kQ5e5K.js"
+      ],
+      "externalRequests": [],
+      "pageErrors": [],
+      "policyViolations": [],
+      "axeViolations": [],
+      "overflow": false
+    },
+    {
+      "phase": "after",
+      "engine": "chromium",
+      "width": 1440,
+      "browser": "153.0.8010.12",
+      "readyMs": 475,
+      "startup": {
+        "created": 1,
+        "terminated": 1,
+        "active": 0,
+        "posts": 0,
+        "ready": 1,
+        "started": 0,
+        "urls": 1,
+        "revoked": 1
+      },
+      "initialAssets": {
+        "index.html": {
+          "bytes": 2623,
+          "sha256": "c8da9ea7240a3cdcbc7b7df8f7679b752ac71ec6a049687c78d1ea770b0d7446"
+        },
+        "assets/index-BIzP4Z5S.css": {
+          "bytes": 33902,
+          "sha256": "ecbad94a763e12b22c18c15b7f03a07adb3f2b1f17c38f28d94bb1af1ed539ad"
+        },
+        "assets/index-Dw3cZhxC.js": {
+          "bytes": 84429,
+          "sha256": "949724744b2e234f404b7ef947786709266045fdba92d61d15eb29e6c3cecf24"
+        },
+        "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2": {
+          "bytes": 14708,
+          "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+        },
+        "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2": {
+          "bytes": 14888,
+          "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+        },
+        "assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2": {
+          "bytes": 15620,
+          "sha256": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83"
+        },
+        "assets/ibm-plex-mono-700-latin-7sUh57Bg.woff2": {
+          "bytes": 14908,
+          "sha256": "4f84d86cfd060f4ded334358ff8a4c81d4db2ed5addd568359d693f44a87765a"
+        },
+        "assets/ibm-plex-sans-latin-IvpUvPa2.woff2": {
+          "bytes": 45712,
+          "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+        },
+        "assets/analysis-worker-2qIYG1rJ.js": {
+          "bytes": 2099546,
+          "sha256": "bff84872ec1f5ca02ee5ba632c64b26cb8cff636e5552c9f0905a7dec442a696"
+        }
+      },
+      "cold": {
+        "error": "",
+        "shown": true
+      },
+      "onlineRetry": null,
+      "audit": {
+        "created": 6,
+        "terminated": 6,
+        "active": 0,
+        "posts": 5,
+        "ready": 6,
+        "started": 5,
+        "urls": 6,
+        "revoked": 6
+      },
+      "served": {
+        "index.html": {
+          "bytes": 2623,
+          "sha256": "c8da9ea7240a3cdcbc7b7df8f7679b752ac71ec6a049687c78d1ea770b0d7446"
+        },
+        "assets/index-Dw3cZhxC.js": {
+          "bytes": 84429,
+          "sha256": "949724744b2e234f404b7ef947786709266045fdba92d61d15eb29e6c3cecf24"
+        },
+        "assets/index-BIzP4Z5S.css": {
+          "bytes": 33902,
+          "sha256": "ecbad94a763e12b22c18c15b7f03a07adb3f2b1f17c38f28d94bb1af1ed539ad"
+        },
+        "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2": {
+          "bytes": 14708,
+          "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+        },
+        "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2": {
+          "bytes": 14888,
+          "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+        },
+        "assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2": {
+          "bytes": 15620,
+          "sha256": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83"
+        },
+        "assets/analysis-worker-2qIYG1rJ.js": {
+          "bytes": 2099546,
+          "sha256": "bff84872ec1f5ca02ee5ba632c64b26cb8cff636e5552c9f0905a7dec442a696"
+        },
+        "assets/ibm-plex-mono-700-latin-7sUh57Bg.woff2": {
+          "bytes": 14908,
+          "sha256": "4f84d86cfd060f4ded334358ff8a4c81d4db2ed5addd568359d693f44a87765a"
+        },
+        "assets/ibm-plex-sans-latin-IvpUvPa2.woff2": {
+          "bytes": 45712,
+          "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+        }
+      },
+      "received": {
+        "index.html": {
+          "bytes": 2623,
+          "sha256": "c8da9ea7240a3cdcbc7b7df8f7679b752ac71ec6a049687c78d1ea770b0d7446"
+        },
+        "assets/index-BIzP4Z5S.css": {
+          "bytes": 33902,
+          "sha256": "ecbad94a763e12b22c18c15b7f03a07adb3f2b1f17c38f28d94bb1af1ed539ad"
+        },
+        "assets/index-Dw3cZhxC.js": {
+          "bytes": 84429,
+          "sha256": "949724744b2e234f404b7ef947786709266045fdba92d61d15eb29e6c3cecf24"
+        },
+        "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2": {
+          "bytes": 14708,
+          "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+        },
+        "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2": {
+          "bytes": 14888,
+          "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+        },
+        "assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2": {
+          "bytes": 15620,
+          "sha256": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83"
+        },
+        "assets/ibm-plex-mono-700-latin-7sUh57Bg.woff2": {
+          "bytes": 14908,
+          "sha256": "4f84d86cfd060f4ded334358ff8a4c81d4db2ed5addd568359d693f44a87765a"
+        },
+        "assets/ibm-plex-sans-latin-IvpUvPa2.woff2": {
+          "bytes": 45712,
+          "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+        },
+        "assets/analysis-worker-2qIYG1rJ.js": {
+          "bytes": 2099546,
+          "sha256": "bff84872ec1f5ca02ee5ba632c64b26cb8cff636e5552c9f0905a7dec442a696"
+        }
+      },
+      "failedRequests": [],
+      "lateRequests": [],
+      "externalRequests": [],
+      "pageErrors": [],
+      "policyViolations": [],
+      "axeViolations": [],
+      "overflow": false
+    },
+    {
+      "phase": "after",
+      "engine": "chromium",
+      "width": 375,
+      "browser": "153.0.8010.12",
+      "readyMs": 369,
+      "startup": {
+        "created": 1,
+        "terminated": 1,
+        "active": 0,
+        "posts": 0,
+        "ready": 1,
+        "started": 0,
+        "urls": 1,
+        "revoked": 1
+      },
+      "initialAssets": {
+        "index.html": {
+          "bytes": 2623,
+          "sha256": "c8da9ea7240a3cdcbc7b7df8f7679b752ac71ec6a049687c78d1ea770b0d7446"
+        },
+        "assets/index-BIzP4Z5S.css": {
+          "bytes": 33902,
+          "sha256": "ecbad94a763e12b22c18c15b7f03a07adb3f2b1f17c38f28d94bb1af1ed539ad"
+        },
+        "assets/index-Dw3cZhxC.js": {
+          "bytes": 84429,
+          "sha256": "949724744b2e234f404b7ef947786709266045fdba92d61d15eb29e6c3cecf24"
+        },
+        "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2": {
+          "bytes": 14708,
+          "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+        },
+        "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2": {
+          "bytes": 14888,
+          "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+        },
+        "assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2": {
+          "bytes": 15620,
+          "sha256": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83"
+        },
+        "assets/ibm-plex-mono-700-latin-7sUh57Bg.woff2": {
+          "bytes": 14908,
+          "sha256": "4f84d86cfd060f4ded334358ff8a4c81d4db2ed5addd568359d693f44a87765a"
+        },
+        "assets/ibm-plex-sans-latin-IvpUvPa2.woff2": {
+          "bytes": 45712,
+          "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+        },
+        "assets/analysis-worker-2qIYG1rJ.js": {
+          "bytes": 2099546,
+          "sha256": "bff84872ec1f5ca02ee5ba632c64b26cb8cff636e5552c9f0905a7dec442a696"
+        }
+      },
+      "cold": {
+        "error": "",
+        "shown": true
+      },
+      "onlineRetry": null,
+      "audit": {
+        "created": 6,
+        "terminated": 6,
+        "active": 0,
+        "posts": 5,
+        "ready": 6,
+        "started": 5,
+        "urls": 6,
+        "revoked": 6
+      },
+      "served": {
+        "index.html": {
+          "bytes": 2623,
+          "sha256": "c8da9ea7240a3cdcbc7b7df8f7679b752ac71ec6a049687c78d1ea770b0d7446"
+        },
+        "assets/index-Dw3cZhxC.js": {
+          "bytes": 84429,
+          "sha256": "949724744b2e234f404b7ef947786709266045fdba92d61d15eb29e6c3cecf24"
+        },
+        "assets/index-BIzP4Z5S.css": {
+          "bytes": 33902,
+          "sha256": "ecbad94a763e12b22c18c15b7f03a07adb3f2b1f17c38f28d94bb1af1ed539ad"
+        },
+        "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2": {
+          "bytes": 14708,
+          "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+        },
+        "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2": {
+          "bytes": 14888,
+          "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+        },
+        "assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2": {
+          "bytes": 15620,
+          "sha256": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83"
+        },
+        "assets/analysis-worker-2qIYG1rJ.js": {
+          "bytes": 2099546,
+          "sha256": "bff84872ec1f5ca02ee5ba632c64b26cb8cff636e5552c9f0905a7dec442a696"
+        },
+        "assets/ibm-plex-mono-700-latin-7sUh57Bg.woff2": {
+          "bytes": 14908,
+          "sha256": "4f84d86cfd060f4ded334358ff8a4c81d4db2ed5addd568359d693f44a87765a"
+        },
+        "assets/ibm-plex-sans-latin-IvpUvPa2.woff2": {
+          "bytes": 45712,
+          "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+        }
+      },
+      "received": {
+        "index.html": {
+          "bytes": 2623,
+          "sha256": "c8da9ea7240a3cdcbc7b7df8f7679b752ac71ec6a049687c78d1ea770b0d7446"
+        },
+        "assets/index-BIzP4Z5S.css": {
+          "bytes": 33902,
+          "sha256": "ecbad94a763e12b22c18c15b7f03a07adb3f2b1f17c38f28d94bb1af1ed539ad"
+        },
+        "assets/index-Dw3cZhxC.js": {
+          "bytes": 84429,
+          "sha256": "949724744b2e234f404b7ef947786709266045fdba92d61d15eb29e6c3cecf24"
+        },
+        "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2": {
+          "bytes": 14708,
+          "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+        },
+        "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2": {
+          "bytes": 14888,
+          "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+        },
+        "assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2": {
+          "bytes": 15620,
+          "sha256": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83"
+        },
+        "assets/ibm-plex-mono-700-latin-7sUh57Bg.woff2": {
+          "bytes": 14908,
+          "sha256": "4f84d86cfd060f4ded334358ff8a4c81d4db2ed5addd568359d693f44a87765a"
+        },
+        "assets/ibm-plex-sans-latin-IvpUvPa2.woff2": {
+          "bytes": 45712,
+          "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+        },
+        "assets/analysis-worker-2qIYG1rJ.js": {
+          "bytes": 2099546,
+          "sha256": "bff84872ec1f5ca02ee5ba632c64b26cb8cff636e5552c9f0905a7dec442a696"
+        }
+      },
+      "failedRequests": [],
+      "lateRequests": [],
+      "externalRequests": [],
+      "pageErrors": [],
+      "policyViolations": [],
+      "axeViolations": [],
+      "overflow": false
+    },
+    {
+      "phase": "after",
+      "engine": "firefox",
+      "width": 1440,
+      "browser": "155.0",
+      "readyMs": 440,
+      "startup": {
+        "created": 1,
+        "terminated": 1,
+        "active": 0,
+        "posts": 0,
+        "ready": 1,
+        "started": 0,
+        "urls": 1,
+        "revoked": 1
+      },
+      "initialAssets": {
+        "index.html": {
+          "bytes": 2623,
+          "sha256": "c8da9ea7240a3cdcbc7b7df8f7679b752ac71ec6a049687c78d1ea770b0d7446"
+        },
+        "assets/index-Dw3cZhxC.js": {
+          "bytes": 84429,
+          "sha256": "949724744b2e234f404b7ef947786709266045fdba92d61d15eb29e6c3cecf24"
+        },
+        "assets/index-BIzP4Z5S.css": {
+          "bytes": 33902,
+          "sha256": "ecbad94a763e12b22c18c15b7f03a07adb3f2b1f17c38f28d94bb1af1ed539ad"
+        },
+        "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2": {
+          "bytes": 14708,
+          "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+        },
+        "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2": {
+          "bytes": 14888,
+          "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+        },
+        "assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2": {
+          "bytes": 15620,
+          "sha256": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83"
+        },
+        "assets/ibm-plex-sans-latin-IvpUvPa2.woff2": {
+          "bytes": 45712,
+          "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+        },
+        "assets/ibm-plex-mono-700-latin-7sUh57Bg.woff2": {
+          "bytes": 14908,
+          "sha256": "4f84d86cfd060f4ded334358ff8a4c81d4db2ed5addd568359d693f44a87765a"
+        },
+        "assets/analysis-worker-2qIYG1rJ.js": {
+          "bytes": 2099546,
+          "sha256": "bff84872ec1f5ca02ee5ba632c64b26cb8cff636e5552c9f0905a7dec442a696"
+        }
+      },
+      "cold": {
+        "error": "",
+        "shown": true
+      },
+      "onlineRetry": null,
+      "audit": {
+        "created": 6,
+        "terminated": 6,
+        "active": 0,
+        "posts": 5,
+        "ready": 6,
+        "started": 5,
+        "urls": 6,
+        "revoked": 6
+      },
+      "served": {
+        "index.html": {
+          "bytes": 2623,
+          "sha256": "c8da9ea7240a3cdcbc7b7df8f7679b752ac71ec6a049687c78d1ea770b0d7446"
+        },
+        "assets/index-Dw3cZhxC.js": {
+          "bytes": 84429,
+          "sha256": "949724744b2e234f404b7ef947786709266045fdba92d61d15eb29e6c3cecf24"
+        },
+        "assets/index-BIzP4Z5S.css": {
+          "bytes": 33902,
+          "sha256": "ecbad94a763e12b22c18c15b7f03a07adb3f2b1f17c38f28d94bb1af1ed539ad"
+        },
+        "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2": {
+          "bytes": 14708,
+          "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+        },
+        "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2": {
+          "bytes": 14888,
+          "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+        },
+        "assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2": {
+          "bytes": 15620,
+          "sha256": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83"
+        },
+        "assets/ibm-plex-sans-latin-IvpUvPa2.woff2": {
+          "bytes": 45712,
+          "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+        },
+        "assets/ibm-plex-mono-700-latin-7sUh57Bg.woff2": {
+          "bytes": 14908,
+          "sha256": "4f84d86cfd060f4ded334358ff8a4c81d4db2ed5addd568359d693f44a87765a"
+        },
+        "assets/analysis-worker-2qIYG1rJ.js": {
+          "bytes": 2099546,
+          "sha256": "bff84872ec1f5ca02ee5ba632c64b26cb8cff636e5552c9f0905a7dec442a696"
+        }
+      },
+      "received": {
+        "index.html": {
+          "bytes": 2623,
+          "sha256": "c8da9ea7240a3cdcbc7b7df8f7679b752ac71ec6a049687c78d1ea770b0d7446"
+        },
+        "assets/index-Dw3cZhxC.js": {
+          "bytes": 84429,
+          "sha256": "949724744b2e234f404b7ef947786709266045fdba92d61d15eb29e6c3cecf24"
+        },
+        "assets/index-BIzP4Z5S.css": {
+          "bytes": 33902,
+          "sha256": "ecbad94a763e12b22c18c15b7f03a07adb3f2b1f17c38f28d94bb1af1ed539ad"
+        },
+        "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2": {
+          "bytes": 14708,
+          "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+        },
+        "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2": {
+          "bytes": 14888,
+          "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+        },
+        "assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2": {
+          "bytes": 15620,
+          "sha256": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83"
+        },
+        "assets/ibm-plex-sans-latin-IvpUvPa2.woff2": {
+          "bytes": 45712,
+          "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+        },
+        "assets/ibm-plex-mono-700-latin-7sUh57Bg.woff2": {
+          "bytes": 14908,
+          "sha256": "4f84d86cfd060f4ded334358ff8a4c81d4db2ed5addd568359d693f44a87765a"
+        },
+        "assets/analysis-worker-2qIYG1rJ.js": {
+          "bytes": 2099546,
+          "sha256": "bff84872ec1f5ca02ee5ba632c64b26cb8cff636e5552c9f0905a7dec442a696"
+        }
+      },
+      "failedRequests": [],
+      "lateRequests": [],
+      "externalRequests": [],
+      "pageErrors": [],
+      "policyViolations": [],
+      "axeViolations": [],
+      "overflow": false
+    },
+    {
+      "phase": "after",
+      "engine": "firefox",
+      "width": 375,
+      "browser": "155.0",
+      "readyMs": 281,
+      "startup": {
+        "created": 1,
+        "terminated": 1,
+        "active": 0,
+        "posts": 0,
+        "ready": 1,
+        "started": 0,
+        "urls": 1,
+        "revoked": 1
+      },
+      "initialAssets": {
+        "index.html": {
+          "bytes": 2623,
+          "sha256": "c8da9ea7240a3cdcbc7b7df8f7679b752ac71ec6a049687c78d1ea770b0d7446"
+        },
+        "assets/index-Dw3cZhxC.js": {
+          "bytes": 84429,
+          "sha256": "949724744b2e234f404b7ef947786709266045fdba92d61d15eb29e6c3cecf24"
+        },
+        "assets/index-BIzP4Z5S.css": {
+          "bytes": 33902,
+          "sha256": "ecbad94a763e12b22c18c15b7f03a07adb3f2b1f17c38f28d94bb1af1ed539ad"
+        },
+        "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2": {
+          "bytes": 14708,
+          "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+        },
+        "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2": {
+          "bytes": 14888,
+          "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+        },
+        "assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2": {
+          "bytes": 15620,
+          "sha256": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83"
+        },
+        "assets/ibm-plex-mono-700-latin-7sUh57Bg.woff2": {
+          "bytes": 14908,
+          "sha256": "4f84d86cfd060f4ded334358ff8a4c81d4db2ed5addd568359d693f44a87765a"
+        },
+        "assets/ibm-plex-sans-latin-IvpUvPa2.woff2": {
+          "bytes": 45712,
+          "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+        },
+        "assets/analysis-worker-2qIYG1rJ.js": {
+          "bytes": 2099546,
+          "sha256": "bff84872ec1f5ca02ee5ba632c64b26cb8cff636e5552c9f0905a7dec442a696"
+        }
+      },
+      "cold": {
+        "error": "",
+        "shown": true
+      },
+      "onlineRetry": null,
+      "audit": {
+        "created": 6,
+        "terminated": 6,
+        "active": 0,
+        "posts": 5,
+        "ready": 6,
+        "started": 5,
+        "urls": 6,
+        "revoked": 6
+      },
+      "served": {
+        "index.html": {
+          "bytes": 2623,
+          "sha256": "c8da9ea7240a3cdcbc7b7df8f7679b752ac71ec6a049687c78d1ea770b0d7446"
+        },
+        "assets/index-Dw3cZhxC.js": {
+          "bytes": 84429,
+          "sha256": "949724744b2e234f404b7ef947786709266045fdba92d61d15eb29e6c3cecf24"
+        },
+        "assets/index-BIzP4Z5S.css": {
+          "bytes": 33902,
+          "sha256": "ecbad94a763e12b22c18c15b7f03a07adb3f2b1f17c38f28d94bb1af1ed539ad"
+        },
+        "assets/analysis-worker-2qIYG1rJ.js": {
+          "bytes": 2099546,
+          "sha256": "bff84872ec1f5ca02ee5ba632c64b26cb8cff636e5552c9f0905a7dec442a696"
+        },
+        "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2": {
+          "bytes": 14708,
+          "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+        },
+        "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2": {
+          "bytes": 14888,
+          "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+        },
+        "assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2": {
+          "bytes": 15620,
+          "sha256": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83"
+        },
+        "assets/ibm-plex-mono-700-latin-7sUh57Bg.woff2": {
+          "bytes": 14908,
+          "sha256": "4f84d86cfd060f4ded334358ff8a4c81d4db2ed5addd568359d693f44a87765a"
+        },
+        "assets/ibm-plex-sans-latin-IvpUvPa2.woff2": {
+          "bytes": 45712,
+          "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+        }
+      },
+      "received": {
+        "index.html": {
+          "bytes": 2623,
+          "sha256": "c8da9ea7240a3cdcbc7b7df8f7679b752ac71ec6a049687c78d1ea770b0d7446"
+        },
+        "assets/index-Dw3cZhxC.js": {
+          "bytes": 84429,
+          "sha256": "949724744b2e234f404b7ef947786709266045fdba92d61d15eb29e6c3cecf24"
+        },
+        "assets/index-BIzP4Z5S.css": {
+          "bytes": 33902,
+          "sha256": "ecbad94a763e12b22c18c15b7f03a07adb3f2b1f17c38f28d94bb1af1ed539ad"
+        },
+        "assets/ibm-plex-mono-400-latin-DMJ8VG8y.woff2": {
+          "bytes": 14708,
+          "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+        },
+        "assets/ibm-plex-mono-500-latin-DSY6xOcd.woff2": {
+          "bytes": 14888,
+          "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+        },
+        "assets/ibm-plex-mono-600-latin-BgSNZQsw.woff2": {
+          "bytes": 15620,
+          "sha256": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83"
+        },
+        "assets/ibm-plex-mono-700-latin-7sUh57Bg.woff2": {
+          "bytes": 14908,
+          "sha256": "4f84d86cfd060f4ded334358ff8a4c81d4db2ed5addd568359d693f44a87765a"
+        },
+        "assets/ibm-plex-sans-latin-IvpUvPa2.woff2": {
+          "bytes": 45712,
+          "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+        },
+        "assets/analysis-worker-2qIYG1rJ.js": {
+          "bytes": 2099546,
+          "sha256": "bff84872ec1f5ca02ee5ba632c64b26cb8cff636e5552c9f0905a7dec442a696"
+        }
+      },
+      "failedRequests": [],
+      "lateRequests": [],
+      "externalRequests": [],
+      "pageErrors": [],
+      "policyViolations": [],
+      "axeViolations": [],
+      "overflow": false
+    }
+  ],
+  "beforeFirstOfflineFailures": 4,
+  "afterFirstOfflineFailures": 0,
+  "retention": "Actual JSON/HTML/raw downloads are stored once by SHA-256. Each observation references its original bytes."
+}

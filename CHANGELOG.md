@@ -26,6 +26,16 @@ of public SWE-bench agent runs; see `studies/real-trajectories/`.
 
 ### Fixed
 
+- Prepare browser analysis code before enabling file intake, so the first local
+  import and report downloads work offline without a warm-up analysis. Include
+  presentation helpers in the initial bundle; retry startup after failed,
+  truncated, wrongly encoded or cached invalid worker responses. Cancellation
+  terminates preparation and offers a retry. Retain only validated application
+  code, with no analysis job or request state during preparation. This moves the
+  existing 2.1 MB tokenizer download to startup. Native SDK histories, actual
+  offline downloads, cache fault recovery and transfer measurements are retained
+  in `studies/first-offline/`. Source only; no hosted deployment is claimed.
+
 - Retain OpenAI Chat assistant refusal fields and empty supplied message content
   before prefix, thread and cache analysis. Preserve empty Responses message
   units, input and instructions too; count refusal-part text rather than its

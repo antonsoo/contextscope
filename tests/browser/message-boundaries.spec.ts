@@ -12,11 +12,8 @@ for (const width of [375, 1440]) test(`SDK refusal and empty turns survive offli
   page.on("pageerror", error => errors.push(error.message));
   await page.setViewportSize({ width, height: 900 });
   await page.goto("./");
-  // The existing offline workflow retains worker code after the first analysis.
-  // Warm it with an ordinary request, then perform the actual imports offline.
-  await page.locator("#file-input").setInputFiles({ name: "ordinary.json", mimeType: "application/json", buffer: Buffer.from(JSON.stringify({ model: "gpt-6-sol", input: "Public record." })) });
-  await expect(page.locator("#dashboard")).toHaveClass(/shown/);
-  await expect(page.locator("#load-status")).toBeHidden();
+  // Intake appears only after application-code preparation; no analysis warmup.
+  await expect(page.locator("#pick-file-btn")).toBeVisible();
   await context.setOffline(true);
   for (const id of ids) {
     const capture = catalogue.cases.find(c => c.id === id)!;

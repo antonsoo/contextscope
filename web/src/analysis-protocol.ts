@@ -14,6 +14,7 @@ export interface AnalysisJob {
 }
 
 export type AnalysisReply =
+  | { type: "ready" }
   | { type: "started" }
   | { type: "success"; result: AnalysisResult; calibration?: CalibrationResult }
   | { type: "error"; message: string };

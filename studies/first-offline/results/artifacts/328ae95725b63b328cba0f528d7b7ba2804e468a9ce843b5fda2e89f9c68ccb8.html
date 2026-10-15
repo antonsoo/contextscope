@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>contextscope report — openai</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 15px/1.5 ui-monospace, "IBM Plex Mono", "SFMono-Regular", Menlo, monospace; background: #0d0f13; color: #dfe3ea; max-width: 980px; margin: 0 auto; padding: 32px 20px 80px; }
+  @media (prefers-color-scheme: light) { body { background: #f5f4f0; color: #1b1f27; } }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  h2 { font-size: 16px; margin: 32px 0 0; }
+  h3 { font-size: 15px; margin: 0 0 8px; }
+  .muted { color: #929aaa; font-size: 13px; }
+  a { color: #7fb6fa; }
+  @media (prefers-color-scheme: light) { .muted { color: #5c6270; } a { color: #1b5dad; } }
+  .card { border: 1px solid rgba(127,127,127,.3); border-radius: 6px; padding: 16px; margin: 16px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { text-align: left; padding: 4px 8px; border-bottom: 1px solid rgba(127,127,127,.2); }
+  .swatch { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; }
+  ul.findings { list-style: none; padding: 0; }
+  li.finding { border-left: 3px solid #7c8494; padding: 8px 12px; margin: 8px 0; }
+  li.finding.error { border-color: #e34948; }
+  li.finding.warning { border-color: #eda100; }
+  li.finding.info { border-color: #2a78d6; }
+  .pill { text-transform: uppercase; font-size: 10px; letter-spacing: .05em; opacity: .7; }
+  .savings { color: #1baf7a; font-weight: bold; }
+  @media (prefers-color-scheme: light) { .savings { color: #08764f; } }
+  .table-scroll { overflow-x: auto; margin: 12px 0; }
+  .table-scroll:focus-visible, summary:focus-visible, a:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+  .usage-evidence { border-top: 1px solid rgba(127,127,127,.3); padding: 12px 0; scroll-margin-top: 12px; }
+  .usage-evidence code { overflow-wrap: anywhere; }
+  .usage-evidence summary { cursor: pointer; }
+  .card > h2 { margin-top: 0; }
+</style></head>
+<body><main>
+  <h1>contextscope report</h1>
+  <p class="muted">openai · 2 request(s) · format auto-detected · priced as GPT-6 Sol · generated 2026-10-15T02:04:26.933Z</p>
+  
+
+  <p class="muted">OpenAI breakpoint caching: 30-minute writes cost 1.25 times ordinary input. Reads require an eligible matching boundary. GPT-6 input/cache rates double above 272,000 modeled input tokens. Prices assume Standard processing. Cache keys and changed renderer settings are isolated; expiry and hidden provider tokens are not modeled.</p>
+  <p class="muted">No paired response usage. Cache reads and costs are simulations.</p>
+
+  <section class="card">
+    <h2>Findings (1 issue)</h2>
+    <ul class="findings"><li class="finding warning"><span class="pill">warning</span> <strong>Shared text has no reusable cache boundary</strong> <span class="muted">(request 2)</span><p>Request 2 shares 2,615 modeled prefix tokens with request 1, but none of its eligible lookup boundaries finds a cached endpoint. Matching text alone is insufficient. Keep earlier message endings intact, or mark the end of the stable content explicitly in both requests. An explicit-only request checks its explicit boundaries; implicit lookup also has a message lookback limit.</p></li></ul>
+  </section>
+
+  <section class="card">
+    <h2>Cache simulation (openai)</h2>
+    <div class="table-scroll" tabindex="0" role="group" aria-label="Cache simulation"><table><thead><tr><th>request</th><th>mode</th><th>read</th><th>write 30m</th><th>uncached</th><th>cost</th></tr></thead><tbody><tr><td>req 1</td><td>implicit</td><td>0</td><td>2,630</td><td>0</td><td>$0.0066</td></tr><tr><td>req 2</td><td>implicit</td><td>0</td><td>2,630</td><td>0</td><td>$0.0066</td></tr></tbody></table></div>
+    <p class="muted">total simulated: $0.0132 · optimized simulated: $0.0132</p>
+    
+  </section>
+
+  
+
+
+  <h2>Requests</h2>
+  <section class="card"><h3>Request 1 · GPT-6 Sol</h3>
+        <p class="muted">≈3,953 Claude tokens · 2,630 OpenAI tokens · 0.3% of context window</p>
+        <div class="table-scroll" tabindex="0" role="group" aria-label="Token categories for request 1"><table><thead><tr><th>category</th><th>segments</th><th>≈Claude tok</th><th>OpenAI tok</th></tr></thead><tbody><tr><td><span class="swatch" style="background:#2a78d6"></span>system</td><td>1</td><td>3,939</td><td>2,606</td></tr><tr><td><span class="swatch" style="background:#1baf7a"></span>user</td><td>3</td><td>14</td><td>24</td></tr></tbody></table></div>
+      </section>
+<section class="card"><h3>Request 2 · GPT-6 Sol</h3>
+        <p class="muted">≈3,953 Claude tokens · 2,630 OpenAI tokens · 0.3% of context window</p>
+        <div class="table-scroll" tabindex="0" role="group" aria-label="Token categories for request 2"><table><thead><tr><th>category</th><th>segments</th><th>≈Claude tok</th><th>OpenAI tok</th></tr></thead><tbody><tr><td><span class="swatch" style="background:#2a78d6"></span>system</td><td>1</td><td>3,939</td><td>2,606</td></tr><tr><td><span class="swatch" style="background:#1baf7a"></span>user</td><td>2</td><td>14</td><td>19</td></tr><tr><td><span class="swatch" style="background:#eda100"></span>assistant</td><td>1</td><td>0</td><td>5</td></tr></tbody></table></div>
+      </section>
+
+  <p class="muted">Generated by <a href="https://github.com/antonsoo/contextscope">contextscope</a>. Claude token counts are heuristic estimates (≈), not exact.</p>
+</main></body></html>

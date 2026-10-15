@@ -137,6 +137,13 @@ body {
   overflow-x: hidden;
 }
 
+.app-startup {
+  width: min(100% - 32px, 640px);
+  margin: 12vh auto;
+}
+.app-startup h1 { font-family: var(--font-mono); font-size: 24px; }
+.app-startup p { color: var(--text-muted); }
+
 body {
   font-family: var(--font-sans);
   font-size: 14px;

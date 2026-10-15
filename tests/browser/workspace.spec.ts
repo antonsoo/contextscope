@@ -35,6 +35,7 @@ test.beforeEach(async ({ page, context }) => {
     await route.continue();
   });
   await page.goto("./");
+  await expect(page.locator("#pick-file-btn")).toBeVisible();
 });
 
 test.afterEach(async ({ page }) => {
@@ -357,28 +358,35 @@ test("prefix bars render the shared fraction and use the selected provider's tok
   for (const bar of bars) expect(bar.ratio).toBeCloseTo(bar.expected, 2);
 });
 
-test("a newer paste supersedes input waiting for the analysis worker", async ({ page, context }) => {
-  let release!: () => void;
-  let requested!: () => void;
-  const gate = new Promise<void>((resolve) => { release = resolve; });
-  const seen = new Promise<void>((resolve) => { requested = resolve; });
-  await context.route("**/assets/analysis-worker-*.js", async (route) => {
-    requested();
-    await gate;
-    await route.continue();
+test("a newer paste supersedes an older worker reply already waiting for delivery", async ({ page }) => {
+  await page.evaluate(() => {
+    const Original = Worker;
+    let first = true;
+    Object.assign(window, { staleReplyPending: false, releaseStaleReply: () => {} });
+    window.Worker = class extends Original {
+      constructor(url: string | URL, options?: WorkerOptions) {
+        super(url, options);
+        const hold = first;
+        first = false;
+        this.addEventListener("message", event => {
+          if (!hold || event.data?.type !== "success") return;
+          event.stopImmediatePropagation();
+          const stale = this.onmessage;
+          Object.assign(window, { staleReplyPending: true, releaseStaleReply: () => stale?.call(this, event) });
+        });
+      }
+    };
   });
-  try {
-    await page.getByRole("button", { name: "paste JSON" }).click();
-    await page.locator("#paste-area").fill(JSON.stringify(sequence));
-    await page.getByRole("button", { name: "analyze", exact: true }).click();
-    await seen;
-    await page.locator("#paste-area").fill(JSON.stringify(request("newest-paste")));
-    await page.getByRole("button", { name: "analyze", exact: true }).click();
-    release();
-    await expect(page.getByRole("tab")).toHaveCount(1);
-    await page.locator(".segment-inspect").last().click();
-    await expect(page.getByRole("dialog")).toContainText("newest-paste");
-  } finally { release(); }
+  await page.getByRole("button", { name: "paste JSON" }).click();
+  await page.locator("#paste-area").fill(JSON.stringify(sequence));
+  await page.getByRole("button", { name: "analyze", exact: true }).click();
+  await expect.poll(() => page.evaluate(() => (window as unknown as { staleReplyPending: boolean }).staleReplyPending)).toBe(true);
+  await page.locator("#paste-area").fill(JSON.stringify(request("newest-paste")));
+  await page.getByRole("button", { name: "analyze", exact: true }).click();
+  await expect(page.getByRole("tab")).toHaveCount(1);
+  await page.evaluate(() => (window as unknown as { releaseStaleReply: () => void }).releaseStaleReply());
+  await page.locator(".segment-inspect").last().click();
+  await expect(page.getByRole("dialog")).toContainText("newest-paste");
 });
 
 test("partial JSONL shows original lines and incomplete coverage in the workspace", async ({ page }) => {
@@ -453,7 +461,7 @@ test("analysis workers inherit the page's off-origin network restriction", async
       policyErrors.push(message.text());
     }
   });
-  await page.evaluate(() => {
+  await page.addInitScript(() => {
     const original = Worker;
     Object.assign(window, { privacyProbe: undefined });
     window.Worker = class extends original {
@@ -484,6 +492,8 @@ test("analysis workers inherit the page's off-origin network restriction", async
       for (const data of pendingProbeMessages) self.dispatchEvent(new MessageEvent("message", { data }));`;
     await route.fulfill({ response, body: probe + await response.text() + replay });
   });
+  await page.reload();
+  await expect(page.locator("#pick-file-btn")).toBeVisible();
   await load(page, request());
   await expect.poll(() => page.evaluate(() => (window as unknown as { privacyProbe?: { blocked: boolean } }).privacyProbe?.blocked)).toBe(true);
   if (browserName === "firefox") {
@@ -552,10 +562,11 @@ for (const action of ["cancel", "reset"] as const) test(`${action} terminates an
   await expect(page.locator("#intake-error")).toBeHidden();
 });
 
-test("fresh local imports, model changes and reset work offline after the first analysis", async ({ page, context }) => {
+test("the first local import, model changes and reset work offline once intake is ready", async ({ page, context }) => {
   let assetRequests = 0;
   page.on("request", (request) => { if (/\/assets\/analysis-worker-.*\.js$/.test(request.url())) assetRequests++; });
-  await load(page);
+  await page.reload();
+  await expect(page.locator("#pick-file-btn")).toBeVisible();
   expect(assetRequests).toBe(1);
   await context.setOffline(true);
   const next = [{ model: "gpt-6-sol", input: "First offline request" }, { model: "gpt-6-sol", input: "Second offline request" }];
@@ -574,20 +585,23 @@ test("fresh local imports, model changes and reset work offline after the first 
   expect(assetRequests).toBe(1);
 });
 
-for (const failure of ["html", "truncated script"] as const) test(`a ${failure} worker response is not cached and a later import recovers`, async ({ page, context }) => {
+for (const failure of ["html", "truncated script"] as const) test(`a ${failure} startup response is not retained and Retry loading recovers`, async ({ page, context }) => {
   let assetRequests = 0;
   await context.route("**/assets/analysis-worker-*.js", async (route) => {
     if (++assetRequests === 1) await route.fulfill({ status: 200, contentType: failure === "html" ? "text/html" : "application/javascript", body: failure === "html" ? "<html>missing asset</html>" : "function broken(" });
     else await route.continue();
   });
-  await page.locator("#file-input").setInputFiles({ name: "first.json", mimeType: "application/json", buffer: Buffer.from(JSON.stringify(request())) });
-  await expect(page.locator("#intake-error")).toContainText(failure === "html" ? "analysis code response is not JavaScript" : "Analysis worker failed");
+  await page.reload();
+  await expect(page.getByRole("alert")).toContainText("Local analysis could not start");
+  await expect(page.locator("#file-input")).toHaveCount(0);
+  await page.getByRole("button", { name: "Retry loading", exact: true }).click();
+  await expect(page.locator("#pick-file-btn")).toBeVisible();
   await load(page, request());
   await expect(page.getByRole("tab")).toHaveCount(1);
   expect(assetRequests).toBe(2);
 });
 
-test("cancelling the first worker-code download permits a fresh import", async ({ page, context }) => {
+test("cancelling startup code loading permits a fresh preparation and import", async ({ page, context }) => {
   let assetRequests = 0;
   let release!: () => void;
   const held = new Promise<void>((resolve) => { release = resolve; });
@@ -596,10 +610,12 @@ test("cancelling the first worker-code download permits a fresh import", async (
     await route.continue().catch(() => {}); // the first request may already have been aborted
   });
   try {
-    await page.locator("#file-input").setInputFiles({ name: "first.json", mimeType: "application/json", buffer: Buffer.from(JSON.stringify(request())) });
+    await page.reload();
     await expect.poll(() => assetRequests).toBe(1);
-    await page.getByRole("button", { name: "cancel import", exact: true }).click();
-    await expect(page.locator("#intake-error")).toHaveText("Import cancelled.");
+    await page.getByRole("button", { name: "Cancel loading", exact: true }).click();
+    await expect(page.getByRole("alert")).toHaveText("Loading cancelled.");
+    await page.getByRole("button", { name: "Retry loading", exact: true }).click();
+    await expect(page.locator("#pick-file-btn")).toBeVisible();
     await load(page, request("recovered after download cancellation"));
     await expect(page.getByRole("tab")).toHaveCount(1);
     expect(assetRequests).toBe(2);

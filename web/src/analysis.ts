@@ -31,12 +31,14 @@ async function localWorker(signal: AbortSignal): Promise<Worker> {
     source = `import ${JSON.stringify(asset.href)};`;
   } else {
     if (workerSource === undefined) {
-      const response = await fetch(asset.href, { signal, redirect: "error" });
+      // A failed 200 response may itself be cached by the browser. Retrying
+      // preparation must download corrected bytes rather than repeat that body.
+      const response = await fetch(asset.href, { signal, redirect: "error", cache: "reload" });
       if (!response.ok) throw new Error(`Could not load analysis code (HTTP ${response.status}).`);
       if (!/^(?:text|application)\/(?:javascript|ecmascript)(?:;|$)/i.test(response.headers.get("content-type") ?? "")) {
         throw new Error("The analysis code response is not JavaScript.");
       }
-      const downloaded = await response.text();
+      const downloaded = new TextDecoder("utf-8", { fatal: true }).decode(await response.arrayBuffer());
       signal.throwIfAborted();
       source = downloaded;
     } else source = workerSource;
@@ -45,11 +47,15 @@ async function localWorker(signal: AbortSignal): Promise<Worker> {
   const url = URL.createObjectURL(new Blob([source], { type: "text/javascript" }));
   try {
     const worker = new Worker(url, { type: "module" });
-    if (!import.meta.env.DEV) worker.addEventListener("message", (event: MessageEvent<Partial<AnalysisReply>>) => {
+    const retain = (event: MessageEvent<Partial<AnalysisReply>>): void => {
       // A 200 JavaScript response can still be truncated. Retain it only after the
       // worker executes; syntax/startup failures must allow another download.
-      if (event.data?.type === "started") workerSource = source;
-    }, { once: true });
+      if (event.data?.type === "ready") {
+        if (!import.meta.env.DEV) workerSource = source;
+        worker.removeEventListener("message", retain);
+      }
+    };
+    worker.addEventListener("message", retain);
     const terminate = worker.terminate.bind(worker);
     worker.terminate = () => { terminate(); URL.revokeObjectURL(url); };
     return worker;
@@ -57,6 +63,35 @@ async function localWorker(signal: AbortSignal): Promise<Worker> {
     URL.revokeObjectURL(url);
     throw err;
   }
+}
+
+/** Prepare trusted application code before file intake. No analysis job is sent;
+ * terminate the validation worker so it retains no tokenizer or request state. */
+export async function prepareAnalysisWorker(signal: AbortSignal): Promise<void> {
+  const worker = await localWorker(signal);
+  await new Promise<void>((resolve, reject) => {
+    let settled = false;
+    const finish = (error?: unknown): void => {
+      if (settled) return;
+      settled = true;
+      signal.removeEventListener("abort", abort);
+      worker.onmessage = null;
+      worker.onerror = null;
+      worker.onmessageerror = null;
+      worker.terminate();
+      if (error) reject(error);
+      else resolve();
+    };
+    const abort = (): void => finish(signal.reason ?? new DOMException("Preparation cancelled.", "AbortError"));
+    worker.onmessage = (event: MessageEvent<Partial<AnalysisReply>>) => {
+      if (event.data?.type === "ready") finish();
+      else if (event.data?.type === "error") finish(new Error(event.data.message));
+    };
+    worker.onerror = (event) => { event.preventDefault(); finish(new Error("Local analysis could not start.")); };
+    worker.onmessageerror = () => finish(new Error("Could not confirm local analysis readiness."));
+    signal.addEventListener("abort", abort, { once: true });
+    if (signal.aborted) abort();
+  });
 }
 
 /** One disposable worker per operation. Abort stops CPU work and drops its tokenizer caches. */
@@ -85,7 +120,7 @@ export function analyzeInWorker(job: AnalysisJob, signal: AbortSignal, createWor
       worker = created;
       worker.onmessage = (event: MessageEvent<unknown>) => {
         const reply = event.data as Partial<AnalysisReply> | null;
-        if (reply?.type === "started") return;
+        if (reply?.type === "started" || reply?.type === "ready") return;
         if (reply?.type === "error" && typeof reply.message === "string") {
           finish(undefined, new Error(reply.message));
         } else if (reply?.type === "success" && resultContract(reply.result)) {

@@ -25,11 +25,16 @@ Everything runs in your browser or on your machine. Nothing is uploaded, and the
 Content-Security-Policy (`connect-src 'self'`) has the browser enforce that: the page cannot
 send what you paste to any other host.
 
-After the first analysis, the production site can import more local files,
-change models and apply manual calibration offline in the same open tab.
-Only application code is retained for starting fresh workers; each analysis
-still releases its worker and tokenizer caches. Reloading the page or opening
-a built-in example that has not been downloaded can require a connection.
+Once the production site's file chooser appears, its local analysis code is ready:
+the first local file, report downloads, model changes and manual calibration work
+offline in that open tab. Startup downloads and validates the tokenizer worker
+before enabling intake; failed or cancelled preparation offers a retry. Only
+application code is retained for starting fresh workers; each analysis still
+releases its worker and tokenizer caches. Reloading the page or opening a built-in
+example that has not been downloaded can require a connection.
+[Cold first-import and startup recovery evidence](studies/first-offline/README.md)
+describes the extra initial download. This browser change is in source; a hosted
+deployment is not claimed here.
 
 **Refusal-only and empty history turns are retained in source.** A captured
 OpenAI SDK history with a changed assistant refusal previously looked identical:
@@ -604,8 +609,12 @@ fixed hue order, so a color always means the same category.
   wholesale (a summary in place of every earlier message) is read as a new
   conversation, not as a rewrite of the old one.
 - **The web app's exact-tokenizer worker is large.** Its o200k_base vocabulary
-  is fetched when analysis starts, not on page load. The flagship example is a separate
-  ~0.48 MB static asset, decompressed in the browser with `DecompressionStream`.
+  is fetched and validated at startup, before the file chooser appears. The
+  self-contained worker is about 2.1 MB uncompressed; moving that existing
+  first-analysis download earlier enables the first local import offline.
+  Startup creates and terminates one validation worker without sending it a
+  request. The flagship example is a separate ~0.48 MB static asset,
+  decompressed in the browser with `DecompressionStream`.
 - **Input limits.** The browser accepts up to 50 MiB and the CLI up to 500 MiB,
   for both the input bytes and the decompressed JSON. Reads and gzip inflation
   stop at the limit. Split larger logs into separate sessions. Browser import
@@ -615,9 +624,10 @@ fixed hue order, so a color always means the same category.
   results still require memory to retain and transfer, and download serialization
   runs on the UI thread. Byte/depth limits do not guarantee a fixed memory or
   processing-time budget.
-- **Worker privacy.** A small blob module inherits the page's CSP and imports
-  only the same-origin analysis asset, so `connect-src 'self'` covers worker
-  computation too. Bootstrap URLs are revoked when work succeeds, fails or is
+- **Worker privacy.** Production fetches only the same-origin analysis asset
+  and runs its self-contained code in a blob module that inherits the page's
+  CSP, so `connect-src 'self'` covers worker computation too. Bootstrap URLs are
+  revoked when work succeeds, fails or is
   cancelled. This uses the documented [worker CSP inheritance rule](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers#content_security_policy);
   the production suite probes an off-origin fetch from inside the worker.
 - **Performance.** `npm run bench` times `analyze()` on the flagship session

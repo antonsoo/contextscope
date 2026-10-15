@@ -1,0 +1,1221 @@
+{
+  "cases": 24,
+  "rows": [
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "fault": "http-503",
+      "browser": "153.0.8010.12",
+      "requests": [
+        {
+          "request": 1,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "controlledBody": "Temporarily unavailable.",
+          "status": 503
+        },
+        {
+          "request": 2,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "sourceSha256": "bff84872ec1f5ca02ee5ba632c64b26cb8cff636e5552c9f0905a7dec442a696"
+        }
+      ],
+      "beforeRetry": {
+        "created": 0,
+        "active": 0,
+        "terminated": 0,
+        "posts": 0,
+        "probe": 0
+      },
+      "prepared": {
+        "created": 1,
+        "active": 0,
+        "terminated": 1,
+        "posts": 0,
+        "probe": 0
+      },
+      "finished": {
+        "created": 2,
+        "active": 0,
+        "terminated": 2,
+        "posts": 1,
+        "probe": 0
+      },
+      "firstAnalysisOffline": true,
+      "reportMatchesBaselineCli": true,
+      "reportSha256": "856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d",
+      "pageErrors": [],
+      "externalRequests": [],
+      "failedRequests": []
+    },
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "fault": "html",
+      "browser": "153.0.8010.12",
+      "requests": [
+        {
+          "request": 1,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "controlledBody": "<html>missing application code</html>",
+          "status": 200
+        },
+        {
+          "request": 2,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "sourceSha256": "bff84872ec1f5ca02ee5ba632c64b26cb8cff636e5552c9f0905a7dec442a696"
+        }
+      ],
+      "beforeRetry": {
+        "created": 0,
+        "active": 0,
+        "terminated": 0,
+        "posts": 0,
+        "probe": 0
+      },
+      "prepared": {
+        "created": 1,
+        "active": 0,
+        "terminated": 1,
+        "posts": 0,
+        "probe": 0
+      },
+      "finished": {
+        "created": 2,
+        "active": 0,
+        "terminated": 2,
+        "posts": 1,
+        "probe": 0
+      },
+      "firstAnalysisOffline": true,
+      "reportMatchesBaselineCli": true,
+      "reportSha256": "856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d",
+      "pageErrors": [],
+      "externalRequests": [],
+      "failedRequests": []
+    },
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "fault": "truncated",
+      "browser": "153.0.8010.12",
+      "requests": [
+        {
+          "request": 1,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "controlledBody": "function incomplete(",
+          "status": 200
+        },
+        {
+          "request": 2,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "sourceSha256": "bff84872ec1f5ca02ee5ba632c64b26cb8cff636e5552c9f0905a7dec442a696"
+        }
+      ],
+      "beforeRetry": {
+        "created": 1,
+        "active": 0,
+        "terminated": 1,
+        "posts": 0,
+        "probe": 0
+      },
+      "prepared": {
+        "created": 2,
+        "active": 0,
+        "terminated": 2,
+        "posts": 0,
+        "probe": 0
+      },
+      "finished": {
+        "created": 3,
+        "active": 0,
+        "terminated": 3,
+        "posts": 1,
+        "probe": 0
+      },
+      "firstAnalysisOffline": true,
+      "reportMatchesBaselineCli": true,
+      "reportSha256": "856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d",
+      "pageErrors": [],
+      "externalRequests": [],
+      "failedRequests": []
+    },
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "fault": "invalid-utf8",
+      "browser": "153.0.8010.12",
+      "requests": [
+        {
+          "request": 1,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "controlledBody": {
+            "base64": "Y29uc3QgbWFya2VyPSL/IjtzZWxmLnBvc3RNZXNzYWdlKHt0eXBlOiJyZWFkeSJ9KTs=",
+            "sha256": "90174c00c4d261f5e3d1d7ca315c1317fc2e374f4543b9a9d1e0ba3b5043697c"
+          },
+          "status": 200
+        },
+        {
+          "request": 2,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "sourceSha256": "bff84872ec1f5ca02ee5ba632c64b26cb8cff636e5552c9f0905a7dec442a696"
+        }
+      ],
+      "beforeRetry": {
+        "created": 0,
+        "active": 0,
+        "terminated": 0,
+        "posts": 0,
+        "probe": 0
+      },
+      "prepared": {
+        "created": 1,
+        "active": 0,
+        "terminated": 1,
+        "posts": 0,
+        "probe": 0
+      },
+      "finished": {
+        "created": 2,
+        "active": 0,
+        "terminated": 2,
+        "posts": 1,
+        "probe": 0
+      },
+      "firstAnalysisOffline": true,
+      "reportMatchesBaselineCli": true,
+      "reportSha256": "856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d",
+      "pageErrors": [],
+      "externalRequests": [],
+      "failedRequests": []
+    },
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "fault": "held-download",
+      "browser": "153.0.8010.12",
+      "requests": [
+        {
+          "request": 1,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "clientClosed": true
+        },
+        {
+          "request": 2,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "sourceSha256": "bff84872ec1f5ca02ee5ba632c64b26cb8cff636e5552c9f0905a7dec442a696"
+        }
+      ],
+      "beforeRetry": {
+        "created": 0,
+        "active": 0,
+        "terminated": 0,
+        "posts": 0,
+        "probe": 0
+      },
+      "prepared": {
+        "created": 1,
+        "active": 0,
+        "terminated": 1,
+        "posts": 0,
+        "probe": 0
+      },
+      "finished": {
+        "created": 2,
+        "active": 0,
+        "terminated": 2,
+        "posts": 1,
+        "probe": 0
+      },
+      "firstAnalysisOffline": true,
+      "reportMatchesBaselineCli": true,
+      "reportSha256": "856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d",
+      "pageErrors": [],
+      "externalRequests": [],
+      "failedRequests": [
+        "loopback/contextscope/assets/analysis-worker-2qIYG1rJ.js"
+      ]
+    },
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "fault": "silent-worker",
+      "browser": "153.0.8010.12",
+      "requests": [
+        {
+          "request": 1,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "controlledBody": "self.postMessage({type:\"probe-running\"});",
+          "status": 200
+        },
+        {
+          "request": 2,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "sourceSha256": "bff84872ec1f5ca02ee5ba632c64b26cb8cff636e5552c9f0905a7dec442a696"
+        }
+      ],
+      "beforeRetry": {
+        "created": 1,
+        "active": 0,
+        "terminated": 1,
+        "posts": 0,
+        "probe": 1
+      },
+      "prepared": {
+        "created": 2,
+        "active": 0,
+        "terminated": 2,
+        "posts": 0,
+        "probe": 1
+      },
+      "finished": {
+        "created": 3,
+        "active": 0,
+        "terminated": 3,
+        "posts": 1,
+        "probe": 1
+      },
+      "firstAnalysisOffline": true,
+      "reportMatchesBaselineCli": true,
+      "reportSha256": "856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d",
+      "pageErrors": [],
+      "externalRequests": [],
+      "failedRequests": []
+    },
+    {
+      "engine": "chromium",
+      "width": 375,
+      "fault": "http-503",
+      "browser": "153.0.8010.12",
+      "requests": [
+        {
+          "request": 1,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "controlledBody": "Temporarily unavailable.",
+          "status": 503
+        },
+        {
+          "request": 2,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "sourceSha256": "bff84872ec1f5ca02ee5ba632c64b26cb8cff636e5552c9f0905a7dec442a696"
+        }
+      ],
+      "beforeRetry": {
+        "created": 0,
+        "active": 0,
+        "terminated": 0,
+        "posts": 0,
+        "probe": 0
+      },
+      "prepared": {
+        "created": 1,
+        "active": 0,
+        "terminated": 1,
+        "posts": 0,
+        "probe": 0
+      },
+      "finished": {
+        "created": 2,
+        "active": 0,
+        "terminated": 2,
+        "posts": 1,
+        "probe": 0
+      },
+      "firstAnalysisOffline": true,
+      "reportMatchesBaselineCli": true,
+      "reportSha256": "856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d",
+      "pageErrors": [],
+      "externalRequests": [],
+      "failedRequests": []
+    },
+    {
+      "engine": "chromium",
+      "width": 375,
+      "fault": "html",
+      "browser": "153.0.8010.12",
+      "requests": [
+        {
+          "request": 1,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "controlledBody": "<html>missing application code</html>",
+          "status": 200
+        },
+        {
+          "request": 2,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "sourceSha256": "bff84872ec1f5ca02ee5ba632c64b26cb8cff636e5552c9f0905a7dec442a696"
+        }
+      ],
+      "beforeRetry": {
+        "created": 0,
+        "active": 0,
+        "terminated": 0,
+        "posts": 0,
+        "probe": 0
+      },
+      "prepared": {
+        "created": 1,
+        "active": 0,
+        "terminated": 1,
+        "posts": 0,
+        "probe": 0
+      },
+      "finished": {
+        "created": 2,
+        "active": 0,
+        "terminated": 2,
+        "posts": 1,
+        "probe": 0
+      },
+      "firstAnalysisOffline": true,
+      "reportMatchesBaselineCli": true,
+      "reportSha256": "856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d",
+      "pageErrors": [],
+      "externalRequests": [],
+      "failedRequests": []
+    },
+    {
+      "engine": "chromium",
+      "width": 375,
+      "fault": "truncated",
+      "browser": "153.0.8010.12",
+      "requests": [
+        {
+          "request": 1,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "controlledBody": "function incomplete(",
+          "status": 200
+        },
+        {
+          "request": 2,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "sourceSha256": "bff84872ec1f5ca02ee5ba632c64b26cb8cff636e5552c9f0905a7dec442a696"
+        }
+      ],
+      "beforeRetry": {
+        "created": 1,
+        "active": 0,
+        "terminated": 1,
+        "posts": 0,
+        "probe": 0
+      },
+      "prepared": {
+        "created": 2,
+        "active": 0,
+        "terminated": 2,
+        "posts": 0,
+        "probe": 0
+      },
+      "finished": {
+        "created": 3,
+        "active": 0,
+        "terminated": 3,
+        "posts": 1,
+        "probe": 0
+      },
+      "firstAnalysisOffline": true,
+      "reportMatchesBaselineCli": true,
+      "reportSha256": "856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d",
+      "pageErrors": [],
+      "externalRequests": [],
+      "failedRequests": []
+    },
+    {
+      "engine": "chromium",
+      "width": 375,
+      "fault": "invalid-utf8",
+      "browser": "153.0.8010.12",
+      "requests": [
+        {
+          "request": 1,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "controlledBody": {
+            "base64": "Y29uc3QgbWFya2VyPSL/IjtzZWxmLnBvc3RNZXNzYWdlKHt0eXBlOiJyZWFkeSJ9KTs=",
+            "sha256": "90174c00c4d261f5e3d1d7ca315c1317fc2e374f4543b9a9d1e0ba3b5043697c"
+          },
+          "status": 200
+        },
+        {
+          "request": 2,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "sourceSha256": "bff84872ec1f5ca02ee5ba632c64b26cb8cff636e5552c9f0905a7dec442a696"
+        }
+      ],
+      "beforeRetry": {
+        "created": 0,
+        "active": 0,
+        "terminated": 0,
+        "posts": 0,
+        "probe": 0
+      },
+      "prepared": {
+        "created": 1,
+        "active": 0,
+        "terminated": 1,
+        "posts": 0,
+        "probe": 0
+      },
+      "finished": {
+        "created": 2,
+        "active": 0,
+        "terminated": 2,
+        "posts": 1,
+        "probe": 0
+      },
+      "firstAnalysisOffline": true,
+      "reportMatchesBaselineCli": true,
+      "reportSha256": "856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d",
+      "pageErrors": [],
+      "externalRequests": [],
+      "failedRequests": []
+    },
+    {
+      "engine": "chromium",
+      "width": 375,
+      "fault": "held-download",
+      "browser": "153.0.8010.12",
+      "requests": [
+        {
+          "request": 1,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "clientClosed": true
+        },
+        {
+          "request": 2,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "sourceSha256": "bff84872ec1f5ca02ee5ba632c64b26cb8cff636e5552c9f0905a7dec442a696"
+        }
+      ],
+      "beforeRetry": {
+        "created": 0,
+        "active": 0,
+        "terminated": 0,
+        "posts": 0,
+        "probe": 0
+      },
+      "prepared": {
+        "created": 1,
+        "active": 0,
+        "terminated": 1,
+        "posts": 0,
+        "probe": 0
+      },
+      "finished": {
+        "created": 2,
+        "active": 0,
+        "terminated": 2,
+        "posts": 1,
+        "probe": 0
+      },
+      "firstAnalysisOffline": true,
+      "reportMatchesBaselineCli": true,
+      "reportSha256": "856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d",
+      "pageErrors": [],
+      "externalRequests": [],
+      "failedRequests": [
+        "loopback/contextscope/assets/analysis-worker-2qIYG1rJ.js"
+      ]
+    },
+    {
+      "engine": "chromium",
+      "width": 375,
+      "fault": "silent-worker",
+      "browser": "153.0.8010.12",
+      "requests": [
+        {
+          "request": 1,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "controlledBody": "self.postMessage({type:\"probe-running\"});",
+          "status": 200
+        },
+        {
+          "request": 2,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "sourceSha256": "bff84872ec1f5ca02ee5ba632c64b26cb8cff636e5552c9f0905a7dec442a696"
+        }
+      ],
+      "beforeRetry": {
+        "created": 1,
+        "active": 0,
+        "terminated": 1,
+        "posts": 0,
+        "probe": 1
+      },
+      "prepared": {
+        "created": 2,
+        "active": 0,
+        "terminated": 2,
+        "posts": 0,
+        "probe": 1
+      },
+      "finished": {
+        "created": 3,
+        "active": 0,
+        "terminated": 3,
+        "posts": 1,
+        "probe": 1
+      },
+      "firstAnalysisOffline": true,
+      "reportMatchesBaselineCli": true,
+      "reportSha256": "856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d",
+      "pageErrors": [],
+      "externalRequests": [],
+      "failedRequests": []
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "fault": "http-503",
+      "browser": "155.0",
+      "requests": [
+        {
+          "request": 1,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "controlledBody": "Temporarily unavailable.",
+          "status": 503
+        },
+        {
+          "request": 2,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "sourceSha256": "bff84872ec1f5ca02ee5ba632c64b26cb8cff636e5552c9f0905a7dec442a696"
+        }
+      ],
+      "beforeRetry": {
+        "created": 0,
+        "active": 0,
+        "terminated": 0,
+        "posts": 0,
+        "probe": 0
+      },
+      "prepared": {
+        "created": 1,
+        "active": 0,
+        "terminated": 1,
+        "posts": 0,
+        "probe": 0
+      },
+      "finished": {
+        "created": 2,
+        "active": 0,
+        "terminated": 2,
+        "posts": 1,
+        "probe": 0
+      },
+      "firstAnalysisOffline": true,
+      "reportMatchesBaselineCli": true,
+      "reportSha256": "856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d",
+      "pageErrors": [],
+      "externalRequests": [],
+      "failedRequests": []
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "fault": "html",
+      "browser": "155.0",
+      "requests": [
+        {
+          "request": 1,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "controlledBody": "<html>missing application code</html>",
+          "status": 200
+        },
+        {
+          "request": 2,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "sourceSha256": "bff84872ec1f5ca02ee5ba632c64b26cb8cff636e5552c9f0905a7dec442a696"
+        }
+      ],
+      "beforeRetry": {
+        "created": 0,
+        "active": 0,
+        "terminated": 0,
+        "posts": 0,
+        "probe": 0
+      },
+      "prepared": {
+        "created": 1,
+        "active": 0,
+        "terminated": 1,
+        "posts": 0,
+        "probe": 0
+      },
+      "finished": {
+        "created": 2,
+        "active": 0,
+        "terminated": 2,
+        "posts": 1,
+        "probe": 0
+      },
+      "firstAnalysisOffline": true,
+      "reportMatchesBaselineCli": true,
+      "reportSha256": "856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d",
+      "pageErrors": [],
+      "externalRequests": [],
+      "failedRequests": []
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "fault": "truncated",
+      "browser": "155.0",
+      "requests": [
+        {
+          "request": 1,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "controlledBody": "function incomplete(",
+          "status": 200
+        },
+        {
+          "request": 2,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "sourceSha256": "bff84872ec1f5ca02ee5ba632c64b26cb8cff636e5552c9f0905a7dec442a696"
+        }
+      ],
+      "beforeRetry": {
+        "created": 1,
+        "active": 0,
+        "terminated": 1,
+        "posts": 0,
+        "probe": 0
+      },
+      "prepared": {
+        "created": 2,
+        "active": 0,
+        "terminated": 2,
+        "posts": 0,
+        "probe": 0
+      },
+      "finished": {
+        "created": 3,
+        "active": 0,
+        "terminated": 3,
+        "posts": 1,
+        "probe": 0
+      },
+      "firstAnalysisOffline": true,
+      "reportMatchesBaselineCli": true,
+      "reportSha256": "856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d",
+      "pageErrors": [],
+      "externalRequests": [],
+      "failedRequests": []
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "fault": "invalid-utf8",
+      "browser": "155.0",
+      "requests": [
+        {
+          "request": 1,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "controlledBody": {
+            "base64": "Y29uc3QgbWFya2VyPSL/IjtzZWxmLnBvc3RNZXNzYWdlKHt0eXBlOiJyZWFkeSJ9KTs=",
+            "sha256": "90174c00c4d261f5e3d1d7ca315c1317fc2e374f4543b9a9d1e0ba3b5043697c"
+          },
+          "status": 200
+        },
+        {
+          "request": 2,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "sourceSha256": "bff84872ec1f5ca02ee5ba632c64b26cb8cff636e5552c9f0905a7dec442a696"
+        }
+      ],
+      "beforeRetry": {
+        "created": 0,
+        "active": 0,
+        "terminated": 0,
+        "posts": 0,
+        "probe": 0
+      },
+      "prepared": {
+        "created": 1,
+        "active": 0,
+        "terminated": 1,
+        "posts": 0,
+        "probe": 0
+      },
+      "finished": {
+        "created": 2,
+        "active": 0,
+        "terminated": 2,
+        "posts": 1,
+        "probe": 0
+      },
+      "firstAnalysisOffline": true,
+      "reportMatchesBaselineCli": true,
+      "reportSha256": "856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d",
+      "pageErrors": [],
+      "externalRequests": [],
+      "failedRequests": []
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "fault": "held-download",
+      "browser": "155.0",
+      "requests": [
+        {
+          "request": 1,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "clientClosed": true
+        },
+        {
+          "request": 2,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "sourceSha256": "bff84872ec1f5ca02ee5ba632c64b26cb8cff636e5552c9f0905a7dec442a696"
+        }
+      ],
+      "beforeRetry": {
+        "created": 0,
+        "active": 0,
+        "terminated": 0,
+        "posts": 0,
+        "probe": 0
+      },
+      "prepared": {
+        "created": 1,
+        "active": 0,
+        "terminated": 1,
+        "posts": 0,
+        "probe": 0
+      },
+      "finished": {
+        "created": 2,
+        "active": 0,
+        "terminated": 2,
+        "posts": 1,
+        "probe": 0
+      },
+      "firstAnalysisOffline": true,
+      "reportMatchesBaselineCli": true,
+      "reportSha256": "856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d",
+      "pageErrors": [],
+      "externalRequests": [],
+      "failedRequests": [
+        "loopback/contextscope/assets/analysis-worker-2qIYG1rJ.js"
+      ]
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "fault": "silent-worker",
+      "browser": "155.0",
+      "requests": [
+        {
+          "request": 1,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "controlledBody": "self.postMessage({type:\"probe-running\"});",
+          "status": 200
+        },
+        {
+          "request": 2,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "sourceSha256": "bff84872ec1f5ca02ee5ba632c64b26cb8cff636e5552c9f0905a7dec442a696"
+        }
+      ],
+      "beforeRetry": {
+        "created": 1,
+        "active": 0,
+        "terminated": 1,
+        "posts": 0,
+        "probe": 1
+      },
+      "prepared": {
+        "created": 2,
+        "active": 0,
+        "terminated": 2,
+        "posts": 0,
+        "probe": 1
+      },
+      "finished": {
+        "created": 3,
+        "active": 0,
+        "terminated": 3,
+        "posts": 1,
+        "probe": 1
+      },
+      "firstAnalysisOffline": true,
+      "reportMatchesBaselineCli": true,
+      "reportSha256": "856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d",
+      "pageErrors": [],
+      "externalRequests": [],
+      "failedRequests": []
+    },
+    {
+      "engine": "firefox",
+      "width": 375,
+      "fault": "http-503",
+      "browser": "155.0",
+      "requests": [
+        {
+          "request": 1,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "controlledBody": "Temporarily unavailable.",
+          "status": 503
+        },
+        {
+          "request": 2,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "sourceSha256": "bff84872ec1f5ca02ee5ba632c64b26cb8cff636e5552c9f0905a7dec442a696"
+        }
+      ],
+      "beforeRetry": {
+        "created": 0,
+        "active": 0,
+        "terminated": 0,
+        "posts": 0,
+        "probe": 0
+      },
+      "prepared": {
+        "created": 1,
+        "active": 0,
+        "terminated": 1,
+        "posts": 0,
+        "probe": 0
+      },
+      "finished": {
+        "created": 2,
+        "active": 0,
+        "terminated": 2,
+        "posts": 1,
+        "probe": 0
+      },
+      "firstAnalysisOffline": true,
+      "reportMatchesBaselineCli": true,
+      "reportSha256": "856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d",
+      "pageErrors": [],
+      "externalRequests": [],
+      "failedRequests": []
+    },
+    {
+      "engine": "firefox",
+      "width": 375,
+      "fault": "html",
+      "browser": "155.0",
+      "requests": [
+        {
+          "request": 1,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "controlledBody": "<html>missing application code</html>",
+          "status": 200
+        },
+        {
+          "request": 2,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "sourceSha256": "bff84872ec1f5ca02ee5ba632c64b26cb8cff636e5552c9f0905a7dec442a696"
+        }
+      ],
+      "beforeRetry": {
+        "created": 0,
+        "active": 0,
+        "terminated": 0,
+        "posts": 0,
+        "probe": 0
+      },
+      "prepared": {
+        "created": 1,
+        "active": 0,
+        "terminated": 1,
+        "posts": 0,
+        "probe": 0
+      },
+      "finished": {
+        "created": 2,
+        "active": 0,
+        "terminated": 2,
+        "posts": 1,
+        "probe": 0
+      },
+      "firstAnalysisOffline": true,
+      "reportMatchesBaselineCli": true,
+      "reportSha256": "856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d",
+      "pageErrors": [],
+      "externalRequests": [],
+      "failedRequests": []
+    },
+    {
+      "engine": "firefox",
+      "width": 375,
+      "fault": "truncated",
+      "browser": "155.0",
+      "requests": [
+        {
+          "request": 1,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "controlledBody": "function incomplete(",
+          "status": 200
+        },
+        {
+          "request": 2,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "sourceSha256": "bff84872ec1f5ca02ee5ba632c64b26cb8cff636e5552c9f0905a7dec442a696"
+        }
+      ],
+      "beforeRetry": {
+        "created": 1,
+        "active": 0,
+        "terminated": 1,
+        "posts": 0,
+        "probe": 0
+      },
+      "prepared": {
+        "created": 2,
+        "active": 0,
+        "terminated": 2,
+        "posts": 0,
+        "probe": 0
+      },
+      "finished": {
+        "created": 3,
+        "active": 0,
+        "terminated": 3,
+        "posts": 1,
+        "probe": 0
+      },
+      "firstAnalysisOffline": true,
+      "reportMatchesBaselineCli": true,
+      "reportSha256": "856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d",
+      "pageErrors": [],
+      "externalRequests": [],
+      "failedRequests": []
+    },
+    {
+      "engine": "firefox",
+      "width": 375,
+      "fault": "invalid-utf8",
+      "browser": "155.0",
+      "requests": [
+        {
+          "request": 1,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "controlledBody": {
+            "base64": "Y29uc3QgbWFya2VyPSL/IjtzZWxmLnBvc3RNZXNzYWdlKHt0eXBlOiJyZWFkeSJ9KTs=",
+            "sha256": "90174c00c4d261f5e3d1d7ca315c1317fc2e374f4543b9a9d1e0ba3b5043697c"
+          },
+          "status": 200
+        },
+        {
+          "request": 2,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "sourceSha256": "bff84872ec1f5ca02ee5ba632c64b26cb8cff636e5552c9f0905a7dec442a696"
+        }
+      ],
+      "beforeRetry": {
+        "created": 0,
+        "active": 0,
+        "terminated": 0,
+        "posts": 0,
+        "probe": 0
+      },
+      "prepared": {
+        "created": 1,
+        "active": 0,
+        "terminated": 1,
+        "posts": 0,
+        "probe": 0
+      },
+      "finished": {
+        "created": 2,
+        "active": 0,
+        "terminated": 2,
+        "posts": 1,
+        "probe": 0
+      },
+      "firstAnalysisOffline": true,
+      "reportMatchesBaselineCli": true,
+      "reportSha256": "856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d",
+      "pageErrors": [],
+      "externalRequests": [],
+      "failedRequests": []
+    },
+    {
+      "engine": "firefox",
+      "width": 375,
+      "fault": "held-download",
+      "browser": "155.0",
+      "requests": [
+        {
+          "request": 1,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "clientClosed": true
+        },
+        {
+          "request": 2,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "sourceSha256": "bff84872ec1f5ca02ee5ba632c64b26cb8cff636e5552c9f0905a7dec442a696"
+        }
+      ],
+      "beforeRetry": {
+        "created": 0,
+        "active": 0,
+        "terminated": 0,
+        "posts": 0,
+        "probe": 0
+      },
+      "prepared": {
+        "created": 1,
+        "active": 0,
+        "terminated": 1,
+        "posts": 0,
+        "probe": 0
+      },
+      "finished": {
+        "created": 2,
+        "active": 0,
+        "terminated": 2,
+        "posts": 1,
+        "probe": 0
+      },
+      "firstAnalysisOffline": true,
+      "reportMatchesBaselineCli": true,
+      "reportSha256": "856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d",
+      "pageErrors": [],
+      "externalRequests": [],
+      "failedRequests": [
+        "loopback/contextscope/assets/analysis-worker-2qIYG1rJ.js"
+      ]
+    },
+    {
+      "engine": "firefox",
+      "width": 375,
+      "fault": "silent-worker",
+      "browser": "155.0",
+      "requests": [
+        {
+          "request": 1,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "controlledBody": "self.postMessage({type:\"probe-running\"});",
+          "status": 200
+        },
+        {
+          "request": 2,
+          "cacheControl": "no-cache",
+          "pragma": "no-cache",
+          "ifNoneMatch": null,
+          "sourceSha256": "bff84872ec1f5ca02ee5ba632c64b26cb8cff636e5552c9f0905a7dec442a696"
+        }
+      ],
+      "beforeRetry": {
+        "created": 1,
+        "active": 0,
+        "terminated": 1,
+        "posts": 0,
+        "probe": 1
+      },
+      "prepared": {
+        "created": 2,
+        "active": 0,
+        "terminated": 2,
+        "posts": 0,
+        "probe": 1
+      },
+      "finished": {
+        "created": 3,
+        "active": 0,
+        "terminated": 3,
+        "posts": 1,
+        "probe": 1
+      },
+      "firstAnalysisOffline": true,
+      "reportMatchesBaselineCli": true,
+      "reportSha256": "856ec091757b60ad89225f27d545905acd40a9735e5d074cce47ddad66f49a8d",
+      "pageErrors": [],
+      "externalRequests": [],
+      "failedRequests": []
+    }
+  ]
+}

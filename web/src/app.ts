@@ -12,19 +12,16 @@ import { mountUsageReview, type UsageView } from "./usage-review.js";
 import { modelGroups, modelLabel, modelNotes, modelSummary } from "@core/model-summary.js";
 import { mountReportExports } from "./report-exports.js";
 import { mountTextComparison } from "./text-comparison.js";
+import * as presentation from "@core/presentation.js";
 
 const usageView: UsageView = { filter: "all", page: 0 };
 
-// Presentation helpers are lazy; parsing and tokenizer data stay in disposable workers.
+// Presentation must be available with the app shell, including its first offline import.
+// Parsing and tokenizer data stay in disposable workers.
 type CoreModule = typeof import("@core/presentation.js");
-let corePromise: Promise<CoreModule> | undefined;
 let loadedCore: CoreModule | undefined;
 function loadCore(): Promise<CoreModule> {
-  corePromise ??= import("@core/presentation.js").catch((err: unknown) => {
-    corePromise = undefined;
-    throw err;
-  });
-  return corePromise;
+  return Promise.resolve(presentation);
 }
 
 interface State {

@@ -20,3 +20,6 @@ scope.onmessage = ({ data: job }) => {
     scope.postMessage({ type: "error", message: err instanceof Error ? err.message : String(err) });
   }
 };
+
+// Startup can validate and retain application code without submitting a request.
+scope.postMessage({ type: "ready" });
