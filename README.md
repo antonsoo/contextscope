@@ -24,7 +24,8 @@ the selected Anthropic request to its token-counting endpoint; ordinary local
 analysis does not need a key or upload.
 
 The source checkout and demo include corrections for empty/refusal histories, reasoning
-settings, injected prompt instructions and media accounting. Their
+settings, injected prompt instructions and media accounting. The current source
+also preserves unresolved OpenAI stored-context boundaries. Their
 [source, package and demo status](docs/source-status.md) is recorded separately,
 with retained counterexamples and verification artifacts. The measurements below
 describe the public agent trajectories used to check the analyzer.
@@ -115,6 +116,10 @@ drop a request file, paste one, or click a built-in example.
   while totals, context usage and cache costs are unavailable; encoded payloads
   do not become text tokens. Click a segment to see its original content, path
   and cache status. [Media accounting and nullable source types](studies/media-accounting/README.md).
+- **Unresolved stored context.** In source, Responses history IDs, reusable prompts,
+  input references and opaque reasoning/compaction remain inspectable. Whole-request
+  counts and sequence cache estimates are unavailable until that context can be
+  accounted for; captured usage remains separate. [Stored-context evidence](studies/stored-context/README.md).
 - **Prompt-cache simulation across a sequence.** For each request and the
   request it continues, contextscope finds the longest common prefix in the provider's own
   serialization order, shows a readable diff of exactly what changed, and
@@ -287,7 +292,8 @@ const result = analyze(rawRequestJsonOrJsonl); // or { model: "claude-opus-5-5" 
 // result.duplicates       — near-duplicate content groups
 ```
 
-Source token fields can be `null` for unmodeled media. Check them before
+Source token fields can be `null` for unmodeled media or unresolved stored/opaque
+context. Check them before
 arithmetic; `null` is not zero. `cacheSimulation.unavailableReason` explains why
 sequence estimates are withheld. Captured provider counters keep their original
 known/missing/invalid states. [Contract and examples](studies/media-accounting/README.md#source-library-and-json-contract).
@@ -529,7 +535,7 @@ factual claim: the simulated optimized cost is (within rounding) the actual
 cost already. Advice is model-aware; for example, a mid-conversation `system`
 message is suggested only for models that accept one.
 
-**Categorical palette.** The eight segment categories use a colorblind-safe
+**Categorical palette.** The eight content categories use a colorblind-safe
 palette (worst-case simulated CVD ΔE ≥ 8.4 OKLab, worst-case normal-vision ΔE
 ≥ 19.3, both checked against the actual dark and light surface colors) in a
 fixed hue order, so a color always means the same category.
@@ -607,9 +613,12 @@ fixed hue order, so a color always means the same category.
   not establish actual reuse. Other feature toggles, provider transformations
   of thinking history, and images rendered from opaque documents are not fully
   modeled. Compare captured usage before treating predictions as evidence of a hit.
-- **Server-side state is invisible.** A Responses API request that continues a
-  stored response (`previous_response_id`) carries only its new input; the tool
-  warns and analyzes what is in the file.
+- **Server-side state is invisible.** Responses can reference stored responses,
+  conversations, reusable prompts or input items. The current source preserves
+  those units and visible text counts but withholds whole-request totals and
+  sequence cache estimates. Opaque reasoning/compaction is also withheld rather
+  than tokenized as serialized transport. Nothing is fetched or reconstructed.
+  [Boundaries and native SDK counterexamples](studies/stored-context/README.md).
 - **Reported usage requires an explicit pair.** Usage must be beside its wrapped
   request in the same record. Separate responses and streaming deltas are not
   joined implicitly. Historical Claude gateway totals with cache creation are

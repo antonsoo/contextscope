@@ -501,6 +501,7 @@ function parseNotesPanel(result: AnalysisResult): string {
 // ---------------------------------------------------------------------------
 
 function statTilesPanel(report: RequestTokenReport, result: AnalysisResult): string {
+  const reported = result.parse.requests[report.requestIndex]?.reportedUsage;
   const groups = currentGroups(result);
   const errorCount = groups.filter((g) => g.severity === "error").length;
   const warnCount = groups.filter((g) => g.severity === "warning").length;
@@ -519,6 +520,7 @@ function statTilesPanel(report: RequestTokenReport, result: AnalysisResult): str
         <div class="stat-tile"><div class="label">≈ Claude tokens${result.claudeTokenScale !== 1 ? " (calibrated)" : ""}</div><div class="value">${fmtInt(report.totals.claudeTokensEstimate)}</div></div>
         <div class="stat-tile"><div class="label">OpenAI tokens (exact)</div><div class="value">${fmtInt(report.totals.openaiTokens)}</div></div>
         <div class="stat-tile"><div class="label">of context window</div><div class="value">${fmtPct(report.percentOfContextWindow, 2)}</div></div>
+        ${report.totals.openaiTokens === null && reported?.status === "valid" && reported.inputTokens !== null ? `<div class="stat-tile"><div class="label">Reported input tokens</div><div class="value">${fmtInt(reported.inputTokens)}</div></div>` : ""}
         <div class="stat-tile"><div class="label">issues</div><div class="value">${errorCount > 0 ? errorCount + " err" : warnCount > 0 ? warnCount + " warn" : groups.length}</div></div>
         ${savings !== undefined && savings >= 0.00005 ? `<div class="stat-tile"><div class="label">potential savings</div><div class="value good">${fmtUsd(savings)}</div></div>` : ""}
       </div>
@@ -540,7 +542,7 @@ function treemapPanel(report: RequestTokenReport, format: Provider): string {
     <section class="panel">
       <h2>Token usage — treemap <span class="count">colored by category, sized by ${format === "openai" ? "OpenAI tokens (exact)" : "≈ Claude tokens"}</span></h2>
       <div class="treemap" id="treemap" role="group" aria-label="Treemap of token usage: segments open inspection; grouped categories filter the table"></div>
-      ${report.segments.some(s => blockTokens(s, format) === null) ? '<p class="muted">The treemap includes only segments with token counts. Omitted media has an unavailable cost; its size is not zero. Inspect original media in the segment table.</p>' : ""}
+      ${report.segments.some(s => blockTokens(s, format) === null) ? '<p class="muted">The treemap includes only segments with token counts. Media and unresolved context have no assigned area; their size is unknown. Inspect the original units in the segment table.</p>' : ""}
       ${report.segments.filter((s) => { const n = blockTokens(s, format); return n !== null && n > 0; }).length > TREEMAP_SEGMENT_LIMIT ? `<p class="muted">The ${TREEMAP_SEGMENT_LIMIT} largest segments with token counts are shown individually; the rest are grouped by category. Grouped blocks filter the table below.</p>` : ""}
       <div class="legend">
         ${CATEGORY_ORDER.filter((c) => report.byCategory.some((b) => b.category === c))
@@ -686,7 +688,7 @@ function sequencePanel(result: AnalysisResult): string {
           ? `${fmtInt(result.conversations.count)} conversations in this file · each request against the request it continues`
           : "longest common prefix between each consecutive pair"
       }</span></h2>
-      ${result.cacheSimulation.unavailableReason ? '<p class="panel-note">These are structural matches between captured blocks. Media token shares and cache reuse remain unavailable.</p>' : ""}
+      ${result.cacheSimulation.unavailableReason ? '<p class="panel-note">These are structural matches between captured units. Unknown lengths and unresolved context prevent a whole-prompt cache estimate.</p>' : ""}
       <div class="prefix-list" id="prefix-list">
         ${pairs
           .map((m, i) => {
@@ -956,7 +958,7 @@ function openInspector(segment: Segment, requestIndex = state.selectedRequest): 
       <dt>request</dt><dd>${requestIndex + 1}</dd>
       <dt>category</dt><dd>${CATEGORY_LABEL[segment.category]}</dd>
       <dt>path</dt><dd>${esc(segment.path)}</dd>
-      <dt>analyzed text chars</dt><dd>${fmtInt(segment.charLength)}${segment.unmodeledContent ? " (media excluded)" : ""}</dd>
+      <dt>analyzed text chars</dt><dd>${fmtInt(segment.charLength)}${segment.unmodeledContext ? " (unresolved context excluded)" : segment.unmodeledContent ? " (media excluded)" : ""}</dd>
       <dt>≈ Claude tokens</dt><dd>${fmtInt(segment.claudeTokensEstimate)}${state.calibration ? ` <span class="muted">(scaled ×${state.calibration.scale.toFixed(3)})</span>` : ""}</dd>
       <dt>OpenAI tokens</dt><dd>${fmtInt(segment.openaiTokens)}</dd>
       <dt>cache boundary</dt><dd>${segment.promptCacheBreakpoint ? "explicit OpenAI breakpoint, 30m" : segment.cacheControl ? `ephemeral, ${segment.cacheControl.ttl}${segment.cacheControl.automatic ? " (automatic: the request's top-level cache_control lands on this block)" : ""}` : "none"}</dd>

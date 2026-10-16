@@ -13,6 +13,7 @@ const CATEGORY_LABEL: Record<SegmentCategory, string> = {
   tool_result: "tool results",
   image: "images",
   thinking: "thinking",
+  reference: "unresolved refs",
 };
 
 const CATEGORY_COLOR: Record<SegmentCategory, (s: string) => string> = {
@@ -24,6 +25,7 @@ const CATEGORY_COLOR: Record<SegmentCategory, (s: string) => string> = {
   tool_result: (s) => s,
   image: cyan,
   thinking: red,
+  reference: dim,
 };
 
 // Above this many requests the cache table is abbreviated to its head and tail unless --verbose.

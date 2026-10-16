@@ -26,6 +26,18 @@ of public SWE-bench agent runs; see `studies/real-trajectories/`.
 
 ### Fixed
 
+- Preserve unresolved OpenAI Responses history instead of assigning complete
+  token totals and cache hits to the visible input alone. Retain stored response,
+  conversation and reusable-prompt references, including SDK item references
+  whose type is omitted or null. Keep reasoning/compaction history opaque.
+  Visible text remains counted; whole-request totals/context fractions and
+  whole-sequence cache costs become unavailable. Captured counters remain
+  distinct from local estimates, including zero reads. Native response objects
+  cannot turn echoed tools into another request. Refuse malformed/conflicting
+  context identifiers before replacing an imported workspace. Controlled native
+  SDK workflows and actual offline exports are retained in
+  `studies/stored-context/`. No registry release accompanies this correction.
+
 - Stop counting image/PDF/file/audio encodings, URLs and file IDs as prompt text.
   Preserve original blocks and structural comparisons, but return null for
   unmodeled media counts and affected totals. Withhold context fractions and
@@ -48,7 +60,7 @@ of public SWE-bench agent runs; see `studies/real-trajectories/`.
   cache controls; legacy output formats migrate to the native count endpoint's
   field. Reports disclose unmodeled injected-prompt token overhead. SDK-body
   replays and offline exports are retained in `studies/injected-settings/`.
-  Source only; no npm release or deployment.
+  Included in source and the public demo; no npm release.
 
 - Keep Claude thinking and top-level effort configurations in separate cache
   scopes, including in the optimized scenario. Normalize documented mode and
@@ -57,7 +69,7 @@ of public SWE-bench agent runs; see `studies/real-trajectories/`.
   actual tool/system survival is model-specific. Retain empty Claude message
   headers, including per-message effort, without inventing text tokens or a
   cache marker target. SDK-body counterexamples and controls are retained in
-  `studies/thinking-settings/`. Source only; no npm release or deployment.
+  `studies/thinking-settings/`. Included in source and the public demo; no npm release.
 
 - Prepare browser analysis code before enabling file intake, so the first local
   import and report downloads work offline without a warm-up analysis. Include

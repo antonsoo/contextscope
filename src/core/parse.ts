@@ -6,6 +6,7 @@ import { memoizedCounter } from "./token-counter.js";
 import { JsonIntegrityError, readJson } from "./read-json.js";
 import { readReportedUsage } from "./reported-usage.js";
 import { ContextScopeParseError } from "./parse-error.js";
+import { isOpenAiResponseObject, isResponsesBody } from "./openai-context.js";
 
 export { ContextScopeParseError } from "./parse-error.js";
 
@@ -62,7 +63,7 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 }
 
 function looksLikeRequestBody(value: unknown): boolean {
-  return isRecord(value) && (Array.isArray(value["messages"]) || "input" in value || "instructions" in value);
+  return isRecord(value) && !isOpenAiResponseObject(value) && (Array.isArray(value["messages"]) || isResponsesBody(value));
 }
 
 /** A capture can mix raw requests and different gateway wrappers; choose per record. */
@@ -97,18 +98,17 @@ function requestList(indices: number[]): string {
 }
 
 /** History kept on OpenAI's servers cannot be recovered from the request body alone. */
-function openAiStateWarnings(values: unknown[]): ParseWarning[] {
+function openAiStateWarnings(requests: ParsedRequest[]): ParseWarning[] {
   const stored: number[] = [];
-  values.forEach((raw, i) => {
-    if (!isRecord(raw)) return;
-    if (typeof raw["previous_response_id"] === "string" || raw["conversation"] != null) stored.push(i);
+  requests.forEach((request) => {
+    if (request.segments.some(s => s.unmodeledContext === "previous_response" || s.unmodeledContext === "conversation")) stored.push(request.index);
   });
   const out: ParseWarning[] = [];
   if (stored.length > 0) {
     const one = stored.length === 1;
     out.push({
       requestIndex: stored[0]!,
-      message: `${requestList(stored)} ${one ? "continues" : "continue"} a stored response or conversation (previous_response_id, conversation), so ${one ? "its" : "their"} earlier turns live on OpenAI's servers, not in this file. Counts and the cache simulation cover only what ${one ? "the request itself carries" : "each request itself carries"}.`,
+      message: `${requestList(stored)} ${one ? "continues" : "continue"} a stored response or conversation (previous_response_id, conversation), so ${one ? "its" : "their"} earlier turns live on OpenAI's servers, not in this file. Visible segments retain their text counts; whole-request totals, context usage and sequence cache estimates are unavailable.`,
     });
   }
   return out;
@@ -140,7 +140,7 @@ export function parseInput(input: string, formatOverride?: Provider): ParseResul
     const reportedUsage = readReportedUsage(rawValues[i], records[i]!.envelope, format);
     return { ...parser(value, i, counter), source, ...(reportedUsage ? { reportedUsage } : {}) };
   });
-  if (format === "openai") warnings.push(...openAiStateWarnings(values));
+  if (format === "openai") warnings.push(...openAiStateWarnings(requests));
   requests.forEach((request, i) => {
     if (request.segments.length === 0) {
       complete = false;

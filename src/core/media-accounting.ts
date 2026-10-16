@@ -49,7 +49,14 @@ export function hasUnmodeledTokens(requests: ParsedRequest[], provider: Provider
 
 export const UNMODELED_CACHE_REASON = "Media token counts are unavailable. Cache token partitions and costs are unavailable for this sequence because unknown media lengths can affect cache thresholds and entries written by earlier requests.";
 
-export function unavailableCacheStep(requestIndex: number): CacheSimStep {
+export function unavailableCacheReason(requests: ParsedRequest[]): string {
+  const context = requests.some(r => r.segments.some(s => s.unmodeledContext));
+  const media = requests.some(r => r.segments.some(s => s.unmodeledContent));
+  if (context) return `${media ? "Media and stored or opaque context" : "Stored or opaque context"} cannot be reconstructed from these records. Whole-request cache token partitions and costs are unavailable for this sequence; visible text matches do not establish the resolved prompt or prior cache entries.`;
+  return UNMODELED_CACHE_REASON;
+}
+
+export function unavailableCacheStep(requestIndex: number, reason = UNMODELED_CACHE_REASON): CacheSimStep {
   return { requestIndex, readTokens: null, writeTokens5m: null, writeTokens1h: null,
-    uncachedTokens: null, costUsd: undefined, unavailableReason: UNMODELED_CACHE_REASON };
+    uncachedTokens: null, costUsd: undefined, unavailableReason: reason };
 }

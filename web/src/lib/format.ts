@@ -9,13 +9,15 @@ export const CATEGORY_LABEL: Record<SegmentCategory, string> = {
   tool_result: "tool results",
   image: "images",
   thinking: "thinking",
+  reference: "unresolved references",
 };
 
 // Matches the --cat-* custom properties in style.css (a colorblind-validated 8-slot categorical
 // palette, in its fixed hue order - see the README's "How it works" section).
-export const CATEGORY_ORDER: SegmentCategory[] = ["system", "tools", "user", "assistant", "tool_call", "tool_result", "image", "thinking"];
+export const CATEGORY_ORDER: SegmentCategory[] = ["system", "tools", "user", "assistant", "tool_call", "tool_result", "image", "thinking", "reference"];
 
 export function categoryVar(category: SegmentCategory): string {
+  if (category === "reference") return "currentColor";
   return `var(--cat-${category})`;
 }
 

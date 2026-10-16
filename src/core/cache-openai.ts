@@ -2,7 +2,7 @@ import type { CacheSimStep, ParsedRequest } from "./types.js";
 import { findOpenAiModel, resolveModel } from "./pricing.js";
 import { openAiCachePlan, openAiCacheScope } from "./openai-breakpoints.js";
 import { ContextScopeParseError } from "./parse-error.js";
-import { hasUnmodeledTokens, unavailableCacheStep } from "./media-accounting.js";
+import { hasUnmodeledTokens, unavailableCacheReason, unavailableCacheStep } from "./media-accounting.js";
 
 /**
  * Modern OpenAI: exact modeled boundaries, explicit/implicit mode, four writes and 30m
@@ -15,6 +15,7 @@ const CACHE_GRANULARITY = 128;
 
 export function simulateOpenAiCacheSequence(requests: ParsedRequest[], paths: number[][], model: string | undefined): CacheSimStep[] {
   const unavailable = hasUnmodeledTokens(requests, "openai");
+  const reason = unavailable ? unavailableCacheReason(requests) : undefined;
   const cached = new Map<string, Set<number>>();
   return requests.map((request, i) => {
     const modelInfo = findOpenAiModel(resolveModel("openai", model, [request.model]).id);
@@ -23,7 +24,7 @@ export function simulateOpenAiCacheSequence(requests: ParsedRequest[], paths: nu
     if (!modern && (plan.explicit.length || plan.mode === "explicit")) {
       throw new ContextScopeParseError(`Request ${request.index + 1}: explicit OpenAI caching requires a model with breakpoint caching; ${modelInfo.displayName} uses legacy caching.`);
     }
-    if (unavailable) return { ...unavailableCacheStep(request.index),
+    if (unavailable) return { ...unavailableCacheStep(request.index, reason),
       ...(modern ? { writeTokens30m: null } : {}), cacheMode: modern ? plan.mode : "legacy" };
     const path = paths[i]!;
     let total = 0;

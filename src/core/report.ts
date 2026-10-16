@@ -2,7 +2,7 @@ import type { CategoryBreakdown, ParsedRequest, Provider, RequestTokenReport, Se
 import { findAnthropicModel, findOpenAiModel, resolveModel } from "./pricing.js";
 import { sumTokenCounts } from "./media-accounting.js";
 
-const CATEGORY_ORDER: SegmentCategory[] = ["system", "tools", "user", "assistant", "tool_call", "tool_result", "image", "thinking"];
+const CATEGORY_ORDER: SegmentCategory[] = ["system", "tools", "user", "assistant", "tool_call", "tool_result", "image", "thinking", "reference"];
 
 export function buildRequestReport(request: ParsedRequest, provider: Provider, model: string | undefined): RequestTokenReport {
   const resolved = resolveModel(provider, model, [request.model]);

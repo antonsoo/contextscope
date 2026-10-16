@@ -1,4 +1,5 @@
 import type { Provider } from "./types.js";
+import { isResponsesBody } from "./openai-context.js";
 
 /**
  * Auto-detects whether a single request object is Anthropic Messages API or
@@ -32,7 +33,7 @@ function formatScores(request: unknown): Record<Provider, number> {
   // Top-level `system` as a field is Anthropic-only; OpenAI has no such field.
   if ("system" in obj) scores.anthropic += 2;
   // OpenAI Responses API bodies carry `input`/`instructions` instead of `messages`.
-  if (!("messages" in obj) && ("input" in obj || "instructions" in obj)) scores.openai += 4;
+  if (isResponsesBody(obj)) scores.openai += 4;
 
   const tools = Array.isArray(obj["tools"]) ? (obj["tools"] as unknown[]) : [];
   for (const tool of tools) {

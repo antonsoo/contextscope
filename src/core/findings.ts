@@ -87,6 +87,13 @@ export function computeFindings(
     const modelInfo = provider === "anthropic" ? findAnthropicModel(resolveModel(provider, model, [request.model]).id) : undefined;
     const cacheStep = cacheSimulation.actual[i];
     const mediaSegments = request.segments.filter(s => s.unmodeledContent?.length);
+    const contextSegments = request.segments.filter(s => s.unmodeledContext);
+    if (contextSegments.length) push(findings, {
+      kind: "openai_unmodeled_context", severity: "warning", requestIndex: i,
+      title: "Stored or opaque context is unresolved",
+      detail: "These units reference stored responses, conversations, prompt templates or input items, or contain opaque reasoning/compaction history. The file does not supply their complete resolved prompt. Visible text segments retain their counts, but whole-request totals and context usage are unavailable. Cache partitions and costs are unavailable for the whole sequence. Nothing is fetched or reconstructed from an ID, summary or ciphertext. Original units and captured usage remain inspectable; no comparison is invented for an unavailable side.",
+      segmentIds: contextSegments.map(s => s.id),
+    });
     if (mediaSegments.length) push(findings, {
       kind: "unmodeled_media", severity: "warning", requestIndex: i,
       title: "Media token counts are unavailable",

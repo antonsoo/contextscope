@@ -17,6 +17,7 @@ const CATEGORY_COLOR: Record<string, string> = {
   tool_result: "#008300",
   image: "#4a3aa7",
   thinking: "#e34948",
+  reference: "currentColor",
 };
 
 /** A single self-contained HTML file: no external requests, no JS framework - a static report

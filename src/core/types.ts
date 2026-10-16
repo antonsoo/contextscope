@@ -14,8 +14,9 @@ export type Provider = "anthropic" | "openai";
 /** Null means this content cannot be counted locally, never zero tokens. */
 export type TokenCount = number | null;
 export type MediaKind = "image" | "document" | "audio" | "file";
+export type UnmodeledContextKind = "previous_response" | "conversation" | "prompt_template" | "item_reference" | "reasoning" | "compaction";
 
-/** The eight categories the treemap and legend color by (dataviz categorical slots 1-8, fixed order). */
+/** Eight content categories plus unresolved references, which receive no treemap area. */
 export type SegmentCategory =
   | "system"
   | "tools"
@@ -24,7 +25,8 @@ export type SegmentCategory =
   | "tool_call"
   | "tool_result"
   | "image"
-  | "thinking";
+  | "thinking"
+  | "reference";
 
 export type CacheTtl = "5m" | "1h";
 
@@ -61,12 +63,14 @@ export interface Segment {
   prefix?: { content: unknown; context?: unknown };
   /** Original block, for the raw-content inspector view. */
   raw: unknown;
-  /** Exact o200k_base text count; null for unmodeled media. */
+  /** Exact o200k_base text count; null for media or unresolved context. */
   openaiTokens: TokenCount;
   /** Estimated token count for Claude models - see tokenize-claude.ts. Always "≈", even when scaled by calibration. */
   claudeTokensEstimate: TokenCount;
   /** Media is preserved in raw/prefix, excluded from textual tokenization. */
   unmodeledContent?: MediaKind[];
+  /** A reference/opaque unit cannot establish the provider's resolved prompt. */
+  unmodeledContext?: UnmodeledContextKind;
   cacheControl?: CacheControl;
   /** Explicit OpenAI content-block boundary; TTL comes from request options (30m). */
   promptCacheBreakpoint?: true;
@@ -140,6 +144,7 @@ export interface RequestTokenReport {
 export type FindingSeverity = "info" | "warning" | "error";
 
 export type FindingKind =
+  | "openai_unmodeled_context"
   | "unmodeled_media"
   | "anthropic_injected_prompt"
   | "anthropic_output_cache_scope"

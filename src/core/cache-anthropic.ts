@@ -8,7 +8,7 @@ import { anthropicSpeed, anthropicSpeedKey, anthropicSpeedMultiplier } from "./a
 import { isRecord } from "./json-utils.js";
 import { anthropicReasoningKey } from "./anthropic-reasoning.js";
 import { anthropicInjectedSettings } from "./anthropic-injected-settings.js";
-import { hasUnmodeledTokens, unavailableCacheStep } from "./media-accounting.js";
+import { hasUnmodeledTokens, unavailableCacheReason, unavailableCacheStep } from "./media-accounting.js";
 
 /**
  * Simulates Anthropic prompt caching across a sequence of requests.
@@ -58,12 +58,15 @@ export function simulateAnthropicCacheSequence(
   const resolvedModels = requests.map((request) => resolveModel("anthropic", model, [request.model]));
   const models = resolvedModels.map((resolved) => findAnthropicModel(resolved.id));
   const showSpeed = requests.some((request) => isRecord(request.raw) && request.raw.speed !== undefined);
-  if (hasUnmodeledTokens(requests, "anthropic")) return requests.map((request, i) => {
-    if (request.segments.filter(s => s.cacheControl).length > 4) throw new ContextScopeParseError(`Request ${request.index + 1}: cache simulation requires at most 4 breakpoints.`);
-    return { ...unavailableCacheStep(request.index), ...(showSpeed ? {
-      speed: anthropicSpeed(request), inputPriceMultiplier: anthropicSpeedMultiplier(request, resolvedModels[i]!),
-    } : {}) };
-  });
+  if (hasUnmodeledTokens(requests, "anthropic")) {
+    const reason = unavailableCacheReason(requests);
+    return requests.map((request, i) => {
+      if (request.segments.filter(s => s.cacheControl).length > 4) throw new ContextScopeParseError(`Request ${request.index + 1}: cache simulation requires at most 4 breakpoints.`);
+      return { ...unavailableCacheStep(request.index, reason), ...(showSpeed ? {
+        speed: anthropicSpeed(request), inputPriceMultiplier: anthropicSpeedMultiplier(request, resolvedModels[i]!),
+      } : {}) };
+    });
+  }
   const steps: CacheSimStep[] = [];
   // Speed changes preserve explicit tool entries but invalidate system and messages.
   // Tool choice / image presence further partition only the message cache.

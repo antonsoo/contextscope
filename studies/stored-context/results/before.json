@@ -1,0 +1,5774 @@
+{
+  "provenance": "Controlled application requests serialized by the actual SDK over a mock transport. No provider inference, token/cache measurement or live acceptance check. IDs, replies and paired usage are synthetic controls.",
+  "implementation": {
+    "openai-context.js": null,
+    "parse-openai.js": "8e709548dc7460d8e8dc97e78b543904b90301302916bfa454a112348d0929fc",
+    "parse.js": "86c5dfc97c3917f3e53dfcf1258b5542eb28e7fd54ad5128d1d782a1651b2954",
+    "detect.js": "963fe35eacd50d925c108206829be32c52dc6bd5655647ced14b58b8260d457d",
+    "cache-openai.js": "882e70ca2412adea3dacfdadd00125a106b51c0f31c22ef131912d43579d468d",
+    "media-accounting.js": "c04afa9aeefbc694bb125692ab25580f7435e2d570e00b3ba818cf1471915d58",
+    "report.js": "9e99e27a2b9f5a7f55471678d5950dfd4fb9a92bb3357ea20174c72125cd9c76"
+  },
+  "cases": [
+    {
+      "name": "previous-response-change",
+      "inputSha256": "88cf98f32f71aa766bf77f2c3aec5ae39424a47825adb1a96743f1dcf842edcd",
+      "discrepancies": [
+        "request-1:unresolved-previous_response_id",
+        "request-1:fabricated-total",
+        "request-2:unresolved-previous_response_id",
+        "request-2:fabricated-total",
+        "actual:fabricated-cache-state",
+        "actual:fabricated-cache-state",
+        "optimized:fabricated-cache-state",
+        "optimized:fabricated-cache-state"
+      ],
+      "report": {
+        "parse": {
+          "format": "openai",
+          "complete": true,
+          "sourceRecords": 2,
+          "skippedRecords": 0,
+          "autoDetected": true,
+          "requests": [
+            {
+              "provider": "openai",
+              "index": 0,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 0,
+                "line": 1
+              },
+              "segments": [
+                {
+                  "id": "input",
+                  "category": "user",
+                  "label": "input (user) text",
+                  "path": "input",
+                  "openaiTokens": 5201,
+                  "claudeTokensEstimate": 8667,
+                  "charLength": 28600
+                }
+              ]
+            },
+            {
+              "provider": "openai",
+              "index": 1,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 1,
+                "line": 2
+              },
+              "segments": [
+                {
+                  "id": "input",
+                  "category": "user",
+                  "label": "input (user) text",
+                  "path": "input",
+                  "openaiTokens": 5201,
+                  "claudeTokensEstimate": 8667,
+                  "charLength": 28600
+                }
+              ]
+            }
+          ],
+          "warnings": [
+            {
+              "requestIndex": 0,
+              "message": "Requests 1–2 continue a stored response or conversation (previous_response_id, conversation), so their earlier turns live on OpenAI's servers, not in this file. Counts and the cache simulation cover only what each request itself carries."
+            }
+          ]
+        },
+        "model": {
+          "id": "gpt-5.1",
+          "displayName": "GPT-5.1",
+          "source": "request"
+        },
+        "claudeTokenScale": 1,
+        "reports": [
+          {
+            "requestIndex": 0,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667
+              }
+            ],
+            "segments": [
+              {
+                "id": "input",
+                "category": "user",
+                "label": "input (user) text",
+                "path": "input",
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667,
+                "charLength": 28600
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.0130025
+          },
+          {
+            "requestIndex": 1,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667
+              }
+            ],
+            "segments": [
+              {
+                "id": "input",
+                "category": "user",
+                "label": "input (user) text",
+                "path": "input",
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667,
+                "charLength": 28600
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.0130025
+          }
+        ],
+        "prefixMatches": [
+          {
+            "fromIndex": 0,
+            "toIndex": 1,
+            "relation": "continues",
+            "matchedSegments": 1,
+            "matchedOpenaiTokens": 5201,
+            "matchedClaudeTokensEstimate": 8667
+          }
+        ],
+        "conversations": {
+          "count": 1,
+          "byRequest": [
+            0,
+            0
+          ]
+        },
+        "cacheSimulation": {
+          "provider": "openai",
+          "model": "gpt-5.1",
+          "actual": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5201,
+              "costUsd": 0.00650125
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 5120,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 81,
+              "costUsd": 0.00074125
+            }
+          ],
+          "optimized": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5201,
+              "costUsd": 0.00650125
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 5120,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 81,
+              "costUsd": 0.00074125
+            }
+          ],
+          "totalActualCostUsd": 0.0072425,
+          "totalOptimizedCostUsd": 0.0072425
+        },
+        "usageComparison": {
+          "rows": [
+            {
+              "requestIndex": 0,
+              "estimatedInputTokens": 5201,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            },
+            {
+              "requestIndex": 1,
+              "estimatedInputTokens": 5201,
+              "simulatedReadTokens": 5120,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            }
+          ],
+          "capturedRequests": 0,
+          "uncomparedRequestIndices": [],
+          "invalidRequestIndices": [],
+          "input": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "cacheRead": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "readOutcomes": {
+            "both_zero": 0,
+            "both_positive": 0,
+            "simulated_hit_reported_zero": 0,
+            "reported_hit_simulated_zero": 0,
+            "unavailable": 2
+          },
+          "issues": []
+        },
+        "findings": [],
+        "duplicates": []
+      }
+    },
+    {
+      "name": "previous-response-same",
+      "inputSha256": "5ff9f583f6437a71de571d6239f95523e5d12f33e5449a209ca857371fb575be",
+      "discrepancies": [
+        "request-1:unresolved-previous_response_id",
+        "request-1:fabricated-total",
+        "request-2:unresolved-previous_response_id",
+        "request-2:fabricated-total",
+        "actual:fabricated-cache-state",
+        "actual:fabricated-cache-state",
+        "optimized:fabricated-cache-state",
+        "optimized:fabricated-cache-state"
+      ],
+      "report": {
+        "parse": {
+          "format": "openai",
+          "complete": true,
+          "sourceRecords": 2,
+          "skippedRecords": 0,
+          "autoDetected": true,
+          "requests": [
+            {
+              "provider": "openai",
+              "index": 0,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 0,
+                "line": 1
+              },
+              "segments": [
+                {
+                  "id": "input",
+                  "category": "user",
+                  "label": "input (user) text",
+                  "path": "input",
+                  "openaiTokens": 5201,
+                  "claudeTokensEstimate": 8667,
+                  "charLength": 28600
+                }
+              ]
+            },
+            {
+              "provider": "openai",
+              "index": 1,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 1,
+                "line": 2
+              },
+              "segments": [
+                {
+                  "id": "input",
+                  "category": "user",
+                  "label": "input (user) text",
+                  "path": "input",
+                  "openaiTokens": 5201,
+                  "claudeTokensEstimate": 8667,
+                  "charLength": 28600
+                }
+              ]
+            }
+          ],
+          "warnings": [
+            {
+              "requestIndex": 0,
+              "message": "Requests 1–2 continue a stored response or conversation (previous_response_id, conversation), so their earlier turns live on OpenAI's servers, not in this file. Counts and the cache simulation cover only what each request itself carries."
+            }
+          ]
+        },
+        "model": {
+          "id": "gpt-5.1",
+          "displayName": "GPT-5.1",
+          "source": "request"
+        },
+        "claudeTokenScale": 1,
+        "reports": [
+          {
+            "requestIndex": 0,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667
+              }
+            ],
+            "segments": [
+              {
+                "id": "input",
+                "category": "user",
+                "label": "input (user) text",
+                "path": "input",
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667,
+                "charLength": 28600
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.0130025
+          },
+          {
+            "requestIndex": 1,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667
+              }
+            ],
+            "segments": [
+              {
+                "id": "input",
+                "category": "user",
+                "label": "input (user) text",
+                "path": "input",
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667,
+                "charLength": 28600
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.0130025
+          }
+        ],
+        "prefixMatches": [
+          {
+            "fromIndex": 0,
+            "toIndex": 1,
+            "relation": "continues",
+            "matchedSegments": 1,
+            "matchedOpenaiTokens": 5201,
+            "matchedClaudeTokensEstimate": 8667
+          }
+        ],
+        "conversations": {
+          "count": 1,
+          "byRequest": [
+            0,
+            0
+          ]
+        },
+        "cacheSimulation": {
+          "provider": "openai",
+          "model": "gpt-5.1",
+          "actual": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5201,
+              "costUsd": 0.00650125
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 5120,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 81,
+              "costUsd": 0.00074125
+            }
+          ],
+          "optimized": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5201,
+              "costUsd": 0.00650125
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 5120,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 81,
+              "costUsd": 0.00074125
+            }
+          ],
+          "totalActualCostUsd": 0.0072425,
+          "totalOptimizedCostUsd": 0.0072425
+        },
+        "usageComparison": {
+          "rows": [
+            {
+              "requestIndex": 0,
+              "estimatedInputTokens": 5201,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            },
+            {
+              "requestIndex": 1,
+              "estimatedInputTokens": 5201,
+              "simulatedReadTokens": 5120,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            }
+          ],
+          "capturedRequests": 0,
+          "uncomparedRequestIndices": [],
+          "invalidRequestIndices": [],
+          "input": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "cacheRead": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "readOutcomes": {
+            "both_zero": 0,
+            "both_positive": 0,
+            "simulated_hit_reported_zero": 0,
+            "reported_hit_simulated_zero": 0,
+            "unavailable": 2
+          },
+          "issues": []
+        },
+        "findings": [],
+        "duplicates": []
+      }
+    },
+    {
+      "name": "conversation-change",
+      "inputSha256": "9443e1205904114ce353d1c319f76c4909823bfe095c519c0944e6a347819040",
+      "discrepancies": [
+        "request-1:unresolved-conversation",
+        "request-1:fabricated-total",
+        "request-2:unresolved-conversation",
+        "request-2:fabricated-total",
+        "actual:fabricated-cache-state",
+        "actual:fabricated-cache-state",
+        "optimized:fabricated-cache-state",
+        "optimized:fabricated-cache-state"
+      ],
+      "report": {
+        "parse": {
+          "format": "openai",
+          "complete": true,
+          "sourceRecords": 2,
+          "skippedRecords": 0,
+          "autoDetected": true,
+          "requests": [
+            {
+              "provider": "openai",
+              "index": 0,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 0,
+                "line": 1
+              },
+              "segments": [
+                {
+                  "id": "input",
+                  "category": "user",
+                  "label": "input (user) text",
+                  "path": "input",
+                  "openaiTokens": 5201,
+                  "claudeTokensEstimate": 8667,
+                  "charLength": 28600
+                }
+              ]
+            },
+            {
+              "provider": "openai",
+              "index": 1,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 1,
+                "line": 2
+              },
+              "segments": [
+                {
+                  "id": "input",
+                  "category": "user",
+                  "label": "input (user) text",
+                  "path": "input",
+                  "openaiTokens": 5201,
+                  "claudeTokensEstimate": 8667,
+                  "charLength": 28600
+                }
+              ]
+            }
+          ],
+          "warnings": [
+            {
+              "requestIndex": 0,
+              "message": "Requests 1–2 continue a stored response or conversation (previous_response_id, conversation), so their earlier turns live on OpenAI's servers, not in this file. Counts and the cache simulation cover only what each request itself carries."
+            }
+          ]
+        },
+        "model": {
+          "id": "gpt-5.1",
+          "displayName": "GPT-5.1",
+          "source": "request"
+        },
+        "claudeTokenScale": 1,
+        "reports": [
+          {
+            "requestIndex": 0,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667
+              }
+            ],
+            "segments": [
+              {
+                "id": "input",
+                "category": "user",
+                "label": "input (user) text",
+                "path": "input",
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667,
+                "charLength": 28600
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.0130025
+          },
+          {
+            "requestIndex": 1,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667
+              }
+            ],
+            "segments": [
+              {
+                "id": "input",
+                "category": "user",
+                "label": "input (user) text",
+                "path": "input",
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667,
+                "charLength": 28600
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.0130025
+          }
+        ],
+        "prefixMatches": [
+          {
+            "fromIndex": 0,
+            "toIndex": 1,
+            "relation": "continues",
+            "matchedSegments": 1,
+            "matchedOpenaiTokens": 5201,
+            "matchedClaudeTokensEstimate": 8667
+          }
+        ],
+        "conversations": {
+          "count": 1,
+          "byRequest": [
+            0,
+            0
+          ]
+        },
+        "cacheSimulation": {
+          "provider": "openai",
+          "model": "gpt-5.1",
+          "actual": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5201,
+              "costUsd": 0.00650125
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 5120,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 81,
+              "costUsd": 0.00074125
+            }
+          ],
+          "optimized": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5201,
+              "costUsd": 0.00650125
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 5120,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 81,
+              "costUsd": 0.00074125
+            }
+          ],
+          "totalActualCostUsd": 0.0072425,
+          "totalOptimizedCostUsd": 0.0072425
+        },
+        "usageComparison": {
+          "rows": [
+            {
+              "requestIndex": 0,
+              "estimatedInputTokens": 5201,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            },
+            {
+              "requestIndex": 1,
+              "estimatedInputTokens": 5201,
+              "simulatedReadTokens": 5120,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            }
+          ],
+          "capturedRequests": 0,
+          "uncomparedRequestIndices": [],
+          "invalidRequestIndices": [],
+          "input": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "cacheRead": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "readOutcomes": {
+            "both_zero": 0,
+            "both_positive": 0,
+            "simulated_hit_reported_zero": 0,
+            "reported_hit_simulated_zero": 0,
+            "unavailable": 2
+          },
+          "issues": []
+        },
+        "findings": [],
+        "duplicates": []
+      }
+    },
+    {
+      "name": "conversation-object",
+      "inputSha256": "bf0ac3a758e363cb88b6501a52ed970b5dbd661e6aa5b1b70ec1e1dfb3fc4267",
+      "discrepancies": [
+        "request-1:unresolved-conversation",
+        "request-1:fabricated-total",
+        "request-2:unresolved-conversation",
+        "request-2:fabricated-total",
+        "actual:fabricated-cache-state",
+        "actual:fabricated-cache-state",
+        "optimized:fabricated-cache-state",
+        "optimized:fabricated-cache-state"
+      ],
+      "report": {
+        "parse": {
+          "format": "openai",
+          "complete": true,
+          "sourceRecords": 2,
+          "skippedRecords": 0,
+          "autoDetected": true,
+          "requests": [
+            {
+              "provider": "openai",
+              "index": 0,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 0,
+                "line": 1
+              },
+              "segments": [
+                {
+                  "id": "input",
+                  "category": "user",
+                  "label": "input (user) text",
+                  "path": "input",
+                  "openaiTokens": 5201,
+                  "claudeTokensEstimate": 8667,
+                  "charLength": 28600
+                }
+              ]
+            },
+            {
+              "provider": "openai",
+              "index": 1,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 1,
+                "line": 2
+              },
+              "segments": [
+                {
+                  "id": "input",
+                  "category": "user",
+                  "label": "input (user) text",
+                  "path": "input",
+                  "openaiTokens": 5201,
+                  "claudeTokensEstimate": 8667,
+                  "charLength": 28600
+                }
+              ]
+            }
+          ],
+          "warnings": [
+            {
+              "requestIndex": 0,
+              "message": "Requests 1–2 continue a stored response or conversation (previous_response_id, conversation), so their earlier turns live on OpenAI's servers, not in this file. Counts and the cache simulation cover only what each request itself carries."
+            }
+          ]
+        },
+        "model": {
+          "id": "gpt-5.1",
+          "displayName": "GPT-5.1",
+          "source": "request"
+        },
+        "claudeTokenScale": 1,
+        "reports": [
+          {
+            "requestIndex": 0,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667
+              }
+            ],
+            "segments": [
+              {
+                "id": "input",
+                "category": "user",
+                "label": "input (user) text",
+                "path": "input",
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667,
+                "charLength": 28600
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.0130025
+          },
+          {
+            "requestIndex": 1,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667
+              }
+            ],
+            "segments": [
+              {
+                "id": "input",
+                "category": "user",
+                "label": "input (user) text",
+                "path": "input",
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667,
+                "charLength": 28600
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.0130025
+          }
+        ],
+        "prefixMatches": [
+          {
+            "fromIndex": 0,
+            "toIndex": 1,
+            "relation": "continues",
+            "matchedSegments": 1,
+            "matchedOpenaiTokens": 5201,
+            "matchedClaudeTokensEstimate": 8667
+          }
+        ],
+        "conversations": {
+          "count": 1,
+          "byRequest": [
+            0,
+            0
+          ]
+        },
+        "cacheSimulation": {
+          "provider": "openai",
+          "model": "gpt-5.1",
+          "actual": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5201,
+              "costUsd": 0.00650125
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 5120,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 81,
+              "costUsd": 0.00074125
+            }
+          ],
+          "optimized": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5201,
+              "costUsd": 0.00650125
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 5120,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 81,
+              "costUsd": 0.00074125
+            }
+          ],
+          "totalActualCostUsd": 0.0072425,
+          "totalOptimizedCostUsd": 0.0072425
+        },
+        "usageComparison": {
+          "rows": [
+            {
+              "requestIndex": 0,
+              "estimatedInputTokens": 5201,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            },
+            {
+              "requestIndex": 1,
+              "estimatedInputTokens": 5201,
+              "simulatedReadTokens": 5120,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            }
+          ],
+          "capturedRequests": 0,
+          "uncomparedRequestIndices": [],
+          "invalidRequestIndices": [],
+          "input": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "cacheRead": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "readOutcomes": {
+            "both_zero": 0,
+            "both_positive": 0,
+            "simulated_hit_reported_zero": 0,
+            "reported_hit_simulated_zero": 0,
+            "unavailable": 2
+          },
+          "issues": []
+        },
+        "findings": [],
+        "duplicates": []
+      }
+    },
+    {
+      "name": "prompt-template-change",
+      "inputSha256": "050f1225722d4257f0f0621f2ed7201d9eb1f26a7801e005575e916d732aeb11",
+      "discrepancies": [
+        "request-1:unresolved-prompt",
+        "request-1:fabricated-total",
+        "request-2:unresolved-prompt",
+        "request-2:fabricated-total",
+        "actual:fabricated-cache-state",
+        "actual:fabricated-cache-state",
+        "optimized:fabricated-cache-state",
+        "optimized:fabricated-cache-state"
+      ],
+      "report": {
+        "parse": {
+          "format": "openai",
+          "complete": true,
+          "sourceRecords": 2,
+          "skippedRecords": 0,
+          "autoDetected": true,
+          "requests": [
+            {
+              "provider": "openai",
+              "index": 0,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 0,
+                "line": 1
+              },
+              "segments": [
+                {
+                  "id": "input",
+                  "category": "user",
+                  "label": "input (user) text",
+                  "path": "input",
+                  "openaiTokens": 5201,
+                  "claudeTokensEstimate": 8667,
+                  "charLength": 28600
+                }
+              ]
+            },
+            {
+              "provider": "openai",
+              "index": 1,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 1,
+                "line": 2
+              },
+              "segments": [
+                {
+                  "id": "input",
+                  "category": "user",
+                  "label": "input (user) text",
+                  "path": "input",
+                  "openaiTokens": 5201,
+                  "claudeTokensEstimate": 8667,
+                  "charLength": 28600
+                }
+              ]
+            }
+          ],
+          "warnings": []
+        },
+        "model": {
+          "id": "gpt-5.1",
+          "displayName": "GPT-5.1",
+          "source": "request"
+        },
+        "claudeTokenScale": 1,
+        "reports": [
+          {
+            "requestIndex": 0,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667
+              }
+            ],
+            "segments": [
+              {
+                "id": "input",
+                "category": "user",
+                "label": "input (user) text",
+                "path": "input",
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667,
+                "charLength": 28600
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.0130025
+          },
+          {
+            "requestIndex": 1,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667
+              }
+            ],
+            "segments": [
+              {
+                "id": "input",
+                "category": "user",
+                "label": "input (user) text",
+                "path": "input",
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667,
+                "charLength": 28600
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.0130025
+          }
+        ],
+        "prefixMatches": [
+          {
+            "fromIndex": 0,
+            "toIndex": 1,
+            "relation": "continues",
+            "matchedSegments": 1,
+            "matchedOpenaiTokens": 5201,
+            "matchedClaudeTokensEstimate": 8667
+          }
+        ],
+        "conversations": {
+          "count": 1,
+          "byRequest": [
+            0,
+            0
+          ]
+        },
+        "cacheSimulation": {
+          "provider": "openai",
+          "model": "gpt-5.1",
+          "actual": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5201,
+              "costUsd": 0.00650125
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 5120,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 81,
+              "costUsd": 0.00074125
+            }
+          ],
+          "optimized": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5201,
+              "costUsd": 0.00650125
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 5120,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 81,
+              "costUsd": 0.00074125
+            }
+          ],
+          "totalActualCostUsd": 0.0072425,
+          "totalOptimizedCostUsd": 0.0072425
+        },
+        "usageComparison": {
+          "rows": [
+            {
+              "requestIndex": 0,
+              "estimatedInputTokens": 5201,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            },
+            {
+              "requestIndex": 1,
+              "estimatedInputTokens": 5201,
+              "simulatedReadTokens": 5120,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            }
+          ],
+          "capturedRequests": 0,
+          "uncomparedRequestIndices": [],
+          "invalidRequestIndices": [],
+          "input": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "cacheRead": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "readOutcomes": {
+            "both_zero": 0,
+            "both_positive": 0,
+            "simulated_hit_reported_zero": 0,
+            "reported_hit_simulated_zero": 0,
+            "unavailable": 2
+          },
+          "issues": []
+        },
+        "findings": [],
+        "duplicates": []
+      }
+    },
+    {
+      "name": "prompt-variable-change",
+      "inputSha256": "b238bb5f80621355eb74b129f9b623c55381f9ba514d5b6d22e8a152d5bacbfe",
+      "discrepancies": [
+        "request-1:unresolved-prompt",
+        "request-1:fabricated-total",
+        "request-2:unresolved-prompt",
+        "request-2:fabricated-total",
+        "actual:fabricated-cache-state",
+        "actual:fabricated-cache-state",
+        "optimized:fabricated-cache-state",
+        "optimized:fabricated-cache-state"
+      ],
+      "report": {
+        "parse": {
+          "format": "openai",
+          "complete": true,
+          "sourceRecords": 2,
+          "skippedRecords": 0,
+          "autoDetected": true,
+          "requests": [
+            {
+              "provider": "openai",
+              "index": 0,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 0,
+                "line": 1
+              },
+              "segments": [
+                {
+                  "id": "input",
+                  "category": "user",
+                  "label": "input (user) text",
+                  "path": "input",
+                  "openaiTokens": 5201,
+                  "claudeTokensEstimate": 8667,
+                  "charLength": 28600
+                }
+              ]
+            },
+            {
+              "provider": "openai",
+              "index": 1,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 1,
+                "line": 2
+              },
+              "segments": [
+                {
+                  "id": "input",
+                  "category": "user",
+                  "label": "input (user) text",
+                  "path": "input",
+                  "openaiTokens": 5201,
+                  "claudeTokensEstimate": 8667,
+                  "charLength": 28600
+                }
+              ]
+            }
+          ],
+          "warnings": []
+        },
+        "model": {
+          "id": "gpt-5.1",
+          "displayName": "GPT-5.1",
+          "source": "request"
+        },
+        "claudeTokenScale": 1,
+        "reports": [
+          {
+            "requestIndex": 0,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667
+              }
+            ],
+            "segments": [
+              {
+                "id": "input",
+                "category": "user",
+                "label": "input (user) text",
+                "path": "input",
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667,
+                "charLength": 28600
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.0130025
+          },
+          {
+            "requestIndex": 1,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667
+              }
+            ],
+            "segments": [
+              {
+                "id": "input",
+                "category": "user",
+                "label": "input (user) text",
+                "path": "input",
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667,
+                "charLength": 28600
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.0130025
+          }
+        ],
+        "prefixMatches": [
+          {
+            "fromIndex": 0,
+            "toIndex": 1,
+            "relation": "continues",
+            "matchedSegments": 1,
+            "matchedOpenaiTokens": 5201,
+            "matchedClaudeTokensEstimate": 8667
+          }
+        ],
+        "conversations": {
+          "count": 1,
+          "byRequest": [
+            0,
+            0
+          ]
+        },
+        "cacheSimulation": {
+          "provider": "openai",
+          "model": "gpt-5.1",
+          "actual": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5201,
+              "costUsd": 0.00650125
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 5120,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 81,
+              "costUsd": 0.00074125
+            }
+          ],
+          "optimized": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5201,
+              "costUsd": 0.00650125
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 5120,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 81,
+              "costUsd": 0.00074125
+            }
+          ],
+          "totalActualCostUsd": 0.0072425,
+          "totalOptimizedCostUsd": 0.0072425
+        },
+        "usageComparison": {
+          "rows": [
+            {
+              "requestIndex": 0,
+              "estimatedInputTokens": 5201,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            },
+            {
+              "requestIndex": 1,
+              "estimatedInputTokens": 5201,
+              "simulatedReadTokens": 5120,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            }
+          ],
+          "capturedRequests": 0,
+          "uncomparedRequestIndices": [],
+          "invalidRequestIndices": [],
+          "input": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "cacheRead": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "readOutcomes": {
+            "both_zero": 0,
+            "both_positive": 0,
+            "simulated_hit_reported_zero": 0,
+            "reported_hit_simulated_zero": 0,
+            "unavailable": 2
+          },
+          "issues": []
+        },
+        "findings": [],
+        "duplicates": []
+      }
+    },
+    {
+      "name": "item-reference-change",
+      "inputSha256": "c27c874c8e6035219fea5e6de6bb30aeefab6d264e165f3e3720ad163ee9c8b1",
+      "discrepancies": [
+        "request-1:unresolved-input[0]",
+        "request-1:fabricated-total",
+        "request-2:unresolved-input[0]",
+        "request-2:fabricated-total",
+        "actual:fabricated-cache-state",
+        "actual:fabricated-cache-state",
+        "optimized:fabricated-cache-state",
+        "optimized:fabricated-cache-state"
+      ],
+      "report": {
+        "parse": {
+          "format": "openai",
+          "complete": true,
+          "sourceRecords": 2,
+          "skippedRecords": 0,
+          "autoDetected": true,
+          "requests": [
+            {
+              "provider": "openai",
+              "index": 0,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 0,
+                "line": 1
+              },
+              "segments": [
+                {
+                  "id": "input[0]",
+                  "category": "user",
+                  "label": "item 1 item_reference",
+                  "path": "input[0]",
+                  "openaiTokens": 14,
+                  "claudeTokensEstimate": 17,
+                  "charLength": 49
+                },
+                {
+                  "id": "input[1]",
+                  "category": "user",
+                  "label": "item 2 (user) text",
+                  "path": "input[1].content",
+                  "openaiTokens": 5201,
+                  "claudeTokensEstimate": 8667,
+                  "charLength": 28600
+                }
+              ]
+            },
+            {
+              "provider": "openai",
+              "index": 1,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 1,
+                "line": 2
+              },
+              "segments": [
+                {
+                  "id": "input[0]",
+                  "category": "user",
+                  "label": "item 1 item_reference",
+                  "path": "input[0]",
+                  "openaiTokens": 14,
+                  "claudeTokensEstimate": 17,
+                  "charLength": 49
+                },
+                {
+                  "id": "input[1]",
+                  "category": "user",
+                  "label": "item 2 (user) text",
+                  "path": "input[1].content",
+                  "openaiTokens": 5201,
+                  "claudeTokensEstimate": 8667,
+                  "charLength": 28600
+                }
+              ]
+            }
+          ],
+          "warnings": []
+        },
+        "model": {
+          "id": "gpt-5.1",
+          "displayName": "GPT-5.1",
+          "source": "request"
+        },
+        "claudeTokenScale": 1,
+        "reports": [
+          {
+            "requestIndex": 0,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 5215,
+              "claudeTokensEstimate": 8684
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 2,
+                "openaiTokens": 5215,
+                "claudeTokensEstimate": 8684
+              }
+            ],
+            "segments": [
+              {
+                "id": "input[0]",
+                "category": "user",
+                "label": "item 1 item_reference",
+                "path": "input[0]",
+                "openaiTokens": 14,
+                "claudeTokensEstimate": 17,
+                "charLength": 49
+              },
+              {
+                "id": "input[1]",
+                "category": "user",
+                "label": "item 2 (user) text",
+                "path": "input[1].content",
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667,
+                "charLength": 28600
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.0130375
+          },
+          {
+            "requestIndex": 1,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 5215,
+              "claudeTokensEstimate": 8684
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 2,
+                "openaiTokens": 5215,
+                "claudeTokensEstimate": 8684
+              }
+            ],
+            "segments": [
+              {
+                "id": "input[0]",
+                "category": "user",
+                "label": "item 1 item_reference",
+                "path": "input[0]",
+                "openaiTokens": 14,
+                "claudeTokensEstimate": 17,
+                "charLength": 49
+              },
+              {
+                "id": "input[1]",
+                "category": "user",
+                "label": "item 2 (user) text",
+                "path": "input[1].content",
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667,
+                "charLength": 28600
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.0130375
+          }
+        ],
+        "prefixMatches": [
+          {
+            "fromIndex": 0,
+            "toIndex": 1,
+            "relation": "rewrites",
+            "matchedSegments": 0,
+            "matchedOpenaiTokens": 0,
+            "matchedClaudeTokensEstimate": 0,
+            "divergedAt": {
+              "fromSegmentId": "input[0]",
+              "toSegmentId": "input[0]"
+            }
+          }
+        ],
+        "conversations": {
+          "count": 1,
+          "byRequest": [
+            0,
+            0
+          ]
+        },
+        "cacheSimulation": {
+          "provider": "openai",
+          "model": "gpt-5.1",
+          "actual": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5215,
+              "costUsd": 0.00651875
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5215,
+              "costUsd": 0.00651875
+            }
+          ],
+          "optimized": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5215,
+              "costUsd": 0.00651875
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5215,
+              "costUsd": 0.00651875
+            }
+          ],
+          "totalActualCostUsd": 0.0130375,
+          "totalOptimizedCostUsd": 0.0130375
+        },
+        "usageComparison": {
+          "rows": [
+            {
+              "requestIndex": 0,
+              "estimatedInputTokens": 5215,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            },
+            {
+              "requestIndex": 1,
+              "estimatedInputTokens": 5215,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            }
+          ],
+          "capturedRequests": 0,
+          "uncomparedRequestIndices": [],
+          "invalidRequestIndices": [],
+          "input": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "cacheRead": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "readOutcomes": {
+            "both_zero": 0,
+            "both_positive": 0,
+            "simulated_hit_reported_zero": 0,
+            "reported_hit_simulated_zero": 0,
+            "unavailable": 2
+          },
+          "issues": []
+        },
+        "findings": [],
+        "duplicates": []
+      }
+    },
+    {
+      "name": "item-reference-defaults",
+      "inputSha256": "cf326a5e738538a981af3c727a6869ed2e8603999e8fee1c527a32735584b56c",
+      "discrepancies": [
+        "request-1:unresolved-input[0]",
+        "request-1:fabricated-total",
+        "request-2:unresolved-input[0]",
+        "request-2:fabricated-total",
+        "request-3:unresolved-input[0]",
+        "request-3:fabricated-total",
+        "actual:fabricated-cache-state",
+        "actual:fabricated-cache-state",
+        "actual:fabricated-cache-state",
+        "optimized:fabricated-cache-state",
+        "optimized:fabricated-cache-state",
+        "optimized:fabricated-cache-state"
+      ],
+      "report": {
+        "parse": {
+          "format": "openai",
+          "complete": true,
+          "sourceRecords": 3,
+          "skippedRecords": 0,
+          "autoDetected": true,
+          "requests": [
+            {
+              "provider": "openai",
+              "index": 0,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 0,
+                "line": 1
+              },
+              "segments": [
+                {
+                  "id": "input[1]",
+                  "category": "user",
+                  "label": "item 2 (user) text",
+                  "path": "input[1].content",
+                  "openaiTokens": 5201,
+                  "claudeTokensEstimate": 8667,
+                  "charLength": 28600
+                }
+              ]
+            },
+            {
+              "provider": "openai",
+              "index": 1,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 1,
+                "line": 2
+              },
+              "segments": [
+                {
+                  "id": "input[1]",
+                  "category": "user",
+                  "label": "item 2 (user) text",
+                  "path": "input[1].content",
+                  "openaiTokens": 5201,
+                  "claudeTokensEstimate": 8667,
+                  "charLength": 28600
+                }
+              ]
+            },
+            {
+              "provider": "openai",
+              "index": 2,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 2,
+                "line": 3
+              },
+              "segments": [
+                {
+                  "id": "input[0]",
+                  "category": "user",
+                  "label": "item 1 item_reference",
+                  "path": "input[0]",
+                  "openaiTokens": 14,
+                  "claudeTokensEstimate": 17,
+                  "charLength": 49
+                },
+                {
+                  "id": "input[1]",
+                  "category": "user",
+                  "label": "item 2 (user) text",
+                  "path": "input[1].content",
+                  "openaiTokens": 5201,
+                  "claudeTokensEstimate": 8667,
+                  "charLength": 28600
+                }
+              ]
+            }
+          ],
+          "warnings": []
+        },
+        "model": {
+          "id": "gpt-5.1",
+          "displayName": "GPT-5.1",
+          "source": "request"
+        },
+        "claudeTokenScale": 1,
+        "reports": [
+          {
+            "requestIndex": 0,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667
+              }
+            ],
+            "segments": [
+              {
+                "id": "input[1]",
+                "category": "user",
+                "label": "item 2 (user) text",
+                "path": "input[1].content",
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667,
+                "charLength": 28600
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.0130025
+          },
+          {
+            "requestIndex": 1,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667
+              }
+            ],
+            "segments": [
+              {
+                "id": "input[1]",
+                "category": "user",
+                "label": "item 2 (user) text",
+                "path": "input[1].content",
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667,
+                "charLength": 28600
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.0130025
+          },
+          {
+            "requestIndex": 2,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 5215,
+              "claudeTokensEstimate": 8684
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 2,
+                "openaiTokens": 5215,
+                "claudeTokensEstimate": 8684
+              }
+            ],
+            "segments": [
+              {
+                "id": "input[0]",
+                "category": "user",
+                "label": "item 1 item_reference",
+                "path": "input[0]",
+                "openaiTokens": 14,
+                "claudeTokensEstimate": 17,
+                "charLength": 49
+              },
+              {
+                "id": "input[1]",
+                "category": "user",
+                "label": "item 2 (user) text",
+                "path": "input[1].content",
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667,
+                "charLength": 28600
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.0130375
+          }
+        ],
+        "prefixMatches": [
+          {
+            "fromIndex": 0,
+            "toIndex": 1,
+            "relation": "continues",
+            "matchedSegments": 1,
+            "matchedOpenaiTokens": 5201,
+            "matchedClaudeTokensEstimate": 8667
+          },
+          {
+            "fromIndex": 1,
+            "toIndex": 2,
+            "relation": "rewrites",
+            "matchedSegments": 0,
+            "matchedOpenaiTokens": 0,
+            "matchedClaudeTokensEstimate": 0,
+            "divergedAt": {
+              "fromSegmentId": "input[1]",
+              "toSegmentId": "input[0]"
+            }
+          }
+        ],
+        "conversations": {
+          "count": 1,
+          "byRequest": [
+            0,
+            0,
+            0
+          ]
+        },
+        "cacheSimulation": {
+          "provider": "openai",
+          "model": "gpt-5.1",
+          "actual": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5201,
+              "costUsd": 0.00650125
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 5120,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 81,
+              "costUsd": 0.00074125
+            },
+            {
+              "requestIndex": 2,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5215,
+              "costUsd": 0.00651875
+            }
+          ],
+          "optimized": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5201,
+              "costUsd": 0.00650125
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 5120,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 81,
+              "costUsd": 0.00074125
+            },
+            {
+              "requestIndex": 2,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5215,
+              "costUsd": 0.00651875
+            }
+          ],
+          "totalActualCostUsd": 0.01376125,
+          "totalOptimizedCostUsd": 0.01376125
+        },
+        "usageComparison": {
+          "rows": [
+            {
+              "requestIndex": 0,
+              "estimatedInputTokens": 5201,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            },
+            {
+              "requestIndex": 1,
+              "estimatedInputTokens": 5201,
+              "simulatedReadTokens": 5120,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            },
+            {
+              "requestIndex": 2,
+              "estimatedInputTokens": 5215,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            }
+          ],
+          "capturedRequests": 0,
+          "uncomparedRequestIndices": [],
+          "invalidRequestIndices": [],
+          "input": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "cacheRead": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "readOutcomes": {
+            "both_zero": 0,
+            "both_positive": 0,
+            "simulated_hit_reported_zero": 0,
+            "reported_hit_simulated_zero": 0,
+            "unavailable": 3
+          },
+          "issues": []
+        },
+        "findings": [],
+        "duplicates": []
+      }
+    },
+    {
+      "name": "item-reference-only",
+      "inputSha256": "2aa116a269b023bf6f3ab7c5b9e321129b75c9f1e5d3efc8c7037f230226eb41",
+      "discrepancies": [
+        "record-coverage",
+        "request-1:unresolved-input[0]",
+        "request-1:fabricated-total",
+        "request-2:unresolved-input[0]",
+        "request-2:fabricated-total",
+        "actual:fabricated-cache-state",
+        "actual:fabricated-cache-state",
+        "optimized:fabricated-cache-state",
+        "optimized:fabricated-cache-state"
+      ],
+      "report": {
+        "parse": {
+          "format": "openai",
+          "complete": false,
+          "sourceRecords": 2,
+          "skippedRecords": 2,
+          "autoDetected": true,
+          "requests": [
+            {
+              "provider": "openai",
+              "index": 0,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 0,
+                "line": 1
+              },
+              "segments": []
+            },
+            {
+              "provider": "openai",
+              "index": 1,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 1,
+                "line": 2
+              },
+              "segments": []
+            }
+          ],
+          "warnings": [
+            {
+              "requestIndex": 0,
+              "sourceLine": 1,
+              "message": "Request 1 has no tools, system prompt or messages - is it an API request body? (Response objects and usage records aren't analyzable.)"
+            },
+            {
+              "requestIndex": 1,
+              "sourceLine": 2,
+              "message": "Request 2 has no tools, system prompt or messages - is it an API request body? (Response objects and usage records aren't analyzable.)"
+            }
+          ]
+        },
+        "model": {
+          "id": "gpt-5.1",
+          "displayName": "GPT-5.1",
+          "source": "request"
+        },
+        "claudeTokenScale": 1,
+        "reports": [
+          {
+            "requestIndex": 0,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 0,
+              "claudeTokensEstimate": 0
+            },
+            "byCategory": [],
+            "segments": [],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0
+          },
+          {
+            "requestIndex": 1,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 0,
+              "claudeTokensEstimate": 0
+            },
+            "byCategory": [],
+            "segments": [],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0
+          }
+        ],
+        "prefixMatches": [
+          {
+            "fromIndex": 0,
+            "toIndex": 1,
+            "relation": "new_conversation",
+            "matchedSegments": 0,
+            "matchedOpenaiTokens": 0,
+            "matchedClaudeTokensEstimate": 0
+          }
+        ],
+        "conversations": {
+          "count": 2,
+          "byRequest": [
+            0,
+            1
+          ]
+        },
+        "cacheSimulation": {
+          "provider": "openai",
+          "model": "gpt-5.1",
+          "actual": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 0,
+              "costUsd": 0
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 0,
+              "costUsd": 0
+            }
+          ],
+          "optimized": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 0,
+              "costUsd": 0
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 0,
+              "costUsd": 0
+            }
+          ],
+          "totalActualCostUsd": 0,
+          "totalOptimizedCostUsd": 0
+        },
+        "usageComparison": {
+          "rows": [],
+          "capturedRequests": 0,
+          "uncomparedRequestIndices": [],
+          "invalidRequestIndices": [],
+          "input": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "cacheRead": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "readOutcomes": {
+            "both_zero": 0,
+            "both_positive": 0,
+            "simulated_hit_reported_zero": 0,
+            "reported_hit_simulated_zero": 0,
+            "unavailable": 0
+          },
+          "issues": []
+        },
+        "findings": [],
+        "duplicates": []
+      }
+    },
+    {
+      "name": "previous-response-only",
+      "inputSha256": "ae8b0d0d103c9091454075f9b71ecc4a5c63a02d8bd1b8e997544b82c65d1c26",
+      "discrepancies": [
+        "record-coverage",
+        "request-1:unresolved-previous_response_id",
+        "request-1:fabricated-total",
+        "request-2:unresolved-previous_response_id",
+        "request-2:fabricated-total",
+        "actual:fabricated-cache-state",
+        "actual:fabricated-cache-state",
+        "optimized:fabricated-cache-state",
+        "optimized:fabricated-cache-state"
+      ],
+      "report": {
+        "parse": {
+          "format": "openai",
+          "complete": false,
+          "sourceRecords": 2,
+          "skippedRecords": 2,
+          "autoDetected": true,
+          "requests": [
+            {
+              "provider": "openai",
+              "index": 0,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 0,
+                "line": 1
+              },
+              "segments": []
+            },
+            {
+              "provider": "openai",
+              "index": 1,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 1,
+                "line": 2
+              },
+              "segments": []
+            }
+          ],
+          "warnings": [
+            {
+              "requestIndex": 0,
+              "message": "Requests 1–2 continue a stored response or conversation (previous_response_id, conversation), so their earlier turns live on OpenAI's servers, not in this file. Counts and the cache simulation cover only what each request itself carries."
+            },
+            {
+              "requestIndex": 0,
+              "sourceLine": 1,
+              "message": "Request 1 has no tools, system prompt or messages - is it an API request body? (Response objects and usage records aren't analyzable.)"
+            },
+            {
+              "requestIndex": 1,
+              "sourceLine": 2,
+              "message": "Request 2 has no tools, system prompt or messages - is it an API request body? (Response objects and usage records aren't analyzable.)"
+            }
+          ]
+        },
+        "model": {
+          "id": "gpt-5.1",
+          "displayName": "GPT-5.1",
+          "source": "request"
+        },
+        "claudeTokenScale": 1,
+        "reports": [
+          {
+            "requestIndex": 0,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 0,
+              "claudeTokensEstimate": 0
+            },
+            "byCategory": [],
+            "segments": [],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0
+          },
+          {
+            "requestIndex": 1,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 0,
+              "claudeTokensEstimate": 0
+            },
+            "byCategory": [],
+            "segments": [],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0
+          }
+        ],
+        "prefixMatches": [
+          {
+            "fromIndex": 0,
+            "toIndex": 1,
+            "relation": "new_conversation",
+            "matchedSegments": 0,
+            "matchedOpenaiTokens": 0,
+            "matchedClaudeTokensEstimate": 0
+          }
+        ],
+        "conversations": {
+          "count": 2,
+          "byRequest": [
+            0,
+            1
+          ]
+        },
+        "cacheSimulation": {
+          "provider": "openai",
+          "model": "gpt-5.1",
+          "actual": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 0,
+              "costUsd": 0
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 0,
+              "costUsd": 0
+            }
+          ],
+          "optimized": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 0,
+              "costUsd": 0
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 0,
+              "costUsd": 0
+            }
+          ],
+          "totalActualCostUsd": 0,
+          "totalOptimizedCostUsd": 0
+        },
+        "usageComparison": {
+          "rows": [],
+          "capturedRequests": 0,
+          "uncomparedRequestIndices": [],
+          "invalidRequestIndices": [],
+          "input": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "cacheRead": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "readOutcomes": {
+            "both_zero": 0,
+            "both_positive": 0,
+            "simulated_hit_reported_zero": 0,
+            "reported_hit_simulated_zero": 0,
+            "unavailable": 0
+          },
+          "issues": []
+        },
+        "findings": [],
+        "duplicates": []
+      }
+    },
+    {
+      "name": "prompt-only",
+      "inputSha256": "b01f1bbade916907370f6fc5da6bc77a701671c7db979fe1e328ddbc2e6c92ec",
+      "discrepancies": [
+        "record-coverage",
+        "request-1:unresolved-prompt",
+        "request-1:fabricated-total",
+        "request-2:unresolved-prompt",
+        "request-2:fabricated-total",
+        "actual:fabricated-cache-state",
+        "actual:fabricated-cache-state",
+        "optimized:fabricated-cache-state",
+        "optimized:fabricated-cache-state"
+      ],
+      "report": {
+        "parse": {
+          "format": "openai",
+          "complete": false,
+          "sourceRecords": 2,
+          "skippedRecords": 2,
+          "autoDetected": true,
+          "requests": [
+            {
+              "provider": "openai",
+              "index": 0,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 0,
+                "line": 1
+              },
+              "segments": []
+            },
+            {
+              "provider": "openai",
+              "index": 1,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 1,
+                "line": 2
+              },
+              "segments": []
+            }
+          ],
+          "warnings": [
+            {
+              "requestIndex": 0,
+              "sourceLine": 1,
+              "message": "Request 1 has no tools, system prompt or messages - is it an API request body? (Response objects and usage records aren't analyzable.)"
+            },
+            {
+              "requestIndex": 1,
+              "sourceLine": 2,
+              "message": "Request 2 has no tools, system prompt or messages - is it an API request body? (Response objects and usage records aren't analyzable.)"
+            }
+          ]
+        },
+        "model": {
+          "id": "gpt-5.1",
+          "displayName": "GPT-5.1",
+          "source": "request"
+        },
+        "claudeTokenScale": 1,
+        "reports": [
+          {
+            "requestIndex": 0,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 0,
+              "claudeTokensEstimate": 0
+            },
+            "byCategory": [],
+            "segments": [],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0
+          },
+          {
+            "requestIndex": 1,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 0,
+              "claudeTokensEstimate": 0
+            },
+            "byCategory": [],
+            "segments": [],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0
+          }
+        ],
+        "prefixMatches": [
+          {
+            "fromIndex": 0,
+            "toIndex": 1,
+            "relation": "new_conversation",
+            "matchedSegments": 0,
+            "matchedOpenaiTokens": 0,
+            "matchedClaudeTokensEstimate": 0
+          }
+        ],
+        "conversations": {
+          "count": 2,
+          "byRequest": [
+            0,
+            1
+          ]
+        },
+        "cacheSimulation": {
+          "provider": "openai",
+          "model": "gpt-5.1",
+          "actual": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 0,
+              "costUsd": 0
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 0,
+              "costUsd": 0
+            }
+          ],
+          "optimized": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 0,
+              "costUsd": 0
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 0,
+              "costUsd": 0
+            }
+          ],
+          "totalActualCostUsd": 0,
+          "totalOptimizedCostUsd": 0
+        },
+        "usageComparison": {
+          "rows": [],
+          "capturedRequests": 0,
+          "uncomparedRequestIndices": [],
+          "invalidRequestIndices": [],
+          "input": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "cacheRead": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "readOutcomes": {
+            "both_zero": 0,
+            "both_positive": 0,
+            "simulated_hit_reported_zero": 0,
+            "reported_hit_simulated_zero": 0,
+            "unavailable": 0
+          },
+          "issues": []
+        },
+        "findings": [],
+        "duplicates": []
+      }
+    },
+    {
+      "name": "encrypted-reasoning",
+      "inputSha256": "a75f35e37710befcee40a3567fc6c4f9a02544b61a649bfe0630454a148e20ba",
+      "discrepancies": [
+        "request-1:unresolved-input[0]",
+        "request-1:fabricated-total",
+        "request-2:unresolved-input[0]",
+        "request-2:fabricated-total",
+        "actual:fabricated-cache-state",
+        "actual:fabricated-cache-state",
+        "optimized:fabricated-cache-state",
+        "optimized:fabricated-cache-state"
+      ],
+      "report": {
+        "parse": {
+          "format": "openai",
+          "complete": true,
+          "sourceRecords": 2,
+          "skippedRecords": 0,
+          "autoDetected": true,
+          "requests": [
+            {
+              "provider": "openai",
+              "index": 0,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 0,
+                "line": 1
+              },
+              "segments": [
+                {
+                  "id": "input[0]",
+                  "category": "thinking",
+                  "label": "item 1 reasoning",
+                  "path": "input[0]",
+                  "openaiTokens": 39,
+                  "claudeTokensEstimate": 55,
+                  "charLength": 164
+                },
+                {
+                  "id": "input[1]",
+                  "category": "user",
+                  "label": "item 2 (user) text",
+                  "path": "input[1].content",
+                  "openaiTokens": 5201,
+                  "claudeTokensEstimate": 8667,
+                  "charLength": 28600
+                }
+              ]
+            },
+            {
+              "provider": "openai",
+              "index": 1,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 1,
+                "line": 2
+              },
+              "segments": [
+                {
+                  "id": "input[0]",
+                  "category": "thinking",
+                  "label": "item 1 reasoning",
+                  "path": "input[0]",
+                  "openaiTokens": 930,
+                  "claudeTokensEstimate": 1069,
+                  "charLength": 3529
+                },
+                {
+                  "id": "input[1]",
+                  "category": "user",
+                  "label": "item 2 (user) text",
+                  "path": "input[1].content",
+                  "openaiTokens": 5201,
+                  "claudeTokensEstimate": 8667,
+                  "charLength": 28600
+                }
+              ]
+            }
+          ],
+          "warnings": []
+        },
+        "model": {
+          "id": "gpt-5.1",
+          "displayName": "GPT-5.1",
+          "source": "request"
+        },
+        "claudeTokenScale": 1,
+        "reports": [
+          {
+            "requestIndex": 0,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 5240,
+              "claudeTokensEstimate": 8722
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667
+              },
+              {
+                "category": "thinking",
+                "segmentCount": 1,
+                "openaiTokens": 39,
+                "claudeTokensEstimate": 55
+              }
+            ],
+            "segments": [
+              {
+                "id": "input[0]",
+                "category": "thinking",
+                "label": "item 1 reasoning",
+                "path": "input[0]",
+                "openaiTokens": 39,
+                "claudeTokensEstimate": 55,
+                "charLength": 164
+              },
+              {
+                "id": "input[1]",
+                "category": "user",
+                "label": "item 2 (user) text",
+                "path": "input[1].content",
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667,
+                "charLength": 28600
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.0131
+          },
+          {
+            "requestIndex": 1,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 6131,
+              "claudeTokensEstimate": 9736
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667
+              },
+              {
+                "category": "thinking",
+                "segmentCount": 1,
+                "openaiTokens": 930,
+                "claudeTokensEstimate": 1069
+              }
+            ],
+            "segments": [
+              {
+                "id": "input[0]",
+                "category": "thinking",
+                "label": "item 1 reasoning",
+                "path": "input[0]",
+                "openaiTokens": 930,
+                "claudeTokensEstimate": 1069,
+                "charLength": 3529
+              },
+              {
+                "id": "input[1]",
+                "category": "user",
+                "label": "item 2 (user) text",
+                "path": "input[1].content",
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667,
+                "charLength": 28600
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.0153275
+          }
+        ],
+        "prefixMatches": [
+          {
+            "fromIndex": 0,
+            "toIndex": 1,
+            "relation": "rewrites",
+            "matchedSegments": 0,
+            "matchedOpenaiTokens": 0,
+            "matchedClaudeTokensEstimate": 0,
+            "divergedAt": {
+              "fromSegmentId": "input[0]",
+              "toSegmentId": "input[0]"
+            }
+          }
+        ],
+        "conversations": {
+          "count": 1,
+          "byRequest": [
+            0,
+            0
+          ]
+        },
+        "cacheSimulation": {
+          "provider": "openai",
+          "model": "gpt-5.1",
+          "actual": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5240,
+              "costUsd": 0.00655
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 6131,
+              "costUsd": 0.00766375
+            }
+          ],
+          "optimized": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5240,
+              "costUsd": 0.00655
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 6131,
+              "costUsd": 0.00766375
+            }
+          ],
+          "totalActualCostUsd": 0.01421375,
+          "totalOptimizedCostUsd": 0.01421375
+        },
+        "usageComparison": {
+          "rows": [
+            {
+              "requestIndex": 0,
+              "estimatedInputTokens": 5240,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            },
+            {
+              "requestIndex": 1,
+              "estimatedInputTokens": 6131,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            }
+          ],
+          "capturedRequests": 0,
+          "uncomparedRequestIndices": [],
+          "invalidRequestIndices": [],
+          "input": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "cacheRead": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "readOutcomes": {
+            "both_zero": 0,
+            "both_positive": 0,
+            "simulated_hit_reported_zero": 0,
+            "reported_hit_simulated_zero": 0,
+            "unavailable": 2
+          },
+          "issues": []
+        },
+        "findings": [],
+        "duplicates": []
+      }
+    },
+    {
+      "name": "reasoning-summary-only",
+      "inputSha256": "78c3c9de4f5972f30d4a357878c5411b3bb8e0607c54417e56427b3db93f7061",
+      "discrepancies": [
+        "request-1:unresolved-input[0]",
+        "request-1:fabricated-total",
+        "request-2:unresolved-input[0]",
+        "request-2:fabricated-total",
+        "actual:fabricated-cache-state",
+        "actual:fabricated-cache-state",
+        "optimized:fabricated-cache-state",
+        "optimized:fabricated-cache-state"
+      ],
+      "report": {
+        "parse": {
+          "format": "openai",
+          "complete": true,
+          "sourceRecords": 2,
+          "skippedRecords": 0,
+          "autoDetected": true,
+          "requests": [
+            {
+              "provider": "openai",
+              "index": 0,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 0,
+                "line": 1
+              },
+              "segments": [
+                {
+                  "id": "input[0]",
+                  "category": "thinking",
+                  "label": "item 1 reasoning",
+                  "path": "input[0]",
+                  "openaiTokens": 27,
+                  "claudeTokensEstimate": 38,
+                  "charLength": 106
+                },
+                {
+                  "id": "input[1]",
+                  "category": "user",
+                  "label": "item 2 (user) text",
+                  "path": "input[1].content",
+                  "openaiTokens": 5201,
+                  "claudeTokensEstimate": 8667,
+                  "charLength": 28600
+                }
+              ]
+            },
+            {
+              "provider": "openai",
+              "index": 1,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 1,
+                "line": 2
+              },
+              "segments": [
+                {
+                  "id": "input[0]",
+                  "category": "thinking",
+                  "label": "item 1 reasoning",
+                  "path": "input[0]",
+                  "openaiTokens": 27,
+                  "claudeTokensEstimate": 38,
+                  "charLength": 106
+                },
+                {
+                  "id": "input[1]",
+                  "category": "user",
+                  "label": "item 2 (user) text",
+                  "path": "input[1].content",
+                  "openaiTokens": 5201,
+                  "claudeTokensEstimate": 8667,
+                  "charLength": 28600
+                }
+              ]
+            }
+          ],
+          "warnings": []
+        },
+        "model": {
+          "id": "gpt-5.1",
+          "displayName": "GPT-5.1",
+          "source": "request"
+        },
+        "claudeTokenScale": 1,
+        "reports": [
+          {
+            "requestIndex": 0,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 5228,
+              "claudeTokensEstimate": 8705
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667
+              },
+              {
+                "category": "thinking",
+                "segmentCount": 1,
+                "openaiTokens": 27,
+                "claudeTokensEstimate": 38
+              }
+            ],
+            "segments": [
+              {
+                "id": "input[0]",
+                "category": "thinking",
+                "label": "item 1 reasoning",
+                "path": "input[0]",
+                "openaiTokens": 27,
+                "claudeTokensEstimate": 38,
+                "charLength": 106
+              },
+              {
+                "id": "input[1]",
+                "category": "user",
+                "label": "item 2 (user) text",
+                "path": "input[1].content",
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667,
+                "charLength": 28600
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.01307
+          },
+          {
+            "requestIndex": 1,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 5228,
+              "claudeTokensEstimate": 8705
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667
+              },
+              {
+                "category": "thinking",
+                "segmentCount": 1,
+                "openaiTokens": 27,
+                "claudeTokensEstimate": 38
+              }
+            ],
+            "segments": [
+              {
+                "id": "input[0]",
+                "category": "thinking",
+                "label": "item 1 reasoning",
+                "path": "input[0]",
+                "openaiTokens": 27,
+                "claudeTokensEstimate": 38,
+                "charLength": 106
+              },
+              {
+                "id": "input[1]",
+                "category": "user",
+                "label": "item 2 (user) text",
+                "path": "input[1].content",
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667,
+                "charLength": 28600
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.01307
+          }
+        ],
+        "prefixMatches": [
+          {
+            "fromIndex": 0,
+            "toIndex": 1,
+            "relation": "continues",
+            "matchedSegments": 2,
+            "matchedOpenaiTokens": 5228,
+            "matchedClaudeTokensEstimate": 8705
+          }
+        ],
+        "conversations": {
+          "count": 1,
+          "byRequest": [
+            0,
+            0
+          ]
+        },
+        "cacheSimulation": {
+          "provider": "openai",
+          "model": "gpt-5.1",
+          "actual": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5228,
+              "costUsd": 0.006535
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 5120,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 108,
+              "costUsd": 0.000775
+            }
+          ],
+          "optimized": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5228,
+              "costUsd": 0.006535
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 5120,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 108,
+              "costUsd": 0.000775
+            }
+          ],
+          "totalActualCostUsd": 0.00731,
+          "totalOptimizedCostUsd": 0.00731
+        },
+        "usageComparison": {
+          "rows": [
+            {
+              "requestIndex": 0,
+              "estimatedInputTokens": 5228,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            },
+            {
+              "requestIndex": 1,
+              "estimatedInputTokens": 5228,
+              "simulatedReadTokens": 5120,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            }
+          ],
+          "capturedRequests": 0,
+          "uncomparedRequestIndices": [],
+          "invalidRequestIndices": [],
+          "input": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "cacheRead": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "readOutcomes": {
+            "both_zero": 0,
+            "both_positive": 0,
+            "simulated_hit_reported_zero": 0,
+            "reported_hit_simulated_zero": 0,
+            "unavailable": 2
+          },
+          "issues": []
+        },
+        "findings": [],
+        "duplicates": []
+      }
+    },
+    {
+      "name": "compaction",
+      "inputSha256": "101b403e9781eafe14ad3468a3b626620ed4076315a57629c5efcbd58fea95ce",
+      "discrepancies": [
+        "request-1:unresolved-input[0]",
+        "request-1:fabricated-total",
+        "request-2:unresolved-input[0]",
+        "request-2:fabricated-total",
+        "actual:fabricated-cache-state",
+        "actual:fabricated-cache-state",
+        "optimized:fabricated-cache-state",
+        "optimized:fabricated-cache-state"
+      ],
+      "report": {
+        "parse": {
+          "format": "openai",
+          "complete": true,
+          "sourceRecords": 2,
+          "skippedRecords": 0,
+          "autoDetected": true,
+          "requests": [
+            {
+              "provider": "openai",
+              "index": 0,
+              "model": "gpt-6-astra",
+              "source": {
+                "recordIndex": 0,
+                "line": 1
+              },
+              "segments": [
+                {
+                  "id": "input[0]",
+                  "category": "user",
+                  "label": "item 1 compaction",
+                  "path": "input[0]",
+                  "openaiTokens": 23,
+                  "claudeTokensEstimate": 33,
+                  "charLength": 102
+                },
+                {
+                  "id": "input[1]",
+                  "category": "user",
+                  "label": "item 2 (user) text",
+                  "path": "input[1].content",
+                  "openaiTokens": 5201,
+                  "claudeTokensEstimate": 8667,
+                  "charLength": 28600
+                }
+              ]
+            },
+            {
+              "provider": "openai",
+              "index": 1,
+              "model": "gpt-6-astra",
+              "source": {
+                "recordIndex": 1,
+                "line": 2
+              },
+              "segments": [
+                {
+                  "id": "input[0]",
+                  "category": "user",
+                  "label": "item 1 compaction",
+                  "path": "input[0]",
+                  "openaiTokens": 23,
+                  "claudeTokensEstimate": 33,
+                  "charLength": 102
+                },
+                {
+                  "id": "input[1]",
+                  "category": "user",
+                  "label": "item 2 (user) text",
+                  "path": "input[1].content",
+                  "openaiTokens": 5201,
+                  "claudeTokensEstimate": 8667,
+                  "charLength": 28600
+                }
+              ]
+            }
+          ],
+          "warnings": []
+        },
+        "model": {
+          "id": "gpt-6-astra",
+          "displayName": "GPT-6 Astra",
+          "source": "request"
+        },
+        "claudeTokenScale": 1,
+        "reports": [
+          {
+            "requestIndex": 0,
+            "model": {
+              "id": "gpt-6-astra",
+              "displayName": "GPT-6 Astra",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 5224,
+              "claudeTokensEstimate": 8700
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 2,
+                "openaiTokens": 5224,
+                "claudeTokensEstimate": 8700
+              }
+            ],
+            "segments": [
+              {
+                "id": "input[0]",
+                "category": "user",
+                "label": "item 1 compaction",
+                "path": "input[0]",
+                "openaiTokens": 23,
+                "claudeTokensEstimate": 33,
+                "charLength": 102
+              },
+              {
+                "id": "input[1]",
+                "category": "user",
+                "label": "item 2 (user) text",
+                "path": "input[1].content",
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667,
+                "charLength": 28600
+              }
+            ],
+            "contextWindow": 1050000,
+            "percentOfContextWindow": 0.004975238095238095
+          },
+          {
+            "requestIndex": 1,
+            "model": {
+              "id": "gpt-6-astra",
+              "displayName": "GPT-6 Astra",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 5224,
+              "claudeTokensEstimate": 8700
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 2,
+                "openaiTokens": 5224,
+                "claudeTokensEstimate": 8700
+              }
+            ],
+            "segments": [
+              {
+                "id": "input[0]",
+                "category": "user",
+                "label": "item 1 compaction",
+                "path": "input[0]",
+                "openaiTokens": 23,
+                "claudeTokensEstimate": 33,
+                "charLength": 102
+              },
+              {
+                "id": "input[1]",
+                "category": "user",
+                "label": "item 2 (user) text",
+                "path": "input[1].content",
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667,
+                "charLength": 28600
+              }
+            ],
+            "contextWindow": 1050000,
+            "percentOfContextWindow": 0.004975238095238095
+          }
+        ],
+        "prefixMatches": [
+          {
+            "fromIndex": 0,
+            "toIndex": 1,
+            "relation": "continues",
+            "matchedSegments": 2,
+            "matchedOpenaiTokens": 5224,
+            "matchedClaudeTokensEstimate": 8700
+          }
+        ],
+        "conversations": {
+          "count": 1,
+          "byRequest": [
+            0,
+            0
+          ]
+        },
+        "cacheSimulation": {
+          "provider": "openai",
+          "model": "gpt-6-astra",
+          "actual": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "writeTokens30m": 5224,
+              "cacheMode": "implicit",
+              "uncachedTokens": 0,
+              "costUsd": 0.0653
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 5224,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "writeTokens30m": 0,
+              "cacheMode": "implicit",
+              "uncachedTokens": 0,
+              "costUsd": 0.005224
+            }
+          ],
+          "optimized": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "writeTokens30m": 5224,
+              "cacheMode": "implicit",
+              "uncachedTokens": 0,
+              "costUsd": 0.0653
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 5224,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "writeTokens30m": 0,
+              "cacheMode": "implicit",
+              "uncachedTokens": 0,
+              "costUsd": 0.005224
+            }
+          ],
+          "totalActualCostUsd": 0.070524,
+          "totalOptimizedCostUsd": 0.070524
+        },
+        "usageComparison": {
+          "rows": [
+            {
+              "requestIndex": 0,
+              "estimatedInputTokens": 5224,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            },
+            {
+              "requestIndex": 1,
+              "estimatedInputTokens": 5224,
+              "simulatedReadTokens": 5224,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            }
+          ],
+          "capturedRequests": 0,
+          "uncomparedRequestIndices": [],
+          "invalidRequestIndices": [],
+          "input": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "cacheRead": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "readOutcomes": {
+            "both_zero": 0,
+            "both_positive": 0,
+            "simulated_hit_reported_zero": 0,
+            "reported_hit_simulated_zero": 0,
+            "unavailable": 2
+          },
+          "issues": []
+        },
+        "findings": [],
+        "duplicates": []
+      }
+    },
+    {
+      "name": "reported-usage",
+      "inputSha256": "5d48a1310ef08a2fd9367a5b12294878af656c18201293de91d417cafa57bf0b",
+      "discrepancies": [
+        "request-1:unresolved-previous_response_id",
+        "request-1:fabricated-total",
+        "request-2:unresolved-previous_response_id",
+        "request-2:fabricated-total",
+        "actual:fabricated-cache-state",
+        "actual:fabricated-cache-state",
+        "optimized:fabricated-cache-state",
+        "optimized:fabricated-cache-state",
+        "synthetic-usage:invented-comparison"
+      ],
+      "report": {
+        "parse": {
+          "format": "openai",
+          "complete": true,
+          "sourceRecords": 2,
+          "skippedRecords": 0,
+          "autoDetected": true,
+          "envelope": "request",
+          "requests": [
+            {
+              "provider": "openai",
+              "index": 0,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 0,
+                "line": 1,
+                "envelope": "request"
+              },
+              "reportedUsage": {
+                "sources": [
+                  "response.usage"
+                ],
+                "schema": "openai-responses",
+                "status": "valid",
+                "inputTokens": 12000,
+                "cacheReadTokens": 0,
+                "cacheWriteTokens": null,
+                "outputTokens": 10,
+                "counters": [
+                  {
+                    "path": "response.usage.input_tokens",
+                    "status": "reported",
+                    "value": 12000
+                  },
+                  {
+                    "path": "response.usage.output_tokens",
+                    "status": "reported",
+                    "value": 10
+                  },
+                  {
+                    "path": "response.usage.input_tokens_details.cached_tokens",
+                    "status": "reported",
+                    "value": 0
+                  },
+                  {
+                    "path": "response.usage.input_tokens_details.cache_write_tokens",
+                    "status": "missing"
+                  },
+                  {
+                    "path": "response.usage.total_tokens",
+                    "status": "reported",
+                    "value": 12010
+                  }
+                ],
+                "issues": [],
+                "notes": []
+              },
+              "segments": [
+                {
+                  "id": "input",
+                  "category": "user",
+                  "label": "input (user) text",
+                  "path": "input",
+                  "openaiTokens": 5201,
+                  "claudeTokensEstimate": 8667,
+                  "charLength": 28600
+                }
+              ]
+            },
+            {
+              "provider": "openai",
+              "index": 1,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 1,
+                "line": 2,
+                "envelope": "request"
+              },
+              "reportedUsage": {
+                "sources": [
+                  "response.usage"
+                ],
+                "schema": "openai-responses",
+                "status": "valid",
+                "inputTokens": 12000,
+                "cacheReadTokens": 400,
+                "cacheWriteTokens": null,
+                "outputTokens": 10,
+                "counters": [
+                  {
+                    "path": "response.usage.input_tokens",
+                    "status": "reported",
+                    "value": 12000
+                  },
+                  {
+                    "path": "response.usage.output_tokens",
+                    "status": "reported",
+                    "value": 10
+                  },
+                  {
+                    "path": "response.usage.input_tokens_details.cached_tokens",
+                    "status": "reported",
+                    "value": 400
+                  },
+                  {
+                    "path": "response.usage.input_tokens_details.cache_write_tokens",
+                    "status": "missing"
+                  },
+                  {
+                    "path": "response.usage.total_tokens",
+                    "status": "reported",
+                    "value": 12010
+                  }
+                ],
+                "issues": [],
+                "notes": []
+              },
+              "segments": [
+                {
+                  "id": "input",
+                  "category": "user",
+                  "label": "input (user) text",
+                  "path": "input",
+                  "openaiTokens": 5201,
+                  "claudeTokensEstimate": 8667,
+                  "charLength": 28600
+                }
+              ]
+            }
+          ],
+          "warnings": [
+            {
+              "requestIndex": 0,
+              "message": "Requests 1–2 continue a stored response or conversation (previous_response_id, conversation), so their earlier turns live on OpenAI's servers, not in this file. Counts and the cache simulation cover only what each request itself carries."
+            }
+          ]
+        },
+        "model": {
+          "id": "gpt-5.1",
+          "displayName": "GPT-5.1",
+          "source": "request"
+        },
+        "claudeTokenScale": 1,
+        "reports": [
+          {
+            "requestIndex": 0,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667
+              }
+            ],
+            "segments": [
+              {
+                "id": "input",
+                "category": "user",
+                "label": "input (user) text",
+                "path": "input",
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667,
+                "charLength": 28600
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.0130025
+          },
+          {
+            "requestIndex": 1,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667
+              }
+            ],
+            "segments": [
+              {
+                "id": "input",
+                "category": "user",
+                "label": "input (user) text",
+                "path": "input",
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667,
+                "charLength": 28600
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.0130025
+          }
+        ],
+        "prefixMatches": [
+          {
+            "fromIndex": 0,
+            "toIndex": 1,
+            "relation": "continues",
+            "matchedSegments": 1,
+            "matchedOpenaiTokens": 5201,
+            "matchedClaudeTokensEstimate": 8667
+          }
+        ],
+        "conversations": {
+          "count": 1,
+          "byRequest": [
+            0,
+            0
+          ]
+        },
+        "cacheSimulation": {
+          "provider": "openai",
+          "model": "gpt-5.1",
+          "actual": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5201,
+              "costUsd": 0.00650125
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 5120,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 81,
+              "costUsd": 0.00074125
+            }
+          ],
+          "optimized": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5201,
+              "costUsd": 0.00650125
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 5120,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 81,
+              "costUsd": 0.00074125
+            }
+          ],
+          "totalActualCostUsd": 0.0072425,
+          "totalOptimizedCostUsd": 0.0072425
+        },
+        "usageComparison": {
+          "rows": [
+            {
+              "requestIndex": 0,
+              "estimatedInputTokens": 5201,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": 12000,
+              "reportedReadTokens": 0,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": -6799,
+              "readDeltaTokens": 0,
+              "readOutcome": "both_zero"
+            },
+            {
+              "requestIndex": 1,
+              "estimatedInputTokens": 5201,
+              "simulatedReadTokens": 5120,
+              "reportedInputTokens": 12000,
+              "reportedReadTokens": 400,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": -6799,
+              "readDeltaTokens": 4720,
+              "readOutcome": "both_positive"
+            }
+          ],
+          "capturedRequests": 2,
+          "uncomparedRequestIndices": [],
+          "invalidRequestIndices": [],
+          "input": {
+            "requestIndices": [
+              0,
+              1
+            ],
+            "reportedTokens": 24000,
+            "simulatedTokens": 10402,
+            "deltaTokens": -13598
+          },
+          "cacheRead": {
+            "requestIndices": [
+              0,
+              1
+            ],
+            "reportedTokens": 400,
+            "simulatedTokens": 5120,
+            "deltaTokens": 4720
+          },
+          "readOutcomes": {
+            "both_zero": 1,
+            "both_positive": 1,
+            "simulated_hit_reported_zero": 0,
+            "reported_hit_simulated_zero": 0,
+            "unavailable": 0
+          },
+          "issues": []
+        },
+        "findings": [],
+        "duplicates": []
+      }
+    },
+    {
+      "name": "mixed-known-unknown",
+      "inputSha256": "9c90ae087863f900a8e31e1f5e90de08a9d87de239219333f9e7d63c4aa6d420",
+      "discrepancies": [
+        "request-2:unresolved-previous_response_id",
+        "request-2:fabricated-total",
+        "actual:fabricated-cache-state",
+        "actual:fabricated-cache-state",
+        "actual:fabricated-cache-state",
+        "optimized:fabricated-cache-state",
+        "optimized:fabricated-cache-state",
+        "optimized:fabricated-cache-state"
+      ],
+      "report": {
+        "parse": {
+          "format": "openai",
+          "complete": true,
+          "sourceRecords": 3,
+          "skippedRecords": 0,
+          "autoDetected": true,
+          "requests": [
+            {
+              "provider": "openai",
+              "index": 0,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 0,
+                "line": 1
+              },
+              "segments": [
+                {
+                  "id": "input",
+                  "category": "user",
+                  "label": "input (user) text",
+                  "path": "input",
+                  "openaiTokens": 5201,
+                  "claudeTokensEstimate": 8667,
+                  "charLength": 28600
+                }
+              ]
+            },
+            {
+              "provider": "openai",
+              "index": 1,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 1,
+                "line": 2
+              },
+              "segments": [
+                {
+                  "id": "input",
+                  "category": "user",
+                  "label": "input (user) text",
+                  "path": "input",
+                  "openaiTokens": 5201,
+                  "claudeTokensEstimate": 8667,
+                  "charLength": 28600
+                }
+              ]
+            },
+            {
+              "provider": "openai",
+              "index": 2,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 2,
+                "line": 3
+              },
+              "segments": [
+                {
+                  "id": "input",
+                  "category": "user",
+                  "label": "input (user) text",
+                  "path": "input",
+                  "openaiTokens": 5201,
+                  "claudeTokensEstimate": 8667,
+                  "charLength": 28600
+                }
+              ]
+            }
+          ],
+          "warnings": [
+            {
+              "requestIndex": 1,
+              "message": "Request 2 continues a stored response or conversation (previous_response_id, conversation), so its earlier turns live on OpenAI's servers, not in this file. Counts and the cache simulation cover only what the request itself carries."
+            }
+          ]
+        },
+        "model": {
+          "id": "gpt-5.1",
+          "displayName": "GPT-5.1",
+          "source": "request"
+        },
+        "claudeTokenScale": 1,
+        "reports": [
+          {
+            "requestIndex": 0,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667
+              }
+            ],
+            "segments": [
+              {
+                "id": "input",
+                "category": "user",
+                "label": "input (user) text",
+                "path": "input",
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667,
+                "charLength": 28600
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.0130025
+          },
+          {
+            "requestIndex": 1,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667
+              }
+            ],
+            "segments": [
+              {
+                "id": "input",
+                "category": "user",
+                "label": "input (user) text",
+                "path": "input",
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667,
+                "charLength": 28600
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.0130025
+          },
+          {
+            "requestIndex": 2,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667
+              }
+            ],
+            "segments": [
+              {
+                "id": "input",
+                "category": "user",
+                "label": "input (user) text",
+                "path": "input",
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667,
+                "charLength": 28600
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.0130025
+          }
+        ],
+        "prefixMatches": [
+          {
+            "fromIndex": 0,
+            "toIndex": 1,
+            "relation": "continues",
+            "matchedSegments": 1,
+            "matchedOpenaiTokens": 5201,
+            "matchedClaudeTokensEstimate": 8667
+          },
+          {
+            "fromIndex": 1,
+            "toIndex": 2,
+            "relation": "continues",
+            "matchedSegments": 1,
+            "matchedOpenaiTokens": 5201,
+            "matchedClaudeTokensEstimate": 8667
+          }
+        ],
+        "conversations": {
+          "count": 1,
+          "byRequest": [
+            0,
+            0,
+            0
+          ]
+        },
+        "cacheSimulation": {
+          "provider": "openai",
+          "model": "gpt-5.1",
+          "actual": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5201,
+              "costUsd": 0.00650125
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 5120,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 81,
+              "costUsd": 0.00074125
+            },
+            {
+              "requestIndex": 2,
+              "readTokens": 5120,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 81,
+              "costUsd": 0.00074125
+            }
+          ],
+          "optimized": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5201,
+              "costUsd": 0.00650125
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 5120,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 81,
+              "costUsd": 0.00074125
+            },
+            {
+              "requestIndex": 2,
+              "readTokens": 5120,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 81,
+              "costUsd": 0.00074125
+            }
+          ],
+          "totalActualCostUsd": 0.00798375,
+          "totalOptimizedCostUsd": 0.00798375
+        },
+        "usageComparison": {
+          "rows": [
+            {
+              "requestIndex": 0,
+              "estimatedInputTokens": 5201,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            },
+            {
+              "requestIndex": 1,
+              "estimatedInputTokens": 5201,
+              "simulatedReadTokens": 5120,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            },
+            {
+              "requestIndex": 2,
+              "estimatedInputTokens": 5201,
+              "simulatedReadTokens": 5120,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            }
+          ],
+          "capturedRequests": 0,
+          "uncomparedRequestIndices": [],
+          "invalidRequestIndices": [],
+          "input": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "cacheRead": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "readOutcomes": {
+            "both_zero": 0,
+            "both_positive": 0,
+            "simulated_hit_reported_zero": 0,
+            "reported_hit_simulated_zero": 0,
+            "unavailable": 3
+          },
+          "issues": []
+        },
+        "findings": [],
+        "duplicates": []
+      }
+    },
+    {
+      "name": "store-control",
+      "inputSha256": "8d90494765ce9a3ead120947a99d9257d69c2e110e45bf00d95d01311b5216bf",
+      "discrepancies": [],
+      "report": {
+        "parse": {
+          "format": "openai",
+          "complete": true,
+          "sourceRecords": 3,
+          "skippedRecords": 0,
+          "autoDetected": true,
+          "requests": [
+            {
+              "provider": "openai",
+              "index": 0,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 0,
+                "line": 1
+              },
+              "segments": [
+                {
+                  "id": "input",
+                  "category": "user",
+                  "label": "input (user) text",
+                  "path": "input",
+                  "openaiTokens": 5201,
+                  "claudeTokensEstimate": 8667,
+                  "charLength": 28600
+                }
+              ]
+            },
+            {
+              "provider": "openai",
+              "index": 1,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 1,
+                "line": 2
+              },
+              "segments": [
+                {
+                  "id": "input",
+                  "category": "user",
+                  "label": "input (user) text",
+                  "path": "input",
+                  "openaiTokens": 5201,
+                  "claudeTokensEstimate": 8667,
+                  "charLength": 28600
+                }
+              ]
+            },
+            {
+              "provider": "openai",
+              "index": 2,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 2,
+                "line": 3
+              },
+              "segments": [
+                {
+                  "id": "input",
+                  "category": "user",
+                  "label": "input (user) text",
+                  "path": "input",
+                  "openaiTokens": 5201,
+                  "claudeTokensEstimate": 8667,
+                  "charLength": 28600
+                }
+              ]
+            }
+          ],
+          "warnings": []
+        },
+        "model": {
+          "id": "gpt-5.1",
+          "displayName": "GPT-5.1",
+          "source": "request"
+        },
+        "claudeTokenScale": 1,
+        "reports": [
+          {
+            "requestIndex": 0,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667
+              }
+            ],
+            "segments": [
+              {
+                "id": "input",
+                "category": "user",
+                "label": "input (user) text",
+                "path": "input",
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667,
+                "charLength": 28600
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.0130025
+          },
+          {
+            "requestIndex": 1,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667
+              }
+            ],
+            "segments": [
+              {
+                "id": "input",
+                "category": "user",
+                "label": "input (user) text",
+                "path": "input",
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667,
+                "charLength": 28600
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.0130025
+          },
+          {
+            "requestIndex": 2,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667
+              }
+            ],
+            "segments": [
+              {
+                "id": "input",
+                "category": "user",
+                "label": "input (user) text",
+                "path": "input",
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667,
+                "charLength": 28600
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.0130025
+          }
+        ],
+        "prefixMatches": [
+          {
+            "fromIndex": 0,
+            "toIndex": 1,
+            "relation": "continues",
+            "matchedSegments": 1,
+            "matchedOpenaiTokens": 5201,
+            "matchedClaudeTokensEstimate": 8667
+          },
+          {
+            "fromIndex": 1,
+            "toIndex": 2,
+            "relation": "continues",
+            "matchedSegments": 1,
+            "matchedOpenaiTokens": 5201,
+            "matchedClaudeTokensEstimate": 8667
+          }
+        ],
+        "conversations": {
+          "count": 1,
+          "byRequest": [
+            0,
+            0,
+            0
+          ]
+        },
+        "cacheSimulation": {
+          "provider": "openai",
+          "model": "gpt-5.1",
+          "actual": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5201,
+              "costUsd": 0.00650125
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 5120,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 81,
+              "costUsd": 0.00074125
+            },
+            {
+              "requestIndex": 2,
+              "readTokens": 5120,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 81,
+              "costUsd": 0.00074125
+            }
+          ],
+          "optimized": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5201,
+              "costUsd": 0.00650125
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 5120,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 81,
+              "costUsd": 0.00074125
+            },
+            {
+              "requestIndex": 2,
+              "readTokens": 5120,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 81,
+              "costUsd": 0.00074125
+            }
+          ],
+          "totalActualCostUsd": 0.00798375,
+          "totalOptimizedCostUsd": 0.00798375
+        },
+        "usageComparison": {
+          "rows": [
+            {
+              "requestIndex": 0,
+              "estimatedInputTokens": 5201,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            },
+            {
+              "requestIndex": 1,
+              "estimatedInputTokens": 5201,
+              "simulatedReadTokens": 5120,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            },
+            {
+              "requestIndex": 2,
+              "estimatedInputTokens": 5201,
+              "simulatedReadTokens": 5120,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            }
+          ],
+          "capturedRequests": 0,
+          "uncomparedRequestIndices": [],
+          "invalidRequestIndices": [],
+          "input": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "cacheRead": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "readOutcomes": {
+            "both_zero": 0,
+            "both_positive": 0,
+            "simulated_hit_reported_zero": 0,
+            "reported_hit_simulated_zero": 0,
+            "unavailable": 3
+          },
+          "issues": []
+        },
+        "findings": [],
+        "duplicates": []
+      }
+    },
+    {
+      "name": "null-control",
+      "inputSha256": "c177e2688636c35eb4ddaa8aeff45ef1b92df77593ba695f30714ded28d6e59d",
+      "discrepancies": [],
+      "report": {
+        "parse": {
+          "format": "openai",
+          "complete": true,
+          "sourceRecords": 2,
+          "skippedRecords": 0,
+          "autoDetected": true,
+          "requests": [
+            {
+              "provider": "openai",
+              "index": 0,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 0,
+                "line": 1
+              },
+              "segments": [
+                {
+                  "id": "input",
+                  "category": "user",
+                  "label": "input (user) text",
+                  "path": "input",
+                  "openaiTokens": 5201,
+                  "claudeTokensEstimate": 8667,
+                  "charLength": 28600
+                }
+              ]
+            },
+            {
+              "provider": "openai",
+              "index": 1,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 1,
+                "line": 2
+              },
+              "segments": [
+                {
+                  "id": "input",
+                  "category": "user",
+                  "label": "input (user) text",
+                  "path": "input",
+                  "openaiTokens": 5201,
+                  "claudeTokensEstimate": 8667,
+                  "charLength": 28600
+                }
+              ]
+            }
+          ],
+          "warnings": []
+        },
+        "model": {
+          "id": "gpt-5.1",
+          "displayName": "GPT-5.1",
+          "source": "request"
+        },
+        "claudeTokenScale": 1,
+        "reports": [
+          {
+            "requestIndex": 0,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667
+              }
+            ],
+            "segments": [
+              {
+                "id": "input",
+                "category": "user",
+                "label": "input (user) text",
+                "path": "input",
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667,
+                "charLength": 28600
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.0130025
+          },
+          {
+            "requestIndex": 1,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667
+              }
+            ],
+            "segments": [
+              {
+                "id": "input",
+                "category": "user",
+                "label": "input (user) text",
+                "path": "input",
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667,
+                "charLength": 28600
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.0130025
+          }
+        ],
+        "prefixMatches": [
+          {
+            "fromIndex": 0,
+            "toIndex": 1,
+            "relation": "continues",
+            "matchedSegments": 1,
+            "matchedOpenaiTokens": 5201,
+            "matchedClaudeTokensEstimate": 8667
+          }
+        ],
+        "conversations": {
+          "count": 1,
+          "byRequest": [
+            0,
+            0
+          ]
+        },
+        "cacheSimulation": {
+          "provider": "openai",
+          "model": "gpt-5.1",
+          "actual": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5201,
+              "costUsd": 0.00650125
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 5120,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 81,
+              "costUsd": 0.00074125
+            }
+          ],
+          "optimized": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5201,
+              "costUsd": 0.00650125
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 5120,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 81,
+              "costUsd": 0.00074125
+            }
+          ],
+          "totalActualCostUsd": 0.0072425,
+          "totalOptimizedCostUsd": 0.0072425
+        },
+        "usageComparison": {
+          "rows": [
+            {
+              "requestIndex": 0,
+              "estimatedInputTokens": 5201,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            },
+            {
+              "requestIndex": 1,
+              "estimatedInputTokens": 5201,
+              "simulatedReadTokens": 5120,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            }
+          ],
+          "capturedRequests": 0,
+          "uncomparedRequestIndices": [],
+          "invalidRequestIndices": [],
+          "input": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "cacheRead": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "readOutcomes": {
+            "both_zero": 0,
+            "both_positive": 0,
+            "simulated_hit_reported_zero": 0,
+            "reported_hit_simulated_zero": 0,
+            "unavailable": 2
+          },
+          "issues": []
+        },
+        "findings": [],
+        "duplicates": []
+      }
+    },
+    {
+      "name": "literal-control",
+      "inputSha256": "3b8a84c395df31c3b9889ef70553312d561d48474ec1c5ed1a1a3f28e5c88a78",
+      "discrepancies": [],
+      "report": {
+        "parse": {
+          "format": "openai",
+          "complete": true,
+          "sourceRecords": 2,
+          "skippedRecords": 0,
+          "autoDetected": true,
+          "requests": [
+            {
+              "provider": "openai",
+              "index": 0,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 0,
+                "line": 1
+              },
+              "segments": [
+                {
+                  "id": "input",
+                  "category": "user",
+                  "label": "input (user) text",
+                  "path": "input",
+                  "openaiTokens": 5223,
+                  "claudeTokensEstimate": 8701,
+                  "charLength": 28712
+                }
+              ]
+            },
+            {
+              "provider": "openai",
+              "index": 1,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 1,
+                "line": 2
+              },
+              "segments": [
+                {
+                  "id": "input",
+                  "category": "user",
+                  "label": "input (user) text",
+                  "path": "input",
+                  "openaiTokens": 5223,
+                  "claudeTokensEstimate": 8701,
+                  "charLength": 28712
+                }
+              ]
+            }
+          ],
+          "warnings": []
+        },
+        "model": {
+          "id": "gpt-5.1",
+          "displayName": "GPT-5.1",
+          "source": "request"
+        },
+        "claudeTokenScale": 1,
+        "reports": [
+          {
+            "requestIndex": 0,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 5223,
+              "claudeTokensEstimate": 8701
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 5223,
+                "claudeTokensEstimate": 8701
+              }
+            ],
+            "segments": [
+              {
+                "id": "input",
+                "category": "user",
+                "label": "input (user) text",
+                "path": "input",
+                "openaiTokens": 5223,
+                "claudeTokensEstimate": 8701,
+                "charLength": 28712
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.0130575
+          },
+          {
+            "requestIndex": 1,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 5223,
+              "claudeTokensEstimate": 8701
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 5223,
+                "claudeTokensEstimate": 8701
+              }
+            ],
+            "segments": [
+              {
+                "id": "input",
+                "category": "user",
+                "label": "input (user) text",
+                "path": "input",
+                "openaiTokens": 5223,
+                "claudeTokensEstimate": 8701,
+                "charLength": 28712
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.0130575
+          }
+        ],
+        "prefixMatches": [
+          {
+            "fromIndex": 0,
+            "toIndex": 1,
+            "relation": "continues",
+            "matchedSegments": 1,
+            "matchedOpenaiTokens": 5223,
+            "matchedClaudeTokensEstimate": 8701
+          }
+        ],
+        "conversations": {
+          "count": 1,
+          "byRequest": [
+            0,
+            0
+          ]
+        },
+        "cacheSimulation": {
+          "provider": "openai",
+          "model": "gpt-5.1",
+          "actual": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5223,
+              "costUsd": 0.00652875
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 5120,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 103,
+              "costUsd": 0.00076875
+            }
+          ],
+          "optimized": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5223,
+              "costUsd": 0.00652875
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 5120,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 103,
+              "costUsd": 0.00076875
+            }
+          ],
+          "totalActualCostUsd": 0.0072975,
+          "totalOptimizedCostUsd": 0.0072975
+        },
+        "usageComparison": {
+          "rows": [
+            {
+              "requestIndex": 0,
+              "estimatedInputTokens": 5223,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            },
+            {
+              "requestIndex": 1,
+              "estimatedInputTokens": 5223,
+              "simulatedReadTokens": 5120,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            }
+          ],
+          "capturedRequests": 0,
+          "uncomparedRequestIndices": [],
+          "invalidRequestIndices": [],
+          "input": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "cacheRead": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "readOutcomes": {
+            "both_zero": 0,
+            "both_positive": 0,
+            "simulated_hit_reported_zero": 0,
+            "reported_hit_simulated_zero": 0,
+            "unavailable": 2
+          },
+          "issues": []
+        },
+        "findings": [],
+        "duplicates": []
+      }
+    },
+    {
+      "name": "invalid-mutual-state",
+      "inputSha256": "47106f89212fe0af83855e0b980015ed46729952d4fae26819fb9529bc7360b8",
+      "discrepancies": [
+        "expected-refusal",
+        "retained-request-count"
+      ],
+      "report": {
+        "parse": {
+          "format": "openai",
+          "complete": true,
+          "sourceRecords": 1,
+          "skippedRecords": 0,
+          "autoDetected": true,
+          "requests": [
+            {
+              "provider": "openai",
+              "index": 0,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 0
+              },
+              "segments": [
+                {
+                  "id": "input",
+                  "category": "user",
+                  "label": "input (user) text",
+                  "path": "input",
+                  "openaiTokens": 5201,
+                  "claudeTokensEstimate": 8667,
+                  "charLength": 28600
+                }
+              ]
+            }
+          ],
+          "warnings": [
+            {
+              "requestIndex": 0,
+              "message": "Request 1 continues a stored response or conversation (previous_response_id, conversation), so its earlier turns live on OpenAI's servers, not in this file. Counts and the cache simulation cover only what the request itself carries."
+            }
+          ]
+        },
+        "model": {
+          "id": "gpt-5.1",
+          "displayName": "GPT-5.1",
+          "source": "request"
+        },
+        "claudeTokenScale": 1,
+        "reports": [
+          {
+            "requestIndex": 0,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667
+              }
+            ],
+            "segments": [
+              {
+                "id": "input",
+                "category": "user",
+                "label": "input (user) text",
+                "path": "input",
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667,
+                "charLength": 28600
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.0130025
+          }
+        ],
+        "prefixMatches": [],
+        "conversations": {
+          "count": 1,
+          "byRequest": [
+            0
+          ]
+        },
+        "cacheSimulation": {
+          "provider": "openai",
+          "model": "gpt-5.1",
+          "actual": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5201,
+              "costUsd": 0.00650125
+            }
+          ],
+          "optimized": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5201,
+              "costUsd": 0.00650125
+            }
+          ],
+          "totalActualCostUsd": 0.00650125,
+          "totalOptimizedCostUsd": 0.00650125
+        },
+        "usageComparison": {
+          "rows": [
+            {
+              "requestIndex": 0,
+              "estimatedInputTokens": 5201,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            }
+          ],
+          "capturedRequests": 0,
+          "uncomparedRequestIndices": [],
+          "invalidRequestIndices": [],
+          "input": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "cacheRead": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "readOutcomes": {
+            "both_zero": 0,
+            "both_positive": 0,
+            "simulated_hit_reported_zero": 0,
+            "reported_hit_simulated_zero": 0,
+            "unavailable": 1
+          },
+          "issues": []
+        },
+        "findings": [],
+        "duplicates": []
+      }
+    },
+    {
+      "name": "invalid-identifier",
+      "inputSha256": "12dfc067749a6a99b964bb266b054623d6e3b8bb661af76d00cbe58e1dbd86cb",
+      "discrepancies": [
+        "expected-refusal",
+        "retained-request-count"
+      ],
+      "report": {
+        "parse": {
+          "format": "openai",
+          "complete": true,
+          "sourceRecords": 1,
+          "skippedRecords": 0,
+          "autoDetected": true,
+          "requests": [
+            {
+              "provider": "openai",
+              "index": 0,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 0
+              },
+              "segments": [
+                {
+                  "id": "input",
+                  "category": "user",
+                  "label": "input (user) text",
+                  "path": "input",
+                  "openaiTokens": 5201,
+                  "claudeTokensEstimate": 8667,
+                  "charLength": 28600
+                }
+              ]
+            }
+          ],
+          "warnings": []
+        },
+        "model": {
+          "id": "gpt-5.1",
+          "displayName": "GPT-5.1",
+          "source": "request"
+        },
+        "claudeTokenScale": 1,
+        "reports": [
+          {
+            "requestIndex": 0,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667
+              }
+            ],
+            "segments": [
+              {
+                "id": "input",
+                "category": "user",
+                "label": "input (user) text",
+                "path": "input",
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667,
+                "charLength": 28600
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.0130025
+          }
+        ],
+        "prefixMatches": [],
+        "conversations": {
+          "count": 1,
+          "byRequest": [
+            0
+          ]
+        },
+        "cacheSimulation": {
+          "provider": "openai",
+          "model": "gpt-5.1",
+          "actual": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5201,
+              "costUsd": 0.00650125
+            }
+          ],
+          "optimized": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5201,
+              "costUsd": 0.00650125
+            }
+          ],
+          "totalActualCostUsd": 0.00650125,
+          "totalOptimizedCostUsd": 0.00650125
+        },
+        "usageComparison": {
+          "rows": [
+            {
+              "requestIndex": 0,
+              "estimatedInputTokens": 5201,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            }
+          ],
+          "capturedRequests": 0,
+          "uncomparedRequestIndices": [],
+          "invalidRequestIndices": [],
+          "input": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "cacheRead": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "readOutcomes": {
+            "both_zero": 0,
+            "both_positive": 0,
+            "simulated_hit_reported_zero": 0,
+            "reported_hit_simulated_zero": 0,
+            "unavailable": 1
+          },
+          "issues": []
+        },
+        "findings": [],
+        "duplicates": []
+      }
+    },
+    {
+      "name": "response-object-control",
+      "inputSha256": "9af1da848f25dfe19da1e716a78a9448ac63c3b0eb0b83fbdbe0897e24693f01",
+      "discrepancies": [
+        "record-coverage",
+        "response-echo-counted-as-request"
+      ],
+      "report": {
+        "parse": {
+          "format": "openai",
+          "complete": true,
+          "sourceRecords": 2,
+          "skippedRecords": 0,
+          "autoDetected": true,
+          "requests": [
+            {
+              "provider": "openai",
+              "index": 0,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 0,
+                "line": 1
+              },
+              "segments": [
+                {
+                  "id": "input",
+                  "category": "user",
+                  "label": "input (user) text",
+                  "path": "input",
+                  "openaiTokens": 5201,
+                  "claudeTokensEstimate": 8667,
+                  "charLength": 28600
+                }
+              ]
+            },
+            {
+              "provider": "openai",
+              "index": 1,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 1,
+                "line": 2
+              },
+              "segments": [
+                {
+                  "id": "tools[0]",
+                  "category": "tools",
+                  "label": "tool: lookup",
+                  "path": "tools[0]",
+                  "openaiTokens": 15,
+                  "claudeTokensEstimate": 24,
+                  "charLength": 66
+                }
+              ]
+            }
+          ],
+          "warnings": []
+        },
+        "model": {
+          "id": "gpt-5.1",
+          "displayName": "GPT-5.1",
+          "source": "request"
+        },
+        "claudeTokenScale": 1,
+        "reports": [
+          {
+            "requestIndex": 0,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667
+              }
+            ],
+            "segments": [
+              {
+                "id": "input",
+                "category": "user",
+                "label": "input (user) text",
+                "path": "input",
+                "openaiTokens": 5201,
+                "claudeTokensEstimate": 8667,
+                "charLength": 28600
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.0130025
+          },
+          {
+            "requestIndex": 1,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 15,
+              "claudeTokensEstimate": 24
+            },
+            "byCategory": [
+              {
+                "category": "tools",
+                "segmentCount": 1,
+                "openaiTokens": 15,
+                "claudeTokensEstimate": 24
+              }
+            ],
+            "segments": [
+              {
+                "id": "tools[0]",
+                "category": "tools",
+                "label": "tool: lookup",
+                "path": "tools[0]",
+                "openaiTokens": 15,
+                "claudeTokensEstimate": 24,
+                "charLength": 66
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.0000375
+          }
+        ],
+        "prefixMatches": [],
+        "conversations": {
+          "count": 2,
+          "byRequest": [
+            0,
+            1
+          ]
+        },
+        "cacheSimulation": {
+          "provider": "openai",
+          "model": "gpt-5.1",
+          "actual": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5201,
+              "costUsd": 0.00650125
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 15,
+              "costUsd": 0.00001875
+            }
+          ],
+          "optimized": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 5201,
+              "costUsd": 0.00650125
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 15,
+              "costUsd": 0.00001875
+            }
+          ],
+          "totalActualCostUsd": 0.00652,
+          "totalOptimizedCostUsd": 0.00652
+        },
+        "usageComparison": {
+          "rows": [
+            {
+              "requestIndex": 0,
+              "estimatedInputTokens": 5201,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            },
+            {
+              "requestIndex": 1,
+              "estimatedInputTokens": 15,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": null,
+              "reportedReadTokens": null,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": null,
+              "readDeltaTokens": null,
+              "readOutcome": "unavailable"
+            }
+          ],
+          "capturedRequests": 0,
+          "uncomparedRequestIndices": [],
+          "invalidRequestIndices": [],
+          "input": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "cacheRead": {
+            "requestIndices": [],
+            "reportedTokens": null,
+            "simulatedTokens": null,
+            "deltaTokens": null
+          },
+          "readOutcomes": {
+            "both_zero": 0,
+            "both_positive": 0,
+            "simulated_hit_reported_zero": 0,
+            "reported_hit_simulated_zero": 0,
+            "unavailable": 2
+          },
+          "issues": []
+        },
+        "findings": [],
+        "duplicates": []
+      }
+    }
+  ],
+  "workflowsWithDiscrepancies": 19
+}

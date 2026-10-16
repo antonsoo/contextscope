@@ -1,8 +1,9 @@
-import type { ParsedRequest, Segment, SegmentCategory } from "./types.js";
+import type { ParsedRequest, Segment, SegmentCategory, UnmodeledContextKind } from "./types.js";
 import { asText, blockJson, isRecord } from "./json-utils.js";
 import { countTokens, type TokenCounter } from "./token-counter.js";
 import { attachPromptIdentity } from "./prompt-identity.js";
 import { unmodeledMedia } from "./media-accounting.js";
+import { isOpenAiResponseObject, isResponsesBody, openAiContextControls, openAiItemContext } from "./openai-context.js";
 
 interface OpenAiContentPart {
   type?: string;
@@ -22,13 +23,14 @@ interface OpenAiContentPart {
  */
 const CHAT_MESSAGE_FRAMING_TOKENS = 5;
 
-type SegmentParams = { id: string; category: SegmentCategory; label: string; path: string; text: string; raw: unknown };
+type SegmentParams = { id: string; category: SegmentCategory; label: string; path: string; text: string; raw: unknown; unmodeledContext?: UnmodeledContextKind };
 
 function makeSegment(params: SegmentParams, counter: TokenCounter): Segment {
   // `text` is whatever the log had in that position: a number or an object is kept as its JSON.
   const media = unmodeledMedia(params.raw, "openai");
-  const text = media.length ? "" : asText(params.text);
-  const counts = media.length ? { openai: null, claude: null } : counter(text);
+  const unavailable = media.length > 0 || params.unmodeledContext !== undefined;
+  const text = unavailable ? "" : asText(params.text);
+  const counts = unavailable ? { openai: null, claude: null } : counter(text);
   return {
     ...params,
     text,
@@ -51,6 +53,8 @@ export function parseOpenAiRequest(raw: unknown, index: number, counter: TokenCo
   const seg = (params: SegmentParams): Segment => makeSegment(params, counter);
   const obj = (raw !== null && typeof raw === "object" ? (raw as Record<string, unknown>) : {}) as Record<string, unknown>;
   const segments: Segment[] = [];
+  const model = typeof obj["model"] === "string" ? obj["model"] : undefined;
+  if (isOpenAiResponseObject(obj)) return { provider: "openai", index, model, raw, segments };
 
   const tools: unknown[] = Array.isArray(obj["tools"]) ? obj["tools"] : [];
   tools.forEach((entry, i) => {
@@ -70,10 +74,9 @@ export function parseOpenAiRequest(raw: unknown, index: number, counter: TokenCo
     );
   });
 
-  if (!Array.isArray(obj["messages"]) && ("input" in obj || "instructions" in obj)) {
-    segments.push(...parseResponsesBody(obj, seg));
+  if (isResponsesBody(obj)) {
+    segments.push(...parseResponsesBody(obj, seg, index));
     attachPromptIdentity(obj, segments, "openai");
-    const model = typeof obj["model"] === "string" ? (obj["model"] as string) : undefined;
     return { provider: "openai", index, model, raw, segments };
   }
 
@@ -181,7 +184,6 @@ export function parseOpenAiRequest(raw: unknown, index: number, counter: TokenCo
   });
 
   attachPromptIdentity(obj, segments, "openai");
-  const model = typeof obj["model"] === "string" ? (obj["model"] as string) : undefined;
   return { provider: "openai", index, model, raw, segments };
 }
 
@@ -190,8 +192,12 @@ function roleCategory(role: string): SegmentCategory {
 }
 
 /** Responses API: `instructions` then each `input` item, in order. */
-function parseResponsesBody(obj: Record<string, unknown>, seg: (params: SegmentParams) => Segment): Segment[] {
+function parseResponsesBody(obj: Record<string, unknown>, seg: (params: SegmentParams) => Segment, index: number): Segment[] {
   const segments: Segment[] = [];
+  for (const control of openAiContextControls(obj, index)) {
+    segments.push(seg({ id: control.path, category: "reference", label: control.label, path: control.path,
+      text: "", raw: control.raw, unmodeledContext: control.kind }));
+  }
   if (typeof obj["instructions"] === "string") {
     segments.push(seg({ id: "instructions", category: "system", label: "instructions", path: "instructions", text: obj["instructions"], raw: obj["instructions"] }));
   } else if (obj["instructions"] !== undefined && obj["instructions"] !== null && typeof obj["instructions"] !== "string") {
@@ -213,6 +219,12 @@ function parseResponsesBody(obj: Record<string, unknown>, seg: (params: SegmentP
     if (!isRecord(item)) {
       // Not an item object (null, a bare string): kept whole, so later positions don't shift.
       segments.push(seg({ id: path, category: "user", label: `item ${ii + 1} (malformed)`, path, text: blockJson(item), raw: item }));
+      return;
+    }
+    const unresolved = openAiItemContext(item, path, index);
+    if (unresolved) {
+      segments.push(seg({ id: path, category: unresolved === "reasoning" ? "thinking" : "reference",
+        label: `item ${ii + 1} unresolved ${unresolved}`, path, text: "", raw: item, unmodeledContext: unresolved }));
       return;
     }
     const type = typeof item["type"] === "string" ? (item["type"] as string) : "message";
@@ -265,9 +277,6 @@ function parseResponsesBody(obj: Record<string, unknown>, seg: (params: SegmentP
         } else segments.push(seg({ id: path, category: "tool_result", label: `item ${ii + 1} function_call_output`, path, text: typeof output === "string" ? output : blockJson(output), raw: item }));
         break;
       }
-      case "reasoning":
-        segments.push(seg({ id: path, category: "thinking", label: `item ${ii + 1} reasoning`, path, text: blockJson(item), raw: item }));
-        break;
       default:
         // Built-in tool calls (web_search_call, file_search_call, computer_call, ...) and their outputs.
         segments.push(

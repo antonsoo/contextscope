@@ -15,7 +15,11 @@ function segmentKey(segment: Segment, normalizeVolatile: boolean): string {
   const cache = normalizeVolatile ? normalizedText : literalText;
   let text = cache.get(segment);
   if (text === undefined) {
-    if (segment.prefix) {
+    if (segment.unmodeledContext) {
+      // Opaque controls are identity, not volatile prompt text. Do not redact
+      // UUID-looking IDs or rewrite ciphertext in the optimized scenario.
+      text = JSON.stringify([segment.unmodeledContext, segment.prefix?.context, segment.prefix?.content ?? segment.raw]);
+    } else if (segment.prefix) {
       const context = normalizeVolatile ? canonicalJson(segment.prefix.context) : blockJson(segment.prefix.context);
       const content = normalizeVolatile ? normalizedBlockJson(segment.prefix.content) : blockJson(segment.prefix.content);
       text = JSON.stringify([context, content]);
@@ -166,6 +170,7 @@ function backtrack(trace: Int32Array[], n: number, m: number): [DiffLine["type"]
 }
 
 function describeSegment(segment: Segment): string {
+  if (segment.unmodeledContext) return `[${segment.category}] ${segment.label} — unresolved context; token count unavailable (inspect original unit)`;
   if (segment.unmodeledContent) return `[${segment.category}] ${segment.label} — media content; token count unavailable (inspect original block)`;
   const preview = segment.text.length > 80 ? `${segment.text.slice(0, 80)}…` : segment.text;
   return `[${segment.category}] ${segment.label} — ${preview.replace(/\s+/g, " ")}`;
@@ -175,10 +180,10 @@ function describeSegment(segment: Segment): string {
 function withContext(ops: DiffOp[], radius = 2): DiffLine[] {
   const mediaKeys = new WeakMap<Segment, string>();
   const contentKey = (segment: Segment): string => {
-    if (!segment.unmodeledContent) return `${segment.category}::${segment.text}`;
+    if (!segment.unmodeledContent && !segment.unmodeledContext) return `${segment.category}::${segment.text}`;
     let key = mediaKeys.get(segment);
     if (key === undefined) {
-      key = `${segment.category}::${blockJson(segment.prefix?.content ?? segment.raw)}`;
+      key = `${segment.category}::${segment.unmodeledContext ?? "media"}::${blockJson(segment.prefix?.content ?? segment.raw)}`;
       mediaKeys.set(segment, key);
     }
     return key;

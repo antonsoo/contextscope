@@ -1,0 +1,525 @@
+{
+  "baseline": "ecc601b2c83cf93b509ad2d4ea61e493201cc508",
+  "provenance": "Controlled application requests serialized by the actual SDK over a mock transport. No provider inference, token/cache measurement or live acceptance check. IDs, replies and paired usage are synthetic controls.",
+  "sdk": {
+    "openai": "3.23.0",
+    "python": "3.14.7",
+    "http": "httpx2",
+    "httpVersion": "2.13.1"
+  },
+  "unloggedMockSeeds": [
+    {
+      "responseId": "resp_controlled_1",
+      "outputItemId": "msg_controlled_1",
+      "source": "alpha"
+    },
+    {
+      "responseId": "resp_controlled_2",
+      "outputItemId": "msg_controlled_2",
+      "source": "beta"
+    }
+  ],
+  "cases": [
+    {
+      "name": "previous-response-change",
+      "file": "previous-response-change.jsonl.gz",
+      "unresolvedPaths": [
+        [
+          "previous_response_id"
+        ],
+        [
+          "previous_response_id"
+        ]
+      ],
+      "pairedSyntheticUsage": false,
+      "expectedError": null,
+      "note": null,
+      "expectedSkippedRecords": 0,
+      "raw": {
+        "bytes": 57348,
+        "sha256": "88cf98f32f71aa766bf77f2c3aec5ae39424a47825adb1a96743f1dcf842edcd"
+      },
+      "gzip": {
+        "bytes": 323,
+        "sha256": "d806553139bc36fb6c62f35a6c7b94de1b4af590a91aabe56f6948bf28c742a2"
+      }
+    },
+    {
+      "name": "previous-response-same",
+      "file": "previous-response-same.jsonl.gz",
+      "unresolvedPaths": [
+        [
+          "previous_response_id"
+        ],
+        [
+          "previous_response_id"
+        ]
+      ],
+      "pairedSyntheticUsage": false,
+      "expectedError": null,
+      "note": null,
+      "expectedSkippedRecords": 0,
+      "raw": {
+        "bytes": 57348,
+        "sha256": "5ff9f583f6437a71de571d6239f95523e5d12f33e5449a209ca857371fb575be"
+      },
+      "gzip": {
+        "bytes": 320,
+        "sha256": "1e3b83c176450bcd87e7d7b31cf148ae38ee7a3cafb30ed3569645db15c32dd2"
+      }
+    },
+    {
+      "name": "conversation-change",
+      "file": "conversation-change.jsonl.gz",
+      "unresolvedPaths": [
+        [
+          "conversation"
+        ],
+        [
+          "conversation"
+        ]
+      ],
+      "pairedSyntheticUsage": false,
+      "expectedError": null,
+      "note": null,
+      "expectedSkippedRecords": 0,
+      "raw": {
+        "bytes": 57332,
+        "sha256": "9443e1205904114ce353d1c319f76c4909823bfe095c519c0944e6a347819040"
+      },
+      "gzip": {
+        "bytes": 317,
+        "sha256": "32ed7b2fc59b0a3774c1361265cce25bbd670a3eda3708f6ca8c3698c71b4f66"
+      }
+    },
+    {
+      "name": "conversation-object",
+      "file": "conversation-object.jsonl.gz",
+      "unresolvedPaths": [
+        [
+          "conversation"
+        ],
+        [
+          "conversation"
+        ]
+      ],
+      "pairedSyntheticUsage": false,
+      "expectedError": null,
+      "note": null,
+      "expectedSkippedRecords": 0,
+      "raw": {
+        "bytes": 57339,
+        "sha256": "bf0ac3a758e363cb88b6501a52ed970b5dbd661e6aa5b1b70ec1e1dfb3fc4267"
+      },
+      "gzip": {
+        "bytes": 324,
+        "sha256": "7bf14488152ef38782626a6d34a66030709d0ca718495a691bcb41fae8568975"
+      }
+    },
+    {
+      "name": "prompt-template-change",
+      "file": "prompt-template-change.jsonl.gz",
+      "unresolvedPaths": [
+        [
+          "prompt"
+        ],
+        [
+          "prompt"
+        ]
+      ],
+      "pairedSyntheticUsage": false,
+      "expectedError": null,
+      "note": null,
+      "expectedSkippedRecords": 0,
+      "raw": {
+        "bytes": 57413,
+        "sha256": "050f1225722d4257f0f0621f2ed7201d9eb1f26a7801e005575e916d732aeb11"
+      },
+      "gzip": {
+        "bytes": 347,
+        "sha256": "c3b9c1aab0afb67ae7b49981128f8016eeee5c301724f255f4ea40a5fca41cb2"
+      }
+    },
+    {
+      "name": "prompt-variable-change",
+      "file": "prompt-variable-change.jsonl.gz",
+      "unresolvedPaths": [
+        [
+          "prompt"
+        ],
+        [
+          "prompt"
+        ]
+      ],
+      "pairedSyntheticUsage": false,
+      "expectedError": null,
+      "note": null,
+      "expectedSkippedRecords": 0,
+      "raw": {
+        "bytes": 57405,
+        "sha256": "b238bb5f80621355eb74b129f9b623c55381f9ba514d5b6d22e8a152d5bacbfe"
+      },
+      "gzip": {
+        "bytes": 345,
+        "sha256": "550b43075f724fbe196a8863fac1e8abc6ddebe8c8d69e370552102edaa8bc9a"
+      }
+    },
+    {
+      "name": "item-reference-change",
+      "file": "item-reference-change.jsonl.gz",
+      "unresolvedPaths": [
+        [
+          "input[0]"
+        ],
+        [
+          "input[0]"
+        ]
+      ],
+      "pairedSyntheticUsage": false,
+      "expectedError": null,
+      "note": null,
+      "expectedSkippedRecords": 0,
+      "raw": {
+        "bytes": 57418,
+        "sha256": "c27c874c8e6035219fea5e6de6bb30aeefab6d264e165f3e3720ad163ee9c8b1"
+      },
+      "gzip": {
+        "bytes": 343,
+        "sha256": "c39a3a98a11827004e8ea3e9e0b2fe77326ef145e0866b99d3234f1127c2fd92"
+      }
+    },
+    {
+      "name": "item-reference-defaults",
+      "file": "item-reference-defaults.jsonl.gz",
+      "unresolvedPaths": [
+        [
+          "input[0]"
+        ],
+        [
+          "input[0]"
+        ],
+        [
+          "input[0]"
+        ]
+      ],
+      "pairedSyntheticUsage": false,
+      "expectedError": null,
+      "note": null,
+      "expectedSkippedRecords": 0,
+      "raw": {
+        "bytes": 86091,
+        "sha256": "cf326a5e738538a981af3c727a6869ed2e8603999e8fee1c527a32735584b56c"
+      },
+      "gzip": {
+        "bytes": 438,
+        "sha256": "071f74cab95f383ea57f7c2636643b8f0b3476242e7ade3d9d0017999552f238"
+      }
+    },
+    {
+      "name": "item-reference-only",
+      "file": "item-reference-only.jsonl.gz",
+      "unresolvedPaths": [
+        [
+          "input[0]"
+        ],
+        [
+          "input[0]"
+        ]
+      ],
+      "pairedSyntheticUsage": false,
+      "expectedError": null,
+      "note": null,
+      "expectedSkippedRecords": 0,
+      "raw": {
+        "bytes": 112,
+        "sha256": "2aa116a269b023bf6f3ab7c5b9e321129b75c9f1e5d3efc8c7037f230226eb41"
+      },
+      "gzip": {
+        "bytes": 80,
+        "sha256": "fa0ac81e9317d405ccce827493a154f93aa15c6abaf49c61079a391d491e36c4"
+      }
+    },
+    {
+      "name": "previous-response-only",
+      "file": "previous-response-only.jsonl.gz",
+      "unresolvedPaths": [
+        [
+          "previous_response_id"
+        ],
+        [
+          "previous_response_id"
+        ]
+      ],
+      "pairedSyntheticUsage": false,
+      "expectedError": null,
+      "note": "Defensive request-only reference control; SDK serialization does not establish live acceptance without new input.",
+      "expectedSkippedRecords": 0,
+      "raw": {
+        "bytes": 126,
+        "sha256": "ae8b0d0d103c9091454075f9b71ecc4a5c63a02d8bd1b8e997544b82c65d1c26"
+      },
+      "gzip": {
+        "bytes": 86,
+        "sha256": "d45f9e786df833cb8b8e8e3ee0ed4f91db5304aa58d160977eba097575bb0f64"
+      }
+    },
+    {
+      "name": "prompt-only",
+      "file": "prompt-only.jsonl.gz",
+      "unresolvedPaths": [
+        [
+          "prompt"
+        ],
+        [
+          "prompt"
+        ]
+      ],
+      "pairedSyntheticUsage": false,
+      "expectedError": null,
+      "note": null,
+      "expectedSkippedRecords": 0,
+      "raw": {
+        "bytes": 183,
+        "sha256": "b01f1bbade916907370f6fc5da6bc77a701671c7db979fe1e328ddbc2e6c92ec"
+      },
+      "gzip": {
+        "bytes": 110,
+        "sha256": "7124a9a9ab14134e788b192fd4ec8e55fd0b1eaefa9e704b209509cc40017376"
+      }
+    },
+    {
+      "name": "encrypted-reasoning",
+      "file": "encrypted-reasoning.jsonl.gz",
+      "unresolvedPaths": [
+        [
+          "input[0]"
+        ],
+        [
+          "input[0]"
+        ]
+      ],
+      "pairedSyntheticUsage": false,
+      "expectedError": null,
+      "note": "Opaque strings are synthetic, not valid provider ciphertext or equal-plaintext claims.",
+      "expectedSkippedRecords": 0,
+      "raw": {
+        "bytes": 61013,
+        "sha256": "a75f35e37710befcee40a3567fc6c4f9a02544b61a649bfe0630454a148e20ba"
+      },
+      "gzip": {
+        "bytes": 416,
+        "sha256": "b6cd180dcbd5a7849a1f8f77c51a249e86d30b280810379727c23f65937738ad"
+      }
+    },
+    {
+      "name": "reasoning-summary-only",
+      "file": "reasoning-summary-only.jsonl.gz",
+      "unresolvedPaths": [
+        [
+          "input[0]"
+        ],
+        [
+          "input[0]"
+        ]
+      ],
+      "pairedSyntheticUsage": false,
+      "expectedError": null,
+      "note": "A summary and item ID do not expose the full referenced reasoning context.",
+      "expectedSkippedRecords": 0,
+      "raw": {
+        "bytes": 57532,
+        "sha256": "78c3c9de4f5972f30d4a357878c5411b3bb8e0607c54417e56427b3db93f7061"
+      },
+      "gzip": {
+        "bytes": 364,
+        "sha256": "260aae8e122ef02ef4a4743f36ce47a0ebfb200f4793486929edc784b4530c59"
+      }
+    },
+    {
+      "name": "compaction",
+      "file": "compaction.jsonl.gz",
+      "unresolvedPaths": [
+        [
+          "input[0]"
+        ],
+        [
+          "input[0]"
+        ]
+      ],
+      "pairedSyntheticUsage": false,
+      "expectedError": null,
+      "note": "Synthetic opaque compaction payload, not valid provider ciphertext or live model acceptance evidence.",
+      "expectedSkippedRecords": 0,
+      "raw": {
+        "bytes": 57532,
+        "sha256": "101b403e9781eafe14ad3468a3b626620ed4076315a57629c5efcbd58fea95ce"
+      },
+      "gzip": {
+        "bytes": 368,
+        "sha256": "24fceea1d4d80071c4e0ea4578f01b87fac574cdb699600a5211b39107ec781d"
+      }
+    },
+    {
+      "name": "reported-usage",
+      "file": "reported-usage.jsonl.gz",
+      "unresolvedPaths": [
+        [
+          "previous_response_id"
+        ],
+        [
+          "previous_response_id"
+        ]
+      ],
+      "pairedSyntheticUsage": true,
+      "expectedError": null,
+      "note": null,
+      "expectedSkippedRecords": 0,
+      "raw": {
+        "bytes": 57722,
+        "sha256": "5d48a1310ef08a2fd9367a5b12294878af656c18201293de91d417cafa57bf0b"
+      },
+      "gzip": {
+        "bytes": 418,
+        "sha256": "2438ddb0cf4856131b679d0782031775c3f8c977c05da29c7e5c81a3b505097c"
+      }
+    },
+    {
+      "name": "mixed-known-unknown",
+      "file": "mixed-known-unknown.jsonl.gz",
+      "unresolvedPaths": [
+        [],
+        [
+          "previous_response_id"
+        ],
+        []
+      ],
+      "pairedSyntheticUsage": false,
+      "expectedError": null,
+      "note": null,
+      "expectedSkippedRecords": 0,
+      "raw": {
+        "bytes": 85936,
+        "sha256": "9c90ae087863f900a8e31e1f5e90de08a9d87de239219333f9e7d63c4aa6d420"
+      },
+      "gzip": {
+        "bytes": 404,
+        "sha256": "c8193f497915f75676cc92c81abbec27b68e1a9070e0c9504f9beebd29e9c68d"
+      }
+    },
+    {
+      "name": "store-control",
+      "file": "store-control.jsonl.gz",
+      "unresolvedPaths": [
+        [],
+        [],
+        []
+      ],
+      "pairedSyntheticUsage": false,
+      "expectedError": null,
+      "note": null,
+      "expectedSkippedRecords": 0,
+      "raw": {
+        "bytes": 85920,
+        "sha256": "8d90494765ce9a3ead120947a99d9257d69c2e110e45bf00d95d01311b5216bf"
+      },
+      "gzip": {
+        "bytes": 387,
+        "sha256": "432cec501969b390805ec7593f4f7eae8793625c741d63091c4a4c79d2b9128e"
+      }
+    },
+    {
+      "name": "null-control",
+      "file": "null-control.jsonl.gz",
+      "unresolvedPaths": [
+        [],
+        []
+      ],
+      "pairedSyntheticUsage": false,
+      "expectedError": null,
+      "note": null,
+      "expectedSkippedRecords": 0,
+      "raw": {
+        "bytes": 57324,
+        "sha256": "c177e2688636c35eb4ddaa8aeff45ef1b92df77593ba695f30714ded28d6e59d"
+      },
+      "gzip": {
+        "bytes": 329,
+        "sha256": "bf5df0a247f2471848ec579a3e9bbf70f23fc22ccc8190e2c3727ccf7f7e5581"
+      }
+    },
+    {
+      "name": "literal-control",
+      "file": "literal-control.jsonl.gz",
+      "unresolvedPaths": [
+        [],
+        []
+      ],
+      "pairedSyntheticUsage": false,
+      "expectedError": null,
+      "note": null,
+      "expectedSkippedRecords": 0,
+      "raw": {
+        "bytes": 57620,
+        "sha256": "3b8a84c395df31c3b9889ef70553312d561d48474ec1c5ed1a1a3f28e5c88a78"
+      },
+      "gzip": {
+        "bytes": 374,
+        "sha256": "933bea575affe49fc39e96a90bfe52bcff7875a775fc3576c0fd1f6ba4541416"
+      }
+    },
+    {
+      "name": "invalid-mutual-state",
+      "file": "invalid-mutual-state.jsonl.gz",
+      "unresolvedPaths": [],
+      "pairedSyntheticUsage": false,
+      "expectedError": "cannot combine",
+      "note": null,
+      "expectedSkippedRecords": 0,
+      "raw": {
+        "bytes": 28709,
+        "sha256": "47106f89212fe0af83855e0b980015ed46729952d4fae26819fb9529bc7360b8"
+      },
+      "gzip": {
+        "bytes": 248,
+        "sha256": "e72b9fc8282f874870b1bf8e970fbc3c1c5287d2804ad442fcbb3b0cf4083c02"
+      }
+    },
+    {
+      "name": "invalid-identifier",
+      "file": "invalid-identifier.jsonl.gz",
+      "unresolvedPaths": [],
+      "pairedSyntheticUsage": false,
+      "expectedError": "string",
+      "note": null,
+      "expectedSkippedRecords": 0,
+      "raw": {
+        "bytes": 28657,
+        "sha256": "12dfc067749a6a99b964bb266b054623d6e3b8bb661af76d00cbe58e1dbd86cb"
+      },
+      "gzip": {
+        "bytes": 215,
+        "sha256": "6024e692b0b1786351e616c9b34a232d5f13fd2c8432b3234a9cf5b5f227c431"
+      }
+    },
+    {
+      "name": "response-object-control",
+      "file": "response-object-control.jsonl.gz",
+      "unresolvedPaths": [
+        [],
+        []
+      ],
+      "pairedSyntheticUsage": false,
+      "expectedError": null,
+      "note": null,
+      "expectedSkippedRecords": 1,
+      "raw": {
+        "bytes": 29206,
+        "sha256": "9af1da848f25dfe19da1e716a78a9448ac63c3b0eb0b83fbdbe0897e24693f01"
+      },
+      "gzip": {
+        "bytes": 478,
+        "sha256": "4338efc5977263a32745e234b8d181a58e428de64dfa49fb649aa62ca4113868"
+      }
+    }
+  ]
+}
