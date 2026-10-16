@@ -17,6 +17,24 @@ This is a source correction. Publication, installed-artifact and public-demo
 verification are recorded separately as they are completed. No npm release is
 performed by this study.
 
+The [clean-artifact receipt](results/verification.json) pins tested source
+`b1f31649bb09a0c6b4bf8c9d5ad9d83882e664b7`: a fresh install, lint,
+typecheck, 625 unit checks, production build and 114 browser checks passed.
+All 22 reports from the clean build and the separately installed package on
+Node 20.0.0/24.21.0 are byte-identical. The actual executable writes matching
+JSON/HTML and refuses invalid controls without replacing an existing output.
+The receipt compares 117 source inputs, 105 installed files and 42 locally
+served production files. These package checks install a locally built tarball;
+they do not establish a new registry release.
+
+The [before/after browser receipt](results/browser.json) retains twelve complete
+export workflows per phase in Chromium/Firefox at 1440px dark and 375px light.
+The first import happens after disconnecting. Original downloads, rejected-import
+retention and ordinary-text recovery pass; no page exceptions, accessibility
+violations, page overflow or HTTP requests after disconnecting were observed.
+CLI HTML on both supported runtimes matches the actual browser HTML downloads
+after replacing only their generation timestamp.
+
 ## What is unresolved?
 
 | Native request unit | Preserved evidence | Local treatment |
@@ -51,8 +69,10 @@ OpenAI's [conversation-state guide](https://developers.openai.com/api/docs/guide
 describes durable conversations and previously stored response context. The
 [Responses migration guide](https://developers.openai.com/api/docs/guides/migrate-to-responses#3-update-multi-turn-conversations)
 explains that prior input remains billable when using a previous response.
-[Reusable prompts](https://developers.openai.com/api/docs/guides/text?api-mode=responses#version-prompts-in-code)
-are server-side templates. The native SDK contracts and actual request bytes
+[The prompt-object migration guide](https://developers.openai.com/api/docs/guides/prompting/migrate-from-prompt-object)
+shows the server-side templates present in existing/historical captures; this
+analyzer is not recommending that deprecated API for new integrations.
+The native SDK contracts and actual request bytes
 establish the serialized reference shapes. Checked 2026-10-16.
 
 ## Controlled evidence

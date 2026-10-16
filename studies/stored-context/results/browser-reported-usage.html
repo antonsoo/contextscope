@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>contextscope report — openai</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 15px/1.5 ui-monospace, "IBM Plex Mono", "SFMono-Regular", Menlo, monospace; background: #0d0f13; color: #dfe3ea; max-width: 980px; margin: 0 auto; padding: 32px 20px 80px; }
+  @media (prefers-color-scheme: light) { body { background: #f5f4f0; color: #1b1f27; } }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  h2 { font-size: 16px; margin: 32px 0 0; }
+  h3 { font-size: 15px; margin: 0 0 8px; }
+  .muted { color: #929aaa; font-size: 13px; }
+  a { color: #7fb6fa; }
+  @media (prefers-color-scheme: light) { .muted { color: #5c6270; } a { color: #1b5dad; } }
+  .card { border: 1px solid rgba(127,127,127,.3); border-radius: 6px; padding: 16px; margin: 16px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { text-align: left; padding: 4px 8px; border-bottom: 1px solid rgba(127,127,127,.2); }
+  .swatch { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; }
+  ul.findings { list-style: none; padding: 0; }
+  li.finding { border-left: 3px solid #7c8494; padding: 8px 12px; margin: 8px 0; }
+  li.finding.error { border-color: #e34948; }
+  li.finding.warning { border-color: #eda100; }
+  li.finding.info { border-color: #2a78d6; }
+  .pill { text-transform: uppercase; font-size: 10px; letter-spacing: .05em; opacity: .7; }
+  .savings { color: #1baf7a; font-weight: bold; }
+  @media (prefers-color-scheme: light) { .savings { color: #08764f; } }
+  .table-scroll { overflow-x: auto; margin: 12px 0; }
+  .table-scroll:focus-visible, summary:focus-visible, a:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+  .usage-evidence { border-top: 1px solid rgba(127,127,127,.3); padding: 12px 0; scroll-margin-top: 12px; }
+  .usage-evidence code { overflow-wrap: anywhere; }
+  .usage-evidence summary { cursor: pointer; }
+  .card > h2 { margin-top: 0; }
+</style></head>
+<body><main>
+  <h1>contextscope report</h1>
+  <p class="muted">openai · 2 request(s) · format auto-detected · priced as GPT-5.1 · generated 2026-10-16T19:18:44.671Z</p>
+  <section class="card"><h2>Parse notes</h2><ul><li>Requests 1–2 continue a stored response or conversation (previous_response_id, conversation), so their earlier turns live on OpenAI's servers, not in this file. Visible segments retain their text counts; whole-request totals, context usage and sequence cache estimates are unavailable.</li></ul></section>
+
+  <p class="muted">Legacy OpenAI caching is an optimistic approximation: visible prefixes of at least 1,024 tokens, reads rounded to 128. Actual thresholds and hidden breakpoint intervals depend on request settings; no write premium is modeled.</p>
+  <section class="card"><h2>Reported usage vs simulation</h2>
+    <p>Each total compares the same covered requests. Delta = estimate/simulation minus reported. Missing or invalid counts are n/a, never zero.</p>
+    <div class="table-scroll" tabindex="0" role="group" aria-label="Usage totals"><table><thead><tr><th scope="col">Metric</th><th scope="col">Coverage</th><th scope="col">Reported</th><th scope="col">Estimated / simulated</th><th scope="col">Delta</th></tr></thead><tbody><tr><th scope="row">Input tokens</th><td>2/2</td><td>24,000</td><td>n/a</td><td>n/a</td></tr><tr><th scope="row">Cache reads</th><td>2/2</td><td>400</td><td>n/a</td><td>n/a</td></tr></tbody></table></div>
+    <p>0 simulated hit / reported zero; 0 reported hit / simulated zero. 2 read comparison unavailable. 0 invalid usage record(s) excluded.</p>
+    
+    <p class="muted">Counts do not establish a cause: cache routing, eviction, timing and hidden context are not captured. Reuse on both sides does not mean the token counts agree. Reported writes are retained below; local cache costs are unavailable.</p>
+    
+    <div class="table-scroll" tabindex="0" role="group" aria-label="Per-request usage comparison"><table><thead><tr><th scope="col">Request / source</th><th scope="col">Reported input</th><th scope="col">Estimated input</th><th scope="col">Reported read</th><th scope="col">Simulated read</th><th scope="col">Read comparison</th></tr></thead><tbody><tr><th scope="row"><a href="#usage-0">req 1</a><br>line 1</th><td>12,000</td><td>n/a</td><td>0</td><td>n/a</td><td>Read comparison unavailable</td></tr><tr><th scope="row"><a href="#usage-1">req 2</a><br>line 2</th><td>12,000</td><td>n/a</td><td>400</td><td>n/a</td><td>Read comparison unavailable</td></tr></tbody></table></div>
+    <h3>Original counters</h3><details id="usage-0" class="usage-evidence"><summary>Request 1 · line 1 · valid</summary>
+      
+      <p>openai-responses; source: response.usage. Reported input: 12,000; cache reads: 0; cache writes: n/a; output: 10.</p>
+      
+      
+      <div class="table-scroll" tabindex="0" role="group" aria-label="Source counters for request 1"><table><thead><tr><th scope="col">Original counter path</th><th scope="col">Value / state</th></tr></thead><tbody><tr><th scope="row"><code>response.usage.input_tokens</code></th><td>12,000</td></tr><tr><th scope="row"><code>response.usage.output_tokens</code></th><td>10</td></tr><tr><th scope="row"><code>response.usage.input_tokens_details.cached_tokens</code></th><td>0</td></tr><tr><th scope="row"><code>response.usage.input_tokens_details.cache_write_tokens</code></th><td>missing</td></tr><tr><th scope="row"><code>response.usage.total_tokens</code></th><td>12,010</td></tr></tbody></table></div>
+    </details><details id="usage-1" class="usage-evidence"><summary>Request 2 · line 2 · valid</summary>
+      
+      <p>openai-responses; source: response.usage. Reported input: 12,000; cache reads: 400; cache writes: n/a; output: 10.</p>
+      
+      
+      <div class="table-scroll" tabindex="0" role="group" aria-label="Source counters for request 2"><table><thead><tr><th scope="col">Original counter path</th><th scope="col">Value / state</th></tr></thead><tbody><tr><th scope="row"><code>response.usage.input_tokens</code></th><td>12,000</td></tr><tr><th scope="row"><code>response.usage.output_tokens</code></th><td>10</td></tr><tr><th scope="row"><code>response.usage.input_tokens_details.cached_tokens</code></th><td>400</td></tr><tr><th scope="row"><code>response.usage.input_tokens_details.cache_write_tokens</code></th><td>missing</td></tr><tr><th scope="row"><code>response.usage.total_tokens</code></th><td>12,010</td></tr></tbody></table></div>
+    </details>
+  </section>
+
+  <section class="card">
+    <h2>Findings (1 issue from 2 findings)</h2>
+    <ul class="findings"><li class="finding warning"><span class="pill">warning</span> <strong>Stored or opaque context is unresolved</strong> <span class="muted">(requests 1, 2, 2×)</span><p>These units reference stored responses, conversations, prompt templates or input items, or contain opaque reasoning/compaction history. The file does not supply their complete resolved prompt. Visible text segments retain their counts, but whole-request totals and context usage are unavailable. Cache partitions and costs are unavailable for the whole sequence. Nothing is fetched or reconstructed from an ID, summary or ciphertext. Original units and captured usage remain inspectable; no comparison is invented for an unavailable side.</p></li></ul>
+  </section>
+
+  <section class="card">
+    <h2>Cache simulation (openai)</h2>
+    <p class="muted">Stored or opaque context cannot be reconstructed from these records. Whole-request cache token partitions and costs are unavailable for this sequence; visible text matches do not establish the resolved prompt or prior cache entries.</p>
+    <div class="table-scroll" tabindex="0" role="group" aria-label="Cache simulation"><table><thead><tr><th>request</th><th>mode</th><th>read</th><th>write 30m</th><th>uncached</th><th>cost</th></tr></thead><tbody><tr><td>req 1</td><td>legacy</td><td>n/a</td><td>n/a</td><td>n/a</td><td>n/a</td></tr><tr><td>req 2</td><td>legacy</td><td>n/a</td><td>n/a</td><td>n/a</td><td>n/a</td></tr></tbody></table></div>
+    <p class="muted">total simulated: n/a · optimized simulated: n/a</p>
+    
+  </section>
+
+  
+
+
+  <h2>Requests</h2>
+  <section class="card"><h3>Request 1 · GPT-5.1</h3>
+        <p class="muted">Claude tokens unavailable · OpenAI tokens unavailable</p>
+        <div class="table-scroll" tabindex="0" role="group" aria-label="Token categories for request 1"><table><thead><tr><th>category</th><th>segments</th><th>≈Claude tok</th><th>OpenAI tok</th></tr></thead><tbody><tr><td><span class="swatch" style="background:#1baf7a"></span>user</td><td>1</td><td>8,667</td><td>5,201</td></tr><tr><td><span class="swatch" style="background:currentColor"></span>reference</td><td>1</td><td>n/a</td><td>n/a</td></tr></tbody></table></div>
+      </section>
+<section class="card"><h3>Request 2 · GPT-5.1</h3>
+        <p class="muted">Claude tokens unavailable · OpenAI tokens unavailable</p>
+        <div class="table-scroll" tabindex="0" role="group" aria-label="Token categories for request 2"><table><thead><tr><th>category</th><th>segments</th><th>≈Claude tok</th><th>OpenAI tok</th></tr></thead><tbody><tr><td><span class="swatch" style="background:#1baf7a"></span>user</td><td>1</td><td>8,667</td><td>5,201</td></tr><tr><td><span class="swatch" style="background:currentColor"></span>reference</td><td>1</td><td>n/a</td><td>n/a</td></tr></tbody></table></div>
+      </section>
+
+  <p class="muted">Generated by <a href="https://github.com/antonsoo/contextscope">contextscope</a>. Claude token counts are heuristic estimates (≈), not exact.</p>
+</main></body></html>

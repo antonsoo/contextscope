@@ -5,6 +5,10 @@ commit or local package test does not establish what the registry or public
 site serves. Each study retains its tested revision and its verification scope.
 No new npm release was performed for the corrections listed here.
 
+The current source also preserves [unresolved OpenAI stored context](../studies/stored-context/README.md).
+Its clean build, installed package and offline browser workflows are verified;
+the public-demo receipt below predates this additional repair.
+
 | Current source and demo capability | Retained evidence |
 | --- | --- |
 | First local import and exports work offline after intake is ready; failed preparation can retry | [Startup and worker recovery](../studies/first-offline/README.md) |

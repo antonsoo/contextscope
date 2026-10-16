@@ -1,0 +1,319 @@
+{
+  "parse": {
+    "format": "openai",
+    "complete": true,
+    "sourceRecords": 2,
+    "skippedRecords": 0,
+    "autoDetected": true,
+    "requests": [
+      {
+        "provider": "openai",
+        "index": 0,
+        "model": "gpt-5.1",
+        "source": {
+          "recordIndex": 0,
+          "line": 1
+        },
+        "segments": [
+          {
+            "id": "previous_response_id",
+            "category": "reference",
+            "label": "stored response reference",
+            "path": "previous_response_id",
+            "openaiTokens": null,
+            "claudeTokensEstimate": null,
+            "unmodeledContext": "previous_response",
+            "charLength": 0
+          },
+          {
+            "id": "input",
+            "category": "user",
+            "label": "input (user) text",
+            "path": "input",
+            "openaiTokens": 5201,
+            "claudeTokensEstimate": 8667,
+            "charLength": 28600
+          }
+        ]
+      },
+      {
+        "provider": "openai",
+        "index": 1,
+        "model": "gpt-5.1",
+        "source": {
+          "recordIndex": 1,
+          "line": 2
+        },
+        "segments": [
+          {
+            "id": "previous_response_id",
+            "category": "reference",
+            "label": "stored response reference",
+            "path": "previous_response_id",
+            "openaiTokens": null,
+            "claudeTokensEstimate": null,
+            "unmodeledContext": "previous_response",
+            "charLength": 0
+          },
+          {
+            "id": "input",
+            "category": "user",
+            "label": "input (user) text",
+            "path": "input",
+            "openaiTokens": 5201,
+            "claudeTokensEstimate": 8667,
+            "charLength": 28600
+          }
+        ]
+      }
+    ],
+    "warnings": [
+      {
+        "requestIndex": 0,
+        "message": "Requests 1–2 continue a stored response or conversation (previous_response_id, conversation), so their earlier turns live on OpenAI's servers, not in this file. Visible segments retain their text counts; whole-request totals, context usage and sequence cache estimates are unavailable."
+      }
+    ]
+  },
+  "model": {
+    "id": "gpt-5.1",
+    "displayName": "GPT-5.1",
+    "source": "request"
+  },
+  "claudeTokenScale": 1,
+  "reports": [
+    {
+      "requestIndex": 0,
+      "model": {
+        "id": "gpt-5.1",
+        "displayName": "GPT-5.1",
+        "source": "request"
+      },
+      "totals": {
+        "openaiTokens": null,
+        "claudeTokensEstimate": null
+      },
+      "byCategory": [
+        {
+          "category": "user",
+          "segmentCount": 1,
+          "openaiTokens": 5201,
+          "claudeTokensEstimate": 8667
+        },
+        {
+          "category": "reference",
+          "segmentCount": 1,
+          "openaiTokens": null,
+          "claudeTokensEstimate": null
+        }
+      ],
+      "segments": [
+        {
+          "id": "previous_response_id",
+          "category": "reference",
+          "label": "stored response reference",
+          "path": "previous_response_id",
+          "openaiTokens": null,
+          "claudeTokensEstimate": null,
+          "unmodeledContext": "previous_response",
+          "charLength": 0
+        },
+        {
+          "id": "input",
+          "category": "user",
+          "label": "input (user) text",
+          "path": "input",
+          "openaiTokens": 5201,
+          "claudeTokensEstimate": 8667,
+          "charLength": 28600
+        }
+      ],
+      "contextWindow": 400000
+    },
+    {
+      "requestIndex": 1,
+      "model": {
+        "id": "gpt-5.1",
+        "displayName": "GPT-5.1",
+        "source": "request"
+      },
+      "totals": {
+        "openaiTokens": null,
+        "claudeTokensEstimate": null
+      },
+      "byCategory": [
+        {
+          "category": "user",
+          "segmentCount": 1,
+          "openaiTokens": 5201,
+          "claudeTokensEstimate": 8667
+        },
+        {
+          "category": "reference",
+          "segmentCount": 1,
+          "openaiTokens": null,
+          "claudeTokensEstimate": null
+        }
+      ],
+      "segments": [
+        {
+          "id": "previous_response_id",
+          "category": "reference",
+          "label": "stored response reference",
+          "path": "previous_response_id",
+          "openaiTokens": null,
+          "claudeTokensEstimate": null,
+          "unmodeledContext": "previous_response",
+          "charLength": 0
+        },
+        {
+          "id": "input",
+          "category": "user",
+          "label": "input (user) text",
+          "path": "input",
+          "openaiTokens": 5201,
+          "claudeTokensEstimate": 8667,
+          "charLength": 28600
+        }
+      ],
+      "contextWindow": 400000
+    }
+  ],
+  "prefixMatches": [
+    {
+      "fromIndex": 0,
+      "toIndex": 1,
+      "relation": "rewrites",
+      "matchedSegments": 0,
+      "matchedOpenaiTokens": 0,
+      "matchedClaudeTokensEstimate": 0,
+      "divergedAt": {
+        "fromSegmentId": "previous_response_id",
+        "toSegmentId": "previous_response_id"
+      }
+    }
+  ],
+  "conversations": {
+    "count": 1,
+    "byRequest": [
+      0,
+      0
+    ]
+  },
+  "cacheSimulation": {
+    "provider": "openai",
+    "model": "gpt-5.1",
+    "actual": [
+      {
+        "requestIndex": 0,
+        "readTokens": null,
+        "writeTokens5m": null,
+        "writeTokens1h": null,
+        "uncachedTokens": null,
+        "unavailableReason": "Stored or opaque context cannot be reconstructed from these records. Whole-request cache token partitions and costs are unavailable for this sequence; visible text matches do not establish the resolved prompt or prior cache entries.",
+        "cacheMode": "legacy"
+      },
+      {
+        "requestIndex": 1,
+        "readTokens": null,
+        "writeTokens5m": null,
+        "writeTokens1h": null,
+        "uncachedTokens": null,
+        "unavailableReason": "Stored or opaque context cannot be reconstructed from these records. Whole-request cache token partitions and costs are unavailable for this sequence; visible text matches do not establish the resolved prompt or prior cache entries.",
+        "cacheMode": "legacy"
+      }
+    ],
+    "optimized": [
+      {
+        "requestIndex": 0,
+        "readTokens": null,
+        "writeTokens5m": null,
+        "writeTokens1h": null,
+        "uncachedTokens": null,
+        "unavailableReason": "Stored or opaque context cannot be reconstructed from these records. Whole-request cache token partitions and costs are unavailable for this sequence; visible text matches do not establish the resolved prompt or prior cache entries.",
+        "cacheMode": "legacy"
+      },
+      {
+        "requestIndex": 1,
+        "readTokens": null,
+        "writeTokens5m": null,
+        "writeTokens1h": null,
+        "uncachedTokens": null,
+        "unavailableReason": "Stored or opaque context cannot be reconstructed from these records. Whole-request cache token partitions and costs are unavailable for this sequence; visible text matches do not establish the resolved prompt or prior cache entries.",
+        "cacheMode": "legacy"
+      }
+    ],
+    "unavailableReason": "Stored or opaque context cannot be reconstructed from these records. Whole-request cache token partitions and costs are unavailable for this sequence; visible text matches do not establish the resolved prompt or prior cache entries."
+  },
+  "usageComparison": {
+    "rows": [
+      {
+        "requestIndex": 0,
+        "estimatedInputTokens": null,
+        "simulatedReadTokens": null,
+        "reportedInputTokens": null,
+        "reportedReadTokens": null,
+        "reportedWriteTokens": null,
+        "inputDeltaTokens": null,
+        "readDeltaTokens": null,
+        "readOutcome": "unavailable"
+      },
+      {
+        "requestIndex": 1,
+        "estimatedInputTokens": null,
+        "simulatedReadTokens": null,
+        "reportedInputTokens": null,
+        "reportedReadTokens": null,
+        "reportedWriteTokens": null,
+        "inputDeltaTokens": null,
+        "readDeltaTokens": null,
+        "readOutcome": "unavailable"
+      }
+    ],
+    "capturedRequests": 0,
+    "uncomparedRequestIndices": [],
+    "invalidRequestIndices": [],
+    "input": {
+      "requestIndices": [],
+      "reportedTokens": null,
+      "simulatedTokens": null,
+      "deltaTokens": null
+    },
+    "cacheRead": {
+      "requestIndices": [],
+      "reportedTokens": null,
+      "simulatedTokens": null,
+      "deltaTokens": null
+    },
+    "readOutcomes": {
+      "both_zero": 0,
+      "both_positive": 0,
+      "simulated_hit_reported_zero": 0,
+      "reported_hit_simulated_zero": 0,
+      "unavailable": 2
+    },
+    "issues": []
+  },
+  "findings": [
+    {
+      "kind": "openai_unmodeled_context",
+      "severity": "warning",
+      "requestIndex": 0,
+      "title": "Stored or opaque context is unresolved",
+      "detail": "These units reference stored responses, conversations, prompt templates or input items, or contain opaque reasoning/compaction history. The file does not supply their complete resolved prompt. Visible text segments retain their counts, but whole-request totals and context usage are unavailable. Cache partitions and costs are unavailable for the whole sequence. Nothing is fetched or reconstructed from an ID, summary or ciphertext. Original units and captured usage remain inspectable; no comparison is invented for an unavailable side.",
+      "segmentIds": [
+        "previous_response_id"
+      ]
+    },
+    {
+      "kind": "openai_unmodeled_context",
+      "severity": "warning",
+      "requestIndex": 1,
+      "title": "Stored or opaque context is unresolved",
+      "detail": "These units reference stored responses, conversations, prompt templates or input items, or contain opaque reasoning/compaction history. The file does not supply their complete resolved prompt. Visible text segments retain their counts, but whole-request totals and context usage are unavailable. Cache partitions and costs are unavailable for the whole sequence. Nothing is fetched or reconstructed from an ID, summary or ciphertext. Original units and captured usage remain inspectable; no comparison is invented for an unavailable side.",
+      "segmentIds": [
+        "previous_response_id"
+      ]
+    }
+  ],
+  "duplicates": []
+}

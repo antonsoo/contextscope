@@ -1,0 +1,538 @@
+{
+  "before": [
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "flows": [
+        {
+          "name": "previous-response-change",
+          "json": "ba876e22e49e95a2041ff96d69464186560d9412e06a4335f99e13bd4d1be5b4",
+          "html": "a8ae7f50ec890f54db21f2f9afc8ff0c9d6cc572d62b6c500052bbd90a40c316",
+          "reportMatchesCli": true,
+          "originalPreserved": false,
+          "totals": [
+            {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            },
+            {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "reported-usage",
+          "json": "7510e6f758e9753ec7c59fea61f45e4a6ec875cde3c633493ef15429f2dbf834",
+          "html": "b4897900cb820615a9c0db3b2b5d45af6efc78214bbeedcefd2cc6b1ed0f053b",
+          "reportMatchesCli": true,
+          "originalPreserved": false,
+          "totals": [
+            {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            },
+            {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "item-reference-only",
+          "json": "8672f2ea05edd29a9f47d86026662ac0ae3fe090ab0ea672f9f64f75cd3b631f",
+          "html": "a6ddb2912ee73877bc4c3b3f23558afa061637cee5a31878e58a9de9ec64cd7d",
+          "reportMatchesCli": true,
+          "originalPreserved": false,
+          "totals": [
+            {
+              "openaiTokens": 0,
+              "claudeTokensEstimate": 0
+            },
+            {
+              "openaiTokens": 0,
+              "claudeTokensEstimate": 0
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        }
+      ],
+      "textRecovery": true,
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    },
+    {
+      "engine": "chromium",
+      "width": 375,
+      "flows": [
+        {
+          "name": "previous-response-change",
+          "json": "ba876e22e49e95a2041ff96d69464186560d9412e06a4335f99e13bd4d1be5b4",
+          "html": "0663bea1be4e90e4244ae064ea73d40584c5a99f42facd2eb63c6d30f8209279",
+          "reportMatchesCli": true,
+          "originalPreserved": false,
+          "totals": [
+            {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            },
+            {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "reported-usage",
+          "json": "7510e6f758e9753ec7c59fea61f45e4a6ec875cde3c633493ef15429f2dbf834",
+          "html": "9bdb3c6510c7df7eaf4d2e055f0cc95e87b6b01b0c2cb1bef31b4b4a827f8dc9",
+          "reportMatchesCli": true,
+          "originalPreserved": false,
+          "totals": [
+            {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            },
+            {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "item-reference-only",
+          "json": "8672f2ea05edd29a9f47d86026662ac0ae3fe090ab0ea672f9f64f75cd3b631f",
+          "html": "3143635c0758c66eb73ba13117a24df78ada7b6f9fd226ea879d49ff86ea145b",
+          "reportMatchesCli": true,
+          "originalPreserved": false,
+          "totals": [
+            {
+              "openaiTokens": 0,
+              "claudeTokensEstimate": 0
+            },
+            {
+              "openaiTokens": 0,
+              "claudeTokensEstimate": 0
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        }
+      ],
+      "textRecovery": true,
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "flows": [
+        {
+          "name": "previous-response-change",
+          "json": "ba876e22e49e95a2041ff96d69464186560d9412e06a4335f99e13bd4d1be5b4",
+          "html": "1ca05038883c800eb7e39e6b25dcc53d45308a175c922ccd2f8ff64938931e6a",
+          "reportMatchesCli": true,
+          "originalPreserved": false,
+          "totals": [
+            {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            },
+            {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "reported-usage",
+          "json": "7510e6f758e9753ec7c59fea61f45e4a6ec875cde3c633493ef15429f2dbf834",
+          "html": "76b03938685529bee4253296fcc9e72d9445d8667b645faa1ae45b771d043cca",
+          "reportMatchesCli": true,
+          "originalPreserved": false,
+          "totals": [
+            {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            },
+            {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "item-reference-only",
+          "json": "8672f2ea05edd29a9f47d86026662ac0ae3fe090ab0ea672f9f64f75cd3b631f",
+          "html": "21c20190549c1103221194127120d107ad81d80db07f88ffac873a5b40a4b4aa",
+          "reportMatchesCli": true,
+          "originalPreserved": false,
+          "totals": [
+            {
+              "openaiTokens": 0,
+              "claudeTokensEstimate": 0
+            },
+            {
+              "openaiTokens": 0,
+              "claudeTokensEstimate": 0
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        }
+      ],
+      "textRecovery": true,
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    },
+    {
+      "engine": "firefox",
+      "width": 375,
+      "flows": [
+        {
+          "name": "previous-response-change",
+          "json": "ba876e22e49e95a2041ff96d69464186560d9412e06a4335f99e13bd4d1be5b4",
+          "html": "33450d2c63ebe587417685927d7dcc451e9d67fb24171ef1ff0721aba6adb383",
+          "reportMatchesCli": true,
+          "originalPreserved": false,
+          "totals": [
+            {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            },
+            {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "reported-usage",
+          "json": "7510e6f758e9753ec7c59fea61f45e4a6ec875cde3c633493ef15429f2dbf834",
+          "html": "0d5c531134e1244965a7b849d41db53a25bfbb763677f6fddc50b7a9135fef83",
+          "reportMatchesCli": true,
+          "originalPreserved": false,
+          "totals": [
+            {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            },
+            {
+              "openaiTokens": 5201,
+              "claudeTokensEstimate": 8667
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "item-reference-only",
+          "json": "8672f2ea05edd29a9f47d86026662ac0ae3fe090ab0ea672f9f64f75cd3b631f",
+          "html": "ce92467dd6890ee9003ca819fce93fab5e14d4fc5a7973831fb86ef9b4ae330a",
+          "reportMatchesCli": true,
+          "originalPreserved": false,
+          "totals": [
+            {
+              "openaiTokens": 0,
+              "claudeTokensEstimate": 0
+            },
+            {
+              "openaiTokens": 0,
+              "claudeTokensEstimate": 0
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        }
+      ],
+      "textRecovery": true,
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    }
+  ],
+  "after": [
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "flows": [
+        {
+          "name": "previous-response-change",
+          "json": "4f51b57e5cdfb14ad3dfbfaf453e8be7a810ca36c439286f5dc6124f93410db8",
+          "html": "f42782d6af4046bf318d78482fe59cae70b0882007fdee376a4bbf52332cef74",
+          "reportMatchesCli": true,
+          "originalPreserved": true,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "reported-usage",
+          "json": "309d60331225965befa91a080e798e3cd85f9d583f5a28c096cfa471d7dcb2c0",
+          "html": "4effc6eaab9173eab5e85844a3ced7952b7a88ac759373a3012bbb6548d803f9",
+          "reportMatchesCli": true,
+          "originalPreserved": true,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "item-reference-only",
+          "json": "f91b0922c625b96d393776ef6cf0a6115db4eb922be8444e34bc8b1ad4cfec0f",
+          "html": "933f45ee2198631a836d1130a7b250ac40d6e734cb7789b371b282dbfd5d6446",
+          "reportMatchesCli": true,
+          "originalPreserved": true,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        }
+      ],
+      "textRecovery": true,
+      "refusalPreservesWorkspace": true,
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    },
+    {
+      "engine": "chromium",
+      "width": 375,
+      "flows": [
+        {
+          "name": "previous-response-change",
+          "json": "4f51b57e5cdfb14ad3dfbfaf453e8be7a810ca36c439286f5dc6124f93410db8",
+          "html": "8a2a928790398be35cba1d0180c5666da8b96df4e559af4b7016a230c313a987",
+          "reportMatchesCli": true,
+          "originalPreserved": true,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "reported-usage",
+          "json": "309d60331225965befa91a080e798e3cd85f9d583f5a28c096cfa471d7dcb2c0",
+          "html": "4bff0e688803fadaf2ed6bacf0a8615d9d167b00b4eead51ebb47e80c9b30842",
+          "reportMatchesCli": true,
+          "originalPreserved": true,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "item-reference-only",
+          "json": "f91b0922c625b96d393776ef6cf0a6115db4eb922be8444e34bc8b1ad4cfec0f",
+          "html": "b7fac3851f1757d5144ccfe240c537c849a2010e4faf0989ea48d870a6e4f9bd",
+          "reportMatchesCli": true,
+          "originalPreserved": true,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        }
+      ],
+      "textRecovery": true,
+      "refusalPreservesWorkspace": true,
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "flows": [
+        {
+          "name": "previous-response-change",
+          "json": "4f51b57e5cdfb14ad3dfbfaf453e8be7a810ca36c439286f5dc6124f93410db8",
+          "html": "6171688029cd2e86c1974c07fd56b9ee9d082408383c0714206d56d5ac467e36",
+          "reportMatchesCli": true,
+          "originalPreserved": true,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "reported-usage",
+          "json": "309d60331225965befa91a080e798e3cd85f9d583f5a28c096cfa471d7dcb2c0",
+          "html": "3f412a9d4d04f8c3f071af15622f29d0b32bfa5b412ba8f086591af3e4eadcce",
+          "reportMatchesCli": true,
+          "originalPreserved": true,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "item-reference-only",
+          "json": "f91b0922c625b96d393776ef6cf0a6115db4eb922be8444e34bc8b1ad4cfec0f",
+          "html": "6fb729642c9dbc2017deb299d7841cc0189f79304fbce124a12639141b6c5d15",
+          "reportMatchesCli": true,
+          "originalPreserved": true,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        }
+      ],
+      "textRecovery": true,
+      "refusalPreservesWorkspace": true,
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    },
+    {
+      "engine": "firefox",
+      "width": 375,
+      "flows": [
+        {
+          "name": "previous-response-change",
+          "json": "4f51b57e5cdfb14ad3dfbfaf453e8be7a810ca36c439286f5dc6124f93410db8",
+          "html": "094322a83ef4e50e94b79f73a779275e9355506fb5f328fcdf76e292a0f3b8c2",
+          "reportMatchesCli": true,
+          "originalPreserved": true,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "reported-usage",
+          "json": "309d60331225965befa91a080e798e3cd85f9d583f5a28c096cfa471d7dcb2c0",
+          "html": "c393a1f6048c85f0887585d30853baa4e63ccb85e272cec48f10676b25cb36c2",
+          "reportMatchesCli": true,
+          "originalPreserved": true,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "item-reference-only",
+          "json": "f91b0922c625b96d393776ef6cf0a6115db4eb922be8444e34bc8b1ad4cfec0f",
+          "html": "992f32fa32eca5910104187711a003a6667a88c9e0c29da5603b9c270f312128",
+          "reportMatchesCli": true,
+          "originalPreserved": true,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        }
+      ],
+      "textRecovery": true,
+      "refusalPreservesWorkspace": true,
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    }
+  ]
+}
