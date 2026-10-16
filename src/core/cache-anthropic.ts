@@ -6,6 +6,7 @@ import { ContextScopeParseError } from "./parse-error.js";
 import { anthropicMessageCacheKey, anthropicMessageCacheScope, isAnthropicMessageSegment } from "./anthropic-cache-scope.js";
 import { anthropicSpeed, anthropicSpeedKey, anthropicSpeedMultiplier } from "./anthropic-speed.js";
 import { isRecord } from "./json-utils.js";
+import { anthropicReasoningKey } from "./anthropic-reasoning.js";
 
 /**
  * Simulates Anthropic prompt caching across a sequence of requests.
@@ -58,7 +59,10 @@ export function simulateAnthropicCacheSequence(
   const steps: CacheSimStep[] = [];
   // Speed changes preserve explicit tool entries but invalidate system and messages.
   // Tool choice / image presence further partition only the message cache.
-  const toolsWritten = new ModelScoped();
+  // Thinking/effort placement ahead of setup is model-specific. Keep a
+  // conservative all-level scope rather than inventing setup reuse; the
+  // corresponding finding explains that actual setup survival can differ.
+  const toolsByReasoning = new Map<string, ModelScoped>();
   const systemsWritten = new Map<string, ModelScoped>();
   const messagesWritten = new Map<string, ModelScoped>();
 
@@ -98,9 +102,13 @@ export function simulateAnthropicCacheSequence(
     const positions = anthropicPositions(segments);
     // Entries of another model are never visible: a cached prefix is that model's own state.
     const speed = anthropicSpeedKey(request);
-    const scope = JSON.stringify([speed, anthropicMessageCacheKey(anthropicMessageCacheScope(request))]);
-    let systemWritten = systemsWritten.get(speed);
-    if (!systemWritten) systemsWritten.set(speed, systemWritten = new ModelScoped());
+    const reasoning = anthropicReasoningKey(request);
+    const systemScope = JSON.stringify([reasoning, speed]);
+    const scope = JSON.stringify([systemScope, anthropicMessageCacheKey(anthropicMessageCacheScope(request))]);
+    let toolsWritten = toolsByReasoning.get(reasoning);
+    if (!toolsWritten) toolsByReasoning.set(reasoning, toolsWritten = new ModelScoped());
+    let systemWritten = systemsWritten.get(systemScope);
+    if (!systemWritten) systemsWritten.set(systemScope, systemWritten = new ModelScoped());
     let messageWritten = messagesWritten.get(scope);
     if (!messageWritten) messagesWritten.set(scope, messageWritten = new ModelScoped());
     const toolCached = toolsWritten.visibleTo(request.model);

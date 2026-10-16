@@ -8,6 +8,7 @@ import { comparisonKeys } from "./prefix.js";
 import { anthropicPositions } from "./anthropic-breakpoints.js";
 import { anthropicMessageCacheScope, isAnthropicMessageSegment } from "./anthropic-cache-scope.js";
 import { anthropicSpeed, anthropicSpeedKey, anthropicSpeedMultiplier } from "./anthropic-speed.js";
+import { anthropicReasoningScope } from "./anthropic-reasoning.js";
 
 function push(list: Finding[], f: Finding): void {
   list.push(f);
@@ -160,6 +161,17 @@ export function computeFindings(
     // A new conversation shares its predecessor's setup (tools and system prompt) and whatever
     // opening messages they have in common, not the rest of that other conversation.
     const prev = startsConversation ? setupOf(requests[from]!, match.matchedSegments) : requests[from]!;
+    if (provider === "anthropic" && request.segments.some((s) => s.cacheControl)) {
+      const before = anthropicReasoningScope(prev), after = anthropicReasoningScope(request);
+      const changed = [before.thinking !== after.thinking ? "thinking configuration" : "",
+        before.effort !== after.effort ? "output_config.effort" : ""].filter(Boolean);
+      if (changed.length) push(findings, {
+        kind: "anthropic_reasoning_cache_scope", severity: "info", requestIndex: i,
+        title: "Thinking or effort cache settings changed",
+        detail: `${changed.join(" and ")} differs between requests ${from + 1} and ${i + 1}. Anthropic documents that these changes invalidate message entries even when visible text is identical. Tool and system survival is model-specific: this simulation conservatively isolates all three cache levels rather than inferring the provider's hidden prompt placement. Actual setup reuse and costs may differ. An earlier request with the current settings can still supply a hit. Both scenarios keep these settings; documented mode and effort defaults are normalized only for recognized recorded models.`,
+        segmentIds: request.segments.filter((s) => s.cacheControl).map((s) => s.id),
+      });
+    }
     if (provider === "anthropic" && anthropicSpeedKey(prev) !== anthropicSpeedKey(request)) {
       push(findings, {
         kind: "anthropic_speed_cache_scope", severity: "info", requestIndex: i,

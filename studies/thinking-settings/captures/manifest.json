@@ -1,0 +1,169 @@
+{
+  "provenance": "Synthetic application requests captured as exact HTTP bodies from the actual SDK on a mock transport. No provider was contacted; reply usage zeros are mock data and are not retained as measurements.",
+  "python": "3.14.7",
+  "anthropic": "1.15.0",
+  "httpImplementation": "httpx2",
+  "httpVersion": "2.13.1",
+  "cases": [
+    {
+      "name": "budget-change",
+      "file": "budget-change.jsonl.gz",
+      "expectedReadBoundaries": [
+        "none",
+        "none",
+        "all"
+      ],
+      "rawBytes": 101304,
+      "rawSha256": "ddbacdd1979bfa05d86f704af350f3f2028c6b945894ca8d862dd46e95d097aa",
+      "gzipBytes": 1188,
+      "gzipSha256": "0ae547a6685ec4971e51a10de808240fc05e84920433f4cd9f929e821aeeff2e",
+      "note": "Message miss is documented; all-level isolation is a conservative model because setup survival is model-specific."
+    },
+    {
+      "name": "thinking-toggle",
+      "file": "thinking-toggle.jsonl.gz",
+      "expectedReadBoundaries": [
+        "none",
+        "none",
+        "all"
+      ],
+      "rawBytes": 101202,
+      "rawSha256": "31ed97433beb70ece4e0db3cd7863754047d58a8d524b12c8696b34f1b861ae7",
+      "gzipBytes": 1132,
+      "gzipSha256": "2483f74a8079f87542d59cd11f3b83f96b8ad57d9e1575685c63b0aa7e80d636",
+      "note": ""
+    },
+    {
+      "name": "effort-change",
+      "file": "effort-change.jsonl.gz",
+      "expectedReadBoundaries": [
+        "none",
+        "none",
+        "all"
+      ],
+      "rawBytes": 101342,
+      "rawSha256": "c490e181adc60845ef72225a1f01aa46becdefee5c8dcbd83bc842c522ab3dfa",
+      "gzipBytes": 1212,
+      "gzipSha256": "ddfd8602319982ebbd49d78f29862aac8cd8450a889d7cc5033edd5fd0fc3a39",
+      "note": ""
+    },
+    {
+      "name": "disabled-default",
+      "file": "disabled-default.jsonl.gz",
+      "expectedReadBoundaries": [
+        "none",
+        "all"
+      ],
+      "rawBytes": 67499,
+      "rawSha256": "5617efe41ed1149287ce014748558e2cd02a4208f46141e18d77b27aca088aa8",
+      "gzipBytes": 831,
+      "gzipSha256": "bf7c061262c0e241d36738868e22fea22dd4ee5c4440d217dcb58da859b174c0",
+      "note": ""
+    },
+    {
+      "name": "adaptive-default",
+      "file": "adaptive-default.jsonl.gz",
+      "expectedReadBoundaries": [
+        "none",
+        "all"
+      ],
+      "rawBytes": 67497,
+      "rawSha256": "21ff1046842a64cf97ecae2ff674c46e10a7d19683d00e1a805ff5b4ce048272",
+      "gzipBytes": 828,
+      "gzipSha256": "9c57b0042cad1a4dea643d69e2a40042c080fc6e63b26654f936fe51ccffa406",
+      "note": ""
+    },
+    {
+      "name": "adaptive-high-default",
+      "file": "adaptive-high-default.jsonl.gz",
+      "expectedReadBoundaries": [
+        "none",
+        "all"
+      ],
+      "rawBytes": 67499,
+      "rawSha256": "928135d87959a5da6e813276a3a3a442c5897722155509e0752fb84c7aeb1804",
+      "gzipBytes": 830,
+      "gzipSha256": "3af2310e6ffc22763e0e9199c6d4668152a8ce73614e2084f4811bda0f7ab3e9",
+      "note": ""
+    },
+    {
+      "name": "configuration-key-order",
+      "file": "configuration-key-order.jsonl.gz",
+      "expectedReadBoundaries": [
+        "none",
+        "all"
+      ],
+      "rawBytes": 67536,
+      "rawSha256": "9d51d5c07d56b72cbae9814a5411efed027af5f3f9a4106939be0a67dba00bbc",
+      "gzipBytes": 854,
+      "gzipSha256": "79fd372df90fd7371afcd5eac0e6eed78c32c699a431904519179fd6437c62ca",
+      "note": ""
+    },
+    {
+      "name": "output-limit-only",
+      "file": "output-limit-only.jsonl.gz",
+      "expectedReadBoundaries": [
+        "none",
+        "all"
+      ],
+      "rawBytes": 67435,
+      "rawSha256": "3cb6a1455de626a3f14103ed5db20986aeb4f26daadb91c8579f81f1c523d05d",
+      "gzipBytes": 795,
+      "gzipSha256": "902b47566054ba101dcac19071359ced6ec94595efcbae40f784a4b6f63c8022",
+      "note": ""
+    },
+    {
+      "name": "unchanged",
+      "file": "unchanged.jsonl.gz",
+      "expectedReadBoundaries": [
+        "none",
+        "all"
+      ],
+      "rawBytes": 67434,
+      "rawSha256": "984e35f5de4793765568adbe1032aabf35ca90371d46be4059173accf1132f5b",
+      "gzipBytes": 793,
+      "gzipSha256": "4e8b24b7b08fe38affb56a034ee9006a7e5e8764edef23deadafef0d2779cebd",
+      "note": ""
+    },
+    {
+      "name": "unknown-default",
+      "file": "unknown-default.jsonl.gz",
+      "expectedReadBoundaries": [
+        "none",
+        "none"
+      ],
+      "rawBytes": 67469,
+      "rawSha256": "8b7c261fbdff99717c54c9ef22cff4f1ae31aefb590c40f75521a239bf159014",
+      "gzipBytes": 806,
+      "gzipSha256": "48c742452d32fc1d454311cdd6d02fa9b78989f9e0e049c466361aca8b7d09e2",
+      "note": "Unknown model; SDK serialization does not establish provider acceptance or defaults."
+    },
+    {
+      "name": "message-effort-change",
+      "file": "message-effort-change.jsonl.gz",
+      "expectedReadBoundaries": [
+        "none",
+        "first-user",
+        "all"
+      ],
+      "rawBytes": 102068,
+      "rawSha256": "fb2bfef30111ab6def12da5d001d2b31cb5bbe54b05411248fb27278e9ecb1df",
+      "gzipBytes": 1390,
+      "gzipSha256": "42cf9c9d8749b9dbecb10d532d6857bca12a4b72e5c70a8451527711d52f69ca",
+      "note": "Beta per-message effort requires the appropriate header and supported platform/model; this capture verifies body serialization only."
+    },
+    {
+      "name": "message-effort-append",
+      "file": "message-effort-append.jsonl.gz",
+      "expectedReadBoundaries": [
+        "none",
+        "first-user"
+      ],
+      "rawBytes": 67676,
+      "rawSha256": "01493bddf22d0d85db34694bb3f1a3401eb0716cb832b86eac1e2b359ee0bba0",
+      "gzipBytes": 879,
+      "gzipSha256": "7dc5e9c8a084bbc903ce6f64a6802f78c79a4e1c6b48c3fafec76ef457b98681",
+      "note": ""
+    }
+  ]
+}

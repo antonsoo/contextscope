@@ -26,6 +26,15 @@ of public SWE-bench agent runs; see `studies/real-trajectories/`.
 
 ### Fixed
 
+- Keep Claude thinking and top-level effort configurations in separate cache
+  scopes, including in the optimized scenario. Normalize documented mode and
+  effort defaults from recorded model IDs; never borrow them from a pricing
+  fallback or override. Explain the conservative all-level isolation because
+  actual tool/system survival is model-specific. Retain empty Claude message
+  headers, including per-message effort, without inventing text tokens or a
+  cache marker target. SDK-body counterexamples and controls are retained in
+  `studies/thinking-settings/`. Source only; no npm release or deployment.
+
 - Prepare browser analysis code before enabling file intake, so the first local
   import and report downloads work offline without a warm-up analysis. Include
   presentation helpers in the initial bundle; retry startup after failed,

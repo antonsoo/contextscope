@@ -1,11 +1,18 @@
 import type { Segment } from "./types.js";
 import { isRecord } from "./json-utils.js";
 
+function isEmptyMessageHeader(segment: Segment): boolean {
+  if (!/^messages\[\d+\]\.content$/.test(segment.path) || !isRecord(segment.raw)) return false;
+  const content = segment.raw.content;
+  return content === null || content === "" || (Array.isArray(content) && content.length === 0);
+}
+
 /** Consecutive tool-use blocks and consecutive tool-result blocks each occupy one lookup position. */
 export function anthropicPositions(segments: readonly Segment[]): number[] {
   let position = -1;
   let run: "tool_call" | "tool_result" | undefined;
   return segments.map((segment) => {
+    if (isEmptyMessageHeader(segment)) { run = undefined; return position; }
     const kind = segment.category === "tool_call" || segment.category === "tool_result" ? segment.category : undefined;
     if (kind === undefined || kind !== run) position++;
     run = kind;
@@ -15,6 +22,9 @@ export function anthropicPositions(segments: readonly Segment[]): number[] {
 
 export function isCacheableSegment(segment: Segment): boolean {
   if (segment.category === "thinking") return false;
+  // A retained empty message header (for example, per-message effort) is
+  // structural evidence, not a content block where a marker may be placed.
+  if (isEmptyMessageHeader(segment)) return false;
   // An empty tool_result is still a block with routing information. Only empty
   // text is forbidden; counted text alone cannot decide whether a block exists.
   if (typeof segment.raw === "string") return segment.raw.length > 0;

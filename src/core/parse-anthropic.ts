@@ -162,6 +162,7 @@ export function parseAnthropicRequest(raw: unknown, index: number, counter: Toke
     }
     const role = typeof message["role"] === "string" ? message["role"] : "user";
     const content = message["content"];
+    const start = segments.length;
     const blocks: unknown[] = typeof content === "string" ? [{ type: "text", text: content }] : Array.isArray(content) ? content : [];
     if (content !== undefined && content !== null && typeof content !== "string" && !Array.isArray(content)) {
       const path = `messages[${mi}].content`;
@@ -282,6 +283,14 @@ export function parseAnthropicRequest(raw: unknown, index: number, counter: Toke
           );
       }
     });
+    // Empty effort-only system messages still alter the rendered history.
+    // Retain their header/boundary without inventing text tokens or a block
+    // eligible for a cache marker. This also preserves other empty roles.
+    if (segments.length === start && "content" in message) {
+      const path = `messages[${mi}].content`;
+      segments.push(seg({ id: path, category: roleCategory(role),
+        label: `message ${mi + 1} (${role}) empty content`, path, text: "", raw: message }));
+    }
   });
 
   attachPromptIdentity(obj, segments, "anthropic");

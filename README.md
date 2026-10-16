@@ -45,6 +45,16 @@ records remain inspectable through original-source downloads and report exports.
 [SDK captures, before/after replay and limits](studies/message-boundaries/README.md).
 This is a source correction; no npm release or hosted deployment is claimed.
 
+**Thinking and effort changes also affect Claude cache reuse in source.** The
+simulator previously predicted a full 10,151-token hit when only the thinking
+budget changed. It now keeps those configurations separate and explains its
+conservative treatment of tool/system entries. Empty effort-only system
+messages remain in the history, so changing one preserves the earlier prefix
+without making later messages look identical. The
+[SDK-body replay and offline exports](studies/thinking-settings/README.md)
+include unchanged/default-setting controls. These are modeled boundaries,
+not observed provider cache results; no npm release or deployment is claimed.
+
 ## On real agent trajectories
 
 The first measurement of contextscope against what a provider reported, not against
@@ -588,10 +598,14 @@ fixed hue order, so a color always means the same category.
   simulation in this source checkout; [accounting rules](docs/cache-accounting.md).
 - **Anthropic request-setting coverage is partial.** Message caches account for
   tool choice (including parallel-tool policy) and explicit image presence.
-  Speed changes isolate system/message entries. Model-specific thinking/effort changes, feature toggles that
-  alter provider-injected prompts, and images rendered from opaque documents
-  are not fully modeled. Compare captured usage before treating predictions
-  across those changes as evidence of a hit.
+  Speed changes isolate system/message entries. Thinking mode, budget and
+  top-level effort changes conservatively isolate all three levels; actual
+  tool/system survival is model-specific and may differ. Documented mode and
+  effort defaults use the recorded model, with no default inference for missing
+  or unknown IDs. Per-message effort remains part of the message prefix.
+  Feature toggles that alter provider-injected prompts, provider transformations
+  of thinking history, and images rendered from opaque documents are not fully
+  modeled. Compare captured usage before treating predictions as evidence of a hit.
 - **Server-side state is invisible.** A Responses API request that continues a
   stored response (`previous_response_id`) carries only its new input; the tool
   warns and analyzes what is in the file.
