@@ -1,0 +1,92 @@
+{
+  "model": "claude-sonnet-4-5",
+  "max_tokens": 64,
+  "tools": [
+    {
+      "name": "read_file",
+      "description": "Read the synthetic configuration fixture.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "path"
+        ]
+      }
+    }
+  ],
+  "messages": [
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_use",
+          "id": "fixture_0",
+          "name": "read_file",
+          "input": {
+            "path": "synthetic-settings.conf"
+          }
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "tool_result",
+          "tool_use_id": "fixture_0",
+          "content": "record_000=original\nrecord_001=original\nrecord_002=original\nrecord_003=original\nrecord_004=original\nrecord_005=original\nrecord_006=original\nrecord_007=original\nrecord_008=original\nrecord_009=original\nrecord_010=original\nrecord_011=original\nrecord_012=original\nrecord_013=original\nrecord_014=original\nrecord_015=original\nrecord_016=original\nrecord_017=original\nrecord_018=original\nrecord_019=original\nrecord_020=original\nrecord_021=original\nrecord_022=original\nrecord_023=original\nrecord_024=original\nrecord_025=original\nrecord_026=original\nrecord_027=original\nrecord_028=original\nrecord_029=original\nrecord_030=original\nrecord_031=original\nrecord_032=original\nrecord_033=original\nrecord_034=original\nrecord_035=original\nrecord_036=original\nrecord_037=original\nrecord_038=original\nrecord_039=original\nrecord_040=original\nrecord_041=original\nrecord_042=original\nrecord_043=original\nrecord_044=original\nrecord_045=original\nrecord_046=original\nrecord_047=original\nrecord_048=original\nrecord_049=original\nrecord_050=original\nrecord_051=original\nrecord_052=original\nrecord_053=original\nrecord_054=original\nrecord_055=original\nrecord_056=original\nrecord_057=original\nrecord_058=original\nrecord_059=original\nrecord_060=original\nrecord_061=original\nrecord_062=original\nrecord_063=original\nrecord_064=original\nrecord_065=original\nrecord_066=original\nrecord_067=original\nrecord_068=original\nrecord_069=original\nrecord_070=original\nrecord_071=original\nrecord_072=original\nrecord_073=original\nrecord_074=original\nrecord_075=original\nrecord_076=original\nrecord_077=original\nrecord_078=original\nrecord_079=original\nrecord_080=original\nrecord_081=original\nrecord_082=original\nrecord_083=original\nrecord_084=original\nrecord_085=original\nrecord_086=original\nrecord_087=original\nrecord_088=original\nrecord_089=original\nrecord_090=original\nrecord_091=original\nrecord_092=original\nrecord_093=original\nrecord_094=original\nrecord_095=original\nrecord_096=original\nrecord_097=original\nrecord_098=original\nrecord_099=original\nrecord_100=original\nrecord_101=original\nrecord_102=original\nrecord_103=original\nrecord_104=original\nrecord_105=original\nrecord_106=original\nrecord_107=original\nrecord_108=original\nrecord_109=original\nrecord_110=original\nrecord_111=original\nrecord_112=original\nrecord_113=original\nrecord_114=original\nrecord_115=original\nrecord_116=original\nrecord_117=original\nrecord_118=original\nrecord_119=original\nrecord_120=original\nrecord_121=original\nrecord_122=original\nrecord_123=original\nrecord_124=original\nrecord_125=original\nrecord_126=original\nrecord_127=original\nrecord_128=original\nrecord_129=original\nrecord_130=original\nrecord_131=original\nrecord_132=original\nrecord_133=original\nrecord_134=original\nrecord_135=original\nrecord_136=original\nrecord_137=original\nrecord_138=original\nrecord_139=original\nrecord_140=original\nrecord_141=original\nrecord_142=original\nrecord_143=original\nrecord_144=original\nrecord_145=original\nrecord_146=original\nrecord_147=original\nrecord_148=original\nrecord_149=original\nrecord_150=original\nrecord_151=original\nrecord_152=original\nrecord_153=original\nrecord_154=original\nrecord_155=original\nrecord_156=original\nrecord_157=original\nrecord_158=original\nrecord_159=original\nrecord_160=original\nrecord_161=original\nrecord_162=original\nrecord_163=original\nrecord_164=original\nrecord_165=original\nrecord_166=original\nrecord_167=original\nrecord_168=original\nrecord_169=original\nrecord_170=original\nrecord_171=original\nrecord_172=original\nrecord_173=original\nrecord_174=original\nrecord_175=original\nrecord_176=original\nrecord_177=original\nrecord_178=original\nrecord_179=original\nrecord_180=original\nrecord_181=original\nrecord_182=original\nrecord_183=original\nrecord_184=original\nrecord_185=original\nrecord_186=original\nrecord_187=original\nrecord_188=original\nrecord_189=original\nrecord_190=original\nrecord_191=original\nrecord_192=original\nrecord_193=original\nrecord_194=original\nrecord_195=original\nrecord_196=original\nrecord_197=original\nrecord_198=original\nrecord_199=original"
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_use",
+          "id": "fixture_1",
+          "name": "read_file",
+          "input": {
+            "path": "synthetic-settings.conf"
+          }
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "tool_result",
+          "tool_use_id": "fixture_1",
+          "content": "record_000=original\nrecord_001=original\nrecord_002=original\nrecord_003=original\nrecord_004=original\nrecord_005=original\nrecord_006=original\nrecord_007=original\nrecord_008=original\nrecord_009=original\nrecord_010=original\nrecord_011=original\nrecord_012=original\nrecord_013=original\nrecord_014=original\nrecord_015=original\nrecord_016=original\nrecord_017=original\nrecord_018=original\nrecord_019=original\nrecord_020=original\nrecord_021=original\nrecord_022=original\nrecord_023=original\nrecord_024=original\nrecord_025=original\nrecord_026=original\nrecord_027=original\nrecord_028=original\nrecord_029=original\nrecord_030=original\nrecord_031=original\nrecord_032=original\nrecord_033=original\nrecord_034=original\nrecord_035=original\nrecord_036=original\nrecord_037=original\nrecord_038=original\nrecord_039=original\nrecord_040=original\nrecord_041=original\nrecord_042=original\nrecord_043=original\nrecord_044=original\nrecord_045=original\nrecord_046=original\nrecord_047=original\nrecord_048=original\nrecord_049=original\nrecord_050=updated\nrecord_051=updated\nrecord_052=updated\nrecord_053=updated\nrecord_054=updated\nrecord_055=updated\nrecord_056=updated\nrecord_057=updated\nrecord_058=updated\nrecord_059=updated\nrecord_060=original\nrecord_061=original\nrecord_062=original\nrecord_063=original\nrecord_064=original\nrecord_065=original\nrecord_066=original\nrecord_067=original\nrecord_068=original\nrecord_069=original\nrecord_070=original\nrecord_071=original\nrecord_072=original\nrecord_073=original\nrecord_074=original\nrecord_075=original\nrecord_076=original\nrecord_077=original\nrecord_078=original\nrecord_079=original\nrecord_080=original\nrecord_081=original\nrecord_082=original\nrecord_083=original\nrecord_084=original\nrecord_085=original\nrecord_086=original\nrecord_087=original\nrecord_088=original\nrecord_089=original\nrecord_090=original\nrecord_091=original\nrecord_092=original\nrecord_093=original\nrecord_094=original\nrecord_095=original\nrecord_096=original\nrecord_097=original\nrecord_098=original\nrecord_099=original\nrecord_100=original\nrecord_101=original\nrecord_102=original\nrecord_103=original\nrecord_104=original\nrecord_105=original\nrecord_106=original\nrecord_107=original\nrecord_108=original\nrecord_109=original\nrecord_110=original\nrecord_111=original\nrecord_112=original\nrecord_113=original\nrecord_114=original\nrecord_115=original\nrecord_116=original\nrecord_117=original\nrecord_118=original\nrecord_119=original\nrecord_120=original\nrecord_121=original\nrecord_122=original\nrecord_123=original\nrecord_124=original\nrecord_125=original\nrecord_126=original\nrecord_127=original\nrecord_128=original\nrecord_129=original\nrecord_130=original\nrecord_131=original\nrecord_132=original\nrecord_133=original\nrecord_134=original\nrecord_135=original\nrecord_136=original\nrecord_137=original\nrecord_138=original\nrecord_139=original\nrecord_140=original\nrecord_141=original\nrecord_142=original\nrecord_143=original\nrecord_144=original\nrecord_145=original\nrecord_146=original\nrecord_147=original\nrecord_148=original\nrecord_149=original\nrecord_150=original\nrecord_151=original\nrecord_152=original\nrecord_153=original\nrecord_154=original\nrecord_155=original\nrecord_156=original\nrecord_157=original\nrecord_158=original\nrecord_159=original\nrecord_160=original\nrecord_161=original\nrecord_162=original\nrecord_163=original\nrecord_164=original\nrecord_165=original\nrecord_166=original\nrecord_167=original\nrecord_168=original\nrecord_169=original\nrecord_170=original\nrecord_171=original\nrecord_172=original\nrecord_173=original\nrecord_174=original\nrecord_175=original\nrecord_176=original\nrecord_177=original\nrecord_178=original\nrecord_179=original\nrecord_180=original\nrecord_181=original\nrecord_182=original\nrecord_183=original\nrecord_184=original\nrecord_185=original\nrecord_186=original\nrecord_187=original\nrecord_188=original\nrecord_189=original\nrecord_190=original\nrecord_191=original\nrecord_192=original\nrecord_193=original\nrecord_194=original\nrecord_195=original\nrecord_196=original\nrecord_197=original\nrecord_198=original\nrecord_199=original"
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_use",
+          "id": "fixture_2",
+          "name": "read_file",
+          "input": {
+            "path": "synthetic-settings.conf"
+          }
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "tool_result",
+          "tool_use_id": "fixture_2",
+          "content": "record_000=original\nrecord_001=original\nrecord_002=original\nrecord_003=original\nrecord_004=original\nrecord_005=original\nrecord_006=original\nrecord_007=original\nrecord_008=original\nrecord_009=original\nrecord_010=original\nrecord_011=original\nrecord_012=original\nrecord_013=original\nrecord_014=original\nrecord_015=original\nrecord_016=original\nrecord_017=original\nrecord_018=original\nrecord_019=original\nrecord_020=original\nrecord_021=original\nrecord_022=original\nrecord_023=original\nrecord_024=original\nrecord_025=original\nrecord_026=original\nrecord_027=original\nrecord_028=original\nrecord_029=original\nrecord_030=original\nrecord_031=original\nrecord_032=original\nrecord_033=original\nrecord_034=original\nrecord_035=original\nrecord_036=original\nrecord_037=original\nrecord_038=original\nrecord_039=original\nrecord_040=original\nrecord_041=original\nrecord_042=original\nrecord_043=original\nrecord_044=original\nrecord_045=original\nrecord_046=original\nrecord_047=original\nrecord_048=original\nrecord_049=original\nrecord_050=updated\nrecord_051=updated\nrecord_052=updated\nrecord_053=updated\nrecord_054=updated\nrecord_055=updated\nrecord_056=updated\nrecord_057=updated\nrecord_058=updated\nrecord_059=updated\nrecord_060=original\nrecord_061=original\nrecord_062=original\nrecord_063=original\nrecord_064=original\nrecord_065=original\nrecord_066=original\nrecord_067=original\nrecord_068=original\nrecord_069=original\nrecord_070=original\nrecord_071=original\nrecord_072=original\nrecord_073=original\nrecord_074=original\nrecord_075=original\nrecord_076=original\nrecord_077=original\nrecord_078=original\nrecord_079=original\nrecord_080=original\nrecord_081=original\nrecord_082=original\nrecord_083=original\nrecord_084=original\nrecord_085=original\nrecord_086=original\nrecord_087=original\nrecord_088=original\nrecord_089=original\nrecord_090=original\nrecord_091=original\nrecord_092=original\nrecord_093=original\nrecord_094=original\nrecord_095=original\nrecord_096=original\nrecord_097=original\nrecord_098=original\nrecord_099=original\nrecord_100=updated\nrecord_101=updated\nrecord_102=updated\nrecord_103=updated\nrecord_104=updated\nrecord_105=updated\nrecord_106=updated\nrecord_107=updated\nrecord_108=updated\nrecord_109=updated\nrecord_110=original\nrecord_111=original\nrecord_112=original\nrecord_113=original\nrecord_114=original\nrecord_115=original\nrecord_116=original\nrecord_117=original\nrecord_118=original\nrecord_119=original\nrecord_120=original\nrecord_121=original\nrecord_122=original\nrecord_123=original\nrecord_124=original\nrecord_125=original\nrecord_126=original\nrecord_127=original\nrecord_128=original\nrecord_129=original\nrecord_130=original\nrecord_131=original\nrecord_132=original\nrecord_133=original\nrecord_134=original\nrecord_135=original\nrecord_136=original\nrecord_137=original\nrecord_138=original\nrecord_139=original\nrecord_140=original\nrecord_141=original\nrecord_142=original\nrecord_143=original\nrecord_144=original\nrecord_145=original\nrecord_146=original\nrecord_147=original\nrecord_148=original\nrecord_149=original\nrecord_150=original\nrecord_151=original\nrecord_152=original\nrecord_153=original\nrecord_154=original\nrecord_155=original\nrecord_156=original\nrecord_157=original\nrecord_158=original\nrecord_159=original\nrecord_160=original\nrecord_161=original\nrecord_162=original\nrecord_163=original\nrecord_164=original\nrecord_165=original\nrecord_166=original\nrecord_167=original\nrecord_168=original\nrecord_169=original\nrecord_170=original\nrecord_171=original\nrecord_172=original\nrecord_173=original\nrecord_174=original\nrecord_175=original\nrecord_176=original\nrecord_177=original\nrecord_178=original\nrecord_179=original\nrecord_180=original\nrecord_181=original\nrecord_182=original\nrecord_183=original\nrecord_184=original\nrecord_185=original\nrecord_186=original\nrecord_187=original\nrecord_188=original\nrecord_189=original\nrecord_190=original\nrecord_191=original\nrecord_192=original\nrecord_193=original\nrecord_194=original\nrecord_195=original\nrecord_196=original\nrecord_197=original\nrecord_198=original\nrecord_199=original"
+        }
+      ]
+    }
+  ]
+}
