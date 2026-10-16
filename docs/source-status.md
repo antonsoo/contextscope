@@ -5,7 +5,7 @@ commit or local package test does not establish what the registry or public
 site serves. Each study retains its tested revision and its verification scope.
 No new npm release was performed for the corrections listed here.
 
-| Source capability | Retained evidence |
+| Current source and demo capability | Retained evidence |
 | --- | --- |
 | First local import and exports work offline after intake is ready; failed preparation can retry | [Startup and worker recovery](../studies/first-offline/README.md) |
 | Refusals and empty history headers remain part of prompt identity | [Native SDK message boundaries](../studies/message-boundaries/README.md) |
@@ -24,6 +24,17 @@ The registry was checked independently on 2026-10-16: its `latest` tag was
 records the public tarball's SHA-256 and verifies its registry SHA-512 integrity.
 Use the [source quickstart](../README.md#quickstart) for the current corrections.
 
-The studies' local browser and installed-artifact checks do not establish a
-hosted update. Public-demo verification is recorded separately when its served
-bytes and browser workflows have been checked.
+The [public demo](https://antonsoo.github.io/contextscope/) was updated from
+tested source `ecc601b2c83cf93b509ad2d4ea61e493201cc508`. Its
+[canonical HTTP receipt](../studies/media-accounting/results/hosting.json)
+compares all 42 production files with the clean build, without cache-busting
+queries. The [hosted browser receipt](../studies/media-accounting/results/hosted-browser.json)
+checks 32 complete export workflows across Chromium/Firefox and desktop/phone
+widths, including first imports after disconnecting, original downloads,
+invalid-setting retention and text recovery. These controlled SDK workflows
+are not measurements of provider token usage or cache behavior.
+
+Source and local package verification remain separate from that public HTTP
+check. The [source receipt](../studies/media-accounting/results/publication.json)
+pins twenty-four public raw files at the published source revision. No new npm
+version was published.

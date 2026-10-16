@@ -9,7 +9,9 @@ could count a different prompt from the one being analyzed.
 The source correction separates structured-output prompt caches, applies the
 system/message citation boundary, and forwards the supported settings during
 calibration. These are modeled rules, not observed provider hits or charges.
-No registry release or hosted deployment accompanies this study.
+The original study checked source and local artifacts. Subsequent
+[public-demo verification](../../docs/source-status.md) includes this repair;
+no registry release was performed.
 
 ## Which cache changes?
 

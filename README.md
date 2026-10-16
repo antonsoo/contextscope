@@ -23,7 +23,7 @@ your input to another host. The CLI's optional `--calibrate` operation sends
 the selected Anthropic request to its token-counting endpoint; ordinary local
 analysis does not need a key or upload.
 
-The source checkout includes corrections for empty/refusal histories, reasoning
+The source checkout and demo include corrections for empty/refusal histories, reasoning
 settings, injected prompt instructions and media accounting. Their
 [source, package and demo status](docs/source-status.md) is recorded separately,
 with retained counterexamples and verification artifacts. The measurements below
@@ -111,7 +111,7 @@ drop a request file, paste one, or click a built-in example.
 - **Token usage treemap.** Every request in a session, broken into segments
   (system, tool definitions, user/assistant text, tool calls, tool results,
   images, thinking). Countable segments are colored by category and sized by
-  tokens. In source, unmodeled media stays inspectable in the segment table
+  tokens. In source and the demo, unmodeled media stays inspectable in the segment table
   while totals, context usage and cache costs are unavailable; encoded payloads
   do not become text tokens. Click a segment to see its original content, path
   and cache status. [Media accounting and nullable source types](studies/media-accounting/README.md).
@@ -539,7 +539,7 @@ fixed hue order, so a color always means the same category.
 
 ## Accuracy and limitations
 
-- **Media accounting is unavailable in source.** Images, opaque PDFs/files and
+- **Media accounting is unavailable in source and the demo.** Images, opaque PDFs/files and
   input audio are preserved without tokenizing their encodings or references.
   Affected totals and context fractions are unavailable, as are cache partitions
   and costs for the whole sequence. Other segments retain text counts, and

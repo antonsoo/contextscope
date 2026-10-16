@@ -1,0 +1,156 @@
+{
+  "checkedAt": "2026-10-16T18:42:06.590781+00:00",
+  "sourceRevision": "35612f6579a0858943479c239330922f69632409",
+  "remoteMainMatches": true,
+  "remoteRefs": {
+    "refs/heads/gh-pages": "44fcb2be4c61447b6438cf9e059aa279343084e4",
+    "refs/heads/main": "35612f6579a0858943479c239330922f69632409"
+  },
+  "scope": "Published source. The verified clean build was separately pushed to gh-pages; canonical HTTP verification is pending. No registry release was performed.",
+  "files": {
+    "src/core/media-accounting.ts": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/35612f6579a0858943479c239330922f69632409/src/core/media-accounting.ts",
+      "bytes": 2916,
+      "sha256": "95d16219ee8a4e81fe0304f4f7dde4d9512e5444d715dc4f4037160bd836ef13",
+      "matchesLocal": true
+    },
+    "src/core/types.ts": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/35612f6579a0858943479c239330922f69632409/src/core/types.ts",
+      "bytes": 14444,
+      "sha256": "72d093dead98c73a78e1f3fe7bdff263dc1741f3d48238e628ab3a156fcdfc21",
+      "matchesLocal": true
+    },
+    "src/core/parse-anthropic.ts": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/35612f6579a0858943479c239330922f69632409/src/core/parse-anthropic.ts",
+      "bytes": 12653,
+      "sha256": "999dd6b88a670dc44be3828ee3538b6994f2cd15f730a816059f19673fb92e35",
+      "matchesLocal": true
+    },
+    "src/core/parse-openai.ts": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/35612f6579a0858943479c239330922f69632409/src/core/parse-openai.ts",
+      "bytes": 14299,
+      "sha256": "81b83c8469819236490c1bfe518bada8f41f21a7441811a759fd56b992d2c4c8",
+      "matchesLocal": true
+    },
+    "src/core/cache-anthropic.ts": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/35612f6579a0858943479c239330922f69632409/src/core/cache-anthropic.ts",
+      "bytes": 10547,
+      "sha256": "48c8690c8a554594de5aa4824a337564eab708f8015a733f55d5938dc872e7f6",
+      "matchesLocal": true
+    },
+    "src/core/cache-openai.ts": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/35612f6579a0858943479c239330922f69632409/src/core/cache-openai.ts",
+      "bytes": 3672,
+      "sha256": "e3fd9cf1e28985a42606b261e604eb02050e903b6f03771f682d697772e69921",
+      "matchesLocal": true
+    },
+    "src/core/report.ts": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/35612f6579a0858943479c239330922f69632409/src/core/report.ts",
+      "bytes": 1709,
+      "sha256": "85a1ac02b0fddf514a9d93c7a83c1bebd3304df9397aee7e3e6317e2c597bcf8",
+      "matchesLocal": true
+    },
+    "src/core/prefix.ts": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/35612f6579a0858943479c239330922f69632409/src/core/prefix.ts",
+      "bytes": 12886,
+      "sha256": "5cb67a7dc5a7e0b365e5c0279eb5725e454063221fa570888134f54ec770a148",
+      "matchesLocal": true
+    },
+    "src/core/usage-comparison.ts": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/35612f6579a0858943479c239330922f69632409/src/core/usage-comparison.ts",
+      "bytes": 3647,
+      "sha256": "fde0612974d795c560a591b602e653b0d14f9ae973b8c640fbaa872ff23315de",
+      "matchesLocal": true
+    },
+    "src/core/calibrate.ts": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/35612f6579a0858943479c239330922f69632409/src/core/calibrate.ts",
+      "bytes": 6803,
+      "sha256": "afe4b46a59b2cdfa4cbfb4ff91b268df06ce32c3511b4a0c7a11d9763e3df9f1",
+      "matchesLocal": true
+    },
+    "src/cli/index.ts": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/35612f6579a0858943479c239330922f69632409/src/cli/index.ts",
+      "bytes": 6181,
+      "sha256": "0f8c853e655387ae3c8bfc99bd9313d219dd4927ed13be2e052d249768a38efb",
+      "matchesLocal": true
+    },
+    "src/cli/html-report.ts": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/35612f6579a0858943479c239330922f69632409/src/cli/html-report.ts",
+      "bytes": 9859,
+      "sha256": "b986e8b731f381388543eae18edbfb34d3032161ee468e80450e9b7fa4ac03ab",
+      "matchesLocal": true
+    },
+    "web/src/app.ts": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/35612f6579a0858943479c239330922f69632409/web/src/app.ts",
+      "bytes": 53602,
+      "sha256": "277e4039adb02b92930c6c1a4a945edeff56c49789e44fd77b1dd79a80ae8ad0",
+      "matchesLocal": true
+    },
+    "web/src/analysis.ts": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/35612f6579a0858943479c239330922f69632409/web/src/analysis.ts",
+      "bytes": 7738,
+      "sha256": "4f75c3f24b69db323dc7da65055935661cf134b0afa75307615aa2fac72ca733",
+      "matchesLocal": true
+    },
+    "studies/media-accounting/captures/manifest.json": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/35612f6579a0858943479c239330922f69632409/studies/media-accounting/captures/manifest.json",
+      "bytes": 10757,
+      "sha256": "7b86f1bde67c9573f8f6878923be37e6ea681b25322db205c5d897c7d37b2aff",
+      "matchesLocal": true
+    },
+    "studies/media-accounting/results/before.json": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/35612f6579a0858943479c239330922f69632409/studies/media-accounting/results/before.json",
+      "bytes": 170447,
+      "sha256": "9cf1411b583791e75b9e284fd8fc03adf3a415b33e3d9364b4ed8c60fe22220d",
+      "matchesLocal": true
+    },
+    "studies/media-accounting/results/after.json": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/35612f6579a0858943479c239330922f69632409/studies/media-accounting/results/after.json",
+      "bytes": 201630,
+      "sha256": "00bd0d7b16d4c20adabd3012f89e1bde9890b79b78437f9d3e559335e05d10d9",
+      "matchesLocal": true
+    },
+    "studies/media-accounting/results/verification.json": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/35612f6579a0858943479c239330922f69632409/studies/media-accounting/results/verification.json",
+      "bytes": 46175,
+      "sha256": "546efc9e9d7e99cb45484a909c581e86359f2a1b223265306521f6171ac81875",
+      "matchesLocal": true
+    },
+    "studies/media-accounting/results/registry.json": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/35612f6579a0858943479c239330922f69632409/studies/media-accounting/results/registry.json",
+      "bytes": 743,
+      "sha256": "4210af2c814ab679d2c7e7283dd4b3e643669cf855a3c4ba585738c9adc38860",
+      "matchesLocal": true
+    },
+    "studies/media-accounting/results/registry-behavior.json": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/35612f6579a0858943479c239330922f69632409/studies/media-accounting/results/registry-behavior.json",
+      "bytes": 1430,
+      "sha256": "69621c1b9f62c72c45dd2c424b58fc6b139a12b881da5b31be5cd16234ee0727",
+      "matchesLocal": true
+    },
+    "studies/media-accounting/README.md": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/35612f6579a0858943479c239330922f69632409/studies/media-accounting/README.md",
+      "bytes": 12487,
+      "sha256": "0cc9e3e9fd476e8e5f3e861eaece9fd0f6bbc959468faeb1a0335ee2a969fff7",
+      "matchesLocal": true
+    },
+    "docs/source-status.md": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/35612f6579a0858943479c239330922f69632409/docs/source-status.md",
+      "bytes": 2202,
+      "sha256": "ed75dd6fa62faceb89bc929c2db51de1e20e1808ebff2493a10deeaa88bf6d8f",
+      "matchesLocal": true
+    },
+    "docs/assets/media-accounting/after.png": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/35612f6579a0858943479c239330922f69632409/docs/assets/media-accounting/after.png",
+      "bytes": 13708,
+      "sha256": "c5aec58cc1d4d2a900b48baae2817dde32499b04a380d48a87a89e96bf635765",
+      "matchesLocal": true
+    },
+    "docs/assets/media-accounting/usage-phone.png": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/35612f6579a0858943479c239330922f69632409/docs/assets/media-accounting/usage-phone.png",
+      "bytes": 117812,
+      "sha256": "9678e0eabad94697301d1952966db8e57e132a5ed7bf32cbc9410177eb47f706",
+      "matchesLocal": true
+    }
+  }
+}

@@ -6,9 +6,10 @@ tokens. Changing top-level effort had the same problem. A separate parser
 omission erased empty system messages containing a per-message effort change.
 
 The source now keeps top-level reasoning settings in separate cache scopes and
-retains empty message headers in prompt identity. This is an unreleased
-source correction. There is no npm release or hosted deployment associated
-with this study. The later source publication is recorded below.
+retains empty message headers in prompt identity. This remains unreleased on
+npm. The original local checks and later source publication are recorded below;
+the subsequent [public-demo verification](../../docs/source-status.md) includes
+this repair and its hosted browser workflows.
 
 Open the retained [budget-change request file](captures/budget-change.jsonl.gz)
 in the browser's file chooser to inspect the three-request example.

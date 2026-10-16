@@ -215,3 +215,27 @@ optional counters remain distinct.
 library. `verify-artifacts.py SCRATCH BASE_URL` rechecks the clean source,
 package, downloads and served bytes. These receipts establish local artifact
 behavior. Source publication and public hosting are separate checks.
+
+## Published source and public demo
+
+Source revision `35612f6579a0858943479c239330922f69632409` was pushed to
+`main` with the owner's authorization. The [source receipt](results/publication.json)
+compares twenty-four immutable raw-file responses with local bytes. The tested
+clean build was separately pushed to `gh-pages` at
+`44fcb2be4c61447b6438cf9e059aa279343084e4`.
+
+After the canonical page refreshed, [all 42 production files](results/hosting.json)
+matched the clean build byte for byte, without query-string cache busting.
+The [hosted browser receipt](results/hosted-browser.json) records 32 passing
+export workflows across the media, injected-setting and thinking-setting
+studies, in Chromium and Firefox at 1440 and 375 pixels. Actual downloaded JSON
+matches the retained source reports; actual HTML exports reopen offline.
+Original blocks remain downloadable, invalid-setting imports retain the prior
+workspace, and subsequent valid text imports recover. No page exceptions,
+HTTP requests after disconnection, axe violations or page-width overflow
+occurred in these workflows. The actual [hosted JSON](results/hosted-media.json)
+and [hosted HTML](results/hosted-media.html) are retained.
+
+This verifies the public app's behavior on controlled SDK inputs, including
+synthetic usage counters. It does not measure provider token/cache behavior or
+publish a new registry release. The npm observation remains separate above.
