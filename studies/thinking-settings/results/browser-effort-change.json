@@ -1,0 +1,570 @@
+{
+  "parse": {
+    "format": "anthropic",
+    "complete": true,
+    "sourceRecords": 3,
+    "skippedRecords": 0,
+    "autoDetected": true,
+    "requests": [
+      {
+        "provider": "anthropic",
+        "index": 0,
+        "model": "claude-opus-4-6",
+        "source": {
+          "recordIndex": 0,
+          "line": 1
+        },
+        "segments": [
+          {
+            "id": "tools[0]",
+            "category": "tools",
+            "label": "tool: lookup",
+            "path": "tools[0]",
+            "openaiTokens": 38,
+            "claudeTokensEstimate": 61,
+            "charLength": 180
+          },
+          {
+            "id": "system[0]",
+            "category": "system",
+            "label": "system block 1",
+            "path": "system[0]",
+            "openaiTokens": 2401,
+            "claudeTokensEstimate": 3545,
+            "cacheControl": {
+              "type": "ephemeral",
+              "ttl": "5m"
+            },
+            "charLength": 11700
+          },
+          {
+            "id": "messages[0].content[0]",
+            "category": "user",
+            "label": "message 1 (user) text",
+            "path": "messages[0].content[0]",
+            "openaiTokens": 3901,
+            "claudeTokensEstimate": 6545,
+            "cacheControl": {
+              "type": "ephemeral",
+              "ttl": "5m"
+            },
+            "charLength": 21600
+          }
+        ]
+      },
+      {
+        "provider": "anthropic",
+        "index": 1,
+        "model": "claude-opus-4-6",
+        "source": {
+          "recordIndex": 1,
+          "line": 2
+        },
+        "segments": [
+          {
+            "id": "tools[0]",
+            "category": "tools",
+            "label": "tool: lookup",
+            "path": "tools[0]",
+            "openaiTokens": 38,
+            "claudeTokensEstimate": 61,
+            "charLength": 180
+          },
+          {
+            "id": "system[0]",
+            "category": "system",
+            "label": "system block 1",
+            "path": "system[0]",
+            "openaiTokens": 2401,
+            "claudeTokensEstimate": 3545,
+            "cacheControl": {
+              "type": "ephemeral",
+              "ttl": "5m"
+            },
+            "charLength": 11700
+          },
+          {
+            "id": "messages[0].content[0]",
+            "category": "user",
+            "label": "message 1 (user) text",
+            "path": "messages[0].content[0]",
+            "openaiTokens": 3901,
+            "claudeTokensEstimate": 6545,
+            "cacheControl": {
+              "type": "ephemeral",
+              "ttl": "5m"
+            },
+            "charLength": 21600
+          }
+        ]
+      },
+      {
+        "provider": "anthropic",
+        "index": 2,
+        "model": "claude-opus-4-6",
+        "source": {
+          "recordIndex": 2,
+          "line": 3
+        },
+        "segments": [
+          {
+            "id": "tools[0]",
+            "category": "tools",
+            "label": "tool: lookup",
+            "path": "tools[0]",
+            "openaiTokens": 38,
+            "claudeTokensEstimate": 61,
+            "charLength": 180
+          },
+          {
+            "id": "system[0]",
+            "category": "system",
+            "label": "system block 1",
+            "path": "system[0]",
+            "openaiTokens": 2401,
+            "claudeTokensEstimate": 3545,
+            "cacheControl": {
+              "type": "ephemeral",
+              "ttl": "5m"
+            },
+            "charLength": 11700
+          },
+          {
+            "id": "messages[0].content[0]",
+            "category": "user",
+            "label": "message 1 (user) text",
+            "path": "messages[0].content[0]",
+            "openaiTokens": 3901,
+            "claudeTokensEstimate": 6545,
+            "cacheControl": {
+              "type": "ephemeral",
+              "ttl": "5m"
+            },
+            "charLength": 21600
+          }
+        ]
+      }
+    ],
+    "warnings": []
+  },
+  "model": {
+    "id": "claude-opus-4-6",
+    "displayName": "Claude Opus 4.6",
+    "source": "request"
+  },
+  "claudeTokenScale": 1,
+  "reports": [
+    {
+      "requestIndex": 0,
+      "model": {
+        "id": "claude-opus-4-6",
+        "displayName": "Claude Opus 4.6",
+        "source": "request"
+      },
+      "totals": {
+        "openaiTokens": 6340,
+        "claudeTokensEstimate": 10151
+      },
+      "byCategory": [
+        {
+          "category": "system",
+          "segmentCount": 1,
+          "openaiTokens": 2401,
+          "claudeTokensEstimate": 3545
+        },
+        {
+          "category": "tools",
+          "segmentCount": 1,
+          "openaiTokens": 38,
+          "claudeTokensEstimate": 61
+        },
+        {
+          "category": "user",
+          "segmentCount": 1,
+          "openaiTokens": 3901,
+          "claudeTokensEstimate": 6545
+        }
+      ],
+      "segments": [
+        {
+          "id": "tools[0]",
+          "category": "tools",
+          "label": "tool: lookup",
+          "path": "tools[0]",
+          "openaiTokens": 38,
+          "claudeTokensEstimate": 61,
+          "charLength": 180
+        },
+        {
+          "id": "system[0]",
+          "category": "system",
+          "label": "system block 1",
+          "path": "system[0]",
+          "openaiTokens": 2401,
+          "claudeTokensEstimate": 3545,
+          "cacheControl": {
+            "type": "ephemeral",
+            "ttl": "5m"
+          },
+          "charLength": 11700
+        },
+        {
+          "id": "messages[0].content[0]",
+          "category": "user",
+          "label": "message 1 (user) text",
+          "path": "messages[0].content[0]",
+          "openaiTokens": 3901,
+          "claudeTokensEstimate": 6545,
+          "cacheControl": {
+            "type": "ephemeral",
+            "ttl": "5m"
+          },
+          "charLength": 21600
+        }
+      ],
+      "contextWindow": 1000000,
+      "percentOfContextWindow": 0.010151
+    },
+    {
+      "requestIndex": 1,
+      "model": {
+        "id": "claude-opus-4-6",
+        "displayName": "Claude Opus 4.6",
+        "source": "request"
+      },
+      "totals": {
+        "openaiTokens": 6340,
+        "claudeTokensEstimate": 10151
+      },
+      "byCategory": [
+        {
+          "category": "system",
+          "segmentCount": 1,
+          "openaiTokens": 2401,
+          "claudeTokensEstimate": 3545
+        },
+        {
+          "category": "tools",
+          "segmentCount": 1,
+          "openaiTokens": 38,
+          "claudeTokensEstimate": 61
+        },
+        {
+          "category": "user",
+          "segmentCount": 1,
+          "openaiTokens": 3901,
+          "claudeTokensEstimate": 6545
+        }
+      ],
+      "segments": [
+        {
+          "id": "tools[0]",
+          "category": "tools",
+          "label": "tool: lookup",
+          "path": "tools[0]",
+          "openaiTokens": 38,
+          "claudeTokensEstimate": 61,
+          "charLength": 180
+        },
+        {
+          "id": "system[0]",
+          "category": "system",
+          "label": "system block 1",
+          "path": "system[0]",
+          "openaiTokens": 2401,
+          "claudeTokensEstimate": 3545,
+          "cacheControl": {
+            "type": "ephemeral",
+            "ttl": "5m"
+          },
+          "charLength": 11700
+        },
+        {
+          "id": "messages[0].content[0]",
+          "category": "user",
+          "label": "message 1 (user) text",
+          "path": "messages[0].content[0]",
+          "openaiTokens": 3901,
+          "claudeTokensEstimate": 6545,
+          "cacheControl": {
+            "type": "ephemeral",
+            "ttl": "5m"
+          },
+          "charLength": 21600
+        }
+      ],
+      "contextWindow": 1000000,
+      "percentOfContextWindow": 0.010151
+    },
+    {
+      "requestIndex": 2,
+      "model": {
+        "id": "claude-opus-4-6",
+        "displayName": "Claude Opus 4.6",
+        "source": "request"
+      },
+      "totals": {
+        "openaiTokens": 6340,
+        "claudeTokensEstimate": 10151
+      },
+      "byCategory": [
+        {
+          "category": "system",
+          "segmentCount": 1,
+          "openaiTokens": 2401,
+          "claudeTokensEstimate": 3545
+        },
+        {
+          "category": "tools",
+          "segmentCount": 1,
+          "openaiTokens": 38,
+          "claudeTokensEstimate": 61
+        },
+        {
+          "category": "user",
+          "segmentCount": 1,
+          "openaiTokens": 3901,
+          "claudeTokensEstimate": 6545
+        }
+      ],
+      "segments": [
+        {
+          "id": "tools[0]",
+          "category": "tools",
+          "label": "tool: lookup",
+          "path": "tools[0]",
+          "openaiTokens": 38,
+          "claudeTokensEstimate": 61,
+          "charLength": 180
+        },
+        {
+          "id": "system[0]",
+          "category": "system",
+          "label": "system block 1",
+          "path": "system[0]",
+          "openaiTokens": 2401,
+          "claudeTokensEstimate": 3545,
+          "cacheControl": {
+            "type": "ephemeral",
+            "ttl": "5m"
+          },
+          "charLength": 11700
+        },
+        {
+          "id": "messages[0].content[0]",
+          "category": "user",
+          "label": "message 1 (user) text",
+          "path": "messages[0].content[0]",
+          "openaiTokens": 3901,
+          "claudeTokensEstimate": 6545,
+          "cacheControl": {
+            "type": "ephemeral",
+            "ttl": "5m"
+          },
+          "charLength": 21600
+        }
+      ],
+      "contextWindow": 1000000,
+      "percentOfContextWindow": 0.010151
+    }
+  ],
+  "prefixMatches": [
+    {
+      "fromIndex": 0,
+      "toIndex": 1,
+      "relation": "continues",
+      "matchedSegments": 3,
+      "matchedOpenaiTokens": 6340,
+      "matchedClaudeTokensEstimate": 10151
+    },
+    {
+      "fromIndex": 1,
+      "toIndex": 2,
+      "relation": "continues",
+      "matchedSegments": 3,
+      "matchedOpenaiTokens": 6340,
+      "matchedClaudeTokensEstimate": 10151
+    }
+  ],
+  "conversations": {
+    "count": 1,
+    "byRequest": [
+      0,
+      0,
+      0
+    ]
+  },
+  "cacheSimulation": {
+    "provider": "anthropic",
+    "model": "claude-opus-4-6",
+    "actual": [
+      {
+        "requestIndex": 0,
+        "readTokens": 0,
+        "writeTokens5m": 10151,
+        "writeTokens1h": 0,
+        "uncachedTokens": 0,
+        "costUsd": 0.06344375000000001
+      },
+      {
+        "requestIndex": 1,
+        "readTokens": 0,
+        "writeTokens5m": 10151,
+        "writeTokens1h": 0,
+        "uncachedTokens": 0,
+        "costUsd": 0.06344375000000001
+      },
+      {
+        "requestIndex": 2,
+        "readTokens": 10151,
+        "writeTokens5m": 0,
+        "writeTokens1h": 0,
+        "uncachedTokens": 0,
+        "costUsd": 0.0050755
+      }
+    ],
+    "optimized": [
+      {
+        "requestIndex": 0,
+        "readTokens": 0,
+        "writeTokens5m": 10151,
+        "writeTokens1h": 0,
+        "uncachedTokens": 0,
+        "costUsd": 0.06344375000000001
+      },
+      {
+        "requestIndex": 1,
+        "readTokens": 0,
+        "writeTokens5m": 10151,
+        "writeTokens1h": 0,
+        "uncachedTokens": 0,
+        "costUsd": 0.06344375000000001
+      },
+      {
+        "requestIndex": 2,
+        "readTokens": 10151,
+        "writeTokens5m": 0,
+        "writeTokens1h": 0,
+        "uncachedTokens": 0,
+        "costUsd": 0.0050755
+      }
+    ],
+    "totalActualCostUsd": 0.13196300000000002,
+    "totalOptimizedCostUsd": 0.13196300000000002
+  },
+  "usageComparison": {
+    "rows": [
+      {
+        "requestIndex": 0,
+        "estimatedInputTokens": 10151,
+        "simulatedReadTokens": 0,
+        "reportedInputTokens": null,
+        "reportedReadTokens": null,
+        "reportedWriteTokens": null,
+        "inputDeltaTokens": null,
+        "readDeltaTokens": null,
+        "readOutcome": "unavailable"
+      },
+      {
+        "requestIndex": 1,
+        "estimatedInputTokens": 10151,
+        "simulatedReadTokens": 0,
+        "reportedInputTokens": null,
+        "reportedReadTokens": null,
+        "reportedWriteTokens": null,
+        "inputDeltaTokens": null,
+        "readDeltaTokens": null,
+        "readOutcome": "unavailable"
+      },
+      {
+        "requestIndex": 2,
+        "estimatedInputTokens": 10151,
+        "simulatedReadTokens": 10151,
+        "reportedInputTokens": null,
+        "reportedReadTokens": null,
+        "reportedWriteTokens": null,
+        "inputDeltaTokens": null,
+        "readDeltaTokens": null,
+        "readOutcome": "unavailable"
+      }
+    ],
+    "capturedRequests": 0,
+    "uncomparedRequestIndices": [],
+    "invalidRequestIndices": [],
+    "input": {
+      "requestIndices": [],
+      "reportedTokens": null,
+      "simulatedTokens": null,
+      "deltaTokens": null
+    },
+    "cacheRead": {
+      "requestIndices": [],
+      "reportedTokens": null,
+      "simulatedTokens": null,
+      "deltaTokens": null
+    },
+    "readOutcomes": {
+      "both_zero": 0,
+      "both_positive": 0,
+      "simulated_hit_reported_zero": 0,
+      "reported_hit_simulated_zero": 0,
+      "unavailable": 3
+    },
+    "issues": []
+  },
+  "findings": [
+    {
+      "kind": "below_minimum_cacheable",
+      "severity": "warning",
+      "requestIndex": 0,
+      "title": "Prefix below minimum cacheable length",
+      "detail": "The cache_control breakpoint at \"system block 1\" covers only ≈3,606 tokens, below Claude Opus 4.6's 4,096-token minimum - it silently never caches.",
+      "segmentIds": [
+        "system[0]"
+      ]
+    },
+    {
+      "kind": "below_minimum_cacheable",
+      "severity": "warning",
+      "requestIndex": 1,
+      "title": "Prefix below minimum cacheable length",
+      "detail": "The cache_control breakpoint at \"system block 1\" covers only ≈3,606 tokens, below Claude Opus 4.6's 4,096-token minimum - it silently never caches.",
+      "segmentIds": [
+        "system[0]"
+      ]
+    },
+    {
+      "kind": "anthropic_reasoning_cache_scope",
+      "severity": "info",
+      "requestIndex": 1,
+      "title": "Thinking or effort cache settings changed",
+      "detail": "output_config.effort differs between requests 1 and 2. Anthropic documents that these changes invalidate message entries even when visible text is identical. Tool and system survival is model-specific: this simulation conservatively isolates all three cache levels rather than inferring the provider's hidden prompt placement. Actual setup reuse and costs may differ. An earlier request with the current settings can still supply a hit. Both scenarios keep these settings; documented mode and effort defaults are normalized only for recognized recorded models.",
+      "segmentIds": [
+        "system[0]",
+        "messages[0].content[0]"
+      ]
+    },
+    {
+      "kind": "below_minimum_cacheable",
+      "severity": "warning",
+      "requestIndex": 2,
+      "title": "Prefix below minimum cacheable length",
+      "detail": "The cache_control breakpoint at \"system block 1\" covers only ≈3,606 tokens, below Claude Opus 4.6's 4,096-token minimum - it silently never caches.",
+      "segmentIds": [
+        "system[0]"
+      ]
+    },
+    {
+      "kind": "anthropic_reasoning_cache_scope",
+      "severity": "info",
+      "requestIndex": 2,
+      "title": "Thinking or effort cache settings changed",
+      "detail": "output_config.effort differs between requests 2 and 3. Anthropic documents that these changes invalidate message entries even when visible text is identical. Tool and system survival is model-specific: this simulation conservatively isolates all three cache levels rather than inferring the provider's hidden prompt placement. Actual setup reuse and costs may differ. An earlier request with the current settings can still supply a hit. Both scenarios keep these settings; documented mode and effort defaults are normalized only for recognized recorded models.",
+      "segmentIds": [
+        "system[0]",
+        "messages[0].content[0]"
+      ]
+    }
+  ],
+  "duplicates": []
+}

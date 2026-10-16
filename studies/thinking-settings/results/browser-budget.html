@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>contextscope report — anthropic</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 15px/1.5 ui-monospace, "IBM Plex Mono", "SFMono-Regular", Menlo, monospace; background: #0d0f13; color: #dfe3ea; max-width: 980px; margin: 0 auto; padding: 32px 20px 80px; }
+  @media (prefers-color-scheme: light) { body { background: #f5f4f0; color: #1b1f27; } }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  h2 { font-size: 16px; margin: 32px 0 0; }
+  h3 { font-size: 15px; margin: 0 0 8px; }
+  .muted { color: #929aaa; font-size: 13px; }
+  a { color: #7fb6fa; }
+  @media (prefers-color-scheme: light) { .muted { color: #5c6270; } a { color: #1b5dad; } }
+  .card { border: 1px solid rgba(127,127,127,.3); border-radius: 6px; padding: 16px; margin: 16px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { text-align: left; padding: 4px 8px; border-bottom: 1px solid rgba(127,127,127,.2); }
+  .swatch { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; }
+  ul.findings { list-style: none; padding: 0; }
+  li.finding { border-left: 3px solid #7c8494; padding: 8px 12px; margin: 8px 0; }
+  li.finding.error { border-color: #e34948; }
+  li.finding.warning { border-color: #eda100; }
+  li.finding.info { border-color: #2a78d6; }
+  .pill { text-transform: uppercase; font-size: 10px; letter-spacing: .05em; opacity: .7; }
+  .savings { color: #1baf7a; font-weight: bold; }
+  @media (prefers-color-scheme: light) { .savings { color: #08764f; } }
+  .table-scroll { overflow-x: auto; margin: 12px 0; }
+  .table-scroll:focus-visible, summary:focus-visible, a:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+  .usage-evidence { border-top: 1px solid rgba(127,127,127,.3); padding: 12px 0; scroll-margin-top: 12px; }
+  .usage-evidence code { overflow-wrap: anywhere; }
+  .usage-evidence summary { cursor: pointer; }
+  .card > h2 { margin-top: 0; }
+</style></head>
+<body><main>
+  <h1>contextscope report</h1>
+  <p class="muted">anthropic · 3 request(s) · format auto-detected · priced as Claude Sonnet 4.6 · generated 2026-10-16T17:15:34.033Z</p>
+  
+
+  
+  <p class="muted">No paired response usage. Cache reads and costs are simulations.</p>
+
+  <section class="card">
+    <h2>Findings (1 issue from 2 findings)</h2>
+    <ul class="findings"><li class="finding info"><span class="pill">info</span> <strong>Thinking or effort cache settings changed</strong> <span class="muted">(requests 2, 3, 2×)</span><p>thinking configuration differs between requests 1 and 2. Anthropic documents that these changes invalidate message entries even when visible text is identical. Tool and system survival is model-specific: this simulation conservatively isolates all three cache levels rather than inferring the provider's hidden prompt placement. Actual setup reuse and costs may differ. An earlier request with the current settings can still supply a hit. Both scenarios keep these settings; documented mode and effort defaults are normalized only for recognized recorded models.</p></li></ul>
+  </section>
+
+  <section class="card">
+    <h2>Cache simulation (anthropic)</h2>
+    <div class="table-scroll" tabindex="0" role="group" aria-label="Cache simulation"><table><thead><tr><th>request</th><th>read</th><th>write (5m)</th><th>write (1h)</th><th>uncached</th><th>cost</th></tr></thead><tbody><tr><td>req 1</td><td>0</td><td>10,151</td><td>0</td><td>0</td><td>$0.0381</td></tr><tr><td>req 2</td><td>0</td><td>10,151</td><td>0</td><td>0</td><td>$0.0381</td></tr><tr><td>req 3</td><td>10,151</td><td>0</td><td>0</td><td>0</td><td>$0.0030</td></tr></tbody></table></div>
+    <p class="muted">total simulated: $0.0792 · optimized simulated: $0.0792</p>
+    
+  </section>
+
+  
+
+
+  <h2>Requests</h2>
+  <section class="card"><h3>Request 1 · Claude Sonnet 4.6</h3>
+        <p class="muted">≈10,151 Claude tokens · 6,340 OpenAI tokens · 1.0% of context window</p>
+        <div class="table-scroll" tabindex="0" role="group" aria-label="Token categories for request 1"><table><thead><tr><th>category</th><th>segments</th><th>≈Claude tok</th><th>OpenAI tok</th></tr></thead><tbody><tr><td><span class="swatch" style="background:#2a78d6"></span>system</td><td>1</td><td>3,545</td><td>2,401</td></tr><tr><td><span class="swatch" style="background:#eb6834"></span>tools</td><td>1</td><td>61</td><td>38</td></tr><tr><td><span class="swatch" style="background:#1baf7a"></span>user</td><td>1</td><td>6,545</td><td>3,901</td></tr></tbody></table></div>
+      </section>
+<section class="card"><h3>Request 2 · Claude Sonnet 4.6</h3>
+        <p class="muted">≈10,151 Claude tokens · 6,340 OpenAI tokens · 1.0% of context window</p>
+        <div class="table-scroll" tabindex="0" role="group" aria-label="Token categories for request 2"><table><thead><tr><th>category</th><th>segments</th><th>≈Claude tok</th><th>OpenAI tok</th></tr></thead><tbody><tr><td><span class="swatch" style="background:#2a78d6"></span>system</td><td>1</td><td>3,545</td><td>2,401</td></tr><tr><td><span class="swatch" style="background:#eb6834"></span>tools</td><td>1</td><td>61</td><td>38</td></tr><tr><td><span class="swatch" style="background:#1baf7a"></span>user</td><td>1</td><td>6,545</td><td>3,901</td></tr></tbody></table></div>
+      </section>
+<section class="card"><h3>Request 3 · Claude Sonnet 4.6</h3>
+        <p class="muted">≈10,151 Claude tokens · 6,340 OpenAI tokens · 1.0% of context window</p>
+        <div class="table-scroll" tabindex="0" role="group" aria-label="Token categories for request 3"><table><thead><tr><th>category</th><th>segments</th><th>≈Claude tok</th><th>OpenAI tok</th></tr></thead><tbody><tr><td><span class="swatch" style="background:#2a78d6"></span>system</td><td>1</td><td>3,545</td><td>2,401</td></tr><tr><td><span class="swatch" style="background:#eb6834"></span>tools</td><td>1</td><td>61</td><td>38</td></tr><tr><td><span class="swatch" style="background:#1baf7a"></span>user</td><td>1</td><td>6,545</td><td>3,901</td></tr></tbody></table></div>
+      </section>
+
+  <p class="muted">Generated by <a href="https://github.com/antonsoo/contextscope">contextscope</a>. Claude token counts are heuristic estimates (≈), not exact.</p>
+</main></body></html>

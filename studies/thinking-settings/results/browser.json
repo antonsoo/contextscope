@@ -1,0 +1,482 @@
+{
+  "before": [
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "workflows": [
+        {
+          "name": "budget-change",
+          "reads": [
+            0,
+            10151,
+            10151
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "8450047d7cbd8cea49f04d14cfdf2aa6a437d70a59c2109a14ed762f67c7ff72",
+          "htmlSha256": "835edd9820d5f977c472a07824bfd8adc09fe7333e2593ceb8960dda673aae20",
+          "noPageOverflow": true,
+          "axeViolations": []
+        },
+        {
+          "name": "effort-change",
+          "reads": [
+            0,
+            10151,
+            10151
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "b72e159026d27da1255fd11bfc26494ce324d0ed561b7763232dc7e48e61671a",
+          "htmlSha256": "f02084929fef346522801bc2bec85473fc56ce748076a01fda58c01b54cb8070",
+          "noPageOverflow": true,
+          "axeViolations": []
+        },
+        {
+          "name": "message-effort-change",
+          "reads": [
+            0,
+            10166,
+            10166
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "eaf754f17095f4425f268daa408c49ff0ca55a02e286fb0ac356a7fa1eda166d",
+          "htmlSha256": "1a86ad2d7af87467d562daf37c9b6bf9fcdbed63a3f2fcb712c776a0826d1f23",
+          "noPageOverflow": true,
+          "axeViolations": []
+        },
+        {
+          "name": "adaptive-default",
+          "reads": [
+            0,
+            10151
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "d94cabdbdf9af04b1db889c2eff8487ddb356eafecc63e2d8cc77d108382b6f7",
+          "htmlSha256": "62388b775e57170eb85719f197e4c45c223a583858e71a86da8b3ed79865ef29",
+          "noPageOverflow": true,
+          "axeViolations": []
+        }
+      ],
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    },
+    {
+      "engine": "chromium",
+      "width": 375,
+      "workflows": [
+        {
+          "name": "budget-change",
+          "reads": [
+            0,
+            10151,
+            10151
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "8450047d7cbd8cea49f04d14cfdf2aa6a437d70a59c2109a14ed762f67c7ff72",
+          "htmlSha256": "594886db9ac48eb4a2430fb898c3cbe49cf28961e391fe941bb20ce2f2387259",
+          "noPageOverflow": true,
+          "axeViolations": []
+        },
+        {
+          "name": "effort-change",
+          "reads": [
+            0,
+            10151,
+            10151
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "b72e159026d27da1255fd11bfc26494ce324d0ed561b7763232dc7e48e61671a",
+          "htmlSha256": "04c9a2963ad128bf9d74b4a069b05a98e7b7dd9497f7e032309424efc0bd9629",
+          "noPageOverflow": true,
+          "axeViolations": []
+        },
+        {
+          "name": "message-effort-change",
+          "reads": [
+            0,
+            10166,
+            10166
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "eaf754f17095f4425f268daa408c49ff0ca55a02e286fb0ac356a7fa1eda166d",
+          "htmlSha256": "dab5447dd71a8f94c011b5bb5b30fb571385013434a913013b818d6d018bde97",
+          "noPageOverflow": true,
+          "axeViolations": []
+        },
+        {
+          "name": "adaptive-default",
+          "reads": [
+            0,
+            10151
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "d94cabdbdf9af04b1db889c2eff8487ddb356eafecc63e2d8cc77d108382b6f7",
+          "htmlSha256": "49b84a1acc44d05b56f12b002b20adb12337f548ade13bb34860aa19a5827956",
+          "noPageOverflow": true,
+          "axeViolations": []
+        }
+      ],
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "workflows": [
+        {
+          "name": "budget-change",
+          "reads": [
+            0,
+            10151,
+            10151
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "8450047d7cbd8cea49f04d14cfdf2aa6a437d70a59c2109a14ed762f67c7ff72",
+          "htmlSha256": "efd2f7af9b50be51608e734183a30c44cc9426cd22ced1d2f1cdfcea995c56f3",
+          "noPageOverflow": true,
+          "axeViolations": []
+        },
+        {
+          "name": "effort-change",
+          "reads": [
+            0,
+            10151,
+            10151
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "b72e159026d27da1255fd11bfc26494ce324d0ed561b7763232dc7e48e61671a",
+          "htmlSha256": "6320533f033147cf92c1001411779a8fb0c9e83e1e6ff072bf701580cafc8088",
+          "noPageOverflow": true,
+          "axeViolations": []
+        },
+        {
+          "name": "message-effort-change",
+          "reads": [
+            0,
+            10166,
+            10166
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "eaf754f17095f4425f268daa408c49ff0ca55a02e286fb0ac356a7fa1eda166d",
+          "htmlSha256": "b814fd370f66e772ef30967189faa540f484cb00c86a321b3054f16a9b363bc9",
+          "noPageOverflow": true,
+          "axeViolations": []
+        },
+        {
+          "name": "adaptive-default",
+          "reads": [
+            0,
+            10151
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "d94cabdbdf9af04b1db889c2eff8487ddb356eafecc63e2d8cc77d108382b6f7",
+          "htmlSha256": "71fcdae5a1011b87b0e65367a2886bdda9fb4082a80bc9df5b7168083f4f0adf",
+          "noPageOverflow": true,
+          "axeViolations": []
+        }
+      ],
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    },
+    {
+      "engine": "firefox",
+      "width": 375,
+      "workflows": [
+        {
+          "name": "budget-change",
+          "reads": [
+            0,
+            10151,
+            10151
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "8450047d7cbd8cea49f04d14cfdf2aa6a437d70a59c2109a14ed762f67c7ff72",
+          "htmlSha256": "9f28421063a47061024a2796a4f3e3e04a83e1a6c058285c18e148fbb0b2ee54",
+          "noPageOverflow": true,
+          "axeViolations": []
+        },
+        {
+          "name": "effort-change",
+          "reads": [
+            0,
+            10151,
+            10151
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "b72e159026d27da1255fd11bfc26494ce324d0ed561b7763232dc7e48e61671a",
+          "htmlSha256": "5d38bad78b98cf68f47b3a3abd2d69275d361669b2edbbca4415d852dbf9d98d",
+          "noPageOverflow": true,
+          "axeViolations": []
+        },
+        {
+          "name": "message-effort-change",
+          "reads": [
+            0,
+            10166,
+            10166
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "eaf754f17095f4425f268daa408c49ff0ca55a02e286fb0ac356a7fa1eda166d",
+          "htmlSha256": "8cbe968bd20049ddaad4b0c3c75378dace670d8baf79a6a38cacc238595a9721",
+          "noPageOverflow": true,
+          "axeViolations": []
+        },
+        {
+          "name": "adaptive-default",
+          "reads": [
+            0,
+            10151
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "d94cabdbdf9af04b1db889c2eff8487ddb356eafecc63e2d8cc77d108382b6f7",
+          "htmlSha256": "5b25cccf0d994449a216c9b5dae1e691ea02aa37b32170c878a017d9855bac51",
+          "noPageOverflow": true,
+          "axeViolations": []
+        }
+      ],
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    }
+  ],
+  "after": [
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "workflows": [
+        {
+          "name": "budget-change",
+          "reads": [
+            0,
+            0,
+            10151
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "f578c621e369032bb6d9541a20f39af6228d98c12afd80e9038a7303b733a5d1",
+          "htmlSha256": "689d5543f0a0112cc99da5d621f12ad385f57d7329b96195fb8734adf95e6b44",
+          "noPageOverflow": true,
+          "axeViolations": []
+        },
+        {
+          "name": "effort-change",
+          "reads": [
+            0,
+            0,
+            10151
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "4ff63ed2c6eaeb05cf7bd23531be33d307e4a3ad7cc33ce408d412360e3ebe29",
+          "htmlSha256": "c715803a0dd24056e9eb0037480d416c6bcf0d35690f243fb9f4119961026759",
+          "noPageOverflow": true,
+          "axeViolations": []
+        },
+        {
+          "name": "message-effort-change",
+          "reads": [
+            0,
+            10151,
+            10166
+          ],
+          "rawPreserved": true,
+          "reportMatchesCli": true,
+          "jsonSha256": "8ed3369d8f76e0e990100030a63902fdc57ee02c30265c530b581e5155168eb6",
+          "htmlSha256": "29d11d604c927343f33323e07af8505a92ab7830805fb04e399079b9289322b8",
+          "noPageOverflow": true,
+          "axeViolations": []
+        },
+        {
+          "name": "adaptive-default",
+          "reads": [
+            0,
+            10151
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "d94cabdbdf9af04b1db889c2eff8487ddb356eafecc63e2d8cc77d108382b6f7",
+          "htmlSha256": "ea085f770fe040351b9c3b4453a38d709929b87563b8c45037b227796dea1ce4",
+          "noPageOverflow": true,
+          "axeViolations": []
+        }
+      ],
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    },
+    {
+      "engine": "chromium",
+      "width": 375,
+      "workflows": [
+        {
+          "name": "budget-change",
+          "reads": [
+            0,
+            0,
+            10151
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "f578c621e369032bb6d9541a20f39af6228d98c12afd80e9038a7303b733a5d1",
+          "htmlSha256": "03e35aebab93a819cbfb4a34a3c8e48e19574d319701d5203f2b22b2c3045f8f",
+          "noPageOverflow": true,
+          "axeViolations": []
+        },
+        {
+          "name": "effort-change",
+          "reads": [
+            0,
+            0,
+            10151
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "4ff63ed2c6eaeb05cf7bd23531be33d307e4a3ad7cc33ce408d412360e3ebe29",
+          "htmlSha256": "f61f29bb0ec391372424a3471bef0de6c75ce085117b4b7be5980eea5ce7c313",
+          "noPageOverflow": true,
+          "axeViolations": []
+        },
+        {
+          "name": "message-effort-change",
+          "reads": [
+            0,
+            10151,
+            10166
+          ],
+          "rawPreserved": true,
+          "reportMatchesCli": true,
+          "jsonSha256": "8ed3369d8f76e0e990100030a63902fdc57ee02c30265c530b581e5155168eb6",
+          "htmlSha256": "709e5f1c1171fdc3a876cab1b6c9bdb33640f96bd3fb9facbc844090aaf00b66",
+          "noPageOverflow": true,
+          "axeViolations": []
+        },
+        {
+          "name": "adaptive-default",
+          "reads": [
+            0,
+            10151
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "d94cabdbdf9af04b1db889c2eff8487ddb356eafecc63e2d8cc77d108382b6f7",
+          "htmlSha256": "0727a52c96fcb4549f4415b57c96399d6049b83f5a819331251cea009877fc70",
+          "noPageOverflow": true,
+          "axeViolations": []
+        }
+      ],
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "workflows": [
+        {
+          "name": "budget-change",
+          "reads": [
+            0,
+            0,
+            10151
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "f578c621e369032bb6d9541a20f39af6228d98c12afd80e9038a7303b733a5d1",
+          "htmlSha256": "9ced37a3b50bcb7d098c3994781fdbeeefc364ae7cf918a0fe3baa42efde3993",
+          "noPageOverflow": true,
+          "axeViolations": []
+        },
+        {
+          "name": "effort-change",
+          "reads": [
+            0,
+            0,
+            10151
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "4ff63ed2c6eaeb05cf7bd23531be33d307e4a3ad7cc33ce408d412360e3ebe29",
+          "htmlSha256": "afc8def310574dd5e2cc2845396e8e5db030e0cc17d50d5804be94ca95b8f7e8",
+          "noPageOverflow": true,
+          "axeViolations": []
+        },
+        {
+          "name": "message-effort-change",
+          "reads": [
+            0,
+            10151,
+            10166
+          ],
+          "rawPreserved": true,
+          "reportMatchesCli": true,
+          "jsonSha256": "8ed3369d8f76e0e990100030a63902fdc57ee02c30265c530b581e5155168eb6",
+          "htmlSha256": "4015ebd68c422adc9b47b489c5edbcb9bb0619d51d400f771b833596812405be",
+          "noPageOverflow": true,
+          "axeViolations": []
+        },
+        {
+          "name": "adaptive-default",
+          "reads": [
+            0,
+            10151
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "d94cabdbdf9af04b1db889c2eff8487ddb356eafecc63e2d8cc77d108382b6f7",
+          "htmlSha256": "6965858cfdc140348177501b770ca1b576bd36ccb62e51e472dae297f83baba4",
+          "noPageOverflow": true,
+          "axeViolations": []
+        }
+      ],
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    },
+    {
+      "engine": "firefox",
+      "width": 375,
+      "workflows": [
+        {
+          "name": "budget-change",
+          "reads": [
+            0,
+            0,
+            10151
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "f578c621e369032bb6d9541a20f39af6228d98c12afd80e9038a7303b733a5d1",
+          "htmlSha256": "6b94bb7db436d8886bf3796811a519ed756d9150ba7e98a30cc8da40e659db76",
+          "noPageOverflow": true,
+          "axeViolations": []
+        },
+        {
+          "name": "effort-change",
+          "reads": [
+            0,
+            0,
+            10151
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "4ff63ed2c6eaeb05cf7bd23531be33d307e4a3ad7cc33ce408d412360e3ebe29",
+          "htmlSha256": "9762d84c856242423d46a850db0ec22ad7a03e1dca166b2820863cffede086c8",
+          "noPageOverflow": true,
+          "axeViolations": []
+        },
+        {
+          "name": "message-effort-change",
+          "reads": [
+            0,
+            10151,
+            10166
+          ],
+          "rawPreserved": true,
+          "reportMatchesCli": true,
+          "jsonSha256": "8ed3369d8f76e0e990100030a63902fdc57ee02c30265c530b581e5155168eb6",
+          "htmlSha256": "364c5a243ee8ba666883b076d07cd637c90c8cc73ca7280f47f665751a8df10d",
+          "noPageOverflow": true,
+          "axeViolations": []
+        },
+        {
+          "name": "adaptive-default",
+          "reads": [
+            0,
+            10151
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "d94cabdbdf9af04b1db889c2eff8487ddb356eafecc63e2d8cc77d108382b6f7",
+          "htmlSha256": "8d2d8c4c29629237147aa9c6891550c9656aa255b3c36135f49869d96f4b1802",
+          "noPageOverflow": true,
+          "axeViolations": []
+        }
+      ],
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    }
+  ]
+}

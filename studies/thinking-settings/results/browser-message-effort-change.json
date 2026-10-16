@@ -1,0 +1,736 @@
+{
+  "parse": {
+    "format": "anthropic",
+    "complete": true,
+    "sourceRecords": 3,
+    "skippedRecords": 0,
+    "autoDetected": true,
+    "requests": [
+      {
+        "provider": "anthropic",
+        "index": 0,
+        "model": "claude-opus-5-5",
+        "source": {
+          "recordIndex": 0,
+          "line": 1
+        },
+        "segments": [
+          {
+            "id": "tools[0]",
+            "category": "tools",
+            "label": "tool: lookup",
+            "path": "tools[0]",
+            "openaiTokens": 38,
+            "claudeTokensEstimate": 61,
+            "charLength": 180
+          },
+          {
+            "id": "system[0]",
+            "category": "system",
+            "label": "system block 1",
+            "path": "system[0]",
+            "openaiTokens": 2401,
+            "claudeTokensEstimate": 3545,
+            "cacheControl": {
+              "type": "ephemeral",
+              "ttl": "5m"
+            },
+            "charLength": 11700
+          },
+          {
+            "id": "messages[0].content[0]",
+            "category": "user",
+            "label": "message 1 (user) text",
+            "path": "messages[0].content[0]",
+            "openaiTokens": 3901,
+            "claudeTokensEstimate": 6545,
+            "cacheControl": {
+              "type": "ephemeral",
+              "ttl": "5m"
+            },
+            "charLength": 21600
+          },
+          {
+            "id": "messages[1].content[0]",
+            "category": "assistant",
+            "label": "message 2 (assistant) text",
+            "path": "messages[1].content",
+            "openaiTokens": 6,
+            "claudeTokensEstimate": 8,
+            "charLength": 27
+          },
+          {
+            "id": "messages[2].content",
+            "category": "system",
+            "label": "message 3 (system) empty content",
+            "path": "messages[2].content",
+            "openaiTokens": 0,
+            "claudeTokensEstimate": 0,
+            "charLength": 0
+          },
+          {
+            "id": "messages[3].content[0]",
+            "category": "user",
+            "label": "message 4 (user) text",
+            "path": "messages[3].content[0]",
+            "openaiTokens": 5,
+            "claudeTokensEstimate": 7,
+            "cacheControl": {
+              "type": "ephemeral",
+              "ttl": "5m"
+            },
+            "charLength": 24
+          }
+        ]
+      },
+      {
+        "provider": "anthropic",
+        "index": 1,
+        "model": "claude-opus-5-5",
+        "source": {
+          "recordIndex": 1,
+          "line": 2
+        },
+        "segments": [
+          {
+            "id": "tools[0]",
+            "category": "tools",
+            "label": "tool: lookup",
+            "path": "tools[0]",
+            "openaiTokens": 38,
+            "claudeTokensEstimate": 61,
+            "charLength": 180
+          },
+          {
+            "id": "system[0]",
+            "category": "system",
+            "label": "system block 1",
+            "path": "system[0]",
+            "openaiTokens": 2401,
+            "claudeTokensEstimate": 3545,
+            "cacheControl": {
+              "type": "ephemeral",
+              "ttl": "5m"
+            },
+            "charLength": 11700
+          },
+          {
+            "id": "messages[0].content[0]",
+            "category": "user",
+            "label": "message 1 (user) text",
+            "path": "messages[0].content[0]",
+            "openaiTokens": 3901,
+            "claudeTokensEstimate": 6545,
+            "cacheControl": {
+              "type": "ephemeral",
+              "ttl": "5m"
+            },
+            "charLength": 21600
+          },
+          {
+            "id": "messages[1].content[0]",
+            "category": "assistant",
+            "label": "message 2 (assistant) text",
+            "path": "messages[1].content",
+            "openaiTokens": 6,
+            "claudeTokensEstimate": 8,
+            "charLength": 27
+          },
+          {
+            "id": "messages[2].content",
+            "category": "system",
+            "label": "message 3 (system) empty content",
+            "path": "messages[2].content",
+            "openaiTokens": 0,
+            "claudeTokensEstimate": 0,
+            "charLength": 0
+          },
+          {
+            "id": "messages[3].content[0]",
+            "category": "user",
+            "label": "message 4 (user) text",
+            "path": "messages[3].content[0]",
+            "openaiTokens": 5,
+            "claudeTokensEstimate": 7,
+            "cacheControl": {
+              "type": "ephemeral",
+              "ttl": "5m"
+            },
+            "charLength": 24
+          }
+        ]
+      },
+      {
+        "provider": "anthropic",
+        "index": 2,
+        "model": "claude-opus-5-5",
+        "source": {
+          "recordIndex": 2,
+          "line": 3
+        },
+        "segments": [
+          {
+            "id": "tools[0]",
+            "category": "tools",
+            "label": "tool: lookup",
+            "path": "tools[0]",
+            "openaiTokens": 38,
+            "claudeTokensEstimate": 61,
+            "charLength": 180
+          },
+          {
+            "id": "system[0]",
+            "category": "system",
+            "label": "system block 1",
+            "path": "system[0]",
+            "openaiTokens": 2401,
+            "claudeTokensEstimate": 3545,
+            "cacheControl": {
+              "type": "ephemeral",
+              "ttl": "5m"
+            },
+            "charLength": 11700
+          },
+          {
+            "id": "messages[0].content[0]",
+            "category": "user",
+            "label": "message 1 (user) text",
+            "path": "messages[0].content[0]",
+            "openaiTokens": 3901,
+            "claudeTokensEstimate": 6545,
+            "cacheControl": {
+              "type": "ephemeral",
+              "ttl": "5m"
+            },
+            "charLength": 21600
+          },
+          {
+            "id": "messages[1].content[0]",
+            "category": "assistant",
+            "label": "message 2 (assistant) text",
+            "path": "messages[1].content",
+            "openaiTokens": 6,
+            "claudeTokensEstimate": 8,
+            "charLength": 27
+          },
+          {
+            "id": "messages[2].content",
+            "category": "system",
+            "label": "message 3 (system) empty content",
+            "path": "messages[2].content",
+            "openaiTokens": 0,
+            "claudeTokensEstimate": 0,
+            "charLength": 0
+          },
+          {
+            "id": "messages[3].content[0]",
+            "category": "user",
+            "label": "message 4 (user) text",
+            "path": "messages[3].content[0]",
+            "openaiTokens": 5,
+            "claudeTokensEstimate": 7,
+            "cacheControl": {
+              "type": "ephemeral",
+              "ttl": "5m"
+            },
+            "charLength": 24
+          }
+        ]
+      }
+    ],
+    "warnings": []
+  },
+  "model": {
+    "id": "claude-opus-5-5",
+    "displayName": "Claude Opus 5.5",
+    "source": "request"
+  },
+  "claudeTokenScale": 1,
+  "reports": [
+    {
+      "requestIndex": 0,
+      "model": {
+        "id": "claude-opus-5-5",
+        "displayName": "Claude Opus 5.5",
+        "source": "request"
+      },
+      "totals": {
+        "openaiTokens": 6351,
+        "claudeTokensEstimate": 10166
+      },
+      "byCategory": [
+        {
+          "category": "system",
+          "segmentCount": 2,
+          "openaiTokens": 2401,
+          "claudeTokensEstimate": 3545
+        },
+        {
+          "category": "tools",
+          "segmentCount": 1,
+          "openaiTokens": 38,
+          "claudeTokensEstimate": 61
+        },
+        {
+          "category": "user",
+          "segmentCount": 2,
+          "openaiTokens": 3906,
+          "claudeTokensEstimate": 6552
+        },
+        {
+          "category": "assistant",
+          "segmentCount": 1,
+          "openaiTokens": 6,
+          "claudeTokensEstimate": 8
+        }
+      ],
+      "segments": [
+        {
+          "id": "tools[0]",
+          "category": "tools",
+          "label": "tool: lookup",
+          "path": "tools[0]",
+          "openaiTokens": 38,
+          "claudeTokensEstimate": 61,
+          "charLength": 180
+        },
+        {
+          "id": "system[0]",
+          "category": "system",
+          "label": "system block 1",
+          "path": "system[0]",
+          "openaiTokens": 2401,
+          "claudeTokensEstimate": 3545,
+          "cacheControl": {
+            "type": "ephemeral",
+            "ttl": "5m"
+          },
+          "charLength": 11700
+        },
+        {
+          "id": "messages[0].content[0]",
+          "category": "user",
+          "label": "message 1 (user) text",
+          "path": "messages[0].content[0]",
+          "openaiTokens": 3901,
+          "claudeTokensEstimate": 6545,
+          "cacheControl": {
+            "type": "ephemeral",
+            "ttl": "5m"
+          },
+          "charLength": 21600
+        },
+        {
+          "id": "messages[1].content[0]",
+          "category": "assistant",
+          "label": "message 2 (assistant) text",
+          "path": "messages[1].content",
+          "openaiTokens": 6,
+          "claudeTokensEstimate": 8,
+          "charLength": 27
+        },
+        {
+          "id": "messages[2].content",
+          "category": "system",
+          "label": "message 3 (system) empty content",
+          "path": "messages[2].content",
+          "openaiTokens": 0,
+          "claudeTokensEstimate": 0,
+          "charLength": 0
+        },
+        {
+          "id": "messages[3].content[0]",
+          "category": "user",
+          "label": "message 4 (user) text",
+          "path": "messages[3].content[0]",
+          "openaiTokens": 5,
+          "claudeTokensEstimate": 7,
+          "cacheControl": {
+            "type": "ephemeral",
+            "ttl": "5m"
+          },
+          "charLength": 24
+        }
+      ],
+      "contextWindow": 1000000,
+      "percentOfContextWindow": 0.010166
+    },
+    {
+      "requestIndex": 1,
+      "model": {
+        "id": "claude-opus-5-5",
+        "displayName": "Claude Opus 5.5",
+        "source": "request"
+      },
+      "totals": {
+        "openaiTokens": 6351,
+        "claudeTokensEstimate": 10166
+      },
+      "byCategory": [
+        {
+          "category": "system",
+          "segmentCount": 2,
+          "openaiTokens": 2401,
+          "claudeTokensEstimate": 3545
+        },
+        {
+          "category": "tools",
+          "segmentCount": 1,
+          "openaiTokens": 38,
+          "claudeTokensEstimate": 61
+        },
+        {
+          "category": "user",
+          "segmentCount": 2,
+          "openaiTokens": 3906,
+          "claudeTokensEstimate": 6552
+        },
+        {
+          "category": "assistant",
+          "segmentCount": 1,
+          "openaiTokens": 6,
+          "claudeTokensEstimate": 8
+        }
+      ],
+      "segments": [
+        {
+          "id": "tools[0]",
+          "category": "tools",
+          "label": "tool: lookup",
+          "path": "tools[0]",
+          "openaiTokens": 38,
+          "claudeTokensEstimate": 61,
+          "charLength": 180
+        },
+        {
+          "id": "system[0]",
+          "category": "system",
+          "label": "system block 1",
+          "path": "system[0]",
+          "openaiTokens": 2401,
+          "claudeTokensEstimate": 3545,
+          "cacheControl": {
+            "type": "ephemeral",
+            "ttl": "5m"
+          },
+          "charLength": 11700
+        },
+        {
+          "id": "messages[0].content[0]",
+          "category": "user",
+          "label": "message 1 (user) text",
+          "path": "messages[0].content[0]",
+          "openaiTokens": 3901,
+          "claudeTokensEstimate": 6545,
+          "cacheControl": {
+            "type": "ephemeral",
+            "ttl": "5m"
+          },
+          "charLength": 21600
+        },
+        {
+          "id": "messages[1].content[0]",
+          "category": "assistant",
+          "label": "message 2 (assistant) text",
+          "path": "messages[1].content",
+          "openaiTokens": 6,
+          "claudeTokensEstimate": 8,
+          "charLength": 27
+        },
+        {
+          "id": "messages[2].content",
+          "category": "system",
+          "label": "message 3 (system) empty content",
+          "path": "messages[2].content",
+          "openaiTokens": 0,
+          "claudeTokensEstimate": 0,
+          "charLength": 0
+        },
+        {
+          "id": "messages[3].content[0]",
+          "category": "user",
+          "label": "message 4 (user) text",
+          "path": "messages[3].content[0]",
+          "openaiTokens": 5,
+          "claudeTokensEstimate": 7,
+          "cacheControl": {
+            "type": "ephemeral",
+            "ttl": "5m"
+          },
+          "charLength": 24
+        }
+      ],
+      "contextWindow": 1000000,
+      "percentOfContextWindow": 0.010166
+    },
+    {
+      "requestIndex": 2,
+      "model": {
+        "id": "claude-opus-5-5",
+        "displayName": "Claude Opus 5.5",
+        "source": "request"
+      },
+      "totals": {
+        "openaiTokens": 6351,
+        "claudeTokensEstimate": 10166
+      },
+      "byCategory": [
+        {
+          "category": "system",
+          "segmentCount": 2,
+          "openaiTokens": 2401,
+          "claudeTokensEstimate": 3545
+        },
+        {
+          "category": "tools",
+          "segmentCount": 1,
+          "openaiTokens": 38,
+          "claudeTokensEstimate": 61
+        },
+        {
+          "category": "user",
+          "segmentCount": 2,
+          "openaiTokens": 3906,
+          "claudeTokensEstimate": 6552
+        },
+        {
+          "category": "assistant",
+          "segmentCount": 1,
+          "openaiTokens": 6,
+          "claudeTokensEstimate": 8
+        }
+      ],
+      "segments": [
+        {
+          "id": "tools[0]",
+          "category": "tools",
+          "label": "tool: lookup",
+          "path": "tools[0]",
+          "openaiTokens": 38,
+          "claudeTokensEstimate": 61,
+          "charLength": 180
+        },
+        {
+          "id": "system[0]",
+          "category": "system",
+          "label": "system block 1",
+          "path": "system[0]",
+          "openaiTokens": 2401,
+          "claudeTokensEstimate": 3545,
+          "cacheControl": {
+            "type": "ephemeral",
+            "ttl": "5m"
+          },
+          "charLength": 11700
+        },
+        {
+          "id": "messages[0].content[0]",
+          "category": "user",
+          "label": "message 1 (user) text",
+          "path": "messages[0].content[0]",
+          "openaiTokens": 3901,
+          "claudeTokensEstimate": 6545,
+          "cacheControl": {
+            "type": "ephemeral",
+            "ttl": "5m"
+          },
+          "charLength": 21600
+        },
+        {
+          "id": "messages[1].content[0]",
+          "category": "assistant",
+          "label": "message 2 (assistant) text",
+          "path": "messages[1].content",
+          "openaiTokens": 6,
+          "claudeTokensEstimate": 8,
+          "charLength": 27
+        },
+        {
+          "id": "messages[2].content",
+          "category": "system",
+          "label": "message 3 (system) empty content",
+          "path": "messages[2].content",
+          "openaiTokens": 0,
+          "claudeTokensEstimate": 0,
+          "charLength": 0
+        },
+        {
+          "id": "messages[3].content[0]",
+          "category": "user",
+          "label": "message 4 (user) text",
+          "path": "messages[3].content[0]",
+          "openaiTokens": 5,
+          "claudeTokensEstimate": 7,
+          "cacheControl": {
+            "type": "ephemeral",
+            "ttl": "5m"
+          },
+          "charLength": 24
+        }
+      ],
+      "contextWindow": 1000000,
+      "percentOfContextWindow": 0.010166
+    }
+  ],
+  "prefixMatches": [
+    {
+      "fromIndex": 0,
+      "toIndex": 1,
+      "relation": "continues",
+      "matchedSegments": 4,
+      "matchedOpenaiTokens": 6346,
+      "matchedClaudeTokensEstimate": 10159,
+      "divergedAt": {
+        "fromSegmentId": "messages[2].content",
+        "toSegmentId": "messages[2].content"
+      }
+    },
+    {
+      "fromIndex": 0,
+      "toIndex": 2,
+      "relation": "continues",
+      "matchedSegments": 6,
+      "matchedOpenaiTokens": 6351,
+      "matchedClaudeTokensEstimate": 10166
+    }
+  ],
+  "conversations": {
+    "count": 1,
+    "byRequest": [
+      0,
+      0,
+      0
+    ]
+  },
+  "cacheSimulation": {
+    "provider": "anthropic",
+    "model": "claude-opus-5-5",
+    "actual": [
+      {
+        "requestIndex": 0,
+        "readTokens": 0,
+        "writeTokens5m": 10166,
+        "writeTokens1h": 0,
+        "uncachedTokens": 0,
+        "costUsd": 0.05083
+      },
+      {
+        "requestIndex": 1,
+        "readTokens": 10151,
+        "writeTokens5m": 15,
+        "writeTokens1h": 0,
+        "uncachedTokens": 0,
+        "costUsd": 0.0021052
+      },
+      {
+        "requestIndex": 2,
+        "readTokens": 10166,
+        "writeTokens5m": 0,
+        "writeTokens1h": 0,
+        "uncachedTokens": 0,
+        "costUsd": 0.0020332
+      }
+    ],
+    "optimized": [
+      {
+        "requestIndex": 0,
+        "readTokens": 0,
+        "writeTokens5m": 10166,
+        "writeTokens1h": 0,
+        "uncachedTokens": 0,
+        "costUsd": 0.05083
+      },
+      {
+        "requestIndex": 1,
+        "readTokens": 10151,
+        "writeTokens5m": 15,
+        "writeTokens1h": 0,
+        "uncachedTokens": 0,
+        "costUsd": 0.0021052
+      },
+      {
+        "requestIndex": 2,
+        "readTokens": 10166,
+        "writeTokens5m": 0,
+        "writeTokens1h": 0,
+        "uncachedTokens": 0,
+        "costUsd": 0.0020332
+      }
+    ],
+    "totalActualCostUsd": 0.0549684,
+    "totalOptimizedCostUsd": 0.0549684
+  },
+  "usageComparison": {
+    "rows": [
+      {
+        "requestIndex": 0,
+        "estimatedInputTokens": 10166,
+        "simulatedReadTokens": 0,
+        "reportedInputTokens": null,
+        "reportedReadTokens": null,
+        "reportedWriteTokens": null,
+        "inputDeltaTokens": null,
+        "readDeltaTokens": null,
+        "readOutcome": "unavailable"
+      },
+      {
+        "requestIndex": 1,
+        "estimatedInputTokens": 10166,
+        "simulatedReadTokens": 10151,
+        "reportedInputTokens": null,
+        "reportedReadTokens": null,
+        "reportedWriteTokens": null,
+        "inputDeltaTokens": null,
+        "readDeltaTokens": null,
+        "readOutcome": "unavailable"
+      },
+      {
+        "requestIndex": 2,
+        "estimatedInputTokens": 10166,
+        "simulatedReadTokens": 10166,
+        "reportedInputTokens": null,
+        "reportedReadTokens": null,
+        "reportedWriteTokens": null,
+        "inputDeltaTokens": null,
+        "readDeltaTokens": null,
+        "readOutcome": "unavailable"
+      }
+    ],
+    "capturedRequests": 0,
+    "uncomparedRequestIndices": [],
+    "invalidRequestIndices": [],
+    "input": {
+      "requestIndices": [],
+      "reportedTokens": null,
+      "simulatedTokens": null,
+      "deltaTokens": null
+    },
+    "cacheRead": {
+      "requestIndices": [],
+      "reportedTokens": null,
+      "simulatedTokens": null,
+      "deltaTokens": null
+    },
+    "readOutcomes": {
+      "both_zero": 0,
+      "both_positive": 0,
+      "simulated_hit_reported_zero": 0,
+      "reported_hit_simulated_zero": 0,
+      "unavailable": 3
+    },
+    "issues": []
+  },
+  "findings": [
+    {
+      "kind": "breakpoint_before_change",
+      "severity": "warning",
+      "requestIndex": 1,
+      "title": "Cache breakpoint placed after content that changes",
+      "detail": "\"message 4 (user) text\" carries a cache_control marker, but it (or something before it) already differs from request 1. The breakpoint can only pay off once the content it covers is stable.",
+      "segmentIds": [
+        "messages[3].content[0]"
+      ]
+    }
+  ],
+  "duplicates": []
+}

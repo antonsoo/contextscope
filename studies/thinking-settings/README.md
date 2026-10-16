@@ -10,6 +10,9 @@ retains empty message headers in prompt identity. This is an unreleased local
 source correction. There is no npm release or hosted deployment associated
 with this study.
 
+Open the retained [budget-change request file](captures/budget-change.jsonl.gz)
+in the browser's file chooser to inspect the three-request example.
+
 ## Rules and the conservative assumption
 
 [Claude's thinking/caching documentation](https://platform.claude.com/docs/en/build-with-claude/thinking#thinking-and-prompt-caching)
@@ -117,6 +120,54 @@ npm run preview:web -- --host 127.0.0.1 --port 4334 --strictPort
 # In another terminal:
 node studies/thinking-settings/browser.mjs http://127.0.0.1:4334/contextscope/ /tmp/thinking-browser --verify
 ```
+
+## Clean and installed verification
+
+The tested source is local commit
+`efbd97888fc224168a0c4a4f6b47fbf2bc0dc60d`. A clean Git archive with a fresh
+Node 24.21.0 install passed `npm run lint`, `npm run typecheck`, all 577 unit
+checks, `npm run build` and all 102 production Chromium/Firefox checks.
+The web build output is `web/dist/`, with base `/contextscope/`; the CLI and
+library build into `dist/`.
+
+The separately packed npm tarball was installed outside the checkout with
+its runtime dependency. All twelve replay outputs are byte-identical to the
+source on Node 24.21.0 and the minimum Node 20.0.0. Both runtimes' CLI JSON
+reports for the budget and message-effort controls equal the complete source
+reports. Their budget HTML equals the actual browser download after replacing
+only its one generated timestamp.
+
+The [verification receipt](results/verification.json) records hashes for the
+source archive and tarball, 114 matching source/build inputs (including one
+symlink), 96 matching installed files and all 42 matching served production
+files. The [browser receipt](results/browser.json) retains sixteen workflows
+before and sixteen after, spanning both engines and widths. All final JSON
+downloads match the CLI reports. The actual [budget HTML download](results/browser-budget.html)
+and four JSON downloads are retained alongside the receipt.
+
+No page exceptions, HTTP requests after disconnecting, axe violations or
+page-width overflow occurred in these study workflows. The cache table retains
+its existing horizontal scroll inside the panel on phones. All four retained
+screenshots were opened and inspected; the conservative assumption and corrected
+counts remain readable. This verifies local artifacts, not the public site or
+the registry's released package.
+
+| Desktop cache table | Capture |
+| --- | --- |
+| Baseline: request 2 incorrectly reuses the entire prompt | [Before](../../docs/assets/thinking-settings/before.png) |
+| Corrected: request 2 writes; request 3 returns to its earlier configuration | [After](../../docs/assets/thinking-settings/after.png) |
+
+![Corrected cache table from the clean production build](../../docs/assets/thinking-settings/after.png)
+
+The [phone finding](../../docs/assets/thinking-settings/finding-phone.png)
+explains the model-specific setup limit; the [Firefox phone table](../../docs/assets/thinking-settings/cache-phone.png)
+shows the actual counts and simulated cost totals.
+
+`verify-artifacts.py SCRATCH BASE_URL` checks the retained run against its clean
+archive, installed files, raw browser downloads and served bytes. Full command
+logs remain in the local run directory; the receipt records their hashes and
+exit statuses without publishing machine paths. No push, package release or
+hosted deployment was performed.
 
 ## Limits
 
