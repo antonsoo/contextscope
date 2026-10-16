@@ -1,0 +1,107 @@
+{
+  "revision": "969d06b2171a7b53ebfd9af3bc7316543b85670a",
+  "checkedAt": "2026-10-16T19:23:35.468895+00:00",
+  "scope": "Pinned public source bytes, not a registry release or hosted build.",
+  "files": {
+    "src/core/openai-context.ts": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/969d06b2171a7b53ebfd9af3bc7316543b85670a/src/core/openai-context.ts",
+      "bytes": 3161,
+      "sha256": "1c7f3074f561cd425fe4865ef8795edf28561ad5be957282d1701e01a8d0cabf"
+    },
+    "src/core/parse-openai.ts": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/969d06b2171a7b53ebfd9af3bc7316543b85670a/src/core/parse-openai.ts",
+      "bytes": 14907,
+      "sha256": "2047a0df797ef157ea325544ebe5a99b6725564bbf4817d758a4fbc2fcafe511"
+    },
+    "src/core/parse.ts": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/969d06b2171a7b53ebfd9af3bc7316543b85670a/src/core/parse.ts",
+      "bytes": 8294,
+      "sha256": "b009e0377a9e40ce0b1d40c9a292d990671b2511287e440c0d88dc48c20b7a30"
+    },
+    "src/core/detect.ts": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/969d06b2171a7b53ebfd9af3bc7316543b85670a/src/core/detect.ts",
+      "bytes": 4063,
+      "sha256": "5e17f4cc569a6b981c070c66bb308063ae763198f5776dbbbe946bba3b60ccc0"
+    },
+    "src/core/prefix.ts": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/969d06b2171a7b53ebfd9af3bc7316543b85670a/src/core/prefix.ts",
+      "bytes": 13427,
+      "sha256": "9a794a8b7965e48c8f3e3c8ce036b71ec1e7e7a0f787124095cd91ffcfeb13ef"
+    },
+    "src/core/cache-openai.ts": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/969d06b2171a7b53ebfd9af3bc7316543b85670a/src/core/cache-openai.ts",
+      "bytes": 3781,
+      "sha256": "52f5f4bd0516b52d399ecaa9f50098615f8b233fba4d39e0a6e2f65feba7a3a1"
+    },
+    "src/core/media-accounting.ts": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/969d06b2171a7b53ebfd9af3bc7316543b85670a/src/core/media-accounting.ts",
+      "bytes": 3513,
+      "sha256": "cf3c09493dde742e1d900e1c96b89c81ec2d0eb2756f4a5f06d0feba9f4e6530"
+    },
+    "src/core/types.ts": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/969d06b2171a7b53ebfd9af3bc7316543b85670a/src/core/types.ts",
+      "bytes": 14754,
+      "sha256": "c37df80afa9f8d88243222665de2da302f96fbf53632f4077cbfbe1a822d4745"
+    },
+    "src/core/findings.ts": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/969d06b2171a7b53ebfd9af3bc7316543b85670a/src/core/findings.ts",
+      "bytes": 31359,
+      "sha256": "eb5e72a32ee295abef8b828defbd36cca10d49ffd7a829f20942f3e5087806e0"
+    },
+    "src/core/json-report.ts": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/969d06b2171a7b53ebfd9af3bc7316543b85670a/src/core/json-report.ts",
+      "bytes": 2180,
+      "sha256": "12aa2254828b6cf1e51e029d7c3e8b693fc1e5e71441106e6feb9400898302b9"
+    },
+    "web/src/app.ts": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/969d06b2171a7b53ebfd9af3bc7316543b85670a/web/src/app.ts",
+      "bytes": 54035,
+      "sha256": "09ff235aa66e54ecbde1232280b98014d987a1612d22a036887a841c3df037e3"
+    },
+    "tests/openai-context.test.ts": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/969d06b2171a7b53ebfd9af3bc7316543b85670a/tests/openai-context.test.ts",
+      "bytes": 7342,
+      "sha256": "a19b7ee5bfdc69be7aff18fed24cbb9f0a421dc738954f730cdaf9f13b7614a8"
+    },
+    "tests/browser/stored-context.spec.ts": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/969d06b2171a7b53ebfd9af3bc7316543b85670a/tests/browser/stored-context.spec.ts",
+      "bytes": 2798,
+      "sha256": "d0deb1baa1788b82331e4183a10b51c746ef25592dbd4d245951283b345bda12"
+    },
+    "studies/stored-context/README.md": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/969d06b2171a7b53ebfd9af3bc7316543b85670a/studies/stored-context/README.md",
+      "bytes": 8314,
+      "sha256": "3fa3e9d508def82a5467806b4169d200e8cb0e48698ec90d7e885fcb767deea8"
+    },
+    "studies/stored-context/capture.py": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/969d06b2171a7b53ebfd9af3bc7316543b85670a/studies/stored-context/capture.py",
+      "bytes": 9623,
+      "sha256": "c39360f907eeab54f54c80a80b921f977a11254c815c3d9e8f309fc077c44a0f"
+    },
+    "studies/stored-context/captures/manifest.json": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/969d06b2171a7b53ebfd9af3bc7316543b85670a/studies/stored-context/captures/manifest.json",
+      "bytes": 13973,
+      "sha256": "301f2653e3af5d8fac9bc335af715b7ddb65a1c67d4b5d823a1fa231abd18751"
+    },
+    "studies/stored-context/results/before.json": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/969d06b2171a7b53ebfd9af3bc7316543b85670a/studies/stored-context/results/before.json",
+      "bytes": 172374,
+      "sha256": "788ca59836cc8c49c1b3047ec3f96a32dd4452fc96a269d924a4aae69dd1dcb0"
+    },
+    "studies/stored-context/results/after.json": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/969d06b2171a7b53ebfd9af3bc7316543b85670a/studies/stored-context/results/after.json",
+      "bytes": 229525,
+      "sha256": "6e155c8f6d629ac617bbc0314001701935549463a8ca7d696e13b0a5fd9c1c5f"
+    },
+    "studies/stored-context/results/verification.json": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/969d06b2171a7b53ebfd9af3bc7316543b85670a/studies/stored-context/results/verification.json",
+      "bytes": 46617,
+      "sha256": "9d384a71572453ea816957fbd33899e670e25452086fa35041fe238ab734bc71"
+    },
+    "docs/source-status.md": {
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/969d06b2171a7b53ebfd9af3bc7316543b85670a/docs/source-status.md",
+      "bytes": 3205,
+      "sha256": "d7b6e60e005cbf975386c233ad359cbc0636134f154f183ea8986409934ec728"
+    }
+  }
+}

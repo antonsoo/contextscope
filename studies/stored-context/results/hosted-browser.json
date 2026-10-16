@@ -1,0 +1,933 @@
+{
+  "baseUrl": "https://antonsoo.github.io/contextscope/",
+  "exportWorkflows": 44,
+  "verification": "Actual hosted imports after disconnecting, complete downloaded reports, original inspection and recovery. No provider token or cache measurements.",
+  "storedContext": [
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "flows": [
+        {
+          "name": "previous-response-change",
+          "json": "4f51b57e5cdfb14ad3dfbfaf453e8be7a810ca36c439286f5dc6124f93410db8",
+          "html": "70894e60c60ac8ade93a4af5ab0b0a763eec7a0fa4f305e1b2a92aee53ee7196",
+          "reportMatchesCli": true,
+          "originalPreserved": true,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "reported-usage",
+          "json": "309d60331225965befa91a080e798e3cd85f9d583f5a28c096cfa471d7dcb2c0",
+          "html": "1da34bb7bb9fa1d8849adc9041fe505d43146d62835e114b983346d88fdd530d",
+          "reportMatchesCli": true,
+          "originalPreserved": true,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "item-reference-only",
+          "json": "f91b0922c625b96d393776ef6cf0a6115db4eb922be8444e34bc8b1ad4cfec0f",
+          "html": "f415c46c15ea308c902f0ca4fd6e6e176737fab7f481466bd34dbe029b5cf671",
+          "reportMatchesCli": true,
+          "originalPreserved": true,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        }
+      ],
+      "textRecovery": true,
+      "refusalPreservesWorkspace": true,
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    },
+    {
+      "engine": "chromium",
+      "width": 375,
+      "flows": [
+        {
+          "name": "previous-response-change",
+          "json": "4f51b57e5cdfb14ad3dfbfaf453e8be7a810ca36c439286f5dc6124f93410db8",
+          "html": "dd296964edbb0778ab96fa89d8e960ee60c72945102877e30fa14e15482e2b35",
+          "reportMatchesCli": true,
+          "originalPreserved": true,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "reported-usage",
+          "json": "309d60331225965befa91a080e798e3cd85f9d583f5a28c096cfa471d7dcb2c0",
+          "html": "a3f317b40a2906f6899928b132d5bce19bc0653ee068060f72d366942540ea53",
+          "reportMatchesCli": true,
+          "originalPreserved": true,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "item-reference-only",
+          "json": "f91b0922c625b96d393776ef6cf0a6115db4eb922be8444e34bc8b1ad4cfec0f",
+          "html": "2932c9e5b38b31d42baf2cbdf9c9f5ad7ef893a57dad49eed12301a41f3ea424",
+          "reportMatchesCli": true,
+          "originalPreserved": true,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        }
+      ],
+      "textRecovery": true,
+      "refusalPreservesWorkspace": true,
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "flows": [
+        {
+          "name": "previous-response-change",
+          "json": "4f51b57e5cdfb14ad3dfbfaf453e8be7a810ca36c439286f5dc6124f93410db8",
+          "html": "ea0c2cbe4dc2009824bd3743bd5e70c93859bc2e1d55ee7a6cf6c2ca186e1052",
+          "reportMatchesCli": true,
+          "originalPreserved": true,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "reported-usage",
+          "json": "309d60331225965befa91a080e798e3cd85f9d583f5a28c096cfa471d7dcb2c0",
+          "html": "ffd0947d4009d51b69d77c3ccdf4c3e2ae0ff44f486425b6c4ad6917556d3770",
+          "reportMatchesCli": true,
+          "originalPreserved": true,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "item-reference-only",
+          "json": "f91b0922c625b96d393776ef6cf0a6115db4eb922be8444e34bc8b1ad4cfec0f",
+          "html": "0c89ab325c6b6b2c5a63ca113f74b09f9e03d09ef321facf1c0c8992b4b2c551",
+          "reportMatchesCli": true,
+          "originalPreserved": true,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        }
+      ],
+      "textRecovery": true,
+      "refusalPreservesWorkspace": true,
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    },
+    {
+      "engine": "firefox",
+      "width": 375,
+      "flows": [
+        {
+          "name": "previous-response-change",
+          "json": "4f51b57e5cdfb14ad3dfbfaf453e8be7a810ca36c439286f5dc6124f93410db8",
+          "html": "e58bb489ee6fc44f4f14858f26bdb5bee0c3efe41fd68090861fc615d9ead239",
+          "reportMatchesCli": true,
+          "originalPreserved": true,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "reported-usage",
+          "json": "309d60331225965befa91a080e798e3cd85f9d583f5a28c096cfa471d7dcb2c0",
+          "html": "e43d5c9a73930617c5582b3377d53440f812cd5c00e3c9c1e470d79eed2c3d2a",
+          "reportMatchesCli": true,
+          "originalPreserved": true,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "item-reference-only",
+          "json": "f91b0922c625b96d393776ef6cf0a6115db4eb922be8444e34bc8b1ad4cfec0f",
+          "html": "264541d24ea1536fb0c617c4b6231089afd121413c7f98eee8036d4874eb7f6b",
+          "reportMatchesCli": true,
+          "originalPreserved": true,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        }
+      ],
+      "textRecovery": true,
+      "refusalPreservesWorkspace": true,
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    }
+  ],
+  "mediaAccounting": [
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "flows": [
+        {
+          "name": "anthropic-image-transports",
+          "json": "8e814914a001b4a53d6ad12819a1415ea38b02b88ae439e8c3d85c161a1f99cb",
+          "html": "843fcb0914709b6b2f651c3204ba25e1d54a3f9df93e9243e336ca9117912e8f",
+          "reportMatchesCli": true,
+          "originalPreserved": true,
+          "refusedCalibration": true,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "responses-reported-usage",
+          "json": "438886fad9e63fd7df4baade309f6382a9e5feff50db2fb9bdd19d13ac1b749d",
+          "html": "905a83c3f40956556146f9c23c7abec18605e806e60a27c66b08a64873e91f09",
+          "reportMatchesCli": true,
+          "originalPreserved": false,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        }
+      ],
+      "textRecovery": true,
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    },
+    {
+      "engine": "chromium",
+      "width": 375,
+      "flows": [
+        {
+          "name": "anthropic-image-transports",
+          "json": "8e814914a001b4a53d6ad12819a1415ea38b02b88ae439e8c3d85c161a1f99cb",
+          "html": "52868c747c41d67fd3e018152dd18cd25fd51e4e1bb556456cf5711214884c4f",
+          "reportMatchesCli": true,
+          "originalPreserved": true,
+          "refusedCalibration": true,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "responses-reported-usage",
+          "json": "438886fad9e63fd7df4baade309f6382a9e5feff50db2fb9bdd19d13ac1b749d",
+          "html": "883f09818c560cdd7a039e3ee9d277eed8e70944dc1f723a92c83386000bb600",
+          "reportMatchesCli": true,
+          "originalPreserved": false,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        }
+      ],
+      "textRecovery": true,
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "flows": [
+        {
+          "name": "anthropic-image-transports",
+          "json": "8e814914a001b4a53d6ad12819a1415ea38b02b88ae439e8c3d85c161a1f99cb",
+          "html": "d6f0e03c765ba5fd2c833e4731b0df79e8ac5f4569c1acedd1e2a4aff9724695",
+          "reportMatchesCli": true,
+          "originalPreserved": true,
+          "refusedCalibration": true,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "responses-reported-usage",
+          "json": "438886fad9e63fd7df4baade309f6382a9e5feff50db2fb9bdd19d13ac1b749d",
+          "html": "77f399bccb2daea98a168abb24595c1d5588101e6fa2eb9a80352d0f915ccf1b",
+          "reportMatchesCli": true,
+          "originalPreserved": false,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        }
+      ],
+      "textRecovery": true,
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    },
+    {
+      "engine": "firefox",
+      "width": 375,
+      "flows": [
+        {
+          "name": "anthropic-image-transports",
+          "json": "8e814914a001b4a53d6ad12819a1415ea38b02b88ae439e8c3d85c161a1f99cb",
+          "html": "b83aeadafc8c16c2553d32c7b19f2e9eb837389f600d87f4afb1cf59b5594720",
+          "reportMatchesCli": true,
+          "originalPreserved": true,
+          "refusedCalibration": true,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "responses-reported-usage",
+          "json": "438886fad9e63fd7df4baade309f6382a9e5feff50db2fb9bdd19d13ac1b749d",
+          "html": "fced196a272fe65f3421de8d2c94979964a5bdf97017aa61a0bbe22101417d28",
+          "reportMatchesCli": true,
+          "originalPreserved": false,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        }
+      ],
+      "textRecovery": true,
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    }
+  ],
+  "injectedSettings": [
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "flows": [
+        {
+          "name": "format-type",
+          "json": "bb4e0dd5b91afeba02e38e2e44f06095056b362bc2aaad9020da891e02197299",
+          "html": "5e8bf10b548c396431cc9ab5e90f6e0b9d1b63ea836152a00545249810a5b821",
+          "reportMatchesCli": true,
+          "reads": [
+            0,
+            0,
+            14130
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "citations-tool-result",
+          "json": "58d48200d9fd38ffc6819b9f94732fe331060787209131a03f22a9dc5483f395",
+          "html": "88ebab6d91a028594bab08525237771e3a48b092641dde1cc37eaf519073639d",
+          "reportMatchesCli": true,
+          "reads": [
+            0,
+            3039,
+            14130
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        }
+      ],
+      "refusals": [
+        {
+          "name": "mixed-document-citations",
+          "message": "Could not analyze this input: Request 1: mixed citation enablement within document or search_result blocks is unsupported by the API; enable citations on all blocks of that kind or on none.",
+          "preservesReport": true
+        },
+        {
+          "name": "format-with-citations",
+          "message": "Could not analyze this input: Request 1: citations and structured output formats are incompatible; remove the output format or disable citations before simulating cache use.",
+          "preservesReport": true
+        }
+      ],
+      "recovered": true,
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    },
+    {
+      "engine": "chromium",
+      "width": 375,
+      "flows": [
+        {
+          "name": "format-type",
+          "json": "bb4e0dd5b91afeba02e38e2e44f06095056b362bc2aaad9020da891e02197299",
+          "html": "0f6f8634521aa1922eb300af3eb82867fd428c1202fe1ddc28732852aa6b3631",
+          "reportMatchesCli": true,
+          "reads": [
+            0,
+            0,
+            14130
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "citations-tool-result",
+          "json": "58d48200d9fd38ffc6819b9f94732fe331060787209131a03f22a9dc5483f395",
+          "html": "47fdb1125ed2dd9017bb0ce38027dafe7c1bc2a23681bed36ce70153b43f23e8",
+          "reportMatchesCli": true,
+          "reads": [
+            0,
+            3039,
+            14130
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        }
+      ],
+      "refusals": [
+        {
+          "name": "mixed-document-citations",
+          "message": "Could not analyze this input: Request 1: mixed citation enablement within document or search_result blocks is unsupported by the API; enable citations on all blocks of that kind or on none.",
+          "preservesReport": true
+        },
+        {
+          "name": "format-with-citations",
+          "message": "Could not analyze this input: Request 1: citations and structured output formats are incompatible; remove the output format or disable citations before simulating cache use.",
+          "preservesReport": true
+        }
+      ],
+      "recovered": true,
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "flows": [
+        {
+          "name": "format-type",
+          "json": "bb4e0dd5b91afeba02e38e2e44f06095056b362bc2aaad9020da891e02197299",
+          "html": "49fbb2bb72ed7b71479a446f8a6943588d27adb397fbf59f6fa8f471b6a905ff",
+          "reportMatchesCli": true,
+          "reads": [
+            0,
+            0,
+            14130
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "citations-tool-result",
+          "json": "58d48200d9fd38ffc6819b9f94732fe331060787209131a03f22a9dc5483f395",
+          "html": "dfd16688a81eff9057be0576d91ed1fcc5a4f3e301ef3fd0b9b1d835e7ce6bb0",
+          "reportMatchesCli": true,
+          "reads": [
+            0,
+            3039,
+            14130
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        }
+      ],
+      "refusals": [
+        {
+          "name": "mixed-document-citations",
+          "message": "Could not analyze this input: Request 1: mixed citation enablement within document or search_result blocks is unsupported by the API; enable citations on all blocks of that kind or on none.",
+          "preservesReport": true
+        },
+        {
+          "name": "format-with-citations",
+          "message": "Could not analyze this input: Request 1: citations and structured output formats are incompatible; remove the output format or disable citations before simulating cache use.",
+          "preservesReport": true
+        }
+      ],
+      "recovered": true,
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    },
+    {
+      "engine": "firefox",
+      "width": 375,
+      "flows": [
+        {
+          "name": "format-type",
+          "json": "bb4e0dd5b91afeba02e38e2e44f06095056b362bc2aaad9020da891e02197299",
+          "html": "361f3370c26c95d1121cf7601f0677b757d2eddad7c5a0c0e70fc67b4a1f5a53",
+          "reportMatchesCli": true,
+          "reads": [
+            0,
+            0,
+            14130
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "citations-tool-result",
+          "json": "58d48200d9fd38ffc6819b9f94732fe331060787209131a03f22a9dc5483f395",
+          "html": "1f0c9a5eaf7e93d81a293952ed184de7ef6bb9dfd5be0cfe24a923217d28b500",
+          "reportMatchesCli": true,
+          "reads": [
+            0,
+            3039,
+            14130
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        }
+      ],
+      "refusals": [
+        {
+          "name": "mixed-document-citations",
+          "message": "Could not analyze this input: Request 1: mixed citation enablement within document or search_result blocks is unsupported by the API; enable citations on all blocks of that kind or on none.",
+          "preservesReport": true
+        },
+        {
+          "name": "format-with-citations",
+          "message": "Could not analyze this input: Request 1: citations and structured output formats are incompatible; remove the output format or disable citations before simulating cache use.",
+          "preservesReport": true
+        }
+      ],
+      "recovered": true,
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    }
+  ],
+  "thinkingSettings": [
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "workflows": [
+        {
+          "name": "budget-change",
+          "reads": [
+            0,
+            0,
+            10151
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "f578c621e369032bb6d9541a20f39af6228d98c12afd80e9038a7303b733a5d1",
+          "htmlSha256": "d3c095772218ac06e3ba3678a0de2a47b17a9afcdcdd8d40604c57e084b5ad73",
+          "noPageOverflow": true,
+          "axeViolations": []
+        },
+        {
+          "name": "effort-change",
+          "reads": [
+            0,
+            0,
+            10151
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "4ff63ed2c6eaeb05cf7bd23531be33d307e4a3ad7cc33ce408d412360e3ebe29",
+          "htmlSha256": "2bac5433ab6e122d70240ede7f23db6c1ef3478fdffe4e56aef6eaf63938e402",
+          "noPageOverflow": true,
+          "axeViolations": []
+        },
+        {
+          "name": "message-effort-change",
+          "reads": [
+            0,
+            10151,
+            10166
+          ],
+          "rawPreserved": true,
+          "reportMatchesCli": true,
+          "jsonSha256": "8ed3369d8f76e0e990100030a63902fdc57ee02c30265c530b581e5155168eb6",
+          "htmlSha256": "16a5df7c90c990d34cefb2ed9f60df03341f5a5b07cc0931df6baf9d494181d5",
+          "noPageOverflow": true,
+          "axeViolations": []
+        },
+        {
+          "name": "adaptive-default",
+          "reads": [
+            0,
+            10151
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "d94cabdbdf9af04b1db889c2eff8487ddb356eafecc63e2d8cc77d108382b6f7",
+          "htmlSha256": "843796dc4b30522514d02778e6f7453f5058491b2a2a898bbe94f0c5293ece38",
+          "noPageOverflow": true,
+          "axeViolations": []
+        }
+      ],
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    },
+    {
+      "engine": "chromium",
+      "width": 375,
+      "workflows": [
+        {
+          "name": "budget-change",
+          "reads": [
+            0,
+            0,
+            10151
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "f578c621e369032bb6d9541a20f39af6228d98c12afd80e9038a7303b733a5d1",
+          "htmlSha256": "2222ec2a7144706f1b68ced834bd0324f0788b2403ca201635cda91e5e993f99",
+          "noPageOverflow": true,
+          "axeViolations": []
+        },
+        {
+          "name": "effort-change",
+          "reads": [
+            0,
+            0,
+            10151
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "4ff63ed2c6eaeb05cf7bd23531be33d307e4a3ad7cc33ce408d412360e3ebe29",
+          "htmlSha256": "d2c789afd55e714c7c1420f9ce9697a0d25fc30832694e4318c058d2a9cf2288",
+          "noPageOverflow": true,
+          "axeViolations": []
+        },
+        {
+          "name": "message-effort-change",
+          "reads": [
+            0,
+            10151,
+            10166
+          ],
+          "rawPreserved": true,
+          "reportMatchesCli": true,
+          "jsonSha256": "8ed3369d8f76e0e990100030a63902fdc57ee02c30265c530b581e5155168eb6",
+          "htmlSha256": "88dc7251f72924f3702cd9e9d15f4b68b6ac6f68b29d7dd0d495c0f84b64c6a5",
+          "noPageOverflow": true,
+          "axeViolations": []
+        },
+        {
+          "name": "adaptive-default",
+          "reads": [
+            0,
+            10151
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "d94cabdbdf9af04b1db889c2eff8487ddb356eafecc63e2d8cc77d108382b6f7",
+          "htmlSha256": "a57d3932ae904aa885aa8e1ca2019bfc1b57bde7bf174b6d42e831e0f172808a",
+          "noPageOverflow": true,
+          "axeViolations": []
+        }
+      ],
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "workflows": [
+        {
+          "name": "budget-change",
+          "reads": [
+            0,
+            0,
+            10151
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "f578c621e369032bb6d9541a20f39af6228d98c12afd80e9038a7303b733a5d1",
+          "htmlSha256": "fd4fff4e3425f7c6dcd88a7d6ce4c72386349af49bc026e9aaaa7082a2d5e663",
+          "noPageOverflow": true,
+          "axeViolations": []
+        },
+        {
+          "name": "effort-change",
+          "reads": [
+            0,
+            0,
+            10151
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "4ff63ed2c6eaeb05cf7bd23531be33d307e4a3ad7cc33ce408d412360e3ebe29",
+          "htmlSha256": "1a2c4865286ac6634f06dea0cae09300bf10045cfc5edc71453de91e35d4f734",
+          "noPageOverflow": true,
+          "axeViolations": []
+        },
+        {
+          "name": "message-effort-change",
+          "reads": [
+            0,
+            10151,
+            10166
+          ],
+          "rawPreserved": true,
+          "reportMatchesCli": true,
+          "jsonSha256": "8ed3369d8f76e0e990100030a63902fdc57ee02c30265c530b581e5155168eb6",
+          "htmlSha256": "fecd7b2bec5b42a0212d73702fa7883a847951d5204cdb7b114acb80c7ca1740",
+          "noPageOverflow": true,
+          "axeViolations": []
+        },
+        {
+          "name": "adaptive-default",
+          "reads": [
+            0,
+            10151
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "d94cabdbdf9af04b1db889c2eff8487ddb356eafecc63e2d8cc77d108382b6f7",
+          "htmlSha256": "1db01912ce95a8a20335d751abd3d2c026d670d66cab326e518e7c96dd120c30",
+          "noPageOverflow": true,
+          "axeViolations": []
+        }
+      ],
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    },
+    {
+      "engine": "firefox",
+      "width": 375,
+      "workflows": [
+        {
+          "name": "budget-change",
+          "reads": [
+            0,
+            0,
+            10151
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "f578c621e369032bb6d9541a20f39af6228d98c12afd80e9038a7303b733a5d1",
+          "htmlSha256": "545f9eb6cf261a743eeb6f712ebd5a064947490fd09c48aee0986af7c8f7d990",
+          "noPageOverflow": true,
+          "axeViolations": []
+        },
+        {
+          "name": "effort-change",
+          "reads": [
+            0,
+            0,
+            10151
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "4ff63ed2c6eaeb05cf7bd23531be33d307e4a3ad7cc33ce408d412360e3ebe29",
+          "htmlSha256": "3797b4ffaf6dc368a485739b85ad6eb62f5f87b0e0ca0b4c34c74af80716ddde",
+          "noPageOverflow": true,
+          "axeViolations": []
+        },
+        {
+          "name": "message-effort-change",
+          "reads": [
+            0,
+            10151,
+            10166
+          ],
+          "rawPreserved": true,
+          "reportMatchesCli": true,
+          "jsonSha256": "8ed3369d8f76e0e990100030a63902fdc57ee02c30265c530b581e5155168eb6",
+          "htmlSha256": "99361645224c824d8cc744ab069c60a4c0b911409f1f44005c3fb6e68fc3c1f6",
+          "noPageOverflow": true,
+          "axeViolations": []
+        },
+        {
+          "name": "adaptive-default",
+          "reads": [
+            0,
+            10151
+          ],
+          "reportMatchesCli": true,
+          "jsonSha256": "d94cabdbdf9af04b1db889c2eff8487ddb356eafecc63e2d8cc77d108382b6f7",
+          "htmlSha256": "a231335cbfb03e52128ee4b3ae8dc02cfb793a4eb1b9da093be281f84b52cb6c",
+          "noPageOverflow": true,
+          "axeViolations": []
+        }
+      ],
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    }
+  ]
+}

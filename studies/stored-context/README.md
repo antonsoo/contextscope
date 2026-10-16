@@ -13,9 +13,14 @@ sequence's cache partitions and input costs are unavailable. No remote history
 or prompt is fetched. Identical reference strings do not establish a token
 length, resolved prompt equality or actual cache reuse.
 
-This is a source correction. Publication, installed-artifact and public-demo
-verification are recorded separately as they are completed. No npm release is
-performed by this study.
+The correction is published in source and the public demo. The
+[source receipt](results/publication.json) compares twenty pinned public files.
+The [canonical HTTP receipt](results/hosting.json) matches all 42 production files
+to the clean build without cache-busting queries. The
+[hosted browser receipt](results/hosted-browser.json) checks 44 export workflows,
+including earlier media and Claude settings repairs, after disconnecting before
+the first import. Source publication, installed-artifact and public-demo evidence
+are separate checks. No new npm release was performed.
 
 The [clean-artifact receipt](results/verification.json) pins tested source
 `b1f31649bb09a0c6b4bf8c9d5ad9d83882e664b7`: a fresh install, lint,

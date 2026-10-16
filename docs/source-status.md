@@ -5,10 +5,6 @@ commit or local package test does not establish what the registry or public
 site serves. Each study retains its tested revision and its verification scope.
 No new npm release was performed for the corrections listed here.
 
-The current source also preserves [unresolved OpenAI stored context](../studies/stored-context/README.md).
-Its clean build, installed package and offline browser workflows are verified;
-the public-demo receipt below predates this additional repair.
-
 | Current source and demo capability | Retained evidence |
 | --- | --- |
 | First local import and exports work offline after intake is ready; failed preparation can retry | [Startup and worker recovery](../studies/first-offline/README.md) |
@@ -16,6 +12,7 @@ the public-demo receipt below predates this additional repair.
 | Claude thinking/budget/effort settings isolate cache scopes; empty per-message effort remains inspectable | [Reasoning boundaries](../studies/thinking-settings/README.md) |
 | Structured-output formats and citation enablement affect the correct prompt-cache levels; calibration forwards their controls | [Injected prompt settings](../studies/injected-settings/README.md) |
 | Encoded media does not become text-token totals or fabricated cache costs; captured usage remains available | [Media accounting and nullable types](../studies/media-accounting/README.md) |
+| Stored OpenAI history, prompt templates, input references and opaque reasoning remain unresolved; captured counters stay separate | [Stored-context boundaries](../studies/stored-context/README.md) |
 
 The cold-start behavior retains only application code between worker jobs.
 Once file intake is available, the first local import and report exports work
@@ -29,16 +26,16 @@ records the public tarball's SHA-256 and verifies its registry SHA-512 integrity
 Use the [source quickstart](../README.md#quickstart) for the current corrections.
 
 The [public demo](https://antonsoo.github.io/contextscope/) was updated from
-tested source `ecc601b2c83cf93b509ad2d4ea61e493201cc508`. Its
-[canonical HTTP receipt](../studies/media-accounting/results/hosting.json)
+tested source `b1f31649bb09a0c6b4bf8c9d5ad9d83882e664b7`. Its
+[canonical HTTP receipt](../studies/stored-context/results/hosting.json)
 compares all 42 production files with the clean build, without cache-busting
-queries. The [hosted browser receipt](../studies/media-accounting/results/hosted-browser.json)
-checks 32 complete export workflows across Chromium/Firefox and desktop/phone
+queries. The [hosted browser receipt](../studies/stored-context/results/hosted-browser.json)
+checks 44 complete export workflows across Chromium/Firefox and desktop/phone
 widths, including first imports after disconnecting, original downloads,
 invalid-setting retention and text recovery. These controlled SDK workflows
 are not measurements of provider token usage or cache behavior.
 
 Source and local package verification remain separate from that public HTTP
-check. The [source receipt](../studies/media-accounting/results/publication.json)
-pins twenty-four public raw files at the published source revision. No new npm
-version was published.
+check. The [stored-context source receipt](../studies/stored-context/results/publication.json)
+pins twenty public raw files; the [media source receipt](../studies/media-accounting/results/publication.json)
+retains twenty-four files at its earlier revision. No new npm version was published.

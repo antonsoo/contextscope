@@ -24,8 +24,8 @@ the selected Anthropic request to its token-counting endpoint; ordinary local
 analysis does not need a key or upload.
 
 The source checkout and demo include corrections for empty/refusal histories, reasoning
-settings, injected prompt instructions and media accounting. The current source
-also preserves unresolved OpenAI stored-context boundaries. Their
+settings, injected prompt instructions, media accounting and unresolved OpenAI
+stored-context boundaries. Their
 [source, package and demo status](docs/source-status.md) is recorded separately,
 with retained counterexamples and verification artifacts. The measurements below
 describe the public agent trajectories used to check the analyzer.
@@ -116,7 +116,7 @@ drop a request file, paste one, or click a built-in example.
   while totals, context usage and cache costs are unavailable; encoded payloads
   do not become text tokens. Click a segment to see its original content, path
   and cache status. [Media accounting and nullable source types](studies/media-accounting/README.md).
-- **Unresolved stored context.** In source, Responses history IDs, reusable prompts,
+- **Unresolved stored context.** In source and the demo, Responses history IDs, reusable prompts,
   input references and opaque reasoning/compaction remain inspectable. Whole-request
   counts and sequence cache estimates are unavailable until that context can be
   accounted for; captured usage remains separate. [Stored-context evidence](studies/stored-context/README.md).
