@@ -1,0 +1,582 @@
+{
+  "parse": {
+    "format": "anthropic",
+    "complete": true,
+    "sourceRecords": 4,
+    "skippedRecords": 0,
+    "autoDetected": true,
+    "requests": [
+      {
+        "provider": "anthropic",
+        "index": 0,
+        "model": "claude-sonnet-4-6",
+        "source": {
+          "recordIndex": 0,
+          "line": 1
+        },
+        "segments": [
+          {
+            "id": "messages[0].content[0]",
+            "category": "user",
+            "label": "message 1 (user) text",
+            "path": "messages[0].content[0]",
+            "openaiTokens": 6,
+            "claudeTokensEstimate": 8,
+            "charLength": 26
+          },
+          {
+            "id": "messages[0].content[1]",
+            "category": "image",
+            "label": "message 1 image",
+            "path": "messages[0].content[1]",
+            "openaiTokens": null,
+            "claudeTokensEstimate": null,
+            "unmodeledContent": [
+              "image"
+            ],
+            "charLength": 0
+          }
+        ]
+      },
+      {
+        "provider": "anthropic",
+        "index": 1,
+        "model": "claude-sonnet-4-6",
+        "source": {
+          "recordIndex": 1,
+          "line": 2
+        },
+        "segments": [
+          {
+            "id": "messages[0].content[0]",
+            "category": "user",
+            "label": "message 1 (user) text",
+            "path": "messages[0].content[0]",
+            "openaiTokens": 6,
+            "claudeTokensEstimate": 8,
+            "charLength": 26
+          },
+          {
+            "id": "messages[0].content[1]",
+            "category": "image",
+            "label": "message 1 image",
+            "path": "messages[0].content[1]",
+            "openaiTokens": null,
+            "claudeTokensEstimate": null,
+            "unmodeledContent": [
+              "image"
+            ],
+            "charLength": 0
+          }
+        ]
+      },
+      {
+        "provider": "anthropic",
+        "index": 2,
+        "model": "claude-sonnet-4-6",
+        "source": {
+          "recordIndex": 2,
+          "line": 3
+        },
+        "segments": [
+          {
+            "id": "messages[0].content[0]",
+            "category": "user",
+            "label": "message 1 (user) text",
+            "path": "messages[0].content[0]",
+            "openaiTokens": 6,
+            "claudeTokensEstimate": 8,
+            "charLength": 26
+          },
+          {
+            "id": "messages[0].content[1]",
+            "category": "image",
+            "label": "message 1 image",
+            "path": "messages[0].content[1]",
+            "openaiTokens": null,
+            "claudeTokensEstimate": null,
+            "unmodeledContent": [
+              "image"
+            ],
+            "charLength": 0
+          }
+        ]
+      },
+      {
+        "provider": "anthropic",
+        "index": 3,
+        "model": "claude-sonnet-4-6",
+        "source": {
+          "recordIndex": 3,
+          "line": 4
+        },
+        "segments": [
+          {
+            "id": "messages[0].content[0]",
+            "category": "user",
+            "label": "message 1 (user) text",
+            "path": "messages[0].content[0]",
+            "openaiTokens": 6,
+            "claudeTokensEstimate": 8,
+            "charLength": 26
+          },
+          {
+            "id": "messages[0].content[1]",
+            "category": "image",
+            "label": "message 1 image",
+            "path": "messages[0].content[1]",
+            "openaiTokens": null,
+            "claudeTokensEstimate": null,
+            "unmodeledContent": [
+              "image"
+            ],
+            "charLength": 0
+          }
+        ]
+      }
+    ],
+    "warnings": []
+  },
+  "model": {
+    "id": "claude-sonnet-4-6",
+    "displayName": "Claude Sonnet 4.6",
+    "source": "request"
+  },
+  "claudeTokenScale": 1,
+  "reports": [
+    {
+      "requestIndex": 0,
+      "model": {
+        "id": "claude-sonnet-4-6",
+        "displayName": "Claude Sonnet 4.6",
+        "source": "request"
+      },
+      "totals": {
+        "openaiTokens": null,
+        "claudeTokensEstimate": null
+      },
+      "byCategory": [
+        {
+          "category": "user",
+          "segmentCount": 1,
+          "openaiTokens": 6,
+          "claudeTokensEstimate": 8
+        },
+        {
+          "category": "image",
+          "segmentCount": 1,
+          "openaiTokens": null,
+          "claudeTokensEstimate": null
+        }
+      ],
+      "segments": [
+        {
+          "id": "messages[0].content[0]",
+          "category": "user",
+          "label": "message 1 (user) text",
+          "path": "messages[0].content[0]",
+          "openaiTokens": 6,
+          "claudeTokensEstimate": 8,
+          "charLength": 26
+        },
+        {
+          "id": "messages[0].content[1]",
+          "category": "image",
+          "label": "message 1 image",
+          "path": "messages[0].content[1]",
+          "openaiTokens": null,
+          "claudeTokensEstimate": null,
+          "unmodeledContent": [
+            "image"
+          ],
+          "charLength": 0
+        }
+      ],
+      "contextWindow": 1000000
+    },
+    {
+      "requestIndex": 1,
+      "model": {
+        "id": "claude-sonnet-4-6",
+        "displayName": "Claude Sonnet 4.6",
+        "source": "request"
+      },
+      "totals": {
+        "openaiTokens": null,
+        "claudeTokensEstimate": null
+      },
+      "byCategory": [
+        {
+          "category": "user",
+          "segmentCount": 1,
+          "openaiTokens": 6,
+          "claudeTokensEstimate": 8
+        },
+        {
+          "category": "image",
+          "segmentCount": 1,
+          "openaiTokens": null,
+          "claudeTokensEstimate": null
+        }
+      ],
+      "segments": [
+        {
+          "id": "messages[0].content[0]",
+          "category": "user",
+          "label": "message 1 (user) text",
+          "path": "messages[0].content[0]",
+          "openaiTokens": 6,
+          "claudeTokensEstimate": 8,
+          "charLength": 26
+        },
+        {
+          "id": "messages[0].content[1]",
+          "category": "image",
+          "label": "message 1 image",
+          "path": "messages[0].content[1]",
+          "openaiTokens": null,
+          "claudeTokensEstimate": null,
+          "unmodeledContent": [
+            "image"
+          ],
+          "charLength": 0
+        }
+      ],
+      "contextWindow": 1000000
+    },
+    {
+      "requestIndex": 2,
+      "model": {
+        "id": "claude-sonnet-4-6",
+        "displayName": "Claude Sonnet 4.6",
+        "source": "request"
+      },
+      "totals": {
+        "openaiTokens": null,
+        "claudeTokensEstimate": null
+      },
+      "byCategory": [
+        {
+          "category": "user",
+          "segmentCount": 1,
+          "openaiTokens": 6,
+          "claudeTokensEstimate": 8
+        },
+        {
+          "category": "image",
+          "segmentCount": 1,
+          "openaiTokens": null,
+          "claudeTokensEstimate": null
+        }
+      ],
+      "segments": [
+        {
+          "id": "messages[0].content[0]",
+          "category": "user",
+          "label": "message 1 (user) text",
+          "path": "messages[0].content[0]",
+          "openaiTokens": 6,
+          "claudeTokensEstimate": 8,
+          "charLength": 26
+        },
+        {
+          "id": "messages[0].content[1]",
+          "category": "image",
+          "label": "message 1 image",
+          "path": "messages[0].content[1]",
+          "openaiTokens": null,
+          "claudeTokensEstimate": null,
+          "unmodeledContent": [
+            "image"
+          ],
+          "charLength": 0
+        }
+      ],
+      "contextWindow": 1000000
+    },
+    {
+      "requestIndex": 3,
+      "model": {
+        "id": "claude-sonnet-4-6",
+        "displayName": "Claude Sonnet 4.6",
+        "source": "request"
+      },
+      "totals": {
+        "openaiTokens": null,
+        "claudeTokensEstimate": null
+      },
+      "byCategory": [
+        {
+          "category": "user",
+          "segmentCount": 1,
+          "openaiTokens": 6,
+          "claudeTokensEstimate": 8
+        },
+        {
+          "category": "image",
+          "segmentCount": 1,
+          "openaiTokens": null,
+          "claudeTokensEstimate": null
+        }
+      ],
+      "segments": [
+        {
+          "id": "messages[0].content[0]",
+          "category": "user",
+          "label": "message 1 (user) text",
+          "path": "messages[0].content[0]",
+          "openaiTokens": 6,
+          "claudeTokensEstimate": 8,
+          "charLength": 26
+        },
+        {
+          "id": "messages[0].content[1]",
+          "category": "image",
+          "label": "message 1 image",
+          "path": "messages[0].content[1]",
+          "openaiTokens": null,
+          "claudeTokensEstimate": null,
+          "unmodeledContent": [
+            "image"
+          ],
+          "charLength": 0
+        }
+      ],
+      "contextWindow": 1000000
+    }
+  ],
+  "prefixMatches": [
+    {
+      "fromIndex": 0,
+      "toIndex": 1,
+      "relation": "rewrites",
+      "matchedSegments": 1,
+      "matchedOpenaiTokens": 6,
+      "matchedClaudeTokensEstimate": 8,
+      "divergedAt": {
+        "fromSegmentId": "messages[0].content[1]",
+        "toSegmentId": "messages[0].content[1]"
+      }
+    },
+    {
+      "fromIndex": 1,
+      "toIndex": 2,
+      "relation": "rewrites",
+      "matchedSegments": 1,
+      "matchedOpenaiTokens": 6,
+      "matchedClaudeTokensEstimate": 8,
+      "divergedAt": {
+        "fromSegmentId": "messages[0].content[1]",
+        "toSegmentId": "messages[0].content[1]"
+      }
+    },
+    {
+      "fromIndex": 2,
+      "toIndex": 3,
+      "relation": "rewrites",
+      "matchedSegments": 1,
+      "matchedOpenaiTokens": 6,
+      "matchedClaudeTokensEstimate": 8,
+      "divergedAt": {
+        "fromSegmentId": "messages[0].content[1]",
+        "toSegmentId": "messages[0].content[1]"
+      }
+    }
+  ],
+  "conversations": {
+    "count": 1,
+    "byRequest": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "cacheSimulation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-4-6",
+    "actual": [
+      {
+        "requestIndex": 0,
+        "readTokens": null,
+        "writeTokens5m": null,
+        "writeTokens1h": null,
+        "uncachedTokens": null,
+        "unavailableReason": "Media token counts are unavailable. Cache token partitions and costs are unavailable for this sequence because unknown media lengths can affect cache thresholds and entries written by earlier requests."
+      },
+      {
+        "requestIndex": 1,
+        "readTokens": null,
+        "writeTokens5m": null,
+        "writeTokens1h": null,
+        "uncachedTokens": null,
+        "unavailableReason": "Media token counts are unavailable. Cache token partitions and costs are unavailable for this sequence because unknown media lengths can affect cache thresholds and entries written by earlier requests."
+      },
+      {
+        "requestIndex": 2,
+        "readTokens": null,
+        "writeTokens5m": null,
+        "writeTokens1h": null,
+        "uncachedTokens": null,
+        "unavailableReason": "Media token counts are unavailable. Cache token partitions and costs are unavailable for this sequence because unknown media lengths can affect cache thresholds and entries written by earlier requests."
+      },
+      {
+        "requestIndex": 3,
+        "readTokens": null,
+        "writeTokens5m": null,
+        "writeTokens1h": null,
+        "uncachedTokens": null,
+        "unavailableReason": "Media token counts are unavailable. Cache token partitions and costs are unavailable for this sequence because unknown media lengths can affect cache thresholds and entries written by earlier requests."
+      }
+    ],
+    "optimized": [
+      {
+        "requestIndex": 0,
+        "readTokens": null,
+        "writeTokens5m": null,
+        "writeTokens1h": null,
+        "uncachedTokens": null,
+        "unavailableReason": "Media token counts are unavailable. Cache token partitions and costs are unavailable for this sequence because unknown media lengths can affect cache thresholds and entries written by earlier requests."
+      },
+      {
+        "requestIndex": 1,
+        "readTokens": null,
+        "writeTokens5m": null,
+        "writeTokens1h": null,
+        "uncachedTokens": null,
+        "unavailableReason": "Media token counts are unavailable. Cache token partitions and costs are unavailable for this sequence because unknown media lengths can affect cache thresholds and entries written by earlier requests."
+      },
+      {
+        "requestIndex": 2,
+        "readTokens": null,
+        "writeTokens5m": null,
+        "writeTokens1h": null,
+        "uncachedTokens": null,
+        "unavailableReason": "Media token counts are unavailable. Cache token partitions and costs are unavailable for this sequence because unknown media lengths can affect cache thresholds and entries written by earlier requests."
+      },
+      {
+        "requestIndex": 3,
+        "readTokens": null,
+        "writeTokens5m": null,
+        "writeTokens1h": null,
+        "uncachedTokens": null,
+        "unavailableReason": "Media token counts are unavailable. Cache token partitions and costs are unavailable for this sequence because unknown media lengths can affect cache thresholds and entries written by earlier requests."
+      }
+    ],
+    "unavailableReason": "Media token counts are unavailable. Cache token partitions and costs are unavailable for this sequence because unknown media lengths can affect cache thresholds and entries written by earlier requests."
+  },
+  "usageComparison": {
+    "rows": [
+      {
+        "requestIndex": 0,
+        "estimatedInputTokens": null,
+        "simulatedReadTokens": null,
+        "reportedInputTokens": null,
+        "reportedReadTokens": null,
+        "reportedWriteTokens": null,
+        "inputDeltaTokens": null,
+        "readDeltaTokens": null,
+        "readOutcome": "unavailable"
+      },
+      {
+        "requestIndex": 1,
+        "estimatedInputTokens": null,
+        "simulatedReadTokens": null,
+        "reportedInputTokens": null,
+        "reportedReadTokens": null,
+        "reportedWriteTokens": null,
+        "inputDeltaTokens": null,
+        "readDeltaTokens": null,
+        "readOutcome": "unavailable"
+      },
+      {
+        "requestIndex": 2,
+        "estimatedInputTokens": null,
+        "simulatedReadTokens": null,
+        "reportedInputTokens": null,
+        "reportedReadTokens": null,
+        "reportedWriteTokens": null,
+        "inputDeltaTokens": null,
+        "readDeltaTokens": null,
+        "readOutcome": "unavailable"
+      },
+      {
+        "requestIndex": 3,
+        "estimatedInputTokens": null,
+        "simulatedReadTokens": null,
+        "reportedInputTokens": null,
+        "reportedReadTokens": null,
+        "reportedWriteTokens": null,
+        "inputDeltaTokens": null,
+        "readDeltaTokens": null,
+        "readOutcome": "unavailable"
+      }
+    ],
+    "capturedRequests": 0,
+    "uncomparedRequestIndices": [],
+    "invalidRequestIndices": [],
+    "input": {
+      "requestIndices": [],
+      "reportedTokens": null,
+      "simulatedTokens": null,
+      "deltaTokens": null
+    },
+    "cacheRead": {
+      "requestIndices": [],
+      "reportedTokens": null,
+      "simulatedTokens": null,
+      "deltaTokens": null
+    },
+    "readOutcomes": {
+      "both_zero": 0,
+      "both_positive": 0,
+      "simulated_hit_reported_zero": 0,
+      "reported_hit_simulated_zero": 0,
+      "unavailable": 4
+    },
+    "issues": []
+  },
+  "findings": [
+    {
+      "kind": "unmodeled_media",
+      "severity": "warning",
+      "requestIndex": 0,
+      "title": "Media token counts are unavailable",
+      "detail": "These segments contain media or opaque document/file references. Encoded bytes, URLs and file IDs are not model token counts. Request totals and context usage are unavailable. Cache token partitions and costs are unavailable for the whole sequence because unknown lengths affect thresholds and prior entries. Other segments retain their text counts, and original blocks remain inspectable. Captured provider usage remains visible. A scalar calibration cannot recover the missing media segments.",
+      "segmentIds": [
+        "messages[0].content[1]"
+      ]
+    },
+    {
+      "kind": "unmodeled_media",
+      "severity": "warning",
+      "requestIndex": 1,
+      "title": "Media token counts are unavailable",
+      "detail": "These segments contain media or opaque document/file references. Encoded bytes, URLs and file IDs are not model token counts. Request totals and context usage are unavailable. Cache token partitions and costs are unavailable for the whole sequence because unknown lengths affect thresholds and prior entries. Other segments retain their text counts, and original blocks remain inspectable. Captured provider usage remains visible. A scalar calibration cannot recover the missing media segments.",
+      "segmentIds": [
+        "messages[0].content[1]"
+      ]
+    },
+    {
+      "kind": "unmodeled_media",
+      "severity": "warning",
+      "requestIndex": 2,
+      "title": "Media token counts are unavailable",
+      "detail": "These segments contain media or opaque document/file references. Encoded bytes, URLs and file IDs are not model token counts. Request totals and context usage are unavailable. Cache token partitions and costs are unavailable for the whole sequence because unknown lengths affect thresholds and prior entries. Other segments retain their text counts, and original blocks remain inspectable. Captured provider usage remains visible. A scalar calibration cannot recover the missing media segments.",
+      "segmentIds": [
+        "messages[0].content[1]"
+      ]
+    },
+    {
+      "kind": "unmodeled_media",
+      "severity": "warning",
+      "requestIndex": 3,
+      "title": "Media token counts are unavailable",
+      "detail": "These segments contain media or opaque document/file references. Encoded bytes, URLs and file IDs are not model token counts. Request totals and context usage are unavailable. Cache token partitions and costs are unavailable for the whole sequence because unknown lengths affect thresholds and prior entries. Other segments retain their text counts, and original blocks remain inspectable. Captured provider usage remains visible. A scalar calibration cannot recover the missing media segments.",
+      "segmentIds": [
+        "messages[0].content[1]"
+      ]
+    }
+  ],
+  "duplicates": []
+}

@@ -1,0 +1,405 @@
+{
+  "parse": {
+    "format": "openai",
+    "complete": true,
+    "sourceRecords": 2,
+    "skippedRecords": 0,
+    "autoDetected": true,
+    "envelope": "request",
+    "requests": [
+      {
+        "provider": "openai",
+        "index": 0,
+        "model": "gpt-5.1",
+        "source": {
+          "recordIndex": 0,
+          "line": 1,
+          "envelope": "request"
+        },
+        "reportedUsage": {
+          "sources": [
+            "response.usage"
+          ],
+          "schema": "openai-responses",
+          "status": "valid",
+          "inputTokens": 1200,
+          "cacheReadTokens": 400,
+          "cacheWriteTokens": null,
+          "outputTokens": 10,
+          "counters": [
+            {
+              "path": "response.usage.input_tokens",
+              "status": "reported",
+              "value": 1200
+            },
+            {
+              "path": "response.usage.output_tokens",
+              "status": "reported",
+              "value": 10
+            },
+            {
+              "path": "response.usage.input_tokens_details.cached_tokens",
+              "status": "reported",
+              "value": 400
+            },
+            {
+              "path": "response.usage.input_tokens_details.cache_write_tokens",
+              "status": "missing"
+            },
+            {
+              "path": "response.usage.total_tokens",
+              "status": "reported",
+              "value": 1210
+            }
+          ],
+          "issues": [],
+          "notes": []
+        },
+        "segments": [
+          {
+            "id": "input[0].content[0]",
+            "category": "user",
+            "label": "item 1 (user) text",
+            "path": "input[0].content[0]",
+            "openaiTokens": 6,
+            "claudeTokensEstimate": 8,
+            "charLength": 26
+          },
+          {
+            "id": "input[0].content[1]",
+            "category": "image",
+            "label": "item 1 image",
+            "path": "input[0].content[1]",
+            "openaiTokens": null,
+            "claudeTokensEstimate": null,
+            "unmodeledContent": [
+              "image"
+            ],
+            "charLength": 0
+          }
+        ]
+      },
+      {
+        "provider": "openai",
+        "index": 1,
+        "model": "gpt-5.1",
+        "source": {
+          "recordIndex": 1,
+          "line": 2,
+          "envelope": "request"
+        },
+        "reportedUsage": {
+          "sources": [
+            "response.usage"
+          ],
+          "schema": "openai-responses",
+          "status": "valid",
+          "inputTokens": 1200,
+          "cacheReadTokens": 400,
+          "cacheWriteTokens": null,
+          "outputTokens": 10,
+          "counters": [
+            {
+              "path": "response.usage.input_tokens",
+              "status": "reported",
+              "value": 1200
+            },
+            {
+              "path": "response.usage.output_tokens",
+              "status": "reported",
+              "value": 10
+            },
+            {
+              "path": "response.usage.input_tokens_details.cached_tokens",
+              "status": "reported",
+              "value": 400
+            },
+            {
+              "path": "response.usage.input_tokens_details.cache_write_tokens",
+              "status": "missing"
+            },
+            {
+              "path": "response.usage.total_tokens",
+              "status": "reported",
+              "value": 1210
+            }
+          ],
+          "issues": [],
+          "notes": []
+        },
+        "segments": [
+          {
+            "id": "input[0].content[0]",
+            "category": "user",
+            "label": "item 1 (user) text",
+            "path": "input[0].content[0]",
+            "openaiTokens": 6,
+            "claudeTokensEstimate": 8,
+            "charLength": 26
+          },
+          {
+            "id": "input[0].content[1]",
+            "category": "image",
+            "label": "item 1 image",
+            "path": "input[0].content[1]",
+            "openaiTokens": null,
+            "claudeTokensEstimate": null,
+            "unmodeledContent": [
+              "image"
+            ],
+            "charLength": 0
+          }
+        ]
+      }
+    ],
+    "warnings": []
+  },
+  "model": {
+    "id": "gpt-5.1",
+    "displayName": "GPT-5.1",
+    "source": "request"
+  },
+  "claudeTokenScale": 1,
+  "reports": [
+    {
+      "requestIndex": 0,
+      "model": {
+        "id": "gpt-5.1",
+        "displayName": "GPT-5.1",
+        "source": "request"
+      },
+      "totals": {
+        "openaiTokens": null,
+        "claudeTokensEstimate": null
+      },
+      "byCategory": [
+        {
+          "category": "user",
+          "segmentCount": 1,
+          "openaiTokens": 6,
+          "claudeTokensEstimate": 8
+        },
+        {
+          "category": "image",
+          "segmentCount": 1,
+          "openaiTokens": null,
+          "claudeTokensEstimate": null
+        }
+      ],
+      "segments": [
+        {
+          "id": "input[0].content[0]",
+          "category": "user",
+          "label": "item 1 (user) text",
+          "path": "input[0].content[0]",
+          "openaiTokens": 6,
+          "claudeTokensEstimate": 8,
+          "charLength": 26
+        },
+        {
+          "id": "input[0].content[1]",
+          "category": "image",
+          "label": "item 1 image",
+          "path": "input[0].content[1]",
+          "openaiTokens": null,
+          "claudeTokensEstimate": null,
+          "unmodeledContent": [
+            "image"
+          ],
+          "charLength": 0
+        }
+      ],
+      "contextWindow": 400000
+    },
+    {
+      "requestIndex": 1,
+      "model": {
+        "id": "gpt-5.1",
+        "displayName": "GPT-5.1",
+        "source": "request"
+      },
+      "totals": {
+        "openaiTokens": null,
+        "claudeTokensEstimate": null
+      },
+      "byCategory": [
+        {
+          "category": "user",
+          "segmentCount": 1,
+          "openaiTokens": 6,
+          "claudeTokensEstimate": 8
+        },
+        {
+          "category": "image",
+          "segmentCount": 1,
+          "openaiTokens": null,
+          "claudeTokensEstimate": null
+        }
+      ],
+      "segments": [
+        {
+          "id": "input[0].content[0]",
+          "category": "user",
+          "label": "item 1 (user) text",
+          "path": "input[0].content[0]",
+          "openaiTokens": 6,
+          "claudeTokensEstimate": 8,
+          "charLength": 26
+        },
+        {
+          "id": "input[0].content[1]",
+          "category": "image",
+          "label": "item 1 image",
+          "path": "input[0].content[1]",
+          "openaiTokens": null,
+          "claudeTokensEstimate": null,
+          "unmodeledContent": [
+            "image"
+          ],
+          "charLength": 0
+        }
+      ],
+      "contextWindow": 400000
+    }
+  ],
+  "prefixMatches": [
+    {
+      "fromIndex": 0,
+      "toIndex": 1,
+      "relation": "continues",
+      "matchedSegments": 2,
+      "matchedOpenaiTokens": null,
+      "matchedClaudeTokensEstimate": null
+    }
+  ],
+  "conversations": {
+    "count": 1,
+    "byRequest": [
+      0,
+      0
+    ]
+  },
+  "cacheSimulation": {
+    "provider": "openai",
+    "model": "gpt-5.1",
+    "actual": [
+      {
+        "requestIndex": 0,
+        "readTokens": null,
+        "writeTokens5m": null,
+        "writeTokens1h": null,
+        "uncachedTokens": null,
+        "unavailableReason": "Media token counts are unavailable. Cache token partitions and costs are unavailable for this sequence because unknown media lengths can affect cache thresholds and entries written by earlier requests.",
+        "cacheMode": "legacy"
+      },
+      {
+        "requestIndex": 1,
+        "readTokens": null,
+        "writeTokens5m": null,
+        "writeTokens1h": null,
+        "uncachedTokens": null,
+        "unavailableReason": "Media token counts are unavailable. Cache token partitions and costs are unavailable for this sequence because unknown media lengths can affect cache thresholds and entries written by earlier requests.",
+        "cacheMode": "legacy"
+      }
+    ],
+    "optimized": [
+      {
+        "requestIndex": 0,
+        "readTokens": null,
+        "writeTokens5m": null,
+        "writeTokens1h": null,
+        "uncachedTokens": null,
+        "unavailableReason": "Media token counts are unavailable. Cache token partitions and costs are unavailable for this sequence because unknown media lengths can affect cache thresholds and entries written by earlier requests.",
+        "cacheMode": "legacy"
+      },
+      {
+        "requestIndex": 1,
+        "readTokens": null,
+        "writeTokens5m": null,
+        "writeTokens1h": null,
+        "uncachedTokens": null,
+        "unavailableReason": "Media token counts are unavailable. Cache token partitions and costs are unavailable for this sequence because unknown media lengths can affect cache thresholds and entries written by earlier requests.",
+        "cacheMode": "legacy"
+      }
+    ],
+    "unavailableReason": "Media token counts are unavailable. Cache token partitions and costs are unavailable for this sequence because unknown media lengths can affect cache thresholds and entries written by earlier requests."
+  },
+  "usageComparison": {
+    "rows": [
+      {
+        "requestIndex": 0,
+        "estimatedInputTokens": null,
+        "simulatedReadTokens": null,
+        "reportedInputTokens": 1200,
+        "reportedReadTokens": 400,
+        "reportedWriteTokens": null,
+        "inputDeltaTokens": null,
+        "readDeltaTokens": null,
+        "readOutcome": "unavailable"
+      },
+      {
+        "requestIndex": 1,
+        "estimatedInputTokens": null,
+        "simulatedReadTokens": null,
+        "reportedInputTokens": 1200,
+        "reportedReadTokens": 400,
+        "reportedWriteTokens": null,
+        "inputDeltaTokens": null,
+        "readDeltaTokens": null,
+        "readOutcome": "unavailable"
+      }
+    ],
+    "capturedRequests": 2,
+    "uncomparedRequestIndices": [],
+    "invalidRequestIndices": [],
+    "input": {
+      "requestIndices": [
+        0,
+        1
+      ],
+      "reportedTokens": 2400,
+      "simulatedTokens": null,
+      "deltaTokens": null
+    },
+    "cacheRead": {
+      "requestIndices": [
+        0,
+        1
+      ],
+      "reportedTokens": 800,
+      "simulatedTokens": null,
+      "deltaTokens": null
+    },
+    "readOutcomes": {
+      "both_zero": 0,
+      "both_positive": 0,
+      "simulated_hit_reported_zero": 0,
+      "reported_hit_simulated_zero": 0,
+      "unavailable": 2
+    },
+    "issues": []
+  },
+  "findings": [
+    {
+      "kind": "unmodeled_media",
+      "severity": "warning",
+      "requestIndex": 0,
+      "title": "Media token counts are unavailable",
+      "detail": "These segments contain media or opaque document/file references. Encoded bytes, URLs and file IDs are not model token counts. Request totals and context usage are unavailable. Cache token partitions and costs are unavailable for the whole sequence because unknown lengths affect thresholds and prior entries. Other segments retain their text counts, and original blocks remain inspectable. Captured provider usage remains visible. A scalar calibration cannot recover the missing media segments.",
+      "segmentIds": [
+        "input[0].content[1]"
+      ]
+    },
+    {
+      "kind": "unmodeled_media",
+      "severity": "warning",
+      "requestIndex": 1,
+      "title": "Media token counts are unavailable",
+      "detail": "These segments contain media or opaque document/file references. Encoded bytes, URLs and file IDs are not model token counts. Request totals and context usage are unavailable. Cache token partitions and costs are unavailable for the whole sequence because unknown lengths affect thresholds and prior entries. Other segments retain their text counts, and original blocks remain inspectable. Captured provider usage remains visible. A scalar calibration cannot recover the missing media segments.",
+      "segmentIds": [
+        "input[0].content[1]"
+      ]
+    }
+  ],
+  "duplicates": []
+}

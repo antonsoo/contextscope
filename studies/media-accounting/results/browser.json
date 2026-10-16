@@ -1,0 +1,450 @@
+{
+  "before": [
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "flows": [
+        {
+          "name": "anthropic-image-transports",
+          "json": "078f884901045ad2da9292873481e7e890a19723be8efd019a5701079bf9a81e",
+          "html": "7b04e67812319898fec91fa05590980f3ad75035b5b9e074bf255cc05b83bb08",
+          "reportMatchesCli": true,
+          "originalPreserved": true,
+          "totals": [
+            {
+              "openaiTokens": 17699,
+              "claudeTokensEstimate": 8095
+            },
+            {
+              "openaiTokens": 212483,
+              "claudeTokensEstimate": 457130
+            },
+            {
+              "openaiTokens": 58,
+              "claudeTokensEstimate": 57
+            },
+            {
+              "openaiTokens": 19,
+              "claudeTokensEstimate": 25
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "responses-reported-usage",
+          "json": "dc556aa114270808e8c371fcf39963e8bf4b46445d246f87c270b5bbffb7aa11",
+          "html": "959e371531b3236d63a985ae1fe74c996821d95a1a481c439d853c70bf9c22db",
+          "reportMatchesCli": true,
+          "originalPreserved": false,
+          "totals": [
+            {
+              "openaiTokens": 60,
+              "claudeTokensEstimate": 61
+            },
+            {
+              "openaiTokens": 60,
+              "claudeTokensEstimate": 61
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        }
+      ],
+      "textRecovery": true,
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    },
+    {
+      "engine": "chromium",
+      "width": 375,
+      "flows": [
+        {
+          "name": "anthropic-image-transports",
+          "json": "078f884901045ad2da9292873481e7e890a19723be8efd019a5701079bf9a81e",
+          "html": "eceebdeb24d15e7aa2dbdb64a3736d64ac1d00d3983fd66985159b89c850f228",
+          "reportMatchesCli": true,
+          "originalPreserved": true,
+          "totals": [
+            {
+              "openaiTokens": 17699,
+              "claudeTokensEstimate": 8095
+            },
+            {
+              "openaiTokens": 212483,
+              "claudeTokensEstimate": 457130
+            },
+            {
+              "openaiTokens": 58,
+              "claudeTokensEstimate": 57
+            },
+            {
+              "openaiTokens": 19,
+              "claudeTokensEstimate": 25
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "responses-reported-usage",
+          "json": "dc556aa114270808e8c371fcf39963e8bf4b46445d246f87c270b5bbffb7aa11",
+          "html": "e35cfe818572e571cd1fec94b83fdfb07fa1f9f0aff76ee27e03801ef1efbc65",
+          "reportMatchesCli": true,
+          "originalPreserved": false,
+          "totals": [
+            {
+              "openaiTokens": 60,
+              "claudeTokensEstimate": 61
+            },
+            {
+              "openaiTokens": 60,
+              "claudeTokensEstimate": 61
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        }
+      ],
+      "textRecovery": true,
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "flows": [
+        {
+          "name": "anthropic-image-transports",
+          "json": "078f884901045ad2da9292873481e7e890a19723be8efd019a5701079bf9a81e",
+          "html": "f6c1ad63c40d164e6ae226aa107ca7cd21a7c0e0c161d9e4a181289a1fe2330a",
+          "reportMatchesCli": true,
+          "originalPreserved": true,
+          "totals": [
+            {
+              "openaiTokens": 17699,
+              "claudeTokensEstimate": 8095
+            },
+            {
+              "openaiTokens": 212483,
+              "claudeTokensEstimate": 457130
+            },
+            {
+              "openaiTokens": 58,
+              "claudeTokensEstimate": 57
+            },
+            {
+              "openaiTokens": 19,
+              "claudeTokensEstimate": 25
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "responses-reported-usage",
+          "json": "dc556aa114270808e8c371fcf39963e8bf4b46445d246f87c270b5bbffb7aa11",
+          "html": "7b1dd28e38b1323292402a7f7ff70a107ed8bb8898bb2ec834c2e332eed84cdc",
+          "reportMatchesCli": true,
+          "originalPreserved": false,
+          "totals": [
+            {
+              "openaiTokens": 60,
+              "claudeTokensEstimate": 61
+            },
+            {
+              "openaiTokens": 60,
+              "claudeTokensEstimate": 61
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        }
+      ],
+      "textRecovery": true,
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    },
+    {
+      "engine": "firefox",
+      "width": 375,
+      "flows": [
+        {
+          "name": "anthropic-image-transports",
+          "json": "078f884901045ad2da9292873481e7e890a19723be8efd019a5701079bf9a81e",
+          "html": "861187e77bb0e6171405a699762352c09c82396b9f462fded803eeabd16fd48f",
+          "reportMatchesCli": true,
+          "originalPreserved": true,
+          "totals": [
+            {
+              "openaiTokens": 17699,
+              "claudeTokensEstimate": 8095
+            },
+            {
+              "openaiTokens": 212483,
+              "claudeTokensEstimate": 457130
+            },
+            {
+              "openaiTokens": 58,
+              "claudeTokensEstimate": 57
+            },
+            {
+              "openaiTokens": 19,
+              "claudeTokensEstimate": 25
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "responses-reported-usage",
+          "json": "dc556aa114270808e8c371fcf39963e8bf4b46445d246f87c270b5bbffb7aa11",
+          "html": "5b21de0d926e2a76c81b814c51cebea9469190f524be74d18ad2510d00850695",
+          "reportMatchesCli": true,
+          "originalPreserved": false,
+          "totals": [
+            {
+              "openaiTokens": 60,
+              "claudeTokensEstimate": 61
+            },
+            {
+              "openaiTokens": 60,
+              "claudeTokensEstimate": 61
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        }
+      ],
+      "textRecovery": true,
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    }
+  ],
+  "after": [
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "flows": [
+        {
+          "name": "anthropic-image-transports",
+          "json": "8e814914a001b4a53d6ad12819a1415ea38b02b88ae439e8c3d85c161a1f99cb",
+          "html": "3c8b8c3c4255d9dbd5c0a5b782ea0ea0473f4348c0b920f634e0f677bedced81",
+          "reportMatchesCli": true,
+          "originalPreserved": true,
+          "refusedCalibration": true,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "responses-reported-usage",
+          "json": "438886fad9e63fd7df4baade309f6382a9e5feff50db2fb9bdd19d13ac1b749d",
+          "html": "e93065074b5a5112eee1d6c6a4e3b9cbffaaec65cb29a59d3b593cd2736ecea3",
+          "reportMatchesCli": true,
+          "originalPreserved": false,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        }
+      ],
+      "textRecovery": true,
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    },
+    {
+      "engine": "chromium",
+      "width": 375,
+      "flows": [
+        {
+          "name": "anthropic-image-transports",
+          "json": "8e814914a001b4a53d6ad12819a1415ea38b02b88ae439e8c3d85c161a1f99cb",
+          "html": "9da6ebb7765e1c0a189316112d0fe3dcfbc00e7968689866520fee1fada6fc47",
+          "reportMatchesCli": true,
+          "originalPreserved": true,
+          "refusedCalibration": true,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "responses-reported-usage",
+          "json": "438886fad9e63fd7df4baade309f6382a9e5feff50db2fb9bdd19d13ac1b749d",
+          "html": "0ae613aaa9e92ce7103b0d10578a9d58f89eb54d585c2124c29095d6877c6b7a",
+          "reportMatchesCli": true,
+          "originalPreserved": false,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        }
+      ],
+      "textRecovery": true,
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "flows": [
+        {
+          "name": "anthropic-image-transports",
+          "json": "8e814914a001b4a53d6ad12819a1415ea38b02b88ae439e8c3d85c161a1f99cb",
+          "html": "93e1ee754c658676545084c9e74fd2aab8d0692edae6a4e840f3828bdaed5087",
+          "reportMatchesCli": true,
+          "originalPreserved": true,
+          "refusedCalibration": true,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "responses-reported-usage",
+          "json": "438886fad9e63fd7df4baade309f6382a9e5feff50db2fb9bdd19d13ac1b749d",
+          "html": "26f73aa75ecc801c5d5f849594cb78dfe8141c25fca99ca5a2f7ef7419ff2d11",
+          "reportMatchesCli": true,
+          "originalPreserved": false,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        }
+      ],
+      "textRecovery": true,
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    },
+    {
+      "engine": "firefox",
+      "width": 375,
+      "flows": [
+        {
+          "name": "anthropic-image-transports",
+          "json": "8e814914a001b4a53d6ad12819a1415ea38b02b88ae439e8c3d85c161a1f99cb",
+          "html": "0bbe2afdd362d788d4b0bf57da2a61203c06e122dc28657176d8f4f426531b75",
+          "reportMatchesCli": true,
+          "originalPreserved": true,
+          "refusedCalibration": true,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "responses-reported-usage",
+          "json": "438886fad9e63fd7df4baade309f6382a9e5feff50db2fb9bdd19d13ac1b749d",
+          "html": "d24243f9f1ba726b55bcce87c879acd913553eab3166f699c8de38f1ef35fc4a",
+          "reportMatchesCli": true,
+          "originalPreserved": false,
+          "totals": [
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            },
+            {
+              "openaiTokens": null,
+              "claudeTokensEstimate": null
+            }
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        }
+      ],
+      "textRecovery": true,
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    }
+  ]
+}

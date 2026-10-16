@@ -170,3 +170,48 @@ npm run preview:web -- --host 127.0.0.1 --port 4339 --strictPort
 # In another terminal:
 node studies/media-accounting/browser.mjs http://127.0.0.1:4339/contextscope/ /tmp/media-browser --verify
 ```
+
+## Clean build and installed artifact
+
+Tested source: `ecc601b2c83cf93b509ad2d4ea61e493201cc508`. A clean Git archive
+with a fresh Node 24.21.0 install passed lint, strict core/web typechecking,
+611 unit checks, the production build and all 110 Chromium/Firefox checks.
+The [artifact receipt](results/verification.json) compares 116 pinned source/build
+inputs, all 103 installed package files and all 42 served production files.
+The timing run's compiled analysis modules match this clean build.
+
+A separately installed source tarball reproduces all seventeen workflows
+byte for byte on Node 24.21.0 and Node 20.0.0. Its actual `contextscope` executable
+works through npm's installed bin link on both runtimes. Three native-format CLI
+JSON reports match source. Anthropic and Responses CLI HTML equals the actual
+browser downloads after normalizing only the one generation timestamp.
+Configured warning gates exit 2; unsupported calibration exits 1 with a media
+diagnostic, no stack trace and the existing report file unchanged. An ordinary
+text control still exits successfully and matches the complete source report.
+
+The [browser receipt](results/browser.json) retains eight export workflows and
+four recovery imports per phase. Final workflows also check media calibration
+refusal, original compressed-image JSON downloads and keyboard inspection.
+There were no page exceptions, HTTP requests after disconnecting, axe violations
+or page-width overflow in those workflows. Actual [image JSON](results/browser-anthropic-image-transports.json),
+[image HTML](results/browser-anthropic-image-transports.html),
+[synthetic-usage JSON](results/browser-responses-reported-usage.json) and
+[synthetic-usage HTML](results/browser-responses-reported-usage.html) are retained.
+
+| View | Screenshot |
+| --- | --- |
+| Baseline counts compression bytes as context | [Before](../../docs/assets/media-accounting/before.png) |
+| Corrected whole-request totals and context use are unavailable | [After](../../docs/assets/media-accounting/after.png) |
+| Phone explanation of omitted media | [Finding](../../docs/assets/media-accounting/finding-phone.png) |
+| Phone cache partitions remain unavailable | [Cache](../../docs/assets/media-accounting/cache-phone.png) |
+| Synthetic captured usage remains known beside unavailable estimates | [Usage](../../docs/assets/media-accounting/usage-phone.png) |
+
+All five retained screenshots were opened and inspected. The established layout
+remains readable at both widths; long counter paths wrap on phones. Source
+record coverage, captured counters, unavailable model estimates and missing
+optional counters remain distinct.
+
+`check-installed.mjs CONSUMER OUT NODE20` exercises the installed binary and
+library. `verify-artifacts.py SCRATCH BASE_URL` rechecks the clean source,
+package, downloads and served bytes. These receipts establish local artifact
+behavior. Source publication and public hosting are separate checks.
