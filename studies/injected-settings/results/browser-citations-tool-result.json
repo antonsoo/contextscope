@@ -1,0 +1,709 @@
+{
+  "parse": {
+    "format": "anthropic",
+    "complete": true,
+    "sourceRecords": 3,
+    "skippedRecords": 0,
+    "autoDetected": true,
+    "requests": [
+      {
+        "provider": "anthropic",
+        "index": 0,
+        "model": "claude-sonnet-4-6",
+        "source": {
+          "recordIndex": 0,
+          "line": 1
+        },
+        "segments": [
+          {
+            "id": "tools[0]",
+            "category": "tools",
+            "label": "tool: lookup",
+            "path": "tools[0]",
+            "openaiTokens": 2129,
+            "claudeTokensEstimate": 3039,
+            "cacheControl": {
+              "type": "ephemeral",
+              "ttl": "5m"
+            },
+            "charLength": 10029
+          },
+          {
+            "id": "system[0]",
+            "category": "system",
+            "label": "system block 1",
+            "path": "system[0]",
+            "openaiTokens": 2401,
+            "claudeTokensEstimate": 4455,
+            "cacheControl": {
+              "type": "ephemeral",
+              "ttl": "5m"
+            },
+            "charLength": 14700
+          },
+          {
+            "id": "messages[0].content[0]",
+            "category": "user",
+            "label": "message 1 (user) text",
+            "path": "messages[0].content[0]",
+            "openaiTokens": 3901,
+            "claudeTokensEstimate": 6636,
+            "cacheControl": {
+              "type": "ephemeral",
+              "ttl": "5m"
+            },
+            "charLength": 21900
+          },
+          {
+            "id": "messages[1].content[0]",
+            "category": "tool_call",
+            "label": "message 2 tool_use: lookup",
+            "path": "messages[1].content[0]",
+            "openaiTokens": 22,
+            "claudeTokensEstimate": 31,
+            "charLength": 81
+          },
+          {
+            "id": "messages[2].content[0]",
+            "category": "tool_result",
+            "label": "message 3 tool_result",
+            "path": "messages[2].content[0]",
+            "openaiTokens": 41,
+            "claudeTokensEstimate": 61,
+            "charLength": 187
+          }
+        ]
+      },
+      {
+        "provider": "anthropic",
+        "index": 1,
+        "model": "claude-sonnet-4-6",
+        "source": {
+          "recordIndex": 1,
+          "line": 2
+        },
+        "segments": [
+          {
+            "id": "tools[0]",
+            "category": "tools",
+            "label": "tool: lookup",
+            "path": "tools[0]",
+            "openaiTokens": 2129,
+            "claudeTokensEstimate": 3039,
+            "cacheControl": {
+              "type": "ephemeral",
+              "ttl": "5m"
+            },
+            "charLength": 10029
+          },
+          {
+            "id": "system[0]",
+            "category": "system",
+            "label": "system block 1",
+            "path": "system[0]",
+            "openaiTokens": 2401,
+            "claudeTokensEstimate": 4455,
+            "cacheControl": {
+              "type": "ephemeral",
+              "ttl": "5m"
+            },
+            "charLength": 14700
+          },
+          {
+            "id": "messages[0].content[0]",
+            "category": "user",
+            "label": "message 1 (user) text",
+            "path": "messages[0].content[0]",
+            "openaiTokens": 3901,
+            "claudeTokensEstimate": 6636,
+            "cacheControl": {
+              "type": "ephemeral",
+              "ttl": "5m"
+            },
+            "charLength": 21900
+          },
+          {
+            "id": "messages[1].content[0]",
+            "category": "tool_call",
+            "label": "message 2 tool_use: lookup",
+            "path": "messages[1].content[0]",
+            "openaiTokens": 22,
+            "claudeTokensEstimate": 31,
+            "charLength": 81
+          },
+          {
+            "id": "messages[2].content[0]",
+            "category": "tool_result",
+            "label": "message 3 tool_result",
+            "path": "messages[2].content[0]",
+            "openaiTokens": 41,
+            "claudeTokensEstimate": 60,
+            "charLength": 186
+          }
+        ]
+      },
+      {
+        "provider": "anthropic",
+        "index": 2,
+        "model": "claude-sonnet-4-6",
+        "source": {
+          "recordIndex": 2,
+          "line": 3
+        },
+        "segments": [
+          {
+            "id": "tools[0]",
+            "category": "tools",
+            "label": "tool: lookup",
+            "path": "tools[0]",
+            "openaiTokens": 2129,
+            "claudeTokensEstimate": 3039,
+            "cacheControl": {
+              "type": "ephemeral",
+              "ttl": "5m"
+            },
+            "charLength": 10029
+          },
+          {
+            "id": "system[0]",
+            "category": "system",
+            "label": "system block 1",
+            "path": "system[0]",
+            "openaiTokens": 2401,
+            "claudeTokensEstimate": 4455,
+            "cacheControl": {
+              "type": "ephemeral",
+              "ttl": "5m"
+            },
+            "charLength": 14700
+          },
+          {
+            "id": "messages[0].content[0]",
+            "category": "user",
+            "label": "message 1 (user) text",
+            "path": "messages[0].content[0]",
+            "openaiTokens": 3901,
+            "claudeTokensEstimate": 6636,
+            "cacheControl": {
+              "type": "ephemeral",
+              "ttl": "5m"
+            },
+            "charLength": 21900
+          },
+          {
+            "id": "messages[1].content[0]",
+            "category": "tool_call",
+            "label": "message 2 tool_use: lookup",
+            "path": "messages[1].content[0]",
+            "openaiTokens": 22,
+            "claudeTokensEstimate": 31,
+            "charLength": 81
+          },
+          {
+            "id": "messages[2].content[0]",
+            "category": "tool_result",
+            "label": "message 3 tool_result",
+            "path": "messages[2].content[0]",
+            "openaiTokens": 41,
+            "claudeTokensEstimate": 61,
+            "charLength": 187
+          }
+        ]
+      }
+    ],
+    "warnings": []
+  },
+  "model": {
+    "id": "claude-sonnet-4-6",
+    "displayName": "Claude Sonnet 4.6",
+    "source": "request"
+  },
+  "claudeTokenScale": 1,
+  "reports": [
+    {
+      "requestIndex": 0,
+      "model": {
+        "id": "claude-sonnet-4-6",
+        "displayName": "Claude Sonnet 4.6",
+        "source": "request"
+      },
+      "totals": {
+        "openaiTokens": 8494,
+        "claudeTokensEstimate": 14222
+      },
+      "byCategory": [
+        {
+          "category": "system",
+          "segmentCount": 1,
+          "openaiTokens": 2401,
+          "claudeTokensEstimate": 4455
+        },
+        {
+          "category": "tools",
+          "segmentCount": 1,
+          "openaiTokens": 2129,
+          "claudeTokensEstimate": 3039
+        },
+        {
+          "category": "user",
+          "segmentCount": 1,
+          "openaiTokens": 3901,
+          "claudeTokensEstimate": 6636
+        },
+        {
+          "category": "tool_call",
+          "segmentCount": 1,
+          "openaiTokens": 22,
+          "claudeTokensEstimate": 31
+        },
+        {
+          "category": "tool_result",
+          "segmentCount": 1,
+          "openaiTokens": 41,
+          "claudeTokensEstimate": 61
+        }
+      ],
+      "segments": [
+        {
+          "id": "tools[0]",
+          "category": "tools",
+          "label": "tool: lookup",
+          "path": "tools[0]",
+          "openaiTokens": 2129,
+          "claudeTokensEstimate": 3039,
+          "cacheControl": {
+            "type": "ephemeral",
+            "ttl": "5m"
+          },
+          "charLength": 10029
+        },
+        {
+          "id": "system[0]",
+          "category": "system",
+          "label": "system block 1",
+          "path": "system[0]",
+          "openaiTokens": 2401,
+          "claudeTokensEstimate": 4455,
+          "cacheControl": {
+            "type": "ephemeral",
+            "ttl": "5m"
+          },
+          "charLength": 14700
+        },
+        {
+          "id": "messages[0].content[0]",
+          "category": "user",
+          "label": "message 1 (user) text",
+          "path": "messages[0].content[0]",
+          "openaiTokens": 3901,
+          "claudeTokensEstimate": 6636,
+          "cacheControl": {
+            "type": "ephemeral",
+            "ttl": "5m"
+          },
+          "charLength": 21900
+        },
+        {
+          "id": "messages[1].content[0]",
+          "category": "tool_call",
+          "label": "message 2 tool_use: lookup",
+          "path": "messages[1].content[0]",
+          "openaiTokens": 22,
+          "claudeTokensEstimate": 31,
+          "charLength": 81
+        },
+        {
+          "id": "messages[2].content[0]",
+          "category": "tool_result",
+          "label": "message 3 tool_result",
+          "path": "messages[2].content[0]",
+          "openaiTokens": 41,
+          "claudeTokensEstimate": 61,
+          "charLength": 187
+        }
+      ],
+      "contextWindow": 1000000,
+      "percentOfContextWindow": 0.014222
+    },
+    {
+      "requestIndex": 1,
+      "model": {
+        "id": "claude-sonnet-4-6",
+        "displayName": "Claude Sonnet 4.6",
+        "source": "request"
+      },
+      "totals": {
+        "openaiTokens": 8494,
+        "claudeTokensEstimate": 14221
+      },
+      "byCategory": [
+        {
+          "category": "system",
+          "segmentCount": 1,
+          "openaiTokens": 2401,
+          "claudeTokensEstimate": 4455
+        },
+        {
+          "category": "tools",
+          "segmentCount": 1,
+          "openaiTokens": 2129,
+          "claudeTokensEstimate": 3039
+        },
+        {
+          "category": "user",
+          "segmentCount": 1,
+          "openaiTokens": 3901,
+          "claudeTokensEstimate": 6636
+        },
+        {
+          "category": "tool_call",
+          "segmentCount": 1,
+          "openaiTokens": 22,
+          "claudeTokensEstimate": 31
+        },
+        {
+          "category": "tool_result",
+          "segmentCount": 1,
+          "openaiTokens": 41,
+          "claudeTokensEstimate": 60
+        }
+      ],
+      "segments": [
+        {
+          "id": "tools[0]",
+          "category": "tools",
+          "label": "tool: lookup",
+          "path": "tools[0]",
+          "openaiTokens": 2129,
+          "claudeTokensEstimate": 3039,
+          "cacheControl": {
+            "type": "ephemeral",
+            "ttl": "5m"
+          },
+          "charLength": 10029
+        },
+        {
+          "id": "system[0]",
+          "category": "system",
+          "label": "system block 1",
+          "path": "system[0]",
+          "openaiTokens": 2401,
+          "claudeTokensEstimate": 4455,
+          "cacheControl": {
+            "type": "ephemeral",
+            "ttl": "5m"
+          },
+          "charLength": 14700
+        },
+        {
+          "id": "messages[0].content[0]",
+          "category": "user",
+          "label": "message 1 (user) text",
+          "path": "messages[0].content[0]",
+          "openaiTokens": 3901,
+          "claudeTokensEstimate": 6636,
+          "cacheControl": {
+            "type": "ephemeral",
+            "ttl": "5m"
+          },
+          "charLength": 21900
+        },
+        {
+          "id": "messages[1].content[0]",
+          "category": "tool_call",
+          "label": "message 2 tool_use: lookup",
+          "path": "messages[1].content[0]",
+          "openaiTokens": 22,
+          "claudeTokensEstimate": 31,
+          "charLength": 81
+        },
+        {
+          "id": "messages[2].content[0]",
+          "category": "tool_result",
+          "label": "message 3 tool_result",
+          "path": "messages[2].content[0]",
+          "openaiTokens": 41,
+          "claudeTokensEstimate": 60,
+          "charLength": 186
+        }
+      ],
+      "contextWindow": 1000000,
+      "percentOfContextWindow": 0.014221
+    },
+    {
+      "requestIndex": 2,
+      "model": {
+        "id": "claude-sonnet-4-6",
+        "displayName": "Claude Sonnet 4.6",
+        "source": "request"
+      },
+      "totals": {
+        "openaiTokens": 8494,
+        "claudeTokensEstimate": 14222
+      },
+      "byCategory": [
+        {
+          "category": "system",
+          "segmentCount": 1,
+          "openaiTokens": 2401,
+          "claudeTokensEstimate": 4455
+        },
+        {
+          "category": "tools",
+          "segmentCount": 1,
+          "openaiTokens": 2129,
+          "claudeTokensEstimate": 3039
+        },
+        {
+          "category": "user",
+          "segmentCount": 1,
+          "openaiTokens": 3901,
+          "claudeTokensEstimate": 6636
+        },
+        {
+          "category": "tool_call",
+          "segmentCount": 1,
+          "openaiTokens": 22,
+          "claudeTokensEstimate": 31
+        },
+        {
+          "category": "tool_result",
+          "segmentCount": 1,
+          "openaiTokens": 41,
+          "claudeTokensEstimate": 61
+        }
+      ],
+      "segments": [
+        {
+          "id": "tools[0]",
+          "category": "tools",
+          "label": "tool: lookup",
+          "path": "tools[0]",
+          "openaiTokens": 2129,
+          "claudeTokensEstimate": 3039,
+          "cacheControl": {
+            "type": "ephemeral",
+            "ttl": "5m"
+          },
+          "charLength": 10029
+        },
+        {
+          "id": "system[0]",
+          "category": "system",
+          "label": "system block 1",
+          "path": "system[0]",
+          "openaiTokens": 2401,
+          "claudeTokensEstimate": 4455,
+          "cacheControl": {
+            "type": "ephemeral",
+            "ttl": "5m"
+          },
+          "charLength": 14700
+        },
+        {
+          "id": "messages[0].content[0]",
+          "category": "user",
+          "label": "message 1 (user) text",
+          "path": "messages[0].content[0]",
+          "openaiTokens": 3901,
+          "claudeTokensEstimate": 6636,
+          "cacheControl": {
+            "type": "ephemeral",
+            "ttl": "5m"
+          },
+          "charLength": 21900
+        },
+        {
+          "id": "messages[1].content[0]",
+          "category": "tool_call",
+          "label": "message 2 tool_use: lookup",
+          "path": "messages[1].content[0]",
+          "openaiTokens": 22,
+          "claudeTokensEstimate": 31,
+          "charLength": 81
+        },
+        {
+          "id": "messages[2].content[0]",
+          "category": "tool_result",
+          "label": "message 3 tool_result",
+          "path": "messages[2].content[0]",
+          "openaiTokens": 41,
+          "claudeTokensEstimate": 61,
+          "charLength": 187
+        }
+      ],
+      "contextWindow": 1000000,
+      "percentOfContextWindow": 0.014222
+    }
+  ],
+  "prefixMatches": [
+    {
+      "fromIndex": 0,
+      "toIndex": 1,
+      "relation": "rewrites",
+      "matchedSegments": 4,
+      "matchedOpenaiTokens": 8453,
+      "matchedClaudeTokensEstimate": 14161,
+      "divergedAt": {
+        "fromSegmentId": "messages[2].content[0]",
+        "toSegmentId": "messages[2].content[0]"
+      }
+    },
+    {
+      "fromIndex": 0,
+      "toIndex": 2,
+      "relation": "continues",
+      "matchedSegments": 5,
+      "matchedOpenaiTokens": 8494,
+      "matchedClaudeTokensEstimate": 14222
+    }
+  ],
+  "conversations": {
+    "count": 1,
+    "byRequest": [
+      0,
+      0,
+      0
+    ]
+  },
+  "cacheSimulation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-4-6",
+    "actual": [
+      {
+        "requestIndex": 0,
+        "readTokens": 0,
+        "writeTokens5m": 14130,
+        "writeTokens1h": 0,
+        "uncachedTokens": 92,
+        "costUsd": 0.053263500000000005
+      },
+      {
+        "requestIndex": 1,
+        "readTokens": 3039,
+        "writeTokens5m": 11091,
+        "writeTokens1h": 0,
+        "uncachedTokens": 91,
+        "costUsd": 0.04277595000000001
+      },
+      {
+        "requestIndex": 2,
+        "readTokens": 14130,
+        "writeTokens5m": 0,
+        "writeTokens1h": 0,
+        "uncachedTokens": 92,
+        "costUsd": 0.004515000000000001
+      }
+    ],
+    "optimized": [
+      {
+        "requestIndex": 0,
+        "readTokens": 0,
+        "writeTokens5m": 14222,
+        "writeTokens1h": 0,
+        "uncachedTokens": 0,
+        "costUsd": 0.053332500000000005
+      },
+      {
+        "requestIndex": 1,
+        "readTokens": 3039,
+        "writeTokens5m": 11182,
+        "writeTokens1h": 0,
+        "uncachedTokens": 0,
+        "costUsd": 0.0428442
+      },
+      {
+        "requestIndex": 2,
+        "readTokens": 14222,
+        "writeTokens5m": 0,
+        "writeTokens1h": 0,
+        "uncachedTokens": 0,
+        "costUsd": 0.004266600000000001
+      }
+    ],
+    "totalActualCostUsd": 0.10055445000000002,
+    "totalOptimizedCostUsd": 0.1004433
+  },
+  "usageComparison": {
+    "rows": [
+      {
+        "requestIndex": 0,
+        "estimatedInputTokens": 14222,
+        "simulatedReadTokens": 0,
+        "reportedInputTokens": null,
+        "reportedReadTokens": null,
+        "reportedWriteTokens": null,
+        "inputDeltaTokens": null,
+        "readDeltaTokens": null,
+        "readOutcome": "unavailable"
+      },
+      {
+        "requestIndex": 1,
+        "estimatedInputTokens": 14221,
+        "simulatedReadTokens": 3039,
+        "reportedInputTokens": null,
+        "reportedReadTokens": null,
+        "reportedWriteTokens": null,
+        "inputDeltaTokens": null,
+        "readDeltaTokens": null,
+        "readOutcome": "unavailable"
+      },
+      {
+        "requestIndex": 2,
+        "estimatedInputTokens": 14222,
+        "simulatedReadTokens": 14130,
+        "reportedInputTokens": null,
+        "reportedReadTokens": null,
+        "reportedWriteTokens": null,
+        "inputDeltaTokens": null,
+        "readDeltaTokens": null,
+        "readOutcome": "unavailable"
+      }
+    ],
+    "capturedRequests": 0,
+    "uncomparedRequestIndices": [],
+    "invalidRequestIndices": [],
+    "input": {
+      "requestIndices": [],
+      "reportedTokens": null,
+      "simulatedTokens": null,
+      "deltaTokens": null
+    },
+    "cacheRead": {
+      "requestIndices": [],
+      "reportedTokens": null,
+      "simulatedTokens": null,
+      "deltaTokens": null
+    },
+    "readOutcomes": {
+      "both_zero": 0,
+      "both_positive": 0,
+      "simulated_hit_reported_zero": 0,
+      "reported_hit_simulated_zero": 0,
+      "unavailable": 3
+    },
+    "issues": []
+  },
+  "findings": [
+    {
+      "kind": "anthropic_injected_prompt",
+      "severity": "info",
+      "requestIndex": 1,
+      "title": "Citation instructions are not counted",
+      "detail": "Enabled citations adds provider-side prompt instructions. The local token estimator does not reproduce those instructions, so these totals and costs omit their overhead. Cache scope changes are still respected. A count_tokens calibration request preserves output configuration and citation controls, but one calibration scale cannot reproduce every hidden segment or establish an actual cache hit.",
+      "segmentIds": []
+    },
+    {
+      "kind": "anthropic_citation_cache_scope",
+      "severity": "info",
+      "requestIndex": 1,
+      "title": "Citation setting changed the system cache",
+      "detail": "Citation enablement differs between requests 1 and 2. Claude's citation instructions change the system prompt, so system and message cache entries from that request cannot supply a hit, including before the cited document. Separately marked tool entries remain eligible. An earlier request with the current citation setting can still supply a hit; both scenarios preserve the setting.",
+      "segmentIds": [
+        "system[0]",
+        "messages[0].content[0]"
+      ]
+    }
+  ],
+  "duplicates": []
+}

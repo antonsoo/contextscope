@@ -1,0 +1,382 @@
+{
+  "before": [
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "flows": [
+        {
+          "name": "format-type",
+          "json": "927a1836ce7f0fbbea56f20a331cfee60c8d6d461c2a71f02730af919559db4d",
+          "html": "aa2ab5d26d25a7a3d4852468da0ea1617d461344c26eb9e4ce799969ddb442d1",
+          "reportMatchesCli": true,
+          "reads": [
+            0,
+            14130,
+            14130
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "citations-tool-result",
+          "json": "c70a3896dc5aecb06a2df07fe2a428f065d70b5f5d32e8d9db5c011d83cf7936",
+          "html": "190c192a986127a649a382ab2c94ed870594fbcdfb0d486c9d7e0c0d594339da",
+          "reportMatchesCli": true,
+          "reads": [
+            0,
+            14130,
+            14130
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        }
+      ],
+      "refusals": [
+        {
+          "name": "mixed-document-citations",
+          "message": "",
+          "preservesReport": false
+        },
+        {
+          "name": "format-with-citations",
+          "message": "",
+          "preservesReport": false
+        }
+      ],
+      "recovered": true,
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    },
+    {
+      "engine": "chromium",
+      "width": 375,
+      "flows": [
+        {
+          "name": "format-type",
+          "json": "927a1836ce7f0fbbea56f20a331cfee60c8d6d461c2a71f02730af919559db4d",
+          "html": "3f48c7184d6087a2b708ce195543752a746dc3ced0c237668c6d970c0d882fde",
+          "reportMatchesCli": true,
+          "reads": [
+            0,
+            14130,
+            14130
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "citations-tool-result",
+          "json": "c70a3896dc5aecb06a2df07fe2a428f065d70b5f5d32e8d9db5c011d83cf7936",
+          "html": "ffbcaf062288de25ebb5037b80edfd28ee099e8b27f33cf3f1c9c15ddcaa7b7f",
+          "reportMatchesCli": true,
+          "reads": [
+            0,
+            14130,
+            14130
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        }
+      ],
+      "refusals": [
+        {
+          "name": "mixed-document-citations",
+          "message": "",
+          "preservesReport": false
+        },
+        {
+          "name": "format-with-citations",
+          "message": "",
+          "preservesReport": false
+        }
+      ],
+      "recovered": true,
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "flows": [
+        {
+          "name": "format-type",
+          "json": "927a1836ce7f0fbbea56f20a331cfee60c8d6d461c2a71f02730af919559db4d",
+          "html": "afec77352c8eeecb80d97df9c43330ecb95b936415ae3cbab8884980ed16a907",
+          "reportMatchesCli": true,
+          "reads": [
+            0,
+            14130,
+            14130
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "citations-tool-result",
+          "json": "c70a3896dc5aecb06a2df07fe2a428f065d70b5f5d32e8d9db5c011d83cf7936",
+          "html": "6af4e3ee36add0796ffde4bdc826c0eb45774c70c7b2840b098b76945cbaca62",
+          "reportMatchesCli": true,
+          "reads": [
+            0,
+            14130,
+            14130
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        }
+      ],
+      "refusals": [
+        {
+          "name": "mixed-document-citations",
+          "message": "",
+          "preservesReport": false
+        },
+        {
+          "name": "format-with-citations",
+          "message": "",
+          "preservesReport": false
+        }
+      ],
+      "recovered": true,
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    },
+    {
+      "engine": "firefox",
+      "width": 375,
+      "flows": [
+        {
+          "name": "format-type",
+          "json": "927a1836ce7f0fbbea56f20a331cfee60c8d6d461c2a71f02730af919559db4d",
+          "html": "b0032b7d5c39d40454fcc2f8e9bf1c6f0fd321e3c7125ffc943bb06d468cd7a2",
+          "reportMatchesCli": true,
+          "reads": [
+            0,
+            14130,
+            14130
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "citations-tool-result",
+          "json": "c70a3896dc5aecb06a2df07fe2a428f065d70b5f5d32e8d9db5c011d83cf7936",
+          "html": "1739be53894fd733a0a0d5dc6b549487c8c16935c684f4186054490ee92c2f75",
+          "reportMatchesCli": true,
+          "reads": [
+            0,
+            14130,
+            14130
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        }
+      ],
+      "refusals": [
+        {
+          "name": "mixed-document-citations",
+          "message": "",
+          "preservesReport": false
+        },
+        {
+          "name": "format-with-citations",
+          "message": "",
+          "preservesReport": false
+        }
+      ],
+      "recovered": true,
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    }
+  ],
+  "after": [
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "flows": [
+        {
+          "name": "format-type",
+          "json": "bb4e0dd5b91afeba02e38e2e44f06095056b362bc2aaad9020da891e02197299",
+          "html": "1af0ebfd52039664f29cecc9de3194de29f5e967928012026f2983cfabb94076",
+          "reportMatchesCli": true,
+          "reads": [
+            0,
+            0,
+            14130
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "citations-tool-result",
+          "json": "58d48200d9fd38ffc6819b9f94732fe331060787209131a03f22a9dc5483f395",
+          "html": "1ce95c181240f1e35720d212ec6cf5d56b7c44e287e981a6b9fd390ab55804d6",
+          "reportMatchesCli": true,
+          "reads": [
+            0,
+            3039,
+            14130
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        }
+      ],
+      "refusals": [
+        {
+          "name": "mixed-document-citations",
+          "message": "Could not analyze this input: Request 1: mixed citation enablement within document or search_result blocks is unsupported by the API; enable citations on all blocks of that kind or on none.",
+          "preservesReport": true
+        },
+        {
+          "name": "format-with-citations",
+          "message": "Could not analyze this input: Request 1: citations and structured output formats are incompatible; remove the output format or disable citations before simulating cache use.",
+          "preservesReport": true
+        }
+      ],
+      "recovered": true,
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    },
+    {
+      "engine": "chromium",
+      "width": 375,
+      "flows": [
+        {
+          "name": "format-type",
+          "json": "bb4e0dd5b91afeba02e38e2e44f06095056b362bc2aaad9020da891e02197299",
+          "html": "a89e5f253f8c8e069a9a646a1256a79c5e1dd97287e4d08704e269b279581515",
+          "reportMatchesCli": true,
+          "reads": [
+            0,
+            0,
+            14130
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "citations-tool-result",
+          "json": "58d48200d9fd38ffc6819b9f94732fe331060787209131a03f22a9dc5483f395",
+          "html": "3c72ffc67851bfa7383a55af1c37aff88ad1094c0b984542e752e8fcbbd91da6",
+          "reportMatchesCli": true,
+          "reads": [
+            0,
+            3039,
+            14130
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        }
+      ],
+      "refusals": [
+        {
+          "name": "mixed-document-citations",
+          "message": "Could not analyze this input: Request 1: mixed citation enablement within document or search_result blocks is unsupported by the API; enable citations on all blocks of that kind or on none.",
+          "preservesReport": true
+        },
+        {
+          "name": "format-with-citations",
+          "message": "Could not analyze this input: Request 1: citations and structured output formats are incompatible; remove the output format or disable citations before simulating cache use.",
+          "preservesReport": true
+        }
+      ],
+      "recovered": true,
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "flows": [
+        {
+          "name": "format-type",
+          "json": "bb4e0dd5b91afeba02e38e2e44f06095056b362bc2aaad9020da891e02197299",
+          "html": "82a4fb9400942d958a8fd13add6e1ae94f3499b17c7bff5f22670a70d9b803b9",
+          "reportMatchesCli": true,
+          "reads": [
+            0,
+            0,
+            14130
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "citations-tool-result",
+          "json": "58d48200d9fd38ffc6819b9f94732fe331060787209131a03f22a9dc5483f395",
+          "html": "314f06d77859c620057b55acbdb7130ad23b7ceebb82916c658a7f31193a864a",
+          "reportMatchesCli": true,
+          "reads": [
+            0,
+            3039,
+            14130
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        }
+      ],
+      "refusals": [
+        {
+          "name": "mixed-document-citations",
+          "message": "Could not analyze this input: Request 1: mixed citation enablement within document or search_result blocks is unsupported by the API; enable citations on all blocks of that kind or on none.",
+          "preservesReport": true
+        },
+        {
+          "name": "format-with-citations",
+          "message": "Could not analyze this input: Request 1: citations and structured output formats are incompatible; remove the output format or disable citations before simulating cache use.",
+          "preservesReport": true
+        }
+      ],
+      "recovered": true,
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    },
+    {
+      "engine": "firefox",
+      "width": 375,
+      "flows": [
+        {
+          "name": "format-type",
+          "json": "bb4e0dd5b91afeba02e38e2e44f06095056b362bc2aaad9020da891e02197299",
+          "html": "2bb489b739c46580647167a76024528786b46437423b85d7032ddf244e5c7793",
+          "reportMatchesCli": true,
+          "reads": [
+            0,
+            0,
+            14130
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        },
+        {
+          "name": "citations-tool-result",
+          "json": "58d48200d9fd38ffc6819b9f94732fe331060787209131a03f22a9dc5483f395",
+          "html": "bf6be04e7df31fb8d7ec9f39e5c6ba7e4bb48e4358f2f4026b3766df2391a519",
+          "reportMatchesCli": true,
+          "reads": [
+            0,
+            3039,
+            14130
+          ],
+          "axeViolations": [],
+          "noPageOverflow": true
+        }
+      ],
+      "refusals": [
+        {
+          "name": "mixed-document-citations",
+          "message": "Could not analyze this input: Request 1: mixed citation enablement within document or search_result blocks is unsupported by the API; enable citations on all blocks of that kind or on none.",
+          "preservesReport": true
+        },
+        {
+          "name": "format-with-citations",
+          "message": "Could not analyze this input: Request 1: citations and structured output formats are incompatible; remove the output format or disable citations before simulating cache use.",
+          "preservesReport": true
+        }
+      ],
+      "recovered": true,
+      "pageErrors": [],
+      "httpRequestsAfterDisconnect": []
+    }
+  ]
+}

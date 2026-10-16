@@ -120,5 +120,42 @@ node studies/injected-settings/browser.mjs http://127.0.0.1:4337/contextscope/ /
 ```
 
 The production web output is `web/dist/`; library and CLI output is `dist/`.
-Clean archive, installed artifact and publication receipts will be recorded
-separately from these source-level observations.
+
+## Clean build and installed artifact
+
+Tested source: `6fc3ca10e3082b5be0e83edcd68511c9f789abbe`. A clean Git archive
+with a fresh Node 24.21.0 install passed lint, strict core/web typechecking,
+595 unit checks, production build and all 106 Chromium/Firefox checks. The
+separately packed package was installed outside the checkout with its runtime
+dependency. Its thirteen workflow reports and two calibration bodies are
+byte-identical to source replay on both Node 24.21.0 and Node 20.0.0.
+
+Both installed CLIs export complete matching JSON and HTML for schema changes
+and citations inside tool results. Their four invalid-setting imports exit 1
+with a citation diagnostic, no stack trace and the previous output file intact.
+HTML equals actual browser downloads after normalizing only the single generated
+timestamp. The actual [schema JSON](results/browser-format-type.json),
+[schema HTML](results/browser-format-type.html), [citation JSON](results/browser-citations-tool-result.json)
+and [citation HTML](results/browser-citations-tool-result.html) are retained.
+
+The [artifact receipt](results/verification.json) compares 115 pinned source/build
+inputs, 98 installed files and all 42 served production files. The
+[browser receipt](results/browser.json) records eight valid export flows, eight
+invalid imports and four recovery imports in each phase. Final refusals preserve
+the previous workspace. There were no page exceptions, HTTP requests after
+disconnecting, axe violations or page-width overflow in those workflows.
+
+| View | Screenshot |
+| --- | --- |
+| Baseline schema edit incorrectly reuses the whole prompt | [Before](../../docs/assets/injected-settings/before.png) |
+| Corrected schema edit writes; returning to the earlier format reads | [After](../../docs/assets/injected-settings/after.png) |
+| Phone explanation of format identity and missing overhead | [Format finding](../../docs/assets/injected-settings/format-phone.png) |
+| Phone explanation of citation tool/system boundaries | [Citation finding](../../docs/assets/injected-settings/citations-phone.png) |
+
+![Corrected cache table from the clean production build](../../docs/assets/injected-settings/after.png)
+
+All four retained screenshots were opened and inspected. The established layout
+remains readable at both widths, with the existing cache-table scroll on phones.
+`verify-artifacts.py SCRATCH BASE_URL` rechecks the retained local run against
+its pinned source revision, installed package, raw downloads and served bytes.
+These checks establish local artifact behavior; publication is separate.
