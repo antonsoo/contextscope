@@ -6,9 +6,9 @@ tokens. Changing top-level effort had the same problem. A separate parser
 omission erased empty system messages containing a per-message effort change.
 
 The source now keeps top-level reasoning settings in separate cache scopes and
-retains empty message headers in prompt identity. This is an unreleased local
+retains empty message headers in prompt identity. This is an unreleased
 source correction. There is no npm release or hosted deployment associated
-with this study.
+with this study. The later source publication is recorded below.
 
 Open the retained [budget-change request file](captures/budget-change.jsonl.gz)
 in the browser's file chooser to inspect the three-request example.
@@ -168,6 +168,16 @@ archive, installed files, raw browser downloads and served bytes. Full command
 logs remain in the local run directory; the receipt records their hashes and
 exit statuses without publishing machine paths. No push, package release or
 hosted deployment was performed.
+
+## Public source
+
+After local verification, source commit
+`20ab1235e2bbbb9b09431f7b4f93b9699b5612b8` was pushed to `main` with the
+owner's authorization. The [source receipt](results/publication.json) checks
+remote `main` equality and thirteen immutable raw-file responses against local
+bytes, including runtime code, SDK-capture metadata and before/after reports.
+This establishes published source for that revision. It does not establish a
+registry release or hosted deployment.
 
 ## Limits
 

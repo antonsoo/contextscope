@@ -1,0 +1,87 @@
+{
+  "checkedAt": "2026-10-16T17:24:13.143627+00:00",
+  "sourceCommit": "20ab1235e2bbbb9b09431f7b4f93b9699b5612b8",
+  "remoteMain": "20ab1235e2bbbb9b09431f7b4f93b9699b5612b8",
+  "cleanTreeBeforeReceipt": true,
+  "scope": "Public source bytes only. This is not a registry release or hosted deployment verification.",
+  "files": [
+    {
+      "path": "src/core/anthropic-reasoning.ts",
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/20ab1235e2bbbb9b09431f7b4f93b9699b5612b8/src/core/anthropic-reasoning.ts",
+      "bytes": 3630,
+      "sha256": "89a054b99c198cb4c988b7f5ccf9fea96b6320a1ef64c241479fb54a1af399a4"
+    },
+    {
+      "path": "src/core/anthropic-breakpoints.ts",
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/20ab1235e2bbbb9b09431f7b4f93b9699b5612b8/src/core/anthropic-breakpoints.ts",
+      "bytes": 1940,
+      "sha256": "b6b14040a024825f56da3d856ce5e13088d6d89f4a57a7a2b922a870be9e7c5b"
+    },
+    {
+      "path": "src/core/cache-anthropic.ts",
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/20ab1235e2bbbb9b09431f7b4f93b9699b5612b8/src/core/cache-anthropic.ts",
+      "bytes": 9498,
+      "sha256": "636ad2236c1cdbe067d76901d3bd50bd6efa9f72f58d7baf8b8bdc445f82f34d"
+    },
+    {
+      "path": "src/core/parse-anthropic.ts",
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/20ab1235e2bbbb9b09431f7b4f93b9699b5612b8/src/core/parse-anthropic.ts",
+      "bytes": 12286,
+      "sha256": "fead6f70e5be2b11b8c412dfb8f188556eecc25b8ff7480990fd3b364d3f0167"
+    },
+    {
+      "path": "src/core/findings.ts",
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/20ab1235e2bbbb9b09431f7b4f93b9699b5612b8/src/core/findings.ts",
+      "bytes": 26895,
+      "sha256": "c954101f0e52e62c678bcba87e92b86e63baeda71c7cde64c12ac3232d04cea4"
+    },
+    {
+      "path": "src/core/types.ts",
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/20ab1235e2bbbb9b09431f7b4f93b9699b5612b8/src/core/types.ts",
+      "bytes": 13765,
+      "sha256": "46e427e0125a1dcdbeb831bb0e87d84f2a525bad86468cbb7bd8d2646616d500"
+    },
+    {
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/20ab1235e2bbbb9b09431f7b4f93b9699b5612b8/README.md",
+      "bytes": 47037,
+      "sha256": "5f8922d99019f29358c81139614116ee4e904dd58ac90b421d3c6c7d0b041e81"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/20ab1235e2bbbb9b09431f7b4f93b9699b5612b8/CHANGELOG.md",
+      "bytes": 29478,
+      "sha256": "e31a63502f500863087f0d5238a64041a5d517234efcdf8c491d3c8e91fa340b"
+    },
+    {
+      "path": "studies/thinking-settings/README.md",
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/20ab1235e2bbbb9b09431f7b4f93b9699b5612b8/studies/thinking-settings/README.md",
+      "bytes": 9775,
+      "sha256": "6c563b7e1c1193488536b8d94ac3d60325695b2e0105ada1a4436af59c6687c3"
+    },
+    {
+      "path": "studies/thinking-settings/captures/manifest.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/20ab1235e2bbbb9b09431f7b4f93b9699b5612b8/studies/thinking-settings/captures/manifest.json",
+      "bytes": 5625,
+      "sha256": "eb35914a7e3b772271678184c1f84c961819cff7b8518df0904717cd3e8cf365"
+    },
+    {
+      "path": "studies/thinking-settings/results/before.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/20ab1235e2bbbb9b09431f7b4f93b9699b5612b8/studies/thinking-settings/results/before.json",
+      "bytes": 189380,
+      "sha256": "de65533f53a99f000603ba86d54761cc2c0108e402655691821dd376c2b1ee3d"
+    },
+    {
+      "path": "studies/thinking-settings/results/after.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/20ab1235e2bbbb9b09431f7b4f93b9699b5612b8/studies/thinking-settings/results/after.json",
+      "bytes": 205591,
+      "sha256": "77d91d44dc30272046450dd11c86d08bc59db0f4a85db55ef834435db2fb47da"
+    },
+    {
+      "path": "studies/thinking-settings/results/verification.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/contextscope/20ab1235e2bbbb9b09431f7b4f93b9699b5612b8/studies/thinking-settings/results/verification.json",
+      "bytes": 42116,
+      "sha256": "b02ac45bc9632163f61256883ba256d6e7098c366522e49b0545fc7c75112b82"
+    }
+  ]
+}
