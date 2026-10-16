@@ -159,3 +159,12 @@ remains readable at both widths, with the existing cache-table scroll on phones.
 `verify-artifacts.py SCRATCH BASE_URL` rechecks the retained local run against
 its pinned source revision, installed package, raw downloads and served bytes.
 These checks establish local artifact behavior; publication is separate.
+
+## Published source
+
+Source revision `86ab1e31789cbf12cdccfa8fdac255e1f15cef3c` was pushed to
+`main` with the owner's authorization. The [publication receipt](results/publication.json)
+checks remote `main` equality and fifteen immutable raw-file responses against
+local bytes, including the implementation, retained reports and corrected
+screenshot. The hosted branch was unchanged at that check. No registry release
+or manual hosted deployment was performed.
