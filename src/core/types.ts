@@ -133,6 +133,9 @@ export interface RequestTokenReport {
 export type FindingSeverity = "info" | "warning" | "error";
 
 export type FindingKind =
+  | "anthropic_injected_prompt"
+  | "anthropic_output_cache_scope"
+  | "anthropic_citation_cache_scope"
   | "anthropic_reasoning_cache_scope"
   | "anthropic_message_cache_scope"
   | "anthropic_speed"

@@ -7,6 +7,7 @@ import { anthropicMessageCacheKey, anthropicMessageCacheScope, isAnthropicMessag
 import { anthropicSpeed, anthropicSpeedKey, anthropicSpeedMultiplier } from "./anthropic-speed.js";
 import { isRecord } from "./json-utils.js";
 import { anthropicReasoningKey } from "./anthropic-reasoning.js";
+import { anthropicInjectedSettings } from "./anthropic-injected-settings.js";
 
 /**
  * Simulates Anthropic prompt caching across a sequence of requests.
@@ -62,7 +63,7 @@ export function simulateAnthropicCacheSequence(
   // Thinking/effort placement ahead of setup is model-specific. Keep a
   // conservative all-level scope rather than inventing setup reuse; the
   // corresponding finding explains that actual setup survival can differ.
-  const toolsByReasoning = new Map<string, ModelScoped>();
+  const toolsBySettings = new Map<string, ModelScoped>();
   const systemsWritten = new Map<string, ModelScoped>();
   const messagesWritten = new Map<string, ModelScoped>();
 
@@ -102,11 +103,15 @@ export function simulateAnthropicCacheSequence(
     const positions = anthropicPositions(segments);
     // Entries of another model are never visible: a cached prefix is that model's own state.
     const speed = anthropicSpeedKey(request);
-    const reasoning = anthropicReasoningKey(request);
-    const systemScope = JSON.stringify([reasoning, speed]);
+    const injected = anthropicInjectedSettings(request);
+    // Output formats alter the injected prompt; grammar compilation caching
+    // is a different cache and cannot establish prompt reuse. A citation
+    // toggle preserves tools but invalidates system and message entries.
+    const toolScope = JSON.stringify([anthropicReasoningKey(request), injected.formatKey]);
+    const systemScope = JSON.stringify([toolScope, speed, injected.citations]);
     const scope = JSON.stringify([systemScope, anthropicMessageCacheKey(anthropicMessageCacheScope(request))]);
-    let toolsWritten = toolsByReasoning.get(reasoning);
-    if (!toolsWritten) toolsByReasoning.set(reasoning, toolsWritten = new ModelScoped());
+    let toolsWritten = toolsBySettings.get(toolScope);
+    if (!toolsWritten) toolsBySettings.set(toolScope, toolsWritten = new ModelScoped());
     let systemWritten = systemsWritten.get(systemScope);
     if (!systemWritten) systemsWritten.set(systemScope, systemWritten = new ModelScoped());
     let messageWritten = messagesWritten.get(scope);

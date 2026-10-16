@@ -55,6 +55,14 @@ without making later messages look identical. The
 include unchanged/default-setting controls. These are modeled boundaries,
 not observed provider cache results; no npm release or deployment is claimed.
 
+**Structured output and citations change hidden prompt instructions too.** In
+source, a schema edit separates prompt caches; enabling citations retains only
+eligible tool entries, even when the cited document follows a marked prefix.
+The [SDK captures and calibration-body checks](studies/injected-settings/README.md)
+show both corrections. Local token totals still omit the provider's injected
+instructions, and reports say so. This is source work, without a package release
+or hosted deployment.
+
 ## On real agent trajectories
 
 The first measurement of contextscope against what a provider reported, not against
@@ -465,6 +473,10 @@ implement each provider's documented rules:
   speed. Unrecognized rates leave costs unavailable. The current Opus 4.6
   standard-speed fallback is explicit.
   [Fast-mode replay and pricing boundaries](studies/fast-mode/README.md).
+  Structured-output formats isolate all prompt levels. Citation enablement
+  isolates system/messages and preserves separately marked tools. Earlier
+  matching settings remain reusable; grammar compilation is a separate cache.
+  [Injected-prompt settings and calibration](studies/injected-settings/README.md).
 - **OpenAI**: listed GPT-6 models use explicit/implicit breakpoint simulation.
   No markers in explicit mode means zero reads and writes. Lookup uses eligible
   incoming boundaries, and cache writes have their own 30-minute column and
@@ -603,7 +615,10 @@ fixed hue order, so a color always means the same category.
   tool/system survival is model-specific and may differ. Documented mode and
   effort defaults use the recorded model, with no default inference for missing
   or unknown IDs. Per-message effort remains part of the message prefix.
-  Feature toggles that alter provider-injected prompts, provider transformations
+  Structured-output formats and citation enablement affect cache scopes;
+  their provider-injected instructions are absent from local token estimates
+  and costs. Calibration forwards those settings to `count_tokens` but does
+  not establish actual reuse. Other feature toggles, provider transformations
   of thinking history, and images rendered from opaque documents are not fully
   modeled. Compare captured usage before treating predictions as evidence of a hit.
 - **Server-side state is invisible.** A Responses API request that continues a

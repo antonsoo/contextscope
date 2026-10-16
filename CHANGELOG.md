@@ -26,6 +26,18 @@ of public SWE-bench agent runs; see `studies/real-trajectories/`.
 
 ### Fixed
 
+- Include Claude structured-output formats in prompt-cache identity, preserving
+  schema descriptions and property order separately from grammar compilation.
+  Citation enablement invalidates system/message entries while retaining
+  separately cached tools, including when documents arrive inside tool results.
+  Keep earlier matching settings reusable. Reject mixed citation controls and
+  the documented citations/structured-output incompatibility before simulation.
+  Token-count calibration preserves output configuration, speed and automatic
+  cache controls; legacy output formats migrate to the native count endpoint's
+  field. Reports disclose unmodeled injected-prompt token overhead. SDK-body
+  replays and offline exports are retained in `studies/injected-settings/`.
+  Source only; no npm release or deployment.
+
 - Keep Claude thinking and top-level effort configurations in separate cache
   scopes, including in the optimized scenario. Normalize documented mode and
   effort defaults from recorded model IDs; never borrow them from a pricing

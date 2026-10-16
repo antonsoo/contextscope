@@ -16,13 +16,16 @@
  * opt-in for CORS. The key is held by the caller in memory only.
  */
 import type { ParsedRequest } from "./types.js";
+import { anthropicInjectedSettings } from "./anthropic-injected-settings.js";
+import { isRecord } from "./json-utils.js";
 
 const COUNT_TOKENS_URL = "https://api.anthropic.com/v1/messages/count_tokens";
 const ANTHROPIC_VERSION = "2023-06-01";
 
-// The request fields count_tokens understands; everything else (max_tokens, stream, metadata,
-// temperature...) affects the response, not the prompt, and would be rejected or ignored.
-const PROMPT_FIELDS = ["system", "tools", "messages", "tool_choice", "thinking"] as const;
+// Supported prompt fields, including controls for provider-injected instructions.
+// Generation limits, stream mode and sampling parameters do not belong in this
+// endpoint's body. This is not a complete validator for every API feature.
+const PROMPT_FIELDS = ["system", "tools", "messages", "tool_choice", "thinking", "output_config", "speed", "cache_control"] as const;
 
 export interface CalibrationResult {
   requestIndex: number;
@@ -49,6 +52,12 @@ export function countTokensBody(request: ParsedRequest, model: string): Record<s
   const raw = request.raw !== null && typeof request.raw === "object" ? (request.raw as Record<string, unknown>) : {};
   const body: Record<string, unknown> = { model };
   for (const field of PROMPT_FIELDS) if (raw[field] !== undefined) body[field] = raw[field];
+  // The current counting endpoint accepts output_config.format. Preserve a
+  // legacy request's same format rather than silently counting a plain reply.
+  if (raw.output_format != null) {
+    const { format } = anthropicInjectedSettings(request);
+    body.output_config = { ...(isRecord(raw.output_config) ? raw.output_config : {}), format };
+  }
   if (!Array.isArray(body["messages"]) || body["messages"].length === 0) {
     throw new CalibrationError(`Request ${request.index + 1} has no messages, so there is nothing to count.`);
   }

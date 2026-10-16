@@ -9,6 +9,7 @@ import { anthropicPositions } from "./anthropic-breakpoints.js";
 import { anthropicMessageCacheScope, isAnthropicMessageSegment } from "./anthropic-cache-scope.js";
 import { anthropicSpeed, anthropicSpeedKey, anthropicSpeedMultiplier } from "./anthropic-speed.js";
 import { anthropicReasoningScope } from "./anthropic-reasoning.js";
+import { anthropicInjectedSettings } from "./anthropic-injected-settings.js";
 
 function push(list: Finding[], f: Finding): void {
   list.push(f);
@@ -84,6 +85,15 @@ export function computeFindings(
   requests.forEach((request, i) => {
     const modelInfo = provider === "anthropic" ? findAnthropicModel(resolveModel(provider, model, [request.model]).id) : undefined;
     const cacheStep = cacheSimulation.actual[i];
+    if (provider === "anthropic") {
+      const injected = anthropicInjectedSettings(request);
+      if (injected.format !== null || injected.citations) push(findings, {
+        kind: "anthropic_injected_prompt", severity: "info", requestIndex: i,
+        title: injected.format !== null ? "Output-format instructions are not counted" : "Citation instructions are not counted",
+        detail: `${injected.format !== null ? "Structured output format" : "Enabled citations"} adds provider-side prompt instructions. The local token estimator does not reproduce those instructions, so these totals and costs omit their overhead. Cache scope changes are still respected. A count_tokens calibration request preserves output configuration and citation controls, but one calibration scale cannot reproduce every hidden segment or establish an actual cache hit.`,
+        segmentIds: [],
+      });
+    }
     if (provider === "anthropic" && isRecord(request.raw) && request.raw.speed !== undefined && request.raw.speed !== "standard") {
       const speed = anthropicSpeed(request);
       const multiplier = anthropicSpeedMultiplier(request, resolveModel(provider, model, [request.model]));
@@ -161,6 +171,21 @@ export function computeFindings(
     // A new conversation shares its predecessor's setup (tools and system prompt) and whatever
     // opening messages they have in common, not the rest of that other conversation.
     const prev = startsConversation ? setupOf(requests[from]!, match.matchedSegments) : requests[from]!;
+    if (provider === "anthropic") {
+      const before = anthropicInjectedSettings(prev), after = anthropicInjectedSettings(request);
+      if (before.formatKey !== after.formatKey) push(findings, {
+        kind: "anthropic_output_cache_scope", severity: "info", requestIndex: i,
+        title: "Output format changed the prompt cache",
+        detail: `The output format differs between requests ${from + 1} and ${i + 1}. Claude injects instructions for structured outputs, so this simulation separates their prompt caches even when the visible messages match. Grammar compilation caching is separate and does not establish prompt reuse. Schema descriptions and property order remain significant. Both scenarios preserve the format; an earlier request with the current format can still supply a hit.`,
+        segmentIds: request.segments.filter(s => s.cacheControl).map(s => s.id),
+      });
+      if (before.citations !== after.citations) push(findings, {
+        kind: "anthropic_citation_cache_scope", severity: "info", requestIndex: i,
+        title: "Citation setting changed the system cache",
+        detail: `Citation enablement differs between requests ${from + 1} and ${i + 1}. Claude's citation instructions change the system prompt, so system and message cache entries from that request cannot supply a hit, including before the cited document. Separately marked tool entries remain eligible. An earlier request with the current citation setting can still supply a hit; both scenarios preserve the setting.`,
+        segmentIds: request.segments.filter(s => s.cacheControl && !s.path.startsWith("tools[")).map(s => s.id),
+      });
+    }
     if (provider === "anthropic" && request.segments.some((s) => s.cacheControl)) {
       const before = anthropicReasoningScope(prev), after = anthropicReasoningScope(request);
       const changed = [before.thinking !== after.thinking ? "thinking configuration" : "",

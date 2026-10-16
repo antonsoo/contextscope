@@ -76,7 +76,7 @@ describe("Claude thinking and effort cache scopes", () => {
     const a = body({ thinking: { type: "enabled", budget_tokens: 2048, display: "summarized" } });
     const b = body({ thinking: { type: "enabled", budget_tokens: 2048, display: "omitted" }, max_tokens: 16000 });
     expect(steps([a, b]).map((s) => s.readTokens)).toEqual([0, 4500]);
-    expect(anthropicReasoningKey(parsed(body({ output_config: { format: { type: "json_schema" } } }))))
+    expect(anthropicReasoningKey(parsed(body({ output_config: { format: { type: "json_schema", schema: { type: "object" } } } }))))
       .toBe(anthropicReasoningKey(parsed(body())));
   });
 

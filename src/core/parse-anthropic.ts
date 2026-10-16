@@ -4,6 +4,7 @@ import { countTokens, type TokenCounter } from "./token-counter.js";
 import { attachPromptIdentity } from "./prompt-identity.js";
 import { isCacheableSegment, lastCacheableSegment } from "./anthropic-breakpoints.js";
 import { ContextScopeParseError } from "./parse-error.js";
+import { anthropicInjectedSettings } from "./anthropic-injected-settings.js";
 
 interface AnthropicBlock {
   type?: string;
@@ -105,6 +106,7 @@ export function parseAnthropicRequest(raw: unknown, index: number, counter: Toke
     unknown
   >;
   const segments: Segment[] = [];
+  anthropicInjectedSettings({ raw: obj, index });
 
   const tools: unknown[] = Array.isArray(obj["tools"]) ? obj["tools"] : [];
   tools.forEach((tool, i) => {
