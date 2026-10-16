@@ -5,6 +5,7 @@ import { attachPromptIdentity } from "./prompt-identity.js";
 import { isCacheableSegment, lastCacheableSegment } from "./anthropic-breakpoints.js";
 import { ContextScopeParseError } from "./parse-error.js";
 import { anthropicInjectedSettings } from "./anthropic-injected-settings.js";
+import { unmodeledMedia } from "./media-accounting.js";
 
 interface AnthropicBlock {
   type?: string;
@@ -73,14 +74,16 @@ function makeSegment(params: {
 }, counter: TokenCounter): Segment {
   const { cacheControl, ...rest } = params;
   // `text` is whatever the log had in that position: a number or an object is kept as its JSON.
-  const text = asText(params.text);
-  const counts = counter(text);
+  const media = unmodeledMedia(params.raw, "anthropic");
+  const text = media.length ? "" : asText(params.text);
+  const counts = media.length ? { openai: null, claude: null } : counter(text);
   return {
     ...rest,
     text,
     charLength: text.length,
     openaiTokens: counts.openai,
     claudeTokensEstimate: counts.claude,
+    ...(media.length ? { unmodeledContent: media } : {}),
     ...(cacheControl ? { cacheControl } : {}),
   };
 }

@@ -1,0 +1,53 @@
+{
+  "scope": "Separately installed public registry 0.3.3 tarball, not the locally packed source artifact. Controlled SDK request captures; no provider token or cache measurement.",
+  "package": "@antonsoloviev/contextscope",
+  "version": "0.3.3",
+  "runtime": "v24.21.0",
+  "runtimeDependency": {
+    "gpt-tokenizer": "4.0.3"
+  },
+  "cases": [
+    {
+      "name": "anthropic-image-transports",
+      "inputSha256": "4b50fd4c6481950035da7ed8938043ebe46d3275e033f1dc19f8eb3aa0da4ae3",
+      "totals": [
+        {
+          "openaiTokens": 17699,
+          "claudeTokensEstimate": 6679
+        },
+        {
+          "openaiTokens": 212483,
+          "claudeTokensEstimate": 377133
+        },
+        {
+          "openaiTokens": 58,
+          "claudeTokensEstimate": 47
+        },
+        {
+          "openaiTokens": 19,
+          "claudeTokensEstimate": 21
+        }
+      ],
+      "sameDecodedImageGetsDifferentCounts": true
+    },
+    {
+      "name": "chat-image-transports",
+      "inputSha256": "ee6082979c6347d5c55311db0b15d48498579a03a59130c8868d98e4ab8a0c2a",
+      "totals": [
+        {
+          "openaiTokens": 17693,
+          "claudeTokensEstimate": 6674
+        },
+        {
+          "openaiTokens": 212477,
+          "claudeTokensEstimate": 377128
+        },
+        {
+          "openaiTokens": 54,
+          "claudeTokensEstimate": 44
+        }
+      ],
+      "sameDecodedImageGetsDifferentCounts": true
+    }
+  ]
+}

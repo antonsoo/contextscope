@@ -17,9 +17,14 @@ function body(choice: unknown = { type: "auto" }, setupMarker = true) {
 }
 function scope(raw: unknown) { return anthropicMessageCacheScope(parseAnthropicRequest(raw, 0)); }
 function simulate(raw: unknown[], optimized = false) {
-  // Exactly 1100 per block: these cases check scope and boundary decisions,
-  // independently of the heuristic tokenizer and safely above the minimum.
+  // Exactly 1100 per block: isolate cache-scope decisions from token estimation.
+  // A real media import now has unknown counts. Here only, supply an explicit
+  // synthetic per-block count, as a future media-aware caller could do.
   const requests = raw.map((r, i) => parseAnthropicRequest(r, i, () => ({ openai: 1100, claude: 1100 })));
+  for (const request of requests) for (const segment of request.segments) if (segment.unmodeledContent) {
+    segment.openaiTokens = 1100; segment.claudeTokensEstimate = 1100;
+    delete segment.unmodeledContent;
+  }
   return simulateAnthropicCacheSequence(requests, prefixPaths(requests, optimized), undefined, optimized);
 }
 

@@ -11,6 +11,10 @@
 
 export type Provider = "anthropic" | "openai";
 
+/** Null means this content cannot be counted locally, never zero tokens. */
+export type TokenCount = number | null;
+export type MediaKind = "image" | "document" | "audio" | "file";
+
 /** The eight categories the treemap and legend color by (dataviz categorical slots 1-8, fixed order). */
 export type SegmentCategory =
   | "system"
@@ -57,10 +61,12 @@ export interface Segment {
   prefix?: { content: unknown; context?: unknown };
   /** Original block, for the raw-content inspector view. */
   raw: unknown;
-  /** Exact token count under OpenAI's o200k_base encoding. */
-  openaiTokens: number;
+  /** Exact o200k_base text count; null for unmodeled media. */
+  openaiTokens: TokenCount;
   /** Estimated token count for Claude models - see tokenize-claude.ts. Always "≈", even when scaled by calibration. */
-  claudeTokensEstimate: number;
+  claudeTokensEstimate: TokenCount;
+  /** Media is preserved in raw/prefix, excluded from textual tokenization. */
+  unmodeledContent?: MediaKind[];
   cacheControl?: CacheControl;
   /** Explicit OpenAI content-block boundary; TTL comes from request options (30m). */
   promptCacheBreakpoint?: true;
@@ -109,8 +115,9 @@ export interface ParseResult {
 }
 
 export interface TokenTotals {
-  openaiTokens: number;
-  claudeTokensEstimate: number;
+  /** Null when any included segment has an unavailable count. */
+  openaiTokens: TokenCount;
+  claudeTokensEstimate: TokenCount;
 }
 
 export interface CategoryBreakdown extends TokenTotals {
@@ -133,6 +140,7 @@ export interface RequestTokenReport {
 export type FindingSeverity = "info" | "warning" | "error";
 
 export type FindingKind =
+  | "unmodeled_media"
   | "anthropic_injected_prompt"
   | "anthropic_output_cache_scope"
   | "anthropic_citation_cache_scope"
@@ -185,8 +193,8 @@ export interface PrefixMatch {
   /** Number of whole leading segments that are byte-identical (by normalized text). */
   matchedSegments: number;
   /** Token count (OpenAI exact) covered by the matched segments. */
-  matchedOpenaiTokens: number;
-  matchedClaudeTokensEstimate: number;
+  matchedOpenaiTokens: TokenCount;
+  matchedClaudeTokensEstimate: TokenCount;
   /** The first segment (in `to`) where the prefix diverges, if any. */
   divergedAt: { fromSegmentId: string | undefined; toSegmentId: string | undefined } | undefined;
   /** Unified-diff-style lines describing the divergent region, for display. */
@@ -201,16 +209,18 @@ export interface DiffLine {
 export interface CacheSimStep {
   requestIndex: number;
   /** Tokens read from cache this request (billed at the read discount). */
-  readTokens: number;
+  readTokens: TokenCount;
   /** Tokens newly written to cache this request, split by TTL. */
-  writeTokens5m: number;
-  writeTokens1h: number;
+  writeTokens5m: TokenCount;
+  writeTokens1h: TokenCount;
   /** Modern OpenAI cache writes. Absent for Anthropic and legacy OpenAI simulation. */
-  writeTokens30m?: number;
+  writeTokens30m?: TokenCount;
   /** OpenAI caching regime actually modeled for this row. */
   cacheMode?: "legacy" | "implicit" | "explicit";
   /** Tokens that were neither read nor written (no cache_control covers them, or below minimum). */
-  uncachedTokens: number;
+  uncachedTokens: TokenCount;
+  /** All token partitions are null when the sequence cannot be simulated. */
+  unavailableReason?: string;
   /** Estimated cost in USD for the input side of this request, using the resolved pricing. */
   costUsd: number | undefined;
   /** Anthropic only; emitted for every row when any request specifies speed.
@@ -245,6 +255,7 @@ export interface CacheSimulation {
   optimized: CacheSimStep[];
   totalActualCostUsd: number | undefined;
   totalOptimizedCostUsd: number | undefined;
+  unavailableReason?: string;
 }
 
 export interface UsageCounter {
@@ -274,8 +285,8 @@ export type UsageReadOutcome = "both_zero" | "both_positive" | "simulated_hit_re
 
 export interface UsageComparisonRow {
   requestIndex: number;
-  estimatedInputTokens: number;
-  simulatedReadTokens: number;
+  estimatedInputTokens: TokenCount;
+  simulatedReadTokens: TokenCount;
   reportedInputTokens: number | null;
   reportedReadTokens: number | null;
   reportedWriteTokens: number | null;

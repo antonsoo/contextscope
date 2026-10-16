@@ -10,6 +10,7 @@ import { anthropicMessageCacheScope, isAnthropicMessageSegment } from "./anthrop
 import { anthropicSpeed, anthropicSpeedKey, anthropicSpeedMultiplier } from "./anthropic-speed.js";
 import { anthropicReasoningScope } from "./anthropic-reasoning.js";
 import { anthropicInjectedSettings } from "./anthropic-injected-settings.js";
+import { sumTokenCounts } from "./media-accounting.js";
 
 function push(list: Finding[], f: Finding): void {
   list.push(f);
@@ -85,6 +86,13 @@ export function computeFindings(
   requests.forEach((request, i) => {
     const modelInfo = provider === "anthropic" ? findAnthropicModel(resolveModel(provider, model, [request.model]).id) : undefined;
     const cacheStep = cacheSimulation.actual[i];
+    const mediaSegments = request.segments.filter(s => s.unmodeledContent?.length);
+    if (mediaSegments.length) push(findings, {
+      kind: "unmodeled_media", severity: "warning", requestIndex: i,
+      title: "Media token counts are unavailable",
+      detail: "These segments contain media or opaque document/file references. Encoded bytes, URLs and file IDs are not model token counts. Request totals and context usage are unavailable. Cache token partitions and costs are unavailable for the whole sequence because unknown lengths affect thresholds and prior entries. Other segments retain their text counts, and original blocks remain inspectable. Captured provider usage remains visible. A scalar calibration cannot recover the missing media segments.",
+      segmentIds: mediaSegments.map(s => s.id),
+    });
     if (provider === "anthropic") {
       const injected = anthropicInjectedSettings(request);
       if (injected.format !== null || injected.citations) push(findings, {
@@ -121,7 +129,7 @@ export function computeFindings(
         const left = comparisonKeys(requests[priorIndex]!.segments, false);
         const right = comparisonKeys(request.segments, false);
         let shared = 0;
-        for (let s = 0; s < Math.min(left.length, right.length) && left[s] === right[s]; s++) shared += request.segments[s]!.openaiTokens;
+        for (let s = 0; s < Math.min(left.length, right.length) && left[s] === right[s]; s++) shared += request.segments[s]!.openaiTokens!;
         if (shared >= 1024) push(findings, { kind: "openai_cache_boundary", severity: "warning", requestIndex: i,
           title: "Shared text has no reusable cache boundary",
           detail: `Request ${i + 1} shares ${shared.toLocaleString("en-US")} modeled prefix tokens with request ${priorIndex + 1}, but none of its eligible lookup boundaries finds a cached endpoint. Matching text alone is insufficient. Keep earlier message endings intact, or mark the end of the stable content explicitly in both requests. An explicit-only request checks its explicit boundaries; implicit lookup also has a message lookback limit.`,
@@ -136,9 +144,9 @@ export function computeFindings(
     }
     // no_cache_control / below_minimum_cacheable only apply to Anthropic, whose caching is opt-in via a marker.
     if (provider === "anthropic" && modelInfo) {
-      const totalTokens = request.segments.reduce((sum, s) => sum + s.claudeTokensEstimate, 0);
+      const totalTokens = sumTokenCounts(request.segments.map(s => s.claudeTokensEstimate));
       const breakpoints = request.segments.filter((s) => s.cacheControl);
-      if (breakpoints.length === 0 && requests.length > 1 && totalTokens >= modelInfo.minCacheableTokens) {
+      if (breakpoints.length === 0 && requests.length > 1 && totalTokens !== null && totalTokens >= modelInfo.minCacheableTokens) {
         push(findings, {
           kind: "no_cache_control",
           severity: "warning",
@@ -149,8 +157,8 @@ export function computeFindings(
         });
       }
       for (const bp of breakpoints) {
-        const cum = request.segments.slice(0, request.segments.indexOf(bp) + 1).reduce((sum, s) => sum + s.claudeTokensEstimate, 0);
-        if (cum < modelInfo.minCacheableTokens) {
+        const cum = sumTokenCounts(request.segments.slice(0, request.segments.indexOf(bp) + 1).map(s => s.claudeTokensEstimate));
+        if (cum !== null && cum < modelInfo.minCacheableTokens) {
           push(findings, {
             kind: "below_minimum_cacheable",
             severity: "warning",
@@ -364,6 +372,7 @@ export function computeFindings(
       const optimizedStep = cacheSimulation.optimized[i];
       if (!actualStep || !optimizedStep) return;
       if (actualStep.costUsd === undefined || optimizedStep.costUsd === undefined || actualStep.costUsd <= 0) return;
+      if (actualStep.uncachedTokens === null) return;
       const gapUsd = actualStep.costUsd - optimizedStep.costUsd;
       const ratio = gapUsd / actualStep.costUsd;
       if (ratio < MATERIAL_SAVINGS_RATIO) return;

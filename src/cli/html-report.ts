@@ -2,6 +2,7 @@ import type { AnalysisResult } from "../core/types.js";
 import { describeRequestIndices, groupFindings } from "../core/group-findings.js";
 import { modelGroups, modelLabel, modelNotes, modelSummary } from "../core/model-summary.js";
 import { renderUsageHtml } from "./usage-html.js";
+import { usageNumber } from "../core/usage-labels.js";
 
 function esc(s: string): string {
   return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -39,11 +40,11 @@ export function renderHtmlReport(result: AnalysisResult): string {
       const rows = report.byCategory
         .map(
           (c) =>
-            `<tr><td><span class="swatch" style="background:${CATEGORY_COLOR[c.category]}"></span>${esc(c.category)}</td><td>${c.segmentCount}</td><td>${c.claudeTokensEstimate.toLocaleString("en-US")}</td><td>${c.openaiTokens.toLocaleString("en-US")}</td></tr>`,
+            `<tr><td><span class="swatch" style="background:${CATEGORY_COLOR[c.category]}"></span>${esc(c.category)}</td><td>${c.segmentCount}</td><td>${usageNumber(c.claudeTokensEstimate)}</td><td>${usageNumber(c.openaiTokens)}</td></tr>`,
         )
         .join("");
       return `<section class="card"><h3>Request ${report.requestIndex + 1} · ${esc(modelLabel(report.model))}</h3>
-        <p class="muted">≈${report.totals.claudeTokensEstimate.toLocaleString("en-US")} Claude tokens · ${report.totals.openaiTokens.toLocaleString("en-US")} OpenAI tokens${report.percentOfContextWindow !== undefined ? ` · ${(report.percentOfContextWindow * 100).toFixed(1)}% of context window` : ""}</p>
+        <p class="muted">${report.totals.claudeTokensEstimate === null ? "Claude tokens unavailable" : `≈${usageNumber(report.totals.claudeTokensEstimate)} Claude tokens`} · ${report.totals.openaiTokens === null ? "OpenAI tokens unavailable" : `${usageNumber(report.totals.openaiTokens)} OpenAI tokens`}${report.percentOfContextWindow !== undefined ? ` · ${(report.percentOfContextWindow * 100).toFixed(1)}% of context window` : ""}</p>
         <div class="table-scroll" tabindex="0" role="group" aria-label="Token categories for request ${report.requestIndex + 1}"><table><thead><tr><th>category</th><th>segments</th><th>≈Claude tok</th><th>OpenAI tok</th></tr></thead><tbody>${rows}</tbody></table></div>
       </section>`;
     })
@@ -52,7 +53,7 @@ export function renderHtmlReport(result: AnalysisResult): string {
   const cacheRows = cacheSimulation.actual
     .map(
       (step, i) =>
-        `<tr><td>req ${i + 1}</td>${showSpeed ? `<td>${esc(step.speed ?? "standard")}</td>` : ""}${openai ? `<td>${esc(step.cacheMode ?? "legacy")}</td>` : ""}${mixedModels ? `<td>${esc(modelLabel(reports[i]!.model))}</td>` : ""}<td>${step.readTokens.toLocaleString("en-US")}</td>${openai ? `<td>${(step.writeTokens30m ?? 0).toLocaleString("en-US")}</td>` : `<td>${step.writeTokens5m.toLocaleString("en-US")}</td><td>${step.writeTokens1h.toLocaleString("en-US")}</td>`}<td>${step.uncachedTokens.toLocaleString("en-US")}</td><td>${step.costUsd !== undefined ? `$${step.costUsd.toFixed(4)}` : "n/a"}</td></tr>`,
+        `<tr><td>req ${i + 1}</td>${showSpeed ? `<td>${esc(step.speed ?? "standard")}</td>` : ""}${openai ? `<td>${esc(step.cacheMode ?? "legacy")}</td>` : ""}${mixedModels ? `<td>${esc(modelLabel(reports[i]!.model))}</td>` : ""}<td>${usageNumber(step.readTokens)}</td>${openai ? `<td>${usageNumber(step.unavailableReason ? null : step.writeTokens30m ?? 0)}</td>` : `<td>${usageNumber(step.writeTokens5m)}</td><td>${usageNumber(step.writeTokens1h)}</td>`}<td>${usageNumber(step.uncachedTokens)}</td><td>${step.costUsd !== undefined ? `$${step.costUsd.toFixed(4)}` : "n/a"}</td></tr>`,
     )
     .join("");
 
@@ -120,6 +121,7 @@ export function renderHtmlReport(result: AnalysisResult): string {
 
   <section class="card">
     <h2>Cache simulation (${esc(cacheSimulation.provider)})</h2>
+    ${cacheSimulation.unavailableReason ? `<p class="muted">${esc(cacheSimulation.unavailableReason)}</p>` : ""}
     <div class="table-scroll" tabindex="0" role="group" aria-label="Cache simulation"><table><thead><tr><th>request</th>${showSpeed ? "<th>modeled speed</th>" : ""}${openai ? "<th>mode</th>" : ""}${mixedModels ? "<th>model</th>" : ""}<th>read</th>${openai ? "<th>write 30m</th>" : "<th>write (5m)</th><th>write (1h)</th>"}<th>uncached</th><th>cost</th></tr></thead><tbody>${cacheRows}</tbody></table></div>
     <p class="muted">total simulated: ${cacheSimulation.totalActualCostUsd !== undefined ? `$${cacheSimulation.totalActualCostUsd.toFixed(4)}` : "n/a"} · optimized simulated: ${cacheSimulation.totalOptimizedCostUsd !== undefined ? `$${cacheSimulation.totalOptimizedCostUsd.toFixed(4)}` : "n/a"}</p>
     ${savings !== undefined && savings >= 0.00005 ? `<p class="savings">Normalizing volatile text, JSON keys and tool order${cacheSimulation.provider === "anthropic" ? ", with a breakpoint on each request's last cacheable block (moving the last marker if all four slots are used)," : ""} would save $${savings.toFixed(4)} on this sequence — ≈$${Math.round(savings * 1000).toLocaleString("en-US")} per 1,000 sessions shaped like this one.</p>` : ""}

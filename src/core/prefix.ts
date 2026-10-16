@@ -1,6 +1,7 @@
 import type { DiffLine, ParsedRequest, PrefixMatch, PrefixRelation, Segment } from "./types.js";
 import { stripVolatilePatterns } from "./volatile.js";
 import { blockJson, canonicalJson, normalizedBlockJson } from "./json-utils.js";
+import { sumTokenCounts } from "./media-accounting.js";
 
 // The optimized scenario compares each segment as if it were fixed: timestamps/UUIDs redacted and
 // JSON keys sorted. That runs four regexes and a deep key sort per segment, and in a growing
@@ -20,7 +21,7 @@ function segmentKey(segment: Segment, normalizeVolatile: boolean): string {
       text = JSON.stringify([context, content]);
     } else if (normalizeVolatile) {
       text = segment.raw !== null && typeof segment.raw === "object" ? normalizedBlockJson(segment.raw) : stripVolatilePatterns(segment.text);
-    } else text = segment.text;
+    } else text = segment.unmodeledContent ? blockJson(segment.raw) : segment.text;
     cache.set(segment, text);
   }
   return `${segment.category}::${text}`;
@@ -165,17 +166,28 @@ function backtrack(trace: Int32Array[], n: number, m: number): [DiffLine["type"]
 }
 
 function describeSegment(segment: Segment): string {
+  if (segment.unmodeledContent) return `[${segment.category}] ${segment.label} — media content; token count unavailable (inspect original block)`;
   const preview = segment.text.length > 80 ? `${segment.text.slice(0, 80)}…` : segment.text;
   return `[${segment.category}] ${segment.label} — ${preview.replace(/\s+/g, " ")}`;
 }
 
 /** Keeps context lines within `radius` of a change, like a unified diff, and renders only what is kept. */
 function withContext(ops: DiffOp[], radius = 2): DiffLine[] {
+  const mediaKeys = new WeakMap<Segment, string>();
+  const contentKey = (segment: Segment): string => {
+    if (!segment.unmodeledContent) return `${segment.category}::${segment.text}`;
+    let key = mediaKeys.get(segment);
+    if (key === undefined) {
+      key = `${segment.category}::${blockJson(segment.prefix?.content ?? segment.raw)}`;
+      mediaKeys.set(segment, key);
+    }
+    return key;
+  };
   const identities = (type: DiffOp["type"]): Map<string, Set<string>> => {
     const grouped = new Map<string, Set<string>>();
     for (const op of ops) {
       if (op.type !== type) continue;
-      const key = `${op.segment.category}::${op.segment.text}`;
+      const key = contentKey(op.segment);
       const values = grouped.get(key) ?? new Set<string>();
       values.add(segmentKey(op.segment, false));
       grouped.set(key, values);
@@ -185,7 +197,7 @@ function withContext(ops: DiffOp[], radius = 2): DiffLine[] {
   const removed = identities("remove");
   const added = identities("add");
   const render = (op: DiffOp): DiffLine => {
-    const key = `${op.segment.category}::${op.segment.text}`;
+    const key = contentKey(op.segment);
     const other = (op.type === "remove" ? added : removed).get(key);
     const structureChanged = op.type !== "context" && other !== undefined && (other.size > 1 || !other.has(segmentKey(op.segment, false)));
     return { type: op.type, text: describeSegment(op.segment) + (structureChanged ? " [prompt metadata or message boundary changed]" : "") };
@@ -238,8 +250,8 @@ export function computePrefixMatch(
   const matchedSegments = commonPrefixLength(from.segments, to.segments, normalizeVolatile);
   const fromSegments = relation === "new_conversation" ? from.segments.slice(0, Math.max(setupLength(from.segments), matchedSegments)) : from.segments;
   const matchedTo = to.segments.slice(0, matchedSegments);
-  const matchedOpenaiTokens = matchedTo.reduce((sum, s) => sum + s.openaiTokens, 0);
-  const matchedClaudeTokensEstimate = matchedTo.reduce((sum, s) => sum + s.claudeTokensEstimate, 0);
+  const matchedOpenaiTokens = sumTokenCounts(matchedTo.map(s => s.openaiTokens));
+  const matchedClaudeTokensEstimate = sumTokenCounts(matchedTo.map(s => s.claudeTokensEstimate));
 
   const fromDiverged = fromSegments[matchedSegments];
   const toDiverged = to.segments[matchedSegments];

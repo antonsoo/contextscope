@@ -1,0 +1,18 @@
+{
+  "checkedAt": "2026-10-16T18:20:58.324126+00:00",
+  "metadataUrl": "https://registry.npmjs.org/%40antonsoloviev%2Fcontextscope",
+  "metadataSha256": "75568a2a96f10d5fead742127bab3e79870b25df88d07925e5db3c82b8f35ba4",
+  "latestTagAtCheck": "0.3.3",
+  "version": "0.3.3",
+  "publishedAt": "2026-10-03T03:11:09.311Z",
+  "dependencies": {
+    "gpt-tokenizer": "^4.0.0"
+  },
+  "tarball": {
+    "url": "https://registry.npmjs.org/@antonsoloviev/contextscope/-/contextscope-0.3.3.tgz",
+    "bytes": 66853,
+    "sha256": "35ebfa7045065e59686ea3f2a2d588c8170f173dce25642e1e244cea570679ad",
+    "integrity": "sha512-2gJsOFD/U+BsHQG2PCK+aeMSvhuD0Nml6OGFzWdQ/mmwetZLht63nXWtapBTZGwa49g0rAVxhu72uda1noMYaQ==",
+    "matchesRegistryIntegrity": true
+  }
+}

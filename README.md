@@ -10,58 +10,24 @@ See what's actually in your LLM context window, and why your prompt cache keeps 
   <img src="docs/assets/web-dashboard-dark.png" alt="contextscope web app on a synthetic 24-turn coding-agent session: headline numbers, two grouped findings (a timestamp in the system prompt breaks the cache on requests 2 to 24), and a token-usage treemap of the 78,715-token last request" width="880">
 </p>
 
-Agentic apps send huge, fast-growing prompts, and it's genuinely hard to see which
-part is eating the budget: the tool definitions, the system prompt, a 400-token
-tool result, an image. Anthropic's and OpenAI's prompt caches also break
-**silently** whenever anything in the prefix changes (a timestamp interpolated
-into the system prompt, a tool list rebuilt from an unordered map, a model
-switch mid-conversation), and the only symptom is a cost and latency regression
-nobody notices until the bill arrives. contextscope is a local-first analyzer for
-the raw JSON requests these agents actually send: it shows where the tokens go,
-simulates each provider's cache rules turn by turn, and points at the specific
-block that broke the cache.
+An agent resends its tools, rules and growing history on every turn. A timestamp
+in those rules, a rebuilt tool list or a changed request setting can invalidate
+the cache even when most of the text is identical. Contextscope reads the raw
+JSON requests, locates those changes and simulates each provider's cache rules.
+When the log includes response usage, it compares the prediction with the
+captured counters and preserves discrepancies for inspection.
 
-Everything runs in your browser or on your machine. Nothing is uploaded, and the web app's
-Content-Security-Policy (`connect-src 'self'`) has the browser enforce that: the page cannot
-send what you paste to any other host.
+File import, local analysis and report generation run on your device. The web
+app's Content-Security-Policy (`connect-src 'self'`) prevents it from sending
+your input to another host. The CLI's optional `--calibrate` operation sends
+the selected Anthropic request to its token-counting endpoint; ordinary local
+analysis does not need a key or upload.
 
-Once the production site's file chooser appears, its local analysis code is ready:
-the first local file, report downloads, model changes and manual calibration work
-offline in that open tab. Startup downloads and validates the tokenizer worker
-before enabling intake; failed or cancelled preparation offers a retry. Only
-application code is retained for starting fresh workers; each analysis still
-releases its worker and tokenizer caches. Reloading the page or opening a built-in
-example that has not been downloaded can require a connection.
-[Cold first-import and startup recovery evidence](studies/first-offline/README.md)
-describes the extra initial download. This browser change is in source; a hosted
-deployment is not claimed here.
-
-**Refusal-only and empty history turns are retained in source.** A captured
-OpenAI SDK history with a changed assistant refusal previously looked identical:
-the parser dropped the whole turn and predicted reuse of all 2,625 modeled
-tokens. The corrected parser keeps the refusal, stops the prefix before that
-turn, and preserves empty-message roles and participant identity. The same
-records remain inspectable through original-source downloads and report exports.
-[SDK captures, before/after replay and limits](studies/message-boundaries/README.md).
-This is a source correction; no npm release or hosted deployment is claimed.
-
-**Thinking and effort changes also affect Claude cache reuse in source.** The
-simulator previously predicted a full 10,151-token hit when only the thinking
-budget changed. It now keeps those configurations separate and explains its
-conservative treatment of tool/system entries. Empty effort-only system
-messages remain in the history, so changing one preserves the earlier prefix
-without making later messages look identical. The
-[SDK-body replay and offline exports](studies/thinking-settings/README.md)
-include unchanged/default-setting controls. These are modeled boundaries,
-not observed provider cache results; no npm release or deployment is claimed.
-
-**Structured output and citations change hidden prompt instructions too.** In
-source, a schema edit separates prompt caches; enabling citations retains only
-eligible tool entries, even when the cited document follows a marked prefix.
-The [SDK captures and calibration-body checks](studies/injected-settings/README.md)
-show both corrections. Local token totals still omit the provider's injected
-instructions, and reports say so. This is source work, without a package release
-or hosted deployment.
+The source checkout includes corrections for empty/refusal histories, reasoning
+settings, injected prompt instructions and media accounting. Their
+[source, package and demo status](docs/source-status.md) is recorded separately,
+with retained counterexamples and verification artifacts. The measurements below
+describe the public agent trajectories used to check the analyzer.
 
 ## On real agent trajectories
 
@@ -130,11 +96,11 @@ examples, clone the repository:
 
 ```sh
 git clone https://github.com/antonsoo/contextscope && cd contextscope
-npm install
+npm ci
 node dist/cli/index.js analyze examples/anthropic-agent-cache-bust.jsonl.gz
 ```
 
-`npm install` runs the package's `prepare` script, which compiles the CLI and
+`npm ci` runs the package's `prepare` script, which compiles the CLI and
 library with `tsc`.
 
 Or skip the CLI and open **[antonsoo.github.io/contextscope](https://antonsoo.github.io/contextscope/)**:
@@ -144,8 +110,11 @@ drop a request file, paste one, or click a built-in example.
 
 - **Token usage treemap.** Every request in a session, broken into segments
   (system, tool definitions, user/assistant text, tool calls, tool results,
-  images, thinking), colored by category and sized by tokens. Click a segment to
-  see its raw content, path, and cache status.
+  images, thinking). Countable segments are colored by category and sized by
+  tokens. In source, unmodeled media stays inspectable in the segment table
+  while totals, context usage and cache costs are unavailable; encoded payloads
+  do not become text tokens. Click a segment to see its original content, path
+  and cache status. [Media accounting and nullable source types](studies/media-accounting/README.md).
 - **Prompt-cache simulation across a sequence.** For each request and the
   request it continues, contextscope finds the longest common prefix in the provider's own
   serialization order, shows a readable diff of exactly what changed, and
@@ -318,6 +287,11 @@ const result = analyze(rawRequestJsonOrJsonl); // or { model: "claude-opus-5-5" 
 // result.duplicates       — near-duplicate content groups
 ```
 
+Source token fields can be `null` for unmodeled media. Check them before
+arithmetic; `null` is not zero. `cacheSimulation.unavailableReason` explains why
+sequence estimates are withheld. Captured provider counters keep their original
+known/missing/invalid states. [Contract and examples](studies/media-accounting/README.md#source-library-and-json-contract).
+
 ## How it works
 
 **Parsing.** Each request is normalized into a flat, ordered list of
@@ -390,6 +364,11 @@ segments remain estimates; rounding means their sum may differ slightly from
 the measured total. Repeating a calibration starts from the original input,
 so scales do not compound. Undo it at any time; changing the model, format,
 or input clears it.
+
+Scalar calibration requires countable request content. It cannot recover
+unmodeled media segments or their cache boundaries. The source CLI refuses
+`--calibrate` on such a sequence before contacting a provider; the browser
+preserves the report and explains the refusal for a selected media request.
 
 **Conversations.** A request log is rarely one conversation, and the line
 before a request is then some other conversation's. `src/core/threads.ts` pairs
@@ -560,6 +539,13 @@ fixed hue order, so a color always means the same category.
 
 ## Accuracy and limitations
 
+- **Media accounting is unavailable in source.** Images, opaque PDFs/files and
+  input audio are preserved without tokenizing their encodings or references.
+  Affected totals and context fractions are unavailable, as are cache partitions
+  and costs for the whole sequence. Other segments retain text counts, and
+  captured usage remains visible. This is targeted coverage of recognized
+  content types, not complete request validation or multimodal token support.
+  [Identical-pixel counterexample and limits](studies/media-accounting/README.md).
 - **Claude token counts are estimates** unless calibrated. There is no public
   Claude tokenizer, and Claude's tokenizers differ between generations
   (Anthropic documents that the tokenizer introduced with Opus 4.7 uses up to

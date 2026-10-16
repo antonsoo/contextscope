@@ -2,6 +2,7 @@ import type { ParsedRequest, Segment, SegmentCategory } from "./types.js";
 import { asText, blockJson, isRecord } from "./json-utils.js";
 import { countTokens, type TokenCounter } from "./token-counter.js";
 import { attachPromptIdentity } from "./prompt-identity.js";
+import { unmodeledMedia } from "./media-accounting.js";
 
 interface OpenAiContentPart {
   type?: string;
@@ -25,14 +26,16 @@ type SegmentParams = { id: string; category: SegmentCategory; label: string; pat
 
 function makeSegment(params: SegmentParams, counter: TokenCounter): Segment {
   // `text` is whatever the log had in that position: a number or an object is kept as its JSON.
-  const text = asText(params.text);
-  const counts = counter(text);
+  const media = unmodeledMedia(params.raw, "openai");
+  const text = media.length ? "" : asText(params.text);
+  const counts = media.length ? { openai: null, claude: null } : counter(text);
   return {
     ...params,
     text,
     charLength: text.length,
     openaiTokens: counts.openai,
     claudeTokensEstimate: counts.claude,
+    ...(media.length ? { unmodeledContent: media } : {}),
     ...(isRecord(params.raw) && isRecord(params.raw["prompt_cache_breakpoint"]) && params.raw["prompt_cache_breakpoint"].mode === "explicit" ? { promptCacheBreakpoint: true as const } : {}),
   };
 }
@@ -97,7 +100,7 @@ export function parseOpenAiRequest(raw: unknown, index: number, counter: TokenCo
           text: content,
           raw: message,
         });
-        segment.openaiTokens += CHAT_MESSAGE_FRAMING_TOKENS;
+        if (segment.openaiTokens !== null) segment.openaiTokens += CHAT_MESSAGE_FRAMING_TOKENS;
         segments.push(segment);
       }
     } else if (Array.isArray(content)) {

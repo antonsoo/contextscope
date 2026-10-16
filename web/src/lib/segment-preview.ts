@@ -15,10 +15,12 @@ export interface PreviewBlock {
 
 /** Aggregate only the visual tail. The areas still account for every positive token. */
 export function treemapBlocks(segments: Segment[], provider: Provider): PreviewBlock[] {
-  const items: PreviewBlock[] = segments.map((segment) => ({
-    id: segment.id, category: segment.category, label: segment.label, segment, count: 1,
-    value: provider === "openai" ? segment.openaiTokens : segment.claudeTokensEstimate,
-  })).filter((item) => item.value > 0).sort((a, b) => b.value - a.value);
+  const items: PreviewBlock[] = segments.flatMap((segment) => {
+    const value = provider === "openai" ? segment.openaiTokens : segment.claudeTokensEstimate;
+    return value === null || value <= 0 ? [] : [{
+      id: segment.id, category: segment.category, label: segment.label, segment, count: 1, value,
+    }];
+  }).sort((a, b) => b.value - a.value);
   const visible = items.slice(0, TREEMAP_SEGMENT_LIMIT);
   const grouped = new Map<SegmentCategory, PreviewBlock>();
   for (const item of items.slice(TREEMAP_SEGMENT_LIMIT)) {

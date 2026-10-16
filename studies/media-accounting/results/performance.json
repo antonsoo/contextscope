@@ -1,0 +1,285 @@
+{
+  "scope": "Five alternating fresh processes per implementation. Timed gunzip plus analyze after loading the library; excludes module loading, CLI startup, browser startup and network. One controlled four-request workflow, not a general benchmark.",
+  "implementations": {
+    "before": {
+      "analyze.js": "97fbe016725b50db1545609e75828da55f23a06b7c6c0c0cf5effeede1bac094",
+      "parse-anthropic.js": "8bd41d2ad0c0dde02b8fbddc1d9b528ef3551d6c06db7889fbdddac8d231eea2",
+      "parse-openai.js": "b9cc94ed361aaa9cc532d654007a9119a33a94cf02b52c9f5385893349f8708d",
+      "media-accounting.js": null,
+      "cache-anthropic.js": "87ebe4d247d3fc902e3b18fed9ad47361b13fb9ce951d1c1810e3a0965987ceb",
+      "cache-openai.js": "ee8f83a73982f0adcc6517d1bcb826712f24cff72e1b726ce328677548762934",
+      "prefix.js": "52b2a464acc37d2143304bbc39b6050ce671829926ef371de0ff3dfefb6f7e9d",
+      "report.js": "3a050859b7d81f06a9a44374754d481410ebf59db61a5cc74ea74a8130d7bb93",
+      "usage-comparison.js": "28b4b4bacecb7f2c45424ec76b70be33d9c20e1abf416c812f7b209ae35ee429"
+    },
+    "after": {
+      "analyze.js": "6d509361d96d831c462a8df2279a2505bcd3942f5e6add5c4319f669108f65d5",
+      "parse-anthropic.js": "3fb42926603b43f8dc9633e400525c75408ee4467da88160c8e24f6294249959",
+      "parse-openai.js": "8e709548dc7460d8e8dc97e78b543904b90301302916bfa454a112348d0929fc",
+      "media-accounting.js": "c04afa9aeefbc694bb125692ab25580f7435e2d570e00b3ba818cf1471915d58",
+      "cache-anthropic.js": "e411fcaf183d44afa57f1ffb88b1f28a7cc37b061473c09be5e86823e37d0abd",
+      "cache-openai.js": "882e70ca2412adea3dacfdadd00125a106b51c0f31c22ef131912d43579d468d",
+      "prefix.js": "925186adf132fce42e9b454a013854ddddf612982377a4a6c2eacd7c1f92bb61",
+      "report.js": "9e99e27a2b9f5a7f55471678d5950dfd4fb9a92bb3357ea20174c72125cd9c76",
+      "usage-comparison.js": "28470ebd04f29c04d3dce318690fc174c5feacb24649ea6bb37b40d99f9ac26a"
+    }
+  },
+  "environment": {
+    "node": "v24.21.0",
+    "platform": "linux",
+    "kernel": "6.18.54.1-microsoft-standard-WSL2",
+    "logicalCpus": 14,
+    "cpu": "AMD Ryzen 7 7800X3D 8-Core Processor",
+    "memoryBytes": 50516529152
+  },
+  "input": {
+    "file": "anthropic-image-transports.jsonl.gz",
+    "sha256": "ee2ed70d6a2378efa4f30ee5ff2a507a56036d511283f615f6924dd2f71a8fa0"
+  },
+  "runs": {
+    "before": [
+      {
+        "milliseconds": 2456.949505,
+        "maxRssKiB": 199576,
+        "totals": [
+          {
+            "openaiTokens": 17699,
+            "claudeTokensEstimate": 8095
+          },
+          {
+            "openaiTokens": 212483,
+            "claudeTokensEstimate": 457130
+          },
+          {
+            "openaiTokens": 58,
+            "claudeTokensEstimate": 57
+          },
+          {
+            "openaiTokens": 19,
+            "claudeTokensEstimate": 25
+          }
+        ],
+        "workflows": 4
+      },
+      {
+        "milliseconds": 2417.071763,
+        "maxRssKiB": 198792,
+        "totals": [
+          {
+            "openaiTokens": 17699,
+            "claudeTokensEstimate": 8095
+          },
+          {
+            "openaiTokens": 212483,
+            "claudeTokensEstimate": 457130
+          },
+          {
+            "openaiTokens": 58,
+            "claudeTokensEstimate": 57
+          },
+          {
+            "openaiTokens": 19,
+            "claudeTokensEstimate": 25
+          }
+        ],
+        "workflows": 4
+      },
+      {
+        "milliseconds": 2415.492972,
+        "maxRssKiB": 198180,
+        "totals": [
+          {
+            "openaiTokens": 17699,
+            "claudeTokensEstimate": 8095
+          },
+          {
+            "openaiTokens": 212483,
+            "claudeTokensEstimate": 457130
+          },
+          {
+            "openaiTokens": 58,
+            "claudeTokensEstimate": 57
+          },
+          {
+            "openaiTokens": 19,
+            "claudeTokensEstimate": 25
+          }
+        ],
+        "workflows": 4
+      },
+      {
+        "milliseconds": 2541.816242,
+        "maxRssKiB": 200116,
+        "totals": [
+          {
+            "openaiTokens": 17699,
+            "claudeTokensEstimate": 8095
+          },
+          {
+            "openaiTokens": 212483,
+            "claudeTokensEstimate": 457130
+          },
+          {
+            "openaiTokens": 58,
+            "claudeTokensEstimate": 57
+          },
+          {
+            "openaiTokens": 19,
+            "claudeTokensEstimate": 25
+          }
+        ],
+        "workflows": 4
+      },
+      {
+        "milliseconds": 2527.787019,
+        "maxRssKiB": 199572,
+        "totals": [
+          {
+            "openaiTokens": 17699,
+            "claudeTokensEstimate": 8095
+          },
+          {
+            "openaiTokens": 212483,
+            "claudeTokensEstimate": 457130
+          },
+          {
+            "openaiTokens": 58,
+            "claudeTokensEstimate": 57
+          },
+          {
+            "openaiTokens": 19,
+            "claudeTokensEstimate": 25
+          }
+        ],
+        "workflows": 4
+      }
+    ],
+    "after": [
+      {
+        "milliseconds": 90.63136500000002,
+        "maxRssKiB": 131940,
+        "totals": [
+          {
+            "openaiTokens": null,
+            "claudeTokensEstimate": null
+          },
+          {
+            "openaiTokens": null,
+            "claudeTokensEstimate": null
+          },
+          {
+            "openaiTokens": null,
+            "claudeTokensEstimate": null
+          },
+          {
+            "openaiTokens": null,
+            "claudeTokensEstimate": null
+          }
+        ],
+        "workflows": 4
+      },
+      {
+        "milliseconds": 103.054013,
+        "maxRssKiB": 131264,
+        "totals": [
+          {
+            "openaiTokens": null,
+            "claudeTokensEstimate": null
+          },
+          {
+            "openaiTokens": null,
+            "claudeTokensEstimate": null
+          },
+          {
+            "openaiTokens": null,
+            "claudeTokensEstimate": null
+          },
+          {
+            "openaiTokens": null,
+            "claudeTokensEstimate": null
+          }
+        ],
+        "workflows": 4
+      },
+      {
+        "milliseconds": 83.03279900000001,
+        "maxRssKiB": 130752,
+        "totals": [
+          {
+            "openaiTokens": null,
+            "claudeTokensEstimate": null
+          },
+          {
+            "openaiTokens": null,
+            "claudeTokensEstimate": null
+          },
+          {
+            "openaiTokens": null,
+            "claudeTokensEstimate": null
+          },
+          {
+            "openaiTokens": null,
+            "claudeTokensEstimate": null
+          }
+        ],
+        "workflows": 4
+      },
+      {
+        "milliseconds": 90.016382,
+        "maxRssKiB": 131388,
+        "totals": [
+          {
+            "openaiTokens": null,
+            "claudeTokensEstimate": null
+          },
+          {
+            "openaiTokens": null,
+            "claudeTokensEstimate": null
+          },
+          {
+            "openaiTokens": null,
+            "claudeTokensEstimate": null
+          },
+          {
+            "openaiTokens": null,
+            "claudeTokensEstimate": null
+          }
+        ],
+        "workflows": 4
+      },
+      {
+        "milliseconds": 95.67310499999996,
+        "maxRssKiB": 131624,
+        "totals": [
+          {
+            "openaiTokens": null,
+            "claudeTokensEstimate": null
+          },
+          {
+            "openaiTokens": null,
+            "claudeTokensEstimate": null
+          },
+          {
+            "openaiTokens": null,
+            "claudeTokensEstimate": null
+          },
+          {
+            "openaiTokens": null,
+            "claudeTokensEstimate": null
+          }
+        ],
+        "workflows": 4
+      }
+    ]
+  },
+  "medians": {
+    "before": {
+      "milliseconds": 2456.949505,
+      "maxRssKiB": 199572
+    },
+    "after": {
+      "milliseconds": 90.63136500000002,
+      "maxRssKiB": 131388
+    }
+  }
+}

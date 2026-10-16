@@ -68,8 +68,9 @@ export function renderTerminalReport(result: AnalysisResult, options: TerminalRe
   if (verbose) {
     for (const report of reports) lines.push(...breakdown(`Request ${report.requestIndex + 1} · ${visible(modelLabel(report.model))}`, report), "");
   } else if (reports.length > 0) {
-    const largest = reports.reduce((best, r) => (r.totals.claudeTokensEstimate > best.totals.claudeTokensEstimate ? r : best));
-    const title = reports.length === 1 ? "Request 1" : `Largest request: ${largest.requestIndex + 1} of ${reports.length}`;
+    const complete = reports.every(r => r.totals.claudeTokensEstimate !== null);
+    const largest = complete ? reports.reduce((best, r) => (r.totals.claudeTokensEstimate! > best.totals.claudeTokensEstimate! ? r : best)) : reports.at(-1)!;
+    const title = reports.length === 1 ? "Request 1" : `${complete ? "Largest" : "Latest"} request: ${largest.requestIndex + 1} of ${reports.length}`;
     lines.push(...breakdown(`${title} · ${visible(modelLabel(largest.model))}`, largest));
     if (reports.length > 1) lines.push(dim("  (every request's breakdown: --verbose)"));
     lines.push("");
@@ -78,10 +79,11 @@ export function renderTerminalReport(result: AnalysisResult, options: TerminalRe
   if (prefixMatches.length > 0) lines.push(...prefixSection(result, verbose), "");
 
   lines.push(bold(`Cache simulation (${cacheSimulation.provider}, ${visible(modelSummary(result))})`));
+  if (cacheSimulation.unavailableReason) lines.push(...wrapIndented(visible(cacheSimulation.unavailableReason), 2));
   lines.push(dim(`  ${"request".padEnd(10)} ${"read".padStart(8)}  ${openai ? "write(30m)" : `${"write(5m)".padStart(8)}  ${"write(1h)".padStart(8)}`}  ${"uncached".padStart(9)}  ${"cost".padStart(9)}${openai ? "  mode" : ""}${showSpeed ? "  modeled speed" : ""}${mixedModels ? "  model" : ""}`));
   const rows = cacheSimulation.actual.map(
     (step, i) =>
-      `  req ${String(i + 1).padEnd(6)} ${fmtTokens(step.readTokens).padStart(8)}  ${openai ? fmtTokens(step.writeTokens30m ?? 0).padStart(10) : `${fmtTokens(step.writeTokens5m).padStart(8)}  ${fmtTokens(step.writeTokens1h).padStart(8)}`}  ${fmtTokens(step.uncachedTokens).padStart(9)}  ${fmtUsd(step.costUsd).padStart(9)}${openai ? `  ${(step.cacheMode ?? "legacy").padEnd(8)}` : ""}${showSpeed ? `  ${step.speed ?? "standard"}` : ""}${mixedModels ? `  ${visible(modelLabel(reports[i]!.model))}` : ""}`,
+      `  req ${String(i + 1).padEnd(6)} ${fmtTokens(step.readTokens).padStart(8)}  ${openai ? fmtTokens(step.unavailableReason ? null : step.writeTokens30m ?? 0).padStart(10) : `${fmtTokens(step.writeTokens5m).padStart(8)}  ${fmtTokens(step.writeTokens1h).padStart(8)}`}  ${fmtTokens(step.uncachedTokens).padStart(9)}  ${fmtUsd(step.costUsd).padStart(9)}${openai ? `  ${(step.cacheMode ?? "legacy").padEnd(8)}` : ""}${showSpeed ? `  ${step.speed ?? "standard"}` : ""}${mixedModels ? `  ${visible(modelLabel(reports[i]!.model))}` : ""}`,
   );
   if (verbose || rows.length <= CACHE_TABLE_FULL_ROWS) {
     lines.push(...rows);
@@ -141,7 +143,7 @@ export function renderTerminalReport(result: AnalysisResult, options: TerminalRe
 
 function reportedUsageSection(result: AnalysisResult, verbose: boolean): string[] {
   const review = result.usageComparison;
-  if (review.capturedRequests === 0) return [dim("No paired response usage. Cache reads and costs below are simulations.")];
+  if (review.capturedRequests === 0) return [dim(result.cacheSimulation.unavailableReason ? "No paired response usage. Local cache estimates are unavailable." : "No paired response usage. Cache reads and costs below are simulations.")];
   const out = [bold("Reported usage vs simulation"), dim("  Each total compares the same covered requests. Delta = estimate/simulation - reported.")];
   out.push(dim("  metric            coverage       reported    estimated/sim.         delta"));
   for (const [label, metric] of [["input tokens", review.input], ["cache reads", review.cacheRead]] as const) {
@@ -150,7 +152,7 @@ function reportedUsageSection(result: AnalysisResult, verbose: boolean): string[
   const misses = review.readOutcomes.simulated_hit_reported_zero;
   const unexpected = review.readOutcomes.reported_hit_simulated_zero;
   out.push(`  ${misses} simulated hit / reported zero; ${unexpected} reported hit / simulated zero.`);
-  out.push(dim(`  ${review.readOutcomes.unavailable} read count unavailable; ${review.invalidRequestIndices.length} invalid usage record(s) excluded. n/a is not zero.`));
+  out.push(dim(`  ${review.readOutcomes.unavailable} read comparisons unavailable; ${review.invalidRequestIndices.length} invalid usage record(s) excluded. n/a is not zero.`));
   out.push(dim("  Counts do not establish a cause: cache routing, eviction, timing and hidden context are not captured."));
   out.push(dim("  request / source          reported read    simulated read  comparison"));
   const rows = verbose || review.rows.length <= CACHE_TABLE_FULL_ROWS ? review.rows : [...review.rows.slice(0, CACHE_TABLE_HEAD), ...review.rows.slice(-CACHE_TABLE_TAIL)];
@@ -182,17 +184,20 @@ function reportedUsageSection(result: AnalysisResult, verbose: boolean): string[
 }
 
 function breakdown(title: string, report: RequestTokenReport): string[] {
+  const claude = report.totals.claudeTokensEstimate === null ? "Claude tokens unavailable" : `≈${fmtTokens(report.totals.claudeTokensEstimate)} Claude tokens`;
+  const openai = report.totals.openaiTokens === null ? "OpenAI tokens unavailable" : `${fmtTokens(report.totals.openaiTokens)} OpenAI (o200k_base) tokens`;
   const out = [
     bold(title) +
       dim(
-        `  ≈${fmtTokens(report.totals.claudeTokensEstimate)} Claude tokens · ${fmtTokens(report.totals.openaiTokens)} OpenAI (o200k_base) tokens${report.percentOfContextWindow !== undefined ? ` · ${fmtPct(report.percentOfContextWindow)} of context window` : ""}`,
+        `  ${claude} · ${openai}${report.percentOfContextWindow !== undefined ? ` · ${fmtPct(report.percentOfContextWindow)} of context window` : ""}`,
       ),
   ];
   for (const cat of report.byCategory) {
     const label = CATEGORY_LABEL[cat.category].padEnd(15);
     const tokens = fmtTokens(cat.claudeTokensEstimate).padStart(8);
-    const fraction = report.totals.claudeTokensEstimate > 0 ? cat.claudeTokensEstimate / report.totals.claudeTokensEstimate : 0;
-    out.push(`  ${CATEGORY_COLOR[cat.category](bar(fraction, 20))} ${label} ${tokens} ≈tok  ${dim(`(${cat.segmentCount} segment${cat.segmentCount === 1 ? "" : "s"})`)}`);
+    const total = report.totals.claudeTokensEstimate;
+    const fraction = total === null || cat.claudeTokensEstimate === null ? null : total > 0 ? cat.claudeTokensEstimate / total : 0;
+    out.push(`  ${CATEGORY_COLOR[cat.category](fraction === null ? " ".repeat(20) : bar(fraction, 20))} ${label} ${tokens} ≈tok  ${dim(`(${cat.segmentCount} segment${cat.segmentCount === 1 ? "" : "s"})`)}`);
   }
   return out;
 }
@@ -213,7 +218,7 @@ function prefixSection(result: AnalysisResult, verbose: boolean): string[] {
       const total = parse.requests[match.toIndex]!.segments.length;
       const pct = total > 0 ? match.matchedSegments / total : 0;
       out.push(
-        `  req ${match.fromIndex + 1} → req ${match.toIndex + 1}: ${bar(pct, 20)} ${match.matchedSegments}/${total} segments matched, ≈${fmtTokens(match.matchedClaudeTokensEstimate)} tokens` +
+        `  req ${match.fromIndex + 1} → req ${match.toIndex + 1}: ${bar(pct, 20)} ${match.matchedSegments}/${total} segments matched, ${match.matchedClaudeTokensEstimate === null ? "token count unavailable" : `≈${fmtTokens(match.matchedClaudeTokensEstimate)} tokens`}` +
           (match.relation === "new_conversation"
             ? dim(`  new conversation${match.divergedAt?.fromSegmentId ? `, setup differs at ${visible(match.divergedAt.fromSegmentId)}` : ""}`)
             : match.divergedAt

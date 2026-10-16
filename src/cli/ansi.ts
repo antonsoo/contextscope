@@ -36,8 +36,8 @@ export function bar(fraction: number, width = 24): string {
   return "█".repeat(filled) + "░".repeat(width - filled);
 }
 
-export function fmtTokens(n: number): string {
-  return n.toLocaleString("en-US");
+export function fmtTokens(n: number | null): string {
+  return n === null ? "n/a" : n.toLocaleString("en-US");
 }
 
 export function fmtUsd(n: number | undefined): string {

@@ -18,7 +18,7 @@ export function mountUsageReview(root: HTMLElement, result: AnalysisResult, sele
     ["all", "All requests", review.rows.length],
     ["simulated_hit_reported_zero", "Simulated hit / reported zero", review.readOutcomes.simulated_hit_reported_zero],
     ["reported_hit_simulated_zero", "Reported hit / simulated zero", review.readOutcomes.reported_hit_simulated_zero],
-    ["unavailable", "Read unavailable", review.readOutcomes.unavailable],
+    ["unavailable", "Comparison unavailable", review.readOutcomes.unavailable],
   ];
   root.innerHTML = `
     <h2 id="usage-heading">Reported usage <span class="count">compared with the simulation</span></h2>
@@ -28,7 +28,7 @@ export function mountUsageReview(root: HTMLElement, result: AnalysisResult, sele
         ${([['Input tokens', review.input], ['Cache reads', review.cacheRead]] as const).map(([label, metric]) => `<tr><th scope="row">${label}<span class="usage-mobile">${metric.requestIndices.length}/${review.rows.length} requests</span></th><td>${metric.requestIndices.length}/${review.rows.length}</td><td class="usage-reported">${usageNumber(metric.reportedTokens)}</td><td>${usageNumber(metric.simulatedTokens)}</td><td>${usageDelta(metric.deltaTokens)}</td></tr>`).join("")}
       </tbody></table>
     </div>
-    <p class="muted usage-note">Delta = estimate/simulation minus reported. n/a means unavailable. ${review.invalidRequestIndices.length} invalid usage record(s) excluded. Costs below remain simulated.</p>
+    <p class="muted usage-note">Delta = estimate/simulation minus reported. n/a means unavailable. ${review.invalidRequestIndices.length} invalid usage record(s) excluded. ${result.cacheSimulation.unavailableReason ? "Captured counters remain visible; local cache costs are unavailable." : "Costs below remain simulated."}</p>
     ${review.uncomparedRequestIndices.length ? `<p class="usage-issue">${review.uncomparedRequestIndices.length} request(s) have paired usage but no analyzable prompt; excluded from comparisons. Select their request tabs to inspect the original counters.</p>` : ""}
     ${review.issues.map((issue) => `<p class="usage-issue">${esc(issue)}</p>`).join("")}
     <div class="usage-filters" role="group" aria-label="Filter usage comparisons">

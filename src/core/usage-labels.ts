@@ -5,7 +5,7 @@ export const USAGE_OUTCOME_LABEL: Record<UsageReadOutcome, string> = {
   both_positive: "Reuse on both sides",
   simulated_hit_reported_zero: "Simulated hit / reported zero",
   reported_hit_simulated_zero: "Reported hit / simulated zero",
-  unavailable: "Read count unavailable",
+  unavailable: "Read comparison unavailable",
 };
 
 export function usageSourceLabel(request: ParsedRequest): string {

@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { analyze, countRequestTokens, parseInput, resolveModel, type AnalysisResult, type CalibrationResult, type FindingSeverity } from "../core/index.js";
+import { analyze, countRequestTokens, parseInput, resolveModel, type AnalysisResult, type CalibrationResult, type FindingSeverity, type ParsedRequest } from "../core/index.js";
 import { parseArgs, type CliArgs } from "./args.js";
 import { VERSION } from "./version.js";
 import { renderTerminalReport } from "./terminal-report.js";
@@ -46,17 +46,19 @@ function fail(message: string, showHelp = false): never {
 }
 
 async function calibrate(input: string, opts: CliArgs): Promise<CalibrationResult> {
-  const apiKey = process.env["ANTHROPIC_API_KEY"];
-  if (!apiKey) fail("--calibrate needs an Anthropic API key in ANTHROPIC_API_KEY (count_tokens is free, but authenticated).");
   const parse = parseInput(input, opts.format);
   if (parse.format !== "anthropic") fail("--calibrate uses Anthropic's count_tokens endpoint, so it only applies to Anthropic requests.");
+  if (parse.requests.some(r => r.segments.some(s => s.claudeTokensEstimate === null))) fail("--calibrate cannot choose a largest request or recover missing media token counts. Keep measured counts as reported usage; a scalar calibration cannot establish media cache boundaries.");
+  const apiKey = process.env["ANTHROPIC_API_KEY"];
+  if (!apiKey) fail("--calibrate needs an Anthropic API key in ANTHROPIC_API_KEY (count_tokens is free, but authenticated).");
   const largest = parse.requests.reduce((best, r) => (total(r) > total(best) ? r : best));
   const model = resolveModel("anthropic", opts.model, [largest.model]);
   return countRequestTokens(apiKey, model.id, largest, { browser: false });
 }
 
-function total(request: { segments: { claudeTokensEstimate: number }[] }): number {
-  return request.segments.reduce((sum, s) => sum + s.claudeTokensEstimate, 0);
+function total(request: ParsedRequest): number {
+  // Calibration rejects unmodeled media before choosing a request.
+  return request.segments.reduce((sum, s) => sum + s.claudeTokensEstimate!, 0);
 }
 
 const SEVERITY_RANK: Record<FindingSeverity, number> = { info: 0, warning: 1, error: 2 };

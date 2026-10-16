@@ -54,6 +54,9 @@ export function analyze(input: string, options: AnalysisOptions = {}): AnalysisR
     };
   }
 
+  const unavailableReason = cacheSimulation.actual.find(step => step.unavailableReason)?.unavailableReason;
+  if (unavailableReason) cacheSimulation.unavailableReason = unavailableReason;
+
   // Each conversation is scanned where it is longest: at the requests no later request continues.
   const continued = new Set(prefixMatches.filter((m) => m.relation !== "new_conversation").map((m) => m.fromIndex));
   const duplicates = findDuplicates(requests, requests.map((r) => r.index).filter((i) => !continued.has(i)));
@@ -74,6 +77,7 @@ function scaleClaudeEstimates(request: ParsedRequest, scale: number): ParsedRequ
   return {
     ...request,
     segments: request.segments.map((s) => {
+      if (s.claudeTokensEstimate === null) return s;
       const tokens = Math.max(s.claudeTokensEstimate > 0 ? 1 : 0, Math.round(s.claudeTokensEstimate * scale));
       total += tokens;
       if (!Number.isSafeInteger(total)) throw new ContextScopeParseError(`Calibration scale makes request ${request.index + 1} token counts exceed the safe integer range. Use a smaller measured count or scale.`);

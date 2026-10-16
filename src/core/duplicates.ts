@@ -102,7 +102,7 @@ export function findDuplicates(requests: ParsedRequest[], within: number[] = req
     if (!request) continue;
     const unique = new Map<number, Content>();
     request.segments.forEach((segment, ordinal) => {
-      if (!ELIGIBLE_CATEGORIES.has(segment.category) || segment.charLength < MIN_CHARS) return;
+      if (segment.claudeTokensEstimate === null || !ELIGIBLE_CATEGORIES.has(segment.category) || segment.charLength < MIN_CHARS) return;
       const id = identify(segment.text);
       let content = unique.get(id);
       if (!content) {

@@ -1,5 +1,6 @@
 import type { CategoryBreakdown, ParsedRequest, Provider, RequestTokenReport, SegmentCategory } from "./types.js";
 import { findAnthropicModel, findOpenAiModel, resolveModel } from "./pricing.js";
+import { sumTokenCounts } from "./media-accounting.js";
 
 const CATEGORY_ORDER: SegmentCategory[] = ["system", "tools", "user", "assistant", "tool_call", "tool_result", "image", "thinking"];
 
@@ -10,14 +11,14 @@ export function buildRequestReport(request: ParsedRequest, provider: Provider, m
     return {
       category,
       segmentCount: segs.length,
-      openaiTokens: segs.reduce((sum, s) => sum + s.openaiTokens, 0),
-      claudeTokensEstimate: segs.reduce((sum, s) => sum + s.claudeTokensEstimate, 0),
+      openaiTokens: sumTokenCounts(segs.map(s => s.openaiTokens)),
+      claudeTokensEstimate: sumTokenCounts(segs.map(s => s.claudeTokensEstimate)),
     };
   }).filter((c) => c.segmentCount > 0);
 
   const totals = {
-    openaiTokens: request.segments.reduce((sum, s) => sum + s.openaiTokens, 0),
-    claudeTokensEstimate: request.segments.reduce((sum, s) => sum + s.claudeTokensEstimate, 0),
+    openaiTokens: sumTokenCounts(request.segments.map(s => s.openaiTokens)),
+    claudeTokensEstimate: sumTokenCounts(request.segments.map(s => s.claudeTokensEstimate)),
   };
 
   const contextWindow = provider === "anthropic" ? findAnthropicModel(resolved.id).contextWindow : findOpenAiModel(resolved.id).contextWindow;
@@ -30,6 +31,6 @@ export function buildRequestReport(request: ParsedRequest, provider: Provider, m
     byCategory,
     segments: request.segments,
     contextWindow,
-    percentOfContextWindow: contextWindow > 0 ? tokensForWindow / contextWindow : undefined,
+    percentOfContextWindow: contextWindow > 0 && tokensForWindow !== null ? tokensForWindow / contextWindow : undefined,
   };
 }

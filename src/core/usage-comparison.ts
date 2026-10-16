@@ -27,8 +27,8 @@ export function compareReportedUsage(requests: ParsedRequest[], reports: Request
       reportedInputTokens: input,
       reportedReadTokens: read,
       reportedWriteTokens: usage?.cacheWriteTokens ?? null,
-      inputDeltaTokens: input === null ? null : estimated - input,
-      readDeltaTokens: read === null ? null : step.readTokens - read,
+      inputDeltaTokens: input === null || estimated === null ? null : estimated - input,
+      readDeltaTokens: read === null || step.readTokens === null ? null : step.readTokens - read,
       readOutcome: outcome(read, step.readTokens),
     });
   }
@@ -39,6 +39,7 @@ export function compareReportedUsage(requests: ParsedRequest[], reports: Request
       if (!covered.length) return null;
       let total = 0;
       for (const row of covered) {
+        if (row[field] === null) return null;
         total += row[field]!;
         if (!Number.isSafeInteger(total)) {
           issues.push(`${label}: ${field} aggregate exceeds the safe integer range; inspect individual requests.`);
@@ -56,8 +57,8 @@ export function compareReportedUsage(requests: ParsedRequest[], reports: Request
   return { rows, capturedRequests, uncomparedRequestIndices, invalidRequestIndices, input: metric("reportedInputTokens", "estimatedInputTokens", "Input tokens"), cacheRead: metric("reportedReadTokens", "simulatedReadTokens", "Cache reads"), readOutcomes, issues };
 }
 
-function outcome(read: number | null, simulated: number): UsageReadOutcome {
-  if (read === null) return "unavailable";
+function outcome(read: number | null, simulated: number | null): UsageReadOutcome {
+  if (read === null || simulated === null) return "unavailable";
   if (read === 0) return simulated === 0 ? "both_zero" : "simulated_hit_reported_zero";
   return simulated === 0 ? "reported_hit_simulated_zero" : "both_positive";
 }

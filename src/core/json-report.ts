@@ -9,6 +9,7 @@ function summarize(segment: Segment): Omit<Segment, "text" | "raw" | "prefix"> {
     path: segment.path,
     openaiTokens: segment.openaiTokens,
     claudeTokensEstimate: segment.claudeTokensEstimate,
+    ...(segment.unmodeledContent ? { unmodeledContent: segment.unmodeledContent } : {}),
     ...(segment.cacheControl ? { cacheControl: segment.cacheControl } : {}),
     ...(segment.promptCacheBreakpoint ? { promptCacheBreakpoint: true } : {}),
     charLength: segment.charLength,

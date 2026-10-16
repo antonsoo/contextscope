@@ -8,6 +8,7 @@ import { anthropicSpeed, anthropicSpeedKey, anthropicSpeedMultiplier } from "./a
 import { isRecord } from "./json-utils.js";
 import { anthropicReasoningKey } from "./anthropic-reasoning.js";
 import { anthropicInjectedSettings } from "./anthropic-injected-settings.js";
+import { hasUnmodeledTokens, unavailableCacheStep } from "./media-accounting.js";
 
 /**
  * Simulates Anthropic prompt caching across a sequence of requests.
@@ -57,6 +58,12 @@ export function simulateAnthropicCacheSequence(
   const resolvedModels = requests.map((request) => resolveModel("anthropic", model, [request.model]));
   const models = resolvedModels.map((resolved) => findAnthropicModel(resolved.id));
   const showSpeed = requests.some((request) => isRecord(request.raw) && request.raw.speed !== undefined);
+  if (hasUnmodeledTokens(requests, "anthropic")) return requests.map((request, i) => {
+    if (request.segments.filter(s => s.cacheControl).length > 4) throw new ContextScopeParseError(`Request ${request.index + 1}: cache simulation requires at most 4 breakpoints.`);
+    return { ...unavailableCacheStep(request.index), ...(showSpeed ? {
+      speed: anthropicSpeed(request), inputPriceMultiplier: anthropicSpeedMultiplier(request, resolvedModels[i]!),
+    } : {}) };
+  });
   const steps: CacheSimStep[] = [];
   // Speed changes preserve explicit tool entries but invalidate system and messages.
   // Tool choice / image presence further partition only the message cache.
@@ -72,7 +79,8 @@ export function simulateAnthropicCacheSequence(
     const segments = request.segments;
     const path = paths[i]!;
     let total = 0;
-    const cumulative = segments.map((s) => (total += s.claudeTokensEstimate));
+    // The sequence-wide availability check above excludes null counts.
+    const cumulative = segments.map((s) => (total += s.claudeTokensEstimate!));
     let breakpoints = breakpointsOf(segments, cumulative);
     if (breakpoints.length > 4) throw new ContextScopeParseError(`Request ${request.index + 1}: cache simulation requires at most 4 breakpoints.`);
 
@@ -168,9 +176,9 @@ export function simulateAnthropicCacheSequence(
 function anthropicStepCostUsd(step: CacheSimStep, modelInfo: ReturnType<typeof findAnthropicModel>): number {
   const perTok = modelInfo.inputPricePerMTok / 1_000_000;
   return (
-    step.uncachedTokens * perTok +
-    step.writeTokens5m * perTok * ANTHROPIC_CACHE_WRITE_MULTIPLIER_5M +
-    step.writeTokens1h * perTok * ANTHROPIC_CACHE_WRITE_MULTIPLIER_1H +
-    step.readTokens * perTok * modelInfo.cacheReadMultiplier
+    step.uncachedTokens! * perTok +
+    step.writeTokens5m! * perTok * ANTHROPIC_CACHE_WRITE_MULTIPLIER_5M +
+    step.writeTokens1h! * perTok * ANTHROPIC_CACHE_WRITE_MULTIPLIER_1H +
+    step.readTokens! * perTok * modelInfo.cacheReadMultiplier
   );
 }

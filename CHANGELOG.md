@@ -26,6 +26,18 @@ of public SWE-bench agent runs; see `studies/real-trajectories/`.
 
 ### Fixed
 
+- Stop counting image/PDF/file/audio encodings, URLs and file IDs as prompt text.
+  Preserve original blocks and structural comparisons, but return null for
+  unmodeled media counts and affected totals. Withhold context fractions and
+  whole-sequence cache partitions/costs; retain captured usage and known zero
+  counters without inventing comparisons. Treemaps explain omitted media, and
+  raw downloads preserve it. Refuse scalar media calibration before a network
+  request or workspace replacement. This changes unreleased token-count types
+  to `number | null`; consumers must not coalesce unknown counts to zero.
+  Identical-pixel PNG controls, native SDK bodies, decoder and timing evidence
+  are retained in `studies/media-accounting/`. No registry release accompanies
+  this source correction.
+
 - Include Claude structured-output formats in prompt-cache identity, preserving
   schema descriptions and property order separately from grammar compilation.
   Citation enablement invalidates system/message entries while retaining

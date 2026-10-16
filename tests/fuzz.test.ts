@@ -109,6 +109,11 @@ it("fuzz: logs of several conversations, shuffled together and mutated, keep eve
       for (const scenario of [result.cacheSimulation.actual, result.cacheSimulation.optimized]) {
         check(scenario.length === n, "one cache step per request");
         scenario.forEach((step, i) => {
+          if (step.unavailableReason) {
+            check(step.readTokens === null && step.writeTokens5m === null && step.writeTokens1h === null && step.uncachedTokens === null, `unavailable partitions at ${i}`);
+            check(step.costUsd === undefined && result.cacheSimulation.totalActualCostUsd === undefined && result.cacheSimulation.totalOptimizedCostUsd === undefined, `unavailable costs at ${i}`);
+            return;
+          }
           const total = result.reports[i]!.totals;
           const billed = step.readTokens + step.writeTokens5m + step.writeTokens1h + (step.writeTokens30m ?? 0) + step.uncachedTokens;
           check(step.readTokens >= 0 && step.uncachedTokens >= 0 && step.writeTokens5m >= 0 && step.writeTokens1h >= 0, `negative tokens at ${i}`);
@@ -116,7 +121,7 @@ it("fuzz: logs of several conversations, shuffled together and mutated, keep eve
           check(step.costUsd === undefined || (Number.isFinite(step.costUsd) && step.costUsd >= 0), `cost at ${i}`);
         });
       }
-      check(result.cacheSimulation.actual[0]!.readTokens === 0, "the first request read from an empty cache");
+      check(result.cacheSimulation.actual[0]!.readTokens === (result.cacheSimulation.unavailableReason ? null : 0), "the first request must be zero or explicitly unavailable");
       for (const finding of result.findings) check(finding.requestIndex >= 0 && finding.requestIndex < n, "finding outside the log");
       groupFindings(result.findings);
       renderTerminalReport(result, { verbose: r() < 0.5 });

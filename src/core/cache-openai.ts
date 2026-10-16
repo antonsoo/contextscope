@@ -2,6 +2,7 @@ import type { CacheSimStep, ParsedRequest } from "./types.js";
 import { findOpenAiModel, resolveModel } from "./pricing.js";
 import { openAiCachePlan, openAiCacheScope } from "./openai-breakpoints.js";
 import { ContextScopeParseError } from "./parse-error.js";
+import { hasUnmodeledTokens, unavailableCacheStep } from "./media-accounting.js";
 
 /**
  * Modern OpenAI: exact modeled boundaries, explicit/implicit mode, four writes and 30m
@@ -13,19 +14,25 @@ const MIN_CACHEABLE_TOKENS = 1024;
 const CACHE_GRANULARITY = 128;
 
 export function simulateOpenAiCacheSequence(requests: ParsedRequest[], paths: number[][], model: string | undefined): CacheSimStep[] {
+  const unavailable = hasUnmodeledTokens(requests, "openai");
   const cached = new Map<string, Set<number>>();
   return requests.map((request, i) => {
     const modelInfo = findOpenAiModel(resolveModel("openai", model, [request.model]).id);
+    const plan = openAiCachePlan(request);
+    const modern = modelInfo.cacheStyle === "breakpoints";
+    if (!modern && (plan.explicit.length || plan.mode === "explicit")) {
+      throw new ContextScopeParseError(`Request ${request.index + 1}: explicit OpenAI caching requires a model with breakpoint caching; ${modelInfo.displayName} uses legacy caching.`);
+    }
+    if (unavailable) return { ...unavailableCacheStep(request.index),
+      ...(modern ? { writeTokens30m: null } : {}), cacheMode: modern ? plan.mode : "legacy" };
     const path = paths[i]!;
     let total = 0;
-    const cumulative = request.segments.map((s) => (total += s.openaiTokens));
+    const cumulative = request.segments.map((s) => (total += s.openaiTokens!));
     const scope = openAiCacheScope(request);
     let entries = cached.get(scope);
     if (!entries) { entries = new Set(); cached.set(scope, entries); }
-    const plan = openAiCachePlan(request);
     let readTokens = 0;
     let writeTokens = 0;
-    const modern = modelInfo.cacheStyle === "breakpoints";
     if (modern) {
       for (const index of plan.lookup) {
         if (cumulative[index]! >= MIN_CACHEABLE_TOKENS && entries.has(path[index]!)) readTokens = Math.max(readTokens, cumulative[index]!);
@@ -36,9 +43,6 @@ export function simulateOpenAiCacheSequence(requests: ParsedRequest[], paths: nu
       // Reads are resolved before any writes so one request cannot read its own entries.
       for (const index of writes) entries.add(path[index]!);
     } else {
-      if (plan.explicit.length || plan.mode === "explicit") {
-        throw new ContextScopeParseError(`Request ${request.index + 1}: explicit OpenAI caching requires a model with breakpoint caching; ${modelInfo.displayName} uses legacy caching.`);
-      }
       let matched = 0;
       let high = path.length;
       while (matched < high) {

@@ -1,0 +1,400 @@
+{
+  "baseline": "6fc3ca10e3082b5be0e83edcd68511c9f789abbe",
+  "provenance": "Controlled SDK-serialized application requests over mock transports. No provider calls, live acceptance, token measurements or cache measurements. Paired usage values are synthetic controls.",
+  "sdk": {
+    "anthropic": "1.15.0",
+    "openai": "3.23.0",
+    "python": "3.14.7"
+  },
+  "image": {
+    "source": "Owned Contextscope production screenshot, docs/assets/thinking-settings/after.png",
+    "url": "https://raw.githubusercontent.com/antonsoo/contextscope/20ab1235e2bbbb9b09431f7b4f93b9699b5612b8/docs/assets/thinking-settings/after.png",
+    "original": {
+      "bytes": 19976,
+      "sha256": "c54f7ca750139317e8abba78f72c265ed1b38d3124b30826e360fb140327f84b"
+    },
+    "recompressed": {
+      "bytes": 1131337,
+      "sha256": "da342d9c6c32fff6b156365e41949d8353e4b9638f444efd57fd1c4dcec1602b"
+    },
+    "width": 1240,
+    "height": 304,
+    "inflatedScanlines": {
+      "bytes": 1131184,
+      "sha256": "0061b3e4d301d6345bfd7c4709ba95e036feb3008023a6e9211dcd437f683c17"
+    },
+    "sameNonIdatChunks": true
+  },
+  "pdf": {
+    "bytes": 610,
+    "sha256": "a61d18f5b65944df6c32c757802cb5752f4516ca3cb6ea532d334e5fc9d74777"
+  },
+  "audio": {
+    "bytes": 3244,
+    "sha256": "2976da01e205a110c9fa41d47659e238a5c6d3c3f3137582f2949853faa201dd"
+  },
+  "cases": [
+    {
+      "name": "anthropic-image-transports",
+      "api": "anthropic",
+      "file": "anthropic-image-transports.jsonl.gz",
+      "unmodeledPaths": [
+        [
+          "messages[0].content[1]"
+        ],
+        [
+          "messages[0].content[1]"
+        ],
+        [
+          "messages[0].content[1]"
+        ],
+        [
+          "messages[0].content[1]"
+        ]
+      ],
+      "pairedSyntheticUsage": false,
+      "raw": {
+        "bytes": 1536067,
+        "sha256": "4b50fd4c6481950035da7ed8938043ebe46d3275e033f1dc19f8eb3aa0da4ae3"
+      },
+      "gzip": {
+        "bytes": 41876,
+        "sha256": "ee2ed70d6a2378efa4f30ee5ff2a507a56036d511283f615f6924dd2f71a8fa0"
+      }
+    },
+    {
+      "name": "anthropic-pdf-transports",
+      "api": "anthropic",
+      "file": "anthropic-pdf-transports.jsonl.gz",
+      "unmodeledPaths": [
+        [
+          "messages[0].content[1]"
+        ],
+        [
+          "messages[0].content[1]"
+        ],
+        [
+          "messages[0].content[1]"
+        ]
+      ],
+      "pairedSyntheticUsage": false,
+      "raw": {
+        "bytes": 1487,
+        "sha256": "1d8f79f468ee3c5a0275224ff1c172edda707e314fd1a4cfd6570a1838a80156"
+      },
+      "gzip": {
+        "bytes": 719,
+        "sha256": "563efc31b11f27e445cfc06070498d84adc1bdbc388db140a3de82142fce4aa5"
+      }
+    },
+    {
+      "name": "anthropic-tool-image",
+      "api": "anthropic",
+      "file": "anthropic-tool-image.jsonl.gz",
+      "unmodeledPaths": [
+        [
+          "messages[2].content[0]"
+        ]
+      ],
+      "pairedSyntheticUsage": false,
+      "raw": {
+        "bytes": 27152,
+        "sha256": "2425826508910d0babcfab668460f376e6f611ebafa941eca4c846bc09caf302"
+      },
+      "gzip": {
+        "bytes": 19202,
+        "sha256": "8d467d8c313ace6eb80d184f875637ed8302b3612718d37188697fe8a60d7cf8"
+      }
+    },
+    {
+      "name": "anthropic-custom-document",
+      "api": "anthropic",
+      "file": "anthropic-custom-document.jsonl.gz",
+      "unmodeledPaths": [
+        [
+          "messages[0].content[1]"
+        ]
+      ],
+      "pairedSyntheticUsage": false,
+      "raw": {
+        "bytes": 26915,
+        "sha256": "e294fbc22d17b99b94205a2c50c5e91ef32e257779ea0af354d0f4e72502e0ea"
+      },
+      "gzip": {
+        "bytes": 19081,
+        "sha256": "4bf9d0ec54ae212c2f40e084cebead4cc8cbc7f0109e749249f0985e6a826977"
+      }
+    },
+    {
+      "name": "anthropic-reported-usage",
+      "api": "anthropic",
+      "file": "anthropic-reported-usage.jsonl.gz",
+      "unmodeledPaths": [
+        [
+          "messages[0].content[1]"
+        ],
+        [
+          "messages[0].content[1]"
+        ]
+      ],
+      "pairedSyntheticUsage": true,
+      "raw": {
+        "bytes": 53980,
+        "sha256": "d83e1ce6a0da75501369e0cf4150dc2950068317620862cac1cf87c94b1cd350"
+      },
+      "gzip": {
+        "bytes": 19461,
+        "sha256": "74680b39a166384794a84c424f3b91004eea31f136179a9e23310236bf84e409"
+      }
+    },
+    {
+      "name": "chat-image-transports",
+      "api": "chat",
+      "file": "chat-image-transports.jsonl.gz",
+      "unmodeledPaths": [
+        [
+          "messages[0].content[1]"
+        ],
+        [
+          "messages[0].content[1]"
+        ],
+        [
+          "messages[0].content[1]"
+        ]
+      ],
+      "pairedSyntheticUsage": false,
+      "raw": {
+        "bytes": 1535739,
+        "sha256": "ee6082979c6347d5c55311db0b15d48498579a03a59130c8868d98e4ab8a0c2a"
+      },
+      "gzip": {
+        "bytes": 41794,
+        "sha256": "d1c3f7458e3a688c362848c591e055cb42bc3d21829714b2c6081b6ba27743b7"
+      }
+    },
+    {
+      "name": "chat-file",
+      "api": "chat",
+      "file": "chat-file.jsonl.gz",
+      "unmodeledPaths": [
+        [
+          "messages[0].content[1]"
+        ]
+      ],
+      "pairedSyntheticUsage": false,
+      "raw": {
+        "bytes": 1021,
+        "sha256": "b5113571080d53332ff3d04086c9b0f929fd46b666052e147f218ba8067c4a15"
+      },
+      "gzip": {
+        "bytes": 635,
+        "sha256": "1dd9596d463a36cc25ff67dd770157f7e46daf2aee5d8b3e9ce1e0093f52e84f"
+      }
+    },
+    {
+      "name": "chat-audio",
+      "api": "chat",
+      "file": "chat-audio.jsonl.gz",
+      "unmodeledPaths": [
+        [
+          "messages[0].content[1]"
+        ]
+      ],
+      "pairedSyntheticUsage": false,
+      "raw": {
+        "bytes": 4505,
+        "sha256": "bb5381c3cd7e770d0f46262add4c975b1058bf84ea361dc8ce9441749238869c"
+      },
+      "gzip": {
+        "bytes": 226,
+        "sha256": "690153d1bd455c4f2f1a7f59336a06e5264e213f4f73c7567cf0eb7cd3eeff29"
+      }
+    },
+    {
+      "name": "chat-reported-usage",
+      "api": "chat",
+      "file": "chat-reported-usage.jsonl.gz",
+      "unmodeledPaths": [
+        [
+          "messages[0].content[1]"
+        ],
+        [
+          "messages[0].content[1]"
+        ]
+      ],
+      "pairedSyntheticUsage": true,
+      "raw": {
+        "bytes": 876,
+        "sha256": "e45dd97c4474799a60e79660d0665ce3f96a6e9969be245085228143c3e6ded8"
+      },
+      "gzip": {
+        "bytes": 304,
+        "sha256": "510ab73dfb108f972b7b89912fb65a2e274f7fe313bbfe4abb3bd40195bcdb10"
+      }
+    },
+    {
+      "name": "responses-image-transports",
+      "api": "responses",
+      "file": "responses-image-transports.jsonl.gz",
+      "unmodeledPaths": [
+        [
+          "input[0].content[1]"
+        ],
+        [
+          "input[0].content[1]"
+        ],
+        [
+          "input[0].content[1]"
+        ]
+      ],
+      "pairedSyntheticUsage": false,
+      "raw": {
+        "bytes": 27274,
+        "sha256": "ade3dbe0f81f233e6ba037f8088152d60686fc0d405d865f9ed3dfbfce836a00"
+      },
+      "gzip": {
+        "bytes": 19168,
+        "sha256": "2757f3840284cb295ac98e41032a487d9b21b88367b4f675c08cefa5ad69894e"
+      }
+    },
+    {
+      "name": "responses-file",
+      "api": "responses",
+      "file": "responses-file.jsonl.gz",
+      "unmodeledPaths": [
+        [
+          "input[0].content[1]"
+        ],
+        [
+          "input[0].content[1]"
+        ],
+        [
+          "input[0].content[1]"
+        ]
+      ],
+      "pairedSyntheticUsage": false,
+      "raw": {
+        "bytes": 1376,
+        "sha256": "9abbf15d81e32db30e2f88f4c94c916d07fe599c0c00c170a57e718edeb2c65d"
+      },
+      "gzip": {
+        "bytes": 685,
+        "sha256": "40a93b3f884fb5abb18491330bfbbf8f7596966209beca3553214d33666f97e7"
+      }
+    },
+    {
+      "name": "responses-tool-image",
+      "api": "responses",
+      "file": "responses-tool-image.jsonl.gz",
+      "unmodeledPaths": [
+        [
+          "input[1].output[0]"
+        ]
+      ],
+      "pairedSyntheticUsage": false,
+      "raw": {
+        "bytes": 383,
+        "sha256": "e817e653101c05fd00e3a0bcbdb5c026bcf03ce33309e7811d2feba9c8a80e77"
+      },
+      "gzip": {
+        "bytes": 249,
+        "sha256": "2b5f278dedf5675c67dda3a56a871ab34c23100883850ec6f0c45370c11cc4a2"
+      }
+    },
+    {
+      "name": "responses-computer-image",
+      "api": "responses",
+      "file": "responses-computer-image.jsonl.gz",
+      "unmodeledPaths": [
+        [
+          "input[1]"
+        ]
+      ],
+      "pairedSyntheticUsage": false,
+      "raw": {
+        "bytes": 534,
+        "sha256": "79053255f065c32d5637a5aeda141bf0a90f74faaa31522add554fae3ba511ca"
+      },
+      "gzip": {
+        "bytes": 316,
+        "sha256": "3a8a77c40607a76891b6f44bbbb0d72d650d2e6fd91e2bd2d052fc04a6eaea1b"
+      }
+    },
+    {
+      "name": "responses-reported-usage",
+      "api": "responses",
+      "file": "responses-reported-usage.jsonl.gz",
+      "unmodeledPaths": [
+        [
+          "input[0].content[1]"
+        ],
+        [
+          "input[0].content[1]"
+        ]
+      ],
+      "pairedSyntheticUsage": true,
+      "raw": {
+        "bytes": 952,
+        "sha256": "705f301347b16adb90074b9796bf7fef1661cae3b483b6728e3a0d5e52545d5e"
+      },
+      "gzip": {
+        "bytes": 312,
+        "sha256": "1c40ac12abca053af9e814609f6c990c2d4cb901f8faf75556f1e1c2767e5254"
+      }
+    },
+    {
+      "name": "anthropic-literal-control",
+      "api": "anthropic",
+      "file": "anthropic-literal-control.jsonl.gz",
+      "unmodeledPaths": [
+        [],
+        []
+      ],
+      "pairedSyntheticUsage": false,
+      "raw": {
+        "bytes": 520,
+        "sha256": "61b907167eaf36528cb51179bb33b638630f0bda4d88839d72846d9e5f598e6f"
+      },
+      "gzip": {
+        "bytes": 206,
+        "sha256": "4da35ee7eaeb8e7193ca791be98d2fe88f2b11dd3b415f473896446c06bbdeb9"
+      }
+    },
+    {
+      "name": "chat-literal-control",
+      "api": "chat",
+      "file": "chat-literal-control.jsonl.gz",
+      "unmodeledPaths": [
+        [],
+        []
+      ],
+      "pairedSyntheticUsage": false,
+      "raw": {
+        "bytes": 466,
+        "sha256": "b1ec13755d11b54cc1731cf106112e5b843d50c183932152ae9a4705674e6ef5"
+      },
+      "gzip": {
+        "bytes": 186,
+        "sha256": "2673e2e3229d27c1b5a463dd031d06f6c646ff3b9fa8eca26129d894801a1f1e"
+      }
+    },
+    {
+      "name": "responses-literal-control",
+      "api": "responses",
+      "file": "responses-literal-control.jsonl.gz",
+      "unmodeledPaths": [
+        [],
+        []
+      ],
+      "pairedSyntheticUsage": false,
+      "raw": {
+        "bytes": 484,
+        "sha256": "d8ecb586e306eb8548c73571e3586cd0cb50aa38fbd294e06a17436b93404d18"
+      },
+      "gzip": {
+        "bytes": 187,
+        "sha256": "171ea8bafb83222b6341b37a631f90f7dad864674139ac687b447c06437a7675"
+      }
+    }
+  ]
+}

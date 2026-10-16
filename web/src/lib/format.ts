@@ -19,8 +19,8 @@ export function categoryVar(category: SegmentCategory): string {
   return `var(--cat-${category})`;
 }
 
-export function fmtInt(n: number): string {
-  return n.toLocaleString("en-US");
+export function fmtInt(n: number | null): string {
+  return n === null ? "n/a" : n.toLocaleString("en-US");
 }
 
 export function fmtUsd(n: number | undefined): string {

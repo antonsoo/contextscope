@@ -18,6 +18,7 @@
 import type { ParsedRequest } from "./types.js";
 import { anthropicInjectedSettings } from "./anthropic-injected-settings.js";
 import { isRecord } from "./json-utils.js";
+import { hasUnmodeledTokens } from "./media-accounting.js";
 
 const COUNT_TOKENS_URL = "https://api.anthropic.com/v1/messages/count_tokens";
 const ANTHROPIC_VERSION = "2023-06-01";
@@ -73,13 +74,15 @@ export function calibrationScale(exactTokens: number, estimatedTokens: number): 
 /** Calibrate locally against a measured count supplied by the caller. No request is sent. */
 export function calibrateRequest(request: ParsedRequest, model: string, exactTokens: number): CalibrationResult {
   if (request.provider !== "anthropic") throw new CalibrationError("Calibration only applies to Anthropic requests.");
-  const estimatedTokens = request.segments.reduce((sum, s) => sum + s.claudeTokensEstimate, 0);
+  requireCountableRequest(request);
+  const estimatedTokens = request.segments.reduce((sum, s) => sum + s.claudeTokensEstimate!, 0);
   return { requestIndex: request.index, model, exactTokens, estimatedTokens, scale: calibrationScale(exactTokens, estimatedTokens) };
 }
 
 /** Counts one request exactly and returns the scale that maps the heuristic onto it. */
 export async function countRequestTokens(apiKey: string, model: string, request: ParsedRequest, options: CountTokensOptions = {}): Promise<CalibrationResult> {
   if (request.provider !== "anthropic") throw new CalibrationError("Calibration uses Anthropic's count_tokens endpoint, so it only applies to Anthropic requests.");
+  requireCountableRequest(request);
   if (apiKey.trim() === "") throw new CalibrationError("An Anthropic API key is required.");
   const body = countTokensBody(request, model);
   const fetchImpl = options.fetchImpl ?? fetch;
@@ -106,6 +109,10 @@ export async function countRequestTokens(apiKey: string, model: string, request:
     throw new CalibrationError("count_tokens returned no input_tokens field.");
   }
   return calibrateRequest(request, model, data.input_tokens);
+}
+
+function requireCountableRequest(request: ParsedRequest): void {
+  if (hasUnmodeledTokens([request], "anthropic")) throw new CalibrationError("Cannot apply a scalar calibration to unmodeled media. A whole-request count cannot recover missing media segments or their cache boundaries. Keep the measured count as reported usage instead.");
 }
 
 function errorMessage(body: string): string {

@@ -1,4 +1,4 @@
-import type { AnalysisResult, DuplicateGroup, Provider, RequestTokenReport, Segment } from "@core/types.js";
+import type { AnalysisResult, DuplicateGroup, Provider, RequestTokenReport, Segment, TokenCount } from "@core/types.js";
 import type { CalibrationResult, FindingGroup } from "@core/index.js";
 import { squarify } from "./lib/treemap.js";
 import { BUILT_IN_EXAMPLES } from "./lib/examples.js";
@@ -514,6 +514,7 @@ function statTilesPanel(report: RequestTokenReport, result: AnalysisResult): str
         result.conversations.count > 1 ? ` <span class="count">conversation ${result.conversations.byRequest[state.selectedRequest]! + 1} of ${fmtInt(result.conversations.count)}</span>` : ""
       }</h2>
       <p class="panel-note">${esc(modelLabel(report.model))}${report.contextWindow === undefined ? "" : ` · ${fmtInt(report.contextWindow)} token context window`}</p>
+      ${report.totals.openaiTokens === null || report.totals.claudeTokensEstimate === null ? '<p class="panel-note">Whole-request token totals and context usage are unavailable. Other segments retain their text counts; originals are available in the segment inspector.</p>' : ""}
       <div class="stat-row">
         <div class="stat-tile"><div class="label">≈ Claude tokens${result.claudeTokenScale !== 1 ? " (calibrated)" : ""}</div><div class="value">${fmtInt(report.totals.claudeTokensEstimate)}</div></div>
         <div class="stat-tile"><div class="label">OpenAI tokens (exact)</div><div class="value">${fmtInt(report.totals.openaiTokens)}</div></div>
@@ -530,7 +531,7 @@ function statTilesPanel(report: RequestTokenReport, result: AnalysisResult): str
 // ---------------------------------------------------------------------------
 
 // Blocks are sized in the analyzed provider's own tokens: exact o200k_base counts for OpenAI, the ≈ estimate for Claude.
-function blockTokens(segment: Segment, format: Provider): number {
+function blockTokens(segment: Segment, format: Provider): TokenCount {
   return format === "openai" ? segment.openaiTokens : segment.claudeTokensEstimate;
 }
 
@@ -539,7 +540,8 @@ function treemapPanel(report: RequestTokenReport, format: Provider): string {
     <section class="panel">
       <h2>Token usage — treemap <span class="count">colored by category, sized by ${format === "openai" ? "OpenAI tokens (exact)" : "≈ Claude tokens"}</span></h2>
       <div class="treemap" id="treemap" role="group" aria-label="Treemap of token usage: segments open inspection; grouped categories filter the table"></div>
-      ${report.segments.filter((s) => blockTokens(s, format) > 0).length > TREEMAP_SEGMENT_LIMIT ? `<p class="muted">The ${TREEMAP_SEGMENT_LIMIT} largest segments are shown individually; the rest are grouped by category. Grouped blocks filter the table below. All tokens remain included.</p>` : ""}
+      ${report.segments.some(s => blockTokens(s, format) === null) ? '<p class="muted">The treemap includes only segments with token counts. Omitted media has an unavailable cost; its size is not zero. Inspect original media in the segment table.</p>' : ""}
+      ${report.segments.filter((s) => { const n = blockTokens(s, format); return n !== null && n > 0; }).length > TREEMAP_SEGMENT_LIMIT ? `<p class="muted">The ${TREEMAP_SEGMENT_LIMIT} largest segments with token counts are shown individually; the rest are grouped by category. Grouped blocks filter the table below.</p>` : ""}
       <div class="legend">
         ${CATEGORY_ORDER.filter((c) => report.byCategory.some((b) => b.category === c))
           .map((c) => `<span class="legend-item"><span class="legend-swatch" style="background:${categoryVar(c)}"></span>${CATEGORY_LABEL[c]}</span>`)
@@ -660,12 +662,13 @@ function wireSegmentsTable(report: RequestTokenReport): void {
   });
 }
 
-/** The request with the most tokens, the later one on a tie. */
+/** Most tokens, later on a tie. With unknown totals choose the latest request. */
 function largestRequest(result: AnalysisResult): number {
   let best = 0;
-  const tokens = (r: RequestTokenReport): number => result.parse.format === "openai" ? r.totals.openaiTokens : r.totals.claudeTokensEstimate;
+  const tokens = (r: RequestTokenReport): TokenCount => result.parse.format === "openai" ? r.totals.openaiTokens : r.totals.claudeTokensEstimate;
+  if (result.reports.some(r => tokens(r) === null)) return result.reports.length - 1;
   result.reports.forEach((report, i) => {
-    if (tokens(report) >= tokens(result.reports[best]!)) best = i;
+    if (tokens(report)! >= tokens(result.reports[best]!)!) best = i;
   });
   return best;
 }
@@ -683,15 +686,17 @@ function sequencePanel(result: AnalysisResult): string {
           ? `${fmtInt(result.conversations.count)} conversations in this file · each request against the request it continues`
           : "longest common prefix between each consecutive pair"
       }</span></h2>
+      ${result.cacheSimulation.unavailableReason ? '<p class="panel-note">These are structural matches between captured blocks. Media token shares and cache reuse remain unavailable.</p>' : ""}
       <div class="prefix-list" id="prefix-list">
         ${pairs
           .map((m, i) => {
             const totalNext = result.parse.requests[m.toIndex]!.segments.length;
             const pct = totalNext > 0 ? m.matchedSegments / totalNext : 0;
+            const matched = result.parse.format === "openai" ? m.matchedOpenaiTokens : m.matchedClaudeTokensEstimate;
             return `<button type="button" aria-pressed="${i === state.selectedPair}" class="prefix-row ${i === state.selectedPair ? "active" : ""}" data-pair="${i}">
               <span class="arrow">req ${m.fromIndex + 1} → req ${m.toIndex + 1}</span>
               <span class="prefix-bar-track"><span class="prefix-bar-fill" style="width:${(pct * 100).toFixed(1)}%"></span></span>
-              <span class="prefix-meta">${m.matchedSegments}/${totalNext} segs · ${result.parse.format === "openai" ? fmtInt(m.matchedOpenaiTokens) : `≈${fmtInt(m.matchedClaudeTokensEstimate)}`} tok${m.relation === "new_conversation" ? " · new conversation" : m.relation === "rewrites" ? " · history rewritten" : ""}</span>
+              <span class="prefix-meta">${m.matchedSegments}/${totalNext} segs · ${matched === null ? "token count n/a" : `${result.parse.format === "openai" ? "" : "≈"}${fmtInt(matched)} tok`}${m.relation === "new_conversation" ? " · new conversation" : m.relation === "rewrites" ? " · history rewritten" : ""}</span>
             </button>`;
           })
           .join("")}
@@ -736,7 +741,7 @@ function cachePanel(result: AnalysisResult): string {
   return `
     <section class="panel">
       <h2>Cache simulation <span class="count">${sim.provider} · ${esc(modelSummary(result))}</span></h2>
-      ${result.usageComparison.capturedRequests ? "" : '<p class="muted">No paired response usage. These cache reads and costs are simulated.</p>'}
+      ${sim.unavailableReason ? `<p class="muted">${esc(sim.unavailableReason)}</p>` : result.usageComparison.capturedRequests ? "" : '<p class="muted">No paired response usage. These cache reads and costs are simulated.</p>'}
       <div class="table-scroll" tabindex="0" role="group" aria-label="Table, scrolls sideways">
         <table class="cache">
           <thead><tr><th>request</th>${showSpeed ? "<th>modeled speed</th>" : ""}${openai ? "<th>mode</th>" : ""}${mixedModels ? '<th class="cache-model">model</th>' : ""}<th>read</th>${openai ? "<th>write 30m</th>" : "<th>write 5m</th><th>write 1h</th>"}<th>uncached</th><th>cost</th></tr></thead>
@@ -744,7 +749,7 @@ function cachePanel(result: AnalysisResult): string {
             ${sim.actual
               .map(
                 (s, i) =>
-                  `<tr><td>req ${i + 1}</td>${showSpeed ? `<td>${esc(s.speed ?? "standard")}</td>` : ""}${openai ? `<td>${esc(s.cacheMode ?? "legacy")}</td>` : ""}${mixedModels ? `<td class="cache-model">${esc(modelLabel(result.reports[i]!.model))}</td>` : ""}<td>${fmtInt(s.readTokens)}</td>${openai ? `<td>${fmtInt(s.writeTokens30m ?? 0)}</td>` : `<td>${fmtInt(s.writeTokens5m)}</td><td>${fmtInt(s.writeTokens1h)}</td>`}<td>${fmtInt(s.uncachedTokens)}</td><td>${fmtUsd(s.costUsd)}</td></tr>`,
+                  `<tr><td>req ${i + 1}</td>${showSpeed ? `<td>${esc(s.speed ?? "standard")}</td>` : ""}${openai ? `<td>${esc(s.cacheMode ?? "legacy")}</td>` : ""}${mixedModels ? `<td class="cache-model">${esc(modelLabel(result.reports[i]!.model))}</td>` : ""}<td>${fmtInt(s.readTokens)}</td>${openai ? `<td>${fmtInt(s.unavailableReason ? null : s.writeTokens30m ?? 0)}</td>` : `<td>${fmtInt(s.writeTokens5m)}</td><td>${fmtInt(s.writeTokens1h)}</td>`}<td>${fmtInt(s.uncachedTokens)}</td><td>${fmtUsd(s.costUsd)}</td></tr>`,
               )
               .join("")}
           </tbody>
@@ -920,6 +925,9 @@ function wireCalibrate(result: AnalysisResult): void {
     const input = $("#calibrate-count") as HTMLInputElement;
     try {
       loadedCore!.calibrationScale(input.valueAsNumber, 1);
+      // Validate availability before starting a replacement analysis. The worker
+      // still reparses unscaled source so the actual calibration cannot compound.
+      loadedCore!.calibrateRequest(result.parse.requests[state.selectedRequest]!, result.reports[state.selectedRequest]!.model.id, input.valueAsNumber);
       // The worker re-parses unscaled input; calibration cannot compound rounding or block UI.
       runAnalysis(lastRawInput!, state, { requestIndex: state.selectedRequest, model: result.reports[state.selectedRequest]!.model.id, exactTokens: input.valueAsNumber });
     } catch (err) {
@@ -948,7 +956,7 @@ function openInspector(segment: Segment, requestIndex = state.selectedRequest): 
       <dt>request</dt><dd>${requestIndex + 1}</dd>
       <dt>category</dt><dd>${CATEGORY_LABEL[segment.category]}</dd>
       <dt>path</dt><dd>${esc(segment.path)}</dd>
-      <dt>chars</dt><dd>${fmtInt(segment.charLength)}</dd>
+      <dt>analyzed text chars</dt><dd>${fmtInt(segment.charLength)}${segment.unmodeledContent ? " (media excluded)" : ""}</dd>
       <dt>≈ Claude tokens</dt><dd>${fmtInt(segment.claudeTokensEstimate)}${state.calibration ? ` <span class="muted">(scaled ×${state.calibration.scale.toFixed(3)})</span>` : ""}</dd>
       <dt>OpenAI tokens</dt><dd>${fmtInt(segment.openaiTokens)}</dd>
       <dt>cache boundary</dt><dd>${segment.promptCacheBreakpoint ? "explicit OpenAI breakpoint, 30m" : segment.cacheControl ? `ephemeral, ${segment.cacheControl.ttl}${segment.cacheControl.automatic ? " (automatic: the request's top-level cache_control lands on this block)" : ""}` : "none"}</dd>
