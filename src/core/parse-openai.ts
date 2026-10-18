@@ -59,6 +59,7 @@ export function parseOpenAiRequest(raw: unknown, index: number, counter: TokenCo
   const tools: unknown[] = Array.isArray(obj["tools"]) ? obj["tools"] : [];
   tools.forEach((entry, i) => {
     const tool = isRecord(entry) ? entry : {};
+    const mcp = tool.type === "mcp";
     // Chat Completions nests the definition under `function`; the Responses API flattens it.
     const fn = isRecord(tool["function"]) ? tool["function"] : tool;
     const name = typeof fn["name"] === "string" ? fn["name"] : typeof tool["type"] === "string" ? tool["type"] : `tool_${i}`;
@@ -66,10 +67,11 @@ export function parseOpenAiRequest(raw: unknown, index: number, counter: TokenCo
       seg({
         id: `tools[${i}]`,
         category: "tools",
-        label: `tool: ${name}`,
+        label: mcp ? `MCP server ${i + 1}` : `tool: ${name}`,
         path: `tools[${i}]`,
-        text: blockJson(entry),
+        text: mcp ? "" : blockJson(entry),
         raw: entry,
+        ...(mcp ? { unmodeledContext: "mcp_tools" as const } : {}),
       }),
     );
   });

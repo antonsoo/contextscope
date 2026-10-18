@@ -1,0 +1,5212 @@
+{
+  "expectation": "before",
+  "node": "v26.7.0",
+  "dist": "/tmp/claude-1000/contextscope-mcp-before/dist",
+  "scope": "Capture native SDK connector bodies, with synthetic replies over MockTransport.\n\nNo provider or MCP server is contacted. SDK serialization establishes the wire\nshape, not live acceptance, cache behavior, provider token counts or charges.\nReported usage and the returned tool listing are explicitly synthetic controls.\n",
+  "cases": [
+    {
+      "name": "local-tools-control",
+      "inputSha256": "ac090490f8237e67ac1bbead8d52939a80958cab0202224204d8f31758ec9b9a",
+      "report": {
+        "parse": {
+          "format": "anthropic",
+          "complete": true,
+          "sourceRecords": 2,
+          "skippedRecords": 0,
+          "autoDetected": true,
+          "envelope": "request",
+          "requests": [
+            {
+              "provider": "anthropic",
+              "index": 0,
+              "model": "claude-sonnet-4-6",
+              "source": {
+                "recordIndex": 0,
+                "line": 1,
+                "envelope": "request"
+              },
+              "reportedUsage": {
+                "sources": [
+                  "response.usage"
+                ],
+                "schema": "anthropic",
+                "status": "valid",
+                "inputTokens": 12000,
+                "cacheReadTokens": 0,
+                "cacheWriteTokens": 0,
+                "outputTokens": 10,
+                "counters": [
+                  {
+                    "path": "response.usage.cache_read_input_tokens",
+                    "status": "reported",
+                    "value": 0
+                  },
+                  {
+                    "path": "response.usage.cache_creation_input_tokens",
+                    "status": "reported",
+                    "value": 0
+                  },
+                  {
+                    "path": "response.usage.input_tokens",
+                    "status": "reported",
+                    "value": 12000
+                  },
+                  {
+                    "path": "response.usage.output_tokens",
+                    "status": "reported",
+                    "value": 10
+                  }
+                ],
+                "issues": [],
+                "notes": []
+              },
+              "segments": [
+                {
+                  "id": "tools[0]",
+                  "category": "tools",
+                  "label": "tool: inspect_artifact",
+                  "path": "tools[0]",
+                  "openaiTokens": 35,
+                  "claudeTokensEstimate": 60,
+                  "charLength": 174
+                },
+                {
+                  "id": "messages[0].content[0]",
+                  "category": "user",
+                  "label": "message 1 (user) text",
+                  "path": "messages[0].content",
+                  "openaiTokens": 9601,
+                  "claudeTokensEstimate": 19394,
+                  "cacheControl": {
+                    "type": "ephemeral",
+                    "ttl": "5m",
+                    "automatic": true
+                  },
+                  "charLength": 64000
+                }
+              ]
+            },
+            {
+              "provider": "anthropic",
+              "index": 1,
+              "model": "claude-sonnet-4-6",
+              "source": {
+                "recordIndex": 1,
+                "line": 2,
+                "envelope": "request"
+              },
+              "reportedUsage": {
+                "sources": [
+                  "response.usage"
+                ],
+                "schema": "anthropic",
+                "status": "valid",
+                "inputTokens": 12400,
+                "cacheReadTokens": 400,
+                "cacheWriteTokens": 0,
+                "outputTokens": 10,
+                "counters": [
+                  {
+                    "path": "response.usage.cache_read_input_tokens",
+                    "status": "reported",
+                    "value": 400
+                  },
+                  {
+                    "path": "response.usage.cache_creation_input_tokens",
+                    "status": "reported",
+                    "value": 0
+                  },
+                  {
+                    "path": "response.usage.input_tokens",
+                    "status": "reported",
+                    "value": 12000
+                  },
+                  {
+                    "path": "response.usage.output_tokens",
+                    "status": "reported",
+                    "value": 10
+                  }
+                ],
+                "issues": [],
+                "notes": []
+              },
+              "segments": [
+                {
+                  "id": "tools[0]",
+                  "category": "tools",
+                  "label": "tool: inspect_artifact",
+                  "path": "tools[0]",
+                  "openaiTokens": 35,
+                  "claudeTokensEstimate": 60,
+                  "charLength": 174
+                },
+                {
+                  "id": "messages[0].content[0]",
+                  "category": "user",
+                  "label": "message 1 (user) text",
+                  "path": "messages[0].content",
+                  "openaiTokens": 9601,
+                  "claudeTokensEstimate": 19394,
+                  "cacheControl": {
+                    "type": "ephemeral",
+                    "ttl": "5m",
+                    "automatic": true
+                  },
+                  "charLength": 64000
+                }
+              ]
+            }
+          ],
+          "warnings": []
+        },
+        "model": {
+          "id": "claude-sonnet-4-6",
+          "displayName": "Claude Sonnet 4.6",
+          "source": "request"
+        },
+        "claudeTokenScale": 1,
+        "reports": [
+          {
+            "requestIndex": 0,
+            "model": {
+              "id": "claude-sonnet-4-6",
+              "displayName": "Claude Sonnet 4.6",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 9636,
+              "claudeTokensEstimate": 19454
+            },
+            "byCategory": [
+              {
+                "category": "tools",
+                "segmentCount": 1,
+                "openaiTokens": 35,
+                "claudeTokensEstimate": 60
+              },
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394
+              }
+            ],
+            "segments": [
+              {
+                "id": "tools[0]",
+                "category": "tools",
+                "label": "tool: inspect_artifact",
+                "path": "tools[0]",
+                "openaiTokens": 35,
+                "claudeTokensEstimate": 60,
+                "charLength": 174
+              },
+              {
+                "id": "messages[0].content[0]",
+                "category": "user",
+                "label": "message 1 (user) text",
+                "path": "messages[0].content",
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394,
+                "cacheControl": {
+                  "type": "ephemeral",
+                  "ttl": "5m",
+                  "automatic": true
+                },
+                "charLength": 64000
+              }
+            ],
+            "contextWindow": 1000000,
+            "percentOfContextWindow": 0.019454
+          },
+          {
+            "requestIndex": 1,
+            "model": {
+              "id": "claude-sonnet-4-6",
+              "displayName": "Claude Sonnet 4.6",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 9636,
+              "claudeTokensEstimate": 19454
+            },
+            "byCategory": [
+              {
+                "category": "tools",
+                "segmentCount": 1,
+                "openaiTokens": 35,
+                "claudeTokensEstimate": 60
+              },
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394
+              }
+            ],
+            "segments": [
+              {
+                "id": "tools[0]",
+                "category": "tools",
+                "label": "tool: inspect_artifact",
+                "path": "tools[0]",
+                "openaiTokens": 35,
+                "claudeTokensEstimate": 60,
+                "charLength": 174
+              },
+              {
+                "id": "messages[0].content[0]",
+                "category": "user",
+                "label": "message 1 (user) text",
+                "path": "messages[0].content",
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394,
+                "cacheControl": {
+                  "type": "ephemeral",
+                  "ttl": "5m",
+                  "automatic": true
+                },
+                "charLength": 64000
+              }
+            ],
+            "contextWindow": 1000000,
+            "percentOfContextWindow": 0.019454
+          }
+        ],
+        "prefixMatches": [
+          {
+            "fromIndex": 0,
+            "toIndex": 1,
+            "relation": "continues",
+            "matchedSegments": 2,
+            "matchedOpenaiTokens": 9636,
+            "matchedClaudeTokensEstimate": 19454
+          }
+        ],
+        "conversations": {
+          "count": 1,
+          "byRequest": [
+            0,
+            0
+          ]
+        },
+        "cacheSimulation": {
+          "provider": "anthropic",
+          "model": "claude-sonnet-4-6",
+          "actual": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 19454,
+              "writeTokens1h": 0,
+              "uncachedTokens": 0,
+              "costUsd": 0.0729525
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 19454,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "uncachedTokens": 0,
+              "costUsd": 0.005836200000000001
+            }
+          ],
+          "optimized": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 19454,
+              "writeTokens1h": 0,
+              "uncachedTokens": 0,
+              "costUsd": 0.0729525
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 19454,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "uncachedTokens": 0,
+              "costUsd": 0.005836200000000001
+            }
+          ],
+          "totalActualCostUsd": 0.0787887,
+          "totalOptimizedCostUsd": 0.0787887
+        },
+        "usageComparison": {
+          "rows": [
+            {
+              "requestIndex": 0,
+              "estimatedInputTokens": 19454,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": 12000,
+              "reportedReadTokens": 0,
+              "reportedWriteTokens": 0,
+              "inputDeltaTokens": 7454,
+              "readDeltaTokens": 0,
+              "readOutcome": "both_zero"
+            },
+            {
+              "requestIndex": 1,
+              "estimatedInputTokens": 19454,
+              "simulatedReadTokens": 19454,
+              "reportedInputTokens": 12400,
+              "reportedReadTokens": 400,
+              "reportedWriteTokens": 0,
+              "inputDeltaTokens": 7054,
+              "readDeltaTokens": 19054,
+              "readOutcome": "both_positive"
+            }
+          ],
+          "capturedRequests": 2,
+          "uncomparedRequestIndices": [],
+          "invalidRequestIndices": [],
+          "input": {
+            "requestIndices": [
+              0,
+              1
+            ],
+            "reportedTokens": 24400,
+            "simulatedTokens": 38908,
+            "deltaTokens": 14508
+          },
+          "cacheRead": {
+            "requestIndices": [
+              0,
+              1
+            ],
+            "reportedTokens": 400,
+            "simulatedTokens": 19454,
+            "deltaTokens": 19054
+          },
+          "readOutcomes": {
+            "both_zero": 1,
+            "both_positive": 1,
+            "simulated_hit_reported_zero": 0,
+            "reported_hit_simulated_zero": 0,
+            "unavailable": 0
+          },
+          "issues": []
+        },
+        "findings": [],
+        "duplicates": []
+      },
+      "cliExitCode": 0,
+      "htmlSha256": "479bb2d32951cc8b639b544e6090e8fa29755e33788c0d425bc9f4aca0dd6565",
+      "unknownMcp": false,
+      "provider": "anthropic"
+    },
+    {
+      "name": "connector-server-switch",
+      "inputSha256": "8757f40f34a09f82579884076abb91bbdb84118cba92e7677af0a92b5dbc6f1f",
+      "report": {
+        "parse": {
+          "format": "anthropic",
+          "complete": true,
+          "sourceRecords": 2,
+          "skippedRecords": 0,
+          "autoDetected": true,
+          "envelope": "request",
+          "requests": [
+            {
+              "provider": "anthropic",
+              "index": 0,
+              "model": "claude-sonnet-4-6",
+              "source": {
+                "recordIndex": 0,
+                "line": 1,
+                "envelope": "request"
+              },
+              "reportedUsage": {
+                "sources": [
+                  "response.usage"
+                ],
+                "schema": "anthropic",
+                "status": "valid",
+                "inputTokens": 12000,
+                "cacheReadTokens": 0,
+                "cacheWriteTokens": 0,
+                "outputTokens": 10,
+                "counters": [
+                  {
+                    "path": "response.usage.cache_read_input_tokens",
+                    "status": "reported",
+                    "value": 0
+                  },
+                  {
+                    "path": "response.usage.cache_creation_input_tokens",
+                    "status": "reported",
+                    "value": 0
+                  },
+                  {
+                    "path": "response.usage.input_tokens",
+                    "status": "reported",
+                    "value": 12000
+                  },
+                  {
+                    "path": "response.usage.output_tokens",
+                    "status": "reported",
+                    "value": 10
+                  }
+                ],
+                "issues": [],
+                "notes": []
+              },
+              "segments": [
+                {
+                  "id": "tools[0]",
+                  "category": "tools",
+                  "label": "tool: tool_0",
+                  "path": "tools[0]",
+                  "openaiTokens": 16,
+                  "claudeTokensEstimate": 19,
+                  "charLength": 54
+                },
+                {
+                  "id": "messages[0].content[0]",
+                  "category": "user",
+                  "label": "message 1 (user) text",
+                  "path": "messages[0].content",
+                  "openaiTokens": 9601,
+                  "claudeTokensEstimate": 19394,
+                  "cacheControl": {
+                    "type": "ephemeral",
+                    "ttl": "5m",
+                    "automatic": true
+                  },
+                  "charLength": 64000
+                }
+              ]
+            },
+            {
+              "provider": "anthropic",
+              "index": 1,
+              "model": "claude-sonnet-4-6",
+              "source": {
+                "recordIndex": 1,
+                "line": 2,
+                "envelope": "request"
+              },
+              "reportedUsage": {
+                "sources": [
+                  "response.usage"
+                ],
+                "schema": "anthropic",
+                "status": "valid",
+                "inputTokens": 12400,
+                "cacheReadTokens": 400,
+                "cacheWriteTokens": 0,
+                "outputTokens": 10,
+                "counters": [
+                  {
+                    "path": "response.usage.cache_read_input_tokens",
+                    "status": "reported",
+                    "value": 400
+                  },
+                  {
+                    "path": "response.usage.cache_creation_input_tokens",
+                    "status": "reported",
+                    "value": 0
+                  },
+                  {
+                    "path": "response.usage.input_tokens",
+                    "status": "reported",
+                    "value": 12000
+                  },
+                  {
+                    "path": "response.usage.output_tokens",
+                    "status": "reported",
+                    "value": 10
+                  }
+                ],
+                "issues": [],
+                "notes": []
+              },
+              "segments": [
+                {
+                  "id": "tools[0]",
+                  "category": "tools",
+                  "label": "tool: tool_0",
+                  "path": "tools[0]",
+                  "openaiTokens": 16,
+                  "claudeTokensEstimate": 19,
+                  "charLength": 54
+                },
+                {
+                  "id": "messages[0].content[0]",
+                  "category": "user",
+                  "label": "message 1 (user) text",
+                  "path": "messages[0].content",
+                  "openaiTokens": 9601,
+                  "claudeTokensEstimate": 19394,
+                  "cacheControl": {
+                    "type": "ephemeral",
+                    "ttl": "5m",
+                    "automatic": true
+                  },
+                  "charLength": 64000
+                }
+              ]
+            }
+          ],
+          "warnings": []
+        },
+        "model": {
+          "id": "claude-sonnet-4-6",
+          "displayName": "Claude Sonnet 4.6",
+          "source": "request"
+        },
+        "claudeTokenScale": 1,
+        "reports": [
+          {
+            "requestIndex": 0,
+            "model": {
+              "id": "claude-sonnet-4-6",
+              "displayName": "Claude Sonnet 4.6",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 9617,
+              "claudeTokensEstimate": 19413
+            },
+            "byCategory": [
+              {
+                "category": "tools",
+                "segmentCount": 1,
+                "openaiTokens": 16,
+                "claudeTokensEstimate": 19
+              },
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394
+              }
+            ],
+            "segments": [
+              {
+                "id": "tools[0]",
+                "category": "tools",
+                "label": "tool: tool_0",
+                "path": "tools[0]",
+                "openaiTokens": 16,
+                "claudeTokensEstimate": 19,
+                "charLength": 54
+              },
+              {
+                "id": "messages[0].content[0]",
+                "category": "user",
+                "label": "message 1 (user) text",
+                "path": "messages[0].content",
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394,
+                "cacheControl": {
+                  "type": "ephemeral",
+                  "ttl": "5m",
+                  "automatic": true
+                },
+                "charLength": 64000
+              }
+            ],
+            "contextWindow": 1000000,
+            "percentOfContextWindow": 0.019413
+          },
+          {
+            "requestIndex": 1,
+            "model": {
+              "id": "claude-sonnet-4-6",
+              "displayName": "Claude Sonnet 4.6",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 9617,
+              "claudeTokensEstimate": 19413
+            },
+            "byCategory": [
+              {
+                "category": "tools",
+                "segmentCount": 1,
+                "openaiTokens": 16,
+                "claudeTokensEstimate": 19
+              },
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394
+              }
+            ],
+            "segments": [
+              {
+                "id": "tools[0]",
+                "category": "tools",
+                "label": "tool: tool_0",
+                "path": "tools[0]",
+                "openaiTokens": 16,
+                "claudeTokensEstimate": 19,
+                "charLength": 54
+              },
+              {
+                "id": "messages[0].content[0]",
+                "category": "user",
+                "label": "message 1 (user) text",
+                "path": "messages[0].content",
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394,
+                "cacheControl": {
+                  "type": "ephemeral",
+                  "ttl": "5m",
+                  "automatic": true
+                },
+                "charLength": 64000
+              }
+            ],
+            "contextWindow": 1000000,
+            "percentOfContextWindow": 0.019413
+          }
+        ],
+        "prefixMatches": [
+          {
+            "fromIndex": 0,
+            "toIndex": 1,
+            "relation": "continues",
+            "matchedSegments": 2,
+            "matchedOpenaiTokens": 9617,
+            "matchedClaudeTokensEstimate": 19413
+          }
+        ],
+        "conversations": {
+          "count": 1,
+          "byRequest": [
+            0,
+            0
+          ]
+        },
+        "cacheSimulation": {
+          "provider": "anthropic",
+          "model": "claude-sonnet-4-6",
+          "actual": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 19413,
+              "writeTokens1h": 0,
+              "uncachedTokens": 0,
+              "costUsd": 0.07279875
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 19413,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "uncachedTokens": 0,
+              "costUsd": 0.0058239
+            }
+          ],
+          "optimized": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 19413,
+              "writeTokens1h": 0,
+              "uncachedTokens": 0,
+              "costUsd": 0.07279875
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 19413,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "uncachedTokens": 0,
+              "costUsd": 0.0058239
+            }
+          ],
+          "totalActualCostUsd": 0.07862264999999999,
+          "totalOptimizedCostUsd": 0.07862264999999999
+        },
+        "usageComparison": {
+          "rows": [
+            {
+              "requestIndex": 0,
+              "estimatedInputTokens": 19413,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": 12000,
+              "reportedReadTokens": 0,
+              "reportedWriteTokens": 0,
+              "inputDeltaTokens": 7413,
+              "readDeltaTokens": 0,
+              "readOutcome": "both_zero"
+            },
+            {
+              "requestIndex": 1,
+              "estimatedInputTokens": 19413,
+              "simulatedReadTokens": 19413,
+              "reportedInputTokens": 12400,
+              "reportedReadTokens": 400,
+              "reportedWriteTokens": 0,
+              "inputDeltaTokens": 7013,
+              "readDeltaTokens": 19013,
+              "readOutcome": "both_positive"
+            }
+          ],
+          "capturedRequests": 2,
+          "uncomparedRequestIndices": [],
+          "invalidRequestIndices": [],
+          "input": {
+            "requestIndices": [
+              0,
+              1
+            ],
+            "reportedTokens": 24400,
+            "simulatedTokens": 38826,
+            "deltaTokens": 14426
+          },
+          "cacheRead": {
+            "requestIndices": [
+              0,
+              1
+            ],
+            "reportedTokens": 400,
+            "simulatedTokens": 19413,
+            "deltaTokens": 19013
+          },
+          "readOutcomes": {
+            "both_zero": 1,
+            "both_positive": 1,
+            "simulated_hit_reported_zero": 0,
+            "reported_hit_simulated_zero": 0,
+            "unavailable": 0
+          },
+          "issues": []
+        },
+        "findings": [],
+        "duplicates": []
+      },
+      "cliExitCode": 0,
+      "htmlSha256": "535bea7e484cc58eedb5188b158d09cbfb2771c3db10364e9f0aeb2f17a3aec3",
+      "unknownMcp": true,
+      "provider": "anthropic"
+    },
+    {
+      "name": "connector-same-server",
+      "inputSha256": "eec304d91390ec5f6adc11108086ad490fce55d995498306621250d4cded2e52",
+      "report": {
+        "parse": {
+          "format": "anthropic",
+          "complete": true,
+          "sourceRecords": 2,
+          "skippedRecords": 0,
+          "autoDetected": true,
+          "envelope": "request",
+          "requests": [
+            {
+              "provider": "anthropic",
+              "index": 0,
+              "model": "claude-sonnet-4-6",
+              "source": {
+                "recordIndex": 0,
+                "line": 1,
+                "envelope": "request"
+              },
+              "reportedUsage": {
+                "sources": [
+                  "response.usage"
+                ],
+                "schema": "anthropic",
+                "status": "valid",
+                "inputTokens": 12000,
+                "cacheReadTokens": 0,
+                "cacheWriteTokens": 0,
+                "outputTokens": 10,
+                "counters": [
+                  {
+                    "path": "response.usage.cache_read_input_tokens",
+                    "status": "reported",
+                    "value": 0
+                  },
+                  {
+                    "path": "response.usage.cache_creation_input_tokens",
+                    "status": "reported",
+                    "value": 0
+                  },
+                  {
+                    "path": "response.usage.input_tokens",
+                    "status": "reported",
+                    "value": 12000
+                  },
+                  {
+                    "path": "response.usage.output_tokens",
+                    "status": "reported",
+                    "value": 10
+                  }
+                ],
+                "issues": [],
+                "notes": []
+              },
+              "segments": [
+                {
+                  "id": "tools[0]",
+                  "category": "tools",
+                  "label": "tool: tool_0",
+                  "path": "tools[0]",
+                  "openaiTokens": 16,
+                  "claudeTokensEstimate": 19,
+                  "charLength": 54
+                },
+                {
+                  "id": "messages[0].content[0]",
+                  "category": "user",
+                  "label": "message 1 (user) text",
+                  "path": "messages[0].content",
+                  "openaiTokens": 9601,
+                  "claudeTokensEstimate": 19394,
+                  "cacheControl": {
+                    "type": "ephemeral",
+                    "ttl": "5m",
+                    "automatic": true
+                  },
+                  "charLength": 64000
+                }
+              ]
+            },
+            {
+              "provider": "anthropic",
+              "index": 1,
+              "model": "claude-sonnet-4-6",
+              "source": {
+                "recordIndex": 1,
+                "line": 2,
+                "envelope": "request"
+              },
+              "reportedUsage": {
+                "sources": [
+                  "response.usage"
+                ],
+                "schema": "anthropic",
+                "status": "valid",
+                "inputTokens": 12400,
+                "cacheReadTokens": 400,
+                "cacheWriteTokens": 0,
+                "outputTokens": 10,
+                "counters": [
+                  {
+                    "path": "response.usage.cache_read_input_tokens",
+                    "status": "reported",
+                    "value": 400
+                  },
+                  {
+                    "path": "response.usage.cache_creation_input_tokens",
+                    "status": "reported",
+                    "value": 0
+                  },
+                  {
+                    "path": "response.usage.input_tokens",
+                    "status": "reported",
+                    "value": 12000
+                  },
+                  {
+                    "path": "response.usage.output_tokens",
+                    "status": "reported",
+                    "value": 10
+                  }
+                ],
+                "issues": [],
+                "notes": []
+              },
+              "segments": [
+                {
+                  "id": "tools[0]",
+                  "category": "tools",
+                  "label": "tool: tool_0",
+                  "path": "tools[0]",
+                  "openaiTokens": 16,
+                  "claudeTokensEstimate": 19,
+                  "charLength": 54
+                },
+                {
+                  "id": "messages[0].content[0]",
+                  "category": "user",
+                  "label": "message 1 (user) text",
+                  "path": "messages[0].content",
+                  "openaiTokens": 9601,
+                  "claudeTokensEstimate": 19394,
+                  "cacheControl": {
+                    "type": "ephemeral",
+                    "ttl": "5m",
+                    "automatic": true
+                  },
+                  "charLength": 64000
+                }
+              ]
+            }
+          ],
+          "warnings": []
+        },
+        "model": {
+          "id": "claude-sonnet-4-6",
+          "displayName": "Claude Sonnet 4.6",
+          "source": "request"
+        },
+        "claudeTokenScale": 1,
+        "reports": [
+          {
+            "requestIndex": 0,
+            "model": {
+              "id": "claude-sonnet-4-6",
+              "displayName": "Claude Sonnet 4.6",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 9617,
+              "claudeTokensEstimate": 19413
+            },
+            "byCategory": [
+              {
+                "category": "tools",
+                "segmentCount": 1,
+                "openaiTokens": 16,
+                "claudeTokensEstimate": 19
+              },
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394
+              }
+            ],
+            "segments": [
+              {
+                "id": "tools[0]",
+                "category": "tools",
+                "label": "tool: tool_0",
+                "path": "tools[0]",
+                "openaiTokens": 16,
+                "claudeTokensEstimate": 19,
+                "charLength": 54
+              },
+              {
+                "id": "messages[0].content[0]",
+                "category": "user",
+                "label": "message 1 (user) text",
+                "path": "messages[0].content",
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394,
+                "cacheControl": {
+                  "type": "ephemeral",
+                  "ttl": "5m",
+                  "automatic": true
+                },
+                "charLength": 64000
+              }
+            ],
+            "contextWindow": 1000000,
+            "percentOfContextWindow": 0.019413
+          },
+          {
+            "requestIndex": 1,
+            "model": {
+              "id": "claude-sonnet-4-6",
+              "displayName": "Claude Sonnet 4.6",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 9617,
+              "claudeTokensEstimate": 19413
+            },
+            "byCategory": [
+              {
+                "category": "tools",
+                "segmentCount": 1,
+                "openaiTokens": 16,
+                "claudeTokensEstimate": 19
+              },
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394
+              }
+            ],
+            "segments": [
+              {
+                "id": "tools[0]",
+                "category": "tools",
+                "label": "tool: tool_0",
+                "path": "tools[0]",
+                "openaiTokens": 16,
+                "claudeTokensEstimate": 19,
+                "charLength": 54
+              },
+              {
+                "id": "messages[0].content[0]",
+                "category": "user",
+                "label": "message 1 (user) text",
+                "path": "messages[0].content",
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394,
+                "cacheControl": {
+                  "type": "ephemeral",
+                  "ttl": "5m",
+                  "automatic": true
+                },
+                "charLength": 64000
+              }
+            ],
+            "contextWindow": 1000000,
+            "percentOfContextWindow": 0.019413
+          }
+        ],
+        "prefixMatches": [
+          {
+            "fromIndex": 0,
+            "toIndex": 1,
+            "relation": "continues",
+            "matchedSegments": 2,
+            "matchedOpenaiTokens": 9617,
+            "matchedClaudeTokensEstimate": 19413
+          }
+        ],
+        "conversations": {
+          "count": 1,
+          "byRequest": [
+            0,
+            0
+          ]
+        },
+        "cacheSimulation": {
+          "provider": "anthropic",
+          "model": "claude-sonnet-4-6",
+          "actual": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 19413,
+              "writeTokens1h": 0,
+              "uncachedTokens": 0,
+              "costUsd": 0.07279875
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 19413,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "uncachedTokens": 0,
+              "costUsd": 0.0058239
+            }
+          ],
+          "optimized": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 19413,
+              "writeTokens1h": 0,
+              "uncachedTokens": 0,
+              "costUsd": 0.07279875
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 19413,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "uncachedTokens": 0,
+              "costUsd": 0.0058239
+            }
+          ],
+          "totalActualCostUsd": 0.07862264999999999,
+          "totalOptimizedCostUsd": 0.07862264999999999
+        },
+        "usageComparison": {
+          "rows": [
+            {
+              "requestIndex": 0,
+              "estimatedInputTokens": 19413,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": 12000,
+              "reportedReadTokens": 0,
+              "reportedWriteTokens": 0,
+              "inputDeltaTokens": 7413,
+              "readDeltaTokens": 0,
+              "readOutcome": "both_zero"
+            },
+            {
+              "requestIndex": 1,
+              "estimatedInputTokens": 19413,
+              "simulatedReadTokens": 19413,
+              "reportedInputTokens": 12400,
+              "reportedReadTokens": 400,
+              "reportedWriteTokens": 0,
+              "inputDeltaTokens": 7013,
+              "readDeltaTokens": 19013,
+              "readOutcome": "both_positive"
+            }
+          ],
+          "capturedRequests": 2,
+          "uncomparedRequestIndices": [],
+          "invalidRequestIndices": [],
+          "input": {
+            "requestIndices": [
+              0,
+              1
+            ],
+            "reportedTokens": 24400,
+            "simulatedTokens": 38826,
+            "deltaTokens": 14426
+          },
+          "cacheRead": {
+            "requestIndices": [
+              0,
+              1
+            ],
+            "reportedTokens": 400,
+            "simulatedTokens": 19413,
+            "deltaTokens": 19013
+          },
+          "readOutcomes": {
+            "both_zero": 1,
+            "both_positive": 1,
+            "simulated_hit_reported_zero": 0,
+            "reported_hit_simulated_zero": 0,
+            "unavailable": 0
+          },
+          "issues": []
+        },
+        "findings": [],
+        "duplicates": []
+      },
+      "cliExitCode": 0,
+      "htmlSha256": "503f524b64527a1cfc2291448dde0255b2b3e54a046b00f206fe19364174925e",
+      "unknownMcp": true,
+      "provider": "anthropic"
+    },
+    {
+      "name": "public-catalog-connector",
+      "inputSha256": "44b61ca990d7d963d388d36ec58b92357b7984b5fc8ebb47b9eb31b55eaeb318",
+      "report": {
+        "parse": {
+          "format": "anthropic",
+          "complete": true,
+          "sourceRecords": 2,
+          "skippedRecords": 0,
+          "autoDetected": true,
+          "envelope": "request",
+          "requests": [
+            {
+              "provider": "anthropic",
+              "index": 0,
+              "model": "claude-sonnet-4-6",
+              "source": {
+                "recordIndex": 0,
+                "line": 1,
+                "envelope": "request"
+              },
+              "reportedUsage": {
+                "sources": [
+                  "response.usage"
+                ],
+                "schema": "anthropic",
+                "status": "valid",
+                "inputTokens": 12000,
+                "cacheReadTokens": 0,
+                "cacheWriteTokens": 0,
+                "outputTokens": 10,
+                "counters": [
+                  {
+                    "path": "response.usage.cache_read_input_tokens",
+                    "status": "reported",
+                    "value": 0
+                  },
+                  {
+                    "path": "response.usage.cache_creation_input_tokens",
+                    "status": "reported",
+                    "value": 0
+                  },
+                  {
+                    "path": "response.usage.input_tokens",
+                    "status": "reported",
+                    "value": 12000
+                  },
+                  {
+                    "path": "response.usage.output_tokens",
+                    "status": "reported",
+                    "value": 10
+                  }
+                ],
+                "issues": [],
+                "notes": []
+              },
+              "segments": [
+                {
+                  "id": "tools[0]",
+                  "category": "tools",
+                  "label": "tool: tool_0",
+                  "path": "tools[0]",
+                  "openaiTokens": 16,
+                  "claudeTokensEstimate": 19,
+                  "charLength": 54
+                },
+                {
+                  "id": "messages[0].content[0]",
+                  "category": "user",
+                  "label": "message 1 (user) text",
+                  "path": "messages[0].content",
+                  "openaiTokens": 9601,
+                  "claudeTokensEstimate": 19394,
+                  "cacheControl": {
+                    "type": "ephemeral",
+                    "ttl": "5m",
+                    "automatic": true
+                  },
+                  "charLength": 64000
+                }
+              ]
+            },
+            {
+              "provider": "anthropic",
+              "index": 1,
+              "model": "claude-sonnet-4-6",
+              "source": {
+                "recordIndex": 1,
+                "line": 2,
+                "envelope": "request"
+              },
+              "reportedUsage": {
+                "sources": [
+                  "response.usage"
+                ],
+                "schema": "anthropic",
+                "status": "valid",
+                "inputTokens": 12400,
+                "cacheReadTokens": 400,
+                "cacheWriteTokens": 0,
+                "outputTokens": 10,
+                "counters": [
+                  {
+                    "path": "response.usage.cache_read_input_tokens",
+                    "status": "reported",
+                    "value": 400
+                  },
+                  {
+                    "path": "response.usage.cache_creation_input_tokens",
+                    "status": "reported",
+                    "value": 0
+                  },
+                  {
+                    "path": "response.usage.input_tokens",
+                    "status": "reported",
+                    "value": 12000
+                  },
+                  {
+                    "path": "response.usage.output_tokens",
+                    "status": "reported",
+                    "value": 10
+                  }
+                ],
+                "issues": [],
+                "notes": []
+              },
+              "segments": [
+                {
+                  "id": "tools[0]",
+                  "category": "tools",
+                  "label": "tool: tool_0",
+                  "path": "tools[0]",
+                  "openaiTokens": 16,
+                  "claudeTokensEstimate": 19,
+                  "charLength": 54
+                },
+                {
+                  "id": "messages[0].content[0]",
+                  "category": "user",
+                  "label": "message 1 (user) text",
+                  "path": "messages[0].content",
+                  "openaiTokens": 9601,
+                  "claudeTokensEstimate": 19394,
+                  "cacheControl": {
+                    "type": "ephemeral",
+                    "ttl": "5m",
+                    "automatic": true
+                  },
+                  "charLength": 64000
+                }
+              ]
+            }
+          ],
+          "warnings": []
+        },
+        "model": {
+          "id": "claude-sonnet-4-6",
+          "displayName": "Claude Sonnet 4.6",
+          "source": "request"
+        },
+        "claudeTokenScale": 1,
+        "reports": [
+          {
+            "requestIndex": 0,
+            "model": {
+              "id": "claude-sonnet-4-6",
+              "displayName": "Claude Sonnet 4.6",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 9617,
+              "claudeTokensEstimate": 19413
+            },
+            "byCategory": [
+              {
+                "category": "tools",
+                "segmentCount": 1,
+                "openaiTokens": 16,
+                "claudeTokensEstimate": 19
+              },
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394
+              }
+            ],
+            "segments": [
+              {
+                "id": "tools[0]",
+                "category": "tools",
+                "label": "tool: tool_0",
+                "path": "tools[0]",
+                "openaiTokens": 16,
+                "claudeTokensEstimate": 19,
+                "charLength": 54
+              },
+              {
+                "id": "messages[0].content[0]",
+                "category": "user",
+                "label": "message 1 (user) text",
+                "path": "messages[0].content",
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394,
+                "cacheControl": {
+                  "type": "ephemeral",
+                  "ttl": "5m",
+                  "automatic": true
+                },
+                "charLength": 64000
+              }
+            ],
+            "contextWindow": 1000000,
+            "percentOfContextWindow": 0.019413
+          },
+          {
+            "requestIndex": 1,
+            "model": {
+              "id": "claude-sonnet-4-6",
+              "displayName": "Claude Sonnet 4.6",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 9617,
+              "claudeTokensEstimate": 19413
+            },
+            "byCategory": [
+              {
+                "category": "tools",
+                "segmentCount": 1,
+                "openaiTokens": 16,
+                "claudeTokensEstimate": 19
+              },
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394
+              }
+            ],
+            "segments": [
+              {
+                "id": "tools[0]",
+                "category": "tools",
+                "label": "tool: tool_0",
+                "path": "tools[0]",
+                "openaiTokens": 16,
+                "claudeTokensEstimate": 19,
+                "charLength": 54
+              },
+              {
+                "id": "messages[0].content[0]",
+                "category": "user",
+                "label": "message 1 (user) text",
+                "path": "messages[0].content",
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394,
+                "cacheControl": {
+                  "type": "ephemeral",
+                  "ttl": "5m",
+                  "automatic": true
+                },
+                "charLength": 64000
+              }
+            ],
+            "contextWindow": 1000000,
+            "percentOfContextWindow": 0.019413
+          }
+        ],
+        "prefixMatches": [
+          {
+            "fromIndex": 0,
+            "toIndex": 1,
+            "relation": "continues",
+            "matchedSegments": 2,
+            "matchedOpenaiTokens": 9617,
+            "matchedClaudeTokensEstimate": 19413
+          }
+        ],
+        "conversations": {
+          "count": 1,
+          "byRequest": [
+            0,
+            0
+          ]
+        },
+        "cacheSimulation": {
+          "provider": "anthropic",
+          "model": "claude-sonnet-4-6",
+          "actual": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 19413,
+              "writeTokens1h": 0,
+              "uncachedTokens": 0,
+              "costUsd": 0.07279875
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 19413,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "uncachedTokens": 0,
+              "costUsd": 0.0058239
+            }
+          ],
+          "optimized": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 19413,
+              "writeTokens1h": 0,
+              "uncachedTokens": 0,
+              "costUsd": 0.07279875
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 19413,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "uncachedTokens": 0,
+              "costUsd": 0.0058239
+            }
+          ],
+          "totalActualCostUsd": 0.07862264999999999,
+          "totalOptimizedCostUsd": 0.07862264999999999
+        },
+        "usageComparison": {
+          "rows": [
+            {
+              "requestIndex": 0,
+              "estimatedInputTokens": 19413,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": 12000,
+              "reportedReadTokens": 0,
+              "reportedWriteTokens": 0,
+              "inputDeltaTokens": 7413,
+              "readDeltaTokens": 0,
+              "readOutcome": "both_zero"
+            },
+            {
+              "requestIndex": 1,
+              "estimatedInputTokens": 19413,
+              "simulatedReadTokens": 19413,
+              "reportedInputTokens": 12400,
+              "reportedReadTokens": 400,
+              "reportedWriteTokens": 0,
+              "inputDeltaTokens": 7013,
+              "readDeltaTokens": 19013,
+              "readOutcome": "both_positive"
+            }
+          ],
+          "capturedRequests": 2,
+          "uncomparedRequestIndices": [],
+          "invalidRequestIndices": [],
+          "input": {
+            "requestIndices": [
+              0,
+              1
+            ],
+            "reportedTokens": 24400,
+            "simulatedTokens": 38826,
+            "deltaTokens": 14426
+          },
+          "cacheRead": {
+            "requestIndices": [
+              0,
+              1
+            ],
+            "reportedTokens": 400,
+            "simulatedTokens": 19413,
+            "deltaTokens": 19013
+          },
+          "readOutcomes": {
+            "both_zero": 1,
+            "both_positive": 1,
+            "simulated_hit_reported_zero": 0,
+            "reported_hit_simulated_zero": 0,
+            "unavailable": 0
+          },
+          "issues": []
+        },
+        "findings": [],
+        "duplicates": []
+      },
+      "cliExitCode": 0,
+      "htmlSha256": "8730c09b15471d51fff7ef526b2d6109933fb8c3efbe33e82bc598eb3818ab2a",
+      "unknownMcp": true,
+      "provider": "anthropic"
+    },
+    {
+      "name": "deferred-connector",
+      "inputSha256": "028db7e37eac871589d14af5eba38abb55188b3b3f6aa796f1a62a808420f6b8",
+      "report": {
+        "parse": {
+          "format": "anthropic",
+          "complete": true,
+          "sourceRecords": 2,
+          "skippedRecords": 0,
+          "autoDetected": true,
+          "envelope": "request",
+          "requests": [
+            {
+              "provider": "anthropic",
+              "index": 0,
+              "model": "claude-sonnet-4-6",
+              "source": {
+                "recordIndex": 0,
+                "line": 1,
+                "envelope": "request"
+              },
+              "reportedUsage": {
+                "sources": [
+                  "response.usage"
+                ],
+                "schema": "anthropic",
+                "status": "valid",
+                "inputTokens": 12000,
+                "cacheReadTokens": 0,
+                "cacheWriteTokens": 0,
+                "outputTokens": 10,
+                "counters": [
+                  {
+                    "path": "response.usage.cache_read_input_tokens",
+                    "status": "reported",
+                    "value": 0
+                  },
+                  {
+                    "path": "response.usage.cache_creation_input_tokens",
+                    "status": "reported",
+                    "value": 0
+                  },
+                  {
+                    "path": "response.usage.input_tokens",
+                    "status": "reported",
+                    "value": 12000
+                  },
+                  {
+                    "path": "response.usage.output_tokens",
+                    "status": "reported",
+                    "value": 10
+                  }
+                ],
+                "issues": [],
+                "notes": []
+              },
+              "segments": [
+                {
+                  "id": "tools[0]",
+                  "category": "tools",
+                  "label": "tool: tool_0",
+                  "path": "tools[0]",
+                  "openaiTokens": 25,
+                  "claudeTokensEstimate": 32,
+                  "charLength": 94
+                },
+                {
+                  "id": "messages[0].content[0]",
+                  "category": "user",
+                  "label": "message 1 (user) text",
+                  "path": "messages[0].content",
+                  "openaiTokens": 9601,
+                  "claudeTokensEstimate": 19394,
+                  "cacheControl": {
+                    "type": "ephemeral",
+                    "ttl": "5m",
+                    "automatic": true
+                  },
+                  "charLength": 64000
+                }
+              ]
+            },
+            {
+              "provider": "anthropic",
+              "index": 1,
+              "model": "claude-sonnet-4-6",
+              "source": {
+                "recordIndex": 1,
+                "line": 2,
+                "envelope": "request"
+              },
+              "reportedUsage": {
+                "sources": [
+                  "response.usage"
+                ],
+                "schema": "anthropic",
+                "status": "valid",
+                "inputTokens": 12400,
+                "cacheReadTokens": 400,
+                "cacheWriteTokens": 0,
+                "outputTokens": 10,
+                "counters": [
+                  {
+                    "path": "response.usage.cache_read_input_tokens",
+                    "status": "reported",
+                    "value": 400
+                  },
+                  {
+                    "path": "response.usage.cache_creation_input_tokens",
+                    "status": "reported",
+                    "value": 0
+                  },
+                  {
+                    "path": "response.usage.input_tokens",
+                    "status": "reported",
+                    "value": 12000
+                  },
+                  {
+                    "path": "response.usage.output_tokens",
+                    "status": "reported",
+                    "value": 10
+                  }
+                ],
+                "issues": [],
+                "notes": []
+              },
+              "segments": [
+                {
+                  "id": "tools[0]",
+                  "category": "tools",
+                  "label": "tool: tool_0",
+                  "path": "tools[0]",
+                  "openaiTokens": 25,
+                  "claudeTokensEstimate": 32,
+                  "charLength": 94
+                },
+                {
+                  "id": "messages[0].content[0]",
+                  "category": "user",
+                  "label": "message 1 (user) text",
+                  "path": "messages[0].content",
+                  "openaiTokens": 9601,
+                  "claudeTokensEstimate": 19394,
+                  "cacheControl": {
+                    "type": "ephemeral",
+                    "ttl": "5m",
+                    "automatic": true
+                  },
+                  "charLength": 64000
+                }
+              ]
+            }
+          ],
+          "warnings": []
+        },
+        "model": {
+          "id": "claude-sonnet-4-6",
+          "displayName": "Claude Sonnet 4.6",
+          "source": "request"
+        },
+        "claudeTokenScale": 1,
+        "reports": [
+          {
+            "requestIndex": 0,
+            "model": {
+              "id": "claude-sonnet-4-6",
+              "displayName": "Claude Sonnet 4.6",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 9626,
+              "claudeTokensEstimate": 19426
+            },
+            "byCategory": [
+              {
+                "category": "tools",
+                "segmentCount": 1,
+                "openaiTokens": 25,
+                "claudeTokensEstimate": 32
+              },
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394
+              }
+            ],
+            "segments": [
+              {
+                "id": "tools[0]",
+                "category": "tools",
+                "label": "tool: tool_0",
+                "path": "tools[0]",
+                "openaiTokens": 25,
+                "claudeTokensEstimate": 32,
+                "charLength": 94
+              },
+              {
+                "id": "messages[0].content[0]",
+                "category": "user",
+                "label": "message 1 (user) text",
+                "path": "messages[0].content",
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394,
+                "cacheControl": {
+                  "type": "ephemeral",
+                  "ttl": "5m",
+                  "automatic": true
+                },
+                "charLength": 64000
+              }
+            ],
+            "contextWindow": 1000000,
+            "percentOfContextWindow": 0.019426
+          },
+          {
+            "requestIndex": 1,
+            "model": {
+              "id": "claude-sonnet-4-6",
+              "displayName": "Claude Sonnet 4.6",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 9626,
+              "claudeTokensEstimate": 19426
+            },
+            "byCategory": [
+              {
+                "category": "tools",
+                "segmentCount": 1,
+                "openaiTokens": 25,
+                "claudeTokensEstimate": 32
+              },
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394
+              }
+            ],
+            "segments": [
+              {
+                "id": "tools[0]",
+                "category": "tools",
+                "label": "tool: tool_0",
+                "path": "tools[0]",
+                "openaiTokens": 25,
+                "claudeTokensEstimate": 32,
+                "charLength": 94
+              },
+              {
+                "id": "messages[0].content[0]",
+                "category": "user",
+                "label": "message 1 (user) text",
+                "path": "messages[0].content",
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394,
+                "cacheControl": {
+                  "type": "ephemeral",
+                  "ttl": "5m",
+                  "automatic": true
+                },
+                "charLength": 64000
+              }
+            ],
+            "contextWindow": 1000000,
+            "percentOfContextWindow": 0.019426
+          }
+        ],
+        "prefixMatches": [
+          {
+            "fromIndex": 0,
+            "toIndex": 1,
+            "relation": "continues",
+            "matchedSegments": 2,
+            "matchedOpenaiTokens": 9626,
+            "matchedClaudeTokensEstimate": 19426
+          }
+        ],
+        "conversations": {
+          "count": 1,
+          "byRequest": [
+            0,
+            0
+          ]
+        },
+        "cacheSimulation": {
+          "provider": "anthropic",
+          "model": "claude-sonnet-4-6",
+          "actual": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 19426,
+              "writeTokens1h": 0,
+              "uncachedTokens": 0,
+              "costUsd": 0.07284750000000001
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 19426,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "uncachedTokens": 0,
+              "costUsd": 0.005827800000000001
+            }
+          ],
+          "optimized": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 19426,
+              "writeTokens1h": 0,
+              "uncachedTokens": 0,
+              "costUsd": 0.07284750000000001
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 19426,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "uncachedTokens": 0,
+              "costUsd": 0.005827800000000001
+            }
+          ],
+          "totalActualCostUsd": 0.0786753,
+          "totalOptimizedCostUsd": 0.0786753
+        },
+        "usageComparison": {
+          "rows": [
+            {
+              "requestIndex": 0,
+              "estimatedInputTokens": 19426,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": 12000,
+              "reportedReadTokens": 0,
+              "reportedWriteTokens": 0,
+              "inputDeltaTokens": 7426,
+              "readDeltaTokens": 0,
+              "readOutcome": "both_zero"
+            },
+            {
+              "requestIndex": 1,
+              "estimatedInputTokens": 19426,
+              "simulatedReadTokens": 19426,
+              "reportedInputTokens": 12400,
+              "reportedReadTokens": 400,
+              "reportedWriteTokens": 0,
+              "inputDeltaTokens": 7026,
+              "readDeltaTokens": 19026,
+              "readOutcome": "both_positive"
+            }
+          ],
+          "capturedRequests": 2,
+          "uncomparedRequestIndices": [],
+          "invalidRequestIndices": [],
+          "input": {
+            "requestIndices": [
+              0,
+              1
+            ],
+            "reportedTokens": 24400,
+            "simulatedTokens": 38852,
+            "deltaTokens": 14452
+          },
+          "cacheRead": {
+            "requestIndices": [
+              0,
+              1
+            ],
+            "reportedTokens": 400,
+            "simulatedTokens": 19426,
+            "deltaTokens": 19026
+          },
+          "readOutcomes": {
+            "both_zero": 1,
+            "both_positive": 1,
+            "simulated_hit_reported_zero": 0,
+            "reported_hit_simulated_zero": 0,
+            "unavailable": 0
+          },
+          "issues": []
+        },
+        "findings": [],
+        "duplicates": []
+      },
+      "cliExitCode": 0,
+      "htmlSha256": "104274c0fd8c3c727815785eb144affae422cf5fbdb45a6ae11af66ed05ddbbd",
+      "unknownMcp": true,
+      "provider": "anthropic"
+    },
+    {
+      "name": "pinned-connector",
+      "inputSha256": "4d0d8ad7ea300a1d57caf66268afb6f3960120b834cf350709138a5b9b15ae17",
+      "report": {
+        "parse": {
+          "format": "anthropic",
+          "complete": true,
+          "sourceRecords": 2,
+          "skippedRecords": 0,
+          "autoDetected": true,
+          "envelope": "request",
+          "requests": [
+            {
+              "provider": "anthropic",
+              "index": 0,
+              "model": "claude-sonnet-4-6",
+              "source": {
+                "recordIndex": 0,
+                "line": 1,
+                "envelope": "request"
+              },
+              "reportedUsage": {
+                "sources": [
+                  "response.usage"
+                ],
+                "schema": "anthropic",
+                "status": "valid",
+                "inputTokens": 12000,
+                "cacheReadTokens": 0,
+                "cacheWriteTokens": 0,
+                "outputTokens": 10,
+                "counters": [
+                  {
+                    "path": "response.usage.cache_read_input_tokens",
+                    "status": "reported",
+                    "value": 0
+                  },
+                  {
+                    "path": "response.usage.cache_creation_input_tokens",
+                    "status": "reported",
+                    "value": 0
+                  },
+                  {
+                    "path": "response.usage.input_tokens",
+                    "status": "reported",
+                    "value": 12000
+                  },
+                  {
+                    "path": "response.usage.output_tokens",
+                    "status": "reported",
+                    "value": 10
+                  }
+                ],
+                "issues": [],
+                "notes": []
+              },
+              "segments": [
+                {
+                  "id": "tools[0]",
+                  "category": "tools",
+                  "label": "tool: tool_0",
+                  "path": "tools[0]",
+                  "openaiTokens": 54,
+                  "claudeTokensEstimate": 83,
+                  "charLength": 239
+                },
+                {
+                  "id": "messages[0].content[0]",
+                  "category": "user",
+                  "label": "message 1 (user) text",
+                  "path": "messages[0].content",
+                  "openaiTokens": 9601,
+                  "claudeTokensEstimate": 19394,
+                  "cacheControl": {
+                    "type": "ephemeral",
+                    "ttl": "5m",
+                    "automatic": true
+                  },
+                  "charLength": 64000
+                }
+              ]
+            },
+            {
+              "provider": "anthropic",
+              "index": 1,
+              "model": "claude-sonnet-4-6",
+              "source": {
+                "recordIndex": 1,
+                "line": 2,
+                "envelope": "request"
+              },
+              "reportedUsage": {
+                "sources": [
+                  "response.usage"
+                ],
+                "schema": "anthropic",
+                "status": "valid",
+                "inputTokens": 12400,
+                "cacheReadTokens": 400,
+                "cacheWriteTokens": 0,
+                "outputTokens": 10,
+                "counters": [
+                  {
+                    "path": "response.usage.cache_read_input_tokens",
+                    "status": "reported",
+                    "value": 400
+                  },
+                  {
+                    "path": "response.usage.cache_creation_input_tokens",
+                    "status": "reported",
+                    "value": 0
+                  },
+                  {
+                    "path": "response.usage.input_tokens",
+                    "status": "reported",
+                    "value": 12000
+                  },
+                  {
+                    "path": "response.usage.output_tokens",
+                    "status": "reported",
+                    "value": 10
+                  }
+                ],
+                "issues": [],
+                "notes": []
+              },
+              "segments": [
+                {
+                  "id": "tools[0]",
+                  "category": "tools",
+                  "label": "tool: tool_0",
+                  "path": "tools[0]",
+                  "openaiTokens": 54,
+                  "claudeTokensEstimate": 83,
+                  "charLength": 239
+                },
+                {
+                  "id": "messages[0].content[0]",
+                  "category": "user",
+                  "label": "message 1 (user) text",
+                  "path": "messages[0].content",
+                  "openaiTokens": 9601,
+                  "claudeTokensEstimate": 19394,
+                  "cacheControl": {
+                    "type": "ephemeral",
+                    "ttl": "5m",
+                    "automatic": true
+                  },
+                  "charLength": 64000
+                }
+              ]
+            }
+          ],
+          "warnings": []
+        },
+        "model": {
+          "id": "claude-sonnet-4-6",
+          "displayName": "Claude Sonnet 4.6",
+          "source": "request"
+        },
+        "claudeTokenScale": 1,
+        "reports": [
+          {
+            "requestIndex": 0,
+            "model": {
+              "id": "claude-sonnet-4-6",
+              "displayName": "Claude Sonnet 4.6",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 9655,
+              "claudeTokensEstimate": 19477
+            },
+            "byCategory": [
+              {
+                "category": "tools",
+                "segmentCount": 1,
+                "openaiTokens": 54,
+                "claudeTokensEstimate": 83
+              },
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394
+              }
+            ],
+            "segments": [
+              {
+                "id": "tools[0]",
+                "category": "tools",
+                "label": "tool: tool_0",
+                "path": "tools[0]",
+                "openaiTokens": 54,
+                "claudeTokensEstimate": 83,
+                "charLength": 239
+              },
+              {
+                "id": "messages[0].content[0]",
+                "category": "user",
+                "label": "message 1 (user) text",
+                "path": "messages[0].content",
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394,
+                "cacheControl": {
+                  "type": "ephemeral",
+                  "ttl": "5m",
+                  "automatic": true
+                },
+                "charLength": 64000
+              }
+            ],
+            "contextWindow": 1000000,
+            "percentOfContextWindow": 0.019477
+          },
+          {
+            "requestIndex": 1,
+            "model": {
+              "id": "claude-sonnet-4-6",
+              "displayName": "Claude Sonnet 4.6",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 9655,
+              "claudeTokensEstimate": 19477
+            },
+            "byCategory": [
+              {
+                "category": "tools",
+                "segmentCount": 1,
+                "openaiTokens": 54,
+                "claudeTokensEstimate": 83
+              },
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394
+              }
+            ],
+            "segments": [
+              {
+                "id": "tools[0]",
+                "category": "tools",
+                "label": "tool: tool_0",
+                "path": "tools[0]",
+                "openaiTokens": 54,
+                "claudeTokensEstimate": 83,
+                "charLength": 239
+              },
+              {
+                "id": "messages[0].content[0]",
+                "category": "user",
+                "label": "message 1 (user) text",
+                "path": "messages[0].content",
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394,
+                "cacheControl": {
+                  "type": "ephemeral",
+                  "ttl": "5m",
+                  "automatic": true
+                },
+                "charLength": 64000
+              }
+            ],
+            "contextWindow": 1000000,
+            "percentOfContextWindow": 0.019477
+          }
+        ],
+        "prefixMatches": [
+          {
+            "fromIndex": 0,
+            "toIndex": 1,
+            "relation": "continues",
+            "matchedSegments": 2,
+            "matchedOpenaiTokens": 9655,
+            "matchedClaudeTokensEstimate": 19477
+          }
+        ],
+        "conversations": {
+          "count": 1,
+          "byRequest": [
+            0,
+            0
+          ]
+        },
+        "cacheSimulation": {
+          "provider": "anthropic",
+          "model": "claude-sonnet-4-6",
+          "actual": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 19477,
+              "writeTokens1h": 0,
+              "uncachedTokens": 0,
+              "costUsd": 0.07303875
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 19477,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "uncachedTokens": 0,
+              "costUsd": 0.0058431
+            }
+          ],
+          "optimized": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 19477,
+              "writeTokens1h": 0,
+              "uncachedTokens": 0,
+              "costUsd": 0.07303875
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 19477,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "uncachedTokens": 0,
+              "costUsd": 0.0058431
+            }
+          ],
+          "totalActualCostUsd": 0.07888185,
+          "totalOptimizedCostUsd": 0.07888185
+        },
+        "usageComparison": {
+          "rows": [
+            {
+              "requestIndex": 0,
+              "estimatedInputTokens": 19477,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": 12000,
+              "reportedReadTokens": 0,
+              "reportedWriteTokens": 0,
+              "inputDeltaTokens": 7477,
+              "readDeltaTokens": 0,
+              "readOutcome": "both_zero"
+            },
+            {
+              "requestIndex": 1,
+              "estimatedInputTokens": 19477,
+              "simulatedReadTokens": 19477,
+              "reportedInputTokens": 12400,
+              "reportedReadTokens": 400,
+              "reportedWriteTokens": 0,
+              "inputDeltaTokens": 7077,
+              "readDeltaTokens": 19077,
+              "readOutcome": "both_positive"
+            }
+          ],
+          "capturedRequests": 2,
+          "uncomparedRequestIndices": [],
+          "invalidRequestIndices": [],
+          "input": {
+            "requestIndices": [
+              0,
+              1
+            ],
+            "reportedTokens": 24400,
+            "simulatedTokens": 38954,
+            "deltaTokens": 14554
+          },
+          "cacheRead": {
+            "requestIndices": [
+              0,
+              1
+            ],
+            "reportedTokens": 400,
+            "simulatedTokens": 19477,
+            "deltaTokens": 19077
+          },
+          "readOutcomes": {
+            "both_zero": 1,
+            "both_positive": 1,
+            "simulated_hit_reported_zero": 0,
+            "reported_hit_simulated_zero": 0,
+            "unavailable": 0
+          },
+          "issues": []
+        },
+        "findings": [],
+        "duplicates": []
+      },
+      "cliExitCode": 0,
+      "htmlSha256": "42bea0821600a42603ee4ac3f87d808a2a9426bb06261c5e506fc8b57df40276",
+      "unknownMcp": true,
+      "provider": "anthropic"
+    },
+    {
+      "name": "legacy-connector",
+      "inputSha256": "599155b564e0aaf51161dca77a3f7bba35639377465fb331e24f8b4af5719d26",
+      "report": {
+        "parse": {
+          "format": "anthropic",
+          "complete": true,
+          "sourceRecords": 2,
+          "skippedRecords": 0,
+          "autoDetected": true,
+          "envelope": "request",
+          "requests": [
+            {
+              "provider": "anthropic",
+              "index": 0,
+              "model": "claude-sonnet-4-6",
+              "source": {
+                "recordIndex": 0,
+                "line": 1,
+                "envelope": "request"
+              },
+              "reportedUsage": {
+                "sources": [
+                  "response.usage"
+                ],
+                "schema": "anthropic",
+                "status": "valid",
+                "inputTokens": 12000,
+                "cacheReadTokens": 0,
+                "cacheWriteTokens": 0,
+                "outputTokens": 10,
+                "counters": [
+                  {
+                    "path": "response.usage.cache_read_input_tokens",
+                    "status": "reported",
+                    "value": 0
+                  },
+                  {
+                    "path": "response.usage.cache_creation_input_tokens",
+                    "status": "reported",
+                    "value": 0
+                  },
+                  {
+                    "path": "response.usage.input_tokens",
+                    "status": "reported",
+                    "value": 12000
+                  },
+                  {
+                    "path": "response.usage.output_tokens",
+                    "status": "reported",
+                    "value": 10
+                  }
+                ],
+                "issues": [],
+                "notes": []
+              },
+              "segments": [
+                {
+                  "id": "messages[0].content[0]",
+                  "category": "user",
+                  "label": "message 1 (user) text",
+                  "path": "messages[0].content",
+                  "openaiTokens": 9601,
+                  "claudeTokensEstimate": 19394,
+                  "cacheControl": {
+                    "type": "ephemeral",
+                    "ttl": "5m",
+                    "automatic": true
+                  },
+                  "charLength": 64000
+                }
+              ]
+            },
+            {
+              "provider": "anthropic",
+              "index": 1,
+              "model": "claude-sonnet-4-6",
+              "source": {
+                "recordIndex": 1,
+                "line": 2,
+                "envelope": "request"
+              },
+              "reportedUsage": {
+                "sources": [
+                  "response.usage"
+                ],
+                "schema": "anthropic",
+                "status": "valid",
+                "inputTokens": 12400,
+                "cacheReadTokens": 400,
+                "cacheWriteTokens": 0,
+                "outputTokens": 10,
+                "counters": [
+                  {
+                    "path": "response.usage.cache_read_input_tokens",
+                    "status": "reported",
+                    "value": 400
+                  },
+                  {
+                    "path": "response.usage.cache_creation_input_tokens",
+                    "status": "reported",
+                    "value": 0
+                  },
+                  {
+                    "path": "response.usage.input_tokens",
+                    "status": "reported",
+                    "value": 12000
+                  },
+                  {
+                    "path": "response.usage.output_tokens",
+                    "status": "reported",
+                    "value": 10
+                  }
+                ],
+                "issues": [],
+                "notes": []
+              },
+              "segments": [
+                {
+                  "id": "messages[0].content[0]",
+                  "category": "user",
+                  "label": "message 1 (user) text",
+                  "path": "messages[0].content",
+                  "openaiTokens": 9601,
+                  "claudeTokensEstimate": 19394,
+                  "cacheControl": {
+                    "type": "ephemeral",
+                    "ttl": "5m",
+                    "automatic": true
+                  },
+                  "charLength": 64000
+                }
+              ]
+            }
+          ],
+          "warnings": []
+        },
+        "model": {
+          "id": "claude-sonnet-4-6",
+          "displayName": "Claude Sonnet 4.6",
+          "source": "request"
+        },
+        "claudeTokenScale": 1,
+        "reports": [
+          {
+            "requestIndex": 0,
+            "model": {
+              "id": "claude-sonnet-4-6",
+              "displayName": "Claude Sonnet 4.6",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 9601,
+              "claudeTokensEstimate": 19394
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394
+              }
+            ],
+            "segments": [
+              {
+                "id": "messages[0].content[0]",
+                "category": "user",
+                "label": "message 1 (user) text",
+                "path": "messages[0].content",
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394,
+                "cacheControl": {
+                  "type": "ephemeral",
+                  "ttl": "5m",
+                  "automatic": true
+                },
+                "charLength": 64000
+              }
+            ],
+            "contextWindow": 1000000,
+            "percentOfContextWindow": 0.019394
+          },
+          {
+            "requestIndex": 1,
+            "model": {
+              "id": "claude-sonnet-4-6",
+              "displayName": "Claude Sonnet 4.6",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 9601,
+              "claudeTokensEstimate": 19394
+            },
+            "byCategory": [
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394
+              }
+            ],
+            "segments": [
+              {
+                "id": "messages[0].content[0]",
+                "category": "user",
+                "label": "message 1 (user) text",
+                "path": "messages[0].content",
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394,
+                "cacheControl": {
+                  "type": "ephemeral",
+                  "ttl": "5m",
+                  "automatic": true
+                },
+                "charLength": 64000
+              }
+            ],
+            "contextWindow": 1000000,
+            "percentOfContextWindow": 0.019394
+          }
+        ],
+        "prefixMatches": [
+          {
+            "fromIndex": 0,
+            "toIndex": 1,
+            "relation": "continues",
+            "matchedSegments": 1,
+            "matchedOpenaiTokens": 9601,
+            "matchedClaudeTokensEstimate": 19394
+          }
+        ],
+        "conversations": {
+          "count": 1,
+          "byRequest": [
+            0,
+            0
+          ]
+        },
+        "cacheSimulation": {
+          "provider": "anthropic",
+          "model": "claude-sonnet-4-6",
+          "actual": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 19394,
+              "writeTokens1h": 0,
+              "uncachedTokens": 0,
+              "costUsd": 0.0727275
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 19394,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "uncachedTokens": 0,
+              "costUsd": 0.005818200000000001
+            }
+          ],
+          "optimized": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 19394,
+              "writeTokens1h": 0,
+              "uncachedTokens": 0,
+              "costUsd": 0.0727275
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 19394,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "uncachedTokens": 0,
+              "costUsd": 0.005818200000000001
+            }
+          ],
+          "totalActualCostUsd": 0.0785457,
+          "totalOptimizedCostUsd": 0.0785457
+        },
+        "usageComparison": {
+          "rows": [
+            {
+              "requestIndex": 0,
+              "estimatedInputTokens": 19394,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": 12000,
+              "reportedReadTokens": 0,
+              "reportedWriteTokens": 0,
+              "inputDeltaTokens": 7394,
+              "readDeltaTokens": 0,
+              "readOutcome": "both_zero"
+            },
+            {
+              "requestIndex": 1,
+              "estimatedInputTokens": 19394,
+              "simulatedReadTokens": 19394,
+              "reportedInputTokens": 12400,
+              "reportedReadTokens": 400,
+              "reportedWriteTokens": 0,
+              "inputDeltaTokens": 6994,
+              "readDeltaTokens": 18994,
+              "readOutcome": "both_positive"
+            }
+          ],
+          "capturedRequests": 2,
+          "uncomparedRequestIndices": [],
+          "invalidRequestIndices": [],
+          "input": {
+            "requestIndices": [
+              0,
+              1
+            ],
+            "reportedTokens": 24400,
+            "simulatedTokens": 38788,
+            "deltaTokens": 14388
+          },
+          "cacheRead": {
+            "requestIndices": [
+              0,
+              1
+            ],
+            "reportedTokens": 400,
+            "simulatedTokens": 19394,
+            "deltaTokens": 18994
+          },
+          "readOutcomes": {
+            "both_zero": 1,
+            "both_positive": 1,
+            "simulated_hit_reported_zero": 0,
+            "reported_hit_simulated_zero": 0,
+            "unavailable": 0
+          },
+          "issues": []
+        },
+        "findings": [],
+        "duplicates": []
+      },
+      "cliExitCode": 0,
+      "htmlSha256": "7b1db3d675efa4e0521ccf0c2afdbf6cc6a7c0fe4d32d4add44664807ba450d8",
+      "unknownMcp": true,
+      "provider": "anthropic"
+    },
+    {
+      "name": "recorded-tool-listing",
+      "inputSha256": "3be1669342a1a0217e804b2f80d241076b9a8bb0044880217193062cc424bf40",
+      "report": {
+        "parse": {
+          "format": "anthropic",
+          "complete": true,
+          "sourceRecords": 2,
+          "skippedRecords": 0,
+          "autoDetected": true,
+          "envelope": "request",
+          "requests": [
+            {
+              "provider": "anthropic",
+              "index": 0,
+              "model": "claude-sonnet-4-6",
+              "source": {
+                "recordIndex": 0,
+                "line": 1,
+                "envelope": "request"
+              },
+              "reportedUsage": {
+                "sources": [
+                  "response.usage"
+                ],
+                "schema": "anthropic",
+                "status": "valid",
+                "inputTokens": 12000,
+                "cacheReadTokens": 0,
+                "cacheWriteTokens": 0,
+                "outputTokens": 10,
+                "counters": [
+                  {
+                    "path": "response.usage.cache_read_input_tokens",
+                    "status": "reported",
+                    "value": 0
+                  },
+                  {
+                    "path": "response.usage.cache_creation_input_tokens",
+                    "status": "reported",
+                    "value": 0
+                  },
+                  {
+                    "path": "response.usage.input_tokens",
+                    "status": "reported",
+                    "value": 12000
+                  },
+                  {
+                    "path": "response.usage.output_tokens",
+                    "status": "reported",
+                    "value": 10
+                  }
+                ],
+                "issues": [],
+                "notes": []
+              },
+              "segments": [
+                {
+                  "id": "tools[0]",
+                  "category": "tools",
+                  "label": "tool: tool_0",
+                  "path": "tools[0]",
+                  "openaiTokens": 16,
+                  "claudeTokensEstimate": 19,
+                  "charLength": 54
+                },
+                {
+                  "id": "messages[0].content[0]",
+                  "category": "user",
+                  "label": "message 1 (user) text",
+                  "path": "messages[0].content",
+                  "openaiTokens": 5,
+                  "claudeTokensEstimate": 9,
+                  "charLength": 30
+                },
+                {
+                  "id": "messages[1].content[0]",
+                  "category": "assistant",
+                  "label": "message 2 (assistant) mcp_tool_listing",
+                  "path": "messages[1].content[0]",
+                  "openaiTokens": 55,
+                  "claudeTokensEstimate": 84,
+                  "charLength": 244
+                },
+                {
+                  "id": "messages[1].content[1]",
+                  "category": "assistant",
+                  "label": "message 2 (assistant) text",
+                  "path": "messages[1].content[1]",
+                  "openaiTokens": 4,
+                  "claudeTokensEstimate": 8,
+                  "charLength": 26
+                },
+                {
+                  "id": "messages[2].content[0]",
+                  "category": "user",
+                  "label": "message 3 (user) text",
+                  "path": "messages[2].content",
+                  "openaiTokens": 9601,
+                  "claudeTokensEstimate": 19394,
+                  "cacheControl": {
+                    "type": "ephemeral",
+                    "ttl": "5m",
+                    "automatic": true
+                  },
+                  "charLength": 64000
+                }
+              ]
+            },
+            {
+              "provider": "anthropic",
+              "index": 1,
+              "model": "claude-sonnet-4-6",
+              "source": {
+                "recordIndex": 1,
+                "line": 2,
+                "envelope": "request"
+              },
+              "reportedUsage": {
+                "sources": [
+                  "response.usage"
+                ],
+                "schema": "anthropic",
+                "status": "valid",
+                "inputTokens": 12400,
+                "cacheReadTokens": 400,
+                "cacheWriteTokens": 0,
+                "outputTokens": 10,
+                "counters": [
+                  {
+                    "path": "response.usage.cache_read_input_tokens",
+                    "status": "reported",
+                    "value": 400
+                  },
+                  {
+                    "path": "response.usage.cache_creation_input_tokens",
+                    "status": "reported",
+                    "value": 0
+                  },
+                  {
+                    "path": "response.usage.input_tokens",
+                    "status": "reported",
+                    "value": 12000
+                  },
+                  {
+                    "path": "response.usage.output_tokens",
+                    "status": "reported",
+                    "value": 10
+                  }
+                ],
+                "issues": [],
+                "notes": []
+              },
+              "segments": [
+                {
+                  "id": "tools[0]",
+                  "category": "tools",
+                  "label": "tool: tool_0",
+                  "path": "tools[0]",
+                  "openaiTokens": 16,
+                  "claudeTokensEstimate": 19,
+                  "charLength": 54
+                },
+                {
+                  "id": "messages[0].content[0]",
+                  "category": "user",
+                  "label": "message 1 (user) text",
+                  "path": "messages[0].content",
+                  "openaiTokens": 5,
+                  "claudeTokensEstimate": 9,
+                  "charLength": 30
+                },
+                {
+                  "id": "messages[1].content[0]",
+                  "category": "assistant",
+                  "label": "message 2 (assistant) mcp_tool_listing",
+                  "path": "messages[1].content[0]",
+                  "openaiTokens": 55,
+                  "claudeTokensEstimate": 84,
+                  "charLength": 244
+                },
+                {
+                  "id": "messages[1].content[1]",
+                  "category": "assistant",
+                  "label": "message 2 (assistant) text",
+                  "path": "messages[1].content[1]",
+                  "openaiTokens": 4,
+                  "claudeTokensEstimate": 8,
+                  "charLength": 26
+                },
+                {
+                  "id": "messages[2].content[0]",
+                  "category": "user",
+                  "label": "message 3 (user) text",
+                  "path": "messages[2].content",
+                  "openaiTokens": 9601,
+                  "claudeTokensEstimate": 19394,
+                  "cacheControl": {
+                    "type": "ephemeral",
+                    "ttl": "5m",
+                    "automatic": true
+                  },
+                  "charLength": 64000
+                }
+              ]
+            }
+          ],
+          "warnings": []
+        },
+        "model": {
+          "id": "claude-sonnet-4-6",
+          "displayName": "Claude Sonnet 4.6",
+          "source": "request"
+        },
+        "claudeTokenScale": 1,
+        "reports": [
+          {
+            "requestIndex": 0,
+            "model": {
+              "id": "claude-sonnet-4-6",
+              "displayName": "Claude Sonnet 4.6",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 9681,
+              "claudeTokensEstimate": 19514
+            },
+            "byCategory": [
+              {
+                "category": "tools",
+                "segmentCount": 1,
+                "openaiTokens": 16,
+                "claudeTokensEstimate": 19
+              },
+              {
+                "category": "user",
+                "segmentCount": 2,
+                "openaiTokens": 9606,
+                "claudeTokensEstimate": 19403
+              },
+              {
+                "category": "assistant",
+                "segmentCount": 2,
+                "openaiTokens": 59,
+                "claudeTokensEstimate": 92
+              }
+            ],
+            "segments": [
+              {
+                "id": "tools[0]",
+                "category": "tools",
+                "label": "tool: tool_0",
+                "path": "tools[0]",
+                "openaiTokens": 16,
+                "claudeTokensEstimate": 19,
+                "charLength": 54
+              },
+              {
+                "id": "messages[0].content[0]",
+                "category": "user",
+                "label": "message 1 (user) text",
+                "path": "messages[0].content",
+                "openaiTokens": 5,
+                "claudeTokensEstimate": 9,
+                "charLength": 30
+              },
+              {
+                "id": "messages[1].content[0]",
+                "category": "assistant",
+                "label": "message 2 (assistant) mcp_tool_listing",
+                "path": "messages[1].content[0]",
+                "openaiTokens": 55,
+                "claudeTokensEstimate": 84,
+                "charLength": 244
+              },
+              {
+                "id": "messages[1].content[1]",
+                "category": "assistant",
+                "label": "message 2 (assistant) text",
+                "path": "messages[1].content[1]",
+                "openaiTokens": 4,
+                "claudeTokensEstimate": 8,
+                "charLength": 26
+              },
+              {
+                "id": "messages[2].content[0]",
+                "category": "user",
+                "label": "message 3 (user) text",
+                "path": "messages[2].content",
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394,
+                "cacheControl": {
+                  "type": "ephemeral",
+                  "ttl": "5m",
+                  "automatic": true
+                },
+                "charLength": 64000
+              }
+            ],
+            "contextWindow": 1000000,
+            "percentOfContextWindow": 0.019514
+          },
+          {
+            "requestIndex": 1,
+            "model": {
+              "id": "claude-sonnet-4-6",
+              "displayName": "Claude Sonnet 4.6",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 9681,
+              "claudeTokensEstimate": 19514
+            },
+            "byCategory": [
+              {
+                "category": "tools",
+                "segmentCount": 1,
+                "openaiTokens": 16,
+                "claudeTokensEstimate": 19
+              },
+              {
+                "category": "user",
+                "segmentCount": 2,
+                "openaiTokens": 9606,
+                "claudeTokensEstimate": 19403
+              },
+              {
+                "category": "assistant",
+                "segmentCount": 2,
+                "openaiTokens": 59,
+                "claudeTokensEstimate": 92
+              }
+            ],
+            "segments": [
+              {
+                "id": "tools[0]",
+                "category": "tools",
+                "label": "tool: tool_0",
+                "path": "tools[0]",
+                "openaiTokens": 16,
+                "claudeTokensEstimate": 19,
+                "charLength": 54
+              },
+              {
+                "id": "messages[0].content[0]",
+                "category": "user",
+                "label": "message 1 (user) text",
+                "path": "messages[0].content",
+                "openaiTokens": 5,
+                "claudeTokensEstimate": 9,
+                "charLength": 30
+              },
+              {
+                "id": "messages[1].content[0]",
+                "category": "assistant",
+                "label": "message 2 (assistant) mcp_tool_listing",
+                "path": "messages[1].content[0]",
+                "openaiTokens": 55,
+                "claudeTokensEstimate": 84,
+                "charLength": 244
+              },
+              {
+                "id": "messages[1].content[1]",
+                "category": "assistant",
+                "label": "message 2 (assistant) text",
+                "path": "messages[1].content[1]",
+                "openaiTokens": 4,
+                "claudeTokensEstimate": 8,
+                "charLength": 26
+              },
+              {
+                "id": "messages[2].content[0]",
+                "category": "user",
+                "label": "message 3 (user) text",
+                "path": "messages[2].content",
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394,
+                "cacheControl": {
+                  "type": "ephemeral",
+                  "ttl": "5m",
+                  "automatic": true
+                },
+                "charLength": 64000
+              }
+            ],
+            "contextWindow": 1000000,
+            "percentOfContextWindow": 0.019514
+          }
+        ],
+        "prefixMatches": [
+          {
+            "fromIndex": 0,
+            "toIndex": 1,
+            "relation": "continues",
+            "matchedSegments": 5,
+            "matchedOpenaiTokens": 9681,
+            "matchedClaudeTokensEstimate": 19514
+          }
+        ],
+        "conversations": {
+          "count": 1,
+          "byRequest": [
+            0,
+            0
+          ]
+        },
+        "cacheSimulation": {
+          "provider": "anthropic",
+          "model": "claude-sonnet-4-6",
+          "actual": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 19514,
+              "writeTokens1h": 0,
+              "uncachedTokens": 0,
+              "costUsd": 0.0731775
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 19514,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "uncachedTokens": 0,
+              "costUsd": 0.0058542
+            }
+          ],
+          "optimized": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 19514,
+              "writeTokens1h": 0,
+              "uncachedTokens": 0,
+              "costUsd": 0.0731775
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 19514,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "uncachedTokens": 0,
+              "costUsd": 0.0058542
+            }
+          ],
+          "totalActualCostUsd": 0.07903170000000001,
+          "totalOptimizedCostUsd": 0.07903170000000001
+        },
+        "usageComparison": {
+          "rows": [
+            {
+              "requestIndex": 0,
+              "estimatedInputTokens": 19514,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": 12000,
+              "reportedReadTokens": 0,
+              "reportedWriteTokens": 0,
+              "inputDeltaTokens": 7514,
+              "readDeltaTokens": 0,
+              "readOutcome": "both_zero"
+            },
+            {
+              "requestIndex": 1,
+              "estimatedInputTokens": 19514,
+              "simulatedReadTokens": 19514,
+              "reportedInputTokens": 12400,
+              "reportedReadTokens": 400,
+              "reportedWriteTokens": 0,
+              "inputDeltaTokens": 7114,
+              "readDeltaTokens": 19114,
+              "readOutcome": "both_positive"
+            }
+          ],
+          "capturedRequests": 2,
+          "uncomparedRequestIndices": [],
+          "invalidRequestIndices": [],
+          "input": {
+            "requestIndices": [
+              0,
+              1
+            ],
+            "reportedTokens": 24400,
+            "simulatedTokens": 39028,
+            "deltaTokens": 14628
+          },
+          "cacheRead": {
+            "requestIndices": [
+              0,
+              1
+            ],
+            "reportedTokens": 400,
+            "simulatedTokens": 19514,
+            "deltaTokens": 19114
+          },
+          "readOutcomes": {
+            "both_zero": 1,
+            "both_positive": 1,
+            "simulated_hit_reported_zero": 0,
+            "reported_hit_simulated_zero": 0,
+            "unavailable": 0
+          },
+          "issues": []
+        },
+        "findings": [],
+        "duplicates": []
+      },
+      "cliExitCode": 0,
+      "htmlSha256": "37a5ef0f50666d20356ecdc9e188f5dc6c3d4e5294cbd62ace9a310e4828eeac",
+      "unknownMcp": true,
+      "provider": "anthropic"
+    },
+    {
+      "name": "openai-local-tools-control",
+      "inputSha256": "89823e13f344f0da9b921d7163ce3e14951423e649308fd5753a0b3d9e8cfddc",
+      "report": {
+        "parse": {
+          "format": "openai",
+          "complete": true,
+          "sourceRecords": 2,
+          "skippedRecords": 0,
+          "autoDetected": true,
+          "envelope": "request",
+          "requests": [
+            {
+              "provider": "openai",
+              "index": 0,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 0,
+                "line": 1,
+                "envelope": "request"
+              },
+              "reportedUsage": {
+                "sources": [
+                  "response.usage"
+                ],
+                "schema": "openai-responses",
+                "status": "valid",
+                "inputTokens": 12000,
+                "cacheReadTokens": 0,
+                "cacheWriteTokens": null,
+                "outputTokens": 10,
+                "counters": [
+                  {
+                    "path": "response.usage.input_tokens",
+                    "status": "reported",
+                    "value": 12000
+                  },
+                  {
+                    "path": "response.usage.output_tokens",
+                    "status": "reported",
+                    "value": 10
+                  },
+                  {
+                    "path": "response.usage.input_tokens_details.cached_tokens",
+                    "status": "reported",
+                    "value": 0
+                  },
+                  {
+                    "path": "response.usage.input_tokens_details.cache_write_tokens",
+                    "status": "missing"
+                  },
+                  {
+                    "path": "response.usage.total_tokens",
+                    "status": "reported",
+                    "value": 12010
+                  }
+                ],
+                "issues": [],
+                "notes": []
+              },
+              "segments": [
+                {
+                  "id": "tools[0]",
+                  "category": "tools",
+                  "label": "tool: inspect_artifact",
+                  "path": "tools[0]",
+                  "openaiTokens": 38,
+                  "claudeTokensEstimate": 65,
+                  "charLength": 190
+                },
+                {
+                  "id": "input",
+                  "category": "user",
+                  "label": "input (user) text",
+                  "path": "input",
+                  "openaiTokens": 9601,
+                  "claudeTokensEstimate": 19394,
+                  "charLength": 64000
+                }
+              ]
+            },
+            {
+              "provider": "openai",
+              "index": 1,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 1,
+                "line": 2,
+                "envelope": "request"
+              },
+              "reportedUsage": {
+                "sources": [
+                  "response.usage"
+                ],
+                "schema": "openai-responses",
+                "status": "valid",
+                "inputTokens": 12000,
+                "cacheReadTokens": 400,
+                "cacheWriteTokens": null,
+                "outputTokens": 10,
+                "counters": [
+                  {
+                    "path": "response.usage.input_tokens",
+                    "status": "reported",
+                    "value": 12000
+                  },
+                  {
+                    "path": "response.usage.output_tokens",
+                    "status": "reported",
+                    "value": 10
+                  },
+                  {
+                    "path": "response.usage.input_tokens_details.cached_tokens",
+                    "status": "reported",
+                    "value": 400
+                  },
+                  {
+                    "path": "response.usage.input_tokens_details.cache_write_tokens",
+                    "status": "missing"
+                  },
+                  {
+                    "path": "response.usage.total_tokens",
+                    "status": "reported",
+                    "value": 12010
+                  }
+                ],
+                "issues": [],
+                "notes": []
+              },
+              "segments": [
+                {
+                  "id": "tools[0]",
+                  "category": "tools",
+                  "label": "tool: inspect_artifact",
+                  "path": "tools[0]",
+                  "openaiTokens": 38,
+                  "claudeTokensEstimate": 65,
+                  "charLength": 190
+                },
+                {
+                  "id": "input",
+                  "category": "user",
+                  "label": "input (user) text",
+                  "path": "input",
+                  "openaiTokens": 9601,
+                  "claudeTokensEstimate": 19394,
+                  "charLength": 64000
+                }
+              ]
+            }
+          ],
+          "warnings": []
+        },
+        "model": {
+          "id": "gpt-5.1",
+          "displayName": "GPT-5.1",
+          "source": "request"
+        },
+        "claudeTokenScale": 1,
+        "reports": [
+          {
+            "requestIndex": 0,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 9639,
+              "claudeTokensEstimate": 19459
+            },
+            "byCategory": [
+              {
+                "category": "tools",
+                "segmentCount": 1,
+                "openaiTokens": 38,
+                "claudeTokensEstimate": 65
+              },
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394
+              }
+            ],
+            "segments": [
+              {
+                "id": "tools[0]",
+                "category": "tools",
+                "label": "tool: inspect_artifact",
+                "path": "tools[0]",
+                "openaiTokens": 38,
+                "claudeTokensEstimate": 65,
+                "charLength": 190
+              },
+              {
+                "id": "input",
+                "category": "user",
+                "label": "input (user) text",
+                "path": "input",
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394,
+                "charLength": 64000
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.0240975
+          },
+          {
+            "requestIndex": 1,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 9639,
+              "claudeTokensEstimate": 19459
+            },
+            "byCategory": [
+              {
+                "category": "tools",
+                "segmentCount": 1,
+                "openaiTokens": 38,
+                "claudeTokensEstimate": 65
+              },
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394
+              }
+            ],
+            "segments": [
+              {
+                "id": "tools[0]",
+                "category": "tools",
+                "label": "tool: inspect_artifact",
+                "path": "tools[0]",
+                "openaiTokens": 38,
+                "claudeTokensEstimate": 65,
+                "charLength": 190
+              },
+              {
+                "id": "input",
+                "category": "user",
+                "label": "input (user) text",
+                "path": "input",
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394,
+                "charLength": 64000
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.0240975
+          }
+        ],
+        "prefixMatches": [
+          {
+            "fromIndex": 0,
+            "toIndex": 1,
+            "relation": "continues",
+            "matchedSegments": 2,
+            "matchedOpenaiTokens": 9639,
+            "matchedClaudeTokensEstimate": 19459
+          }
+        ],
+        "conversations": {
+          "count": 1,
+          "byRequest": [
+            0,
+            0
+          ]
+        },
+        "cacheSimulation": {
+          "provider": "openai",
+          "model": "gpt-5.1",
+          "actual": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 9639,
+              "costUsd": 0.01204875
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 9600,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 39,
+              "costUsd": 0.00124875
+            }
+          ],
+          "optimized": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 9639,
+              "costUsd": 0.01204875
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 9600,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 39,
+              "costUsd": 0.00124875
+            }
+          ],
+          "totalActualCostUsd": 0.0132975,
+          "totalOptimizedCostUsd": 0.0132975
+        },
+        "usageComparison": {
+          "rows": [
+            {
+              "requestIndex": 0,
+              "estimatedInputTokens": 9639,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": 12000,
+              "reportedReadTokens": 0,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": -2361,
+              "readDeltaTokens": 0,
+              "readOutcome": "both_zero"
+            },
+            {
+              "requestIndex": 1,
+              "estimatedInputTokens": 9639,
+              "simulatedReadTokens": 9600,
+              "reportedInputTokens": 12000,
+              "reportedReadTokens": 400,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": -2361,
+              "readDeltaTokens": 9200,
+              "readOutcome": "both_positive"
+            }
+          ],
+          "capturedRequests": 2,
+          "uncomparedRequestIndices": [],
+          "invalidRequestIndices": [],
+          "input": {
+            "requestIndices": [
+              0,
+              1
+            ],
+            "reportedTokens": 24000,
+            "simulatedTokens": 19278,
+            "deltaTokens": -4722
+          },
+          "cacheRead": {
+            "requestIndices": [
+              0,
+              1
+            ],
+            "reportedTokens": 400,
+            "simulatedTokens": 9600,
+            "deltaTokens": 9200
+          },
+          "readOutcomes": {
+            "both_zero": 1,
+            "both_positive": 1,
+            "simulated_hit_reported_zero": 0,
+            "reported_hit_simulated_zero": 0,
+            "unavailable": 0
+          },
+          "issues": []
+        },
+        "findings": [],
+        "duplicates": []
+      },
+      "cliExitCode": 0,
+      "htmlSha256": "ff13ba134fbaa945c801d6919d96459ddb82668eac8363b0d78b09f859a53198",
+      "unknownMcp": false,
+      "provider": "openai"
+    },
+    {
+      "name": "openai-connector-same-server",
+      "inputSha256": "1ecbf028dc288165bfce024366f1efc2fcf18a26d11997a0ede9ee12b978ba9a",
+      "report": {
+        "parse": {
+          "format": "openai",
+          "complete": true,
+          "sourceRecords": 2,
+          "skippedRecords": 0,
+          "autoDetected": true,
+          "envelope": "request",
+          "requests": [
+            {
+              "provider": "openai",
+              "index": 0,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 0,
+                "line": 1,
+                "envelope": "request"
+              },
+              "reportedUsage": {
+                "sources": [
+                  "response.usage"
+                ],
+                "schema": "openai-responses",
+                "status": "valid",
+                "inputTokens": 12000,
+                "cacheReadTokens": 0,
+                "cacheWriteTokens": null,
+                "outputTokens": 10,
+                "counters": [
+                  {
+                    "path": "response.usage.input_tokens",
+                    "status": "reported",
+                    "value": 12000
+                  },
+                  {
+                    "path": "response.usage.output_tokens",
+                    "status": "reported",
+                    "value": 10
+                  },
+                  {
+                    "path": "response.usage.input_tokens_details.cached_tokens",
+                    "status": "reported",
+                    "value": 0
+                  },
+                  {
+                    "path": "response.usage.input_tokens_details.cache_write_tokens",
+                    "status": "missing"
+                  },
+                  {
+                    "path": "response.usage.total_tokens",
+                    "status": "reported",
+                    "value": 12010
+                  }
+                ],
+                "issues": [],
+                "notes": []
+              },
+              "segments": [
+                {
+                  "id": "tools[0]",
+                  "category": "tools",
+                  "label": "tool: mcp",
+                  "path": "tools[0]",
+                  "openaiTokens": 29,
+                  "claudeTokensEstimate": 39,
+                  "charLength": 115
+                },
+                {
+                  "id": "input",
+                  "category": "user",
+                  "label": "input (user) text",
+                  "path": "input",
+                  "openaiTokens": 9601,
+                  "claudeTokensEstimate": 19394,
+                  "charLength": 64000
+                }
+              ]
+            },
+            {
+              "provider": "openai",
+              "index": 1,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 1,
+                "line": 2,
+                "envelope": "request"
+              },
+              "reportedUsage": {
+                "sources": [
+                  "response.usage"
+                ],
+                "schema": "openai-responses",
+                "status": "valid",
+                "inputTokens": 12000,
+                "cacheReadTokens": 400,
+                "cacheWriteTokens": null,
+                "outputTokens": 10,
+                "counters": [
+                  {
+                    "path": "response.usage.input_tokens",
+                    "status": "reported",
+                    "value": 12000
+                  },
+                  {
+                    "path": "response.usage.output_tokens",
+                    "status": "reported",
+                    "value": 10
+                  },
+                  {
+                    "path": "response.usage.input_tokens_details.cached_tokens",
+                    "status": "reported",
+                    "value": 400
+                  },
+                  {
+                    "path": "response.usage.input_tokens_details.cache_write_tokens",
+                    "status": "missing"
+                  },
+                  {
+                    "path": "response.usage.total_tokens",
+                    "status": "reported",
+                    "value": 12010
+                  }
+                ],
+                "issues": [],
+                "notes": []
+              },
+              "segments": [
+                {
+                  "id": "tools[0]",
+                  "category": "tools",
+                  "label": "tool: mcp",
+                  "path": "tools[0]",
+                  "openaiTokens": 29,
+                  "claudeTokensEstimate": 39,
+                  "charLength": 115
+                },
+                {
+                  "id": "input",
+                  "category": "user",
+                  "label": "input (user) text",
+                  "path": "input",
+                  "openaiTokens": 9601,
+                  "claudeTokensEstimate": 19394,
+                  "charLength": 64000
+                }
+              ]
+            }
+          ],
+          "warnings": []
+        },
+        "model": {
+          "id": "gpt-5.1",
+          "displayName": "GPT-5.1",
+          "source": "request"
+        },
+        "claudeTokenScale": 1,
+        "reports": [
+          {
+            "requestIndex": 0,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 9630,
+              "claudeTokensEstimate": 19433
+            },
+            "byCategory": [
+              {
+                "category": "tools",
+                "segmentCount": 1,
+                "openaiTokens": 29,
+                "claudeTokensEstimate": 39
+              },
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394
+              }
+            ],
+            "segments": [
+              {
+                "id": "tools[0]",
+                "category": "tools",
+                "label": "tool: mcp",
+                "path": "tools[0]",
+                "openaiTokens": 29,
+                "claudeTokensEstimate": 39,
+                "charLength": 115
+              },
+              {
+                "id": "input",
+                "category": "user",
+                "label": "input (user) text",
+                "path": "input",
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394,
+                "charLength": 64000
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.024075
+          },
+          {
+            "requestIndex": 1,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 9630,
+              "claudeTokensEstimate": 19433
+            },
+            "byCategory": [
+              {
+                "category": "tools",
+                "segmentCount": 1,
+                "openaiTokens": 29,
+                "claudeTokensEstimate": 39
+              },
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394
+              }
+            ],
+            "segments": [
+              {
+                "id": "tools[0]",
+                "category": "tools",
+                "label": "tool: mcp",
+                "path": "tools[0]",
+                "openaiTokens": 29,
+                "claudeTokensEstimate": 39,
+                "charLength": 115
+              },
+              {
+                "id": "input",
+                "category": "user",
+                "label": "input (user) text",
+                "path": "input",
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394,
+                "charLength": 64000
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.024075
+          }
+        ],
+        "prefixMatches": [
+          {
+            "fromIndex": 0,
+            "toIndex": 1,
+            "relation": "continues",
+            "matchedSegments": 2,
+            "matchedOpenaiTokens": 9630,
+            "matchedClaudeTokensEstimate": 19433
+          }
+        ],
+        "conversations": {
+          "count": 1,
+          "byRequest": [
+            0,
+            0
+          ]
+        },
+        "cacheSimulation": {
+          "provider": "openai",
+          "model": "gpt-5.1",
+          "actual": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 9630,
+              "costUsd": 0.0120375
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 9600,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 30,
+              "costUsd": 0.0012375
+            }
+          ],
+          "optimized": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 9630,
+              "costUsd": 0.0120375
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 9600,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 30,
+              "costUsd": 0.0012375
+            }
+          ],
+          "totalActualCostUsd": 0.013275,
+          "totalOptimizedCostUsd": 0.013275
+        },
+        "usageComparison": {
+          "rows": [
+            {
+              "requestIndex": 0,
+              "estimatedInputTokens": 9630,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": 12000,
+              "reportedReadTokens": 0,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": -2370,
+              "readDeltaTokens": 0,
+              "readOutcome": "both_zero"
+            },
+            {
+              "requestIndex": 1,
+              "estimatedInputTokens": 9630,
+              "simulatedReadTokens": 9600,
+              "reportedInputTokens": 12000,
+              "reportedReadTokens": 400,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": -2370,
+              "readDeltaTokens": 9200,
+              "readOutcome": "both_positive"
+            }
+          ],
+          "capturedRequests": 2,
+          "uncomparedRequestIndices": [],
+          "invalidRequestIndices": [],
+          "input": {
+            "requestIndices": [
+              0,
+              1
+            ],
+            "reportedTokens": 24000,
+            "simulatedTokens": 19260,
+            "deltaTokens": -4740
+          },
+          "cacheRead": {
+            "requestIndices": [
+              0,
+              1
+            ],
+            "reportedTokens": 400,
+            "simulatedTokens": 9600,
+            "deltaTokens": 9200
+          },
+          "readOutcomes": {
+            "both_zero": 1,
+            "both_positive": 1,
+            "simulated_hit_reported_zero": 0,
+            "reported_hit_simulated_zero": 0,
+            "unavailable": 0
+          },
+          "issues": []
+        },
+        "findings": [],
+        "duplicates": []
+      },
+      "cliExitCode": 0,
+      "htmlSha256": "887f970944fc279dd3257067c83f82ca3522a79ad23f4b3e84092b4b283ff2ab",
+      "unknownMcp": true,
+      "provider": "openai"
+    },
+    {
+      "name": "openai-public-catalog-connector",
+      "inputSha256": "fbeddc4e94f9f379da7146281a082b788118b5992e334a7fc2a5132fec3ae810",
+      "report": {
+        "parse": {
+          "format": "openai",
+          "complete": true,
+          "sourceRecords": 2,
+          "skippedRecords": 0,
+          "autoDetected": true,
+          "envelope": "request",
+          "requests": [
+            {
+              "provider": "openai",
+              "index": 0,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 0,
+                "line": 1,
+                "envelope": "request"
+              },
+              "reportedUsage": {
+                "sources": [
+                  "response.usage"
+                ],
+                "schema": "openai-responses",
+                "status": "valid",
+                "inputTokens": 12000,
+                "cacheReadTokens": 0,
+                "cacheWriteTokens": null,
+                "outputTokens": 10,
+                "counters": [
+                  {
+                    "path": "response.usage.input_tokens",
+                    "status": "reported",
+                    "value": 12000
+                  },
+                  {
+                    "path": "response.usage.output_tokens",
+                    "status": "reported",
+                    "value": 10
+                  },
+                  {
+                    "path": "response.usage.input_tokens_details.cached_tokens",
+                    "status": "reported",
+                    "value": 0
+                  },
+                  {
+                    "path": "response.usage.input_tokens_details.cache_write_tokens",
+                    "status": "missing"
+                  },
+                  {
+                    "path": "response.usage.total_tokens",
+                    "status": "reported",
+                    "value": 12010
+                  }
+                ],
+                "issues": [],
+                "notes": []
+              },
+              "segments": [
+                {
+                  "id": "tools[0]",
+                  "category": "tools",
+                  "label": "tool: mcp",
+                  "path": "tools[0]",
+                  "openaiTokens": 30,
+                  "claudeTokensEstimate": 41,
+                  "charLength": 119
+                },
+                {
+                  "id": "input",
+                  "category": "user",
+                  "label": "input (user) text",
+                  "path": "input",
+                  "openaiTokens": 9601,
+                  "claudeTokensEstimate": 19394,
+                  "charLength": 64000
+                }
+              ]
+            },
+            {
+              "provider": "openai",
+              "index": 1,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 1,
+                "line": 2,
+                "envelope": "request"
+              },
+              "reportedUsage": {
+                "sources": [
+                  "response.usage"
+                ],
+                "schema": "openai-responses",
+                "status": "valid",
+                "inputTokens": 12000,
+                "cacheReadTokens": 400,
+                "cacheWriteTokens": null,
+                "outputTokens": 10,
+                "counters": [
+                  {
+                    "path": "response.usage.input_tokens",
+                    "status": "reported",
+                    "value": 12000
+                  },
+                  {
+                    "path": "response.usage.output_tokens",
+                    "status": "reported",
+                    "value": 10
+                  },
+                  {
+                    "path": "response.usage.input_tokens_details.cached_tokens",
+                    "status": "reported",
+                    "value": 400
+                  },
+                  {
+                    "path": "response.usage.input_tokens_details.cache_write_tokens",
+                    "status": "missing"
+                  },
+                  {
+                    "path": "response.usage.total_tokens",
+                    "status": "reported",
+                    "value": 12010
+                  }
+                ],
+                "issues": [],
+                "notes": []
+              },
+              "segments": [
+                {
+                  "id": "tools[0]",
+                  "category": "tools",
+                  "label": "tool: mcp",
+                  "path": "tools[0]",
+                  "openaiTokens": 30,
+                  "claudeTokensEstimate": 41,
+                  "charLength": 119
+                },
+                {
+                  "id": "input",
+                  "category": "user",
+                  "label": "input (user) text",
+                  "path": "input",
+                  "openaiTokens": 9601,
+                  "claudeTokensEstimate": 19394,
+                  "charLength": 64000
+                }
+              ]
+            }
+          ],
+          "warnings": []
+        },
+        "model": {
+          "id": "gpt-5.1",
+          "displayName": "GPT-5.1",
+          "source": "request"
+        },
+        "claudeTokenScale": 1,
+        "reports": [
+          {
+            "requestIndex": 0,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 9631,
+              "claudeTokensEstimate": 19435
+            },
+            "byCategory": [
+              {
+                "category": "tools",
+                "segmentCount": 1,
+                "openaiTokens": 30,
+                "claudeTokensEstimate": 41
+              },
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394
+              }
+            ],
+            "segments": [
+              {
+                "id": "tools[0]",
+                "category": "tools",
+                "label": "tool: mcp",
+                "path": "tools[0]",
+                "openaiTokens": 30,
+                "claudeTokensEstimate": 41,
+                "charLength": 119
+              },
+              {
+                "id": "input",
+                "category": "user",
+                "label": "input (user) text",
+                "path": "input",
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394,
+                "charLength": 64000
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.0240775
+          },
+          {
+            "requestIndex": 1,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 9631,
+              "claudeTokensEstimate": 19435
+            },
+            "byCategory": [
+              {
+                "category": "tools",
+                "segmentCount": 1,
+                "openaiTokens": 30,
+                "claudeTokensEstimate": 41
+              },
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394
+              }
+            ],
+            "segments": [
+              {
+                "id": "tools[0]",
+                "category": "tools",
+                "label": "tool: mcp",
+                "path": "tools[0]",
+                "openaiTokens": 30,
+                "claudeTokensEstimate": 41,
+                "charLength": 119
+              },
+              {
+                "id": "input",
+                "category": "user",
+                "label": "input (user) text",
+                "path": "input",
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394,
+                "charLength": 64000
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.0240775
+          }
+        ],
+        "prefixMatches": [
+          {
+            "fromIndex": 0,
+            "toIndex": 1,
+            "relation": "continues",
+            "matchedSegments": 2,
+            "matchedOpenaiTokens": 9631,
+            "matchedClaudeTokensEstimate": 19435
+          }
+        ],
+        "conversations": {
+          "count": 1,
+          "byRequest": [
+            0,
+            0
+          ]
+        },
+        "cacheSimulation": {
+          "provider": "openai",
+          "model": "gpt-5.1",
+          "actual": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 9631,
+              "costUsd": 0.01203875
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 9600,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 31,
+              "costUsd": 0.00123875
+            }
+          ],
+          "optimized": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 9631,
+              "costUsd": 0.01203875
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 9600,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 31,
+              "costUsd": 0.00123875
+            }
+          ],
+          "totalActualCostUsd": 0.013277500000000001,
+          "totalOptimizedCostUsd": 0.013277500000000001
+        },
+        "usageComparison": {
+          "rows": [
+            {
+              "requestIndex": 0,
+              "estimatedInputTokens": 9631,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": 12000,
+              "reportedReadTokens": 0,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": -2369,
+              "readDeltaTokens": 0,
+              "readOutcome": "both_zero"
+            },
+            {
+              "requestIndex": 1,
+              "estimatedInputTokens": 9631,
+              "simulatedReadTokens": 9600,
+              "reportedInputTokens": 12000,
+              "reportedReadTokens": 400,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": -2369,
+              "readDeltaTokens": 9200,
+              "readOutcome": "both_positive"
+            }
+          ],
+          "capturedRequests": 2,
+          "uncomparedRequestIndices": [],
+          "invalidRequestIndices": [],
+          "input": {
+            "requestIndices": [
+              0,
+              1
+            ],
+            "reportedTokens": 24000,
+            "simulatedTokens": 19262,
+            "deltaTokens": -4738
+          },
+          "cacheRead": {
+            "requestIndices": [
+              0,
+              1
+            ],
+            "reportedTokens": 400,
+            "simulatedTokens": 9600,
+            "deltaTokens": 9200
+          },
+          "readOutcomes": {
+            "both_zero": 1,
+            "both_positive": 1,
+            "simulated_hit_reported_zero": 0,
+            "reported_hit_simulated_zero": 0,
+            "unavailable": 0
+          },
+          "issues": []
+        },
+        "findings": [],
+        "duplicates": []
+      },
+      "cliExitCode": 0,
+      "htmlSha256": "d8ccce19f83ef7df91c273961a4e588a325c2d5cc97648fe07e3064323538ca1",
+      "unknownMcp": true,
+      "provider": "openai"
+    },
+    {
+      "name": "openai-connector-server-switch",
+      "inputSha256": "6d0672456a2e6e0d6048b0ca27fe722073e7365f5052f3e3522e4f105f40918a",
+      "report": {
+        "parse": {
+          "format": "openai",
+          "complete": true,
+          "sourceRecords": 2,
+          "skippedRecords": 0,
+          "autoDetected": true,
+          "envelope": "request",
+          "requests": [
+            {
+              "provider": "openai",
+              "index": 0,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 0,
+                "line": 1,
+                "envelope": "request"
+              },
+              "reportedUsage": {
+                "sources": [
+                  "response.usage"
+                ],
+                "schema": "openai-responses",
+                "status": "valid",
+                "inputTokens": 12000,
+                "cacheReadTokens": 0,
+                "cacheWriteTokens": null,
+                "outputTokens": 10,
+                "counters": [
+                  {
+                    "path": "response.usage.input_tokens",
+                    "status": "reported",
+                    "value": 12000
+                  },
+                  {
+                    "path": "response.usage.output_tokens",
+                    "status": "reported",
+                    "value": 10
+                  },
+                  {
+                    "path": "response.usage.input_tokens_details.cached_tokens",
+                    "status": "reported",
+                    "value": 0
+                  },
+                  {
+                    "path": "response.usage.input_tokens_details.cache_write_tokens",
+                    "status": "missing"
+                  },
+                  {
+                    "path": "response.usage.total_tokens",
+                    "status": "reported",
+                    "value": 12010
+                  }
+                ],
+                "issues": [],
+                "notes": []
+              },
+              "segments": [
+                {
+                  "id": "tools[0]",
+                  "category": "tools",
+                  "label": "tool: mcp",
+                  "path": "tools[0]",
+                  "openaiTokens": 29,
+                  "claudeTokensEstimate": 39,
+                  "charLength": 115
+                },
+                {
+                  "id": "input",
+                  "category": "user",
+                  "label": "input (user) text",
+                  "path": "input",
+                  "openaiTokens": 9601,
+                  "claudeTokensEstimate": 19394,
+                  "charLength": 64000
+                }
+              ]
+            },
+            {
+              "provider": "openai",
+              "index": 1,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 1,
+                "line": 2,
+                "envelope": "request"
+              },
+              "reportedUsage": {
+                "sources": [
+                  "response.usage"
+                ],
+                "schema": "openai-responses",
+                "status": "valid",
+                "inputTokens": 12000,
+                "cacheReadTokens": 400,
+                "cacheWriteTokens": null,
+                "outputTokens": 10,
+                "counters": [
+                  {
+                    "path": "response.usage.input_tokens",
+                    "status": "reported",
+                    "value": 12000
+                  },
+                  {
+                    "path": "response.usage.output_tokens",
+                    "status": "reported",
+                    "value": 10
+                  },
+                  {
+                    "path": "response.usage.input_tokens_details.cached_tokens",
+                    "status": "reported",
+                    "value": 400
+                  },
+                  {
+                    "path": "response.usage.input_tokens_details.cache_write_tokens",
+                    "status": "missing"
+                  },
+                  {
+                    "path": "response.usage.total_tokens",
+                    "status": "reported",
+                    "value": 12010
+                  }
+                ],
+                "issues": [],
+                "notes": []
+              },
+              "segments": [
+                {
+                  "id": "tools[0]",
+                  "category": "tools",
+                  "label": "tool: mcp",
+                  "path": "tools[0]",
+                  "openaiTokens": 29,
+                  "claudeTokensEstimate": 39,
+                  "charLength": 114
+                },
+                {
+                  "id": "input",
+                  "category": "user",
+                  "label": "input (user) text",
+                  "path": "input",
+                  "openaiTokens": 9601,
+                  "claudeTokensEstimate": 19394,
+                  "charLength": 64000
+                }
+              ]
+            }
+          ],
+          "warnings": []
+        },
+        "model": {
+          "id": "gpt-5.1",
+          "displayName": "GPT-5.1",
+          "source": "request"
+        },
+        "claudeTokenScale": 1,
+        "reports": [
+          {
+            "requestIndex": 0,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 9630,
+              "claudeTokensEstimate": 19433
+            },
+            "byCategory": [
+              {
+                "category": "tools",
+                "segmentCount": 1,
+                "openaiTokens": 29,
+                "claudeTokensEstimate": 39
+              },
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394
+              }
+            ],
+            "segments": [
+              {
+                "id": "tools[0]",
+                "category": "tools",
+                "label": "tool: mcp",
+                "path": "tools[0]",
+                "openaiTokens": 29,
+                "claudeTokensEstimate": 39,
+                "charLength": 115
+              },
+              {
+                "id": "input",
+                "category": "user",
+                "label": "input (user) text",
+                "path": "input",
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394,
+                "charLength": 64000
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.024075
+          },
+          {
+            "requestIndex": 1,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 9630,
+              "claudeTokensEstimate": 19433
+            },
+            "byCategory": [
+              {
+                "category": "tools",
+                "segmentCount": 1,
+                "openaiTokens": 29,
+                "claudeTokensEstimate": 39
+              },
+              {
+                "category": "user",
+                "segmentCount": 1,
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394
+              }
+            ],
+            "segments": [
+              {
+                "id": "tools[0]",
+                "category": "tools",
+                "label": "tool: mcp",
+                "path": "tools[0]",
+                "openaiTokens": 29,
+                "claudeTokensEstimate": 39,
+                "charLength": 114
+              },
+              {
+                "id": "input",
+                "category": "user",
+                "label": "input (user) text",
+                "path": "input",
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394,
+                "charLength": 64000
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.024075
+          }
+        ],
+        "prefixMatches": [
+          {
+            "fromIndex": 0,
+            "toIndex": 1,
+            "relation": "continues",
+            "matchedSegments": 0,
+            "matchedOpenaiTokens": 0,
+            "matchedClaudeTokensEstimate": 0,
+            "divergedAt": {
+              "fromSegmentId": "tools[0]",
+              "toSegmentId": "tools[0]"
+            }
+          }
+        ],
+        "conversations": {
+          "count": 1,
+          "byRequest": [
+            0,
+            0
+          ]
+        },
+        "cacheSimulation": {
+          "provider": "openai",
+          "model": "gpt-5.1",
+          "actual": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 9630,
+              "costUsd": 0.0120375
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 9630,
+              "costUsd": 0.0120375
+            }
+          ],
+          "optimized": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 9630,
+              "costUsd": 0.0120375
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 9630,
+              "costUsd": 0.0120375
+            }
+          ],
+          "totalActualCostUsd": 0.024075,
+          "totalOptimizedCostUsd": 0.024075
+        },
+        "usageComparison": {
+          "rows": [
+            {
+              "requestIndex": 0,
+              "estimatedInputTokens": 9630,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": 12000,
+              "reportedReadTokens": 0,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": -2370,
+              "readDeltaTokens": 0,
+              "readOutcome": "both_zero"
+            },
+            {
+              "requestIndex": 1,
+              "estimatedInputTokens": 9630,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": 12000,
+              "reportedReadTokens": 400,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": -2370,
+              "readDeltaTokens": -400,
+              "readOutcome": "reported_hit_simulated_zero"
+            }
+          ],
+          "capturedRequests": 2,
+          "uncomparedRequestIndices": [],
+          "invalidRequestIndices": [],
+          "input": {
+            "requestIndices": [
+              0,
+              1
+            ],
+            "reportedTokens": 24000,
+            "simulatedTokens": 19260,
+            "deltaTokens": -4740
+          },
+          "cacheRead": {
+            "requestIndices": [
+              0,
+              1
+            ],
+            "reportedTokens": 400,
+            "simulatedTokens": 0,
+            "deltaTokens": -400
+          },
+          "readOutcomes": {
+            "both_zero": 1,
+            "both_positive": 0,
+            "simulated_hit_reported_zero": 0,
+            "reported_hit_simulated_zero": 1,
+            "unavailable": 0
+          },
+          "issues": []
+        },
+        "findings": [],
+        "duplicates": []
+      },
+      "cliExitCode": 0,
+      "htmlSha256": "e8aaad667a6ca35721dfbbe364428962c1c864a5a546f9d9c50d709ca6264c3a",
+      "unknownMcp": true,
+      "provider": "openai"
+    },
+    {
+      "name": "openai-recorded-tool-listing",
+      "inputSha256": "19b40ac3557df28f2d551cb8c5f476703101217f25fb3eb46cfff34db8237f81",
+      "report": {
+        "parse": {
+          "format": "openai",
+          "complete": true,
+          "sourceRecords": 2,
+          "skippedRecords": 0,
+          "autoDetected": true,
+          "envelope": "request",
+          "requests": [
+            {
+              "provider": "openai",
+              "index": 0,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 0,
+                "line": 1,
+                "envelope": "request"
+              },
+              "reportedUsage": {
+                "sources": [
+                  "response.usage"
+                ],
+                "schema": "openai-responses",
+                "status": "valid",
+                "inputTokens": 12000,
+                "cacheReadTokens": 0,
+                "cacheWriteTokens": null,
+                "outputTokens": 10,
+                "counters": [
+                  {
+                    "path": "response.usage.input_tokens",
+                    "status": "reported",
+                    "value": 12000
+                  },
+                  {
+                    "path": "response.usage.output_tokens",
+                    "status": "reported",
+                    "value": 10
+                  },
+                  {
+                    "path": "response.usage.input_tokens_details.cached_tokens",
+                    "status": "reported",
+                    "value": 0
+                  },
+                  {
+                    "path": "response.usage.input_tokens_details.cache_write_tokens",
+                    "status": "missing"
+                  },
+                  {
+                    "path": "response.usage.total_tokens",
+                    "status": "reported",
+                    "value": 12010
+                  }
+                ],
+                "issues": [],
+                "notes": []
+              },
+              "segments": [
+                {
+                  "id": "tools[0]",
+                  "category": "tools",
+                  "label": "tool: mcp",
+                  "path": "tools[0]",
+                  "openaiTokens": 29,
+                  "claudeTokensEstimate": 39,
+                  "charLength": 115
+                },
+                {
+                  "id": "input[0]",
+                  "category": "user",
+                  "label": "item 1 mcp_list_tools",
+                  "path": "input[0]",
+                  "openaiTokens": 60,
+                  "claudeTokensEstimate": 91,
+                  "charLength": 262
+                },
+                {
+                  "id": "input[1].content[0]",
+                  "category": "assistant",
+                  "label": "item 2 (assistant) text",
+                  "path": "input[1].content[0]",
+                  "openaiTokens": 4,
+                  "claudeTokensEstimate": 8,
+                  "charLength": 26
+                },
+                {
+                  "id": "input[2]",
+                  "category": "user",
+                  "label": "item 3 (user) text",
+                  "path": "input[2].content",
+                  "openaiTokens": 9601,
+                  "claudeTokensEstimate": 19394,
+                  "charLength": 64000
+                }
+              ]
+            },
+            {
+              "provider": "openai",
+              "index": 1,
+              "model": "gpt-5.1",
+              "source": {
+                "recordIndex": 1,
+                "line": 2,
+                "envelope": "request"
+              },
+              "reportedUsage": {
+                "sources": [
+                  "response.usage"
+                ],
+                "schema": "openai-responses",
+                "status": "valid",
+                "inputTokens": 12000,
+                "cacheReadTokens": 400,
+                "cacheWriteTokens": null,
+                "outputTokens": 10,
+                "counters": [
+                  {
+                    "path": "response.usage.input_tokens",
+                    "status": "reported",
+                    "value": 12000
+                  },
+                  {
+                    "path": "response.usage.output_tokens",
+                    "status": "reported",
+                    "value": 10
+                  },
+                  {
+                    "path": "response.usage.input_tokens_details.cached_tokens",
+                    "status": "reported",
+                    "value": 400
+                  },
+                  {
+                    "path": "response.usage.input_tokens_details.cache_write_tokens",
+                    "status": "missing"
+                  },
+                  {
+                    "path": "response.usage.total_tokens",
+                    "status": "reported",
+                    "value": 12010
+                  }
+                ],
+                "issues": [],
+                "notes": []
+              },
+              "segments": [
+                {
+                  "id": "tools[0]",
+                  "category": "tools",
+                  "label": "tool: mcp",
+                  "path": "tools[0]",
+                  "openaiTokens": 29,
+                  "claudeTokensEstimate": 39,
+                  "charLength": 115
+                },
+                {
+                  "id": "input[0]",
+                  "category": "user",
+                  "label": "item 1 mcp_list_tools",
+                  "path": "input[0]",
+                  "openaiTokens": 60,
+                  "claudeTokensEstimate": 91,
+                  "charLength": 262
+                },
+                {
+                  "id": "input[1].content[0]",
+                  "category": "assistant",
+                  "label": "item 2 (assistant) text",
+                  "path": "input[1].content[0]",
+                  "openaiTokens": 4,
+                  "claudeTokensEstimate": 8,
+                  "charLength": 26
+                },
+                {
+                  "id": "input[2]",
+                  "category": "user",
+                  "label": "item 3 (user) text",
+                  "path": "input[2].content",
+                  "openaiTokens": 9601,
+                  "claudeTokensEstimate": 19394,
+                  "charLength": 64000
+                }
+              ]
+            }
+          ],
+          "warnings": []
+        },
+        "model": {
+          "id": "gpt-5.1",
+          "displayName": "GPT-5.1",
+          "source": "request"
+        },
+        "claudeTokenScale": 1,
+        "reports": [
+          {
+            "requestIndex": 0,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 9694,
+              "claudeTokensEstimate": 19532
+            },
+            "byCategory": [
+              {
+                "category": "tools",
+                "segmentCount": 1,
+                "openaiTokens": 29,
+                "claudeTokensEstimate": 39
+              },
+              {
+                "category": "user",
+                "segmentCount": 2,
+                "openaiTokens": 9661,
+                "claudeTokensEstimate": 19485
+              },
+              {
+                "category": "assistant",
+                "segmentCount": 1,
+                "openaiTokens": 4,
+                "claudeTokensEstimate": 8
+              }
+            ],
+            "segments": [
+              {
+                "id": "tools[0]",
+                "category": "tools",
+                "label": "tool: mcp",
+                "path": "tools[0]",
+                "openaiTokens": 29,
+                "claudeTokensEstimate": 39,
+                "charLength": 115
+              },
+              {
+                "id": "input[0]",
+                "category": "user",
+                "label": "item 1 mcp_list_tools",
+                "path": "input[0]",
+                "openaiTokens": 60,
+                "claudeTokensEstimate": 91,
+                "charLength": 262
+              },
+              {
+                "id": "input[1].content[0]",
+                "category": "assistant",
+                "label": "item 2 (assistant) text",
+                "path": "input[1].content[0]",
+                "openaiTokens": 4,
+                "claudeTokensEstimate": 8,
+                "charLength": 26
+              },
+              {
+                "id": "input[2]",
+                "category": "user",
+                "label": "item 3 (user) text",
+                "path": "input[2].content",
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394,
+                "charLength": 64000
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.024235
+          },
+          {
+            "requestIndex": 1,
+            "model": {
+              "id": "gpt-5.1",
+              "displayName": "GPT-5.1",
+              "source": "request"
+            },
+            "totals": {
+              "openaiTokens": 9694,
+              "claudeTokensEstimate": 19532
+            },
+            "byCategory": [
+              {
+                "category": "tools",
+                "segmentCount": 1,
+                "openaiTokens": 29,
+                "claudeTokensEstimate": 39
+              },
+              {
+                "category": "user",
+                "segmentCount": 2,
+                "openaiTokens": 9661,
+                "claudeTokensEstimate": 19485
+              },
+              {
+                "category": "assistant",
+                "segmentCount": 1,
+                "openaiTokens": 4,
+                "claudeTokensEstimate": 8
+              }
+            ],
+            "segments": [
+              {
+                "id": "tools[0]",
+                "category": "tools",
+                "label": "tool: mcp",
+                "path": "tools[0]",
+                "openaiTokens": 29,
+                "claudeTokensEstimate": 39,
+                "charLength": 115
+              },
+              {
+                "id": "input[0]",
+                "category": "user",
+                "label": "item 1 mcp_list_tools",
+                "path": "input[0]",
+                "openaiTokens": 60,
+                "claudeTokensEstimate": 91,
+                "charLength": 262
+              },
+              {
+                "id": "input[1].content[0]",
+                "category": "assistant",
+                "label": "item 2 (assistant) text",
+                "path": "input[1].content[0]",
+                "openaiTokens": 4,
+                "claudeTokensEstimate": 8,
+                "charLength": 26
+              },
+              {
+                "id": "input[2]",
+                "category": "user",
+                "label": "item 3 (user) text",
+                "path": "input[2].content",
+                "openaiTokens": 9601,
+                "claudeTokensEstimate": 19394,
+                "charLength": 64000
+              }
+            ],
+            "contextWindow": 400000,
+            "percentOfContextWindow": 0.024235
+          }
+        ],
+        "prefixMatches": [
+          {
+            "fromIndex": 0,
+            "toIndex": 1,
+            "relation": "continues",
+            "matchedSegments": 4,
+            "matchedOpenaiTokens": 9694,
+            "matchedClaudeTokensEstimate": 19532
+          }
+        ],
+        "conversations": {
+          "count": 1,
+          "byRequest": [
+            0,
+            0
+          ]
+        },
+        "cacheSimulation": {
+          "provider": "openai",
+          "model": "gpt-5.1",
+          "actual": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 9694,
+              "costUsd": 0.0121175
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 9600,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 94,
+              "costUsd": 0.0013175
+            }
+          ],
+          "optimized": [
+            {
+              "requestIndex": 0,
+              "readTokens": 0,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 9694,
+              "costUsd": 0.0121175
+            },
+            {
+              "requestIndex": 1,
+              "readTokens": 9600,
+              "writeTokens5m": 0,
+              "writeTokens1h": 0,
+              "cacheMode": "legacy",
+              "uncachedTokens": 94,
+              "costUsd": 0.0013175
+            }
+          ],
+          "totalActualCostUsd": 0.013434999999999999,
+          "totalOptimizedCostUsd": 0.013434999999999999
+        },
+        "usageComparison": {
+          "rows": [
+            {
+              "requestIndex": 0,
+              "estimatedInputTokens": 9694,
+              "simulatedReadTokens": 0,
+              "reportedInputTokens": 12000,
+              "reportedReadTokens": 0,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": -2306,
+              "readDeltaTokens": 0,
+              "readOutcome": "both_zero"
+            },
+            {
+              "requestIndex": 1,
+              "estimatedInputTokens": 9694,
+              "simulatedReadTokens": 9600,
+              "reportedInputTokens": 12000,
+              "reportedReadTokens": 400,
+              "reportedWriteTokens": null,
+              "inputDeltaTokens": -2306,
+              "readDeltaTokens": 9200,
+              "readOutcome": "both_positive"
+            }
+          ],
+          "capturedRequests": 2,
+          "uncomparedRequestIndices": [],
+          "invalidRequestIndices": [],
+          "input": {
+            "requestIndices": [
+              0,
+              1
+            ],
+            "reportedTokens": 24000,
+            "simulatedTokens": 19388,
+            "deltaTokens": -4612
+          },
+          "cacheRead": {
+            "requestIndices": [
+              0,
+              1
+            ],
+            "reportedTokens": 400,
+            "simulatedTokens": 9600,
+            "deltaTokens": 9200
+          },
+          "readOutcomes": {
+            "both_zero": 1,
+            "both_positive": 1,
+            "simulated_hit_reported_zero": 0,
+            "reported_hit_simulated_zero": 0,
+            "unavailable": 0
+          },
+          "issues": []
+        },
+        "findings": [],
+        "duplicates": []
+      },
+      "cliExitCode": 0,
+      "htmlSha256": "939325218990c79a7128054bbb7eeeb990a6a24d266331cfbf0f35fdb253d3c6",
+      "unknownMcp": true,
+      "provider": "openai"
+    }
+  ],
+  "unsupportedFiniteEstimates": 11
+}

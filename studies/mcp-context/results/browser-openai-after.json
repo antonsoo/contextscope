@@ -1,0 +1,184 @@
+{
+  "results": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "width": 1440,
+      "expectation": "after",
+      "base": "http://127.0.0.1:4670/contextscope/",
+      "offlineAfterControlBootstrap": true,
+      "flows": [
+        {
+          "name": "openai-connector-same-server",
+          "provider": "openai",
+          "jsonSha256": "c163157ab75f84606ce625fbccaac715e4fda4a8c7d0b68656ff28203c97f01c",
+          "htmlSha256": "83cbd3186fc4ef73c98aa3324f0959d7feb2e1c12a574a15977dab97c5cb6949",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "openai-recorded-tool-listing",
+          "provider": "openai",
+          "jsonSha256": "936a9ff176f5c9a43f344a0845c5f7f43e6a0295f7c735adfb85d3b1577bc27b",
+          "htmlSha256": "8c29d706e4c508567aeea3251f5250dd3f6c1f8032db0b33bc63c1f25652d7a4",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "openai-local-tools-control",
+          "provider": "openai",
+          "jsonSha256": "631dbbbab33f3d10b41c72a14663bc4c56b9f169bcdb7a487dc9c20590adc9cd",
+          "htmlSha256": "fb57482f33a7775b83fc9082ee0f5cafdcb0995800b279d59578572e3f86f01d",
+          "exactCliReport": true,
+          "rawPreserved": false,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        }
+      ],
+      "errors": [],
+      "requests": []
+    },
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "width": 375,
+      "expectation": "after",
+      "base": "http://127.0.0.1:4670/contextscope/",
+      "offlineAfterControlBootstrap": true,
+      "flows": [
+        {
+          "name": "openai-connector-same-server",
+          "provider": "openai",
+          "jsonSha256": "c163157ab75f84606ce625fbccaac715e4fda4a8c7d0b68656ff28203c97f01c",
+          "htmlSha256": "4709fc8747b63efff9f4c92a6450252e32d808b9498a955762b0414a9dd733db",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "openai-recorded-tool-listing",
+          "provider": "openai",
+          "jsonSha256": "936a9ff176f5c9a43f344a0845c5f7f43e6a0295f7c735adfb85d3b1577bc27b",
+          "htmlSha256": "e999d2e5d60651ecc0da91940c36ab1256ffed9ed030234ecb38b8817df6bc1a",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "openai-local-tools-control",
+          "provider": "openai",
+          "jsonSha256": "631dbbbab33f3d10b41c72a14663bc4c56b9f169bcdb7a487dc9c20590adc9cd",
+          "htmlSha256": "8e5ab9d66a056d5c6e9bbd363a39ebbddbcd2badc99d3d89dff129e4c38a0274",
+          "exactCliReport": true,
+          "rawPreserved": false,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        }
+      ],
+      "errors": [],
+      "requests": []
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "width": 1440,
+      "expectation": "after",
+      "base": "http://127.0.0.1:4670/contextscope/",
+      "offlineAfterControlBootstrap": true,
+      "flows": [
+        {
+          "name": "openai-connector-same-server",
+          "provider": "openai",
+          "jsonSha256": "c163157ab75f84606ce625fbccaac715e4fda4a8c7d0b68656ff28203c97f01c",
+          "htmlSha256": "58a85f5015f0cc3c97ddeec6c8ad00573dabeb38eee7ec1b9c45a20ec0fb6f43",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "openai-recorded-tool-listing",
+          "provider": "openai",
+          "jsonSha256": "936a9ff176f5c9a43f344a0845c5f7f43e6a0295f7c735adfb85d3b1577bc27b",
+          "htmlSha256": "902abd3835425bc270aee91033e744eb2c45deb3b4f6031d1a3d4c849a85943a",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "openai-local-tools-control",
+          "provider": "openai",
+          "jsonSha256": "631dbbbab33f3d10b41c72a14663bc4c56b9f169bcdb7a487dc9c20590adc9cd",
+          "htmlSha256": "af68147a9fc342539421da2976ce9012ad0e345234da541dadc218431aa0d4dc",
+          "exactCliReport": true,
+          "rawPreserved": false,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        }
+      ],
+      "errors": [],
+      "requests": []
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "width": 375,
+      "expectation": "after",
+      "base": "http://127.0.0.1:4670/contextscope/",
+      "offlineAfterControlBootstrap": true,
+      "flows": [
+        {
+          "name": "openai-connector-same-server",
+          "provider": "openai",
+          "jsonSha256": "c163157ab75f84606ce625fbccaac715e4fda4a8c7d0b68656ff28203c97f01c",
+          "htmlSha256": "0a74399347752f186d21fe16357f7212588d65065fd43409be7839735f7edf15",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "openai-recorded-tool-listing",
+          "provider": "openai",
+          "jsonSha256": "936a9ff176f5c9a43f344a0845c5f7f43e6a0295f7c735adfb85d3b1577bc27b",
+          "htmlSha256": "fb6ee08c23e6832c408110ef9e7fe4c40b895eb88204f2c00ab1318fba8dd077",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "openai-local-tools-control",
+          "provider": "openai",
+          "jsonSha256": "631dbbbab33f3d10b41c72a14663bc4c56b9f169bcdb7a487dc9c20590adc9cd",
+          "htmlSha256": "36931c5f02ee1f0f8335e10df1d95afc508bea7e8e02d4ed25ac328b5747d593",
+          "exactCliReport": true,
+          "rawPreserved": false,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        }
+      ],
+      "errors": [],
+      "requests": []
+    }
+  ]
+}

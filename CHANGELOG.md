@@ -26,6 +26,13 @@ of public SWE-bench agent runs; see `studies/real-trajectories/`.
 
 ### Fixed
 
+- Keep Anthropic MCP servers/toolsets/listings and Responses MCP declarations
+  and protocol items unmodeled instead of counting configuration JSON as the
+  resolved tool prompt. Preserve visible text and recorded usage, withhold
+  unsupported totals/cache costs, retain original units and refuse scalar
+  calibration of missing MCP context. Keep ordinary local-tool controls
+  unchanged. [SDK captures, real catalog and CLI/browser replay](studies/mcp-context/README.md).
+
 - Preserve unresolved OpenAI Responses history instead of assigning complete
   token totals and cache hits to the visible input alone. Retain stored response,
   conversation and reusable-prompt references, including SDK item references

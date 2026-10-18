@@ -1,0 +1,212 @@
+{
+  "results": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "width": 1440,
+      "expectation": "after",
+      "base": "http://127.0.0.1:4670/contextscope/",
+      "offlineAfterControlBootstrap": true,
+      "flows": [
+        {
+          "name": "connector-server-switch",
+          "jsonSha256": "b5500b6e97f642b2753dbba8956e97b49c83b14dd125890404b17b8c9d5161fa",
+          "htmlSha256": "5d7affed78cc1cef4ceed6066f30d16d4b837e62a13341c0d17a5be1ac9f279c",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": true,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "pinned-connector",
+          "jsonSha256": "f80ab61d7ec96f22cb080967f2e65eb1838ab06f7e71df8a38d9da14346717b1",
+          "htmlSha256": "5df06368189df8a2edb9c52740fb69a9657b3fd781d06b2250924e2e11a85edb",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": true,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "recorded-tool-listing",
+          "jsonSha256": "5d12bad9cb167110a623f8388c12c417f141584ef8135e9943aa50a42ae47cd3",
+          "htmlSha256": "b78ed63f2afcd8e7be7afa871ea4b8e21834276677ef6d64eedb2017b3944307",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": true,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "local-tools-control",
+          "jsonSha256": "2b04a0deb2ac31b9968c4f02bd35129f2aad8bafdf788537738b2909d98c5ef8",
+          "htmlSha256": "398f45e936bbcc18fb52c98cdc52cef9903b2abd0c4739c2526b32835fe8e221",
+          "exactCliReport": true,
+          "rawPreserved": false,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        }
+      ],
+      "errors": [],
+      "requests": []
+    },
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "width": 375,
+      "expectation": "after",
+      "base": "http://127.0.0.1:4670/contextscope/",
+      "offlineAfterControlBootstrap": true,
+      "flows": [
+        {
+          "name": "connector-server-switch",
+          "jsonSha256": "b5500b6e97f642b2753dbba8956e97b49c83b14dd125890404b17b8c9d5161fa",
+          "htmlSha256": "a2c992a2def3334f2b2c6ab133195a717ea5609de81a1ead9fba1224d438fa77",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": true,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "pinned-connector",
+          "jsonSha256": "f80ab61d7ec96f22cb080967f2e65eb1838ab06f7e71df8a38d9da14346717b1",
+          "htmlSha256": "d206ae2ebeaabb7763c123a743a77c213c8bf3ffade7b8c8305a0af691d4834c",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": true,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "recorded-tool-listing",
+          "jsonSha256": "5d12bad9cb167110a623f8388c12c417f141584ef8135e9943aa50a42ae47cd3",
+          "htmlSha256": "961e9340d8b02109f4d03c35dedc01637723fb2309a50e1e3a7a781d597695a3",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": true,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "local-tools-control",
+          "jsonSha256": "2b04a0deb2ac31b9968c4f02bd35129f2aad8bafdf788537738b2909d98c5ef8",
+          "htmlSha256": "43591b63c4b712d8acab971c7003f790252ebfdbb6729b7e8cf75090ba322bfa",
+          "exactCliReport": true,
+          "rawPreserved": false,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        }
+      ],
+      "errors": [],
+      "requests": []
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "width": 1440,
+      "expectation": "after",
+      "base": "http://127.0.0.1:4670/contextscope/",
+      "offlineAfterControlBootstrap": true,
+      "flows": [
+        {
+          "name": "connector-server-switch",
+          "jsonSha256": "b5500b6e97f642b2753dbba8956e97b49c83b14dd125890404b17b8c9d5161fa",
+          "htmlSha256": "ebfe35b674d9f1773b8702d6976312904d68ebd4df1396e1a4f4e179f05d3f0c",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": true,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "pinned-connector",
+          "jsonSha256": "f80ab61d7ec96f22cb080967f2e65eb1838ab06f7e71df8a38d9da14346717b1",
+          "htmlSha256": "e94c9d70fdd5c8634126c00733e5f6fb450a28365c538e94f5d2409111c33ec5",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": true,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "recorded-tool-listing",
+          "jsonSha256": "5d12bad9cb167110a623f8388c12c417f141584ef8135e9943aa50a42ae47cd3",
+          "htmlSha256": "67e0f1a11775da90f442b28cd1964c9f3315fe9cab1a9a07499b2b4ba4dd1a66",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": true,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "local-tools-control",
+          "jsonSha256": "2b04a0deb2ac31b9968c4f02bd35129f2aad8bafdf788537738b2909d98c5ef8",
+          "htmlSha256": "6c1bc80c843a0aa949e645c97035d73a0b934009bad0e5edcf6e933d4f9de9b5",
+          "exactCliReport": true,
+          "rawPreserved": false,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        }
+      ],
+      "errors": [],
+      "requests": []
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "width": 375,
+      "expectation": "after",
+      "base": "http://127.0.0.1:4670/contextscope/",
+      "offlineAfterControlBootstrap": true,
+      "flows": [
+        {
+          "name": "connector-server-switch",
+          "jsonSha256": "b5500b6e97f642b2753dbba8956e97b49c83b14dd125890404b17b8c9d5161fa",
+          "htmlSha256": "8ecad4c93a0a8abc9d5324932f21593f350c1ec66b7338b43b874d06a0e32f57",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": true,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "pinned-connector",
+          "jsonSha256": "f80ab61d7ec96f22cb080967f2e65eb1838ab06f7e71df8a38d9da14346717b1",
+          "htmlSha256": "665746f5fde9d145de11ff4e3587d12f78220711605a9be0b8c44dcccf1c2c1a",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": true,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "recorded-tool-listing",
+          "jsonSha256": "5d12bad9cb167110a623f8388c12c417f141584ef8135e9943aa50a42ae47cd3",
+          "htmlSha256": "8ed2645da86bad2eb40f933a3e140f405bf20f26d9c27ad7fc46be8f03a66704",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": true,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "local-tools-control",
+          "jsonSha256": "2b04a0deb2ac31b9968c4f02bd35129f2aad8bafdf788537738b2909d98c5ef8",
+          "htmlSha256": "f7e81f2a9b306406cc25445440d394464a6d1d92ff54fd4c8599dcc06c5a1e12",
+          "exactCliReport": true,
+          "rawPreserved": false,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        }
+      ],
+      "errors": [],
+      "requests": []
+    }
+  ]
+}

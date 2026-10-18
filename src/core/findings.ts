@@ -87,7 +87,14 @@ export function computeFindings(
     const modelInfo = provider === "anthropic" ? findAnthropicModel(resolveModel(provider, model, [request.model]).id) : undefined;
     const cacheStep = cacheSimulation.actual[i];
     const mediaSegments = request.segments.filter(s => s.unmodeledContent?.length);
-    const contextSegments = request.segments.filter(s => s.unmodeledContext);
+    const mcpSegments = request.segments.filter(s => s.unmodeledContext === "mcp_tools");
+    if (mcpSegments.length) push(findings, {
+      kind: provider === "anthropic" ? "anthropic_mcp_context" : "openai_mcp_context", severity: "warning", requestIndex: i,
+      title: "MCP tool context is not modeled",
+      detail: "The MCP connector resolves tools on the provider side. Server connection settings and toolset configuration are not the loaded definitions or their model-facing rendering. Pinned lists and recorded listings remain inspectable, but this estimator does not implement their MCP rendering either. Visible text retains its counts; whole-request totals, context usage and sequence cache partitions and costs are unavailable. Nothing is fetched from a server URL, and captured provider usage is retained without inventing an estimated comparison.",
+      segmentIds: mcpSegments.map(s => s.id),
+    });
+    const contextSegments = request.segments.filter(s => s.unmodeledContext && s.unmodeledContext !== "mcp_tools");
     if (contextSegments.length) push(findings, {
       kind: "openai_unmodeled_context", severity: "warning", requestIndex: i,
       title: "Stored or opaque context is unresolved",

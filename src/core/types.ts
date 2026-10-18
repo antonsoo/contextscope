@@ -14,7 +14,7 @@ export type Provider = "anthropic" | "openai";
 /** Null means this content cannot be counted locally, never zero tokens. */
 export type TokenCount = number | null;
 export type MediaKind = "image" | "document" | "audio" | "file";
-export type UnmodeledContextKind = "previous_response" | "conversation" | "prompt_template" | "item_reference" | "reasoning" | "compaction";
+export type UnmodeledContextKind = "previous_response" | "conversation" | "prompt_template" | "item_reference" | "reasoning" | "compaction" | "mcp_tools";
 
 /** Eight content categories plus unresolved references, which receive no treemap area. */
 export type SegmentCategory =
@@ -145,6 +145,8 @@ export type FindingSeverity = "info" | "warning" | "error";
 
 export type FindingKind =
   | "openai_unmodeled_context"
+  | "anthropic_mcp_context"
+  | "openai_mcp_context"
   | "unmodeled_media"
   | "anthropic_injected_prompt"
   | "anthropic_output_cache_scope"

@@ -1,4 +1,4 @@
-import type { CacheControl, CacheTtl, ParsedRequest, Segment, SegmentCategory } from "./types.js";
+import type { CacheControl, CacheTtl, ParsedRequest, Segment, SegmentCategory, UnmodeledContextKind } from "./types.js";
 import { asText, blockJson, isRecord } from "./json-utils.js";
 import { countTokens, type TokenCounter } from "./token-counter.js";
 import { attachPromptIdentity } from "./prompt-identity.js";
@@ -70,13 +70,15 @@ function makeSegment(params: {
   path: string;
   text: string;
   raw: unknown;
+  unmodeledContext?: UnmodeledContextKind;
   cacheControl?: CacheControl | undefined;
 }, counter: TokenCounter): Segment {
   const { cacheControl, ...rest } = params;
   // `text` is whatever the log had in that position: a number or an object is kept as its JSON.
   const media = unmodeledMedia(params.raw, "anthropic");
-  const text = media.length ? "" : asText(params.text);
-  const counts = media.length ? { openai: null, claude: null } : counter(text);
+  const unavailable = media.length > 0 || params.unmodeledContext !== undefined;
+  const text = unavailable ? "" : asText(params.text);
+  const counts = unavailable ? { openai: null, claude: null } : counter(text);
   return {
     ...rest,
     text,
@@ -111,17 +113,31 @@ export function parseAnthropicRequest(raw: unknown, index: number, counter: Toke
   const segments: Segment[] = [];
   anthropicInjectedSettings({ raw: obj, index });
 
+  // The connector resolves tool definitions and their prompt rendering on the
+  // provider side. A server URL is not those definitions. Retain connection
+  // identity too: two servers with the same toolset name can expose different
+  // tools. Pinned lists remain inspectable, but their MCP rendering is not
+  // implemented by this estimator either.
+  const servers: unknown[] = Array.isArray(obj["mcp_servers"]) ? obj["mcp_servers"] : [];
+  servers.forEach((server, i) => {
+    const path = `mcp_servers[${i}]`;
+    segments.push(seg({ id: path, category: "reference", label: `MCP server ${i + 1}`,
+      path, text: "", raw: server, unmodeledContext: "mcp_tools" }));
+  });
+
   const tools: unknown[] = Array.isArray(obj["tools"]) ? obj["tools"] : [];
   tools.forEach((tool, i) => {
+    const mcp = isRecord(tool) && tool.type === "mcp_toolset";
     const name = isRecord(tool) && typeof tool["name"] === "string" ? tool["name"] : `tool_${i}`;
     segments.push(
       seg({
         id: `tools[${i}]`,
         category: "tools",
-        label: `tool: ${name}`,
+        label: mcp ? `MCP toolset ${i + 1}` : `tool: ${name}`,
         path: `tools[${i}]`,
-        text: blockJson(tool),
+        text: mcp ? "" : blockJson(tool),
         raw: tool,
+        ...(mcp ? { unmodeledContext: "mcp_tools" as const } : {}),
         cacheControl: readCacheControl(tool, `${location}.tools[${i}]`),
       }),
     );
@@ -184,6 +200,12 @@ export function parseAnthropicRequest(raw: unknown, index: number, counter: Toke
       const block: AnthropicBlock = entry;
       const cacheControl = readCacheControl(block, `${location}.${path}`);
       switch (block.type) {
+        case "mcp_tool_listing":
+        case "mcp_tool_use":
+        case "mcp_tool_result":
+          segments.push(seg({ id, category: "reference", label: `message ${mi + 1} ${block.type === "mcp_tool_listing" ? "MCP tool listing" : block.type}`,
+            path, text: "", raw: block, unmodeledContext: "mcp_tools", cacheControl }));
+          break;
         case "text":
           segments.push(
             seg({

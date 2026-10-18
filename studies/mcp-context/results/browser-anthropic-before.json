@@ -1,0 +1,212 @@
+{
+  "results": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "width": 1440,
+      "expectation": "before",
+      "base": "https://antonsoo.github.io/contextscope/",
+      "offlineAfterControlBootstrap": true,
+      "flows": [
+        {
+          "name": "connector-server-switch",
+          "jsonSha256": "b8d6f2a8e263cda86a7998b441f3672dc6ca2fd84a67ce23bdff15badb3c9a26",
+          "htmlSha256": "fb43edc6ef095a23501841a64f85862e84fd3f4f9680b505cced44b535069498",
+          "exactCliReport": true,
+          "rawPreserved": false,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "pinned-connector",
+          "jsonSha256": "16b2b70488c4ce9d529469f71669d7d6661425313d52b56a5bbd9f4b38971bb3",
+          "htmlSha256": "6266ad67b454f2d977c8796047cea73388acd68ba59f0c0c84953ce06b8cd07f",
+          "exactCliReport": true,
+          "rawPreserved": false,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "recorded-tool-listing",
+          "jsonSha256": "4ecf2f937f2429426ce36c206edcbe7fca19d5bc152c904d4a9be6a443216d02",
+          "htmlSha256": "fac7750413deddc1132dc44e5f3450df86eb9a0787b6ffd8eec8fedce4119732",
+          "exactCliReport": true,
+          "rawPreserved": false,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "local-tools-control",
+          "jsonSha256": "2b04a0deb2ac31b9968c4f02bd35129f2aad8bafdf788537738b2909d98c5ef8",
+          "htmlSha256": "5d170bdfc18d78321453757f63826cde20cbcc53662aa06c273a7d0e774daff4",
+          "exactCliReport": true,
+          "rawPreserved": false,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        }
+      ],
+      "errors": [],
+      "requests": []
+    },
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "width": 375,
+      "expectation": "before",
+      "base": "https://antonsoo.github.io/contextscope/",
+      "offlineAfterControlBootstrap": true,
+      "flows": [
+        {
+          "name": "connector-server-switch",
+          "jsonSha256": "b8d6f2a8e263cda86a7998b441f3672dc6ca2fd84a67ce23bdff15badb3c9a26",
+          "htmlSha256": "e93cbac0b50a33145fa7fa22fb1003d234bcb535dc89210945c326224d70bcd8",
+          "exactCliReport": true,
+          "rawPreserved": false,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "pinned-connector",
+          "jsonSha256": "16b2b70488c4ce9d529469f71669d7d6661425313d52b56a5bbd9f4b38971bb3",
+          "htmlSha256": "9b78c00c865740fb477c9a409a8e9e3f4db8b15fcd442c1e3404a4792a6603f0",
+          "exactCliReport": true,
+          "rawPreserved": false,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "recorded-tool-listing",
+          "jsonSha256": "4ecf2f937f2429426ce36c206edcbe7fca19d5bc152c904d4a9be6a443216d02",
+          "htmlSha256": "05c7c49810740090edb2580d029cb2721ed4a50c1b6003132f312408ff3aceae",
+          "exactCliReport": true,
+          "rawPreserved": false,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "local-tools-control",
+          "jsonSha256": "2b04a0deb2ac31b9968c4f02bd35129f2aad8bafdf788537738b2909d98c5ef8",
+          "htmlSha256": "990219fc470361baf1c9d532919d4dcedba1e4eb9c00f01c4ca6c91fc4cefff2",
+          "exactCliReport": true,
+          "rawPreserved": false,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        }
+      ],
+      "errors": [],
+      "requests": []
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "width": 1440,
+      "expectation": "before",
+      "base": "https://antonsoo.github.io/contextscope/",
+      "offlineAfterControlBootstrap": true,
+      "flows": [
+        {
+          "name": "connector-server-switch",
+          "jsonSha256": "b8d6f2a8e263cda86a7998b441f3672dc6ca2fd84a67ce23bdff15badb3c9a26",
+          "htmlSha256": "08f2ba126df4be26956b507b1d6f5b1ac48dd52233d6870ff89ca1c896766654",
+          "exactCliReport": true,
+          "rawPreserved": false,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "pinned-connector",
+          "jsonSha256": "16b2b70488c4ce9d529469f71669d7d6661425313d52b56a5bbd9f4b38971bb3",
+          "htmlSha256": "2ccebda985abad98282d8abd2715503bdef7b14d1fbce98ec7ef3c974ce83e76",
+          "exactCliReport": true,
+          "rawPreserved": false,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "recorded-tool-listing",
+          "jsonSha256": "4ecf2f937f2429426ce36c206edcbe7fca19d5bc152c904d4a9be6a443216d02",
+          "htmlSha256": "aa2c5675d3d7d35f58e75874db3d7af00c1c40375f4242fcb654794e602d0df6",
+          "exactCliReport": true,
+          "rawPreserved": false,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "local-tools-control",
+          "jsonSha256": "2b04a0deb2ac31b9968c4f02bd35129f2aad8bafdf788537738b2909d98c5ef8",
+          "htmlSha256": "aa7533e77eec15d03cfcb23c5a99cf9951bf8d0c4dbcf26ac5393b838949233f",
+          "exactCliReport": true,
+          "rawPreserved": false,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        }
+      ],
+      "errors": [],
+      "requests": []
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "width": 375,
+      "expectation": "before",
+      "base": "https://antonsoo.github.io/contextscope/",
+      "offlineAfterControlBootstrap": true,
+      "flows": [
+        {
+          "name": "connector-server-switch",
+          "jsonSha256": "b8d6f2a8e263cda86a7998b441f3672dc6ca2fd84a67ce23bdff15badb3c9a26",
+          "htmlSha256": "7cbac69ee35df987fb8af08892e819e9b28b0cb8d28ac4a22154b9e449899c6e",
+          "exactCliReport": true,
+          "rawPreserved": false,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "pinned-connector",
+          "jsonSha256": "16b2b70488c4ce9d529469f71669d7d6661425313d52b56a5bbd9f4b38971bb3",
+          "htmlSha256": "03dcee51e7ec9eecc5dd95a1ca167c26fd01edce4a5fd1251bfd967cbeeeba54",
+          "exactCliReport": true,
+          "rawPreserved": false,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "recorded-tool-listing",
+          "jsonSha256": "4ecf2f937f2429426ce36c206edcbe7fca19d5bc152c904d4a9be6a443216d02",
+          "htmlSha256": "2ff587fd2aca42728123388d3a6c5074c615c33fc5d1a035fc2c65bb1e91c632",
+          "exactCliReport": true,
+          "rawPreserved": false,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "local-tools-control",
+          "jsonSha256": "2b04a0deb2ac31b9968c4f02bd35129f2aad8bafdf788537738b2909d98c5ef8",
+          "htmlSha256": "3f1a21f040178d4db0a06db606c85905d7ae0c74cc998082224624b724e7b276",
+          "exactCliReport": true,
+          "rawPreserved": false,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        }
+      ],
+      "errors": [],
+      "requests": []
+    }
+  ]
+}

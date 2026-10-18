@@ -48,7 +48,7 @@ function fail(message: string, showHelp = false): never {
 async function calibrate(input: string, opts: CliArgs): Promise<CalibrationResult> {
   const parse = parseInput(input, opts.format);
   if (parse.format !== "anthropic") fail("--calibrate uses Anthropic's count_tokens endpoint, so it only applies to Anthropic requests.");
-  if (parse.requests.some(r => r.segments.some(s => s.claudeTokensEstimate === null))) fail("--calibrate cannot choose a largest request or recover missing media token counts. Keep measured counts as reported usage; a scalar calibration cannot establish media cache boundaries.");
+  if (parse.requests.some(r => r.segments.some(s => s.claudeTokensEstimate === null))) fail("--calibrate cannot choose a largest request or recover unmodeled media or tool context. Keep measured counts as reported usage; a scalar calibration cannot establish missing cache boundaries.");
   const apiKey = process.env["ANTHROPIC_API_KEY"];
   if (!apiKey) fail("--calibrate needs an Anthropic API key in ANTHROPIC_API_KEY (count_tokens is free, but authenticated).");
   const largest = parse.requests.reduce((best, r) => (total(r) > total(best) ? r : best));

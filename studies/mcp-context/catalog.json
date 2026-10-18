@@ -1,0 +1,53 @@
+{
+  "endpoint": "https://developers.openai.com/mcp",
+  "fetchedAt": "2026-10-18T20:49:31.691Z",
+  "sdk": {
+    "name": "@modelcontextprotocol/sdk",
+    "version": "1.31.0"
+  },
+  "scope": "Decoded native SDK tools/list snapshot. Read-only metadata discovery, no model/provider call and no MCP tool invocation. Full decoded metadata is cached locally; the public ledger retains names, sizes and fingerprints.",
+  "complete": true,
+  "pages": 1,
+  "toolCount": 5,
+  "decodedSnapshot": {
+    "bytes": 3366,
+    "sha256": "bbe56ffb45376de58e651a9f8af04feed3d98dee44028ef1fb0d92f365e4f282"
+  },
+  "tools": [
+    {
+      "name": "search_openai_docs",
+      "descriptionBytes": 321,
+      "descriptionSha256": "084db1128ebccde5e7d7e563903955cb762ec7327cdf62a8286f761cbf6ccdf9",
+      "schemaBytes": 224,
+      "schemaSha256": "dd9eefa79a9e410dfe72082163a62f079cfbeccb578292122f68cc37fa5314a3"
+    },
+    {
+      "name": "list_openai_docs",
+      "descriptionBytes": 444,
+      "descriptionSha256": "4a49b634efd70861e664eda63a536738859c54270b2feba757f5210164d8627f",
+      "schemaBytes": 163,
+      "schemaSha256": "695540fcb320c33ffdf9d2e1240bf9e05fe071719cbdecbd95306c44aabe7092"
+    },
+    {
+      "name": "fetch_openai_doc",
+      "descriptionBytes": 454,
+      "descriptionSha256": "bc22986c74b87eb5d5d8489c84d8d69d6d958fdc2c11967e296664861a71f9d8",
+      "schemaBytes": 168,
+      "schemaSha256": "d065913dd4c72a98ac16a8fc77a0690ae984538df0c9cb5f70369c95eaca245c"
+    },
+    {
+      "name": "list_api_endpoints",
+      "descriptionBytes": 64,
+      "descriptionSha256": "442bde145817e56356556e3c4d520be922987a62fe39672a58abd7fd9a51fbaa",
+      "schemaBytes": 85,
+      "schemaSha256": "55afd3d22cd35ef3b5e3dc2e2651ad10a586f230804ece94dcd65ac7867639fb"
+    },
+    {
+      "name": "get_openapi_spec",
+      "descriptionBytes": 129,
+      "descriptionSha256": "d3952dd34509de8590b71bb8dfd45000df030dbf9b719dc9c6c503b346040f69",
+      "schemaBytes": 248,
+      "schemaSha256": "982ea3fe5c7aefff9c985cdda1d411e25728c6acd160f23667fc09735ee0792c"
+    }
+  ]
+}

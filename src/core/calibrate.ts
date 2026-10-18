@@ -50,6 +50,9 @@ export interface CountTokensOptions {
 
 /** The count_tokens request body for one parsed request, priced as `model`. */
 export function countTokensBody(request: ParsedRequest, model: string): Record<string, unknown> {
+  if (request.segments.some(s => s.unmodeledContext === "mcp_tools")) {
+    throw new CalibrationError("Cannot construct a count_tokens request for unmodeled MCP tool context. Omitting the server configuration would count a different prompt.");
+  }
   const raw = request.raw !== null && typeof request.raw === "object" ? (request.raw as Record<string, unknown>) : {};
   const body: Record<string, unknown> = { model };
   for (const field of PROMPT_FIELDS) if (raw[field] !== undefined) body[field] = raw[field];
@@ -112,7 +115,7 @@ export async function countRequestTokens(apiKey: string, model: string, request:
 }
 
 function requireCountableRequest(request: ParsedRequest): void {
-  if (hasUnmodeledTokens([request], "anthropic")) throw new CalibrationError("Cannot apply a scalar calibration to unmodeled media. A whole-request count cannot recover missing media segments or their cache boundaries. Keep the measured count as reported usage instead.");
+  if (hasUnmodeledTokens([request], "anthropic")) throw new CalibrationError("Cannot apply a scalar calibration to unmodeled media or tool context. A whole-request count cannot recover missing segments or their cache boundaries. Keep the measured count as reported usage instead.");
 }
 
 function errorMessage(body: string): string {

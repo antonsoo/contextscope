@@ -1,0 +1,245 @@
+{
+  "scope": "Capture native SDK connector bodies, with synthetic replies over MockTransport.\n\nNo provider or MCP server is contacted. SDK serialization establishes the wire\nshape, not live acceptance, cache behavior, provider token counts or charges.\nReported usage and the returned tool listing are explicitly synthetic controls.\n",
+  "python": "3.14.7",
+  "anthropic": "1.15.0",
+  "openai": "3.35.1",
+  "publicCatalog": {
+    "ledger": "catalog.json",
+    "sha256": "e4ef7689202fbb32384781af656b18020c1b06ab00ea070509042366bdcde2c7",
+    "endpoint": "https://developers.openai.com/mcp",
+    "toolCount": 5
+  },
+  "transport": {
+    "module": "httpx2",
+    "version": "2.14.0"
+  },
+  "cases": [
+    {
+      "name": "local-tools-control",
+      "file": "local-tools-control.jsonl.gz",
+      "provider": "anthropic",
+      "unmodeledMcp": false,
+      "betaHeaders": [
+        "mcp-client-2026-09-15",
+        "mcp-client-2026-09-15"
+      ],
+      "note": "Ordinary local tool definitions; unchanged token, cache and usage comparison control.",
+      "raw": {
+        "bytes": 128906,
+        "sha256": "ac090490f8237e67ac1bbead8d52939a80958cab0202224204d8f31758ec9b9a"
+      },
+      "gzip": {
+        "bytes": 960,
+        "sha256": "296d7b8b447532f05033684fae0bdacd3781d396712ef4312b6b4fe46750bf6f"
+      }
+    },
+    {
+      "name": "connector-server-switch",
+      "file": "connector-server-switch.jsonl.gz",
+      "provider": "anthropic",
+      "unmodeledMcp": true,
+      "betaHeaders": [
+        "mcp-client-2026-09-15",
+        "mcp-client-2026-09-15"
+      ],
+      "note": null,
+      "raw": {
+        "bytes": 128845,
+        "sha256": "8757f40f34a09f82579884076abb91bbdb84118cba92e7677af0a92b5dbc6f1f"
+      },
+      "gzip": {
+        "bytes": 929,
+        "sha256": "98589b1ca9d5e9ac2ea0ddbbd2dbfe38004a6a9ca2a3fe68641a30712ee18de2"
+      }
+    },
+    {
+      "name": "connector-same-server",
+      "file": "connector-same-server.jsonl.gz",
+      "provider": "anthropic",
+      "unmodeledMcp": true,
+      "betaHeaders": [
+        "mcp-client-2026-09-15",
+        "mcp-client-2026-09-15"
+      ],
+      "note": null,
+      "raw": {
+        "bytes": 128846,
+        "sha256": "eec304d91390ec5f6adc11108086ad490fce55d995498306621250d4cded2e52"
+      },
+      "gzip": {
+        "bytes": 930,
+        "sha256": "c7706b6e5901072a3714db4b65486c966494191907edd5d20719f3a68420e9b9"
+      }
+    },
+    {
+      "name": "public-catalog-connector",
+      "file": "public-catalog-connector.jsonl.gz",
+      "provider": "anthropic",
+      "unmodeledMcp": true,
+      "betaHeaders": [
+        "mcp-client-2026-09-15",
+        "mcp-client-2026-09-15"
+      ],
+      "note": "The endpoint has a separately discovered public catalog. SDK replies and usage remain authored mocks, not provider observations.",
+      "raw": {
+        "bytes": 128854,
+        "sha256": "44b61ca990d7d963d388d36ec58b92357b7984b5fc8ebb47b9eb31b55eaeb318"
+      },
+      "gzip": {
+        "bytes": 935,
+        "sha256": "f9a1fc64ccef7a0547c770e12ad3cec64e2476decd8c8f3e2186a457d7b10e6b"
+      }
+    },
+    {
+      "name": "deferred-connector",
+      "file": "deferred-connector.jsonl.gz",
+      "provider": "anthropic",
+      "unmodeledMcp": true,
+      "betaHeaders": [
+        "mcp-client-2026-09-15",
+        "mcp-client-2026-09-15"
+      ],
+      "note": null,
+      "raw": {
+        "bytes": 128926,
+        "sha256": "028db7e37eac871589d14af5eba38abb55188b3b3f6aa796f1a62a808420f6b8"
+      },
+      "gzip": {
+        "bytes": 979,
+        "sha256": "33394aca33eafec4adcc77bf47f535babc745922f6f86ebb121fd135f30a302c"
+      }
+    },
+    {
+      "name": "pinned-connector",
+      "file": "pinned-connector.jsonl.gz",
+      "provider": "anthropic",
+      "unmodeledMcp": true,
+      "betaHeaders": [
+        "mcp-client-2026-09-15",
+        "mcp-client-2026-09-15"
+      ],
+      "note": "Definitions are supplied, but this estimator does not implement MCP's provider rendering.",
+      "raw": {
+        "bytes": 129216,
+        "sha256": "4d0d8ad7ea300a1d57caf66268afb6f3960120b834cf350709138a5b9b15ae17"
+      },
+      "gzip": {
+        "bytes": 1101,
+        "sha256": "339c01fb3c3c3ddf8ee2505c7cb6a4106552e4e5c4e206bad40c6aeb015320da"
+      }
+    },
+    {
+      "name": "legacy-connector",
+      "file": "legacy-connector.jsonl.gz",
+      "provider": "anthropic",
+      "unmodeledMcp": true,
+      "betaHeaders": [
+        "mcp-client-2025-04-04",
+        "mcp-client-2025-04-04"
+      ],
+      "note": "Documented deprecated layout; serialization does not establish current provider acceptance.",
+      "raw": {
+        "bytes": 128792,
+        "sha256": "599155b564e0aaf51161dca77a3f7bba35639377465fb331e24f8b4af5719d26"
+      },
+      "gzip": {
+        "bytes": 943,
+        "sha256": "ac646eb8da5b88f47385e051169cac5d9e46a33061e484818f38d6316f0dfe78"
+      }
+    },
+    {
+      "name": "recorded-tool-listing",
+      "file": "recorded-tool-listing.jsonl.gz",
+      "provider": "anthropic",
+      "unmodeledMcp": true,
+      "betaHeaders": [
+        "mcp-client-2026-09-15",
+        "mcp-client-2026-09-15"
+      ],
+      "note": "Synthetic listing decoded as BetaMCPToolListingBlock and reserialized by the SDK.",
+      "raw": {
+        "bytes": 129624,
+        "sha256": "3be1669342a1a0217e804b2f80d241076b9a8bb0044880217193062cc424bf40"
+      },
+      "gzip": {
+        "bytes": 1302,
+        "sha256": "61fe1980545fba8004b5cd77f3c1bcff107314f773762c9e3021f9d60c20e0c3"
+      }
+    },
+    {
+      "name": "openai-local-tools-control",
+      "file": "openai-local-tools-control.jsonl.gz",
+      "provider": "openai",
+      "unmodeledMcp": false,
+      "note": null,
+      "raw": {
+        "bytes": 128860,
+        "sha256": "89823e13f344f0da9b921d7163ce3e14951423e649308fd5753a0b3d9e8cfddc"
+      },
+      "gzip": {
+        "bytes": 898,
+        "sha256": "1adff3bf48f7f1ea48f983bdbedab512509fd2e89f37933fbce2b608fe842ab8"
+      }
+    },
+    {
+      "name": "openai-connector-same-server",
+      "file": "openai-connector-same-server.jsonl.gz",
+      "provider": "openai",
+      "unmodeledMcp": true,
+      "note": null,
+      "raw": {
+        "bytes": 128710,
+        "sha256": "1ecbf028dc288165bfce024366f1efc2fcf18a26d11997a0ede9ee12b978ba9a"
+      },
+      "gzip": {
+        "bytes": 857,
+        "sha256": "3e9d5f6a346db8b5a9c9d0795d01d7e154a86d5fd56cc55a7234c5f0872436a1"
+      }
+    },
+    {
+      "name": "openai-public-catalog-connector",
+      "file": "openai-public-catalog-connector.jsonl.gz",
+      "provider": "openai",
+      "unmodeledMcp": true,
+      "note": "The endpoint has a separately discovered public catalog. SDK replies and usage remain authored mocks, not provider observations.",
+      "raw": {
+        "bytes": 128718,
+        "sha256": "fbeddc4e94f9f379da7146281a082b788118b5992e334a7fc2a5132fec3ae810"
+      },
+      "gzip": {
+        "bytes": 860,
+        "sha256": "3698f0f393d827a9187692a0616508aeadae74e8d3ebbbb9ee940b88fb63099d"
+      }
+    },
+    {
+      "name": "openai-connector-server-switch",
+      "file": "openai-connector-server-switch.jsonl.gz",
+      "provider": "openai",
+      "unmodeledMcp": true,
+      "note": null,
+      "raw": {
+        "bytes": 128709,
+        "sha256": "6d0672456a2e6e0d6048b0ca27fe722073e7365f5052f3e3522e4f105f40918a"
+      },
+      "gzip": {
+        "bytes": 857,
+        "sha256": "27443ad8abc90916ef5028970dcf9de2b6db3f7c57b7c665bc561d91339b72f7"
+      }
+    },
+    {
+      "name": "openai-recorded-tool-listing",
+      "file": "openai-recorded-tool-listing.jsonl.gz",
+      "provider": "openai",
+      "unmodeledMcp": true,
+      "note": "Synthetic listing decoded as McpListTools and reserialized by the SDK.",
+      "raw": {
+        "bytes": 129628,
+        "sha256": "19b40ac3557df28f2d551cb8c5f476703101217f25fb3eb46cfff34db8237f81"
+      },
+      "gzip": {
+        "bytes": 1325,
+        "sha256": "f41e7082da6adc5193dfc6f03ac50556606bb07afba8eb10651a91c25330b4fe"
+      }
+    }
+  ]
+}

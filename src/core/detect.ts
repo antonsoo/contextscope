@@ -32,6 +32,7 @@ function formatScores(request: unknown): Record<Provider, number> {
 
   // Top-level `system` as a field is Anthropic-only; OpenAI has no such field.
   if ("system" in obj) scores.anthropic += 2;
+  if ("mcp_servers" in obj) scores.anthropic += 2;
   // OpenAI Responses API bodies carry `input`/`instructions` instead of `messages`.
   if (isResponsesBody(obj)) scores.openai += 4;
 
@@ -40,6 +41,8 @@ function formatScores(request: unknown): Record<Provider, number> {
     if (tool !== null && typeof tool === "object") {
       const t = tool as Record<string, unknown>;
       if ("input_schema" in t) scores.anthropic += 2;
+      if (t["type"] === "mcp_toolset") scores.anthropic += 2;
+      if (t["type"] === "mcp") scores.openai += 2;
       if (t["type"] === "function" && "function" in t) scores.openai += 2;
     }
   }

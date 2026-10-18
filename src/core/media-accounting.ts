@@ -50,6 +50,9 @@ export function hasUnmodeledTokens(requests: ParsedRequest[], provider: Provider
 export const UNMODELED_CACHE_REASON = "Media token counts are unavailable. Cache token partitions and costs are unavailable for this sequence because unknown media lengths can affect cache thresholds and entries written by earlier requests.";
 
 export function unavailableCacheReason(requests: ParsedRequest[]): string {
+  if (requests.some(r => r.segments.some(s => s.unmodeledContext === "mcp_tools"))) {
+    return "MCP tool context is not modeled. Resolved tool definitions and their provider-side rendering cannot be established by this estimator. Whole-request cache token partitions and costs are unavailable for this sequence; visible text matches do not establish the resolved prompt or prior cache entries.";
+  }
   const context = requests.some(r => r.segments.some(s => s.unmodeledContext));
   const media = requests.some(r => r.segments.some(s => s.unmodeledContent));
   if (context) return `${media ? "Media and stored or opaque context" : "Stored or opaque context"} cannot be reconstructed from these records. Whole-request cache token partitions and costs are unavailable for this sequence; visible text matches do not establish the resolved prompt or prior cache entries.`;

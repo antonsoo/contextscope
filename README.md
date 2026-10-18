@@ -30,6 +30,12 @@ stored-context boundaries. Their
 with retained counterexamples and verification artifacts. The measurements below
 describe the public agent trajectories used to check the analyzer.
 
+The source checkout also preserves unresolved MCP tool context in Anthropic and
+Responses logs. A server URL or toolset declaration no longer supplies a finite
+whole-request token count or simulated cache hit without the resolved prompt.
+Pinned/returned lists stay inspectable; their MCP rendering is not implemented
+here. [Native SDK bodies, a real public catalog and before/after reports](studies/mcp-context/README.md).
+
 ## On real agent trajectories
 
 The first measurement of contextscope against what a provider reported, not against

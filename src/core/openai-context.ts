@@ -54,5 +54,8 @@ export function openAiItemContext(item: Record<string, unknown>, path: string, i
   // provider's reasoning-history rendering. Withhold this unit conservatively.
   if (item.type === "reasoning") return "reasoning";
   if (item.type === "compaction") return "compaction";
+  // MCP configuration, imported listings and tool-protocol items do not
+  // reproduce the provider's model-facing MCP prompt rendering locally.
+  if (typeof item.type === "string" && ["mcp_list_tools", "mcp_call", "mcp_approval_request", "mcp_approval_response"].includes(item.type)) return "mcp_tools";
   return undefined;
 }
