@@ -84,7 +84,7 @@ for (const item of capture.cases) {
   cases.push({ name: item.name, inputSha256: sha(raw), report, cliExitCode: cli.status,
     htmlSha256: sha(html), unknownMcp: item.unmodeledMcp, provider: item.provider });
 }
-const receipt = { expectation, node: process.version, dist, scope: capture.scope, cases,
+const receipt = { expectation, node: process.version, artifact: "caller-supplied dist", scope: capture.scope, cases,
   unsupportedFiniteEstimates: cases.filter(item => item.unknownMcp && item.report.reports.some(
     row => row.totals.openaiTokens !== null || row.totals.claudeTokensEstimate !== null)).length };
 writeFileSync(resolve(output, "replay.json"), JSON.stringify(receipt, null, 2) + "\n");

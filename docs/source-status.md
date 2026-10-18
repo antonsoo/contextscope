@@ -13,6 +13,7 @@ No new npm release was performed for the corrections listed here.
 | Structured-output formats and citation enablement affect the correct prompt-cache levels; calibration forwards their controls | [Injected prompt settings](../studies/injected-settings/README.md) |
 | Encoded media does not become text-token totals or fabricated cache costs; captured usage remains available | [Media accounting and nullable types](../studies/media-accounting/README.md) |
 | Stored OpenAI history, prompt templates, input references and opaque reasoning remain unresolved; captured counters stay separate | [Stored-context boundaries](../studies/stored-context/README.md) |
+| Anthropic and Responses MCP references, configurations and protocol items retain unknown totals and cache costs; visible text and captured usage remain inspectable | [MCP context boundaries](../studies/mcp-context/README.md) |
 
 The cold-start behavior retains only application code between worker jobs.
 Once file intake is available, the first local import and report exports work
@@ -26,13 +27,14 @@ records the public tarball's SHA-256 and verifies its registry SHA-512 integrity
 Use the [source quickstart](../README.md#quickstart) for the current corrections.
 
 The [public demo](https://antonsoo.github.io/contextscope/) was updated from
-tested source `b1f31649bb09a0c6b4bf8c9d5ad9d83882e664b7`. Its
-[canonical HTTP receipt](../studies/stored-context/results/hosting.json)
+tested source `6dd0252`. Its
+[canonical HTTP receipt](../studies/mcp-context/results/hosting.json)
 compares all 42 production files with the clean build, without cache-busting
-queries. The [hosted browser receipt](../studies/stored-context/results/hosted-browser.json)
-checks 44 complete export workflows across Chromium/Firefox and desktop/phone
-widths, including first imports after disconnecting, original downloads,
-invalid-setting retention and text recovery. These controlled SDK workflows
+queries. The [hosted browser receipt](../studies/mcp-context/results/hosted-browser.json)
+checks 28 MCP/local-tool imports across Chromium/Firefox and desktop/phone
+widths, with 76 JSON, HTML and original-configuration downloads after
+disconnecting. Earlier [stored-context workflows](../studies/stored-context/results/hosted-browser.json)
+remain separate retained evidence. These controlled SDK workflows
 are not measurements of provider token usage or cache behavior.
 
 Source and local package verification remain separate from that public HTTP

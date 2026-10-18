@@ -1,0 +1,360 @@
+{
+  "results": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "width": 1440,
+      "expectation": "after",
+      "base": "https://antonsoo.github.io/contextscope/",
+      "offlineAfterControlBootstrap": true,
+      "flows": [
+        {
+          "name": "connector-server-switch",
+          "provider": "anthropic",
+          "jsonSha256": "b5500b6e97f642b2753dbba8956e97b49c83b14dd125890404b17b8c9d5161fa",
+          "htmlSha256": "5606c8a4f840592a4c9510316ae6db2cc195c63fc93181bf20cff61cb5e68085",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": true,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "pinned-connector",
+          "provider": "anthropic",
+          "jsonSha256": "f80ab61d7ec96f22cb080967f2e65eb1838ab06f7e71df8a38d9da14346717b1",
+          "htmlSha256": "28d4258cacd7099346fbd36675953db18f301f36231c28c5a3cdc8e35bd2bf76",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": true,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "recorded-tool-listing",
+          "provider": "anthropic",
+          "jsonSha256": "5d12bad9cb167110a623f8388c12c417f141584ef8135e9943aa50a42ae47cd3",
+          "htmlSha256": "00896e47fa782463619e23b808e804b0f03e92c195b3553b17a70f71ee5bf164",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": true,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "local-tools-control",
+          "provider": "anthropic",
+          "jsonSha256": "2b04a0deb2ac31b9968c4f02bd35129f2aad8bafdf788537738b2909d98c5ef8",
+          "htmlSha256": "0240761dcdddc368658f23a1cf174c155650b56282574916feb79917639e3b31",
+          "exactCliReport": true,
+          "rawPreserved": false,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "openai-connector-same-server",
+          "provider": "openai",
+          "jsonSha256": "c163157ab75f84606ce625fbccaac715e4fda4a8c7d0b68656ff28203c97f01c",
+          "htmlSha256": "0594a0d0d4351adca8954b5a38ae75f1067f657e7b67debbd30d4d7f73b73214",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "openai-recorded-tool-listing",
+          "provider": "openai",
+          "jsonSha256": "936a9ff176f5c9a43f344a0845c5f7f43e6a0295f7c735adfb85d3b1577bc27b",
+          "htmlSha256": "52835e3d01e5bf25dc7bafbe5b2ecda6a20beea80d5f1e2790ff3d959812e26c",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "openai-local-tools-control",
+          "provider": "openai",
+          "jsonSha256": "631dbbbab33f3d10b41c72a14663bc4c56b9f169bcdb7a487dc9c20590adc9cd",
+          "htmlSha256": "5b8f0934bf608cdb4b4ac957bc9a165f1f7c03904ffa5334c751226869725367",
+          "exactCliReport": true,
+          "rawPreserved": false,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        }
+      ],
+      "errors": [],
+      "requests": []
+    },
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "width": 375,
+      "expectation": "after",
+      "base": "https://antonsoo.github.io/contextscope/",
+      "offlineAfterControlBootstrap": true,
+      "flows": [
+        {
+          "name": "connector-server-switch",
+          "provider": "anthropic",
+          "jsonSha256": "b5500b6e97f642b2753dbba8956e97b49c83b14dd125890404b17b8c9d5161fa",
+          "htmlSha256": "60dccdda7bea5d9f3e17bfc15b128f21eaa06056bed98c5be3645f40d1c31c32",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": true,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "pinned-connector",
+          "provider": "anthropic",
+          "jsonSha256": "f80ab61d7ec96f22cb080967f2e65eb1838ab06f7e71df8a38d9da14346717b1",
+          "htmlSha256": "cf88db56c8780ccc1c176e856464f98091208d18fa2f1d4cd76deceac8f73824",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": true,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "recorded-tool-listing",
+          "provider": "anthropic",
+          "jsonSha256": "5d12bad9cb167110a623f8388c12c417f141584ef8135e9943aa50a42ae47cd3",
+          "htmlSha256": "2ee1eaa24c07dc79fbfe8c8aab1c1d09caf7bc56f4e3a17f9f0aac9c22b0a26d",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": true,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "local-tools-control",
+          "provider": "anthropic",
+          "jsonSha256": "2b04a0deb2ac31b9968c4f02bd35129f2aad8bafdf788537738b2909d98c5ef8",
+          "htmlSha256": "60f61b14e46026641685d773f9dcb34ecfbc6a77a914f32dc1841094488b89f2",
+          "exactCliReport": true,
+          "rawPreserved": false,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "openai-connector-same-server",
+          "provider": "openai",
+          "jsonSha256": "c163157ab75f84606ce625fbccaac715e4fda4a8c7d0b68656ff28203c97f01c",
+          "htmlSha256": "8d1e55d74159b9a2bd8935ce9aa274c7e622b1234b35e3575b8512bc8c08916f",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "openai-recorded-tool-listing",
+          "provider": "openai",
+          "jsonSha256": "936a9ff176f5c9a43f344a0845c5f7f43e6a0295f7c735adfb85d3b1577bc27b",
+          "htmlSha256": "cbcb451cd0e5f8f340a4f640d426404340a35ebf2aacb9b79da15ef245539282",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "openai-local-tools-control",
+          "provider": "openai",
+          "jsonSha256": "631dbbbab33f3d10b41c72a14663bc4c56b9f169bcdb7a487dc9c20590adc9cd",
+          "htmlSha256": "849ba0a44398b73edf39953486792f2742dae79968f52111bfa93ebe596191e0",
+          "exactCliReport": true,
+          "rawPreserved": false,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        }
+      ],
+      "errors": [],
+      "requests": []
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "width": 1440,
+      "expectation": "after",
+      "base": "https://antonsoo.github.io/contextscope/",
+      "offlineAfterControlBootstrap": true,
+      "flows": [
+        {
+          "name": "connector-server-switch",
+          "provider": "anthropic",
+          "jsonSha256": "b5500b6e97f642b2753dbba8956e97b49c83b14dd125890404b17b8c9d5161fa",
+          "htmlSha256": "e5774cab74f1bb87e93d20fd621ffeb90d9f9cfcbd2d4d6a4e19729abdb6f516",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": true,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "pinned-connector",
+          "provider": "anthropic",
+          "jsonSha256": "f80ab61d7ec96f22cb080967f2e65eb1838ab06f7e71df8a38d9da14346717b1",
+          "htmlSha256": "f365fde7bb3cc61a12708c6d6dae540cfe548054d6b1b9b42bc01200b472bfd9",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": true,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "recorded-tool-listing",
+          "provider": "anthropic",
+          "jsonSha256": "5d12bad9cb167110a623f8388c12c417f141584ef8135e9943aa50a42ae47cd3",
+          "htmlSha256": "d86417ff6ef1d981412ab7844064758dbe0a969e9c4c86b0f561032e165c8239",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": true,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "local-tools-control",
+          "provider": "anthropic",
+          "jsonSha256": "2b04a0deb2ac31b9968c4f02bd35129f2aad8bafdf788537738b2909d98c5ef8",
+          "htmlSha256": "ef31f64998d969f2b71b8fe41d3ebb9f0fc6e8751d6f3941508a81001c62e04e",
+          "exactCliReport": true,
+          "rawPreserved": false,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "openai-connector-same-server",
+          "provider": "openai",
+          "jsonSha256": "c163157ab75f84606ce625fbccaac715e4fda4a8c7d0b68656ff28203c97f01c",
+          "htmlSha256": "d77eddef62e05ae8f9e655a90c14945ab5173f4af8f185738d958399aed0faa1",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "openai-recorded-tool-listing",
+          "provider": "openai",
+          "jsonSha256": "936a9ff176f5c9a43f344a0845c5f7f43e6a0295f7c735adfb85d3b1577bc27b",
+          "htmlSha256": "1d2e9864590d69299901a0675c4d26f8ff0402aab93b4f8e23d2d4994d8c9947",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "openai-local-tools-control",
+          "provider": "openai",
+          "jsonSha256": "631dbbbab33f3d10b41c72a14663bc4c56b9f169bcdb7a487dc9c20590adc9cd",
+          "htmlSha256": "8e3c2d7a3e4c980f292f69dac27de363ba317609aab178c28628fb6de5e6f1f5",
+          "exactCliReport": true,
+          "rawPreserved": false,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        }
+      ],
+      "errors": [],
+      "requests": []
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "width": 375,
+      "expectation": "after",
+      "base": "https://antonsoo.github.io/contextscope/",
+      "offlineAfterControlBootstrap": true,
+      "flows": [
+        {
+          "name": "connector-server-switch",
+          "provider": "anthropic",
+          "jsonSha256": "b5500b6e97f642b2753dbba8956e97b49c83b14dd125890404b17b8c9d5161fa",
+          "htmlSha256": "4ac110f88fd658399d443eb37ecb1ac3b070faa536093a52c78c4e6a5121cdaf",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": true,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "pinned-connector",
+          "provider": "anthropic",
+          "jsonSha256": "f80ab61d7ec96f22cb080967f2e65eb1838ab06f7e71df8a38d9da14346717b1",
+          "htmlSha256": "68ea737b2a0bcf2c82931785311280a9c46de029abb15bb31c6a5c45d4b76f48",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": true,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "recorded-tool-listing",
+          "provider": "anthropic",
+          "jsonSha256": "5d12bad9cb167110a623f8388c12c417f141584ef8135e9943aa50a42ae47cd3",
+          "htmlSha256": "be8c311c5fd039c12ce285717ce7ebb315345a0e41f8f614767ef86a977b06a5",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": true,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "local-tools-control",
+          "provider": "anthropic",
+          "jsonSha256": "2b04a0deb2ac31b9968c4f02bd35129f2aad8bafdf788537738b2909d98c5ef8",
+          "htmlSha256": "48db205c3caecd29545f11084961c734142bf3ee80aec60f6444108b05b0b8d2",
+          "exactCliReport": true,
+          "rawPreserved": false,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "openai-connector-same-server",
+          "provider": "openai",
+          "jsonSha256": "c163157ab75f84606ce625fbccaac715e4fda4a8c7d0b68656ff28203c97f01c",
+          "htmlSha256": "79544f6489b8c8a31a6822396a005e04a898724eb7fed2396585b4d32fbb806c",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "openai-recorded-tool-listing",
+          "provider": "openai",
+          "jsonSha256": "936a9ff176f5c9a43f344a0845c5f7f43e6a0295f7c735adfb85d3b1577bc27b",
+          "htmlSha256": "847526daaf8e614e03438e0cc8a1c07b8905fe98d0a5e85d06a8deeec024739e",
+          "exactCliReport": true,
+          "rawPreserved": true,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        },
+        {
+          "name": "openai-local-tools-control",
+          "provider": "openai",
+          "jsonSha256": "631dbbbab33f3d10b41c72a14663bc4c56b9f169bcdb7a487dc9c20590adc9cd",
+          "htmlSha256": "bf565acd8602c08d11b7384577f456d2046a9681825b4fd5fbf50f401d067f2e",
+          "exactCliReport": true,
+          "rawPreserved": false,
+          "calibrationRefused": false,
+          "noOverflow": true,
+          "axeViolations": 0
+        }
+      ],
+      "errors": [],
+      "requests": []
+    }
+  ]
+}

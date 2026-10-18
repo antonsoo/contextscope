@@ -117,3 +117,29 @@ phase match CLI output and reopen offline. The corrected phase additionally
 checks 20 original-configuration downloads. Accessibility violations, page
 errors and HTTP requests after bootstrap are zero. The screenshots were opened
 and inspected; the phone cache table keeps its existing horizontal scroller.
+
+## Clean package and public delivery
+
+Implementation `6dd0252` was tested from a fresh Git archive with a locked
+install, lint, type checks, both production builds, 648 core/CLI checks and
+114 existing Chromium/Firefox regression workflows. The second 648-check run
+selects `de-DE` through the environment; Node Intl confirms that locale even
+though the host does not have the corresponding shell locale installed.
+[Clean verification](results/verification.json).
+
+The 109,194-byte local tarball has SHA-256
+`cca9e314bfd7774bdec0333076a7739be42ca656d9645d3e5c21785667d1abd0`.
+All 824 tracked source files match the archive, and all 102 packaged runtime
+files match the clean build and separate installation. Installed Node 26.7.0
+and the exact Node 20.0.0 minimum reproduce all thirteen complete reports,
+including the actual CLI bin and warning exit. [Installed receipt](results/installed.json).
+
+Deployment `274ee7d` preserves older hashed assets and serves the tested build.
+The [canonical HTTP receipt](results/hosting.json) verifies all 42 current
+production files, including the entry URL before and after comparison, without
+cache-busting queries. The [hosted browser receipt](results/hosted-browser.json)
+checks 28 imports, 56 JSON/HTML downloads and 20 original-configuration downloads.
+All sixteen hosted screenshots were inspected. Processing remains offline
+after startup. The SDK replies and usage counters remain authored controls;
+these delivery checks do not measure model behavior or real cache savings.
+No npm release or tag was created.

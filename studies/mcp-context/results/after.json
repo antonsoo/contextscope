@@ -1,7 +1,6 @@
 {
   "expectation": "after",
   "node": "v26.7.0",
-  "dist": "/home/antonsoloviev/work/projects/showcases/contextscope/dist",
   "scope": "Capture native SDK connector bodies, with synthetic replies over MockTransport.\n\nNo provider or MCP server is contacted. SDK serialization establishes the wire\nshape, not live acceptance, cache behavior, provider token counts or charges.\nReported usage and the returned tool listing are explicitly synthetic controls.\n",
   "cases": [
     {
@@ -5860,5 +5859,6 @@
       "provider": "openai"
     }
   ],
-  "unsupportedFiniteEstimates": 0
+  "unsupportedFiniteEstimates": 0,
+  "artifact": "caller-supplied dist"
 }

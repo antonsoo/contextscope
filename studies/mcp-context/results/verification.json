@@ -1,0 +1,58 @@
+{
+  "testedSource": "6dd025222c99adea1e9bacdfbd79e5c864184bc7",
+  "cleanRuntime": "Node 26.7.0",
+  "unitChecks": 648,
+  "browserChecks": 114,
+  "checks": {
+    "install": {
+      "command": "npm ci",
+      "exitCode": 0,
+      "bytes": 330,
+      "sha256": "6f3b0230c7915df5d9b138af138fae825870de191ce67f2070e24aea337ffec7"
+    },
+    "typecheck": {
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "bytes": 141,
+      "sha256": "065f57db2f0de0df20f19d94151ae88ff01ac1c4c117dfd29507a338675f8589"
+    },
+    "lint": {
+      "command": "npm run lint",
+      "exitCode": 0,
+      "bytes": 78,
+      "sha256": "7d759107193f1253093f82acb0858619861371ea869660e7cc49464cdc11bba0"
+    },
+    "tests": {
+      "command": "npm test",
+      "exitCode": 0,
+      "bytes": 474,
+      "sha256": "86ead89c137fc7bae7e344391143c439b2dff57bbe00e8ad68f829eedbe39fc4"
+    },
+    "locale": {
+      "command": "LC_ALL=de_DE.UTF-8 LANG=de_DE.UTF-8 npm test",
+      "exitCode": 0,
+      "bytes": 544,
+      "sha256": "f63dae29ed4f3b6f14ec070e7c6102ebb7c60f03ee3e574d3913c754af652994"
+    },
+    "build": {
+      "command": "npm run build",
+      "exitCode": 0,
+      "bytes": 2763,
+      "sha256": "9dca732c43858c1a87d2be06d4d4033408d84502b1d8ec1ac2f3924bc6f45d84"
+    },
+    "browser": {
+      "command": "node node_modules/@playwright/test/cli.js test",
+      "exitCode": 0,
+      "bytes": 18663,
+      "sha256": "9e5ea2b07aa43b87e25955989f7fd4c7e10c46bc37edb54bced4bfd320c5e7e5"
+    }
+  },
+  "locale": {
+    "environment": "de_DE.UTF-8",
+    "nodeIntlResolvedLocale": "de-DE",
+    "shellLocaleInstalled": false
+  },
+  "installedReceipt": "installed.json",
+  "sourceChangedAfterVerification": false,
+  "registryRelease": false
+}
