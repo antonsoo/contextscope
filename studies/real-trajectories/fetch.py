@@ -11,7 +11,7 @@ import xml.etree.ElementTree as ET
 from concurrent.futures import ThreadPoolExecutor
 
 BUCKET = "https://swe-bench-submissions.s3.amazonaws.com"
-UA = "contextscope-study/0.1 (read-only research sample; anton@praviel.com)"
+UA = "contextscope-study/0.1 (read-only research sample; anthony@praviel.com)"
 HERE = os.path.dirname(os.path.abspath(__file__))
 CACHE = os.path.join(HERE, "cache")
 SEED = 20261008
