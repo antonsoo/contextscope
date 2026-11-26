@@ -81,10 +81,10 @@
       "name": "node20-replay",
       "command": [
         "/tmp/claude-1000/ghostchars-atomic-repair/node20/node_modules/node-linux-x64/bin/node",
-        "/home/antonsoloviev/work/projects/showcases/contextscope/studies/duplicate-scaling/replay.mjs",
+        "<workspace>/contextscope/studies/duplicate-scaling/replay.mjs",
         "/tmp/claude-1000/contextscope-duplicate-scaling/installed-node20/node_modules/@antonsoloviev/contextscope/dist",
         "/tmp/claude-1000/contextscope-duplicate-scaling/cli-node20",
-        "/home/antonsoloviev/work/projects/showcases/contextscope/studies/duplicate-scaling/results/cli-node20.json"
+        "<workspace>/contextscope/studies/duplicate-scaling/results/cli-node20.json"
       ],
       "exitCode": 0,
       "logSha256": "b14885225f3980a8b107ac24114aac65793e02446bfda5549f996630997a7ea7"
@@ -93,7 +93,7 @@
       "name": "node20-oracle",
       "command": [
         "/tmp/claude-1000/ghostchars-atomic-repair/node20/node_modules/node-linux-x64/bin/node",
-        "/home/antonsoloviev/work/projects/showcases/contextscope/studies/duplicate-scaling/oracle.mjs",
+        "<workspace>/contextscope/studies/duplicate-scaling/oracle.mjs",
         "/tmp/claude-1000/contextscope-duplicate-scaling/installed-node20/node_modules/@antonsoloviev/contextscope/dist",
         "/tmp/claude-1000/contextscope-duplicate-scaling/oracle-node20.json"
       ],
@@ -104,10 +104,10 @@
       "name": "node20-benchmark",
       "command": [
         "/tmp/claude-1000/ghostchars-atomic-repair/node20/node_modules/node-linux-x64/bin/node",
-        "/home/antonsoloviev/work/projects/showcases/contextscope/studies/duplicate-scaling/benchmark.mjs",
+        "<workspace>/contextscope/studies/duplicate-scaling/benchmark.mjs",
         "/tmp/claude-1000/contextscope-duplicate-scaling/installed-node20/node_modules/@antonsoloviev/contextscope/dist",
         "mixed-2000",
-        "/home/antonsoloviev/work/projects/showcases/contextscope/studies/duplicate-scaling/results/benchmark-node20.json",
+        "<workspace>/contextscope/studies/duplicate-scaling/results/benchmark-node20.json",
         "1"
       ],
       "exitCode": 0,
@@ -132,10 +132,10 @@
       "name": "node24-replay",
       "command": [
         "/tmp/claude-1000/stutterscope-frame-gaps/node24/node_modules/node-linux-x64/bin/node",
-        "/home/antonsoloviev/work/projects/showcases/contextscope/studies/duplicate-scaling/replay.mjs",
+        "<workspace>/contextscope/studies/duplicate-scaling/replay.mjs",
         "/tmp/claude-1000/contextscope-duplicate-scaling/installed-node24/node_modules/@antonsoloviev/contextscope/dist",
         "/tmp/claude-1000/contextscope-duplicate-scaling/cli-node24",
-        "/home/antonsoloviev/work/projects/showcases/contextscope/studies/duplicate-scaling/results/cli-node24.json"
+        "<workspace>/contextscope/studies/duplicate-scaling/results/cli-node24.json"
       ],
       "exitCode": 0,
       "logSha256": "fb4aa4c3bea0193ccb6cd218f2cce92e749549ab17edec21543fa1caa46fb034"
@@ -144,7 +144,7 @@
       "name": "node24-oracle",
       "command": [
         "/tmp/claude-1000/stutterscope-frame-gaps/node24/node_modules/node-linux-x64/bin/node",
-        "/home/antonsoloviev/work/projects/showcases/contextscope/studies/duplicate-scaling/oracle.mjs",
+        "<workspace>/contextscope/studies/duplicate-scaling/oracle.mjs",
         "/tmp/claude-1000/contextscope-duplicate-scaling/installed-node24/node_modules/@antonsoloviev/contextscope/dist",
         "/tmp/claude-1000/contextscope-duplicate-scaling/oracle-node24.json"
       ],
@@ -155,10 +155,10 @@
       "name": "node24-benchmark",
       "command": [
         "/tmp/claude-1000/stutterscope-frame-gaps/node24/node_modules/node-linux-x64/bin/node",
-        "/home/antonsoloviev/work/projects/showcases/contextscope/studies/duplicate-scaling/benchmark.mjs",
+        "<workspace>/contextscope/studies/duplicate-scaling/benchmark.mjs",
         "/tmp/claude-1000/contextscope-duplicate-scaling/installed-node24/node_modules/@antonsoloviev/contextscope/dist",
         "mixed-2000",
-        "/home/antonsoloviev/work/projects/showcases/contextscope/studies/duplicate-scaling/results/benchmark-node24.json",
+        "<workspace>/contextscope/studies/duplicate-scaling/results/benchmark-node24.json",
         "1"
       ],
       "exitCode": 0,
@@ -168,10 +168,10 @@
       "name": "browser-after",
       "command": [
         "/tmp/claude-1000/stutterscope-frame-gaps/node24/node_modules/node-linux-x64/bin/node",
-        "/home/antonsoloviev/work/projects/showcases/contextscope/studies/duplicate-scaling/browser.mjs",
+        "<workspace>/contextscope/studies/duplicate-scaling/browser.mjs",
         "/tmp/claude-1000/contextscope-duplicate-scaling/clean-b8383d4",
         "/tmp/claude-1000/contextscope-duplicate-scaling/cli-node24",
-        "/home/antonsoloviev/work/projects/showcases/contextscope/studies/duplicate-scaling/results/browser-after.json",
+        "<workspace>/contextscope/studies/duplicate-scaling/results/browser-after.json",
         "/tmp/claude-1000/contextscope-duplicate-scaling/screens-after"
       ],
       "exitCode": 0,
