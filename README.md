@@ -2,7 +2,7 @@
 
 See what's actually in your LLM context window, and why your prompt cache keeps missing.
 
-[![npm](https://img.shields.io/npm/v/@antonsoloviev/contextscope)](https://www.npmjs.com/package/@antonsoloviev/contextscope)
+[![npm](https://img.shields.io/npm/v/@anthonymercer/contextscope)](https://www.npmjs.com/package/@anthonymercer/contextscope)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Live demo](https://img.shields.io/badge/live%20demo-antonsoo.github.io%2Fcontextscope-1baf7a)](https://antonsoo.github.io/contextscope/)
 
@@ -23,14 +23,14 @@ your input to another host. The CLI's optional `--calibrate` operation sends
 the selected Anthropic request to its token-counting endpoint; ordinary local
 analysis does not need a key or upload.
 
-The source checkout and demo include corrections for empty/refusal histories, reasoning
+The CLI, library and demo include corrections for empty/refusal histories, reasoning
 settings, injected prompt instructions, media accounting and unresolved OpenAI
 stored-context boundaries. Their
 [source, package and demo status](docs/source-status.md) is recorded separately,
 with retained counterexamples and verification artifacts. The measurements below
 describe the public agent trajectories used to check the analyzer.
 
-The source checkout and demo also preserve unresolved MCP tool context in Anthropic and
+They also preserve unresolved MCP tool context in Anthropic and
 Responses logs. A server URL or toolset declaration no longer supplies a finite
 whole-request token count or simulated cache hit without the resolved prompt.
 Pinned/returned lists stay inspectable; their MCP rendering is not implemented
@@ -47,16 +47,16 @@ gpt-5.1 and gpt-5.2.
 - **Claude token counts were 15 to 25% low (0.3.3).** Code and command output tokenize denser
   than the estimate assumed. Re-fitted on half of the trajectories, the held-out mean error is
   +1.6 to +3.3% on plain-text sessions and −6.5 to −11.3% on sessions that send tools (the
-  roughly 500-token tool-use system prompt is not modelled). This checkout only.
+  roughly 500-token tool-use system prompt is not modelled). Fixed in 0.4.0.
 - **OpenAI counts are exact once the message framing is added.** `prompt_tokens` was the
   o200k_base count of the contents plus exactly 5 per message, in 2,205 of 2,205 requests.
   0.3.3 left the 5 out (0.8 to 1.1% low).
-- **This checkout had broken the cache simulation on tool-using Claude sessions.**
+- **Work after 0.3.3 had broken the cache simulation on tool-using Claude sessions.**
   A tool result sent as a string in one request and as a one-element list of text blocks in
   the next was read as different content. On mini-SWE-agent 2.0 sessions the agreement with
   Anthropic on "did this request read the cache" fell from 88 to 100% (0.3.3) to 6.5 to 23%, and
   5,715 requests that did read the cache got a "breakpoint is outside the 20-position lookback
-  window" finding. 0.3.3 is not affected; the fix is in this checkout.
+  window" finding. 0.3.3 is not affected, and 0.4.0 ships with the fix.
 - **With those fixed it agrees with Anthropic on 96 to 100% of requests** about whether the
   cache was read, and its predicted share of input tokens read from cache is within 0.0 to
   1.6 points of the reported one. Two Claude 4.5 models were missing from the model table and
@@ -65,14 +65,12 @@ gpt-5.1 and gpt-5.2.
   `cached_tokens` exactly; 34% got none where it predicted a read. gpt-5.2 cached 56 to 57% of
   the predicted tokens, gpt-5.1 88%.
 
-**Reported usage is inspectable in the source checkout and live demo.** Pair a request with
+**Reported usage is inspectable in the CLI and live demo.** Pair a request with
 `response.usage` and the report compares captured counts with the simulation,
 preserving missing counters and the exact source fields. Verification covered
 17,425 responses from 520 hash-checked trajectories; full analysis of 2,205 OpenAI
 Chat requests exposed 712 simulated hits with a recorded zero. See the
 [reported-usage workflow](docs/reported-usage.md) and [verification study](studies/reported-usage/README.md).
-The live demo includes this feature; npm's 0.3.3 package does not.
-
 ## Contents
 
 - [Quickstart](#quickstart)
@@ -90,16 +88,14 @@ The live demo includes this feature; npm's 0.3.3 package does not.
 Run it against your own request log:
 
 ```sh
-npx @antonsoloviev/contextscope analyze your-requests.jsonl
+npx @anthonymercer/contextscope analyze your-requests.jsonl
 ```
 
 That runs the published package
-([`@antonsoloviev/contextscope`](https://www.npmjs.com/package/@antonsoloviev/contextscope)
-on npm; the command it installs is `contextscope`). Version 0.3.3 predates the
-reported-usage review and current cache-accounting corrections, including
-[processing-speed scopes and prices](studies/fast-mode/README.md). Those changes
-are available in the live demo and source. To use the current CLI and bundled
-examples, clone the repository:
+([`@anthonymercer/contextscope`](https://www.npmjs.com/package/@anthonymercer/contextscope)
+on npm; the command it installs is `contextscope`). Version 0.4.0 adds the reported-usage review and the cache-accounting
+corrections, including [processing-speed scopes and prices](studies/fast-mode/README.md).
+To work from source with the bundled examples, clone the repository:
 
 ```sh
 git clone https://github.com/antonsoo/contextscope && cd contextscope
@@ -147,7 +143,7 @@ drop a request file, paste one, or click a built-in example.
   exactly 20 positions, and the optimized scenario respects four marker slots.
   Invalid cache configurations fail with the request and field location.
   Browser JSON and offline HTML downloads also work without response usage.
-  [Reproduction and limits](docs/cache-accounting.md). These changes are not in npm 0.3.3.
+  [Reproduction and limits](docs/cache-accounting.md).
 - **Logs of more than one conversation.** A proxy capture of an agent holds
   its main loop and, between the turns, side requests on another model; a
   gateway's log holds every user's conversation, interleaved. Each request is
@@ -159,7 +155,7 @@ drop a request file, paste one, or click a built-in example.
   included); `--model` overrides all rows, and an id with no pricing entry is reported
   instead of silently priced as something else. All eleven current Claude
   models are covered, including the ones whose minimum cacheable prefix or
-  cache-read price differs from the usual, and (source checkout) the two 4.5
+  cache-read price differs from the usual, and the two 4.5
   models that coding agents still run, Opus 4.5 and Sonnet 4.5. Mixed logs retain
   each request's prices, cache minimum and context window; model names appear
   beside the costs. The browser's "from each request" option restores detection
@@ -171,10 +167,10 @@ drop a request file, paste one, or click a built-in example.
   schema key order differs"*, *"Model changed mid-conversation"*, *"prefix below
   Claude Opus 4.6's 4,096-token minimum"*, *"No cache breakpoint on the
   conversation tail"* (often the single highest-value fix for a real agent loop).
-  In the source checkout, different severities and message variants remain
+  Different severities and message variants remain
   separate: a pricing warning can no longer disappear inside an informational
   fast-mode group. [Before/after report replay](studies/finding-groups/README.md).
-  This grouping correction is unreleased; it does not change pricing or token counts.
+  This grouping correction does not change pricing or token counts.
 - **Duplicate content detection** (5-word shingling + Jaccard similarity): the
   same file or tool output fetched more than once in one conversation.
 - **Reads the files you already have.** Anthropic Messages bodies, OpenAI Chat
@@ -218,7 +214,7 @@ invalid, a usage aggregate overflows, or a finding meets the threshold.
 Missing optional response usage alone does not fail a gate. Gzipped input is detected by
 extension or, failing that, by gzip magic bytes.
 
-In the source checkout, report paths must be distinct from the input and from
+Report paths must be distinct from the input and from
 each other, including hard links and symlinked parent directories. Output
 symlinks are refused. Both reports are staged before replacing either file;
 each replacement is atomic and uses private permissions (0600 on POSIX).
@@ -235,7 +231,7 @@ prompt busts the cache on every turn:
 </p>
 
 The screenshots, and the token counts and dollar figures in this section and
-the next, come from 0.3.3. This checkout's larger Claude estimate (see
+the next, come from 0.3.3. 0.4.0's larger Claude estimate (see
 [On real agent trajectories](#on-real-agent-trajectories)) prices the same two
 sessions at $3.4459 actual and $0.5533 optimized, still 84% lower; the findings
 are unchanged. The other percentages here were not recomputed.
@@ -266,7 +262,7 @@ synthetic examples, labelled as such: the 24-turn cache-busting session above
 (a ~5.7 MB session, shipped gzipped at ~0.48 MB and fetched only when you pick
 it), its fixed counterpart, a session with a file re-read three times, and an
 OpenAI session with tools reordered mid-conversation, and a six-request paired
-capture with authored reported-usage counters (source checkout). The view opens on the
+capture with authored reported-usage counters. The view opens on the
 *last* request, where a growing conversation is biggest. Findings come first,
 each with links to every request it fired on; below them are the treemap, the
 segment table, the line-level diff between each request and the one it
@@ -282,7 +278,7 @@ current input only.
 ### As a library
 
 ```ts
-import { analyze, groupFindings } from "@antonsoloviev/contextscope";
+import { analyze, groupFindings } from "@anthonymercer/contextscope";
 
 const result = analyze(rawRequestJsonOrJsonl); // or { model: "claude-opus-5-5" } to override
 // result.reports[i].model — this request's model, override or explicit fallback
@@ -328,8 +324,7 @@ produce a false cache match. Equivalent decimal spellings such as `1.0` and
 and JSON-encoded request bodies; it rejects unsupported precision rather than
 providing arbitrary-precision analysis. See the
 [SDK reproduction and Decimal cross-check](studies/numeric-integrity/README.md).
-This precision guard is in source; npm 0.3.3 and the hosted demo have not been
-updated with it. Malformed JSONL syntax is
+Malformed JSONL syntax is
 retained as a visible coverage gap: `parse.complete` is false,
 `parse.sourceRecords` includes skipped nonblank lines, and `parse.skippedRecords`
 counts malformed lines plus records with no analyzable segments. Any configured
@@ -349,13 +344,13 @@ does not publish Claude's tokenizer, and they are labelled `≈` everywhere. The
 method: characters per token scaled by how symbol-dense the text is (about 3.3
 chars/token for prose and 2.5 for JSON/code, interpolated by the fraction of
 non-alphanumeric characters), since BPE tokenizers split more often on
-punctuation. (Source checkout: these were 4.0 and 2.9 in 0.3.3, which counted
+punctuation. (These were 4.0 and 2.9 through 0.3.3, which counted
 the agent transcripts in [the real-trajectory study](studies/real-trajectories/README.md)
 20 to 30% low.) An agent loop re-sends its whole history on every request, so each
 distinct segment text is tokenized once per analysis: the flagship session has
 1,259 segments but only 109 distinct ones.
 
-**Literal tokenizer spellings (source checkout).** Strings such as
+**Literal tokenizer spellings.** Strings such as
 `<|endoftext|>` in a prompt, tokenizer configuration or tool result are counted
 as ordinary text. They no longer abort the analysis or become control tokens.
 [Native-tokenizer checks and complete CLI/browser replays](studies/token-literals/README.md)
@@ -507,9 +502,9 @@ counts Claude-estimated tokens in members after the first; it replaces the
 unsupported `estimatedWastedTokens` claim in the source library/JSON contract.
 It is a review budget, not established removable content or cost savings.
 [Counterexamples, public-history audit and verification](studies/duplicate-evidence/README.md)
-are retained. These changes are not in npm's 0.3.3 release.
+are retained.
 
-The source browser now compares each displayed later member with the first,
+The browser now compares each displayed later member with the first,
 showing literal changed lines, both source positions and complete text/JSON
 downloads. Choose **Similar file reads: inspect the edits** to try the existing
 configuration example. Whitespace and line endings remain significant; large
@@ -527,7 +522,7 @@ On a constructed 2,000-block history, duplicate review fell from 67.41 to 2.69
 seconds on Node 24.21.0; all 466 groups in the 240 public terminal snapshots
 stayed identical. The temporary index uses extra memory, and dense comparisons
 can remain quadratic. [Measurements, algorithm and limits](studies/duplicate-scaling/README.md)
-are retained; this optimization is not in npm's 0.3.3 release.
+are retained.
 
 **Findings.** A fixed set of rule-based checks over the parsed sequence, the
 prefix diffs and the duplicate groups (`src/core/findings.ts`), not an LLM
@@ -605,7 +600,7 @@ fixed hue order, so a color always means the same category.
   assumptions for every row while preserving captured model identities for
   cache isolation. Unknown IDs use an explicitly reported provider-default
   fallback; missing model names form their own cache group. Invalid Anthropic cache-marker configurations are rejected before
-  simulation in this source checkout; [accounting rules](docs/cache-accounting.md).
+  simulation; [accounting rules](docs/cache-accounting.md).
 - **Anthropic request-setting coverage is partial.** Message caches account for
   tool choice (including parallel-tool policy) and explicit image presence.
   Speed changes isolate system/message entries. Thinking mode, budget and

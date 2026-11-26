@@ -4,6 +4,15 @@ All notable changes to this project are documented in this file.
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-11-26
+
+### Distribution
+
+- Published as `@anthonymercer/contextscope`. The earlier
+  `@antonsoloviev/contextscope` package is deprecated and points here; its
+  versions stay installable.
+- Package metadata names Anthony Mercer as the author.
+
 ### Added
 
 - Compare same-record provider response usage with token estimates and cache

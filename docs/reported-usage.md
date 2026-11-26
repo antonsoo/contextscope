@@ -1,6 +1,6 @@
 # Compare captured usage with the simulation
 
-Available in the source checkout; not yet released to npm or the hosted demo.
+Available since 0.4.0, in the CLI, library and hosted demo.
 
 A stable prefix is evidence that a request could reuse a cache. The response's
 usage counters record whether it did. Contextscope keeps those two accounts

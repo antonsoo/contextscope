@@ -1,8 +1,8 @@
 # Cache accounting with several Anthropic breakpoints
 
-In the source checkout, a later cache hit covers earlier breakpoints before any
-write charges are assigned. Previously, adding an earlier marker could bill the
-same prefix as both a read and a write. These corrections are unreleased.
+Since 0.4.0, a later cache hit covers earlier breakpoints before any write
+charges are assigned. Through 0.3.3, adding an earlier marker could bill the
+same prefix as both a read and a write.
 
 The retained [synthetic example](../examples/anthropic-cache-breakpoints.jsonl.gz)
 sends the same system text and user context twice. The first request caches the

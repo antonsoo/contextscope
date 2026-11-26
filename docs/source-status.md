@@ -3,7 +3,8 @@
 The CLI/library package and the hosted app are separate artifacts. A source
 commit or local package test does not establish what the registry or public
 site serves. Each study retains its tested revision and its verification scope.
-No new npm release was performed for the corrections listed here.
+All of the corrections listed here were released to npm on 2026-11-26 as
+`@anthonymercer/contextscope` 0.4.0, and the demo was redeployed from that commit.
 
 | Current source and demo capability | Retained evidence |
 | --- | --- |
@@ -24,7 +25,7 @@ tokenizer worker; no request content is retained for starting fresh workers.
 The registry was checked independently on 2026-10-16: its `latest` tag was
 `0.3.3`, published 2026-10-03. The [registry receipt](../studies/media-accounting/results/registry.json)
 records the public tarball's SHA-256 and verifies its registry SHA-512 integrity.
-Use the [source quickstart](../README.md#quickstart) for the current corrections.
+That version predates the corrections; 0.4.0 contains them.
 
 The [public demo](https://antonsoo.github.io/contextscope/) was updated from
 tested source `6dd0252`. Its
@@ -40,4 +41,5 @@ are not measurements of provider token usage or cache behavior.
 Source and local package verification remain separate from that public HTTP
 check. The [stored-context source receipt](../studies/stored-context/results/publication.json)
 pins twenty public raw files; the [media source receipt](../studies/media-accounting/results/publication.json)
-retains twenty-four files at its earlier revision. No new npm version was published.
+retains twenty-four files at its earlier revision. No new npm version was published
+at the time.
