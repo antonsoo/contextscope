@@ -4,7 +4,8 @@ The CLI/library package and the hosted app are separate artifacts. A source
 commit or local package test does not establish what the registry or public
 site serves. Each study retains its tested revision and its verification scope.
 All of the corrections listed here were released to npm on 2026-11-26 as
-`@anthonymercer/contextscope` 0.4.0, and the demo was redeployed from that commit.
+`@anthonymercer/contextscope` 0.4.0. The hosted demo already served the same site
+build, so it was not redeployed.
 
 | Current source and demo capability | Retained evidence |
 | --- | --- |
