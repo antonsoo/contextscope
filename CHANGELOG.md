@@ -4,6 +4,12 @@ All notable changes to this project are documented in this file.
 
 ## [Unreleased]
 
+## [0.4.1] - 2026-11-26
+
+### Fixed
+
+- `contextscope --version` reports the package version; 0.4.0 printed 0.3.3.
+
 ## [0.4.0] - 2026-11-26
 
 ### Distribution
